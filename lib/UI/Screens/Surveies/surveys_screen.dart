@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
@@ -14,6 +17,39 @@ class SurveysScreen extends StatefulWidget {
 }
 
 class _SurveysScreenState extends State<SurveysScreen> {
+  Future<LocationData> getLocation() async {
+    Location location = new Location();
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return Future.error(0);
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return Future.error(1);
+      }
+    }
+
+    return await location.getLocation();
+  }
+
+  late bool clicked;
+
+  @override
+  void initState() {
+    super.initState();
+    clicked = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +114,28 @@ class _SurveysScreenState extends State<SurveysScreen> {
           ),
           const SizedBox(width: 20),
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await getLocation().then((value) {
+                print("latitude : ${value.latitude}");
+                print("longitude:  ${value.longitude}");
+              }).onError(
+                (error, stackTrace) {
+                  print(error);
+                  log(stackTrace.toString());
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("يجب تشغيل خدمة تحديد الموقع"),
+                      duration: Duration(seconds: 3),
+                      elevation: 1,
+                    ),
+                  );
+                  setState(() {
+                    clicked = false;
+                  });
+                },
+              );
+              ;
+            },
             icon: const Icon(Icons.sync),
           ),
           const SizedBox(width: 30),
