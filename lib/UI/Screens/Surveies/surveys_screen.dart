@@ -5,6 +5,7 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
+import '../Survey/syrvey_screen.dart';
 
 class SurveysScreen extends StatefulWidget {
   const SurveysScreen({Key? key}) : super(key: key);
@@ -66,7 +67,12 @@ class _SurveysScreenState extends State<SurveysScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SurveyScreen()));
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Column(

@@ -101,7 +101,7 @@ abstract class SurveyProvider with ChangeNotifier {
 
   bool get synced;
 
-  // set synced(bool s);
+  set synced(bool s);
 
   double get headerAge;
 
@@ -118,4 +118,5 @@ abstract class SurveyProvider with ChangeNotifier {
   DateTime get headerDate;
 
   set headerDate(DateTime date);
+
 }

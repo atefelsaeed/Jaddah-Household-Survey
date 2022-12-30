@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/surveyHeader.dart';
+
+import 'Components/household_address.dart';
 
 class SurveyScreen extends StatefulWidget {
   SurveyScreen({Key? key}) : super(key: key);
@@ -28,6 +31,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
             child: Column(
               children: [
                 SurveyHeader(),
+                // HouseholdAddressSection()
               ],
             ),
           ),

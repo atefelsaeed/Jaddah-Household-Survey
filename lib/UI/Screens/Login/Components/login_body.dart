@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Resources/sizes.dart';
 import './login_form.dart';
 
 class LoginBody extends StatelessWidget {
@@ -15,7 +16,7 @@ class LoginBody extends StatelessWidget {
             children: [
               ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: 400,
+                  maxWidth: width(context),
                   minHeight: MediaQuery.of(context).size.height - 150,
                 ),
                 child: Column(
@@ -23,7 +24,7 @@ class LoginBody extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Image.asset('Photo_2.png'),
+                      child: Image.asset('assets/images/Photo_2.png'),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
@@ -56,13 +57,13 @@ class LoginBody extends StatelessWidget {
               Expanded(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxHeight: 50),
-                  child: Image.asset('Photo_4.png'),
+                  child: Image.asset('assets/images/Photo_4.png'),
                 ),
               ),
               Expanded(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxHeight: 50),
-                  child: Image.asset('Photo_3.png'),
+                  child: Image.asset('assets/images/Photo_3.png'),
                 ),
               ),
             ],

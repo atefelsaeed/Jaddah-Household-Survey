@@ -3,12 +3,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:jaddah_household_survey/Providers/survey.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Helper/LifecycleEventHandlerClass.dart';
 import 'Helper/messageHandler.dart';
 import 'Providers/auth.dart';
+import 'Providers/surveys.dart';
 import 'UI/Screens/Home/homeScreen.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
@@ -55,6 +57,11 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
+        ChangeNotifierProxyProvider<Auth, SurveysProvider>(
+          create: (ctx) => SurveysProvider(),
+          update: (ctx, _auth, _old) =>
+              SurveysProvider.auth(_auth.authHeader, _auth.uid, _old!),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
