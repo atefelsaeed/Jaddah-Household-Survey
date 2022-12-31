@@ -26,12 +26,6 @@ class SurveyPTProvider extends SurveyProvider {
   @override
   bool get synced => _data.synced;
 
-  // @override
-  // set synced(bool s) {
-  //   _data.synced = s;
-  //   // notifyListeners();
-  // }
-
   @override
   double get headerLat => _data.header.locationLat;
 
