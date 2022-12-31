@@ -1,6 +1,6 @@
 class QuestionsData {
-  Map<String, dynamic> qh1 = {
-    "What best describes this dwelling type?": [
+ static Map<String, List<String>> qh1 = {
+    "? What best describes this dwelling type ": [
       ' shared Villa',
       ' villa',
       ' flat- family',
@@ -13,7 +13,7 @@ class QuestionsData {
     ]
   };
 
-  Map<String, dynamic> qh2 = {
+ static Map<String, List<String>> qh2 = {
     "Is this dwelling...": [
       'Owner occupied',
       'Rented',

@@ -41,7 +41,7 @@ class AppSize {
 
   //===============spaceHeight=============================================
   static spaceHeight1(context) => SizedBox(height: height(context) * .01);
-
+  static spaceHeight05(context) => SizedBox(height: height(context) * .003);
   static spaceHeight2(context) => SizedBox(height: height(context) * .02);
 
   static spaceHeight3(context) => SizedBox(height: height(context) * .03);

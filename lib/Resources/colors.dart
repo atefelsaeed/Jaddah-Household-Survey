@@ -4,7 +4,7 @@ class ColorManager {
   static Color yellowLiner = HexColor.fromHex('#C59E24');
   static Color grayLiner = HexColor.fromHex('#F2F2F2');
   static Color grayText = HexColor.fromHex('#161F3D');
-
+  static Color black=Colors.black;
   static Color whiteLiner = HexColor.fromHex('#F6F6F6');
   static Color backgroundColor = HexColor.fromHex('#F6FCFE');
   static Color grayColor = HexColor.fromHex('#888888');
@@ -12,7 +12,7 @@ class ColorManager {
   static Color whiteColor = HexColor.fromHex('#FFFFFF');//opacity50=>>>80
   static Color blueTxtColor = HexColor.fromHex('#174B80');
   static Color blueTxtColorO40 = HexColor.fromHex('#66174B80');//opacity40=>>66
-  static Color orangeTxtColor = HexColor.fromHex('#FAA83A');
+  static Color orangeTxtColor = HexColor.fromHex('#EB5E28');
   static Color blueAccentColor = HexColor.fromHex('#4FC7E4');
   static Color hintBlueAccentColor = HexColor.fromHex('#B4CCD1');
   static Color wight = HexColor.fromHex('#FFFFFF');
