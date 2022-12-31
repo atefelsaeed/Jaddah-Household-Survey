@@ -60,9 +60,6 @@ abstract class SurveyProvider with ChangeNotifier {
     log(json.encode(data));
     final res;
     try {
-      // log('${json.encode(data.toJson())}',name: 'journeyStarDistrictName');
-      // log('${data.provider.journeyStarDistrictName}',name: 'journeyStarDistrictName');
-
       print('push_url.= ' + push_url);
       res = await APIHelper.postData(
         url: push_url,

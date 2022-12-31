@@ -30,6 +30,7 @@ class Validator {
     if ((double.tryParse(value) ?? 0) < refValue) {
       return message;
     }
+    return null;
   }
 
   static String? validateAge(
@@ -41,6 +42,7 @@ class Validator {
         return message;
       }
     }
+    return null;
   }
 
   static String? validateChoice(
@@ -50,6 +52,7 @@ class Validator {
     if (value == refused) {
       return message;
     }
+    return null;
   }
 
   static String? validateChoices(
@@ -62,6 +65,7 @@ class Validator {
     if (refused.contains(value)) {
       return message;
     }
+    return null;
   }
 
   static String? validateEmail(
@@ -98,6 +102,7 @@ class Validator {
     } else if (confirm != pass) {
       return message;
     }
+    return null;
   }
 
   static String? validateCode({required String code, required String message}) {
@@ -106,6 +111,7 @@ class Validator {
     } else if (code.length < 4) {
       return message;
     }
+    return null;
   }
 
   static String? validateLessThan(
@@ -117,6 +123,7 @@ class Validator {
     if ((double.tryParse(value) ?? 0) < number) {
       return message;
     }
+    return null;
   }
 
   static String? validateDateTime(
@@ -131,5 +138,6 @@ class Validator {
     } else {
       return message;
     }
+    return null;
   }
 }
