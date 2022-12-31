@@ -1,4 +1,6 @@
+import '../Data/Enums/hhs_enums.dart';
 import '/providers/survey.dart';
+import 'HHS_SurvyModels/hhs_models.dart';
 
 class HeaderBase {
   late double locationLat;
@@ -13,56 +15,14 @@ class HeaderBase {
   HeaderBase();
 }
 
-class HouseholdAddress {
-  String? buildingName;
-  String? streetNumber;
-  String? streetName;
-  String? nearestLandMark;
-  String? blockNearestCrossStreets;
-  String? areaSuburb;
-  String? city;
-
-  HouseholdAddress();
-}
-
-class HouseholdQuestions {
-  late String qh1DwellingDescriptionType;
-  late String qh2DwellingType;
-  late int qh3BedRoomNumber;
-  late int qh4FamiliesNumber;
-  List<SeparateFamiliesPeopleNumber>? q5separateFamiliesPeopleNumber;
-  late String yearsNumberInAddress;
-  late String demolishedAreas;
-
-  BikesType? pedalCycles;
-  BikesType? electricCycles;
-  BikesType? electricScooter;
-  late String totalIncome;
-
-  HouseholdQuestions();
-}
-
-class SeparateFamiliesPeopleNumber {
-  int? numberChildren;
-  int? numberAdults;
-
-  SeparateFamiliesPeopleNumber();
-}
-
-class BikesType {
-  int? totalBikesNumber;
-  int? adultsBikesNumber;
-  int? childrenBikesNumber;
-
-  BikesType();
-}
-
 abstract class Survey {
   String id = "";
   late HeaderBase header;
-  late HouseholdQuestions householdQuestions;
+  final SurveyType type;
   bool synced = false;
   late SurveyProvider provider;
+
+  Survey(this.type);
 
   set suggestionName(String suggestionName) {}
 

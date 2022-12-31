@@ -101,11 +101,7 @@ abstract class SurveyProvider with ChangeNotifier {
 
   bool get synced;
 
-  set synced(bool s);
-
-  double get headerAge;
-
-  set headerAge(double l);
+  // set synced(bool s);
 
   double get headerLat;
 
@@ -115,8 +111,52 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set headerLong(double l);
 
-  DateTime get headerDate;
+  DateTime get interViewDate;
 
-  set headerDate(DateTime date);
+  set interViewDate(DateTime date);
 
+  int get headerEmpNumber;
+
+  set headerEmpNumber(int l);
+
+  int get headerInterviewNumber;
+
+  set headerInterviewNumber(int l);
+
+  String get headerDistrictName;
+
+  set headerDistrictName(String l);
+
+  String get headerZoneNumber;
+
+  set headerZoneNumber(String l);
+
+//==========HHS Address============
+  String? get hhsCity;
+
+  set hhsCity(String? l);
+
+  String? get hhsBuildingName;
+
+  set hhsBuildingName(String? l);
+
+  String? get hhsStreetName;
+
+  set hhsStreetName(String? l);
+
+  String? get hhsStreetNumber;
+
+  set hhsStreetNumber(String? l);
+
+  String? get hhsNearestLandMark;
+
+  set hhsNearestLandMark(String? l);
+
+  String? get hhsBlockNearestCrossStreets;
+
+  set hhsBlockNearestCrossStreets(String? l);
+
+  String? get hhsAreaSuburb;
+
+  set hhsAreaSuburb(String? l);
 }
