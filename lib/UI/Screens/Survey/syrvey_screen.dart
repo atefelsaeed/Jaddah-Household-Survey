@@ -26,7 +26,7 @@ final  GlobalKey<FormState> _key = GlobalKey();
   final TextEditingController nearestLandMark=TextEditingController();
   final TextEditingController blockNearestTwoCrossStreets =TextEditingController();
 
-  List z = QuestionsData.qh1.values.toList();
+  List<String>? z = QuestionsData.qh1["? What best describes this dwelling type"];
 bool checked=false;
 
   @override
@@ -129,23 +129,17 @@ bool checked=false;
                   const   Divider(thickness: 1,),
 AppSize.spaceHeight2(context),
             Row(mainAxisAlignment: MainAxisAlignment.end,children: [
+
+
+
               DropDownFormInput(
-                label:  Text(z[0].toString()),
+                label:  Text(z![2].toString()),
                 hint:  QuestionsData.qh1.keys.first.toString(),
-                options:  <DwellingType, Widget>{
-                  for(int i=0;i<z.length;i++)
-                    DwellingType.flatFamily: Text(z[i].toString()),
-
-
-                },
+                options:  z!,
                 onChange: (DwellingType? p) {
 
                 },
-                validator: (DwellingType? value) => Validator.validateChoice(
-                  value: value,
-                  refused: null,
-                  message: "يجب اعطاء اجابة",
-                ),
+
               ),
             ],)  ,
                   AppSize.spaceHeight3(context),
@@ -153,20 +147,8 @@ AppSize.spaceHeight2(context),
                     DropDownFormInput(
                       label:  Text(QuestionsData.qh2.values.first.toString()),
                       hint:  QuestionsData.qh2.keys.first.toString(),
-                      options:  <DwellingType, Widget>{
-                        for(int i=0;i<QuestionsData.qh2.values.first.length;i++)
-                          DwellingType.flatFamily: Text(QuestionsData.qh2.values.first[i].toString()),
+                      options:  z!,
 
-
-                      },
-                      onChange: (DwellingType? p) {
-
-                      },
-                      validator: (DwellingType? value) => Validator.validateChoice(
-                        value: value,
-                        refused: null,
-                        message: "يجب اعطاء اجابة",
-                      ),
                     ),
                   ],)  ,
 AppSize.spaceHeight3(context),
@@ -199,20 +181,11 @@ ALTl(title:"? How many bedrooms are there in the accommodation you live in",
                     DropDownFormInput(
                       label:  Text(QuestionsData.qh2.values.first.toString()),
                       hint:  QuestionsData.qh2.keys.first.toString(),
-                      options:  <DwellingType, Widget>{
-                        for(int i=0;i<QuestionsData.qh2.values.first.length;i++)
-                          DwellingType.flatFamily: Text(QuestionsData.qh2.values.first[i].toString()),
-
+                      options:  z!,
+                      onChange: () {
 
                       },
-                      onChange: (DwellingType? p) {
 
-                      },
-                      validator: (DwellingType? value) => Validator.validateChoice(
-                        value: value,
-                        refused: null,
-                        message: "يجب اعطاء اجابة",
-                      ),
                     ),
                   ],)  ,
                   AppSize.spaceHeight3(context),
