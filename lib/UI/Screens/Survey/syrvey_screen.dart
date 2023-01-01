@@ -27,13 +27,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final TextEditingController blockNearestTwoCrossStreets =
       TextEditingController();
 
-  List z = QuestionsData.qh1.values.toList();
+  List<String>? z =
+      QuestionsData.qh1["? What best describes this dwelling type"];
   bool checked = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SingleChildScrollView(
           child: Directionality(
         textDirection: TextDirection.ltr,
@@ -198,19 +198,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       DropDownFormInput(
-                        label: Text(z[0].toString()),
+                        label: Text(z![2].toString()),
                         hint: QuestionsData.qh1.keys.first.toString(),
-                        options: <DwellingType, Widget>{
-                          for (int i = 0; i < z.length; i++)
-                            DwellingType.flatFamily: Text(z[i].toString()),
-                        },
+                        options: z!,
                         onChange: (DwellingType? p) {},
-                        validator: (DwellingType? value) =>
-                            Validator.validateChoice(
-                          value: value,
-                          refused: null,
-                          message: "يجب اعطاء اجابة",
-                        ),
                       ),
                     ],
                   ),
@@ -221,20 +212,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       DropDownFormInput(
                         label: Text(QuestionsData.qh2.values.first.toString()),
                         hint: QuestionsData.qh2.keys.first.toString(),
-                        options: <DwellingType, Widget>{
-                          for (int i = 0;
-                              i < QuestionsData.qh2.values.first.length;
-                              i++)
-                            DwellingType.flatFamily: Text(
-                                QuestionsData.qh2.values.first[i].toString()),
-                        },
-                        onChange: (DwellingType? p) {},
-                        validator: (DwellingType? value) =>
-                            Validator.validateChoice(
-                          value: value,
-                          refused: null,
-                          message: "يجب اعطاء اجابة",
-                        ),
+                        options: z!,
                       ),
                     ],
                   ),
@@ -301,20 +279,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       DropDownFormInput(
                         label: Text(QuestionsData.qh2.values.first.toString()),
                         hint: QuestionsData.qh2.keys.first.toString(),
-                        options: <DwellingType, Widget>{
-                          for (int i = 0;
-                              i < QuestionsData.qh2.values.first.length;
-                              i++)
-                            DwellingType.flatFamily: Text(
-                                QuestionsData.qh2.values.first[i].toString()),
-                        },
-                        onChange: (DwellingType? p) {},
-                        validator: (DwellingType? value) =>
-                            Validator.validateChoice(
-                          value: value,
-                          refused: null,
-                          message: "يجب اعطاء اجابة",
-                        ),
+                        options: z!,
+                        onChange: () {},
                       ),
                     ],
                   ),
@@ -323,7 +289,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     function: () {},
                     isWidget: true,
                     text: "Next Step",
-                    widget: const Icon(Icons.arrow_forward),
+                    widget: Icon(Icons.arrow_forward),
                   ),
                   // HouseholdAddressSection()
                 ],
