@@ -33,6 +33,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SingleChildScrollView(
           child: Directionality(
         textDirection: TextDirection.ltr,
