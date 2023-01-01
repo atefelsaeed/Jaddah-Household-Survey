@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
+import '../Models/enum_survey.dart';
 import '../Models/survey.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
@@ -156,4 +157,84 @@ abstract class SurveyProvider with ChangeNotifier {
   String? get hhsAreaSuburb;
 
   set hhsAreaSuburb(String? l);
+
+  ///=========HouseholdQuestions=================
+  DwellingType get hhsDwellingType;
+
+  set hhsDwellingType(DwellingType l);
+
+  IsDwelling get hhsIsDwellingType;
+
+  set hhsIsDwellingType(IsDwelling l);
+
+  int get hhsNumberBedRooms;
+
+  set hhsNumberBedRooms(int l);
+
+  int get hhsNumberSeparateFamilies;
+
+  set hhsNumberSeparateFamilies(int l);
+
+  int get hhsNumberAdults;
+
+  set hhsNumberAdults(int l);
+
+  int get hhsNumberChildren;
+
+  set hhsNumberChildren(int l);
+
+  NumberYearsInAddress get hhsNumberYearsInAddress;
+
+  set hhsNumberYearsInAddress(NumberYearsInAddress l);
+
+  bool get hhsIsDemolishedAreas;
+
+  set hhsIsDemolishedAreas(bool l);
+
+  String? get hhsDemolishedAreas;
+
+  set hhsDemolishedAreas(String? l);
+
+  ///==============hhsPedalCycles(PC)====================
+  int? get hhsPCTotalBikesNumber;
+
+  set hhsPCTotalBikesNumber(int? l);
+
+  int? get hhsPCAdultsBikesNumber;
+
+  set hhsPCAdultsBikesNumber(int? l);
+
+  int? get hhsPCChildrenBikesNumber;
+
+  set hhsPCChildrenBikesNumber(int? l);
+
+  ///==============hhsElectricCycles(EC)====================
+  int? get hhsECTotalBikesNumber;
+
+  set hhsECTotalBikesNumber(int? l);
+
+  int? get hhsECAdultsBikesNumber;
+
+  set hhsECAdultsBikesNumber(int? l);
+
+  int? get hhsECChildrenBikesNumber;
+
+  set hhsECChildrenBikesNumber(int? l);
+
+  ///==============hhsElectricScooter(ES)====================
+  int? get hhsESTotalBikesNumber;
+
+  set hhsESTotalBikesNumber(int? l);
+
+  int? get hhsESAdultsBikesNumber;
+
+  set hhsESAdultsBikesNumber(int? l);
+
+  int? get hhsESChildrenBikesNumber;
+
+  set hhsESChildrenBikesNumber(int? l);
+
+  String get hhsTotalIncome;
+
+  set hhsTotalIncome(String l);
 }

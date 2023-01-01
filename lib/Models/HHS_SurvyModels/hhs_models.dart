@@ -1,3 +1,5 @@
+import '../enum_survey.dart';
+
 class HouseholdAddress {
   String? buildingName;
   String? streetNumber;
@@ -11,27 +13,31 @@ class HouseholdAddress {
 }
 
 class HouseholdQuestions {
-  late String qh1DwellingDescriptionType;
-  late String qh2DwellingType;
-  late int qh3BedRoomNumber;
-  late int qh4FamiliesNumber;
-  List<SeparateFamiliesPeopleNumber>? q5separateFamiliesPeopleNumber;
-  late String yearsNumberInAddress;
-  late String demolishedAreas;
+  late DwellingType hhsDwellingType;
+  late IsDwelling hhsIsDwelling;
+  late int hhsNumberBedRooms;
+  late int hhsNumberSeparateFamilies;
+  late int hhsNumberAdults;
+  late int hhsNumberChildren;
+  List<SeparateFamilies>? hhsSeparateFamilies;
+  late NumberYearsInAddress hhsNumberYearsInAddress;
+  late bool hhsIsDemolishedAreas;
+  String? hhsDemolishedAreas;
 
-  BikesType? pedalCycles;
-  BikesType? electricCycles;
-  BikesType? electricScooter;
-  late String totalIncome;
+  BikesType? hhsPedalCycles;
+  BikesType? hhsElectricCycles;
+  BikesType? hhsElectricScooter;
+  late String hhsTotalIncome;
 
   HouseholdQuestions();
 }
 
-class SeparateFamiliesPeopleNumber {
+class SeparateFamilies {
   int? numberChildren;
   int? numberAdults;
+  int? totalNumberVehicles;
 
-  SeparateFamiliesPeopleNumber();
+  SeparateFamilies();
 }
 
 class BikesType {

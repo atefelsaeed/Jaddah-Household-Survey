@@ -1,9 +1,11 @@
 import 'package:enum_to_string/enum_to_string.dart';
+import 'package:jaddah_household_survey/Models/enum_survey.dart';
 
 import '../../Data/Enums/hhs_enums.dart';
 import '../survey.dart';
 
 import '/providers/survey_pt.dart';
+import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
   // Journy journy = Journy();
@@ -13,6 +15,8 @@ class SurveyPT extends Survey {
   // late int familyCount;
   // late String phoneNumber;
   // String name = "";
+
+  HouseholdQuestions householdQuestions = HouseholdQuestions();
 
   SurveyPT() : super(SurveyType.pt) {
     super.provider = SurveyPTProvider(this);
@@ -40,9 +44,45 @@ class SurveyPT extends Survey {
     data['hhsBlockNearestCrossStreets'] =
         header.householdAddress!.blockNearestCrossStreets;
     data['hhsAreaSuburb'] = header.householdAddress!.areaSuburb;
-
-    // data['jobStatusIncomeRange'] =
-    //     EnumToString.convertToString(jobStatus.incomeRange, camelCase: true);
+    //========householdQuestions===============================
+    data['hhsDwellingType'] = EnumToString.convertToString(
+        householdQuestions.hhsDwellingType,
+        camelCase: true);
+    data['hhsIsDwelling'] = EnumToString.convertToString(
+        householdQuestions.hhsIsDwelling,
+        camelCase: true);
+    data['hhsNumberBedRooms'] = householdQuestions.hhsNumberBedRooms;
+    data['hhsNumberSeparateFamilies'] =
+        householdQuestions.hhsNumberSeparateFamilies;
+    data['hhsNumberAdults'] = householdQuestions.hhsNumberAdults;
+    data['hhsNumberChildren'] = householdQuestions.hhsNumberChildren;
+    data['hhsNumberYearsInAddress'] = EnumToString.convertToString(
+        householdQuestions.hhsNumberYearsInAddress,
+        camelCase: true);
+    data['hhsIsDemolishedAreas'] = householdQuestions.hhsIsDemolishedAreas;
+    data['hhsDemolishedAreas'] = householdQuestions.hhsDemolishedAreas;
+    //==========hhsPedalCycles(PC)============
+    data['hhsPCTotalBikesNumber'] =
+        householdQuestions.hhsPedalCycles!.totalBikesNumber;
+    data['hhsPCAdultsBikesNumber'] =
+        householdQuestions.hhsPedalCycles!.adultsBikesNumber;
+    data['hhsPCChildrenBikesNumber'] =
+        householdQuestions.hhsPedalCycles!.childrenBikesNumber;
+    //======hhsElectricCycles(EC)============
+    data['hhsECTotalBikesNumber'] =
+        householdQuestions.hhsElectricCycles!.totalBikesNumber;
+    data['hhsECAdultsBikesNumber'] =
+        householdQuestions.hhsElectricCycles!.adultsBikesNumber;
+    data['hhsECChildrenBikesNumber'] =
+        householdQuestions.hhsElectricCycles!.childrenBikesNumber;
+    //======hhsElectricScooter(ES)============
+    data['hhsESTotalBikesNumber'] =
+        householdQuestions.hhsElectricScooter!.totalBikesNumber;
+    data['hhsESAdultsBikesNumber'] =
+        householdQuestions.hhsElectricScooter!.adultsBikesNumber;
+    data['hhsESChildrenBikesNumber'] =
+        householdQuestions.hhsElectricScooter!.childrenBikesNumber;
+    data['hhsTotalIncome'] = householdQuestions.hhsTotalIncome;
 
     // data['journeyExamples'] = examples.map((e) => e.toJson()).toList();
     return data;
@@ -70,17 +110,40 @@ class SurveyPT extends Survey {
     header.householdAddress!.blockNearestCrossStreets =
         json['hhsBlockNearestCrossStreets'];
     header.householdAddress!.areaSuburb = json['hhsAreaSuburb'];
+    //================householdQuestions================
+    householdQuestions.hhsDwellingType = EnumToString.fromString(
+        DwellingType.values, json['hhsDwellingType'],
+        camelCase: true)!;
+    householdQuestions.hhsIsDwelling = EnumToString.fromString(
+        IsDwelling.values, json['hhsIsDwelling'],
+        camelCase: true)!;
+    householdQuestions.hhsNumberBedRooms= json['hhsNumberBedRooms'];
+    householdQuestions.hhsNumberSeparateFamilies= json['hhsNumberSeparateFamilies'];
+    householdQuestions.hhsNumberAdults= json['hhsNumberAdults'];
+    householdQuestions.hhsNumberChildren= json['hhsNumberChildren'];
+    householdQuestions.hhsNumberYearsInAddress = EnumToString.fromString(
+        NumberYearsInAddress.values, json['hhsNumberYearsInAddress'],
+        camelCase: true)!;
+    householdQuestions.hhsIsDemolishedAreas= json['hhsIsDemolishedAreas'];
+    householdQuestions.hhsDemolishedAreas= json['hhsDemolishedAreas'];
+    //==========hhsPedalCycles(PC)============
+    householdQuestions.hhsPedalCycles!.totalBikesNumber= json['hhsPCTotalBikesNumber'];
+    householdQuestions.hhsPedalCycles!.adultsBikesNumber= json['hhsPCAdultsBikesNumber'];
+    householdQuestions.hhsPedalCycles!.childrenBikesNumber= json['hhsPCChildrenBikesNumber'];
+    //======hhsElectricCycles(EC)============
+    householdQuestions.hhsElectricCycles!.totalBikesNumber= json['hhsECTotalBikesNumber'];
+    householdQuestions.hhsElectricCycles!.adultsBikesNumber= json['hhsECAdultsBikesNumber'];
+    householdQuestions.hhsElectricCycles!.childrenBikesNumber= json['hhsECChildrenBikesNumber'];
+    //======hhsElectricScooter(ES)============
+    householdQuestions.hhsElectricScooter!.totalBikesNumber= json['hhsESTotalBikesNumber'];
+    householdQuestions.hhsElectricScooter!.adultsBikesNumber= json['hhsESAdultsBikesNumber'];
+    householdQuestions.hhsElectricScooter!.childrenBikesNumber= json['hhsESChildrenBikesNumber'];
+    householdQuestions.hhsTotalIncome= json['hhsTotalIncome'];
+
     //
     // examples = json['journeyExamples']
     //     .map<JourneyExample>(
     //         (e) => JourneyExample.fromJson(e as Map<String, dynamic>))
     //     .toList();
-    // suggestions = json['suggestions']
-    //     .map<SuggestionCard>(
-    //         (e) => SuggestionCard.fromJson(e as Map<String, dynamic>))
-    //     .toList(); ]
-    // header.manualLocation = EnumToString.fromString(
-    //          ManualLocations.values, json['manualLocation'],
-    //          camelCase: true)!;
   }
 }

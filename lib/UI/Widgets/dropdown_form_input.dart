@@ -3,7 +3,7 @@ import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 
 class DropDownFormInput<T> extends StatelessWidget {
-  final Map<T, Widget> options;
+  final List<T> options;
   final String? hint;
   final Widget label;
   final Function? onChange;
@@ -12,6 +12,7 @@ class DropDownFormInput<T> extends StatelessWidget {
   final String? Function(T?)? validator;
   final AutovalidateMode? autovalidateMode;
   final Function(T?)? onSaved;
+
   const DropDownFormInput({
     Key? key,
     required this.options,
@@ -33,25 +34,24 @@ class DropDownFormInput<T> extends StatelessWidget {
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
         children: [
-
           Text(
             hint.toString(),
             style: TextStyle(
                 fontWeight: FontWeight.w400,
-                color:ColorManager.black,
-                fontSize: height(context)*.02),
+                color: ColorManager.black,
+                fontSize: height(context) * .02),
             textAlign: TextAlign.center,
           ),
-
-AppSize.spaceHeight1(context),
-            SizedBox(
-              width: width(context)*.5,
-              height: height(context)*.06,
-              child: Directionality(
-                textDirection: TextDirection.ltr,
-                child: InputDecorator(
-                      decoration: const InputDecoration(border: OutlineInputBorder()),
-                      child: DropdownButtonHideUnderline(
+          AppSize.spaceHeight1(context),
+          SizedBox(
+            width: width(context) * .5,
+            height: height(context) * .06,
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: InputDecorator(
+                  decoration:
+                      const InputDecoration(border: OutlineInputBorder()),
+                  child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
                       hint: label,
@@ -65,23 +65,16 @@ AppSize.spaceHeight1(context),
                       },
                       items: options
                           .map(
-                            (T v, Widget w) => MapEntry<T, DropdownMenuItem<T>>(
-                              v,
-                              DropdownMenuItem<T>(
-                                value: v,
-                                child: w,
-                              ),
+                            (T v) => DropdownMenuItem<T>(
+                              value: v,
+                              child: Text(v.toString()),
                             ),
                           )
-                          .values
                           .toList(),
                     ),
                   )),
-              ),
             ),
-
-
-
+          ),
           field.hasError
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.start,

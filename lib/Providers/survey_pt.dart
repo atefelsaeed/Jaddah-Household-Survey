@@ -1,5 +1,6 @@
 import '../Data/Enums/hhs_enums.dart';
 import '../Models/HHS_SurvyModels/survey_hhs.dart';
+import '../Models/enum_survey.dart';
 import 'survey.dart';
 
 class SurveyPTProvider extends SurveyProvider {
@@ -152,6 +153,193 @@ class SurveyPTProvider extends SurveyProvider {
   @override
   set hhsAreaSuburb(String? i) {
     _data.header.householdAddress!.nearestLandMark = i;
+    // notifyListeners();
+  }
+
+  ///==========householdQuestions====================
+  @override
+  DwellingType get hhsDwellingType => _data.householdQuestions.hhsDwellingType;
+
+  @override
+  set hhsDwellingType(DwellingType i) {
+    _data.householdQuestions.hhsDwellingType = i;
+    // notifyListeners();
+  }
+
+  @override
+  IsDwelling get hhsIsDwellingType => _data.householdQuestions.hhsIsDwelling;
+
+  @override
+  set hhsIsDwellingType(IsDwelling i) {
+    _data.householdQuestions.hhsIsDwelling = i;
+    // notifyListeners();
+  }
+
+  @override
+  int get hhsNumberBedRooms => _data.householdQuestions.hhsNumberBedRooms;
+
+  @override
+  set hhsNumberBedRooms(int i) {
+    _data.householdQuestions.hhsNumberBedRooms = i;
+    // notifyListeners();
+  }
+
+  @override
+  int get hhsNumberSeparateFamilies =>
+      _data.householdQuestions.hhsNumberSeparateFamilies;
+
+  @override
+  set hhsNumberSeparateFamilies(int i) {
+    _data.householdQuestions.hhsNumberSeparateFamilies = i;
+    // notifyListeners();
+  }
+
+  @override
+  int get hhsNumberAdults => _data.householdQuestions.hhsNumberAdults;
+
+  @override
+  set hhsNumberAdults(int i) {
+    _data.householdQuestions.hhsNumberAdults = i;
+    // notifyListeners();
+  }
+
+  @override
+  int get hhsNumberChildren => _data.householdQuestions.hhsNumberChildren;
+
+  @override
+  set hhsNumberChildren(int i) {
+    _data.householdQuestions.hhsNumberChildren = i;
+    // notifyListeners();
+  }
+
+  @override
+  NumberYearsInAddress get hhsNumberYearsInAddress =>
+      _data.householdQuestions.hhsNumberYearsInAddress;
+
+  @override
+  set hhsNumberYearsInAddress(NumberYearsInAddress i) {
+    _data.householdQuestions.hhsNumberYearsInAddress = i;
+    // notifyListeners();
+  }
+
+  @override
+  bool get hhsIsDemolishedAreas =>
+      _data.householdQuestions.hhsIsDemolishedAreas;
+
+  @override
+  set hhsIsDemolishedAreas(bool i) {
+    _data.householdQuestions.hhsIsDemolishedAreas = i;
+    // notifyListeners();
+  }
+
+  @override
+  String? get hhsDemolishedAreas => _data.householdQuestions.hhsDemolishedAreas;
+
+  @override
+  set hhsDemolishedAreas(String? i) {
+    _data.householdQuestions.hhsDemolishedAreas = i;
+    // notifyListeners();
+  }
+
+  ///==============hhsPedalCycles(PC)====================
+  @override
+  int? get hhsPCTotalBikesNumber =>
+      _data.householdQuestions.hhsPedalCycles!.totalBikesNumber;
+
+  @override
+  set hhsPCTotalBikesNumber(int? i) {
+    _data.householdQuestions.hhsPedalCycles!.totalBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  int? get hhsPCAdultsBikesNumber =>
+      _data.householdQuestions.hhsPedalCycles!.adultsBikesNumber;
+
+  @override
+  set hhsPCAdultsBikesNumber(int? i) {
+    _data.householdQuestions.hhsPedalCycles!.adultsBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  int? get hhsPCChildrenBikesNumber =>
+      _data.householdQuestions.hhsPedalCycles!.childrenBikesNumber;
+
+  @override
+  set hhsPCChildrenBikesNumber(int? i) {
+    _data.householdQuestions.hhsPedalCycles!.childrenBikesNumber = i;
+    // notifyListeners();
+  }
+
+  ///==============hhsElectricCycles(EC)====================
+  @override
+  int? get hhsECTotalBikesNumber =>
+      _data.householdQuestions.hhsElectricCycles!.totalBikesNumber;
+
+  @override
+  set hhsECTotalBikesNumber(int? i) {
+    _data.householdQuestions.hhsElectricCycles!.totalBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  int? get hhsECAdultsBikesNumber =>
+      _data.householdQuestions.hhsElectricCycles!.adultsBikesNumber;
+
+  @override
+  set hhsECAdultsBikesNumber(int? i) {
+    _data.householdQuestions.hhsElectricCycles!.adultsBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  int? get hhsECChildrenBikesNumber =>
+      _data.householdQuestions.hhsElectricCycles!.childrenBikesNumber;
+
+  @override
+  set hhsECChildrenBikesNumber(int? i) {
+    _data.householdQuestions.hhsElectricCycles!.childrenBikesNumber = i;
+    // notifyListeners();
+  }
+
+  ///==============hhsElectricScooter(ES)====================
+  @override
+  int? get hhsESTotalBikesNumber =>
+      _data.householdQuestions.hhsElectricScooter!.totalBikesNumber;
+
+  @override
+  set hhsESTotalBikesNumber(int? i) {
+    _data.householdQuestions.hhsElectricScooter!.totalBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  int? get hhsESAdultsBikesNumber =>
+      _data.householdQuestions.hhsElectricScooter!.adultsBikesNumber;
+
+  @override
+  set hhsESAdultsBikesNumber(int? i) {
+    _data.householdQuestions.hhsElectricScooter!.adultsBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  int? get hhsESChildrenBikesNumber =>
+      _data.householdQuestions.hhsElectricScooter!.childrenBikesNumber;
+
+  @override
+  set hhsESChildrenBikesNumber(int? i) {
+    _data.householdQuestions.hhsElectricScooter!.childrenBikesNumber = i;
+    // notifyListeners();
+  }
+
+  @override
+  String get hhsTotalIncome => _data.householdQuestions.hhsTotalIncome;
+
+  @override
+  set hhsTotalIncome(String i) {
+    _data.householdQuestions.hhsTotalIncome = i;
     // notifyListeners();
   }
 

@@ -1,5 +1,5 @@
 class QuestionsData {
- static Map<String, List<String>> qh1 = {
+  static Map<String, List<String>> qh1 = {
     "? What best describes this dwelling type ": [
       ' shared Villa',
       ' villa',
@@ -13,7 +13,13 @@ class QuestionsData {
     ]
   };
 
- static Map<String, List<String>> qh2 = {
+  List<String> getMapList(Map<String, dynamic> map) {
+    List<String> list = [];
+    map.values.map((e) => list.addAll(e));
+    return list;
+  }
+
+  static Map<String, List<String>> qh2 = {
     "Is this dwelling...": [
       'Owner occupied',
       'Rented',
@@ -109,5 +115,3 @@ class QuestionsData {
     ]
   };
 }
-
-
