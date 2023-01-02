@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
+import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/enum_survey.dart';
 import '../Models/survey.dart';
 
@@ -97,6 +99,10 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set id(String id);
 
+  VehiclesModel get vehiclesData;
+
+  set vehiclesData(VehiclesModel id);
+
   bool get synced;
 
   // set synced(bool s);
@@ -159,13 +165,13 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsAreaSuburb(String? l);
 
   ///=========HouseholdQuestions=================
-  DwellingType get hhsDwellingType;
+  String get hhsDwellingType;
 
-  set hhsDwellingType(DwellingType l);
+  set hhsDwellingType(String l);
 
-  IsDwelling get hhsIsDwellingType;
+  String get hhsIsDwellingType;
 
-  set hhsIsDwellingType(IsDwelling l);
+  set hhsIsDwellingType(String l);
 
   int get hhsNumberBedRooms;
 
@@ -183,9 +189,9 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsNumberChildren(int l);
 
-  NumberYearsInAddress get hhsNumberYearsInAddress;
+  String get hhsNumberYearsInAddress;
 
-  set hhsNumberYearsInAddress(NumberYearsInAddress l);
+  set hhsNumberYearsInAddress(String l);
 
   bool get hhsIsDemolishedAreas;
 
@@ -237,4 +243,8 @@ abstract class SurveyProvider with ChangeNotifier {
   String get hhsTotalIncome;
 
   set hhsTotalIncome(String l);
+
+  set hhsSeparateFamilies(List<SeparateFamilies> e);
+
+  List<SeparateFamilies> get hhsSeparateFamilies;
 }

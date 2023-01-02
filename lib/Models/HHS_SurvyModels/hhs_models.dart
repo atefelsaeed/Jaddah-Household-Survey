@@ -1,5 +1,3 @@
-import '../enum_survey.dart';
-
 class HouseholdAddress {
   String? buildingName;
   String? streetNumber;
@@ -13,14 +11,13 @@ class HouseholdAddress {
 }
 
 class HouseholdQuestions {
-  late DwellingType hhsDwellingType;
-  late IsDwelling hhsIsDwelling;
+  late String hhsDwellingType;
+  late String hhsIsDwelling;
   late int hhsNumberBedRooms;
   late int hhsNumberSeparateFamilies;
   late int hhsNumberAdults;
   late int hhsNumberChildren;
-  List<SeparateFamilies>? hhsSeparateFamilies;
-  late NumberYearsInAddress hhsNumberYearsInAddress;
+  late String hhsNumberYearsInAddress;
   late bool hhsIsDemolishedAreas;
   String? hhsDemolishedAreas;
 
@@ -32,18 +29,32 @@ class HouseholdQuestions {
   HouseholdQuestions();
 }
 
-class SeparateFamilies {
-  int? numberChildren;
-  int? numberAdults;
-  int? totalNumberVehicles;
-
-  SeparateFamilies();
-}
-
 class BikesType {
   int? totalBikesNumber;
   int? adultsBikesNumber;
   int? childrenBikesNumber;
 
   BikesType();
+}
+
+class SeparateFamilies {
+  int? numberChildren;
+  int? numberAdults;
+  int? totalNumberVehicles;
+
+  SeparateFamilies();
+
+  SeparateFamilies.fromJson(Map<String, dynamic> json) {
+    numberChildren = json['numberChildren'];
+    numberAdults = json['numberAdults'];
+    totalNumberVehicles = json['totalNumberVehicles'];
+  }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = <String, dynamic>{};
+    data['numberChildren'] = numberChildren;
+    data['numberAdults'] = numberAdults;
+    data['totalNumberVehicles'] = totalNumberVehicles;
+    return data;
+  }
 }

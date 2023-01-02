@@ -1,6 +1,8 @@
+import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
+
 import '../Data/Enums/hhs_enums.dart';
+import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/HHS_SurvyModels/survey_hhs.dart';
-import '../Models/enum_survey.dart';
 import 'survey.dart';
 
 class SurveyPTProvider extends SurveyProvider {
@@ -18,6 +20,15 @@ class SurveyPTProvider extends SurveyProvider {
   @override
   set id(String id) {
     _data.id = id;
+    // notifyListeners();
+  }
+
+  @override
+  VehiclesModel get vehiclesData => _data.vehiclesData;
+
+  @override
+  set vehiclesData(VehiclesModel vehiclesData) {
+    _data.vehiclesData = vehiclesData;
     // notifyListeners();
   }
 
@@ -158,19 +169,19 @@ class SurveyPTProvider extends SurveyProvider {
 
   ///==========householdQuestions====================
   @override
-  DwellingType get hhsDwellingType => _data.householdQuestions.hhsDwellingType;
+  String get hhsDwellingType => _data.householdQuestions.hhsDwellingType;
 
   @override
-  set hhsDwellingType(DwellingType i) {
+  set hhsDwellingType(String i) {
     _data.householdQuestions.hhsDwellingType = i;
     // notifyListeners();
   }
 
   @override
-  IsDwelling get hhsIsDwellingType => _data.householdQuestions.hhsIsDwelling;
+  String get hhsIsDwellingType => _data.householdQuestions.hhsIsDwelling;
 
   @override
-  set hhsIsDwellingType(IsDwelling i) {
+  set hhsIsDwellingType(String i) {
     _data.householdQuestions.hhsIsDwelling = i;
     // notifyListeners();
   }
@@ -213,11 +224,11 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  NumberYearsInAddress get hhsNumberYearsInAddress =>
+  String get hhsNumberYearsInAddress =>
       _data.householdQuestions.hhsNumberYearsInAddress;
 
   @override
-  set hhsNumberYearsInAddress(NumberYearsInAddress i) {
+  set hhsNumberYearsInAddress(String i) {
     _data.householdQuestions.hhsNumberYearsInAddress = i;
     // notifyListeners();
   }
@@ -343,9 +354,11 @@ class SurveyPTProvider extends SurveyProvider {
     // notifyListeners();
   }
 
-// @override
-// set journeyExamples(List<JourneyExample> e) => _data.examples = e;
-// @override
-// List<JourneyExample> get journeyExamples => [..._data.examples];
+  @override
+  set hhsSeparateFamilies(List<SeparateFamilies> e) =>
+      _data.hhsSeparateFamilies = e;
 
+  @override
+  List<SeparateFamilies> get hhsSeparateFamilies =>
+      [...?_data.hhsSeparateFamilies];
 }
