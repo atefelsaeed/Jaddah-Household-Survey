@@ -7,19 +7,19 @@ class VehiclesBodyType {
 
   VehiclesBodyType.fromJson(Map<String, dynamic> json) {
     vehicleTypeName = json['vehicleTypeName'];
-    vehicleTypeQuantity = json['vehicleTypeQuantity'];
+    /*vehicleTypeQuantity = json['vehicleTypeQuantity'];
     vehicleTypeDetails = json['vehicleTypeDetails']
         .map<VehicleBodyDetails>(
             (e) => VehicleBodyDetails.fromJson(e as Map<String, dynamic>))
-        .toList();
+        .toList();*/
   }
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
     data['vehicleTypeName'] = vehicleTypeName;
-    data['vehicleTypeQuantity'] = vehicleTypeQuantity;
+   /* data['vehicleTypeQuantity'] = vehicleTypeQuantity;
     data['vehicleTypeDetails'] =
-        vehicleTypeDetails.map((e) => e.toJson()).toList();
+        vehicleTypeDetails.map((e) => e.toJson()).toList();*/
     return data;
   }
 }
