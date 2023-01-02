@@ -80,7 +80,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
     SurveyPTProvider surveyPt =
     Provider.of<SurveyPTProvider>(context,listen: false);
-
+    SurveysProvider surveys =
+    Provider.of<SurveysProvider>(context, listen: false);
 
           return Scaffold(
             body: SingleChildScrollView(
@@ -208,8 +209,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         AppSize.spaceHeight3(context),
                         DefaultButton(
                           function: () {
-
-                            surveyPt.headerDistrictName="ll";
+surveyPt.interViewDate=DateTime.now();
+surveyPt.headerInterviewNumber=4;
+surveyPt.headerDistrictName="ll";
+surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="car";
+surveys.addSurvey(surveyPt.data);
+surveys.fetch();
                             print(surveyPt.headerDistrictName);
                          //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
                           },

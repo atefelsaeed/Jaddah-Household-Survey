@@ -23,12 +23,13 @@ class SurveyPT extends Survey {
     data['id'] = id;
     data['type'] = EnumToString.convertToString(type, camelCase: true);
     data['synced'] = synced;
-    data['headerLat'] = header.locationLat;
-    data['headerLong'] = header.locationLong;
+    //data['headerLat'] = header.locationLat;
+   // data['headerLong'] = header.locationLong;
     data['headerDate'] = header.interviewDate.toString();
-    data['headerEmpNumber'] = header.empNumber;
-    data['headerInterviewNumber'] = header.interviewNumber;
-    data['headerDistrictName'] = header.districtName;
+    data['vehiclesData'] = vehiclesData.toJson();
+    //data['headerEmpNumber'] = header.empNumber;
+    //data['headerInterviewNumber'] = header.interviewNumber;
+   /* data['headerDistrictName'] = header.districtName;
     data['headerZoneNumber'] = header.zoneNumber;
     data['hhsCity'] = header.householdAddress!.city;
     data['hhsBuildingName'] = header.householdAddress!.buildingName;
@@ -72,10 +73,10 @@ class SurveyPT extends Survey {
     data['hhsESChildrenBikesNumber'] =
         householdQuestions.hhsElectricScooter!.childrenBikesNumber;
     data['hhsTotalIncome'] = householdQuestions.hhsTotalIncome;
-    data['vehiclesData'] = vehiclesData.toJson();
+
 
     data['hhsSeparateFamilies'] =
-        hhsSeparateFamilies!.map((e) => e.toJson()).toList();
+        hhsSeparateFamilies!.map((e) => e.toJson()).toList();*/
     return data;
   }
 
@@ -86,10 +87,10 @@ class SurveyPT extends Survey {
     id = json['id'];
     synced = json['synced'];
     header = HeaderBase();
-    header.locationLat = json['headerLat'];
-    header.locationLong = json['headerLong'];
+   // header.locationLat = json['headerLat'];
+  //  header.locationLong = json['headerLong'];
     header.interviewDate = DateTime.parse(json['headerDate']);
-    header.empNumber = json['headerEmpNumber'];
+    /*header.empNumber = json['headerEmpNumber'];
     header.interviewNumber = json['headerInterviewNumber'];
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
@@ -134,12 +135,12 @@ class SurveyPT extends Survey {
         json['hhsESAdultsBikesNumber'];
     householdQuestions.hhsElectricScooter!.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
-    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
+    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];*/
     vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
 
-    hhsSeparateFamilies = json['hhsSeparateFamilies']
+   /* hhsSeparateFamilies = json['hhsSeparateFamilies']
         .map<SeparateFamilies>(
             (e) => SeparateFamilies.fromJson(e as Map<String, dynamic>))
-        .toList();
+        .toList();*/
   }
 }

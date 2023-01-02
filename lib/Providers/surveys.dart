@@ -47,7 +47,7 @@ class SurveysProvider with ChangeNotifier {
         default:
       }
     }
-    _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
+   // _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
     _surveys.forEach((e) => print(e.synced));
 
     notifyListeners();
