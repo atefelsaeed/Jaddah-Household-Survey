@@ -10,7 +10,7 @@ class MyTextForm extends StatelessWidget {
   final TextInputType? keyboardType;
   final TextEditingController? controller;
   final String? title;
-
+  final double?widthForm;
   bool? isPassword = false;
   IconData? suffix;
   final Function? suffixPressed;
@@ -28,6 +28,7 @@ class MyTextForm extends StatelessWidget {
         this.validate,
         this.keyboardType,
         this.title,
+        this.widthForm,
         this.suffixPressed,
         this.isPassword,
         this.suffix,
@@ -45,7 +46,7 @@ class MyTextForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          width: width(context)*.45,
+          width:widthForm?? width(context)*.45,
           child:  TextFormField(
             controller: controller,
             style: TextStyle(

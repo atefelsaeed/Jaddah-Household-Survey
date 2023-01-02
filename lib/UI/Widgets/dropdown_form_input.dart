@@ -34,14 +34,14 @@ class DropDownFormInput<T> extends StatelessWidget {
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
         children: [
-          Text(
+    SizedBox(width: width(context)-25,child:       Text(
             hint.toString(),
             style: TextStyle(
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .02),
             textAlign: TextAlign.center,
-          ),
+          )),
           AppSize.spaceHeight1(context),
           SizedBox(
             width: width(context) * .5,

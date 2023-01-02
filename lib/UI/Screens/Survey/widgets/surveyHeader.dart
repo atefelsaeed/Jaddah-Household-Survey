@@ -9,7 +9,7 @@ import '../../../../Resources/assets_manager.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 
 class SurveyHeader extends StatefulWidget {
-  SurveyHeader({Key? key}) : super(key: key);
+  const SurveyHeader({Key? key}) : super(key: key);
 
   @override
   State<SurveyHeader> createState() => _SurveyHeaderState();
