@@ -18,7 +18,6 @@ enum IsDwelling {
 
 enum TypeChildren { adults, children }
 
-
 enum NumberYearsInAddress {
   under_1Yr,
   from_1_3Yrs,

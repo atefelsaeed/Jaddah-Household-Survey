@@ -14,6 +14,7 @@ import 'Providers/auth.dart';
 import 'Providers/surveys.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
+import 'UI/Screens/Surveies/surveys_screen.dart';
 import 'UI/Screens/Survey/syrvey_screen.dart';
 
 void main() {
@@ -56,36 +57,34 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
-
-        ChangeNotifierProxyProvider<Auth, SurveysProvider>(
-          create: (ctx) => SurveysProvider(),
-          update: (ctx, _auth, _old) =>
-              SurveysProvider.auth(_auth.authHeader, _auth.uid, _old!),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Jaddah Household Survey',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        localizationsDelegates: const [
-          GlobalCupertinoLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
+        providers: [
+          ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
+          ChangeNotifierProxyProvider<Auth, SurveysProvider>(
+            create: (ctx) => SurveysProvider(),
+            update: (ctx, _auth, _old) =>
+                SurveysProvider.auth(_auth.authHeader, _auth.uid, _old!),
+          ),
         ],
-        supportedLocales: const [
-          Locale("ar"), // OR Locale('ar', 'AE') OR Other RTL locales
-        ],
-        locale: const Locale("ar"),
-        routes: {
-          SplashScreen.routeName: (ctx) => const SplashScreen(),
-          LoginScreen.routeName: (ctx) => const LoginScreen(),
-        },
-        home:  SurveyScreen(),
-      ),
-    );
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Jaddah Household Survey',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            localizationsDelegates: const [
+              GlobalCupertinoLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale("ar"), // OR Locale('ar', 'AE') OR Other RTL locales
+            ],
+            locale: const Locale("ar"),
+            routes: {
+              SplashScreen.routeName: (ctx) => const SplashScreen(),
+              LoginScreen.routeName: (ctx) => const LoginScreen(),
+            },
+            home: Consumer<Auth>(
+                builder: (context, auth, child) => const SurveysScreen())));
   }
 }
