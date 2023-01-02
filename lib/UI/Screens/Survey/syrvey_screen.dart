@@ -77,15 +77,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SurveyProvider>.value(
-        value: SurveyPT().provider,
-        child: Builder(builder: (ctx) {
-          SurveyProvider survey =
-              Provider.of<SurveyProvider>(ctx, listen: true);
-          survey.interViewDate = DateTime.now();
-          Auth auth = Provider.of<Auth>(ctx, listen: false);
-          SurveysProvider surveys =
-              Provider.of<SurveysProvider>(ctx, listen: false);
+
+    SurveyPTProvider surveyPt =
+    Provider.of<SurveyPTProvider>(context,listen: false);
+
 
           return Scaffold(
             body: SingleChildScrollView(
@@ -213,10 +208,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         AppSize.spaceHeight3(context),
                         DefaultButton(
                           function: () {
-                            SurveyPTProvider surveyPt =
-                            Provider.of<SurveyProvider>(context) as SurveyPTProvider;
-                            surveyPt.headerDistrictName="";
-                            surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
+
+                            surveyPt.headerDistrictName="ll";
+                            print(surveyPt.headerDistrictName);
+                         //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
                           },
                           isWidget: true,
                           text: "Next Step",
@@ -230,6 +225,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
               ),
             )),
           );
-        }));
+
   }
 }
