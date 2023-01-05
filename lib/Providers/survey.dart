@@ -240,9 +240,9 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsESChildrenBikesNumber(int? l);
 
-  String get hhsTotalIncome;
+  String? get hhsTotalIncome;
 
-  set hhsTotalIncome(String l);
+  set hhsTotalIncome(String? l);
 
   set hhsSeparateFamilies(List<SeparateFamilies> e);
 

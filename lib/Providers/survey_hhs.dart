@@ -346,10 +346,10 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  String get hhsTotalIncome => _data.householdQuestions.hhsTotalIncome;
+  String? get hhsTotalIncome => _data.householdQuestions.hhsTotalIncome;
 
   @override
-  set hhsTotalIncome(String i) {
+  set hhsTotalIncome(String ?i) {
     _data.householdQuestions.hhsTotalIncome = i;
     // notifyListeners();
   }

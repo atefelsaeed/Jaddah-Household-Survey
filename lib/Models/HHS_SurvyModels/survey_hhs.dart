@@ -1,4 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
+import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
 import '../../Data/Enums/hhs_enums.dart';
 import '../Vehicles_SurveyModel/vehicles_model.dart';
@@ -10,6 +11,7 @@ import 'hhs_models.dart';
 class SurveyPT extends Survey {
   HouseholdQuestions householdQuestions = HouseholdQuestions();
   VehiclesModel vehiclesData = VehiclesModel();
+  List<PersonModel>? personData;
   List<SeparateFamilies>? hhsSeparateFamilies;
 
   SurveyPT() : super(SurveyType.pt) {
@@ -23,22 +25,22 @@ class SurveyPT extends Survey {
     data['id'] = id;
     data['type'] = EnumToString.convertToString(type, camelCase: true);
     data['synced'] = synced;
-    //data['headerLat'] = header.locationLat;
-   // data['headerLong'] = header.locationLong;
+    data['headerLat'] = header.locationLat;
+    data['headerLong'] = header.locationLong;
     data['headerDate'] = header.interviewDate.toString();
     data['vehiclesData'] = vehiclesData.toJson();
-    //data['headerEmpNumber'] = header.empNumber;
-    //data['headerInterviewNumber'] = header.interviewNumber;
-   /* data['headerDistrictName'] = header.districtName;
+    data['headerEmpNumber'] = header.empNumber;
+    data['headerInterviewNumber'] = header.interviewNumber;
+    data['headerDistrictName'] = header.districtName;
     data['headerZoneNumber'] = header.zoneNumber;
-    data['hhsCity'] = header.householdAddress!.city;
-    data['hhsBuildingName'] = header.householdAddress!.buildingName;
-    data['hhsStreetName'] = header.householdAddress!.streetName;
-    data['hhsStreetNumber'] = header.householdAddress!.streetNumber;
-    data['hhsNearestLandMark'] = header.householdAddress!.nearestLandMark;
+    data['hhsCity'] = header.householdAddress!.city ?? '';
+    data['hhsBuildingName'] = header.householdAddress!.buildingName ?? '';
+    data['hhsStreetName'] = header.householdAddress!.streetName ?? "";
+    data['hhsStreetNumber'] = header.householdAddress!.streetNumber ?? '';
+    data['hhsNearestLandMark'] = header.householdAddress!.nearestLandMark ?? '';
     data['hhsBlockNearestCrossStreets'] =
-        header.householdAddress!.blockNearestCrossStreets;
-    data['hhsAreaSuburb'] = header.householdAddress!.areaSuburb;
+        header.householdAddress!.blockNearestCrossStreets ?? '';
+    data['hhsAreaSuburb'] = header.householdAddress!.areaSuburb ?? '';
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;
@@ -53,30 +55,30 @@ class SurveyPT extends Survey {
     data['hhsDemolishedAreas'] = householdQuestions.hhsDemolishedAreas;
     //==========hhsPedalCycles(PC)============
     data['hhsPCTotalBikesNumber'] =
-        householdQuestions.hhsPedalCycles!.totalBikesNumber;
+        householdQuestions.hhsPedalCycles!.totalBikesNumber ?? 0;
     data['hhsPCAdultsBikesNumber'] =
-        householdQuestions.hhsPedalCycles!.adultsBikesNumber;
+        householdQuestions.hhsPedalCycles!.adultsBikesNumber ?? 0;
     data['hhsPCChildrenBikesNumber'] =
-        householdQuestions.hhsPedalCycles!.childrenBikesNumber;
+        householdQuestions.hhsPedalCycles!.childrenBikesNumber ?? 0;
     //======hhsElectricCycles(EC)============
     data['hhsECTotalBikesNumber'] =
-        householdQuestions.hhsElectricCycles!.totalBikesNumber;
+        householdQuestions.hhsElectricCycles!.totalBikesNumber ?? 0;
     data['hhsECAdultsBikesNumber'] =
-        householdQuestions.hhsElectricCycles!.adultsBikesNumber;
+        householdQuestions.hhsElectricCycles!.adultsBikesNumber ?? 0;
     data['hhsECChildrenBikesNumber'] =
-        householdQuestions.hhsElectricCycles!.childrenBikesNumber;
+        householdQuestions.hhsElectricCycles!.childrenBikesNumber ?? 0;
     //======hhsElectricScooter(ES)============
     data['hhsESTotalBikesNumber'] =
-        householdQuestions.hhsElectricScooter!.totalBikesNumber;
+        householdQuestions.hhsElectricScooter!.totalBikesNumber ?? 0;
     data['hhsESAdultsBikesNumber'] =
-        householdQuestions.hhsElectricScooter!.adultsBikesNumber;
+        householdQuestions.hhsElectricScooter!.adultsBikesNumber ?? 0;
     data['hhsESChildrenBikesNumber'] =
-        householdQuestions.hhsElectricScooter!.childrenBikesNumber;
-    data['hhsTotalIncome'] = householdQuestions.hhsTotalIncome;
-
+        householdQuestions.hhsElectricScooter!.childrenBikesNumber ?? 0;
+    data['hhsTotalIncome'] = householdQuestions.hhsTotalIncome ?? '';
 
     data['hhsSeparateFamilies'] =
-        hhsSeparateFamilies!.map((e) => e.toJson()).toList();*/
+        hhsSeparateFamilies!.map((e) => e.toJson()).toList();
+    data['personData'] = personData!.map((e) => e.toJson()).toList();
     return data;
   }
 
@@ -87,10 +89,10 @@ class SurveyPT extends Survey {
     id = json['id'];
     synced = json['synced'];
     header = HeaderBase();
-   // header.locationLat = json['headerLat'];
-  //  header.locationLong = json['headerLong'];
+    header.locationLat = json['headerLat'];
+    header.locationLong = json['headerLong'];
     header.interviewDate = DateTime.parse(json['headerDate']);
-    /*header.empNumber = json['headerEmpNumber'];
+    header.empNumber = json['headerEmpNumber'];
     header.interviewNumber = json['headerInterviewNumber'];
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
@@ -135,12 +137,16 @@ class SurveyPT extends Survey {
         json['hhsESAdultsBikesNumber'];
     householdQuestions.hhsElectricScooter!.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
-    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];*/
+    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
     vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
 
-   /* hhsSeparateFamilies = json['hhsSeparateFamilies']
+    hhsSeparateFamilies = json['hhsSeparateFamilies']
         .map<SeparateFamilies>(
             (e) => SeparateFamilies.fromJson(e as Map<String, dynamic>))
-        .toList();*/
+        .toList();
+    personData = json['personData']
+        .map<PersonModel>(
+            (e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }
