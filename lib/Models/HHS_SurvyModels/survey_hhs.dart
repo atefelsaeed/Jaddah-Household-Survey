@@ -2,6 +2,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
 import '../../Data/Enums/hhs_enums.dart';
+import '../Trips_SurveyModel/trips_model.dart';
 import '../Vehicles_SurveyModel/vehicles_model.dart';
 import '../survey.dart';
 
@@ -13,6 +14,7 @@ class SurveyPT extends Survey {
   VehiclesModel vehiclesData = VehiclesModel();
   List<PersonModel>? personData;
   List<SeparateFamilies>? hhsSeparateFamilies;
+  List<TripsModel>? tripsList;
 
   SurveyPT() : super(SurveyType.pt) {
     super.provider = SurveyPTProvider(this);
@@ -79,6 +81,7 @@ class SurveyPT extends Survey {
     data['hhsSeparateFamilies'] =
         hhsSeparateFamilies!.map((e) => e.toJson()).toList();
     data['personData'] = personData!.map((e) => e.toJson()).toList();
+    data['tripsList'] = tripsList!.map((e) => e.toJson()).toList();
     return data;
   }
 
@@ -147,6 +150,9 @@ class SurveyPT extends Survey {
     personData = json['personData']
         .map<PersonModel>(
             (e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+    tripsList = json['tripsList']
+        .map<TripsModel>((e) => PersonModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 }
