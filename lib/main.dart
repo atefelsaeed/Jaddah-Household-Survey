@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/person_screen.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/trip_screen.dart';
 import 'package:jaddah_household_survey/models/survey.dart';
 
 import 'package:provider/provider.dart';
@@ -92,6 +94,6 @@ class _MyAppState extends State<MyApp> {
               LoginScreen.routeName: (ctx) => const LoginScreen(),
             },
             home: Consumer<Auth>(
-                builder: (context, auth, child) => const VehiclesScreen ())));
+                builder: (context, auth, child) => const PersonScreen ())));
   }
 }

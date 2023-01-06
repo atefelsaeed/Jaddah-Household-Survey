@@ -239,27 +239,30 @@ class Field extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
    return Row(mainAxisAlignment: MainAxisAlignment.end,children: [
-      Row(children: [
-        MyTextForm( label: "",controller: peopleUnder18,widthForm: width(context)*.05,),
-        AppSize.spaceWidth1(context),
-        TextGlobal(text:peopleUnder18Text, fontSize: height(context)*.015 ,color: ColorManager.black,),
+      Expanded(
+        child: Row(children: [
+          MyTextForm( label: "",controller: peopleUnder18,widthForm: width(context)*.05,),
+          AppSize.spaceWidth1(context),
+          TextGlobal(text:peopleUnder18Text, fontSize: height(context)*.014 ,color: ColorManager.black,),
 
-      ],),
+        ],),
+      ),
 
       AppSize.spaceWidth3(context),
-      Row(children: [
-        MyTextForm( label: "",controller: peopleAdults18,widthForm: width(context)*.05,),
+    Expanded(child:  Row(children: [
+        MyTextForm( label: "",controller: peopleAdults18,widthForm: width(context)*.03,),
         AppSize.spaceWidth1(context),
-        TextGlobal(text:peopleAdults18Text, fontSize: height(context)*.017 ,color: ColorManager.grayColor,),
+        TextGlobal(text:peopleAdults18Text, fontSize: height(context)*.014 ,color: ColorManager.grayColor,),
 
-      ],),
+      ],)),
      AppSize.spaceWidth3(context),
-      Row(children: [
-        MyTextForm( label: "",controller: totalNumberOfVec,widthForm: width(context)*.05,),
-        AppSize.spaceWidth1(context),
-        TextGlobal(text:totalNumberOfVecText, fontSize: height(context)*.014 ,color: ColorManager.grayColor,),
-
-      ],)
+      Expanded(
+        child: Row(children: [
+          MyTextForm( label: "",controller: totalNumberOfVec,widthForm: width(context)*.03,),
+          AppSize.spaceWidth1(context),
+          TextGlobal(text:totalNumberOfVecText, fontSize: height(context)*.014 ,color: ColorManager.grayColor,),
+        ],),
+      )
 
     ],);
   }
