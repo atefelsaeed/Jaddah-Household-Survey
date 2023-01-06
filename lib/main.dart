@@ -20,6 +20,7 @@ import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 import 'UI/Screens/Surveies/surveys_screen.dart';
 import 'UI/Screens/Survey/syrvey_screen.dart';
+import 'UI/Screens/vechicles/vechicles_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -91,6 +92,6 @@ class _MyAppState extends State<MyApp> {
               LoginScreen.routeName: (ctx) => const LoginScreen(),
             },
             home: Consumer<Auth>(
-                builder: (context, auth, child) => const SurveyScreen ())));
+                builder: (context, auth, child) => const VehiclesScreen ())));
   }
 }

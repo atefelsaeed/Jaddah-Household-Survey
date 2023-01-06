@@ -71,7 +71,7 @@ class _SurveysScreenState extends State<SurveysScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SurveyScreen()));
+                                    builder: (context) => const SurveyScreen()));
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),

@@ -11,6 +11,7 @@ class MyTextForm extends StatelessWidget {
   final TextEditingController? controller;
   final String? title;
   final double?widthForm;
+  final TextInputType? textInputType;
   bool? isPassword = false;
   IconData? suffix;
   final Function? suffixPressed;
@@ -29,6 +30,7 @@ class MyTextForm extends StatelessWidget {
         this.keyboardType,
         this.title,
         this.widthForm,
+        this.textInputType,
         this.suffixPressed,
         this.isPassword,
         this.suffix,
@@ -62,9 +64,9 @@ class MyTextForm extends StatelessWidget {
                 ),
               ),),
             textDirection: TextDirection.ltr,
-            keyboardType: TextInputType.text,
+            keyboardType:textInputType?? TextInputType.text,
             validator: (value)=>validate!(),
-
+onChanged: onChanged,
           ),
         ),
       ],

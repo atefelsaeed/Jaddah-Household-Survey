@@ -26,16 +26,19 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
     // TODO: implement build
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextGlobal(
-              text: widget.title,
-              fontSize: height(context) * .02,
-              color: ColorManager.black,
-            ),
-          ],
-        ),
+         Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Expanded(
+                child: TextGlobal(
+                  text: widget.title,
+                  fontSize: height(context) * .02,
+                  color: ColorManager.black,
+                ),
+              ),
+            ],
+          ),
+
         AppSize.spaceHeight05(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -58,11 +61,7 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                 itemCount: widget.question.length,
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
-                  TextGlobal(
-                    text: widget.question[index]["value"],
-                    fontSize: height(context) * .02,
-                    color: ColorManager.grayColor,
-                  ),
+
                   Checkbox(
                       side: BorderSide(
                         color: ColorManager.orangeTxtColor,
@@ -82,6 +81,11 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                           widget.question[index]["isChick"] = value;
                         });
                       }),
+                      TextGlobal(
+                        text: widget.question[index]["value"],
+                        fontSize: height(context) * .02,
+                        color: ColorManager.grayColor,
+                      ),
                 ]),
               )),
         ),
