@@ -24,7 +24,7 @@ class HouseholdQuestions {
   BikesType? hhsPedalCycles;
   BikesType? hhsElectricCycles;
   BikesType? hhsElectricScooter;
-  late String hhsTotalIncome;
+  String? hhsTotalIncome;
 
   HouseholdQuestions();
 }
@@ -45,16 +45,16 @@ class SeparateFamilies {
   SeparateFamilies();
 
   SeparateFamilies.fromJson(Map<String, dynamic> json) {
-    numberChildren = json['numberChildren'];
-    numberAdults = json['numberAdults'];
-    totalNumberVehicles = json['totalNumberVehicles'];
+    numberChildren = json['numberChildren'] ?? 0;
+    numberAdults = json['numberAdults'] ?? 0;
+    totalNumberVehicles = json['totalNumberVehicles'] ?? 0;
   }
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['numberChildren'] = numberChildren;
-    data['numberAdults'] = numberAdults;
-    data['totalNumberVehicles'] = totalNumberVehicles;
+    data['numberChildren'] = numberChildren ?? 0;
+    data['numberAdults'] = numberAdults ?? 0;
+    data['totalNumberVehicles'] = totalNumberVehicles ?? 0;
     return data;
   }
 }
