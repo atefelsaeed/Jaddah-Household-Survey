@@ -16,6 +16,7 @@ import 'Helper/messageHandler.dart';
 import 'Providers/auth.dart';
 
 import 'Providers/surveys.dart';
+import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 import 'UI/Screens/Surveies/surveys_screen.dart';
@@ -60,7 +61,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => SurveyPTProvider(SurveyPT())),
@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             title: 'Jaddah Household Survey',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primaryColor: ColorManager.primaryColor,
             ),
             localizationsDelegates: const [
               GlobalCupertinoLocalizations.delegate,
@@ -91,6 +91,6 @@ class _MyAppState extends State<MyApp> {
               LoginScreen.routeName: (ctx) => const LoginScreen(),
             },
             home: Consumer<Auth>(
-                builder: (context, auth, child) => const SurveyScreen ())));
+                builder: (context, auth, child) => const SurveysScreen())));
   }
 }

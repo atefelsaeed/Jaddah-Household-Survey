@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
-import '../Models/enum_survey.dart';
 import '../Models/survey.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
@@ -98,6 +98,8 @@ abstract class SurveyProvider with ChangeNotifier {
   String get id;
 
   set id(String id);
+
+  SurveyType get type;
 
   VehiclesModel get vehiclesData;
 
