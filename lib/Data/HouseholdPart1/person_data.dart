@@ -25,25 +25,28 @@ class PersonData {
     "subTitle": "mainMade",
     "chosenIndex": 0,
   };
+  static Map<String, dynamic>  groupAge = {
+    "group Age": [
+      {"value":  '< 6' , "isChick": false,"type":"2"},
+      {"value": ' 6 - 11', "isChick": false,"type":"2"},
+      {"value":  '12 - 15', "isChick": false,"type":"2"},
+      {"value":  '16 - 18', "isChick": false,"type":"1"},
+      {"value": '19 -24', "isChick": false,"type":"1"},
+      {"value":  ' 25 - 34', "isChick": false,"type":"1"},
+      {"value":  '35 - 44', "isChick": false,"type":"1"},
+      {"value":  '45 - 54',"type":"1", "isChick": false},
+      {"value": '55 - 64', "isChick": false,"type":"1"},
+      {"value":  '65 - 74', "isChick": false,"type":"1"},
+      {"value": '65 - 74', "isChick": false,"type":"1"},
+      {"value": '>74', "isChick": false,"type":"retired","type":"retire"},
 
-  static Map<String, dynamic> groupAge = {
-    "gender": [
-      '< 6',
-      ' 6 - 11',
-      '12 - 15',
-      '16 - 18',
-      '19 -24',
-      ' 25 - 34',
-      '35 - 44',
-      '45 - 54',
-      '55 - 64',
-      '65 - 74',
-      '>74'
     ],
-    "title": "mainMade",
-    "subTitle": "mainMade",
+    "title": "MainOccupation",
+    "subTitle":
+    " A separate family is defined as who share the kitchen expenses and meals",
     "chosenIndex": 0,
   };
+
   static Map<String, dynamic> occupationSector = {
     "what is the Occupation Sector": [
       '< 6',
@@ -346,3 +349,5 @@ class PersonData {
 
 
 }
+
+

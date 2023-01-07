@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
 class DropDownFormInput2<T> extends StatelessWidget {
   final List<Map> options;
@@ -34,13 +35,13 @@ class DropDownFormInput2<T> extends StatelessWidget {
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
         children: [
-    SizedBox(width: width(context)/2-30,child:       Text(
+    SizedBox(width: width(context)*.4,child:       Text(
             hint.toString(),
             style: TextStyle(
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .02),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.right,
           )),
           AppSize.spaceHeight1(context),
           SizedBox(
@@ -125,20 +126,13 @@ class DropDownFormInput<T> extends StatelessWidget {
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
         children: [
-         Row(mainAxisAlignment: MainAxisAlignment.end,children: [
-           SizedBox(width: width(context)/2-40,child:       Text(
-             hint.toString(),
-             style: TextStyle(
-                 fontWeight: FontWeight.w400,
-                 color: ColorManager.black,
-                 fontSize: height(context) * .015),
-             textAlign: TextAlign.center,
-           )),
-         ],),
+
+          SizedBox(width: width(context)*.45,
+              child:   TextGlobal(text:hint.toString(), fontSize:height(context)*.015 ,color: ColorManager.black,)),
 
           AppSize.spaceHeight1(context),
           SizedBox(
-            width: width(context) * .4,
+            width: width(context) * .45,
             height: height(context) * .06,
             child: Directionality(
               textDirection: TextDirection.ltr,

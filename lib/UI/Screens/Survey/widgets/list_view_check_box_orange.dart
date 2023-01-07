@@ -10,10 +10,10 @@ class ListViewCheckBoxOrange extends StatefulWidget {
   final String title;
   final String subTitle;
   List<dynamic> question;
-  //late Function onChange;
+  late Function onChange;
 
   ListViewCheckBoxOrange(
-      {super.key, required this.title, required this.question,required this.subTitle});
+      {super.key, required this.title, required this.question,required this.subTitle,required this.onChange});
 
   @override
   State<ListViewCheckBoxOrange> createState() => _ListViewCheckBoxOrangeState();
@@ -84,6 +84,8 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                               chosenIndex = index;
                               widget.question[index]["isChick"] = value;
                             });
+                            print(widget.question[index]["value"] );
+                         widget.onChange(widget.question[index]["value"] );
                           }),
                       TextGlobal(
                         text: widget.question[index]["value"],

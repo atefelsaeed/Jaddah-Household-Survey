@@ -76,6 +76,7 @@ class TripData {
       'Valet parking',
       'Valet parking',
       'Dropped Off - taxi',
+          'public Transporter',
       'Other'
     ],
     "title": "?where did you park",

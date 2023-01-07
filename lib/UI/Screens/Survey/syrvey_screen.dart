@@ -145,6 +145,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         ),
                         AppSize.spaceHeight3(context),
                         ListViewCheckBoxOrange(
+                            onChange: (r){
+
+
+                            },
                             title: QuestionsData.qh3.keys.first,
                             question: QuestionsData
                                 .qh3[QuestionsData.qh3.keys.first]!
@@ -153,6 +157,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         AppSize.spaceHeight3(context),
 
                         ListViewCheckBoxOrange(
+                          onChange: (r){
+
+
+                          },
                           title: QuestionsData.qh4.keys.first,
                           question: QuestionsData
                               .qh4[QuestionsData.qh4.keys.first]!
@@ -171,6 +179,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             q6totalNumberOfVec: q6totalNumberOfVec),
                         AppSize.spaceHeight3(context),
                         ListViewCheckBoxOrange(
+                          onChange: (r){
+
+
+                          },
                           title: QuestionsData.qh7.keys.first,
                           question: QuestionsData
                               .qh7[QuestionsData.qh7.keys.first]!
