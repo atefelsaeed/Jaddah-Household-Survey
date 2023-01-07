@@ -338,7 +338,7 @@ class _PersonScreenState extends State<PersonScreen> {
                               surveyPt.interViewDate=DateTime.now();
                               surveyPt.headerInterviewNumber=4;
                               surveyPt.headerDistrictName="ll";
-                              surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="car";
+                              surveyPt.vehiclesData.vehiclesBodyType!.vehicleTypeName="car";
                               surveys.addSurvey(surveyPt.data);
                               surveys.fetch();
                               print(surveyPt.headerDistrictName);
