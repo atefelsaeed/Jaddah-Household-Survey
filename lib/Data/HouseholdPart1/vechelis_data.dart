@@ -10,12 +10,6 @@ class VehiclesData {
     VecModel(title: "other", isChosen: false, number: 0,textEditingController: TextEditingController()),
   ];
 
-  static List<VecBodyType> vecCar = [];
-  static List<VecBodyType> vecVan = [];
-  static List<VecBodyType> largeCar=[];
-  static List<VecBodyType> eScooter=[];
-  static List<VecBodyType> pickUp=[];
-  static List<VecBodyType> other=[];
 
   static Map<String, List<dynamic>> fuelTypeCodes = {
     "Fuel type codes- V2-F": [

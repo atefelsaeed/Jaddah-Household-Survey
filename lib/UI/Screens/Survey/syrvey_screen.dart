@@ -4,7 +4,6 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/q5.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 import 'package:jaddah_household_survey/providers/survey.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/questions_data.dart';
@@ -76,37 +75,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   bool checked = false;
 
-  Future<LocationData> getLocation() async {
-    Location location = new Location();
-
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return Future.error(0);
-      }
-    }
-
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return Future.error(1);
-      }
-    }
-
-    return await location.getLocation();
-  }
-
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
     SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
+
     return Scaffold(
       body: SingleChildScrollView(
           child: Directionality(
@@ -168,6 +143,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   ),
                   AppSize.spaceHeight3(context),
                   ListViewCheckBoxOrange(
+                      onChange: (r) {},
                       title: QuestionsData.qh3.keys.first,
                       question: QuestionsData.qh3[QuestionsData.qh3.keys.first]!
                           .toList(),
@@ -175,6 +151,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   AppSize.spaceHeight3(context),
 
                   ListViewCheckBoxOrange(
+                    onChange: (r) {},
                     title: QuestionsData.qh4.keys.first,
                     question: QuestionsData.qh4[QuestionsData.qh4.keys.first]!
                         .toList(),
@@ -192,6 +169,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       q6totalNumberOfVec: q6totalNumberOfVec),
                   AppSize.spaceHeight3(context),
                   ListViewCheckBoxOrange(
+                    onChange: (r) {},
                     title: QuestionsData.qh7.keys.first,
                     question: QuestionsData.qh7[QuestionsData.qh7.keys.first]!
                         .toList(),
@@ -228,14 +206,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   AppSize.spaceHeight3(context),
                   DefaultButton(
                     function: () {
-                      surveyPt.headerLat = 0;
-                      surveyPt.headerLong = 0;
                       surveyPt.interViewDate = DateTime.now();
                       surveyPt.headerInterviewNumber = 4;
-                      surveyPt.headerEmpNumber = 44;
-                      surveyPt.headerDistrictName = "New Cairo";
-                      surveyPt.headerZoneNumber = "#445";
-                      surveyPt.id="123";
+                      surveyPt.headerDistrictName = "ll";
                       surveyPt.vehiclesData.vehiclesBodyType!.vehicleTypeName =
                           "car";
                       surveys.addSurvey(surveyPt.data);

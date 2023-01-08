@@ -1,11 +1,16 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
+import '../../../Providers/surveys.dart';
+import '../../../Resources/colors.dart';
+import '../../Widgets/connection_error.dart';
 import '../Survey/syrvey_screen.dart';
+import 'Components/survey_list.dart';
 
 class SurveysScreen extends StatefulWidget {
   const SurveysScreen({Key? key}) : super(key: key);
@@ -56,6 +61,7 @@ class _SurveysScreenState extends State<SurveysScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("تطوير انظمة تخطيط النقل"),
+        backgroundColor: ColorManager.primaryColor,
         actions: [
           IconButton(
             onPressed: () {
@@ -71,7 +77,8 @@ class _SurveysScreenState extends State<SurveysScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const SurveyScreen()));
+                                    builder: (context) =>
+                                        const SurveyScreen()));
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -146,13 +153,38 @@ class _SurveysScreenState extends State<SurveysScreen> {
           ),
         ],
       ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.all(12.0),
-          child: Center(
-            child: Text(
-              'لا يوجد اي استبيانات',
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(ImageAssets.homeBackground), fit: BoxFit.fill),
+        ),
+        child: Center(
+          child: FutureBuilder(
+            future:
+                Provider.of<SurveysProvider>(context, listen: false).fetch(),
+            builder: (fctx, dataSnapshot) =>
+                dataSnapshot.connectionState == ConnectionState.waiting
+                    ? const Padding(
+                        padding: EdgeInsets.all(40),
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      )
+                    : dataSnapshot.hasError
+                        ? Padding(
+                            padding: const EdgeInsets.all(50),
+                            child: ConnectionError(() => setState(() => {})),
+                          )
+                        : dataSnapshot.hasData
+                            ? const SurveyList()
+                            : const Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Center(
+                                  child: Text(
+                                    'لا يوجد اي استبيانات',
+                                  ),
+                                ),
+                              ),
           ),
         ),
       ),

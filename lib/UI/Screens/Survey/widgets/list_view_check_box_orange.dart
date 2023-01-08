@@ -10,13 +10,15 @@ class ListViewCheckBoxOrange extends StatefulWidget {
   final String title;
   final String subTitle;
   List<dynamic> question;
+  late Function onChange;
 
   ListViewCheckBoxOrange(
-      {super.key, required this.title, required this.question,required this.subTitle});
+      {super.key, required this.title, required this.question,required this.subTitle,required this.onChange});
 
   @override
   State<ListViewCheckBoxOrange> createState() => _ListViewCheckBoxOrangeState();
 }
+
 
 class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
   int chosenIndex = 0;
@@ -26,27 +28,29 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
     // TODO: implement build
     return Column(
       children: [
-         Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Expanded(
-                child: TextGlobal(
-                  text: widget.title,
-                  fontSize: height(context) * .02,
-                  color: ColorManager.black,
-                ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Expanded(
+              child: TextGlobal(
+                text: widget.title,
+                fontSize: height(context) * .02,
+                color: ColorManager.black,
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
 
         AppSize.spaceHeight05(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
-              text:widget.subTitle,
-              fontSize: height(context) * .013,
-              color: ColorManager.grayColor,
+            Expanded(
+              child: TextGlobal(
+                text:widget.subTitle,
+                fontSize: height(context) * .013,
+                color: ColorManager.grayColor,
+              ),
             ),
           ],
         ),
@@ -62,37 +66,40 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
 
-                  Checkbox(
-                      side: BorderSide(
-                        color: ColorManager.orangeTxtColor,
-                        width: 1.5,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      checkColor: ColorManager.whiteColor,
-                      focusColor: ColorManager.orangeTxtColor,
-                      activeColor: ColorManager.orangeTxtColor,
-                      value: widget.question[index]["isChick"],
-                      onChanged: (bool? value) {
-                        setState(() {
-                          widget.question[chosenIndex]["isChick"] = false;
-                          chosenIndex = index;
-                          widget.question[index]["isChick"] = value;
-                        });
-                      }),
+                      Checkbox(
+                          side: BorderSide(
+                            color: ColorManager.orangeTxtColor,
+                            width: 1.5,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          checkColor: ColorManager.whiteColor,
+                          focusColor: ColorManager.orangeTxtColor,
+                          activeColor: ColorManager.orangeTxtColor,
+                          value: widget.question[index]["isChick"],
+                          onChanged: (bool? value) {
+                            setState(() {
+                              widget.question[chosenIndex]["isChick"] = false;
+                              chosenIndex = index;
+                              widget.question[index]["isChick"] = value;
+                            });
+                            print(widget.question[index]["value"] );
+                         widget.onChange(widget.question[index]["value"] );
+                          }),
                       TextGlobal(
                         text: widget.question[index]["value"],
                         fontSize: height(context) * .02,
                         color: ColorManager.grayColor,
                       ),
-                ]),
+                    ]),
               )),
         ),
       ],
     );
   }
 }
+
 
 
 
@@ -131,10 +138,12 @@ class _ListQ7 extends State<ListQ7> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
-              text:widget.subTitle,
-              fontSize: height(context) * .013,
-              color: ColorManager.grayColor,
+            SizedBox(width: width(context)-140,child:
+             TextGlobal(
+                text:widget.subTitle,
+                fontSize: height(context) * .013,
+                color: ColorManager.grayColor,
+              ),
             ),
           ],
         ),
@@ -171,6 +180,7 @@ class _ListQ7 extends State<ListQ7> {
                               widget.question[chosenIndex]["isChick"] = false;
                               chosenIndex = index;
                               widget.question[index]["isChick"] = value;
+                            //  w
                             });
                           }),
                     ]),
