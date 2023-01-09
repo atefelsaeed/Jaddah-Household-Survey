@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class PersonalQuestion {
   String? haveBusPass;
   String? haveDisabilityTransportMobility;
@@ -8,7 +10,16 @@ class PersonalQuestion {
   bool? haveCarSharing;
   EducationAddress? educationAddress; //if age <15
 
-  PersonalQuestion();
+  PersonalQuestion({
+    this.mainOccupationType,
+    this.educationAddress,
+    this.asPassenger,
+    this.availablePersonalCar,
+    this.drivingLicenceType,
+    this.haveBusPass,
+    this.haveCarSharing,
+    this.haveDisabilityTransportMobility,
+  });
 
   PersonalQuestion.fromJson(Map<String, dynamic> json) {
     drivingLicenceType = json['drivingLicenceType'] ?? "";
@@ -34,10 +45,13 @@ class PersonalQuestion {
 }
 
 class EducationAddress {
-  String? fullAddress;
-  String? geocodes;
+  TextEditingController? fullAddress;
+  TextEditingController? geocodes;
 
-  EducationAddress();
+  EducationAddress({
+    this.fullAddress,
+    this.geocodes,
+  });
 
   EducationAddress.fromJson(Map<String, dynamic> json) {
     fullAddress = json['fullAddress'] ?? "";

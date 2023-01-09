@@ -8,6 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
+import '../Models/Person_SurveyModel/person_model.dart';
+import '../Models/Trips_SurveyModel/trips_model.dart';
 import '../Models/survey.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
@@ -249,4 +251,12 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsSeparateFamilies(List<SeparateFamilies> e);
 
   List<SeparateFamilies> get hhsSeparateFamilies;
+
+  set personData(List<PersonModel> e);
+
+  List<PersonModel> get personData;
+
+  set tripsList(List<TripsModel> e);
+
+  List<TripsModel> get tripsList;
 }

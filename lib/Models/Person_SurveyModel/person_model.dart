@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'occupation_model.dart';
 import 'personal_question.dart';
 
@@ -6,7 +8,11 @@ class PersonModel {
   OccupationModel? occupationModel;
   PersonalQuestion? personalQuestion;
 
-  PersonModel();
+  PersonModel({
+    this.personalQuestion,
+    this.occupationModel,
+    this.personalHeadData,
+  });
 
   PersonModel.fromJson(Map<String, dynamic> json) {
     personalHeadData = PersonalHeadData.fromJson(json['personalHeadData']);
@@ -26,17 +32,27 @@ class PersonModel {
 class PersonalHeadData {
   String? relationshipHeadHHS;
   String? gender;
-  String? ageType;
-  String? age;
+  bool? checkAge;
+  bool? refuseToTellAge;
+  TextEditingController? age;
   String? nationalityType;
-  String? nationality; //open if not Saudi National
+  TextEditingController? nationality; //open if not Saudi National
 
-  PersonalHeadData();
+  PersonalHeadData({
+    this.age,
+    this.nationalityType,
+    this.nationality,
+    this.gender,
+    this.checkAge,
+    this.refuseToTellAge,
+    this.relationshipHeadHHS,
+  });
 
   PersonalHeadData.fromJson(Map<String, dynamic> json) {
     relationshipHeadHHS = json['relationshipHeadHHS'] ?? "";
     gender = json['gender'] ?? "";
-    ageType = json['ageType'] ?? "";
+    checkAge = json['checkAge'];
+    refuseToTellAge = json['refuseToTellAge'];
     age = json['age'] ?? "";
     nationalityType = json['nationalityType'] ?? "";
     nationality = json['nationality'] ?? "";
@@ -46,7 +62,8 @@ class PersonalHeadData {
     Map<String, dynamic> data = <String, dynamic>{};
     data['relationshipHeadHHS'] = relationshipHeadHHS ?? "";
     data['gender'] = gender ?? "";
-    data['ageType'] = ageType ?? "";
+    data['checkAge'] = checkAge;
+    data['refuseToTellAge'] = refuseToTellAge;
     data['age'] = age ?? "";
     data['nationalityType'] = nationalityType ?? "";
     data['nationality'] = nationality ?? "";

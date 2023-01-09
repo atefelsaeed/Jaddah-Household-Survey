@@ -25,25 +25,23 @@ class _NationalityState extends State<Nationality> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    var base = PersonModelList.personModelList[widget.i];
     return Column(
       children: [
         ListViewCheckBoxOrange(
           onChange: (r) {
-            PersonModelList.personModelList[widget.i].nationality = r;
-            if (PersonModelList.personModelList[widget.i].nationality !=
-                "Saudi National") {
+            base.personalHeadData!.nationalityType = r;
+            if (base.personalHeadData!.nationalityType != "Saudi National") {
               setState(() {
-              showText=true;
+                showText = true;
               });
-            }else{
+            } else {
               setState(() {
-                showText=false;
+                showText = false;
               });
-
             }
 
-            print(PersonModelList.personModelList[widget.i].nationality);
+            print(base.personalHeadData!.nationalityType);
           },
           title: "Nationality",
           question: PersonData.nationality[PersonData.nationality.keys.first]!
@@ -57,9 +55,8 @@ class _NationalityState extends State<Nationality> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   MyTextForm(
-                    label: PersonModelList.personModelList[widget.i].nationality,
-                    controller: PersonModelList.personModelList[widget.i]
-                        .nationallityEditingController,
+                    label: base.personalHeadData!.nationalityType!,
+                    controller: base.personalHeadData!.nationality,
                   ),
                   AppSize.spaceWidth2(context),
                   TextGlobal(
