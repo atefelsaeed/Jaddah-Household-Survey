@@ -53,6 +53,7 @@ class _SurveysScreenState extends State<SurveysScreen> {
   @override
   void initState() {
     super.initState();
+
     clicked = false;
   }
 

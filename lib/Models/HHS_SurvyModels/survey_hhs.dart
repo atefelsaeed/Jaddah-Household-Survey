@@ -1,12 +1,11 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
+import '/providers/survey_hhs.dart';
 import '../../Data/Enums/hhs_enums.dart';
 import '../Trips_SurveyModel/trips_model.dart';
 import '../Vehicles_SurveyModel/vehicles_model.dart';
 import '../survey.dart';
-
-import '/providers/survey_hhs.dart';
 import 'hhs_models.dart';
 
 class SurveyPT extends Survey {

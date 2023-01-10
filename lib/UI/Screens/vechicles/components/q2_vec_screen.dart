@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../Data/HouseholdPart1/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
-import '../../Survey/components/q5.dart';
+import '../../Survey/Components/q5.dart';
 
 class Q2VecScreen extends StatelessWidget {
 

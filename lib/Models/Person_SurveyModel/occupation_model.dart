@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OccupationModel {
   String? occupationSector;
-  String ?isEmployee;
+  String? isEmployee;
   String? occupationLevelSector;
   String? bestWorkspaceLocation;
   int? commuteWorkDays;
@@ -18,7 +18,24 @@ class OccupationModel {
   TextEditingController? earliestTimeFinishingWork;
   TextEditingController? mainOccupationAddress;
 
-  OccupationModel();
+  OccupationModel({
+    this.earliestTimeFinishingWork,
+    this.endingWoke,
+    this.startingWoke,
+    this.address,
+    this.geoCodes,
+    this.mainOccupationAddress,
+    this.bestWorkspaceLocation,
+    this.bikeWorkDays,
+    this.commuteWorkDays,
+    this.earliestTimeStartingWork,
+    this.flexibleWorkingHours,
+    this.isEmployee,
+    this.isWorkFromHome,
+    this.numberWorkFromHome,
+    this.occupationLevelSector,
+    this.occupationSector,
+  });
 
   OccupationModel.fromJson(Map<String, dynamic> json) {
     occupationSector = json['occupationSector'] ?? "";

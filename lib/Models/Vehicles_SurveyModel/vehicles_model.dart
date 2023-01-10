@@ -10,10 +10,19 @@ class VehiclesModel {
   String? numberAirTubedChildren;
   String? nearestBusStop;
 
-  VehiclesModel();
+  VehiclesModel({
+    this.vehiclesBodyType,
+    this.numberAirTubedChildren,
+    this.numberAirTubedAdultsLeisure,
+    this.numberAirTubedAdultsWorkUse,
+    this.vehicleFuelType,
+    this.nearestBusStop,
+    this.vehicleOwnership,
+    this.vehicleParking,
+  });
 
   VehiclesModel.fromJson(Map<String, dynamic> json) {
-    vehicleFuelType = json['vehicleFuelType'] ??'';
+    vehicleFuelType = json['vehicleFuelType'] ?? '';
     vehicleOwnership = json['vehicleOwnership'] ?? '';
     vehicleParking = json['vehicleParking'] ?? '';
     numberAirTubedAdultsWorkUse = json['numberAirTubedAdultsWorkUse'] ?? 0;

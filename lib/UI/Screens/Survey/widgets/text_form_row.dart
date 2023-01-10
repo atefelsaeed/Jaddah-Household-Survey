@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/Resources/font_manager.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';

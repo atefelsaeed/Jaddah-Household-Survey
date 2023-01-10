@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../Data/HouseholdPart1/all_data.dart';
-import '../../../../Data/HouseholdPart1/person_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../../Widgets/text.dart';
-import '../../../Widgets/text_form_field.dart';
-import '../../Survey/widgets/list_view_check_box_orange.dart';
 
 class DefaultEntry extends StatefulWidget {
    final int i;

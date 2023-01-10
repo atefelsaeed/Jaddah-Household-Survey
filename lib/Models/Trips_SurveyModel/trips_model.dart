@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/start_beginning_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_other_model.dart';
@@ -5,11 +6,12 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_oth
 class TripsModel {
   bool? type;
   StartBeginningModel? startBeginningModel;
-
+  String? typeTravelCondition;
+  String? typeTravel;
   StartBeginningModel? endingAddress;
 
   String? purposeTravel;
-  String? departureTime;
+  TextEditingController? departureTime;
 
   String? tripReason;
   TravelWay? travelWay;
@@ -17,13 +19,17 @@ class TripsModel {
   bool? isTravelAlone;
 
   TravelWithOtherModel? travelWithOtherModel;
+  TravelWithOtherModel? travelAloneHouseHold;
   ArrivalDepartTime? arrivalDepartTime;
   TravelTypeModel? travelTypeModel;
 
   TripsModel({
     this.type,
     this.travelTypeModel,
+    this.typeTravel,
+    this.typeTravelCondition,
     this.travelWithOtherModel,
+    this.travelAloneHouseHold,
     this.arrivalDepartTime,
     this.travelWay,
     this.departureTime,
@@ -41,6 +47,8 @@ class TripsModel {
     travelWay = TravelWay.fromJson(json['travelWay']);
     travelWithOtherModel =
         TravelWithOtherModel.fromJson(json['travelWithOtherModel']);
+    travelAloneHouseHold =
+        TravelWithOtherModel.fromJson(json['travelAloneHouseHold']);
     arrivalDepartTime = ArrivalDepartTime.fromJson(json['arrivalDepartTime']);
     travelTypeModel = TravelTypeModel.fromJson(json['travelTypeModel']);
     purposeTravel = json['purposeTravel'];
@@ -55,6 +63,7 @@ class TripsModel {
     data['endingAddress'] = endingAddress!.toJson();
     data['travelWay'] = travelWay!.toJson();
     data['travelWithOtherModel'] = travelWithOtherModel!.toJson();
+    data['travelAloneHouseHold'] = travelAloneHouseHold!.toJson();
     data['arrivalDepartTime'] = arrivalDepartTime!.toJson();
     data['travelTypeModel'] = travelTypeModel!.toJson();
     data['purposeTravel'] = purposeTravel;

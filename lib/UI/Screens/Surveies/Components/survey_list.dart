@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -5,7 +6,6 @@ import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/Surveies/Components/survey_tile.dart';
 import 'package:jaddah_household_survey/providers/survey.dart';
 import 'package:provider/provider.dart';
-import "package:collection/collection.dart";
 
 import '../../../../Models/survey.dart';
 

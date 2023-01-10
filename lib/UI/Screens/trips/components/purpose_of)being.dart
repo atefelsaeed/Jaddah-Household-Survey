@@ -1,21 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../Data/HouseholdPart1/all_data.dart';
-import '../../../../Data/HouseholdPart1/trip_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
+import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 
 class PurposeOfTheBeing extends StatefulWidget {
- final int indexTripModel;
-  const PurposeOfTheBeing({super.key,required this.indexTripModel});
+  final int indexTripModel;
+
+  const PurposeOfTheBeing({super.key, required this.indexTripModel});
 
   @override
   State<PurposeOfTheBeing> createState() => _PurposeOfTheBeing();
 }
+
 class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
-  int chosenIndex=0;
+  int chosenIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -37,7 +40,7 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
               width: width(context) * .23,
               child: TextGlobal(
                 text: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
-                [index]["value"],
+                    [index]["value"],
                 //[index].title,
                 fontSize: height(context) * .02,
                 color: ColorManager.grayColor,
@@ -55,20 +58,22 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
                 focusColor: ColorManager.orangeTxtColor,
                 activeColor: ColorManager.orangeTxtColor,
                 value: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
-                [index]["isChick"],
+                    [index]["isChick"],
                 onChanged: (bool? value) {
                   print(value);
                   setState(() {
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"][chosenIndex]
-                    ["isChick"] = false;
+                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                        [chosenIndex]["isChick"] = false;
                     print(chosenIndex);
 
-                    chosenIndex=index;
+                    chosenIndex = index;
 
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"][chosenIndex]
-                    ["isChick"] = true;
-                    TripModeList.tripModeList[widget.indexTripModel].purposeOfBeing= TripData.purposeOfBeingThere["QPurposeOfBeingThere"][chosenIndex]
-                    ["value"];
+                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                        [chosenIndex]["isChick"] = true;
+                    TripModeList.tripModeList[widget.indexTripModel]
+                            .purposeTravel =
+                        TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                            [chosenIndex]["value"];
                   });
                 }),
           ]),

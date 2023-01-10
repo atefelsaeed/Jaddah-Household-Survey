@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../Providers/auth.dart';
 import '../../../../Providers/survey.dart';
 import '../../../../Providers/surveys.dart';
 

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/vechicles_screen.dart';
 
-import '../../../../Data/HouseholdPart1/all_data.dart';
-import '../../../../Data/HouseholdPart1/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Widgets/dropdown_form_input.dart';
+
 class ParkThisCar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-  return  Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         DropDownFormInput(
@@ -23,12 +23,10 @@ class ParkThisCar extends StatelessWidget {
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),
           onChange: (String? p) {
-VehModel.parkThisCar=p.toString();
-
+            VehModel.parkThisCar = p.toString();
           },
         ),
       ],
     );
   }
-
 }

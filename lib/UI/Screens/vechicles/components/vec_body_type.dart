@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../Data/HouseholdPart1/vechelis_data.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';

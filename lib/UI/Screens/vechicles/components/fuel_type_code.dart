@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/vechicles_screen.dart';
 
-import '../../../../Data/HouseholdPart1/all_data.dart';
-import '../../../../Data/HouseholdPart1/vechelis_data.dart';
-import '../../../../Models/Vehicles_SurveyModel/vehicles_model.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 
 class FuelTypeCode extends StatelessWidget {

@@ -3,14 +3,10 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/q5.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
-import 'package:jaddah_household_survey/providers/survey.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/questions_data.dart';
-import '../../../Models/HHS_SurvyModels/survey_hhs.dart';
+import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Models/enum_survey.dart';
-
-import '../../../Providers/auth.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../Widgets/custom_buttton.dart';

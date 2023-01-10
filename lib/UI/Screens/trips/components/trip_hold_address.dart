@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
 
+import '../../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../../Resources/sizes.dart';
 import '../../Survey/widgets/text_form_row.dart';
-import '../model/trip_model.dart';
-import '../model/trip_model_editing_controller.dart';
-import '../trip_screen.dart';
 
 class TripHoldAddress extends StatelessWidget {
-  final TripModelEditingController tripModel;
+  final StartBeginningModel tripModel;
 
   const TripHoldAddress({super.key, required this.tripModel});
 
@@ -31,12 +28,12 @@ class TripHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.buildingName,
+                controller: tripModel.buildingName!,
                 text: "Building Name",
                 label: "Enter Building Name",
               ),
               TextForm(
-                controller: tripModel.streetName,
+                controller: tripModel.streetName!,
                 text: "street Name",
                 label: "Enter Street Name",
               )
@@ -50,12 +47,12 @@ class TripHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.streetNumber,
+                controller: tripModel.streetNumber!,
                 label: "Street Number",
                 text: "Enter Street Number",
               ),
               TextForm(
-                controller: tripModel.nearestLandMark,
+                controller: tripModel.nearestLandMark!,
                 label: "Nearest Land Mark ",
                 text: "Enter Nearest Land Mark ",
               )
@@ -69,12 +66,12 @@ class TripHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.blockNearestTwoCrossStreets,
+                controller: tripModel.block!,
                 text: "Block/Nearest two cross streets",
                 label: "Enter Block/Nearest two cross streets",
               ),
               TextForm(
-                controller: tripModel.area,
+                controller: tripModel.area!,
                 text: "Area (Suburb)",
                 label: "Enter Area (Suburb) ",
               )
@@ -88,12 +85,12 @@ class TripHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.blockNearestTwoCrossStreets,
+                controller: tripModel.city!,
                 text: "City/ Town",
                 label: "Enter City/ Town",
               ),
               TextForm(
-                controller: tripModel.blockNearestTwoCrossStreets,
+                controller: tripModel.referToMap!,
                 text: "Refer to Map",
                 label: "Enter Refer to Map ",
               )

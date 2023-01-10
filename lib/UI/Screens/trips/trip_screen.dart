@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/all_data.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/action_trip_screen.dart';
@@ -7,22 +7,20 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.
 import 'package:jaddah_household_survey/UI/Screens/trips/components/how_did_you_travel.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
-import 'package:provider/provider.dart';
 
-import '../../../Providers/survey_hhs.dart';
-import '../../../Providers/surveys.dart';
+import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
+import '../../../Models/Trips_SurveyModel/travel_type_model.dart';
+import '../../../Models/Trips_SurveyModel/travel_with_other_model.dart';
+import '../../../Models/Trips_SurveyModel/trips_model.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/text.dart';
-import '../Survey/components/q5.dart';
-import 'components/adults_or_not.dart';
 import 'components/headline_trip.dart';
 import 'components/purpose_of)being.dart';
 import 'components/time_leave.dart';
 import 'components/trip_hold_address.dart';
 import 'components/where_did_you_go.dart';
-import 'model/trip_model.dart';
-import 'model/trip_model_editing_controller.dart';
 
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
@@ -55,54 +53,63 @@ class _TripScreenState extends State<TripScreen> {
                         DefaultButton(
                           function: () {
                             setState(() {
-                              TripModeList.tripModeList.add(TripModel(
-                                  whereDidYouGo: "",
-                                  purposeOfBeing: "",
+                              TripModeList.tripModeList.add(TripsModel(
+                                type: false,
+                                isTravelAlone: false,
+                                tripReason: "",
+                                //whereDidYouGo
+                                purposeTravel: "",
+                                departureTime: TextEditingController(),
+                                typeTravel: '',
+                                typeTravelCondition: "0",
+                                travelTypeModel: TravelTypeModel(
+                                  carParkingPlace: "",
+                                  taxiFare: TextEditingController(),
+                                  taxiTravelType: '',
+                                  passTravelType: '',
+                                  publicTransportFare: '',
+                                ),
+                                travelWay: TravelWay(
                                   mainMode: "",
                                   accessMode: "",
-                                  memberHouseHoldTravelPass: "",
-                                  typeTravel: "",
-                                  typeTaxi: "",
-                                  locationPark: "",
-                                  costTaxi: TextEditingController(),
-                                  depart: TextEditingController(),
-                                  destination: TextEditingController(),
-                                  tripModel: TripModelEditingController(
-                                      streetName: TextEditingController(),
-                                      buildingName: TextEditingController(),
-                                      streetNumber: TextEditingController(),
-                                      zoneNumber: TextEditingController(),
-                                      nearestLandMark: TextEditingController(),
-                                      blockNearestTwoCrossStreets:
-                                          TextEditingController(),
-                                      area: TextEditingController()),
-                                  type: false,
-                                  typeAlone: false,
-                                  travelAloneHouseHold: AdultsModel(
-                                      adultsPlus18: TextEditingController(),
-                                      adultsMin18: TextEditingController(),
-                                      text: "Non Household persons"),
-                                  travelAloneWithOther: AdultsModel(
-                                      adultsPlus18: TextEditingController(),
-                                      adultsMin18: TextEditingController(),
-                                      text: "?If with other how many"),
-                                  atWhatAddressDidYou:
-                                      TripModelEditingController(
-                                          streetName: TextEditingController(),
-                                          buildingName: TextEditingController(),
-                                          streetNumber: TextEditingController(),
-                                          zoneNumber: TextEditingController(),
-                                          nearestLandMark:
-                                              TextEditingController(),
-                                          blockNearestTwoCrossStreets:
-                                              TextEditingController(),
-                                          area: TextEditingController()),
-                                  expectedDeparture: TextEditingController(),
-                                  editingController3: EditingController3(
-                                      peopleUnder18: TextEditingController(),
-                                      totalNumber: TextEditingController(),
-                                      peopleAdults18: TextEditingController()),
-                                  typeTravelCondition: "0"));
+                                ),
+                                travelWithOtherModel: TravelWithOtherModel(
+                                    adultsNumber: TextEditingController(),
+                                    childrenNumber: TextEditingController(),
+                                    hhsMembersTraveled: "",
+                                    text: "?If with other how many"),
+                                travelAloneHouseHold: TravelWithOtherModel(
+                                    adultsNumber: TextEditingController(),
+                                    childrenNumber: TextEditingController(),
+                                    hhsMembersTraveled: "",
+                                    text: "Non Household persons"),
+                                arrivalDepartTime: ArrivalDepartTime(
+                                  arriveDestinationTime:
+                                      TextEditingController(),
+                                  departTime: TextEditingController(),
+                                  numberRepeatTrip: '',
+                                ),
+                                startBeginningModel: StartBeginningModel(
+                                  area: TextEditingController(),
+                                  buildingName: TextEditingController(),
+                                  city: TextEditingController(),
+                                  block: TextEditingController(),
+                                  nearestLandMark: TextEditingController(),
+                                  streetName: TextEditingController(),
+                                  streetNumber: TextEditingController(),
+                                  referToMap: TextEditingController(),
+                                ),
+                                endingAddress: StartBeginningModel(
+                                  area: TextEditingController(),
+                                  buildingName: TextEditingController(),
+                                  city: TextEditingController(),
+                                  block: TextEditingController(),
+                                  nearestLandMark: TextEditingController(),
+                                  streetName: TextEditingController(),
+                                  streetNumber: TextEditingController(),
+                                  referToMap: TextEditingController(),
+                                ),
+                              ));
                             });
 
                             //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
@@ -129,7 +136,8 @@ class _TripScreenState extends State<TripScreen> {
                                 TextTrip(index: i),
                                 AppSize.spaceHeight2(context),
                                 TripHoldAddress(
-                                  tripModel: TripModeList.tripModeList[i].tripModel,
+                                  tripModel: TripModeList
+                                      .tripModeList[i].startBeginningModel!,
                                 ),
                                 AppSize.spaceHeight3(context),
                                 const HeadlineTrip(
@@ -144,15 +152,15 @@ class _TripScreenState extends State<TripScreen> {
                                 const Divider(),
                                 AppSize.spaceHeight2(context),
                                 TimeLeave(
-                                  expectedDeparture:
-                                  TripModeList.tripModeList[i].expectedDeparture,
+                                  expectedDeparture: TripModeList
+                                      .tripModeList[i].departureTime!,
                                 ),
                                 const HeadlineTrip(
                                     text: "?At what address did you go to"),
                                 const Divider(),
                                 TripHoldAddress(
                                   tripModel: TripModeList
-                                      .tripModeList[i].atWhatAddressDidYou,
+                                      .tripModeList[i].endingAddress!,
                                 ),
                                 AppSize.spaceHeight2(context),
                                 const HeadlineTrip(
@@ -169,11 +177,13 @@ class _TripScreenState extends State<TripScreen> {
                                 TravelAlone(index: i),
                                 AppSize.spaceHeight2(context),
                                 WhereDidYouPark(
-                                  costTaxi: TripModeList.tripModeList[i].costTaxi,
+                                  costTaxi: TripModeList.tripModeList[i]
+                                      .travelTypeModel!.taxiFare!,
                                   index: i,
                                 ),
                                 AppSize.spaceHeight2(context),
-                                DepartTime(tripModel: TripModeList.tripModeList[i]),
+                                DepartTime(
+                                    tripModel: TripModeList.tripModeList[i]),
                               ],
                             ),
                           ),

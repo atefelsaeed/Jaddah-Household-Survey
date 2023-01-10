@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/all_data.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 
-import '../../../../Data/HouseholdPart1/trip_data.dart';
+import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
+import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 
 class WhyDidYouGo extends StatefulWidget {
- final int indexTripModel;
-  const WhyDidYouGo({super.key,required this.indexTripModel});
+  final int indexTripModel;
+
+  const WhyDidYouGo({super.key, required this.indexTripModel});
 
   @override
   State<WhyDidYouGo> createState() => _WhyDidYouGoState();
 }
 
 class _WhyDidYouGoState extends State<WhyDidYouGo> {
-  int chosenindex=0;
+  int chosenindex = 0;
+
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     return Directionality(
       textDirection: TextDirection.ltr,
@@ -38,7 +40,7 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
               width: width(context) * .23,
               child: TextGlobal(
                 text: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
-                [index]["value"],
+                    [index]["value"],
                 //[index].title,
                 fontSize: height(context) * .02,
                 color: ColorManager.grayColor,
@@ -56,16 +58,18 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                 focusColor: ColorManager.orangeTxtColor,
                 activeColor: ColorManager.orangeTxtColor,
                 value: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
-                [index]["isChick"],
+                    [index]["isChick"],
                 onChanged: (bool? value) {
                   setState(() {
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"][chosenindex]
-                    ["isChick"] = false;
-                    chosenindex=index;
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"][chosenindex]
-                    ["isChick"] = true;
-                    TripModeList.tripModeList[widget.indexTripModel].whereDidYouGo= TripData.purposeOfBeingThere["QPurposeOfBeingThere"][chosenindex]
-                    ["value"];
+                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                        [chosenindex]["isChick"] = false;
+                    chosenindex = index;
+                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                        [chosenindex]["isChick"] = true;
+                    TripModeList
+                            .tripModeList[widget.indexTripModel].tripReason =
+                        TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                            [chosenindex]["value"];
                   });
                 }),
           ]),

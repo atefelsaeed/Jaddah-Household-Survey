@@ -35,8 +35,8 @@ class TravelTypeModel {
 }
 
 class ArrivalDepartTime {
-  String? departTime;
-  String? arriveDestinationTime;
+  TextEditingController? departTime;
+  TextEditingController? arriveDestinationTime;
   String? numberRepeatTrip;
 
   ArrivalDepartTime({

@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../Resources/colors.dart';
-import '../../Resources/sizes.dart';
-
 class TextGlobal extends StatelessWidget {
  final  String text;
  final double fontSize;
