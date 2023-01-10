@@ -2,14 +2,37 @@ import 'package:flutter/cupertino.dart';
 
 class VehiclesData {
   static List<VecModel> vecModel = [
-    VecModel(title: "car", isChosen: false, number: 0,textEditingController: TextEditingController()),
-    VecModel(title: "Van", isChosen: false, number: 0,textEditingController: TextEditingController()),
-    VecModel(title: "Large Car (SUV etc.)", isChosen: false, number: 0,textEditingController: TextEditingController()),
-    VecModel(title: "E-Scooter", isChosen: false, number: 0,textEditingController: TextEditingController()),
-    VecModel(title: "Pick up", isChosen: false, number: 0,textEditingController: TextEditingController()),
-    VecModel(title: "other", isChosen: false, number: 0,textEditingController: TextEditingController()),
+    VecModel(
+        title: "car",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
+    VecModel(
+        title: "Van",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
+    VecModel(
+        title: "Large Car (SUV etc.)",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
+    VecModel(
+        title: "E-Scooter",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
+    VecModel(
+        title: "Pick up",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
+    VecModel(
+        title: "other",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
   ];
-
 
   static Map<String, List<dynamic>> fuelTypeCodes = {
     "Fuel type codes- V2-F": [
@@ -34,7 +57,7 @@ class VehiclesData {
       'Other',
     ]
   };
-  static Map<String, List<dynamic>>  parkThisCar   = {
+  static Map<String, List<dynamic>> parkThisCar = {
     "Ownership codes- V3-O": [
       'Personal Garage(home)',
       'Roadside free',
@@ -55,7 +78,8 @@ class VehiclesData {
     }
   };
   static Map<String, dynamic> q3VecData = {
-    " How far is the nearest public transport bus stop from your home by walk (in minutes) ?": [
+    " How far is the nearest public transport bus stop from your home by walk (in minutes) ?":
+        [
       {"value": '< 5 mins walk', "isChick": false},
       {"value": '6-10 mins walk', "isChick": false},
       {"value": '11  - 15 mins walk', "isChick": false},
@@ -63,7 +87,7 @@ class VehiclesData {
       {"value": ' don’t know', "isChick": false},
     ]
   };
-  }
+}
 
 class VecModel {
   late String title;
@@ -71,25 +95,11 @@ class VecModel {
   late bool isChosen = false;
   late TextEditingController textEditingController;
 
-  VecModel({required this.title, required this.isChosen, required this.number,required this.textEditingController});
+  VecModel({
+    required this.title,
+    required this.isChosen,
+    required this.number,
+    required this.textEditingController,
+  });
 }
-
-class VecBodyType {
-  late TextEditingController fuel ;
-  late TextEditingController annual;
-  late TextEditingController model ;
-  late TextEditingController ageOfVec ;
-  late TextEditingController whoOwn ;
-  late TextEditingController houseHoldOrOther ;
-
-  VecBodyType(
-      {required this.ageOfVec,
-      required this.annual,
-      required this.fuel,
-      required this.model,
-      required this.whoOwn});
-}
-
-
-
 

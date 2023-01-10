@@ -1,11 +1,19 @@
-class TravelWithOtherModel {
-  int? adultsNumber;
-  int? childrenNumber;
-  String? hhsMembersTraveled;
-  int? nonHHSAdultsNumber;
-  int? nonHHSChildrenNumber;
+import 'package:flutter/material.dart';
 
-  TravelWithOtherModel();
+class TravelWithOtherModel {
+  TextEditingController? adultsNumber;
+  TextEditingController? childrenNumber;
+  String? hhsMembersTraveled;
+  TextEditingController? nonHHSAdultsNumber;
+  TextEditingController? nonHHSChildrenNumber;
+
+  TravelWithOtherModel({
+    this.adultsNumber,
+    this.childrenNumber,
+    this.hhsMembersTraveled,
+    this.nonHHSAdultsNumber,
+    this.nonHHSChildrenNumber,
+  });
 
   TravelWithOtherModel.fromJson(Map<String, dynamic> json) {
     adultsNumber = json['adultsNumber'];
@@ -30,7 +38,10 @@ class TravelWay {
   String? mainMode;
   String? accessMode;
 
-  TravelWay();
+  TravelWay({
+    this.mainMode,
+    this.accessMode,
+  });
 
   TravelWay.fromJson(Map<String, dynamic> json) {
     mainMode = json['mainMode'];

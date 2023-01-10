@@ -3,6 +3,8 @@ import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_mod
 import '../Data/Enums/hhs_enums.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/HHS_SurvyModels/survey_hhs.dart';
+import '../Models/Person_SurveyModel/person_model.dart';
+import '../Models/Trips_SurveyModel/trips_model.dart';
 import 'survey.dart';
 
 class SurveyPTProvider extends SurveyProvider {
@@ -349,7 +351,7 @@ class SurveyPTProvider extends SurveyProvider {
   String? get hhsTotalIncome => _data.householdQuestions.hhsTotalIncome;
 
   @override
-  set hhsTotalIncome(String ?i) {
+  set hhsTotalIncome(String? i) {
     _data.householdQuestions.hhsTotalIncome = i;
     // notifyListeners();
   }
@@ -361,4 +363,16 @@ class SurveyPTProvider extends SurveyProvider {
   @override
   List<SeparateFamilies> get hhsSeparateFamilies =>
       [...?_data.hhsSeparateFamilies];
+
+  @override
+  set personData(List<PersonModel> e) => _data.personData = e;
+
+  @override
+  List<PersonModel> get personData => [...?_data.personData];
+
+  @override
+  set tripsList(List<TripsModel> e) => _data.tripsList = e;
+
+  @override
+  List<TripsModel> get tripsList => [...?_data.tripsList];
 }

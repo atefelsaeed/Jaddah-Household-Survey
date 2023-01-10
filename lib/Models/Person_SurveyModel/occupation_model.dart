@@ -1,24 +1,28 @@
+import 'package:flutter/material.dart';
+
 class OccupationModel {
   String? occupationSector;
+  String ?isEmployee;
   String? occupationLevelSector;
   String? bestWorkspaceLocation;
   int? commuteWorkDays;
   int? bikeWorkDays;
-  String? address;
-  String? geoCodes;
+  TextEditingController? address;
+  TextEditingController? geoCodes;
   bool? isWorkFromHome;
   int? numberWorkFromHome;
-  String? startingWoke;
-  String? endingWoke;
+  TextEditingController? startingWoke;
+  TextEditingController? endingWoke;
   String? flexibleWorkingHours;
-  String? earliestTimeStartingWork;
-  String? earliestTimeFinishingWork;
-  String? mainOccupationAddress;
+  TextEditingController? earliestTimeStartingWork;
+  TextEditingController? earliestTimeFinishingWork;
+  TextEditingController? mainOccupationAddress;
 
   OccupationModel();
 
   OccupationModel.fromJson(Map<String, dynamic> json) {
     occupationSector = json['occupationSector'] ?? "";
+    isEmployee = json['isEmployee'] ?? "";
     occupationLevelSector = json['occupationLevelSector'] ?? "";
     bestWorkspaceLocation = json['bestWorkspaceLocation'] ?? "";
     commuteWorkDays = json['commuteWorkDays'] ?? 0;
@@ -38,6 +42,7 @@ class OccupationModel {
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
     data['occupationSector'] = occupationSector ?? "";
+    data['isEmployee'] = isEmployee ?? "";
     data['occupationLevelSector'] = occupationLevelSector ?? "";
     data['bestWorkspaceLocation'] = bestWorkspaceLocation ?? "";
     data['commuteWorkDays'] = commuteWorkDays ?? 0;

@@ -15,7 +15,9 @@ class Employee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    var base = PersonModelList.personModelList[i];
+    var mainOccupationKey = PersonData.mainOccupation.keys.first;
+    var occupationSectorKey = PersonData.occupationSector.keys.first;
     return Column(
       children: [
         AppSize.spaceHeight3(context),
@@ -23,39 +25,32 @@ class Employee extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             DropDownFormInput2(
-              label: Text(PersonData
-                  .mainOccupation[PersonData.mainOccupation.keys.first]!
+              label: Text(PersonData.mainOccupation[mainOccupationKey]!
                   .toList()
                   .first["value"]
                   .toString()),
-              hint: PersonData.mainOccupation.keys.first.toString(),
-              options: PersonData
-                  .mainOccupation[PersonData.mainOccupation.keys.first]!
-                  .toList(),
+              hint: mainOccupationKey.toString(),
+              options: PersonData.mainOccupation[mainOccupationKey]!.toList(),
               onChange: (String? p) {
-                List value = PersonData
-                    .mainOccupation[PersonData.mainOccupation.keys.first]
-                    .toList();
+                List value =
+                    PersonData.mainOccupation[mainOccupationKey].toList();
 
                 for (int inr = 0; inr < value.length; inr++) {
                   if (p == value[inr]["value"]) {
-                    PersonModelList.personModelList[i].valueEmployee =
+                    base.personalQuestion!.mainOccupationType =
                         value[inr]["value"];
                   }
                 }
-
               },
             ),
             DropDownFormInput(
-              label: Text(PersonData
-                  .occupationSector[PersonData.occupationSector.keys.first]!
+              label: Text(PersonData.occupationSector[occupationSectorKey]!
                   .toList()
                   .first
                   .toString()),
               hint: PersonData.occupationSector.keys.first.toString(),
-              options: PersonData
-                  .occupationSector[PersonData.occupationSector.keys.first]!
-                  .toList(),
+              options:
+                  PersonData.occupationSector[occupationSectorKey]!.toList(),
               onChange: (String? p) {},
             ),
           ],
@@ -65,14 +60,12 @@ class Employee extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             DropDownFormInput(
-              label: Text(PersonData.occupationLevelSector[
-                      PersonData.occupationLevelSector.keys.first]!
+              label: Text(PersonData.occupationLevelSector[occupationSectorKey]!
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.occupationLevelSector.keys.first.toString(),
-              options: PersonData.occupationLevelSector[
-                      PersonData.occupationLevelSector.keys.first]!
+              hint: occupationSectorKey.toString(),
+              options: PersonData.occupationLevelSector[occupationSectorKey]!
                   .toList(),
               onChange: (String? p) {},
             ),
@@ -125,12 +118,12 @@ class Employee extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: PersonModelList.personModelList[i].geocode,
+                controller: base.occupationModel!.geoCodes!,
                 text: "Geocodes",
                 label: "Geocodes",
               ),
               TextForm(
-                controller: PersonModelList.personModelList[i].address,
+                controller: base.occupationModel!.address!,
                 text: "address",
                 label: "address",
               )
@@ -172,12 +165,12 @@ class Employee extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: PersonModelList.personModelList[i].startYourWork,
+                controller: base.occupationModel!.startingWoke!,
                 text: "StartYourWork",
                 label: "StartYourWork",
               ),
               TextForm(
-                controller: PersonModelList.personModelList[i].endYourWork,
+                controller: base.occupationModel!.endingWoke!,
                 text: "endYourWork",
                 label: "endYourWork",
               )
@@ -191,12 +184,12 @@ class Employee extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: PersonModelList.personModelList[i].earlyAndLateStart,
+                controller: base.occupationModel!.earliestTimeStartingWork!,
                 text: "Early and Late Start",
                 label: "Early and Late Start",
               ),
               TextForm(
-                controller: PersonModelList.personModelList[i].earlyAndLateFinish,
+                controller: base.occupationModel!.earliestTimeFinishingWork!,
                 text: "Early and Late Finish",
                 label: "Early and Late Finish",
               )
@@ -219,7 +212,7 @@ class Employee extends StatelessWidget {
               onChange: (String? p) {},
             ),
             TextForm(
-              controller: PersonModelList.personModelList[i].addressMainOccuption,
+              controller: base.personalQuestion!.educationAddress!.fullAddress!,
               text: "Address of the Main Occupation",
               label: "Address of the Main Occupation",
             )
@@ -253,7 +246,6 @@ class Employee extends StatelessWidget {
             ),
           ],
         ),
-
       ],
     );
   }

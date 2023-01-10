@@ -3,18 +3,36 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_mod
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_other_model.dart';
 
 class TripsModel {
+  bool? type;
   StartBeginningModel? startBeginningModel;
+
   StartBeginningModel? endingAddress;
+
   String? purposeTravel;
   String? departureTime;
+
   String? tripReason;
   TravelWay? travelWay;
+
   bool? isTravelAlone;
+
   TravelWithOtherModel? travelWithOtherModel;
   ArrivalDepartTime? arrivalDepartTime;
   TravelTypeModel? travelTypeModel;
 
-  TripsModel();
+  TripsModel({
+    this.type,
+    this.travelTypeModel,
+    this.travelWithOtherModel,
+    this.arrivalDepartTime,
+    this.travelWay,
+    this.departureTime,
+    this.endingAddress,
+    this.isTravelAlone,
+    this.purposeTravel,
+    this.startBeginningModel,
+    this.tripReason,
+  });
 
   TripsModel.fromJson(Map<String, dynamic> json) {
     startBeginningModel =

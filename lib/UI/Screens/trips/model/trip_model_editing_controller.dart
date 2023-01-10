@@ -16,10 +16,10 @@ class TripModelEditingController {
 
   TripModelEditingController(
       {required this.streetName,
-        required this.buildingName,
-        required this.streetNumber,
-        required this.zoneNumber,
-        required this.nearestLandMark,
-        required this.blockNearestTwoCrossStreets,
-        required this.area});
+      required this.buildingName,
+      required this.streetNumber,
+      required this.zoneNumber,
+      required this.nearestLandMark,
+      required this.blockNearestTwoCrossStreets,
+      required this.area});
 }
