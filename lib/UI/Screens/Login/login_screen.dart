@@ -9,9 +9,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("تطوير أنظمة تخطيط النقل"),
-      // ),
       body: const LoginBody(),
     );
   }

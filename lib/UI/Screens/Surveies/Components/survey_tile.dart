@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Providers/survey.dart';
+import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,7 @@ class _SurveyTileState extends State<SurveyTile> {
 
   @override
   Widget build(BuildContext context) {
-    final survey = Provider.of<SurveyProvider>(context, listen: true);
+    final survey = Provider.of<SurveyPTProvider>(context, listen: true);
     final SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
 
@@ -59,10 +60,10 @@ class _SurveyTileState extends State<SurveyTile> {
                 log(json.encode(survey.data.toJson()));
               },
               child: CircleAvatar(
+                backgroundColor: survey.synced ? Colors.green : Colors.black54,
                 child: survey.synced
                     ? const Icon(Icons.cloud)
                     : const Icon(Icons.sd_card),
-                backgroundColor: survey.synced ? Colors.green : Colors.black54,
               ),
             ),
           ),
@@ -80,9 +81,10 @@ class _SurveyTileState extends State<SurveyTile> {
               Text('الرقم التعريفي للمدخل (${survey.headerEmpNumber})')
             ],
           ),
-          trailing: Consumer<SurveyProvider>(
+          trailing: Consumer<SurveyPTProvider>(
             builder: (ctx, s, b) => !s.synced
                 ? CircleAvatar(
+                    radius: 30,
                     child: s.syncing
                         ? const CircularProgressIndicator(
                             color: Colors.white,
@@ -94,7 +96,6 @@ class _SurveyTileState extends State<SurveyTile> {
                             icon: const Icon(Icons.sync),
                             color: Colors.white,
                           ),
-                    radius: 30,
                   )
                 : const SizedBox.shrink(),
           ),

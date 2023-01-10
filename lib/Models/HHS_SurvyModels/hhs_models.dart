@@ -18,51 +18,52 @@ class HouseholdAddress {
 }
 
 class HouseholdQuestions {
-String? hhsDwellingType;
-   String? hhsIsDwelling;
-   int? hhsNumberBedRooms;
-  int? hhsNumberSeparateFamilies;
- int? hhsNumberAdults;
- String? hhsNumberChildren="";
- String? hhsNumberYearsInAddress;
- bool? hhsIsDemolishedAreas;
-   String? hhsDemolishedAreas;
+  String? hhsDwellingType;
+  String? hhsIsDwelling;
+  String? hhsNumberBedRooms;
+  String? hhsNumberSeparateFamilies;
+  String? hhsNumberAdults;
+  String? hhsNumberChildren = "";
+  String? hhsNumberYearsInAddress;
+  bool? hhsIsDemolishedAreas;
+  String? hhsDemolishedAreas;
 
-  BikesType? hhsPedalCycles;
+  BikesType hhsPedalCycles = BikesType();
   BikesType? hhsElectricCycles;
   BikesType? hhsElectricScooter;
   String? hhsTotalIncome;
 
   HouseholdQuestions(
-      { this.hhsDwellingType,
-    this.hhsIsDwelling,
-   this.hhsNumberBedRooms,
-     this.hhsNumberSeparateFamilies,
+      {this.hhsDwellingType,
+      this.hhsIsDwelling,
+      this.hhsNumberBedRooms,
+      this.hhsNumberSeparateFamilies,
       this.hhsTotalIncome,
-       this.hhsNumberYearsInAddress,
-     this.hhsElectricCycles,
-    this.hhsElectricScooter,
- this.hhsPedalCycles,
- this.hhsDemolishedAreas,
- this.hhsIsDemolishedAreas,
-  this.hhsNumberChildren,
-    this.hhsNumberAdults});
+      this.hhsNumberYearsInAddress,
+      this.hhsElectricCycles,
+      this.hhsElectricScooter,
+      this.hhsPedalCycles,
+      this.hhsDemolishedAreas,
+      this.hhsIsDemolishedAreas,
+      this.hhsNumberChildren,
+      this.hhsNumberAdults});
 }
 
 class BikesType {
-  int? totalBikesNumber;
-  int? adultsBikesNumber;
-  int? childrenBikesNumber;
+  String? totalBikesNumber;
+  String? adultsBikesNumber;
+  String? childrenBikesNumber;
 
   BikesType();
 }
 
 class SeparateFamilies {
-  int? numberChildren;
-  int? numberAdults;
-  int? totalNumberVehicles;
+  String? numberChildren;
+  String? numberAdults;
+  String? totalNumberVehicles;
 
-  SeparateFamilies(this.numberAdults,this.numberChildren,this.totalNumberVehicles);
+  SeparateFamilies(
+      this.numberAdults, this.numberChildren, this.totalNumberVehicles);
 
   SeparateFamilies.fromJson(Map<String, dynamic> json) {
     numberChildren = json['numberChildren'] ?? 0;
@@ -72,15 +73,15 @@ class SeparateFamilies {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['numberChildren'] = numberChildren ?? 0;
-    data['numberAdults'] = numberAdults ?? 0;
-    data['totalNumberVehicles'] = totalNumberVehicles ?? 0;
+    data['numberChildren'] = numberChildren;
+    data['numberAdults'] = numberAdults;
+    data['totalNumberVehicles'] = totalNumberVehicles;
     return data;
   }
 }
 
 class HhsStatic {
   static HouseholdAddress householdAddress = HouseholdAddress();
-  static HouseholdQuestions householdQuestions=HouseholdQuestions();
-  static List<SeparateFamilies> houseHold=[];
+  static HouseholdQuestions householdQuestions = HouseholdQuestions();
+  static List<SeparateFamilies> houseHold = [];
 }

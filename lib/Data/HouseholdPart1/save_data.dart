@@ -1,4 +1,5 @@
 import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
+import 'package:jaddah_household_survey/Models/HHS_SurvyModels/hhs_models.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'package:jaddah_household_survey/Providers/survey.dart';
 import 'package:provider/provider.dart';
@@ -9,9 +10,10 @@ import 'VechelisData/veh_model.dart';
 class SaveHHSData {
   static saveData(context) {
     SurveyProvider survey = Provider.of<SurveyProvider>(context, listen: true);
-
+    // survey.
   }
 }
+
 class SaveVehiclesData {
   static saveData(context) {
     SurveyProvider survey = Provider.of<SurveyProvider>(context, listen: true);

@@ -9,11 +9,11 @@ import '../survey.dart';
 import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
- late HouseholdQuestions householdQuestions;
-  VehiclesModel vehiclesData = VehiclesModel();
-  List<PersonModel>? personData;
+  HouseholdQuestions householdQuestions = HouseholdQuestions();
+  VehiclesModel vehiclesData = VehiclesModel(); //
+  List<PersonModel>? personData; //
   List<SeparateFamilies>? hhsSeparateFamilies;
-  List<TripsModel>? tripsList;
+  List<TripsModel>? tripsList; //
 
   SurveyPT() : super(SurveyType.pt) {
     super.provider = SurveyPTProvider(this);
@@ -34,14 +34,14 @@ class SurveyPT extends Survey {
     data['headerInterviewNumber'] = header.interviewNumber;
     data['headerDistrictName'] = header.districtName;
     data['headerZoneNumber'] = header.zoneNumber;
-    data['hhsCity'] = header.householdAddress!.city ?? '';
-    data['hhsBuildingName'] = header.householdAddress!.buildingName ?? '';
-    data['hhsStreetName'] = header.householdAddress!.streetName ?? "";
-    data['hhsStreetNumber'] = header.householdAddress!.streetNumber ?? '';
-    data['hhsNearestLandMark'] = header.householdAddress!.nearestLandMark ?? '';
+    data['hhsCity'] = header.householdAddress.city;
+    data['hhsBuildingName'] = header.householdAddress.buildingName;
+    data['hhsStreetName'] = header.householdAddress.streetName;
+    data['hhsStreetNumber'] = header.householdAddress.streetNumber;
+    data['hhsNearestLandMark'] = header.householdAddress.nearestLandMark;
     data['hhsBlockNearestCrossStreets'] =
-        header.householdAddress!.blockNearestCrossStreets ?? '';
-    data['hhsAreaSuburb'] = header.householdAddress!.areaSuburb ?? '';
+        header.householdAddress.blockNearestCrossStreets;
+    data['hhsAreaSuburb'] = header.householdAddress.areaSuburb;
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;

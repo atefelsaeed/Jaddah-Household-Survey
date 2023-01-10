@@ -61,68 +61,15 @@ class _SurveysScreenState extends State<SurveysScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("تطوير انظمة تخطيط النقل"),
+        // title: const Text("تطوير انظمة تخطيط النقل"),
         backgroundColor: ColorManager.primaryColor,
         actions: [
           IconButton(
             onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SurveyScreen()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Icon(Icons.person),
-                                Text("PT"),
-                              ],
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Icon(Icons.local_taxi),
-                                Text("CAR"),
-                              ],
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Icon(Icons.car_rental),
-                                Text("Freight"),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SurveyScreen()));
             },
             icon: const Icon(Icons.add),
           ),
@@ -134,7 +81,7 @@ class _SurveysScreenState extends State<SurveysScreen> {
                   log(stackTrace.toString());
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text("يجب تشغيل خدمة تحديد الموقع"),
+                      content: Text("The location service must be running"),
                       duration: Duration(seconds: 3),
                       elevation: 1,
                     ),
@@ -182,7 +129,7 @@ class _SurveysScreenState extends State<SurveysScreen> {
                                 padding: EdgeInsets.all(12.0),
                                 child: Center(
                                   child: Text(
-                                    'لا يوجد اي استبيانات',
+                                    'There are no surveys',
                                   ),
                                 ),
                               ),

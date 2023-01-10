@@ -45,8 +45,8 @@ class VehiclesModel {
     data['numberAirTubedAdultsLeisure'] = numberAirTubedAdultsLeisure ?? 0;
     data['numberAirTubedChildren'] = numberAirTubedChildren ?? 0;
     data['nearestBusStop'] = nearestBusStop ?? '';
-    data['vehiclesBodyType'] =
-        vehiclesBodyType!.map((e) => e.toJson()).toList();
+    // data['vehiclesBodyType'] =
+    //     vehiclesBodyType!.map((e) => e.toJson()).toList();
     return data;
   }
 }

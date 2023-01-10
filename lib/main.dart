@@ -80,14 +80,14 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale("ar"), // OR Locale('ar', 'AE') OR Other RTL locales
+          Locale("en"), // OR Locale('ar', 'AE') OR Other RTL locales
         ],
-        locale: const Locale("ar"),
+        locale: const Locale("en"),
         routes: {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home: const SurveyScreen(),
+        home: const HomeScreen(),
       ),
     );
   }

@@ -10,7 +10,7 @@ class HeaderBase {
   late String districtName;
   late String zoneNumber;
   late int empNumber;
-  HouseholdAddress? householdAddress;
+  HouseholdAddress householdAddress = HouseholdAddress();
 
   HeaderBase();
 }

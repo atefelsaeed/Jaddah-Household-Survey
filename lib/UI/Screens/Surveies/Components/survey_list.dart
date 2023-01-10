@@ -113,7 +113,7 @@ class SurveyList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: surveyList.isEmpty
-                      ? [const Text("لم تقم بإدخال أى إستبيانات")]
+                      ? [const Text("You have not entered any surveys")]
                       : newMap.values.toList(),
                 ),
               ),

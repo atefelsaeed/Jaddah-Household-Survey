@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/q5.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Providers/auth.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../Widgets/custom_buttton.dart';
@@ -72,10 +76,36 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   bool checked = false;
 
+  Future<LocationData> getLocation() async {
+    Location location = new Location();
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return Future.error(0);
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return Future.error(1);
+      }
+    }
+
+    return await location.getLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
+    Auth auth = Provider.of<Auth>(context, listen: false);
     SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
 
@@ -99,7 +129,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     streetNumber: streetNumber,
                     zoneNumber: zoneNumber,
                     streetName: streetNumber,
-                    city: city,
+                    // city: city,
                     buildingName: buildingName,
                   ),
 
@@ -149,8 +179,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   ListViewCheckBoxOrange(
                       onChange: (r) {
                         print(r);
-                        HhsStatic.householdQuestions.hhsNumberBedRooms =
-                            int.parse(r);
+                        HhsStatic.householdQuestions.hhsNumberBedRooms = r;
                       },
                       title: QuestionsData.qh3.keys.first,
                       question: QuestionsData.qh3[QuestionsData.qh3.keys.first]!
@@ -161,7 +190,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   ListViewCheckBoxOrange(
                     onChange: (r) {
                       HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
-                          int.parse(r);
+                          r;
                     },
                     title: QuestionsData.qh4.keys.first,
                     question: QuestionsData.qh4[QuestionsData.qh4.keys.first]!
@@ -231,7 +260,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             .qh9[QuestionsData.qh9.keys.first]!
                             .toList(),
                         onChange: (String p) {
-                          HhsStatic.householdQuestions.hhsTotalIncome=p;
+                          HhsStatic.householdQuestions.hhsTotalIncome = p;
                         },
                       ),
                     ],
@@ -239,60 +268,77 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   AppSize.spaceHeight3(context),
                   DefaultButton(
                     function: () {
-                      HhsStatic.householdAddress.blockNearestCrossStreets =
-                          blockNearestTwoCrossStreets.text;
-                      HhsStatic.householdAddress.areaSuburb = area.text;
-                      HhsStatic.householdAddress.streetName = streetName.text;
-                      HhsStatic.householdAddress.buildingName =
-                          buildingName.text;
-                      HhsStatic.householdAddress.streetNumber =
-                          streetNumber.text;
-                      HhsStatic.householdAddress.nearestLandMark =
-                          nearestLandMark.text;
-                      HhsStatic.householdAddress.city = city.text;
-                      HhsStatic.householdQuestions.hhsNumberAdults =
-                          int.parse(peopleAdults18.text);
-
-                      HhsStatic.householdQuestions.hhsNumberBedRooms =
-                          int.parse(peopleUnder18.text);
-
-                      for (int i = 0; i < q6peopleUnder18.length; i++) {
-                        HhsStatic.houseHold.add(SeparateFamilies(
-                            int.parse(q6peopleAdults18[i].text),
-                            int.parse(q6peopleUnder18[i].text),
-                            int.parse(q6totalNumberOfVec[i].text)));
+                      if (_key.currentState!.validate()) {
+                        _key.currentState!.save();
+                        getLocation().then(
+                          (value) {
+                            for (int i = 0; i < q6peopleUnder18.length; i++) {
+                              HhsStatic.houseHold.add(
+                                SeparateFamilies(
+                                  q6peopleAdults18[i].text,
+                                  q6peopleUnder18[i].text,
+                                  q6totalNumberOfVec[i].text,
+                                ),
+                              );
+                            }
+                            surveyPt.id = auth.uid.toString();
+                            surveyPt.headerInterviewNumber = 10;
+                            surveyPt.headerLat = value.latitude ?? 0;
+                            surveyPt.interViewDate = DateTime.now();
+                            surveyPt.headerLong = value.longitude ?? 0;
+                            surveyPt.headerEmpNumber = auth.uid;
+                            surveyPt.hhsBlockNearestCrossStreets =
+                                blockNearestTwoCrossStreets.text;
+                            surveyPt.hhsAreaSuburb = area.text;
+                            surveyPt.hhsStreetName = streetName.text;
+                            surveyPt.hhsBuildingName = buildingName.text;
+                            surveyPt.hhsStreetNumber = streetNumber.text;
+                            surveyPt.hhsNearestLandMark = nearestLandMark.text;
+                            surveyPt.hhsCity = city.text;
+                            surveyPt.hhsNumberAdults = peopleAdults18.text;
+                            surveyPt.hhsNumberBedRooms = peopleUnder18.text;
+                            surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
+                            surveyPt.hhsPCChildrenBikesNumber =
+                                editingController3Q81.peopleUnder18.text;
+                            surveyPt.hhsPCTotalBikesNumber =
+                                editingController3Q81.totalNumber.text;
+                            surveyPt.hhsPCAdultsBikesNumber =
+                                editingController3Q81.peopleAdults18.text;
+                            surveyPt.hhsECChildrenBikesNumber =
+                                editingController3Q82.peopleUnder18.text;
+                            surveyPt.hhsECTotalBikesNumber =
+                                editingController3Q82.totalNumber.text;
+                            surveyPt.hhsECAdultsBikesNumber =
+                                editingController3Q82.peopleAdults18.text;
+                            surveyPt.hhsESChildrenBikesNumber =
+                                editingController3Q83.peopleUnder18.text;
+                            surveyPt.hhsESTotalBikesNumber =
+                                editingController3Q83.totalNumber.text;
+                            surveyPt.hhsESAdultsBikesNumber =
+                                editingController3Q83.peopleAdults18.text;
+                          },
+                        ).onError(
+                          (error, stackTrace) {
+                            print(error);
+                            log(stackTrace.toString());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("يجب تشغيل خدمة تحديد الموقع"),
+                                duration: Duration(seconds: 3),
+                                elevation: 1,
+                              ),
+                            );
+                          },
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("يوجد خطأ بالبيانات"),
+                            duration: Duration(seconds: 3),
+                            elevation: 1,
+                          ),
+                        );
                       }
-                      HhsStatic.householdQuestions.hhsPedalCycles!
-                              .childrenBikesNumber =
-                          int.parse(editingController3Q81.peopleUnder18.text);
-                      HhsStatic.householdQuestions.hhsPedalCycles!
-                              .totalBikesNumber =
-                          int.parse(editingController3Q81.totalNumber.text);
-                      HhsStatic.householdQuestions.hhsPedalCycles!
-                              .adultsBikesNumber =
-                          int.parse(editingController3Q81.peopleAdults18.text);
-                      HhsStatic.householdQuestions.hhsElectricCycles!
-                              .childrenBikesNumber =
-                          int.parse(editingController3Q82.peopleUnder18.text);
-                      HhsStatic.householdQuestions.hhsElectricCycles!
-                              .totalBikesNumber =
-                          int.parse(editingController3Q82.totalNumber.text);
-                      HhsStatic.householdQuestions.hhsElectricCycles!
-                              .adultsBikesNumber =
-                          int.parse(editingController3Q82.peopleAdults18.text);
-                      HhsStatic.householdQuestions.hhsElectricScooter!
-                              .childrenBikesNumber =
-                          int.parse(editingController3Q83.peopleUnder18.text);
-                      HhsStatic.householdQuestions.hhsElectricScooter!
-                              .totalBikesNumber =
-                          int.parse(editingController3Q83.totalNumber.text);
-                      HhsStatic.householdQuestions.hhsElectricScooter!
-                              .adultsBikesNumber =
-                          int.parse(editingController3Q83.peopleAdults18.text);
-
-                      //HhsStatic.householdQuestions.hhsDwellingType.
-
-                      //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
                     },
                     isWidget: true,
                     text: "Next Step",

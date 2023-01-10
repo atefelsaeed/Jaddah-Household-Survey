@@ -62,7 +62,7 @@ abstract class SurveyProvider with ChangeNotifier {
     syncing = true;
     notifyListeners();
     print('data send to server ...');
-    log(json.encode(data));
+    // log(json.encode(data));
     final res;
     try {
       print('push_url.= ' + push_url);
@@ -177,17 +177,17 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsIsDwellingType(String? l);
 
-  int? get hhsNumberBedRooms;
+  String? get hhsNumberBedRooms;
 
-  set hhsNumberBedRooms(int? l);
+  set hhsNumberBedRooms(String? l);
 
-  int? get hhsNumberSeparateFamilies;
+  String? get hhsNumberSeparateFamilies;
 
-  set hhsNumberSeparateFamilies(int? l);
+  set hhsNumberSeparateFamilies(String? l);
 
-  int? get hhsNumberAdults;
+  String? get hhsNumberAdults;
 
-  set hhsNumberAdults(int? l);
+  set hhsNumberAdults(String? l);
 
   int? get hhsNumberChildren;
 
@@ -206,43 +206,43 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsDemolishedAreas(String? l);
 
   ///==============hhsPedalCycles(PC)====================
-  int? get hhsPCTotalBikesNumber;
+  String? get hhsPCTotalBikesNumber;
 
-  set hhsPCTotalBikesNumber(int? l);
+  set hhsPCTotalBikesNumber(String? l);
 
-  int? get hhsPCAdultsBikesNumber;
+  String? get hhsPCAdultsBikesNumber;
 
-  set hhsPCAdultsBikesNumber(int? l);
+  set hhsPCAdultsBikesNumber(String? l);
 
-  int? get hhsPCChildrenBikesNumber;
+  String? get hhsPCChildrenBikesNumber;
 
-  set hhsPCChildrenBikesNumber(int? l);
+  set hhsPCChildrenBikesNumber(String? l);
 
   ///==============hhsElectricCycles(EC)====================
-  int? get hhsECTotalBikesNumber;
+  String? get hhsECTotalBikesNumber;
 
-  set hhsECTotalBikesNumber(int? l);
+  set hhsECTotalBikesNumber(String? l);
 
-  int? get hhsECAdultsBikesNumber;
+  String? get hhsECAdultsBikesNumber;
 
-  set hhsECAdultsBikesNumber(int? l);
+  set hhsECAdultsBikesNumber(String? l);
 
-  int? get hhsECChildrenBikesNumber;
+  String? get hhsECChildrenBikesNumber;
 
-  set hhsECChildrenBikesNumber(int? l);
+  set hhsECChildrenBikesNumber(String? l);
 
   ///==============hhsElectricScooter(ES)====================
-  int? get hhsESTotalBikesNumber;
+  String? get hhsESTotalBikesNumber;
 
-  set hhsESTotalBikesNumber(int? l);
+  set hhsESTotalBikesNumber(String? l);
 
-  int? get hhsESAdultsBikesNumber;
+  String? get hhsESAdultsBikesNumber;
 
-  set hhsESAdultsBikesNumber(int? l);
+  set hhsESAdultsBikesNumber(String? l);
 
-  int? get hhsESChildrenBikesNumber;
+  String? get hhsESChildrenBikesNumber;
 
-  set hhsESChildrenBikesNumber(int? l);
+  set hhsESChildrenBikesNumber(String? l);
 
   String? get hhsTotalIncome;
 
