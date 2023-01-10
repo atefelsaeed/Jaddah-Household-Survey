@@ -1,11 +1,19 @@
+import 'package:flutter/material.dart';
+
 class TravelTypeModel {
   String? carParkingPlace;
   String? taxiTravelType;
   String? passTravelType;
-  String? taxiFare;
+  TextEditingController? taxiFare;
   String? publicTransportFare;
 
-  TravelTypeModel();
+  TravelTypeModel({
+    this.carParkingPlace,
+    this.passTravelType,
+    this.publicTransportFare,
+    this.taxiFare,
+    this.taxiTravelType,
+  });
 
   TravelTypeModel.fromJson(Map<String, dynamic> json) {
     carParkingPlace = json['carParkingPlace'];
@@ -31,7 +39,11 @@ class ArrivalDepartTime {
   String? arriveDestinationTime;
   String? numberRepeatTrip;
 
-  ArrivalDepartTime();
+  ArrivalDepartTime({
+    this.departTime,
+    this.numberRepeatTrip,
+    this.arriveDestinationTime,
+  });
 
   ArrivalDepartTime.fromJson(Map<String, dynamic> json) {
     departTime = json['departTime'];

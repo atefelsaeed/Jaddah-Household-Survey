@@ -92,7 +92,11 @@ class TripHoldAddress extends StatelessWidget {
                 text: "City/ Town",
                 label: "Enter City/ Town",
               ),
-              //  TextForm(controller: area,text: "Area (Suburb)",label: "Enter Area (Suburb) ",)
+              TextForm(
+                controller: tripModel.blockNearestTwoCrossStreets,
+                text: "Refer to Map",
+                label: "Enter Refer to Map ",
+              )
             ],
           ),
         ),

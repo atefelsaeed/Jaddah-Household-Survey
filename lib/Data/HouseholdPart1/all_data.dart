@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/vechelis_data.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
+import 'package:jaddah_household_survey/Models/Trips_SurveyModel/start_beginning_model.dart';
+import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_model.dart';
+import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_other_model.dart';
 
 import '../../Models/Person_SurveyModel/person_model.dart';
+import '../../Models/Trips_SurveyModel/trips_model.dart';
 import '../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../Models/Vehicles_SurveyModel/vehicles_model.dart';
 import '../../UI/Screens/Survey/components/q5.dart';
@@ -41,51 +45,75 @@ class PersonModelList {
 }
 
 class TripModeList {
-  static List<TripModel> tripModeList = [
-    TripModel(
-        whereDidYouGo: "",
-        purposeOfBeing: "",
+  static List<TripsModel> tripModeList = [
+    TripsModel(
+      type: false,
+      isTravelAlone: false,
+      tripReason: "",//whereDidYouGo
+      purposeTravel: "",
+      departureTime: "",
+      travelTypeModel: TravelTypeModel(
+        carParkingPlace: "",
+        taxiFare: TextEditingController(),
+        taxiTravelType: '',
+        passTravelType: '',
+        publicTransportFare: '',
+      ),
+      travelWay: TravelWay(
         mainMode: "",
         accessMode: "",
-        memberHouseHoldTravelPass: "",
-        typeTravel: "",
-        typeTaxi: "",
-        locationPark: "",
-        costTaxi: TextEditingController(),
-        depart: TextEditingController(),
-        destination: TextEditingController(),
-        tripModel: TripModelEditingController(
-            streetName: TextEditingController(),
-            buildingName: TextEditingController(),
-            streetNumber: TextEditingController(),
-            zoneNumber: TextEditingController(),
-            nearestLandMark: TextEditingController(),
-            blockNearestTwoCrossStreets: TextEditingController(),
-            area: TextEditingController()),
-        type: false,
-        typeAlone: false,
-        travelAloneHouseHold: AdultsModel(
-            adultsPlus18: TextEditingController(),
-            adultsMin18: TextEditingController(),
-            text: "Non Household persons"),
-        travelAloneWithOther: AdultsModel(
-            adultsPlus18: TextEditingController(),
-            adultsMin18: TextEditingController(),
-            text: "?If with other how many"),
-        atWhatAddressDidYou: TripModelEditingController(
-            streetName: TextEditingController(),
-            buildingName: TextEditingController(),
-            streetNumber: TextEditingController(),
-            zoneNumber: TextEditingController(),
-            nearestLandMark: TextEditingController(),
-            blockNearestTwoCrossStreets: TextEditingController(),
-            area: TextEditingController()),
-        expectedDeparture: TextEditingController(),
-        editingController3: EditingController3(
-            peopleUnder18: TextEditingController(),
-            totalNumber: TextEditingController(),
-            peopleAdults18: TextEditingController()),
-        typeTravelCondition: "0")
+      ),
+      travelWithOtherModel: TravelWithOtherModel(
+        adultsNumber: TextEditingController(),
+        childrenNumber: TextEditingController(),
+        hhsMembersTraveled: "",
+        nonHHSAdultsNumber: TextEditingController(),
+        nonHHSChildrenNumber: TextEditingController(),
+      ),
+      arrivalDepartTime: ArrivalDepartTime(
+        arriveDestinationTime: '',
+        departTime: '',
+        numberRepeatTrip: '',
+      ),
+      startBeginningModel: StartBeginningModel(
+        area: TextEditingController(),
+        buildingName: TextEditingController(),
+        city: TextEditingController(),
+        block: TextEditingController(),
+        nearestLandMark: TextEditingController(),
+        streetName: TextEditingController(),
+        streetNumber: TextEditingController(),
+        referToMap: TextEditingController(),
+      ),
+      endingAddress: StartBeginningModel(
+        area: TextEditingController(),
+        buildingName: TextEditingController(),
+        city: TextEditingController(),
+        block: TextEditingController(),
+        nearestLandMark: TextEditingController(),
+        streetName: TextEditingController(),
+        streetNumber: TextEditingController(),
+        referToMap: TextEditingController(),
+      ),
+    )
+    // TripModel(
+    //     typeTravel: "",
+    //     depart: TextEditingController(),
+    //     destination: TextEditingController(),
+    //     travelAloneHouseHold: AdultsModel(
+    //         adultsPlus18: TextEditingController(),
+    //         adultsMin18: TextEditingController(),
+    //         text: "Non Household persons"),
+    //     travelAloneWithOther: AdultsModel(
+    //         adultsPlus18: TextEditingController(),
+    //         adultsMin18: TextEditingController(),
+    //         text: "?If with other how many"),
+    //     expectedDeparture: TextEditingController(),
+    //     editingController3: EditingController3(
+    //         peopleUnder18: TextEditingController(),
+    //         totalNumber: TextEditingController(),
+    //         peopleAdults18: TextEditingController()),
+    //     typeTravelCondition: "0")
   ];
 }
 

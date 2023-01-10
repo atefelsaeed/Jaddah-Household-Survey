@@ -1,14 +1,25 @@
-class StartBeginningModel {
-  String? buildingName;
-  String? streetName;
-  String? streetNumber;
-  String? nearestLandMark;
-  String? block;
-  String? area;
-  String? city;
-  String? referToMap;
+import 'package:flutter/material.dart';
 
-  StartBeginningModel();
+class StartBeginningModel {
+  TextEditingController? buildingName;
+  TextEditingController? streetName;
+  TextEditingController? streetNumber;
+  TextEditingController? nearestLandMark;
+  TextEditingController? block;
+  TextEditingController? area;
+  TextEditingController? city;
+  TextEditingController? referToMap;
+
+  StartBeginningModel({
+    this.nearestLandMark,
+    this.streetNumber,
+    this.streetName,
+    this.buildingName,
+    this.city,
+    this.area,
+    this.block,
+    this.referToMap,
+  });
 
   StartBeginningModel.fromJson(Map<String, dynamic> json) {
     buildingName = json['buildingName'];

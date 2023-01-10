@@ -55,8 +55,6 @@ class SaveVehiclesData {
 class SavePersonData {
   static saveData(context) {
     SurveyProvider survey = Provider.of<SurveyProvider>(context, listen: true);
-    survey.personData = [
-
-    ];
+    survey.personData = PersonModelList.personModelList;
   }
 }
