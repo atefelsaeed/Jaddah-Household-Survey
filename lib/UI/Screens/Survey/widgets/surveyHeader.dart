@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../Helper/validator.dart';
-import '../../../../Providers/survey.dart';
 import '../../../../Resources/assets_manager.dart';
-import '../../../Widgets/dropdown_form_input.dart';
 
 class SurveyHeader extends StatefulWidget {
   const SurveyHeader({Key? key}) : super(key: key);

@@ -4,23 +4,25 @@ class TravelWithOtherModel {
   TextEditingController? adultsNumber;
   TextEditingController? childrenNumber;
   String? hhsMembersTraveled;
-  TextEditingController? nonHHSAdultsNumber;
-  TextEditingController? nonHHSChildrenNumber;
+  // TextEditingController? nonHHSAdultsNumber;
+  // TextEditingController? nonHHSChildrenNumber;
+  String? text;
 
   TravelWithOtherModel({
     this.adultsNumber,
     this.childrenNumber,
     this.hhsMembersTraveled,
-    this.nonHHSAdultsNumber,
-    this.nonHHSChildrenNumber,
+    // this.nonHHSAdultsNumber,
+    // this.nonHHSChildrenNumber,
+    this.text,
   });
 
   TravelWithOtherModel.fromJson(Map<String, dynamic> json) {
     adultsNumber = json['adultsNumber'];
     childrenNumber = json['childrenNumber'];
     hhsMembersTraveled = json['hhsMembersTraveled'];
-    nonHHSAdultsNumber = json['nonHHSAdultsNumber'];
-    nonHHSChildrenNumber = json['nonHHSChildrenNumber'];
+    // nonHHSAdultsNumber = json['nonHHSAdultsNumber'];
+    // nonHHSChildrenNumber = json['nonHHSChildrenNumber'];
   }
 
   Map<String, dynamic> toJson() {
@@ -28,10 +30,21 @@ class TravelWithOtherModel {
     data['adultsNumber'] = adultsNumber;
     data['childrenNumber'] = childrenNumber;
     data['hhsMembersTraveled'] = hhsMembersTraveled;
-    data['nonHHSAdultsNumber'] = nonHHSAdultsNumber;
-    data['nonHHSChildrenNumber'] = nonHHSChildrenNumber;
+    // data['nonHHSAdultsNumber'] = nonHHSAdultsNumber;
+    // data['nonHHSChildrenNumber'] = nonHHSChildrenNumber;
     return data;
   }
+}
+
+class AdultsModel {
+  TextEditingController adultsPlus18;
+  TextEditingController adultsMin18;
+  final String text;
+
+  AdultsModel(
+      {required this.adultsPlus18,
+      required this.adultsMin18,
+      required this.text});
 }
 
 class TravelWay {

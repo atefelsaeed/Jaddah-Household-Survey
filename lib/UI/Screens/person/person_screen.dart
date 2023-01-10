@@ -8,11 +8,10 @@ import 'package:jaddah_household_survey/UI/Screens/person/components/education_l
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/next_step.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/transporter_moblity.dart';
-import 'package:jaddah_household_survey/UI/Screens/person/person_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/all_data.dart';
-import '../../../Data/HouseholdPart1/person_data.dart';
+import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';

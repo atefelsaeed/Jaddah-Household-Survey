@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../Data/HouseholdPart1/vechelis_data.dart';
-
 class VehiclesBodyType {
   String? vehicleTypeName;
   int? vehicleTypeQuantity;

@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/UI/Screens/trips/model/trip_model_editing_controller.dart';
 
-import '../../Survey/components/q5.dart';
-import '../components/adults_or_not.dart';
 
 // class TripModel {
 //   late bool type;

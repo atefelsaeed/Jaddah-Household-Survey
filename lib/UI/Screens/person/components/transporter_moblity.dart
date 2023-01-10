@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../Data/HouseholdPart1/person_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 

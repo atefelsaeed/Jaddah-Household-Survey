@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/all_data.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 
-import '../../../../Data/HouseholdPart1/person_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';

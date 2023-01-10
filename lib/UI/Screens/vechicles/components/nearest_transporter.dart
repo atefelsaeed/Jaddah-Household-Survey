@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/vechicles_screen.dart';
 
-import '../../../../Data/HouseholdPart1/all_data.dart';
-import '../../../../Data/HouseholdPart1/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../Survey/widgets/list_view_check_box_orange.dart';
 
 class NearestTransporter extends StatelessWidget {

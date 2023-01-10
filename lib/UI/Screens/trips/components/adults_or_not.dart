@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../../../Models/Trips_SurveyModel/travel_with_other_model.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
@@ -8,7 +9,7 @@ import '../../../Widgets/text_form_field.dart';
 class AdultsOrNot extends StatelessWidget {
   const AdultsOrNot({super.key, required this.adultsModel});
 
-  final AdultsModel adultsModel;
+  final TravelWithOtherModel adultsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class AdultsOrNot extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextGlobal(
-              text: adultsModel.text,
+              text: adultsModel.text!,
               fontSize: height(context) * .02,
               color: ColorManager.black,
             ),
@@ -34,7 +35,7 @@ class AdultsOrNot extends StatelessWidget {
               children: [
                 MyTextForm(
                   label: "",
-                  controller: adultsModel.adultsMin18,
+                  controller: adultsModel.childrenNumber,
                   widthForm: width(context) * .07,
                 ),
                 AppSize.spaceWidth1(context),
@@ -50,7 +51,7 @@ class AdultsOrNot extends StatelessWidget {
               children: [
                 MyTextForm(
                   label: "",
-                  controller: adultsModel.adultsPlus18,
+                  controller: adultsModel.adultsNumber,
                   widthForm: width(context) * .07,
                 ),
                 AppSize.spaceWidth1(context),
@@ -66,15 +67,4 @@ class AdultsOrNot extends StatelessWidget {
       ],
     );
   }
-}
-
-class AdultsModel {
-  TextEditingController adultsPlus18;
-  TextEditingController adultsMin18;
-  final String text;
-
-  AdultsModel(
-      {required this.adultsPlus18,
-        required this.adultsMin18,
-        required this.text});
 }
