@@ -171,76 +171,68 @@ class SurveyPTProvider extends SurveyProvider {
 
   ///==========householdQuestions====================
   @override
-  String get hhsDwellingType => _data.householdQuestions.hhsDwellingType;
+  String? get hhsDwellingType => _data.householdQuestions.hhsDwellingType;
 
   @override
-  set hhsDwellingType(String i) {
+  set hhsDwellingType(String? i) {
     _data.householdQuestions.hhsDwellingType = i;
     // notifyListeners();
   }
 
   @override
-  String get hhsIsDwellingType => _data.householdQuestions.hhsIsDwelling;
+  String? get hhsIsDwellingType => _data.householdQuestions.hhsIsDwelling;
 
   @override
-  set hhsIsDwellingType(String i) {
+  set hhsIsDwellingType(String? i) {
     _data.householdQuestions.hhsIsDwelling = i;
     // notifyListeners();
   }
 
   @override
-  int get hhsNumberBedRooms => _data.householdQuestions.hhsNumberBedRooms;
+  int? get hhsNumberBedRooms => _data.householdQuestions.hhsNumberBedRooms;
 
   @override
-  set hhsNumberBedRooms(int i) {
+  set hhsNumberBedRooms(int? i) {
     _data.householdQuestions.hhsNumberBedRooms = i;
     // notifyListeners();
   }
 
   @override
-  int get hhsNumberSeparateFamilies =>
+  int? get hhsNumberSeparateFamilies =>
       _data.householdQuestions.hhsNumberSeparateFamilies;
 
   @override
-  set hhsNumberSeparateFamilies(int i) {
+  set hhsNumberSeparateFamilies(int? i) {
     _data.householdQuestions.hhsNumberSeparateFamilies = i;
     // notifyListeners();
   }
 
   @override
-  int get hhsNumberAdults => _data.householdQuestions.hhsNumberAdults;
+  int? get hhsNumberAdults => _data.householdQuestions.hhsNumberAdults;
 
   @override
-  set hhsNumberAdults(int i) {
+  set hhsNumberAdults(int? i) {
     _data.householdQuestions.hhsNumberAdults = i;
     // notifyListeners();
   }
 
-  @override
-  int get hhsNumberChildren => _data.householdQuestions.hhsNumberChildren;
 
   @override
-  set hhsNumberChildren(int i) {
-    _data.householdQuestions.hhsNumberChildren = i;
-    // notifyListeners();
-  }
-
-  @override
-  String get hhsNumberYearsInAddress =>
+  String? get hhsNumberYearsInAddress =>
       _data.householdQuestions.hhsNumberYearsInAddress;
 
   @override
-  set hhsNumberYearsInAddress(String i) {
+  set hhsNumberYearsInAddress(String? i) {
     _data.householdQuestions.hhsNumberYearsInAddress = i;
     // notifyListeners();
   }
 
   @override
-  bool get hhsIsDemolishedAreas =>
+  bool? get hhsIsDemolishedAreas =>
       _data.householdQuestions.hhsIsDemolishedAreas;
 
   @override
-  set hhsIsDemolishedAreas(bool i) {
+  set hhsIsDemolishedAreas(bool? i) {
     _data.householdQuestions.hhsIsDemolishedAreas = i;
     // notifyListeners();
   }
@@ -375,4 +367,13 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   List<TripsModel> get tripsList => [...?_data.tripsList];
+
+  @override
+  // TODO: implement hhsNumberChildren
+  int get hhsNumberChildren => throw UnimplementedError();
+
+  @override
+  set hhsNumberChildren(int? l) {
+    // TODO: implement hhsNumberChildren
+  }
 }

@@ -9,7 +9,7 @@ import '../survey.dart';
 import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
-  HouseholdQuestions householdQuestions = HouseholdQuestions();
+ late HouseholdQuestions householdQuestions;
   VehiclesModel vehiclesData = VehiclesModel();
   List<PersonModel>? personData;
   List<SeparateFamilies>? hhsSeparateFamilies;

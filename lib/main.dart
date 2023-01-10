@@ -17,6 +17,7 @@ import 'UI/Screens/Home/homeScreen.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 import 'UI/Screens/Surveies/surveys_screen.dart';
+import 'UI/Screens/Survey/syrvey_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -86,7 +87,7 @@ class _MyAppState extends State<MyApp> {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home: const HomeScreen(),
+        home: const SurveyScreen(),
       ),
     );
   }

@@ -169,37 +169,37 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsAreaSuburb(String? l);
 
   ///=========HouseholdQuestions=================
-  String get hhsDwellingType;
+  String? get hhsDwellingType;
 
-  set hhsDwellingType(String l);
+  set hhsDwellingType(String? l);
 
-  String get hhsIsDwellingType;
+  String? get hhsIsDwellingType;
 
-  set hhsIsDwellingType(String l);
+  set hhsIsDwellingType(String? l);
 
-  int get hhsNumberBedRooms;
+  int? get hhsNumberBedRooms;
 
-  set hhsNumberBedRooms(int l);
+  set hhsNumberBedRooms(int? l);
 
-  int get hhsNumberSeparateFamilies;
+  int? get hhsNumberSeparateFamilies;
 
-  set hhsNumberSeparateFamilies(int l);
+  set hhsNumberSeparateFamilies(int? l);
 
-  int get hhsNumberAdults;
+  int? get hhsNumberAdults;
 
-  set hhsNumberAdults(int l);
+  set hhsNumberAdults(int? l);
 
-  int get hhsNumberChildren;
+  int? get hhsNumberChildren;
 
-  set hhsNumberChildren(int l);
+  set hhsNumberChildren(int? l);
 
-  String get hhsNumberYearsInAddress;
+  String? get hhsNumberYearsInAddress;
 
-  set hhsNumberYearsInAddress(String l);
+  set hhsNumberYearsInAddress(String? l);
 
-  bool get hhsIsDemolishedAreas;
+  bool? get hhsIsDemolishedAreas;
 
-  set hhsIsDemolishedAreas(bool l);
+  set hhsIsDemolishedAreas(bool? l);
 
   String? get hhsDemolishedAreas;
 

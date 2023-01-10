@@ -7,26 +7,46 @@ class HouseholdAddress {
   String? areaSuburb;
   String? city;
 
-  HouseholdAddress();
+  HouseholdAddress(
+      {this.nearestLandMark,
+      this.streetNumber,
+      this.buildingName,
+      this.streetName,
+      this.city,
+      this.areaSuburb,
+      this.blockNearestCrossStreets});
 }
 
 class HouseholdQuestions {
-  late String hhsDwellingType;
-  late String hhsIsDwelling;
-  late int hhsNumberBedRooms;
-  late int hhsNumberSeparateFamilies;
-  late int hhsNumberAdults;
-  late int hhsNumberChildren;
-  late String hhsNumberYearsInAddress;
-  late bool hhsIsDemolishedAreas;
-  String? hhsDemolishedAreas;
+String? hhsDwellingType;
+   String? hhsIsDwelling;
+   int? hhsNumberBedRooms;
+  int? hhsNumberSeparateFamilies;
+ int? hhsNumberAdults;
+ String? hhsNumberChildren="";
+ String? hhsNumberYearsInAddress;
+ bool? hhsIsDemolishedAreas;
+   String? hhsDemolishedAreas;
 
   BikesType? hhsPedalCycles;
   BikesType? hhsElectricCycles;
   BikesType? hhsElectricScooter;
   String? hhsTotalIncome;
 
-  HouseholdQuestions();
+  HouseholdQuestions(
+      { this.hhsDwellingType,
+    this.hhsIsDwelling,
+   this.hhsNumberBedRooms,
+     this.hhsNumberSeparateFamilies,
+      this.hhsTotalIncome,
+       this.hhsNumberYearsInAddress,
+     this.hhsElectricCycles,
+    this.hhsElectricScooter,
+ this.hhsPedalCycles,
+ this.hhsDemolishedAreas,
+ this.hhsIsDemolishedAreas,
+  this.hhsNumberChildren,
+    this.hhsNumberAdults});
 }
 
 class BikesType {
@@ -42,7 +62,7 @@ class SeparateFamilies {
   int? numberAdults;
   int? totalNumberVehicles;
 
-  SeparateFamilies();
+  SeparateFamilies(this.numberAdults,this.numberChildren,this.totalNumberVehicles);
 
   SeparateFamilies.fromJson(Map<String, dynamic> json) {
     numberChildren = json['numberChildren'] ?? 0;
@@ -57,4 +77,10 @@ class SeparateFamilies {
     data['totalNumberVehicles'] = totalNumberVehicles ?? 0;
     return data;
   }
+}
+
+class HhsStatic {
+  static HouseholdAddress householdAddress = HouseholdAddress();
+  static HouseholdQuestions householdQuestions=HouseholdQuestions();
+  static List<SeparateFamilies> houseHold=[];
 }
