@@ -129,7 +129,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     streetNumber: streetNumber,
                     zoneNumber: zoneNumber,
                     streetName: streetNumber,
-                    // city: city,
+                     city: city,
                     buildingName: buildingName,
                   ),
 
@@ -270,8 +270,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     function: () {
                       if (_key.currentState!.validate()) {
                         _key.currentState!.save();
-                        getLocation().then(
-                          (value) {
+
                             for (int i = 0; i < q6peopleUnder18.length; i++) {
                               HhsStatic.houseHold.add(
                                 SeparateFamilies(
@@ -283,9 +282,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             }
                             surveyPt.id = auth.uid.toString();
                             surveyPt.headerInterviewNumber = 10;
-                            surveyPt.headerLat = value.latitude ?? 0;
+                          //  surveyPt.headerLat = value.latitude ?? 0;
                             surveyPt.interViewDate = DateTime.now();
-                            surveyPt.headerLong = value.longitude ?? 0;
+                          //  surveyPt.headerLong = value.longitude ?? 0;
                             surveyPt.headerEmpNumber = auth.uid;
                             surveyPt.hhsBlockNearestCrossStreets =
                                 blockNearestTwoCrossStreets.text;
@@ -316,20 +315,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                 editingController3Q83.totalNumber.text;
                             surveyPt.hhsESAdultsBikesNumber =
                                 editingController3Q83.peopleAdults18.text;
-                          },
-                        ).onError(
-                          (error, stackTrace) {
-                            print(error);
-                            log(stackTrace.toString());
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("يجب تشغيل خدمة تحديد الموقع"),
-                                duration: Duration(seconds: 3),
-                                elevation: 1,
-                              ),
-                            );
-                          },
-                        );
+
+
+
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

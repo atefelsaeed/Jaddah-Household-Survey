@@ -11,9 +11,10 @@ class HouseHoldAddress extends StatelessWidget{
   final TextEditingController buildingName ;
   final TextEditingController streetName ;
   final TextEditingController streetNumber ;
+  final TextEditingController city;
   final TextEditingController nearestLandMark;
   final TextEditingController blockNearestTwoCrossStreets ;
-  const HouseHoldAddress({super.key,required this.area,required this.blockNearestTwoCrossStreets,required this.nearestLandMark,required this.streetNumber,required this.zoneNumber,required this.streetName,required this.buildingName});
+  const HouseHoldAddress({super.key,required this.area,required this.blockNearestTwoCrossStreets,required this.city,required this.nearestLandMark,required this.streetNumber,required this.zoneNumber,required this.streetName,required this.buildingName});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -65,7 +66,7 @@ return Column(children: [
   Directionality(
     textDirection: TextDirection.ltr,
     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-      TextForm(controller: blockNearestTwoCrossStreets,text: "City/ Town",label: "Enter City/ Town",),
+      TextForm(controller: city,text: "City/ Town",label: "Enter City/ Town",),
       //  TextForm(controller: area,text: "Area (Suburb)",label: "Enter Area (Suburb) ",)
 
     ],),

@@ -248,94 +248,94 @@ class SurveyPTProvider extends SurveyProvider {
 
   ///==============hhsPedalCycles(PC)====================
   @override
-  String? get hhsPCTotalBikesNumber =>
-      _data.householdQuestions.hhsPedalCycles!.totalBikesNumber;
+  String get hhsPCTotalBikesNumber =>
+      _data.householdQuestions.hhsPedalCycles.totalBikesNumber;
 
   @override
-  set hhsPCTotalBikesNumber(String? i) {
-    _data.householdQuestions.hhsPedalCycles!.totalBikesNumber = i;
+  set hhsPCTotalBikesNumber(String i) {
+    _data.householdQuestions.hhsPedalCycles.totalBikesNumber = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsPCAdultsBikesNumber =>
-      _data.householdQuestions.hhsPedalCycles!.adultsBikesNumber;
+  String get hhsPCAdultsBikesNumber =>
+      _data.householdQuestions.hhsPedalCycles.adultsBikesNumber;
 
   @override
-  set hhsPCAdultsBikesNumber(String? i) {
-    _data.householdQuestions.hhsPedalCycles!.adultsBikesNumber = i;
+  set hhsPCAdultsBikesNumber(String i) {
+    _data.householdQuestions.hhsPedalCycles.adultsBikesNumber = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsPCChildrenBikesNumber =>
-      _data.householdQuestions.hhsPedalCycles!.childrenBikesNumber;
+  String get hhsPCChildrenBikesNumber =>
+      _data.householdQuestions.hhsPedalCycles.childrenBikesNumber;
 
   @override
-  set hhsPCChildrenBikesNumber(String? i) {
-    _data.householdQuestions.hhsPedalCycles!.childrenBikesNumber = i;
+  set hhsPCChildrenBikesNumber(String i) {
+    _data.householdQuestions.hhsPedalCycles.childrenBikesNumber = i;
     // notifyListeners();
   }
 
   ///==============hhsElectricCycles(EC)====================
   @override
-  String? get hhsECTotalBikesNumber =>
-      _data.householdQuestions.hhsElectricCycles!.totalBikesNumber;
+  String get hhsECTotalBikesNumber =>
+      _data.householdQuestions.hhsElectricCycles.totalBikesNumber;
 
   @override
-  set hhsECTotalBikesNumber(String? i) {
-    _data.householdQuestions.hhsElectricCycles!.totalBikesNumber = i;
+  set hhsECTotalBikesNumber(String i) {
+    _data.householdQuestions.hhsElectricCycles.totalBikesNumber = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsECAdultsBikesNumber =>
-      _data.householdQuestions.hhsElectricCycles!.adultsBikesNumber;
+  String get hhsECAdultsBikesNumber =>
+      _data.householdQuestions.hhsElectricCycles.adultsBikesNumber;
 
   @override
-  set hhsECAdultsBikesNumber(String? i) {
-    _data.householdQuestions.hhsElectricCycles!.adultsBikesNumber = i;
+  set hhsECAdultsBikesNumber(String i) {
+    _data.householdQuestions.hhsElectricCycles.adultsBikesNumber = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsECChildrenBikesNumber =>
-      _data.householdQuestions.hhsElectricCycles!.childrenBikesNumber;
+  String get hhsECChildrenBikesNumber =>
+      _data.householdQuestions.hhsElectricCycles.childrenBikesNumber;
 
   @override
-  set hhsECChildrenBikesNumber(String? i) {
-    _data.householdQuestions.hhsElectricCycles!.childrenBikesNumber = i;
+  set hhsECChildrenBikesNumber(String i) {
+    _data.householdQuestions.hhsElectricCycles.childrenBikesNumber = i;
     // notifyListeners();
   }
 
   ///==============hhsElectricScooter(ES)====================
   @override
-  String? get hhsESTotalBikesNumber =>
-      _data.householdQuestions.hhsElectricScooter!.totalBikesNumber;
+  String get hhsESTotalBikesNumber =>
+      _data.householdQuestions.hhsElectricScooter.totalBikesNumber;
 
   @override
-  set hhsESTotalBikesNumber(String? i) {
-    _data.householdQuestions.hhsElectricScooter!.totalBikesNumber = i;
+  set hhsESTotalBikesNumber(String i) {
+    _data.householdQuestions.hhsElectricScooter.totalBikesNumber = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsESAdultsBikesNumber =>
-      _data.householdQuestions.hhsElectricScooter!.adultsBikesNumber;
+  String get hhsESAdultsBikesNumber =>
+      _data.householdQuestions.hhsElectricScooter.adultsBikesNumber;
 
   @override
-  set hhsESAdultsBikesNumber(String? i) {
-    _data.householdQuestions.hhsElectricScooter!.adultsBikesNumber = i;
+  set hhsESAdultsBikesNumber(String i) {
+    _data.householdQuestions.hhsElectricScooter.adultsBikesNumber = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsESChildrenBikesNumber =>
-      _data.householdQuestions.hhsElectricScooter!.childrenBikesNumber;
+  String get hhsESChildrenBikesNumber =>
+      _data.householdQuestions.hhsElectricScooter.childrenBikesNumber;
 
   @override
-  set hhsESChildrenBikesNumber(String? i) {
-    _data.householdQuestions.hhsElectricScooter!.childrenBikesNumber = i;
+  set hhsESChildrenBikesNumber(String i) {
+    _data.householdQuestions.hhsElectricScooter.childrenBikesNumber = i;
     // notifyListeners();
   }
 

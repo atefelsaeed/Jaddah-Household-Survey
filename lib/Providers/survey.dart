@@ -206,43 +206,43 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsDemolishedAreas(String? l);
 
   ///==============hhsPedalCycles(PC)====================
-  String? get hhsPCTotalBikesNumber;
+  String get hhsPCTotalBikesNumber;
 
-  set hhsPCTotalBikesNumber(String? l);
+  set hhsPCTotalBikesNumber(String l);
 
-  String? get hhsPCAdultsBikesNumber;
+  String get hhsPCAdultsBikesNumber;
 
-  set hhsPCAdultsBikesNumber(String? l);
+  set hhsPCAdultsBikesNumber(String l);
 
-  String? get hhsPCChildrenBikesNumber;
+  String get hhsPCChildrenBikesNumber;
 
-  set hhsPCChildrenBikesNumber(String? l);
+  set hhsPCChildrenBikesNumber(String l);
 
   ///==============hhsElectricCycles(EC)====================
-  String? get hhsECTotalBikesNumber;
+  String get hhsECTotalBikesNumber;
 
-  set hhsECTotalBikesNumber(String? l);
+  set hhsECTotalBikesNumber(String l);
 
-  String? get hhsECAdultsBikesNumber;
+  String get hhsECAdultsBikesNumber;
 
-  set hhsECAdultsBikesNumber(String? l);
+  set hhsECAdultsBikesNumber(String l);
 
-  String? get hhsECChildrenBikesNumber;
+  String get hhsECChildrenBikesNumber;
 
-  set hhsECChildrenBikesNumber(String? l);
+  set hhsECChildrenBikesNumber(String l);
 
   ///==============hhsElectricScooter(ES)====================
-  String? get hhsESTotalBikesNumber;
+  String get hhsESTotalBikesNumber;
 
-  set hhsESTotalBikesNumber(String? l);
+  set hhsESTotalBikesNumber(String l);
 
-  String? get hhsESAdultsBikesNumber;
+  String get hhsESAdultsBikesNumber;
 
-  set hhsESAdultsBikesNumber(String? l);
+  set hhsESAdultsBikesNumber(String l);
 
-  String? get hhsESChildrenBikesNumber;
+  String get hhsESChildrenBikesNumber;
 
-  set hhsESChildrenBikesNumber(String? l);
+  set hhsESChildrenBikesNumber(String l);
 
   String? get hhsTotalIncome;
 
