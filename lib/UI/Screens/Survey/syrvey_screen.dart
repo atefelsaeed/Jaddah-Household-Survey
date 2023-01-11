@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/Surveies/surveys_screen.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/q5.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
@@ -282,7 +284,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               );
                             }
                             surveyPt.id = auth.uid.toString();
-                            surveyPt.headerInterviewNumber = 10;
+                            Random random = new Random();
+                            int randomNumber = random.nextInt(10000);
+                            surveyPt.headerInterviewNumber =auth.uid+randomNumber;
                             surveyPt.headerLat = value.latitude ?? 0;
                             surveyPt.interViewDate = DateTime.now();
                             surveyPt.headerLong = value.longitude ?? 0;
@@ -321,11 +325,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.headerZoneNumber='';
 
                             surveys.addSurvey(surveyPt.data);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SurveysScreen()));
                           },
                         ).onError(
                               (error, stackTrace) {
                             print(error);
-                            log(stackTrace.toString());
+
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text("يجب تشغيل خدمة تحديد الموقع"),

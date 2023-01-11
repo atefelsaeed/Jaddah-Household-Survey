@@ -67,17 +67,17 @@ class _SurveyTileState extends State<SurveyTile> {
               ),
             ),
           ),
-          title: Text(survey.headerInterviewNumber.toString()),
+          title: Text(""),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              /*Text(
                 survey.type == SurveyType.pt
                     ? "شخصي"
                     : survey.type == SurveyType.cars
                         ? "أجرة"
                         : "نقل",
-              ),
+              ),*/
               Text('الرقم التعريفي للمدخل (${survey.headerEmpNumber})')
             ],
           ),
