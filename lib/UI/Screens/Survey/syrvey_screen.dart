@@ -128,7 +128,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     nearestLandMark: nearestLandMark,
                     streetNumber: streetNumber,
                     zoneNumber: zoneNumber,
-                    streetName: streetNumber,
+                    streetName: streetName,
                      city: city,
                     buildingName: buildingName,
                   ),
