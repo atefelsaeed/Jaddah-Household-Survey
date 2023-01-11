@@ -17,6 +17,7 @@ import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../vechicles/vechicles_screen.dart';
 import 'components/house_hold_address.dart';
 
 class SurveyScreen extends StatefulWidget {
@@ -324,11 +325,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.headerDistrictName='';
                             surveyPt.headerZoneNumber='';
 
-                            surveys.addSurvey(surveyPt.data);
+                            // surveys.addSurvey(surveyPt.data);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const SurveysScreen()));
+                                    builder: (context) => const VehiclesScreen()));
                           },
                         ).onError(
                               (error, stackTrace) {

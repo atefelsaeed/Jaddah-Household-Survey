@@ -32,7 +32,7 @@ class SurveyPT extends Survey {
     data['headerLat'] = header.locationLat;
     data['headerLong'] = header.locationLong;
     data['headerDate'] = header.interviewDate.toString();
-    // data['vehiclesData'] = vehiclesData.toJson();
+    data['vehiclesData'] = vehiclesData.toJson();
     data['headerEmpNumber'] = header.empNumber;
     data['headerInterviewNumber'] = header.interviewNumber;
     data['headerDistrictName'] = header.districtName;
@@ -143,7 +143,7 @@ class SurveyPT extends Survey {
     householdQuestions.hhsElectricScooter!.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
     householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
-    // vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
+    vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
 
     hhsSeparateFamilies = json['hhsSeparateFamilies']
         .map<SeparateFamilies>(

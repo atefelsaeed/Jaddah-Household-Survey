@@ -28,9 +28,12 @@ class HouseholdQuestions {
   bool? hhsIsDemolishedAreas;
   String? hhsDemolishedAreas;
 
-  BikesType hhsPedalCycles =BikesType("", "", "") ;
-  BikesType hhsElectricCycles=BikesType("", "", "") ;
-  BikesType hhsElectricScooter=BikesType("", "", "") ;
+  BikesType hhsPedalCycles = BikesType("", "", "");
+
+  BikesType hhsElectricCycles = BikesType("", "", "");
+
+  BikesType hhsElectricScooter = BikesType("", "", "");
+
   String? hhsTotalIncome;
 
   HouseholdQuestions(
@@ -40,9 +43,9 @@ class HouseholdQuestions {
       this.hhsNumberSeparateFamilies,
       this.hhsTotalIncome,
       this.hhsNumberYearsInAddress,
-     required this.hhsElectricCycles,
-     required this.hhsElectricScooter,
-    required  this.hhsPedalCycles,
+      required this.hhsElectricCycles,
+      required this.hhsElectricScooter,
+      required this.hhsPedalCycles,
       this.hhsDemolishedAreas,
       this.hhsIsDemolishedAreas,
       this.hhsNumberChildren,
@@ -50,11 +53,12 @@ class HouseholdQuestions {
 }
 
 class BikesType {
-late  String totalBikesNumber;
- late String adultsBikesNumber;
-late  String childrenBikesNumber;
+  late String totalBikesNumber;
+  late String adultsBikesNumber;
+  late String childrenBikesNumber;
 
-  BikesType( this.adultsBikesNumber,this.totalBikesNumber,this.childrenBikesNumber);
+  BikesType(
+      this.adultsBikesNumber, this.totalBikesNumber, this.childrenBikesNumber);
 }
 
 class SeparateFamilies {
@@ -82,10 +86,14 @@ class SeparateFamilies {
 
 class HhsStatic {
   static HouseholdAddress householdAddress = HouseholdAddress();
-  static HouseholdQuestions householdQuestions = HouseholdQuestions(hhsPedalCycles:BikesType("", "", "")  ,
-      hhsElectricCycles: BikesType("", "", "") ,hhsElectricScooter:  BikesType("", "", "") );
+  static HouseholdQuestions householdQuestions = HouseholdQuestions(
+      hhsPedalCycles: BikesType("", "", ""),
+      hhsElectricCycles: BikesType("", "", ""),
+      hhsElectricScooter: BikesType("", "", ""));
   static List<SeparateFamilies> houseHold = [];
-  static  BikesType hhsPedalCycles=BikesType("", "", "") ;
-  static  BikesType hhsElectricCycles=BikesType("", "", "") ;
-  static BikesType hhsElectricScooter=BikesType("", "", "") ;
+  static BikesType hhsPedalCycles = BikesType("", "", "");
+
+  static BikesType hhsElectricCycles = BikesType("", "", "");
+
+  static BikesType hhsElectricScooter = BikesType("", "", "");
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
@@ -32,7 +33,8 @@ class SurveysProvider with ChangeNotifier {
 
     if (!prefs.containsKey("surveys")) return false;
     var surveysList = prefs.getStringList("surveys")!;
-    print(surveysList);
+    print(surveysList.toString());
+    log('Survey', error: surveysList.first.toString());
     _surveys = [];
     for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
       switch (EnumToString.fromString(SurveyType.values, s['type'],
