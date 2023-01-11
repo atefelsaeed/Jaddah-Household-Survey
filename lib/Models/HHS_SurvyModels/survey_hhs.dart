@@ -9,8 +9,10 @@ import '../survey.dart';
 import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
-  HouseholdQuestions householdQuestions =  HouseholdQuestions(hhsPedalCycles:BikesType("", "", "")  ,
-      hhsElectricCycles: BikesType("", "", "") ,hhsElectricScooter:  BikesType("", "", "") );
+  HouseholdQuestions householdQuestions = HouseholdQuestions(
+      hhsPedalCycles: BikesType("", "", ""),
+      hhsElectricCycles: BikesType("", "", ""),
+      hhsElectricScooter: BikesType("", "", ""));
   VehiclesModel vehiclesData = VehiclesModel(); //
   List<PersonModel>? personData; //
   List<SeparateFamilies>? hhsSeparateFamilies;
@@ -57,25 +59,25 @@ class SurveyPT extends Survey {
     data['hhsDemolishedAreas'] = householdQuestions.hhsDemolishedAreas;
     //==========hhsPedalCycles(PC)============
     data['hhsPCTotalBikesNumber'] =
-        householdQuestions.hhsPedalCycles!.totalBikesNumber ?? 0;
+        householdQuestions.hhsPedalCycles.totalBikesNumber;
     data['hhsPCAdultsBikesNumber'] =
-        householdQuestions.hhsPedalCycles!.adultsBikesNumber ?? 0;
+        householdQuestions.hhsPedalCycles.adultsBikesNumber;
     data['hhsPCChildrenBikesNumber'] =
-        householdQuestions.hhsPedalCycles!.childrenBikesNumber ?? 0;
+        householdQuestions.hhsPedalCycles.childrenBikesNumber;
     //======hhsElectricCycles(EC)============
     data['hhsECTotalBikesNumber'] =
-        householdQuestions.hhsElectricCycles!.totalBikesNumber ?? 0;
+        householdQuestions.hhsElectricCycles.totalBikesNumber;
     data['hhsECAdultsBikesNumber'] =
-        householdQuestions.hhsElectricCycles!.adultsBikesNumber ?? 0;
+        householdQuestions.hhsElectricCycles.adultsBikesNumber;
     data['hhsECChildrenBikesNumber'] =
-        householdQuestions.hhsElectricCycles!.childrenBikesNumber ?? 0;
+        householdQuestions.hhsElectricCycles.childrenBikesNumber;
     //======hhsElectricScooter(ES)============
     data['hhsESTotalBikesNumber'] =
-        householdQuestions.hhsElectricScooter!.totalBikesNumber ?? 0;
+        householdQuestions.hhsElectricScooter.totalBikesNumber;
     data['hhsESAdultsBikesNumber'] =
-        householdQuestions.hhsElectricScooter!.adultsBikesNumber ?? 0;
+        householdQuestions.hhsElectricScooter.adultsBikesNumber;
     data['hhsESChildrenBikesNumber'] =
-        householdQuestions.hhsElectricScooter!.childrenBikesNumber ?? 0;
+        householdQuestions.hhsElectricScooter.childrenBikesNumber;
     data['hhsTotalIncome'] = householdQuestions.hhsTotalIncome ?? '';
 
     data['hhsSeparateFamilies'] =

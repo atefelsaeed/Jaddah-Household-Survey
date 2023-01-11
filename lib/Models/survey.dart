@@ -6,8 +6,8 @@ class HeaderBase {
   late double locationLat;
   late double locationLong;
   late DateTime interviewDate;
-  late int interviewNumber;
-   String? districtName;
+  int? interviewNumber ;
+  String? districtName;
   late String zoneNumber;
   late int empNumber;
   HouseholdAddress householdAddress = HouseholdAddress();

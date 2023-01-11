@@ -127,9 +127,9 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set headerEmpNumber(int l);
 
-  int get headerInterviewNumber;
+  int ?get headerInterviewNumber;
 
-  set headerInterviewNumber(int l);
+  set headerInterviewNumber(int? l);
 
   String? get headerDistrictName;
 

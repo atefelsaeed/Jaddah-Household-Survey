@@ -85,10 +85,10 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  int get headerInterviewNumber => _data.header.interviewNumber;
+  int? get headerInterviewNumber => _data.header.interviewNumber;
 
   @override
-  set headerInterviewNumber(int i) {
+  set headerInterviewNumber(int? i) {
     _data.header.interviewNumber = i;
     // notifyListeners();
   }

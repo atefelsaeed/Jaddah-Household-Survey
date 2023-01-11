@@ -286,7 +286,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.id = auth.uid.toString();
                             Random random = new Random();
                             int randomNumber = random.nextInt(10000);
-                            surveyPt.headerInterviewNumber =auth.uid+randomNumber;
+                            surveyPt.headerInterviewNumber =(auth.uid + randomNumber);
                             surveyPt.headerLat = value.latitude ?? 0;
                             surveyPt.interViewDate = DateTime.now();
                             surveyPt.headerLong = value.longitude ?? 0;

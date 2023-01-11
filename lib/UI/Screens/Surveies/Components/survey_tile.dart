@@ -7,12 +7,19 @@ import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Providers/survey.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
+import 'package:jaddah_household_survey/Resources/assets_manager.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
+import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../Models/survey.dart';
 
 class SurveyTile extends StatefulWidget {
   const SurveyTile({
     Key? key,
+    required this.surveyX,
   }) : super(key: key);
+  final Survey surveyX;
 
   @override
   State<SurveyTile> createState() => _SurveyTileState();
@@ -20,6 +27,7 @@ class SurveyTile extends StatefulWidget {
 
 class _SurveyTileState extends State<SurveyTile> {
   late final subscription;
+
   @override
   initState() {
     super.initState();
@@ -46,60 +54,62 @@ class _SurveyTileState extends State<SurveyTile> {
     final survey = Provider.of<SurveyPTProvider>(context, listen: true);
     final SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
-
+    // print('location');
+    // print(survey.headerLong);
     return Card(
+      margin: EdgeInsets.only(bottom: height(context)*.05),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListTile(
-          leading: GestureDetector(
-            onTap: () {
-              log(json.encode(survey.data.toJson()));
-            },
-            child: GestureDetector(
-              onTap: () {
-                log(json.encode(survey.data.toJson()));
-              },
-              child: CircleAvatar(
-                backgroundColor: survey.synced ? Colors.green : Colors.black54,
-                child: survey.synced
-                    ? const Icon(Icons.cloud)
-                    : const Icon(Icons.sd_card),
-              ),
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Household Travel Diary Survey',
+              style: TextStyle(fontWeight: FontWeight.w800),
             ),
-          ),
-          title: Text(""),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /*Text(
-                survey.type == SurveyType.pt
-                    ? "شخصي"
-                    : survey.type == SurveyType.cars
-                        ? "أجرة"
-                        : "نقل",
-              ),*/
-              Text('الرقم التعريفي للمدخل (${survey.headerEmpNumber})')
-            ],
-          ),
-          trailing: Consumer<SurveyPTProvider>(
-            builder: (ctx, s, b) => !s.synced
-                ? CircleAvatar(
-                    radius: 30,
-                    child: s.syncing
-                        ? const CircularProgressIndicator(
-                            color: Colors.white,
-                          )
-                        : IconButton(
-                            onPressed: () {
-                              s.sync(callback: surveys.save);
-                            },
-                            icon: const Icon(Icons.sync),
-                            color: Colors.white,
-                          ),
-                  )
-                : const SizedBox.shrink(),
-          ),
+            AppSize.spaceHeight5(context),
+            Row(
+              children: [
+                const Image(
+                    image: AssetImage(
+                  ImageAssets.iconLambGray,
+                )),
+                AppSize.spaceWidth2(context),
+                Text('Number of survey',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      color: ColorManager.grayColor,
+                    )),
+                const Spacer(),
+                Text(
+                  '${widget.surveyX.header.interviewNumber}',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    color: ColorManager.primaryColor,
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
+        // trailing: Consumer<SurveyPTProvider>(
+        //   builder: (ctx, s, b) => !s.synced
+        //       ? CircleAvatar(
+        //           radius: 30,
+        //           child: s.syncing
+        //               ? const CircularProgressIndicator(
+        //                   color: Colors.white,
+        //                 )
+        //               : IconButton(
+        //                   onPressed: () {
+        //                     s.sync(callback: surveys.save);
+        //                   },
+        //                   icon: const Icon(Icons.sync),
+        //                   color: Colors.white,
+        //                 ),
+        //         )
+        //       : const SizedBox.shrink(),
+        // ),
       ),
     );
   }
