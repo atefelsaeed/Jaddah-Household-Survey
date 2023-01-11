@@ -67,7 +67,7 @@ class _SurveyTileState extends State<SurveyTile> {
               ),
             ),
           ),
-          title: Text(survey.interViewDate.toString()),
+          title: Text(survey.headerInterviewNumber.toString()),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

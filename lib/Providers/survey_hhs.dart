@@ -94,10 +94,10 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  String get headerDistrictName => _data.header.districtName;
+  String? get headerDistrictName => _data.header.districtName;
 
   @override
-  set headerDistrictName(String i) {
+  set headerDistrictName(String ?i) {
     _data.header.districtName = i;
     // notifyListeners();
   }

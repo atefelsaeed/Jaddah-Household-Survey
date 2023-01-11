@@ -7,7 +7,7 @@ class HeaderBase {
   late double locationLong;
   late DateTime interviewDate;
   late int interviewNumber;
-  late String districtName;
+   String? districtName;
   late String zoneNumber;
   late int empNumber;
   HouseholdAddress householdAddress = HouseholdAddress();
@@ -26,9 +26,9 @@ abstract class Survey {
 
   set suggestionName(String suggestionName) {}
 
-  set journeyStarDistrictName(String? journeyStarDistrictName) {}
+  // set journeyStarDistrictName(String? journeyStarDistrictName) {}
 
-  set journeyEndDistrictName(String? journeyEndDistrictName) {}
+  // set journeyEndDistrictName(String? journeyEndDistrictName) {}
 
   Map<String, dynamic> toJson();
 }

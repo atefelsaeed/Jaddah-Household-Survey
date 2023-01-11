@@ -131,9 +131,9 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set headerInterviewNumber(int l);
 
-  String get headerDistrictName;
+  String? get headerDistrictName;
 
-  set headerDistrictName(String l);
+  set headerDistrictName(String? l);
 
   String get headerZoneNumber;
 
