@@ -127,12 +127,12 @@ class DropDownFormInput<T> extends StatelessWidget {
       builder: (FormFieldState<T> field) => Column(
         children: [
 
-          SizedBox(width: width(context)*.45,
+          SizedBox(width: width(context)*.45-10,
               child:   TextGlobal(text:hint.toString(), fontSize:height(context)*.015 ,color: ColorManager.black,)),
 
           AppSize.spaceHeight1(context),
           SizedBox(
-            width: width(context) * .45,
+            width: width(context) * .45-10,
             height: height(context) * .06,
             child: Directionality(
               textDirection: TextDirection.ltr,

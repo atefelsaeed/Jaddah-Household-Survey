@@ -49,17 +49,20 @@ class PersonData {
 
   static Map<String, dynamic> occupationSector = {
     "what is the Occupation Sector": [
-      '< 6',
-      ' 6 - 11',
-      '12 - 15',
-      '16 - 18',
-      '19 -24',
-      ' 25 - 34',
-      '35 - 44',
-      '45 - 54',
-      '55 - 64',
-      '65 - 74',
-      '>74'
+      'Offices Government',
+      'Education School',
+      'Education University',
+      'Medical Hospital- Health Centre (private)',
+      'Medical Hospital- Health Centre (government)',
+      'Construction Building',
+      'Construction- infrastructure',
+      'Business trading- non-office',
+      'Other specify',
+      'ndustrial/Mechanics, shops factory, logistic'
+      'n-house maid, servant, driver, Gardner etc.',
+      'Transport- port/harbour',
+      'Industrial - QP/Gas',
+
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -67,17 +70,17 @@ class PersonData {
   };
   static Map<String, dynamic> occupationLevelSector = {
     "Occupation Level Sector": [
-      '< 6',
-      ' 6 - 11',
-      '12 - 15',
-      '16 - 18',
-      '19 -24',
-      ' 25 - 34',
-      '35 - 44',
-      '45 - 54',
-      '55 - 64',
-      '65 - 74',
-      '>74'
+      'High level director',
+      ' Specialists/Experts',
+      'Technicians',
+      'Documenters',
+      'Shop employees',
+      'Agriculture and fishing workers',
+      'Crafts workers',
+      'Industrial workshop workers',
+      'Other mid-level employees',
+      'Other (specify)',
+
     ],
     "title": "mainMade",
     "subTitle": "mainMade",

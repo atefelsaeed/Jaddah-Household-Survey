@@ -22,7 +22,7 @@ class Employee extends StatelessWidget {
       children: [
         AppSize.spaceHeight3(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput2(
               label: Text(PersonData.mainOccupation[mainOccupationKey]!
@@ -57,15 +57,15 @@ class Employee extends StatelessWidget {
         ),
         AppSize.spaceHeight3(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
-              label: Text(PersonData.occupationLevelSector[occupationSectorKey]!
+              label: Text(PersonData.occupationLevelSector[PersonData.occupationLevelSector.keys.first]!
                   .toList()
                   .first
                   .toString()),
-              hint: occupationSectorKey.toString(),
-              options: PersonData.occupationLevelSector[occupationSectorKey]!
+              hint: PersonData.occupationLevelSector.keys.first.toString(),
+              options: PersonData.occupationLevelSector[PersonData.occupationLevelSector.keys.first]!
                   .toList(),
               onChange: (String? p) {},
             ),
@@ -83,7 +83,7 @@ class Employee extends StatelessWidget {
         ),
         AppSize.spaceHeight3(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
               label: Text(PersonData.commute[PersonData.commute.keys.first]!

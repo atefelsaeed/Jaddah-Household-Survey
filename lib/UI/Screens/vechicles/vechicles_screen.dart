@@ -47,11 +47,13 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         AppSize.spaceWidth1(context),
-                        TextGlobal(
-                          text:
-                              " Vehicles in the Household - Household Travel Diary Survey",
-                          fontSize: height(context) * .023,
-                          color: ColorManager.orangeTxtColor,
+                        Expanded(
+                          child: TextGlobal(
+                            text:
+                                " Vehicles in the Household - Household Travel Diary Survey",
+                            fontSize: height(context) * .023,
+                            color: ColorManager.orangeTxtColor,
+                          ),
                         ),
                       ],
                     ),

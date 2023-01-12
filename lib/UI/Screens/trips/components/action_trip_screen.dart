@@ -39,6 +39,7 @@ class ActionTripScreen extends StatelessWidget {
     return await location.getLocation();
   }
 
+
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
@@ -49,26 +50,27 @@ class ActionTripScreen extends StatelessWidget {
         listen: false); // TODO: implement build
     return DefaultButton(
       function: () {
-        getLocation().then(
+
+        Random random = Random();
+        int randomNumber = random.nextInt(10000);
+        surveyPt.headerLat =  0;
+        surveyPt.interViewDate = DateTime.now();
+        surveyPt.headerLong = 0;
+        surveyPt.headerEmpNumber = auth.uid;
+        surveyPt.headerInterviewNumber = (auth.uid + randomNumber);
+        surveyPt.id = auth.uid.toString();
+        SaveTripsData.saveData(context);
+        print("after save");
+        surveys.addSurvey(surveyPt.data);
+        print('Saving Data :: ');
+        Navigator.push(
+          context,MaterialPageRoute(
+          builder: (context) => const SurveysScreen(),
+        ),
+        );
+        /*getLocation().then(
           (value) {
-            Random random = Random();
-            int randomNumber = random.nextInt(10000);
-            surveyPt.headerLat = value.latitude ?? 0;
-            surveyPt.interViewDate = DateTime.now();
-            surveyPt.headerLong = value.longitude ?? 0;
-            surveyPt.headerEmpNumber = auth.uid;
-            surveyPt.headerInterviewNumber = (auth.uid + randomNumber);
-            surveyPt.id = auth.uid.toString();
-            SaveTripsData.saveData(context);
-            print("after save");
-            surveys.addSurvey(surveyPt.data);
-            print('Saving Data :: ');
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => const SurveysScreen(),
-            //   ),
-            // );
+
           },
         ).onError(
           (error, stackTrace) {
@@ -82,7 +84,7 @@ class ActionTripScreen extends StatelessWidget {
               ),
             );
           },
-        );
+        );*/
       },
       isWidget: true,
       text: "Finish",

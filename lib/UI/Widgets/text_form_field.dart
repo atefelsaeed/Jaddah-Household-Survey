@@ -46,6 +46,7 @@ class MyTextForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
+
           width: widthForm ?? width(context) * .45,
           child: TextFormField(
             controller: controller,

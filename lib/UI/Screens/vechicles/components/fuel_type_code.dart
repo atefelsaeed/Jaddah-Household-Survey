@@ -11,7 +11,7 @@ class FuelTypeCode extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
 return Row(
-  mainAxisAlignment: MainAxisAlignment.start,
+  mainAxisAlignment: MainAxisAlignment.end,
   children: [
     DropDownFormInput(
       label: Text(VehiclesData

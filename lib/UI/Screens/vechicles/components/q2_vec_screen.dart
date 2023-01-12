@@ -18,10 +18,12 @@ class Q2VecScreen extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          TextGlobal(
-            text: VehiclesData.q2VecData.keys.first,
-            fontSize: height(context) * .017,
-            color: ColorManager.black,
+          Expanded(
+            child: TextGlobal(
+              text: VehiclesData.q2VecData.keys.first,
+              fontSize: height(context) * .017,
+              color: ColorManager.black,
+            ),
           ),
         ],
       ),

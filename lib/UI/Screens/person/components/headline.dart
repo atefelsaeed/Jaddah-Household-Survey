@@ -15,10 +15,12 @@ final  String text;
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         AppSize.spaceWidth1(context),
-        TextGlobal(
-          text: text,
-          fontSize: height(context) * .023,
-          color: ColorManager.orangeTxtColor,
+        Expanded(
+          child: TextGlobal(
+            text: text,
+            fontSize: height(context) * .023,
+            color: ColorManager.orangeTxtColor,
+          ),
         ),
       ],
     );
