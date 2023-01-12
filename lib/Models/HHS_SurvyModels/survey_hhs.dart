@@ -11,6 +11,7 @@ import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
   HouseholdQuestions householdQuestions = HouseholdQuestions(
+
       hhsPedalCycles: BikesType("", "", ""),
       hhsElectricCycles: BikesType("", "", ""),
       hhsElectricScooter: BikesType("", "", ""));

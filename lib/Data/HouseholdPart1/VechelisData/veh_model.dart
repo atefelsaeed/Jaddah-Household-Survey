@@ -5,14 +5,15 @@ import '../../../Models/Vehicles_SurveyModel/vehicles_model.dart';
 import '../../../UI/Screens/Survey/Components/q5.dart';
 
 class VehModel {
+  // vehiclesBodyType: [
+  //   VehiclesBodyType(
+  //     vehicleTypeName: 'Car',
+  //     vehicleTypeQuantity: 1,
+  //     vehicleTypeDetails: VehModel.vecCar,
+  //   ),
+  // ],
   static VehiclesModel vehiclesModel = VehiclesModel(
-    // vehiclesBodyType: [
-    //   VehiclesBodyType(
-    //     vehicleTypeName: 'Car',
-    //     vehicleTypeQuantity: 1,
-    //     vehicleTypeDetails: VehModel.vecCar,
-    //   ),
-    // ],
+
     nearestBusStop: '',
     numberAirTubedAdultsLeisure: '',
     numberAirTubedAdultsWorkUse: '',

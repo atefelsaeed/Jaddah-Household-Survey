@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/save_data.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
+import 'package:jaddah_household_survey/UI/Screens/Home/homeScreen.dart';
+import 'package:jaddah_household_survey/UI/Screens/Surveies/surveys_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Providers/survey_hhs.dart';
 import '../../../Widgets/custom_buttton.dart';
+import '../vechicles_screen.dart';
 
 class ActionVecScreen extends StatelessWidget {
   @override
@@ -19,6 +22,10 @@ class ActionVecScreen extends StatelessWidget {
         //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
         SaveVehiclesData.saveData(context);
         surveys.addSurvey(surveyPt.data);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const SurveysScreen()));
       },
       isWidget: true,
       text: "Finish",

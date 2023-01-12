@@ -11,6 +11,7 @@ class VehiclesModel {
   String? nearestBusStop;
 
   VehiclesModel({
+
     this.numberAirTubedChildren,
     this.numberAirTubedAdultsLeisure,
     this.numberAirTubedAdultsWorkUse,
@@ -32,6 +33,7 @@ class VehiclesModel {
   }
 
   Map<String, dynamic> toJson() {
+    print("jjjjjj");
     Map<String, dynamic> data = <String, dynamic>{};
     data['vehicleFuelType'] = vehicleFuelType ?? '';
     data['vehicleOwnership'] = vehicleOwnership ?? '';
@@ -40,7 +42,8 @@ class VehiclesModel {
     data['numberAirTubedAdultsLeisure'] = numberAirTubedAdultsLeisure ?? 0;
     data['numberAirTubedChildren'] = numberAirTubedChildren ?? 0;
     data['nearestBusStop'] = nearestBusStop ?? '';
-
+   // data['vehiclesBodyType'] =
+      // vehiclesBodyType!.map((e) => e.toJson()).toList();
     return data;
   }
 }

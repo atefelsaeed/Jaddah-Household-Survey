@@ -24,11 +24,11 @@ class Q5 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
+        Expanded(child:     TextGlobal(
               text: QuestionsData.qh5["Qh5"],
               fontSize: height(context) * .02,
               color: ColorManager.black,
-            ),
+            )),
           ],
         ),
         Row(
@@ -114,11 +114,11 @@ class _Q6State extends State<Q6> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
+    Expanded(child:         TextGlobal(
               text: QuestionsData.qh6.keys.first.toString(),
               fontSize: height(context) * .02,
               color: ColorManager.black,
-            ),
+            )),
           ],
         ),
         AppSize.spaceHeight1(context),
@@ -182,10 +182,12 @@ class Q81 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
-              text: QuestionsData.qh8_1.keys.first,
-              fontSize: height(context) * .017,
-              color: ColorManager.black,
+            Expanded(
+              child: TextGlobal(
+                text: QuestionsData.qh8_1.keys.first,
+                fontSize: height(context) * .017,
+                color: ColorManager.black,
+              ),
             ),
           ],
         ),
@@ -215,10 +217,12 @@ class Q82 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
-              text: QuestionsData.qh8_2.keys.first,
-              fontSize: height(context) * .017,
-              color: ColorManager.black,
+            Expanded(
+              child: TextGlobal(
+                text: QuestionsData.qh8_2.keys.first,
+                fontSize: height(context) * .017,
+                color: ColorManager.black,
+              ),
             ),
           ],
         ),
@@ -248,10 +252,12 @@ class Q83 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextGlobal(
-              text: QuestionsData.qh8_3.keys.first,
-              fontSize: height(context) * .017,
-              color: ColorManager.black,
+            Expanded(
+              child: TextGlobal(
+                text: QuestionsData.qh8_3.keys.first,
+                fontSize: height(context) * .017,
+                color: ColorManager.black,
+              ),
             ),
           ],
         ),

@@ -40,10 +40,13 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             itemBuilder: (context, index) => SizedBox(
               width: width(context) / 2,
               child: Row(children: [
-                TextGlobal(
-                  text: VehiclesData.vecModel[index].title,
-                  fontSize: height(context) * .02,
-                  color: ColorManager.grayColor,
+                Expanded(
+                  flex: 1,
+                  child: TextGlobal(
+                    text: VehiclesData.vecModel[index].title,
+                    fontSize: height(context) * .02,
+                    color: ColorManager.grayColor,
+                  ),
                 ),
                 Checkbox(
                     side: BorderSide(
