@@ -1,10 +1,10 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
-import '../Vehicles_SurveyModel/vehicles_body_type.dart';
 import '/providers/survey_hhs.dart';
 import '../../Data/Enums/hhs_enums.dart';
 import '../Trips_SurveyModel/trips_model.dart';
+import '../Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../Vehicles_SurveyModel/vehicles_model.dart';
 import '../survey.dart';
 import 'hhs_models.dart';
@@ -20,6 +20,7 @@ class SurveyPT extends Survey {
   List<SeparateFamilies>? hhsSeparateFamilies;
   List<TripsModel>? tripsList; //
   List<VehiclesBodyType>? vehiclesBodyType;
+
   SurveyPT() : super(SurveyType.pt) {
     super.provider = SurveyPTProvider(this);
     super.header = HeaderBase();
@@ -105,14 +106,14 @@ class SurveyPT extends Survey {
     header.interviewNumber = json['headerInterviewNumber'];
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
-    header.householdAddress!.city = json['hhsCity'];
-    header.householdAddress!.buildingName = json['hhsBuildingName'];
-    header.householdAddress!.streetName = json['hhsStreetName'];
-    header.householdAddress!.streetNumber = json['hhsStreetNumber'];
-    header.householdAddress!.nearestLandMark = json['hhsNearestLandMark'];
-    header.householdAddress!.blockNearestCrossStreets =
+    header.householdAddress.city = json['hhsCity'];
+    header.householdAddress.buildingName = json['hhsBuildingName'];
+    header.householdAddress.streetName = json['hhsStreetName'];
+    header.householdAddress.streetNumber = json['hhsStreetNumber'];
+    header.householdAddress.nearestLandMark = json['hhsNearestLandMark'];
+    header.householdAddress.blockNearestCrossStreets =
         json['hhsBlockNearestCrossStreets'];
-    header.householdAddress!.areaSuburb = json['hhsAreaSuburb'];
+    header.householdAddress.areaSuburb = json['hhsAreaSuburb'];
     //================householdQuestions================
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
@@ -126,25 +127,25 @@ class SurveyPT extends Survey {
     householdQuestions.hhsIsDemolishedAreas = json['hhsIsDemolishedAreas'];
     householdQuestions.hhsDemolishedAreas = json['hhsDemolishedAreas'];
     //==========hhsPedalCycles(PC)============
-    householdQuestions.hhsPedalCycles!.totalBikesNumber =
+    householdQuestions.hhsPedalCycles.totalBikesNumber =
         json['hhsPCTotalBikesNumber'];
-    householdQuestions.hhsPedalCycles!.adultsBikesNumber =
+    householdQuestions.hhsPedalCycles.adultsBikesNumber =
         json['hhsPCAdultsBikesNumber'];
-    householdQuestions.hhsPedalCycles!.childrenBikesNumber =
+    householdQuestions.hhsPedalCycles.childrenBikesNumber =
         json['hhsPCChildrenBikesNumber'];
     //======hhsElectricCycles(EC)============
-    householdQuestions.hhsElectricCycles!.totalBikesNumber =
+    householdQuestions.hhsElectricCycles.totalBikesNumber =
         json['hhsECTotalBikesNumber'];
-    householdQuestions.hhsElectricCycles!.adultsBikesNumber =
+    householdQuestions.hhsElectricCycles.adultsBikesNumber =
         json['hhsECAdultsBikesNumber'];
-    householdQuestions.hhsElectricCycles!.childrenBikesNumber =
+    householdQuestions.hhsElectricCycles.childrenBikesNumber =
         json['hhsECChildrenBikesNumber'];
     //======hhsElectricScooter(ES)============
-    householdQuestions.hhsElectricScooter!.totalBikesNumber =
+    householdQuestions.hhsElectricScooter.totalBikesNumber =
         json['hhsESTotalBikesNumber'];
-    householdQuestions.hhsElectricScooter!.adultsBikesNumber =
+    householdQuestions.hhsElectricScooter.adultsBikesNumber =
         json['hhsESAdultsBikesNumber'];
-    householdQuestions.hhsElectricScooter!.childrenBikesNumber =
+    householdQuestions.hhsElectricScooter.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
     householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
     vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);

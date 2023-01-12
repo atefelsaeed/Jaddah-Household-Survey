@@ -5,15 +5,7 @@ import '../../../Models/Vehicles_SurveyModel/vehicles_model.dart';
 import '../../../UI/Screens/Survey/Components/q5.dart';
 
 class VehModel {
-  // vehiclesBodyType: [
-  //   VehiclesBodyType(
-  //     vehicleTypeName: 'Car',
-  //     vehicleTypeQuantity: 1,
-  //     vehicleTypeDetails: VehModel.vecCar,
-  //   ),
-  // ],
   static VehiclesModel vehiclesModel = VehiclesModel(
-
     nearestBusStop: '',
     numberAirTubedAdultsLeisure: '',
     numberAirTubedAdultsWorkUse: '',
@@ -22,12 +14,12 @@ class VehModel {
     vehicleParking: '',
     vehicleFuelType: '',
   );
+
   static EditingController3 editingController3 = EditingController3(
     peopleUnder18: TextEditingController(),
     totalNumber: TextEditingController(),
     peopleAdults18: TextEditingController(),
   );
-
   static List<VehicleBodyDetails> vecCar = [];
   static List<VehicleBodyDetails> vecVan = [];
   static List<VehicleBodyDetails> largeCar = [];
@@ -38,4 +30,22 @@ class VehModel {
   static String ownerShipCode = "";
   static String parkThisCar = "";
   static String nearestPublicTransporter = "";
+}
+
+class VehicleBodyDetailsData {
+  TextEditingController vehicleFuel;
+  TextEditingController vehicleModel;
+  TextEditingController vehicleAnnualMileage;
+  TextEditingController vehicleAge;
+  bool? vehicleIsHousehold;
+  TextEditingController vehicleOwner;
+
+  VehicleBodyDetailsData({
+    required this.vehicleFuel,
+    required this.vehicleAge,
+    required this.vehicleAnnualMileage,
+    this.vehicleIsHousehold,
+    required this.vehicleModel,
+    required this.vehicleOwner,
+  });
 }

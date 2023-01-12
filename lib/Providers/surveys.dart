@@ -27,35 +27,38 @@ class SurveysProvider with ChangeNotifier {
   }
 
   Future<bool> fetch() async {
-    print("fetching");
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.reload();
+    try {
+      print("fetching");
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.reload();
 
-    if (!prefs.containsKey("surveys")) return false;
-    var surveysList = prefs.getStringList("surveys")!;
-    print(surveysList.toString());
-    log('Survey', error: surveysList.first.toString());
-    _surveys = [];
-    for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
-      switch (EnumToString.fromString(SurveyType.values, s['type'],
-          camelCase: true)!) {
-        case SurveyType.pt:
-          _surveys.add(SurveyPT.fromJson(s));
-          break;
-        // case SurveyType.cars:
-        //   _surveys.add(SurveyCars.fromJson(s));
-        //   break;
-        // case SurveyType.freight:
-        //   _surveys.add(SurveyFreight.fromJson(s));
-        //   break;
-        default:
+      if (!prefs.containsKey("surveys")) return false;
+      var surveysList = prefs.getStringList("surveys")!;
+      print("Surveys List is  :: ${surveysList.toString()}");
+      log('Survey Data :: ', error: surveysList.toString());
+      _surveys = [];
+      for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
+
+        switch (EnumToString.fromString(SurveyType.values, s['type'],
+            camelCase: true)!) {
+          case SurveyType.pt:
+            print('add new');
+            _surveys.add(SurveyPT.fromJson(s));
+            print('add new Done');
+            break;
+          default:
+        }
       }
-    }
-    // _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
-    _surveys.forEach((e) => print(e.synced));
+      // _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
+      print('synced');
+      _surveys.forEach((e) => print(e.synced));
 
-    notifyListeners();
-    return true;
+      notifyListeners();
+      return true;
+    } catch (r) {
+      print(r.toString());
+      rethrow;
+    }
   }
 
   List<Survey> get surveys {
@@ -75,22 +78,35 @@ class SurveysProvider with ChangeNotifier {
   }
 
   Future<bool> addSurvey(Survey s) async {
-    _surveys.add(s);
-    notifyListeners();
-    save();
-    // // await s.provider.sync();
-    // notifyListeners();
-    return true;
+    try {
+      print('Add Survey :: ');
+      _surveys.add(s);
+      notifyListeners();
+      save();
+      // // await s.provider.sync();
+      // notifyListeners();
+      return true;
+    } catch (er) {
+      print(er.toString());
+      rethrow;
+    }
   }
 
   Future<bool> save() async {
-    print("changing data");
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.reload();
-    prefs.setStringList(
-      "surveys",
-      _surveys.map((v) => json.encode(v.toJson())).toList(),
-    );
-    return true;
+    try {
+      print("changing data");
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.reload();
+      print('prefs reload');
+      prefs.setStringList(
+        "surveys",
+        _surveys.map((v) => json.encode(v.toJson())).toList(),
+      );
+      print('save survey');
+      return true;
+    } catch (er) {
+      print(er.toString());
+      rethrow;
+    }
   }
 }

@@ -45,7 +45,6 @@ class ToggleButtonsFormInput extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: ToggleButtons(
-                    children: choices,
                     onPressed: (int index) {
                       field.didChange(index);
                       if (onChange != null) {
@@ -53,6 +52,7 @@ class ToggleButtonsFormInput extends StatelessWidget {
                       }
                     },
                     isSelected: selections,
+                    children: choices,
                   ),
                 ),
               ],
@@ -81,26 +81,24 @@ class ToggleButtonsFormInput extends StatelessWidget {
     iconColor = Colors.black,
     bool enabled = true,
   }) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(minWidth: 60),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              icon != null
-                  ? Transform.rotate(
-                      angle: rotation,
-                      child: Icon(
-                        icon,
-                        color: iconColor,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-              Center(child: Text(text)),
-            ],
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minWidth: 60),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon != null
+                ? Transform.rotate(
+                    angle: rotation,
+                    child: Icon(
+                      icon,
+                      color: iconColor,
+                    ),
+                  )
+                : const SizedBox.shrink(),
+            Center(child: Text(text)),
+          ],
         ),
       ),
     );

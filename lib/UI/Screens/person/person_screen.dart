@@ -10,8 +10,8 @@ import 'package:jaddah_household_survey/UI/Screens/person/components/next_step.d
 import 'package:jaddah_household_survey/UI/Screens/person/components/transporter_moblity.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
+import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';

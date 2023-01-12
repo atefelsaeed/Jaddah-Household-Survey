@@ -1,5 +1,4 @@
 import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
-import 'package:jaddah_household_survey/Models/HHS_SurvyModels/hhs_models.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'package:jaddah_household_survey/Providers/survey.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
@@ -17,7 +16,8 @@ class SaveHHSData {
 
 class SaveVehiclesData {
   static saveData(context) {
-    SurveyPTProvider survey = Provider.of<SurveyPTProvider>(context, listen: false);
+    SurveyPTProvider survey =
+        Provider.of<SurveyPTProvider>(context, listen: false);
     survey.vehiclesData.vehicleFuelType = VehModel.fuelTypeCode;
     survey.vehiclesData.nearestBusStop = VehModel.nearestPublicTransporter;
     survey.vehiclesData.vehicleParking = VehModel.parkThisCar;
@@ -29,7 +29,7 @@ class SaveVehiclesData {
     survey.vehiclesData.numberAirTubedChildren =
         VehModel.editingController3.peopleUnder18.text;
 
-    survey.vehiclesBodyType = [
+    List<VehiclesBodyType> vehicles = [
       VehiclesBodyType(
         vehicleTypeName: 'Car',
         vehicleTypeQuantity: VehModel.vecCar.length,
@@ -59,8 +59,9 @@ class SaveVehiclesData {
         vehicleTypeName: 'Other',
         vehicleTypeQuantity: VehModel.other.length,
         vehicleTypeDetails: VehModel.other,
-      ),
+      )
     ];
+    survey.vehiclesBodyType = vehicles;
   }
 }
 

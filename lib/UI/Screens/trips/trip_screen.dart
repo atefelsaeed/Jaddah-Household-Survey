@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/action_trip_screen.dart';
@@ -206,7 +205,7 @@ class _TripScreenState extends State<TripScreen> {
 class TextTrip extends StatelessWidget {
   final int index;
 
-  TextTrip({required this.index});
+  const TextTrip({required this.index});
 
   @override
   Widget build(BuildContext context) {

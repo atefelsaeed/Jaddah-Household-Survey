@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../Survey/widgets/list_view_check_box_orange.dart';

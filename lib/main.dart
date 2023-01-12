@@ -16,8 +16,6 @@ import 'Resources/colors.dart';
 import 'UI/Screens/Home/homeScreen.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
-import 'UI/Screens/Surveies/surveys_screen.dart';
-import 'UI/Screens/Survey/syrvey_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,3 +1,4 @@
+import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 
 import '../Data/Enums/hhs_enums.dart';
@@ -5,7 +6,6 @@ import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
-import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'survey.dart';
 
 class SurveyPTProvider extends SurveyProvider {
@@ -76,6 +76,7 @@ class SurveyPTProvider extends SurveyProvider {
     _data.header.empNumber = i;
     // notifyListeners();
   }
+
   @override
   String get headerZoneNumber => _data.header.zoneNumber;
 
@@ -98,11 +99,10 @@ class SurveyPTProvider extends SurveyProvider {
   String? get headerDistrictName => _data.header.districtName;
 
   @override
-  set headerDistrictName(String ?i) {
+  set headerDistrictName(String? i) {
     _data.header.districtName = i;
     // notifyListeners();
   }
-
 
   //HHS Address
   @override
@@ -143,26 +143,26 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   String? get hhsNearestLandMark =>
-      _data.header.householdAddress!.nearestLandMark;
+      _data.header.householdAddress.nearestLandMark;
 
   @override
   set hhsNearestLandMark(String? i) {
-    _data.header.householdAddress!.nearestLandMark = i;
+    _data.header.householdAddress.nearestLandMark = i;
     // notifyListeners();
   }
 
   @override
   String? get hhsBlockNearestCrossStreets =>
-      _data.header.householdAddress!.nearestLandMark;
+      _data.header.householdAddress.nearestLandMark;
 
   @override
   set hhsBlockNearestCrossStreets(String? i) {
-    _data.header.householdAddress!.nearestLandMark = i;
+    _data.header.householdAddress.nearestLandMark = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsAreaSuburb => _data.header.householdAddress!.nearestLandMark;
+  String? get hhsAreaSuburb => _data.header.householdAddress.nearestLandMark;
 
   @override
   set hhsAreaSuburb(String? i) {
@@ -216,7 +216,6 @@ class SurveyPTProvider extends SurveyProvider {
     _data.householdQuestions.hhsNumberAdults = i;
     // notifyListeners();
   }
-
 
   @override
   String? get hhsNumberYearsInAddress =>
@@ -358,12 +357,10 @@ class SurveyPTProvider extends SurveyProvider {
       [...?_data.hhsSeparateFamilies];
 
   @override
-  set vehiclesBodyType(List<VehiclesBodyType> e) =>
-      _data.vehiclesBodyType = e;
+  set vehiclesBodyType(List<VehiclesBodyType> e) => _data.vehiclesBodyType = e;
 
   @override
-  List<VehiclesBodyType> get vehiclesBodyType =>
-      [...?_data.vehiclesBodyType];
+  List<VehiclesBodyType> get vehiclesBodyType => [...?_data.vehiclesBodyType];
 
   @override
   set personData(List<PersonModel> e) => _data.personData = e;

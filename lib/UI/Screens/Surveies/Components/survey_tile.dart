@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
-import 'package:jaddah_household_survey/Providers/survey.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 
-import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Widgets/dropdown_form_input.dart';

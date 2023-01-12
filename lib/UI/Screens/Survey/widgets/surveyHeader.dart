@@ -24,11 +24,11 @@ class _SurveyHeaderState extends State<SurveyHeader> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image(
-              image: AssetImage(ImageAssets.logo),
+              image: const AssetImage(ImageAssets.logo),
               width: width(context) * .3,
             ),
             Image(
-              image: AssetImage(ImageAssets.logo),
+              image: const AssetImage(ImageAssets.logo),
               width: width(context) * .3,
             ),
           ],
@@ -43,7 +43,7 @@ class _SurveyHeaderState extends State<SurveyHeader> {
         ),
         Row(
           children: [
-            Text('District Name:'),
+            const Text('District Name:'),
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: const InputDecoration(
@@ -91,7 +91,7 @@ class _SurveyHeaderState extends State<SurveyHeader> {
         ),
         Row(
           children: [
-            Text('Zone Number:'),
+            const Text('Zone Number:'),
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: const InputDecoration(

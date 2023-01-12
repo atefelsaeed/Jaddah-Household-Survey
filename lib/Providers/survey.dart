@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
@@ -53,7 +52,7 @@ abstract class SurveyProvider with ChangeNotifier {
     // print('trying to ${data.header.date}');
     final prefs = await SharedPreferences.getInstance();
     while (prefs.getBool('dontsync')! && !force) {
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
       print("dont sync effect");
     }
     if (synced || syncing) {

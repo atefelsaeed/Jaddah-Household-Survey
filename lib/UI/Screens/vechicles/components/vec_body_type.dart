@@ -52,15 +52,15 @@ class BodyTypeVehicles extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextFormer(
-                    controller: vecBodyType.vehicleFuel!,
+                    controller: vecBodyType.vehicleFuel,
                     text: "QHV1-2 Fuel",
                     label: "Enter ${vecBodyType.vehicleFuel}",
                     headLabel: title,
                   ),
                   TextFormer(
-                    controller: vecBodyType.vehicleModel!,
+                    controller: vecBodyType.vehicleModel,
                     text: "QHV1-3-Model",
-                    label: "Enter ${vecBodyType.vehicleModel!}",
+                    label: "Enter ${vecBodyType.vehicleModel}",
                     headLabel: title,
                   )
                 ],
@@ -73,13 +73,13 @@ class BodyTypeVehicles extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextFormer(
-                    controller: vecBodyType.vehicleAnnualMileage!,
+                    controller: vecBodyType.vehicleAnnualMileage,
                     text: "QHV1-4- Annual Mileage",
                     label: "Enter ${vecBodyType.vehicleAnnualMileage}",
                     headLabel: title,
                   ),
                   TextFormer(
-                    controller: vecBodyType.vehicleAge!,
+                    controller: vecBodyType.vehicleAge,
                     text: "QHV1-5- Age of vehicle",
                     label: "Enter ${vecBodyType.vehicleAge}",
                     headLabel: title,
@@ -100,7 +100,7 @@ class BodyTypeVehicles extends StatelessWidget {
                   //   headLabel: title,
                   // ),
                   TextFormer(
-                    controller: vecBodyType.vehicleOwner!,
+                    controller: vecBodyType.vehicleOwner,
                     text: "Write the name of person",
                     label: "Enter ${vecBodyType.vehicleOwner}",
                     headLabel: title,

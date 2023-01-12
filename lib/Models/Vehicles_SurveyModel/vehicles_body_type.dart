@@ -14,11 +14,9 @@ class VehiclesBodyType {
   VehiclesBodyType.fromJson(Map<String, dynamic> json) {
     vehicleTypeName = json['vehicleTypeName'] ?? '';
     vehicleTypeQuantity = json['vehicleTypeQuantity'] ?? '';
-    vehicleTypeDetails = json['vehicleTypeDetails']
-            .map<VehicleBodyDetails>(
-                (e) => VehicleBodyDetails.fromJson(e as Map<String, dynamic>))
-            .toList() ??
-        [];
+    vehicleTypeDetails = List.from(json['vehicleTypeDetails'])
+        .map((e) => VehicleBodyDetails.fromJson(e))
+        .toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -32,39 +30,39 @@ class VehiclesBodyType {
 }
 
 class VehicleBodyDetails {
-  TextEditingController? vehicleFuel;
-  TextEditingController? vehicleModel;
-  TextEditingController? vehicleAnnualMileage;
-  TextEditingController? vehicleAge;
+  TextEditingController vehicleFuel = TextEditingController();
+  TextEditingController vehicleModel = TextEditingController();
+  TextEditingController vehicleAnnualMileage = TextEditingController();
+  TextEditingController vehicleAge = TextEditingController();
   bool? vehicleIsHousehold;
-  TextEditingController? vehicleOwner;
+  TextEditingController vehicleOwner = TextEditingController();
 
   VehicleBodyDetails({
-    this.vehicleFuel,
-    this.vehicleAge,
-    this.vehicleAnnualMileage,
+    required this.vehicleFuel,
+    required this.vehicleAge,
+    required this.vehicleAnnualMileage,
     this.vehicleIsHousehold,
-    this.vehicleModel,
-    this.vehicleOwner,
+    required this.vehicleModel,
+    required this.vehicleOwner,
   });
 
   VehicleBodyDetails.fromJson(Map<String, dynamic> json) {
-    vehicleFuel = json['vehicleFuel'] ?? '';
-    vehicleModel = json['vehicleModel'] ?? '';
-    vehicleAnnualMileage = json['vehicleAnnualMileage'] ?? '';
-    vehicleAge = json['vehicleAge'] ?? '';
+    vehicleFuel.text = json['vehicleFuel'];
+    vehicleModel.text = json['vehicleModel'];
+    vehicleAnnualMileage.text = json['vehicleAnnualMileage'];
+    vehicleAge.text = json['vehicleAge'] ?? '';
     vehicleIsHousehold = json['vehicleIsHousehold'] ?? false;
-    vehicleOwner = json['vehicleOwner'] ?? '';
+    vehicleOwner.text = json['vehicleOwner'] ?? '';
   }
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['vehicleFuel'] = vehicleFuel ?? '';
-    data['vehicleModel'] = vehicleModel ?? '';
-    data['vehicleAnnualMileage'] = vehicleAnnualMileage ?? '';
-    data['vehicleAge'] = vehicleAge ?? '';
+    data['vehicleFuel'] = vehicleFuel.text;
+    data['vehicleModel'] = vehicleModel.text;
+    data['vehicleAnnualMileage'] = vehicleAnnualMileage.text;
+    data['vehicleAge'] = vehicleAge.text;
     data['vehicleIsHousehold'] = vehicleIsHousehold ?? false;
-    data['vehicleOwner'] = vehicleOwner ?? '';
+    data['vehicleOwner'] = vehicleOwner.text;
     return data;
   }
 }

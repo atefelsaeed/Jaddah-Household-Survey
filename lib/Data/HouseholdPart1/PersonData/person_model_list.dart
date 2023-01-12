@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
+
 import '../../../Models/Person_SurveyModel/person_model.dart';
 
 class PersonModelList {
