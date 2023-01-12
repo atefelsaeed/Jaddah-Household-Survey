@@ -1,6 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
+import '../Vehicles_SurveyModel/vehicles_body_type.dart';
 import '/providers/survey_hhs.dart';
 import '../../Data/Enums/hhs_enums.dart';
 import '../Trips_SurveyModel/trips_model.dart';
@@ -17,7 +18,7 @@ class SurveyPT extends Survey {
   List<PersonModel>? personData; //
   List<SeparateFamilies>? hhsSeparateFamilies;
   List<TripsModel>? tripsList; //
-
+  List<VehiclesBodyType>? vehiclesBodyType;
   SurveyPT() : super(SurveyType.pt) {
     super.provider = SurveyPTProvider(this);
     super.header = HeaderBase();
@@ -82,6 +83,8 @@ class SurveyPT extends Survey {
 
     data['hhsSeparateFamilies'] =
         hhsSeparateFamilies!.map((e) => e.toJson()).toList();
+    data['vehiclesBodyType'] =
+        vehiclesBodyType!.map((e) => e.toJson()).toList();
     // data['personData'] = personData!.map((e) => e.toJson()).toList();
     // data['tripsList'] = tripsList!.map((e) => e.toJson()).toList();
     return data;
@@ -148,6 +151,10 @@ class SurveyPT extends Survey {
     hhsSeparateFamilies = json['hhsSeparateFamilies']
         .map<SeparateFamilies>(
             (e) => SeparateFamilies.fromJson(e as Map<String, dynamic>))
+        .toList();
+    vehiclesBodyType = json['vehiclesBodyType']
+        .map<VehiclesBodyType>(
+            (e) => VehiclesBodyType.fromJson(e as Map<String, dynamic>))
         .toList();
     // personData = json['personData']
     //     .map<PersonModel>(

@@ -1,7 +1,7 @@
 import 'vehicles_body_type.dart';
 
 class VehiclesModel {
-  List<VehiclesBodyType>? vehiclesBodyType;
+
   String? vehicleFuelType;
   String? vehicleOwnership;
   String? vehicleParking;
@@ -11,7 +11,6 @@ class VehiclesModel {
   String? nearestBusStop;
 
   VehiclesModel({
-    this.vehiclesBodyType,
     this.numberAirTubedChildren,
     this.numberAirTubedAdultsLeisure,
     this.numberAirTubedAdultsWorkUse,
@@ -29,11 +28,7 @@ class VehiclesModel {
     numberAirTubedAdultsLeisure = json['numberAirTubedAdultsLeisure'] ?? 0;
     numberAirTubedChildren = json['numberAirTubedChildren'] ?? 0;
     nearestBusStop = json['nearestBusStop'] ?? '';
-    vehiclesBodyType = json['vehiclesBodyType']
-            .map<VehiclesBodyType>(
-                (e) => VehiclesBodyType.fromJson(e as Map<String, dynamic>))
-            .toList() ??
-        [];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -45,8 +40,7 @@ class VehiclesModel {
     data['numberAirTubedAdultsLeisure'] = numberAirTubedAdultsLeisure ?? 0;
     data['numberAirTubedChildren'] = numberAirTubedChildren ?? 0;
     data['nearestBusStop'] = nearestBusStop ?? '';
-    // data['vehiclesBodyType'] =
-    //     vehiclesBodyType!.map((e) => e.toJson()).toList();
+
     return data;
   }
 }

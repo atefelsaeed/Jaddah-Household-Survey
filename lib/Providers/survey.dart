@@ -10,6 +10,7 @@ import '../Helper/api_helper.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
+import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../Models/survey.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
@@ -251,6 +252,10 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsSeparateFamilies(List<SeparateFamilies> e);
 
   List<SeparateFamilies> get hhsSeparateFamilies;
+
+  set vehiclesBodyType(List<VehiclesBodyType> e);
+
+  List<VehiclesBodyType> get vehiclesBodyType;
 
   set personData(List<PersonModel> e);
 

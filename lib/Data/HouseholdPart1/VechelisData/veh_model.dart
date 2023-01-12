@@ -6,13 +6,13 @@ import '../../../UI/Screens/Survey/Components/q5.dart';
 
 class VehModel {
   static VehiclesModel vehiclesModel = VehiclesModel(
-    vehiclesBodyType: [
-      VehiclesBodyType(
-        vehicleTypeName: 'Car',
-        vehicleTypeQuantity: 1,
-        vehicleTypeDetails: VehModel.vecCar,
-      ),
-    ],
+    // vehiclesBodyType: [
+    //   VehiclesBodyType(
+    //     vehicleTypeName: 'Car',
+    //     vehicleTypeQuantity: 1,
+    //     vehicleTypeDetails: VehModel.vecCar,
+    //   ),
+    // ],
     nearestBusStop: '',
     numberAirTubedAdultsLeisure: '',
     numberAirTubedAdultsWorkUse: '',
@@ -26,6 +26,7 @@ class VehModel {
     totalNumber: TextEditingController(),
     peopleAdults18: TextEditingController(),
   );
+
   static List<VehicleBodyDetails> vecCar = [];
   static List<VehicleBodyDetails> vecVan = [];
   static List<VehicleBodyDetails> largeCar = [];

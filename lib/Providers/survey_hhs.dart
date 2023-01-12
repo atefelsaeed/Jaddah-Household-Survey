@@ -5,6 +5,7 @@ import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
+import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'survey.dart';
 
 class SurveyPTProvider extends SurveyProvider {
@@ -355,6 +356,14 @@ class SurveyPTProvider extends SurveyProvider {
   @override
   List<SeparateFamilies> get hhsSeparateFamilies =>
       [...?_data.hhsSeparateFamilies];
+
+  @override
+  set vehiclesBodyType(List<VehiclesBodyType> e) =>
+      _data.vehiclesBodyType = e;
+
+  @override
+  List<VehiclesBodyType> get vehiclesBodyType =>
+      [...?_data.vehiclesBodyType];
 
   @override
   set personData(List<PersonModel> e) => _data.personData = e;

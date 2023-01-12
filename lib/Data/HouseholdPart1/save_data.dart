@@ -29,7 +29,7 @@ class SaveVehiclesData {
     survey.vehiclesData.numberAirTubedChildren =
         VehModel.editingController3.peopleUnder18.text;
 
-    survey.vehiclesData.vehiclesBodyType = [
+    survey.vehiclesBodyType = [
       VehiclesBodyType(
         vehicleTypeName: 'Car',
         vehicleTypeQuantity: VehModel.vecCar.length,
