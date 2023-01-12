@@ -45,23 +45,23 @@ class PersonalQuestion {
 }
 
 class EducationAddress {
-  TextEditingController? fullAddress;
-  TextEditingController? geocodes;
+  TextEditingController fullAddress = TextEditingController();
+  TextEditingController geocodes = TextEditingController();
 
   EducationAddress({
-    this.fullAddress,
-    this.geocodes,
+    required this.fullAddress,
+    required this.geocodes,
   });
 
   EducationAddress.fromJson(Map<String, dynamic> json) {
-    fullAddress = json['fullAddress'] ?? "";
-    geocodes = json['geocodes'] ?? "";
+    fullAddress.text = json['fullAddress'] ?? "";
+    geocodes.text = json['geocodes'] ?? "";
   }
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['fullAddress'] = fullAddress ?? "";
-    data['geocodes'] = geocodes ?? "";
+    data['fullAddress'] = fullAddress.text ?? "";
+    data['geocodes'] = geocodes.text ?? "";
     return data;
   }
 }

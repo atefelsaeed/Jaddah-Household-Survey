@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../Providers/auth.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
@@ -41,10 +42,7 @@ class _PersonScreenState extends State<PersonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SurveyPTProvider surveyPt =
-        Provider.of<SurveyPTProvider>(context, listen: false);
-    SurveysProvider surveys =
-        Provider.of<SurveysProvider>(context, listen: false);
+
     var base = PersonModelList.personModelList;
     return SafeArea(
       child: Scaffold(
@@ -90,11 +88,53 @@ class _PersonScreenState extends State<PersonScreen> {
                                   //   refuseToTellAge: false,
                                   //   needAge: TextEditingController(),
                                   // )
-                                  PersonModel(
-                                personalHeadData: PersonalHeadData(),
-                                personalQuestion: PersonalQuestion(),
-                                occupationModel: OccupationModel(),
-                              ));
+                                PersonModel(
+                                  //==personalHeadData==
+                                  personalHeadData: PersonalHeadData(
+                                    age: TextEditingController(),
+                                    nationality: TextEditingController(),
+                                    nationalityType: '',
+                                    gender: 'mail',
+                                    checkAge: false,
+                                    refuseToTellAge: false,
+                                    relationshipHeadHHS: '',
+                                  ),
+                                  //==personalQuestion==
+                                  personalQuestion: PersonalQuestion(
+                                    mainOccupationType: '',
+                                    asPassenger: '',
+                                    availablePersonalCar: '',
+                                    drivingLicenceType: '',
+                                    haveBusPass: '',
+                                    haveDisabilityTransportMobility: '',
+                                    haveCarSharing: false,
+                                    educationAddress: EducationAddress(
+                                      fullAddress: TextEditingController(),
+                                      geocodes: TextEditingController(),
+                                    ),
+                                  ),
+                                  //==occupationModel==
+                                  occupationModel: OccupationModel(
+                                    earliestTimeFinishingWork: TextEditingController(),
+                                    earliestTimeStartingWork: TextEditingController(),
+                                    endingWoke: TextEditingController(),
+                                    startingWoke: TextEditingController(),
+                                    address: TextEditingController(),
+                                    geoCodes: TextEditingController(),
+                                    mainOccupationAddress: TextEditingController(),
+                                    bestWorkspaceLocation: '',
+                                    bikeWorkDays: 0,
+                                    commuteWorkDays: 0,
+                                    flexibleWorkingHours: '',
+                                    isEmployee: '',
+                                    isWorkFromHome: false,
+                                    numberWorkFromHome: 0,
+                                    occupationLevelSector: '',
+                                    occupationSector: '',
+                                  ),
+                                ),
+
+                              );
 //                              AllData.personModel[0].isEmployee=1;
                             });
 

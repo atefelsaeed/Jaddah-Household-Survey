@@ -189,7 +189,7 @@ class _TripScreenState extends State<TripScreen> {
                         ),
                       ),
                     AppSize.spaceHeight2(context),
-                    ActionTripScreen(),
+                    const ActionTripScreen(),
                     AppSize.spaceHeight2(context),
                   ],
                 ),

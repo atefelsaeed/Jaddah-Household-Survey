@@ -28,10 +28,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SurveyPTProvider surveyPt =
-        Provider.of<SurveyPTProvider>(context, listen: false);
-    SurveysProvider surveys =
-        Provider.of<SurveysProvider>(context, listen: false);
+
 
     return SafeArea(
       child: Scaffold(
@@ -62,11 +59,11 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     const MotorisedVec(),
 
                     const ControllerVehiclesBody(),
-                    FuelTypeCode(),
+                    const FuelTypeCode(),
                     AppSize.spaceHeight2(context),
-                    OwnerShipCode(),
+                    const OwnerShipCode(),
                     AppSize.spaceHeight2(context),
-                    ParkThisCar(),
+                    const ParkThisCar(),
                     AppSize.spaceHeight3(context),
 
                     Q2VecScreen(
@@ -75,7 +72,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     AppSize.spaceHeight3(context),
                     const NearestTransporter(),
                     AppSize.spaceHeight2(context),
-                    ActionVecScreen(),
+                    const ActionVecScreen(),
                     AppSize.spaceHeight2(context),
                     // HouseholdAddressSection()
                   ],

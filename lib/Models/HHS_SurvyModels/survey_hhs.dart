@@ -87,8 +87,8 @@ class SurveyPT extends Survey {
         hhsSeparateFamilies!.map((e) => e.toJson()).toList();
     data['vehiclesBodyType'] =
         vehiclesBodyType!.map((e) => e.toJson()).toList();
-    // data['personData'] = personData!.map((e) => e.toJson()).toList();
-    // data['tripsList'] = tripsList!.map((e) => e.toJson()).toList();
+    data['personData'] = personData!.map((e) => e.toJson()).toList();
+    data['tripsList'] = tripsList!.map((e) => e.toJson()).toList();
     return data;
   }
 
@@ -158,12 +158,12 @@ class SurveyPT extends Survey {
         .map<VehiclesBodyType>(
             (e) => VehiclesBodyType.fromJson(e as Map<String, dynamic>))
         .toList();
-    // personData = json['personData']
-    //     .map<PersonModel>(
-    //         (e) => PersonModel.fromJson(e as Map<String, dynamic>))
-    //     .toList();
-    // tripsList = json['tripsList']
-    //     .map<TripsModel>((e) => PersonModel.fromJson(e as Map<String, dynamic>))
-    //     .toList();
+    personData = json['personData']
+        .map<PersonModel>(
+            (e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+    tripsList = json['tripsList']
+        .map<TripsModel>((e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }

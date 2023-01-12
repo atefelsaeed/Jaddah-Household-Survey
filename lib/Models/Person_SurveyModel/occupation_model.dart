@@ -7,28 +7,28 @@ class OccupationModel {
   String? bestWorkspaceLocation;
   int? commuteWorkDays;
   int? bikeWorkDays;
-  TextEditingController? address;
-  TextEditingController? geoCodes;
+  TextEditingController address = TextEditingController();
+  TextEditingController geoCodes = TextEditingController();
   bool? isWorkFromHome;
   int? numberWorkFromHome;
-  TextEditingController? startingWoke;
-  TextEditingController? endingWoke;
+  TextEditingController startingWoke = TextEditingController();
+  TextEditingController endingWoke = TextEditingController();
   String? flexibleWorkingHours;
-  TextEditingController? earliestTimeStartingWork;
-  TextEditingController? earliestTimeFinishingWork;
-  TextEditingController? mainOccupationAddress;
+  TextEditingController earliestTimeStartingWork = TextEditingController();
+  TextEditingController earliestTimeFinishingWork = TextEditingController();
+  TextEditingController mainOccupationAddress = TextEditingController();
 
   OccupationModel({
-    this.earliestTimeFinishingWork,
-    this.endingWoke,
-    this.startingWoke,
-    this.address,
-    this.geoCodes,
-    this.mainOccupationAddress,
+    required this.earliestTimeFinishingWork,
+    required this.endingWoke,
+    required this.startingWoke,
+    required this.address,
+    required this.geoCodes,
+    required this.mainOccupationAddress,
     this.bestWorkspaceLocation,
     this.bikeWorkDays,
     this.commuteWorkDays,
-    this.earliestTimeStartingWork,
+    required this.earliestTimeStartingWork,
     this.flexibleWorkingHours,
     this.isEmployee,
     this.isWorkFromHome,
@@ -44,16 +44,16 @@ class OccupationModel {
     bestWorkspaceLocation = json['bestWorkspaceLocation'] ?? "";
     commuteWorkDays = json['commuteWorkDays'] ?? 0;
     bikeWorkDays = json['bikeWorkDays'] ?? 0;
-    address = json['address'] ?? '';
-    geoCodes = json['geoCodes'] ?? '';
+    address.text = json['address'] ?? '';
+    geoCodes.text = json['geoCodes'] ?? '';
     isWorkFromHome = json['isWorkFromHome'] ?? false;
     numberWorkFromHome = json['numberWorkFromHome'] ?? 0;
-    startingWoke = json['startingWoke'] ?? '';
-    endingWoke = json['endingWoke'] ?? '';
+    startingWoke.text = json['startingWoke'] ?? '';
+    endingWoke.text = json['endingWoke'] ?? '';
     flexibleWorkingHours = json['flexibleWorkingHours'] ?? '';
-    earliestTimeStartingWork = json['earliestTimeStartingWork'] ?? '';
-    earliestTimeFinishingWork = json['earliestTimeFinishingWork'] ?? '';
-    mainOccupationAddress = json['mainOccupationAddress'] ?? '';
+    earliestTimeStartingWork.text = json['earliestTimeStartingWork'] ?? '';
+    earliestTimeFinishingWork.text = json['earliestTimeFinishingWork'] ?? '';
+    mainOccupationAddress.text = json['mainOccupationAddress'] ?? '';
   }
 
   Map<String, dynamic> toJson() {
@@ -64,16 +64,16 @@ class OccupationModel {
     data['bestWorkspaceLocation'] = bestWorkspaceLocation ?? "";
     data['commuteWorkDays'] = commuteWorkDays ?? 0;
     data['bikeWorkDays'] = bikeWorkDays ?? 0;
-    data['address'] = address ?? '';
-    data['geoCodes'] = geoCodes ?? '';
+    data['address'] = address.text ?? '';
+    data['geoCodes'] = geoCodes.text ?? '';
     data['isWorkFromHome'] = isWorkFromHome ?? false;
     data['numberWorkFromHome'] = numberWorkFromHome ?? 0;
-    data['startingWoke'] = startingWoke ?? '';
-    data['endingWoke'] = endingWoke ?? '';
+    data['startingWoke'] = startingWoke.text ?? '';
+    data['endingWoke'] = endingWoke.text ?? '';
     data['flexibleWorkingHours'] = flexibleWorkingHours ?? '';
-    data['earliestTimeStartingWork'] = earliestTimeStartingWork ?? '';
-    data['earliestTimeFinishingWork'] = earliestTimeFinishingWork ?? '';
-    data['mainOccupationAddress'] = mainOccupationAddress ?? '';
+    data['earliestTimeStartingWork'] = earliestTimeStartingWork.text ?? '';
+    data['earliestTimeFinishingWork'] = earliestTimeFinishingWork.text ?? '';
+    data['mainOccupationAddress'] = mainOccupationAddress.text ?? '';
     return data;
   }
 }

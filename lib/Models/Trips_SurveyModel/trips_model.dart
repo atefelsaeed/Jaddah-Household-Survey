@@ -11,7 +11,7 @@ class TripsModel {
   StartBeginningModel? endingAddress;
 
   String? purposeTravel;
-  TextEditingController? departureTime;
+  TextEditingController departureTime=TextEditingController();
 
   String? tripReason;
   TravelWay? travelWay;
@@ -32,7 +32,7 @@ class TripsModel {
     this.travelAloneHouseHold,
     this.arrivalDepartTime,
     this.travelWay,
-    this.departureTime,
+    required this.departureTime,
     this.endingAddress,
     this.isTravelAlone,
     this.purposeTravel,
@@ -52,7 +52,7 @@ class TripsModel {
     arrivalDepartTime = ArrivalDepartTime.fromJson(json['arrivalDepartTime']);
     travelTypeModel = TravelTypeModel.fromJson(json['travelTypeModel']);
     purposeTravel = json['purposeTravel'];
-    departureTime = json['departureTime'];
+    departureTime.text = json['departureTime'];
     tripReason = json['tripReason'];
     isTravelAlone = json['isTravelAlone'];
   }
@@ -67,7 +67,7 @@ class TripsModel {
     data['arrivalDepartTime'] = arrivalDepartTime!.toJson();
     data['travelTypeModel'] = travelTypeModel!.toJson();
     data['purposeTravel'] = purposeTravel;
-    data['departureTime'] = departureTime;
+    data['departureTime'] = departureTime.text;
     data['tripReason'] = tripReason;
     data['isTravelAlone'] = isTravelAlone;
     return data;

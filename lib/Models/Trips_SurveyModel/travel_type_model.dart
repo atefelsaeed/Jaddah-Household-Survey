@@ -4,14 +4,14 @@ class TravelTypeModel {
   String? carParkingPlace;
   String? taxiTravelType;
   String? passTravelType;
-  TextEditingController? taxiFare;
+  TextEditingController taxiFare = TextEditingController();
   String? publicTransportFare;
 
   TravelTypeModel({
     this.carParkingPlace,
     this.passTravelType,
     this.publicTransportFare,
-    this.taxiFare,
+    required this.taxiFare,
     this.taxiTravelType,
   });
 
@@ -19,7 +19,7 @@ class TravelTypeModel {
     carParkingPlace = json['carParkingPlace'];
     taxiTravelType = json['taxiTravelType'];
     passTravelType = json['passTravelType'];
-    taxiFare = json['taxiFare'];
+    taxiFare.text = json['taxiFare'];
     publicTransportFare = json['publicTransportFare'];
   }
 
@@ -28,32 +28,33 @@ class TravelTypeModel {
     data['carParkingPlace'] = carParkingPlace;
     data['taxiTravelType'] = taxiTravelType;
     data['passTravelType'] = passTravelType;
-    data['taxiFare'] = taxiFare;
+    data['taxiFare'] = taxiFare.text;
     data['publicTransportFare'] = publicTransportFare;
     return data;
   }
 }
 
 class ArrivalDepartTime {
-  TextEditingController? departTime;
-  TextEditingController? arriveDestinationTime;
+  TextEditingController departTime = TextEditingController();
+  TextEditingController arriveDestinationTime = TextEditingController();
   String? numberRepeatTrip;
 
   ArrivalDepartTime({
-    this.departTime,
+    required this.departTime,
     this.numberRepeatTrip,
-    this.arriveDestinationTime,
+    required this.arriveDestinationTime,
   });
 
   ArrivalDepartTime.fromJson(Map<String, dynamic> json) {
-    departTime = json['departTime'];
-    arriveDestinationTime = json['arriveDestinationTime'];
+    departTime.text = json['departTime'];
+    arriveDestinationTime.text = json['arriveDestinationTime'];
     numberRepeatTrip = json['numberRepeatTrip'];
   }
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['departTime'] = departTime;
+    data['departTime'] = departTime.text;
+    data['arriveDestinationTime'] = arriveDestinationTime.text;
     data['numberRepeatTrip'] = numberRepeatTrip;
     return data;
   }

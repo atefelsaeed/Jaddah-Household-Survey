@@ -34,14 +34,15 @@ class PersonalHeadData {
   String? gender;
   bool? checkAge;
   bool? refuseToTellAge;
-  TextEditingController? age;
+  TextEditingController age = TextEditingController();
   String? nationalityType;
-  TextEditingController? nationality; //open if not Saudi National
+  TextEditingController nationality =
+      TextEditingController(); //open if not Saudi National
 
   PersonalHeadData({
-    this.age,
+    required this.age,
     this.nationalityType,
-    this.nationality,
+    required this.nationality,
     this.gender,
     this.checkAge,
     this.refuseToTellAge,
@@ -53,9 +54,9 @@ class PersonalHeadData {
     gender = json['gender'] ?? "";
     checkAge = json['checkAge'];
     refuseToTellAge = json['refuseToTellAge'];
-    age = json['age'] ?? "";
+    age.text = json['age'] ?? "";
     nationalityType = json['nationalityType'] ?? "";
-    nationality = json['nationality'] ?? "";
+    nationality.text = json['nationality'] ?? "";
   }
 
   Map<String, dynamic> toJson() {
@@ -64,9 +65,9 @@ class PersonalHeadData {
     data['gender'] = gender ?? "";
     data['checkAge'] = checkAge;
     data['refuseToTellAge'] = refuseToTellAge;
-    data['age'] = age ?? "";
+    data['age'] = age.text ?? "";
     data['nationalityType'] = nationalityType ?? "";
-    data['nationality'] = nationality ?? "";
+    data['nationality'] = nationality.text ?? "";
     return data;
   }
 }

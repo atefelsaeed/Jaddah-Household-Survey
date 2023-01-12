@@ -67,14 +67,14 @@ class SaveVehiclesData {
 
 class SavePersonData {
   static saveData(context) {
-    SurveyProvider survey = Provider.of<SurveyProvider>(context, listen: true);
+    SurveyPTProvider survey = Provider.of<SurveyPTProvider>(context, listen: false);
     survey.personData = PersonModelList.personModelList;
   }
 }
 
 class SaveTripsData {
   static saveData(context) {
-    SurveyProvider survey = Provider.of<SurveyProvider>(context, listen: true);
+    SurveyProvider survey = Provider.of<SurveyPTProvider>(context, listen: false);
     survey.tripsList = TripModeList.tripModeList;
   }
 }

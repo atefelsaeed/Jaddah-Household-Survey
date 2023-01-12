@@ -6,7 +6,8 @@ class HeaderBase {
   late double locationLat;
   late double locationLong;
   late DateTime interviewDate;
-  int? interviewNumber ;
+  int? interviewNumber;
+
   String? districtName;
   late String zoneNumber;
   late int empNumber;
@@ -25,10 +26,6 @@ abstract class Survey {
   Survey(this.type);
 
   set suggestionName(String suggestionName) {}
-
-  // set journeyStarDistrictName(String? journeyStarDistrictName) {}
-
-  // set journeyEndDistrictName(String? journeyEndDistrictName) {}
 
   Map<String, dynamic> toJson();
 }
