@@ -66,46 +66,47 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: ColorManager.primaryColor,
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         Navigator.push(
-      //             context,
-      //             MaterialPageRoute(
-      //                 builder: (context) => const SurveyScreen()));
-      //       },
-      //       icon: const Icon(Icons.add),
-      //     ),
-      //     const SizedBox(width: 20),
-      //     IconButton(
-      //       onPressed: () async {
-      //         await getLocation().then((value) {}).onError(
-      //               (error, stackTrace) {
-      //             log(stackTrace.toString());
-      //             ScaffoldMessenger.of(context).showSnackBar(
-      //               const SnackBar(
-      //                 content: Text("The location service must be running"),
-      //                 duration: Duration(seconds: 3),
-      //                 elevation: 1,
-      //               ),
-      //             );
-      //             setState(() {
-      //               clicked = false;
-      //             });
-      //           },
-      //         );
-      //       },
-      //       icon: const Icon(Icons.sync),
-      //     ),
-      //     const SizedBox(width: 30),
-      //     IconButton(
-      //       onPressed: Provider.of<Auth>(context).logout,
-      //       icon: const Icon(Icons.logout),
-      //     ),
-      //   ],
-      // ),
+      appBar: AppBar(
+        backgroundColor: ColorManager.primaryColor,
+        actions: [
+          // IconButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             builder: (context) => const SurveyScreen()));
+          //   },
+          //   icon: const Icon(Icons.add),
+          // ),
+          // const SizedBox(width: 20),
+          IconButton(
+            onPressed: () async {
+              await getLocation().then((value) {}).onError(
+                    (error, stackTrace) {
+                  log(stackTrace.toString());
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("The location service must be running"),
+                      duration: Duration(seconds: 3),
+                      elevation: 1,
+                    ),
+                  );
+                  setState(() {
+                    clicked = false;
+                  });
+                },
+              );
+            },
+            icon: const Icon(Icons.sync),
+          ),
+          const SizedBox(width: 30),
+          IconButton(
+            onPressed: Provider.of<Auth>(context).logout,
+            icon: const Icon(Icons.logout),
+          ),
+        ],
+        leading: Container(),
+      ),
       body: FutureBuilder(
           future: Provider.of<SurveysProvider>(context, listen: false).fetch(),
           builder: (fctx, dataSnapshot) {

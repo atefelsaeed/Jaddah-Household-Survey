@@ -51,7 +51,7 @@ class Auth with ChangeNotifier {
   Future<bool> fetch() async {
     try {
       var response = await APIHelper.getData(
-        url: "allUsers",
+        url: "getUsers",
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);

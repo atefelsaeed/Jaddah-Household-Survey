@@ -35,12 +35,12 @@ class _LoginFormState extends State<LoginForm> {
           Row(
             children: [
               Icon(
-                Icons.phone_in_talk_outlined,
+                Icons.email_outlined,
                 color: ColorManager.grayColor,
               ),
               AppSize.spaceWidth1(context),
               Text(
-                'Enter Phone',
+                'البريد الالكترونى',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: width(context) * .04,
@@ -69,12 +69,12 @@ class _LoginFormState extends State<LoginForm> {
                   borderSide: BorderSide(width: 1.5, color: ColorManager.error),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                labelText: "Enter Phone"),
+                labelText: "أدخل البريد الإلكترونى"),
             textDirection: TextDirection.ltr,
             keyboardType: TextInputType.emailAddress,
             validator: (value) => Validator.validateEmail(
               value: value!,
-              message: "Invalid Phone Number",
+              message: "خطأ فى البريد الإلكترونى",
             ),
           ),
           AppSize.spaceHeight3(context),
@@ -86,7 +86,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               AppSize.spaceWidth1(context),
               Text(
-                'Enter Password',
+                ' كلمة السر',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: width(context) * .04,
@@ -115,14 +115,14 @@ class _LoginFormState extends State<LoginForm> {
                   borderSide: BorderSide(width: 1.5, color: ColorManager.error),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                labelText: "Enter Password"),
+                labelText: "أدخل كلمة السر"),
             textDirection: TextDirection.ltr,
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
             validator: (value) => Validator.validatePassword(
               value: value!,
-              message: "Incorrect password",
+              message: "خطأ فى كلمة السر",
             ),
           ),
           const SizedBox(height: 30),
@@ -179,7 +179,7 @@ class _LoginFormState extends State<LoginForm> {
                             size: 150,
                           ),
                         ),
-                        Text("Connection Error"),
+                        Text("خطأ فى الإتصال"),
                       ],
                     ),
                   );
@@ -192,7 +192,7 @@ class _LoginFormState extends State<LoginForm> {
             },
             color: ColorManager.primaryColor,
             child: Text(
-              "LOGIN NOW",
+              "تسجيل الدخول",
               style: TextStyle(
                 color: ColorManager.wight,
                 fontWeight: FontWeight.w700,

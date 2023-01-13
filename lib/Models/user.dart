@@ -19,7 +19,7 @@ class User {
     id = json['id'];
     // print(json);
     name = json['name'];
-    password = json['user_password'];
+    password = json['password'];
     email = json['email'];
 
     // print(json['expires']);
@@ -30,7 +30,7 @@ class User {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    data['user_password'] = password;
+    data['password'] = password;
     data['email'] = email;
     return data;
   }

@@ -10,7 +10,7 @@ import 'survey.dart';
 
 class SurveyPTProvider extends SurveyProvider {
   @override
-  String push_url = "personalData";
+  String push_url = "savePtData";
   late final SurveyPT _data;
 
   SurveyPTProvider(data) : super(data) {

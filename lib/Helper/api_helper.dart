@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class APIHelper {
-  static const String baseUrl = "http://takamolapp.tkamol.sa/public/api/v1/";
+  static const String baseUrl = "https://research.tkamol.sa/public/api/";
 
   static getData({
     required String url,

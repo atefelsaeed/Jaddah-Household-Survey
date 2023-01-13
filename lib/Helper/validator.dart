@@ -17,7 +17,7 @@ class Validator {
       {required String value, required String message}) {
     if (value.trim().isEmpty) {
       return message;
-    } else if (value.length < 6) {
+    } else if (value.length < 5) {
       return message;
     }
   }
@@ -71,10 +71,12 @@ class Validator {
   static String? validateEmail(
       {required String value, required String message}) {
     if (value.trim().isEmpty) {
+      print("empty");
       return message;
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(value)) {
+      print('not valid');
       return message;
     }
     return null;

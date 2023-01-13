@@ -41,7 +41,7 @@ class LoginBody extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Welcome Back",
+                              "مرحبا بك من جديد",
                               style: TextStyle(
                                 fontSize: 24,
                                 color: ColorManager.primaryColor,
