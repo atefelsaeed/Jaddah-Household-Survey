@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
+import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
@@ -35,11 +36,11 @@ class _DefaultEntryState extends State<DefaultEntry> {
                   .toList()
                   .first
                   .toString()),
-              hint: " القرابة برب الأسرة",
+              hint: " نوع الجنس",
               options:
                   PersonData.gender[PersonData.gender.keys.first]!.toList(),
               onChange: (String? p) {
-
+PersonModelList.personModelList[widget.i].personalHeadData!.gender=p.toString();
 
               },
             ),
@@ -49,12 +50,12 @@ class _DefaultEntryState extends State<DefaultEntry> {
                   .toList()
                   .first
                   .toString()),
-              hint: "نوع الجنس",
+              hint: "القرابة برب الأسرة ",
               options: PersonData.relationshipToTheHeadOfHousehold[
                       PersonData.relationshipToTheHeadOfHousehold.keys.first]!
                   .toList(),
               onChange: (var p) {
-
+                PersonModelList.personModelList[widget.i].personalHeadData!.relationshipHeadHHS=p.toString();
               },
             ),
           ],

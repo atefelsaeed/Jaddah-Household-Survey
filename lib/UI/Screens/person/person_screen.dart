@@ -266,9 +266,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     .toList()
                                                     .first["value"]
                                                     .toString()),
-                                                hint: PersonData
-                                                    .groupAge.keys.first
-                                                    .toString(),
+                                                hint: "الفئة العمرية",
                                                 options: PersonData.groupAge[
                                                         PersonData.groupAge.keys
                                                             .first]!

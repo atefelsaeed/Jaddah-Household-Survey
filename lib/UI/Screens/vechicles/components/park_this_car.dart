@@ -18,7 +18,7 @@ class _ParkThisCarState extends State<ParkThisCar> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         DropDownFormInput(
           label: Text(VehiclesData

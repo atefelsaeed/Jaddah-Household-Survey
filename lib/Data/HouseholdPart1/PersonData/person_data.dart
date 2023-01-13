@@ -25,6 +25,7 @@ class PersonData {
     "subTitle": "mainMade",
     "chosenIndex": 0,
   };
+
   static Map<String, dynamic> groupAge = {
     "group Age": [
       {"value": '< 6', "isChick": false, "type": "2"},
@@ -213,17 +214,9 @@ class PersonData {
   };
   static Map<String, dynamic> drivingLiences = {
     "?What type of driving licence do you have": [
-      '< 6',
-      ' 6 - 11',
-      '12 - 15',
-      '16 - 18',
-      '19 -24',
-      ' 25 - 34',
-      '35 - 44',
-      '45 - 54',
-      '55 - 64',
-      '65 - 74',
-      '>74'
+      'always',
+      'never',
+      'some Time',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
