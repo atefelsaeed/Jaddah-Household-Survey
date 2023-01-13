@@ -16,10 +16,12 @@ import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
+import 'components/how_did_you_travel.dart';
 import 'components/purpose_of)being.dart';
 
+import 'components/time_leave.dart';
 import 'components/trip_hold_address.dart';
-
+import 'components/where_did_you_go.dart';
 
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
@@ -29,7 +31,6 @@ class TripScreen extends StatefulWidget {
 }
 
 class _TripScreenState extends State<TripScreen> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,8 +45,7 @@ class _TripScreenState extends State<TripScreen> {
                 textDirection: TextDirection.rtl,
                 child: Column(
                   children: [
-                    const HeadlinePerson(
-                        text: "الرحلات"),
+                    const HeadlinePerson(text: "الرحلات"),
                     AppSize.spaceHeight2(context),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -57,7 +57,8 @@ class _TripScreenState extends State<TripScreen> {
                                 type: false,
                                 isTravelAlone: false,
                                 tripReason: "",
-                                taxiTravelTypeEditingControl: TextEditingController(),
+                                taxiTravelTypeEditingControl:
+                                    TextEditingController(),
                                 //whereDidYouGo
                                 purposeTravel: "",
                                 departureTime: TextEditingController(),
@@ -65,7 +66,8 @@ class _TripScreenState extends State<TripScreen> {
                                 typeTravelCondition: "0",
                                 travelTypeModel: TravelTypeModel(
                                   carParkingPlace: "",
-                                  otherWhereDidYouParking: TextEditingController(),
+                                  otherWhereDidYouParking:
+                                      TextEditingController(),
                                   ticketSub: TextEditingController(),
                                   taxiTravelTypeOther: TextEditingController(),
                                   taxiFare: TextEditingController(),
@@ -80,7 +82,6 @@ class _TripScreenState extends State<TripScreen> {
                                 travelWithOtherModel: TravelWithOtherModel(
                                     adultsNumber: TextEditingController(),
                                     childrenNumber: TextEditingController(),
-
                                     hhsMembersTraveled: "",
                                     text: "?If with other how many"),
                                 travelAloneHouseHold: TravelWithOtherModel(
@@ -143,6 +144,7 @@ class _TripScreenState extends State<TripScreen> {
                                 TripHoldAddress(
                                   tripModel: TripModeList
                                       .tripModeList[i].startBeginningModel!,
+                                  titel: "من أین بدأت الیوم؟",
                                 ),
                                 AppSize.spaceHeight3(context),
                                 const HeadlineTrip(
@@ -152,46 +154,47 @@ class _TripScreenState extends State<TripScreen> {
                                 PurposeOfTheBeing(
                                   indexTripModel: i,
                                 ),
-                               /* const HeadlineTrip(
-                                    text: "كیف سافرت ؟"),*/
-
-                               // const Divider(),
-                                //AppSize.spaceHeight2(context),
-                               /* HowDidYouTravel(
-                                  i: i,
-                                ),
+                                AppSize.spaceHeight3(context),
+                                const Divider(),
                                 TimeLeave(
                                   expectedDeparture: TripModeList
                                       .tripModeList[i].departureTime!,
                                 ),
-                                const HeadlineTrip(
-                                    text: "?At what address did you go to"),
-                                const Divider(),
+                                AppSize.spaceHeight3(context),
                                 TripHoldAddress(
                                   tripModel: TripModeList
                                       .tripModeList[i].endingAddress!,
+                                  titel: "الى أي عنوان ذھبت؟",
                                 ),
                                 AppSize.spaceHeight2(context),
-                                const HeadlineTrip(
-                                    text: "?At what address did you go to"),
                                 const Divider(),
-                                AppSize.spaceHeight2(context),
                                 WhyDidYouGo(
                                   indexTripModel: i,
                                 ),
-                                AppSize.spaceHeight2(context),*/
+                                AppSize.spaceHeight2(context),
 
+                                HowDidYouTravel(
+                                  i: i,
+                                ),
+                                AppSize.spaceHeight2(context),
+                                const Divider(),
+
+                                AppSize.spaceHeight2(context),
                                 TravelAlone(index: i),
                                 AppSize.spaceHeight2(context),
                                 WhereDidYouPark(
                                   costTaxi: TripModeList.tripModeList[i]
                                       .travelTypeModel!.taxiFare!,
                                   index: i,
-
                                 ),
                                 AppSize.spaceHeight2(context),
                                 DepartTime(
-                                    tripModel: TripModeList.tripModeList[i], i: i,textEditingControl:TripModeList.tripModeList[i].taxiTravelTypeEditingControl! ,),
+                                  tripModel: TripModeList.tripModeList[i],
+                                  i: i,
+                                  textEditingControl: TripModeList
+                                      .tripModeList[i]
+                                      .taxiTravelTypeEditingControl!,
+                                ),
                               ],
                             ),
                           ),

@@ -79,7 +79,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
             children: [
               AppSize.spaceHeight5(context),
               Text(
-                'Welcome ${auth.user!.name}',
+                'مرحباً ${auth.user!.name}',
                 style: TextStyle(
                   color: ColorManager.wight,
                   fontSize: width(context) * .065,

@@ -128,7 +128,7 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
                           padding: EdgeInsets.all(12.0),
                           child: Center(
                             child: Text(
-                              'There are no surveys',
+                              'لا يوجد استبيانات',
                             ),
                           ),
                         );

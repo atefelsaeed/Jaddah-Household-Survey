@@ -7,8 +7,8 @@ import '../../Survey/widgets/text_form_row.dart';
 
 class TripHoldAddress extends StatelessWidget {
   final StartBeginningModel tripModel;
-
-  const TripHoldAddress({super.key, required this.tripModel});
+final String titel;
+  const TripHoldAddress({super.key, required this.tripModel, required this.titel});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class TripHoldAddress extends StatelessWidget {
     return Column(
       children: [
         AppSize.spaceHeight2(context),
-        const HeadlineTrip(text: "من أین بدأت الیوم؟"),
+         HeadlineTrip(text:titel),
         AppSize.spaceHeight1(context),
         const Divider(
           thickness: 1,

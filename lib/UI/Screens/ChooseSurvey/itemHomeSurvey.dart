@@ -18,7 +18,7 @@ final int count;
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Household Travel Diary Survey',
+              'مسح يوميات السفر المنزلي',
               style: TextStyle(fontWeight: FontWeight.w800),
             ),
             AppSize.spaceHeight5(context),
@@ -29,7 +29,7 @@ final int count;
                       ImageAssets.iconLambGray,
                     )),
                 AppSize.spaceWidth2(context),
-                Text('Number of survey',
+                Text('عدد الاستبيانات',
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
                       color: ColorManager.grayColor,

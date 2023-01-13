@@ -51,12 +51,13 @@ class ActionTripScreen extends StatelessWidget {
     return DefaultButton(
       function: () {
         Random random = Random();
-        int randomNumber = random.nextInt(10000);
+        int randomNumber = (1000 + random.nextInt(10000 - 1000));
+        int num = int.parse('${auth.uid}001$randomNumber');
         surveyPt.headerLat = 0;
         surveyPt.interViewDate = DateTime.now();
         surveyPt.headerLong = 0;
         surveyPt.headerEmpNumber = auth.uid;
-        surveyPt.headerInterviewNumber = (auth.uid + randomNumber);
+        surveyPt.headerInterviewNumber = num;
         surveyPt.id = auth.uid.toString();
         SaveTripsData.saveData(context);
         print("after save");

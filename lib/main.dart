@@ -78,9 +78,9 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale("en"), // OR Locale('ar', 'AE') OR Other RTL locales
+          Locale("ar"), // OR Locale('ar', 'AE') OR Other RTL locales
         ],
-        locale: const Locale("en"),
+        locale: const Locale("ar"),
         routes: {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
