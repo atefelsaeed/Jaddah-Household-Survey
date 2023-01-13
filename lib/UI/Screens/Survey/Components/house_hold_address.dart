@@ -38,14 +38,8 @@ class HouseHoldAddress extends StatelessWidget {
       children: [
         AppSize.spaceHeight2(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            AppSize.spaceWidth1(context),
-            TextGlobal(
-              text: "Household address",
-              fontSize: height(context) * .023,
-              color: ColorManager.black,
-            ),
             AppSize.spaceWidth2(context),
             Column(
               children: [
@@ -59,7 +53,15 @@ class HouseHoldAddress extends StatelessWidget {
                   height: height(context) * .003,
                 )
               ],
-            )
+            ),
+            AppSize.spaceWidth2(context),
+            TextGlobal(
+              text: "مسح يوميات السفر المنزلي",
+              fontSize: height(context) * .023,
+              color: ColorManager.black,
+            ),
+            AppSize.spaceWidth2(context),
+
           ],
         ),
         AppSize.spaceHeight1(context),
@@ -68,71 +70,71 @@ class HouseHoldAddress extends StatelessWidget {
         ),
         AppSize.spaceHeight2(context),
         Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
                 controller: buildingName,
-                text: "Building Name",
-                label: "Enter Building Name",
+                text: "اسم المبنى",
+                label: "اسم المبنى",
               ),
               TextForm(
                 controller: streetName,
-                text: "street Name",
-                label: "Enter Street Name",
+                text: "اسم الشارع",
+                label: "اسم الشارع",
               )
             ],
           ),
         ),
         AppSize.spaceHeight2(context),
         Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
                 controller: streetNumber,
-                label: "Street Number",
-                text: "Enter Street Number",
+                label: "رقم الشارع",
+                text: "رقم الشارع",
               ),
               TextForm(
                 controller: nearestLandMark,
-                label: "Nearest Land Mark ",
-                text: "Enter Nearest Land Mark ",
+                label: " أقرب معلم",
+                text: " أقرب معلم",
               )
             ],
           ),
         ),
         AppSize.spaceHeight2(context),
         Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
                 controller: blockNearestTwoCrossStreets,
-                text: "Block/Nearest two cross streets",
-                label: "Enter Block/Nearest two cross streets",
+                text: "مجمع / أقرب شارعين متقاطعين",
+                label: "مجمع / أقرب شارعين متقاطعين",
               ),
               TextForm(
                 controller: area,
-                text: "Area (Suburb)",
-                label: "Enter Area (Suburb) ",
+                text: "المنطقة (الضاحية)",
+                label: "المنطقة (الضاحية)",
               )
             ],
           ),
         ),
         AppSize.spaceHeight2(context),
         Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               TextForm(
                 controller: city,
-                text: "City/ Town",
-                label: "Enter City/ Town",
+                text: "المدينة / البلدة",
+                label: "المدينة / البلدة",
               ),
               //  TextForm(controller: area,text: "Area (Suburb)",label: "Enter Area (Suburb) ",)
             ],

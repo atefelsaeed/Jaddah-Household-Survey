@@ -25,13 +25,13 @@ class Q5 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
         Expanded(child:     TextGlobal(
-              text: QuestionsData.qh5["Qh5"],
+              text: "5.كم عدد أفراد عائلتك الذين يعيشون بشكل دائم في هذا المنزل؟",
               fontSize: height(context) * .02,
               color: ColorManager.black,
             )),
           ],
         ),
-        Row(
+       /* Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextGlobal(
@@ -40,10 +40,10 @@ class Q5 extends StatelessWidget {
               color: ColorManager.grayColor,
             ),
           ],
-        ),
+        ),*/
         AppSize.spaceHeight2(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -54,7 +54,7 @@ class Q5 extends StatelessWidget {
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
-                  text: "children (under 18yrs)",
+                  text: "الاطفال",
                   fontSize: height(context) * .015,
                   color: ColorManager.black,
                 ),
@@ -70,7 +70,7 @@ class Q5 extends StatelessWidget {
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
-                  text: "adults (18yrs +)",
+                  text: "البالغين",
                   fontSize: height(context) * .017,
                   color: ColorManager.grayColor,
                 ),
@@ -115,14 +115,14 @@ class _Q6State extends State<Q6> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
     Expanded(child:         TextGlobal(
-              text: QuestionsData.qh6.keys.first.toString(),
+              text:"4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟",
               fontSize: height(context) * .02,
               color: ColorManager.black,
             )),
           ],
         ),
         AppSize.spaceHeight1(context),
-        Row(
+      /*  Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextGlobal(
@@ -131,17 +131,17 @@ class _Q6State extends State<Q6> {
               color: ColorManager.grayColor,
             ),
           ],
-        ),
+        ),*/
         AppSize.spaceHeight2(context),
         for (int i = 0; i < widget.q6peopleAdults18.length; i++)
           Column(
             children: [
               Field(
                   peopleAdults18: widget.q6peopleAdults18[i],
-                  peopleUnder18Text: "children (under 18yrs)",
-                  peopleAdults18Text: "adults (18yrs +)",
+                  peopleUnder18Text: "الاطفال",
+                  peopleAdults18Text: "البالغين",
                   totalNumberOfVecText:
-                      "Total Number of Vehicles in each family",
+                      "إجمالي عدد المركبات في كل عائلة",
                   peopleUnder18: widget.q6peopleUnder18[i],
                   totalNumberOfVec: widget.q6totalNumberOfVec[i]),
               AppSize.spaceHeight2(context),
@@ -160,7 +160,7 @@ class _Q6State extends State<Q6> {
                 });
               },
               isWidget: true,
-              text: "Add More",
+              text: "أضافة المزيد",
             ),
           ],
         )
@@ -184,7 +184,7 @@ class Q81 extends StatelessWidget {
           children: [
             Expanded(
               child: TextGlobal(
-                text: QuestionsData.qh8_1.keys.first,
+                text: "7. كم عدد الدراجات الهوائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -195,10 +195,10 @@ class Q81 extends StatelessWidget {
         Field(
             peopleAdults18: editingController3.peopleAdults18,
             peopleUnder18: editingController3.peopleUnder18,
-            totalNumberOfVecText: "Total number of bikes",
+            totalNumberOfVecText: "إجمالي عدد المركبات في كل عائلة",
             totalNumberOfVec: editingController3.totalNumber,
-            peopleAdults18Text: "adults (18yrs +)",
-            peopleUnder18Text: "children (under 18yrs)")
+            peopleAdults18Text: "البالغين",
+            peopleUnder18Text: "الاطفال")
       ],
     );
   }
@@ -219,7 +219,7 @@ class Q82 extends StatelessWidget {
           children: [
             Expanded(
               child: TextGlobal(
-                text: QuestionsData.qh8_2.keys.first,
+                text:"كم عدد الدراجات الكهربائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -230,10 +230,10 @@ class Q82 extends StatelessWidget {
         Field(
             peopleAdults18: editingController3.peopleAdults18,
             peopleUnder18: editingController3.peopleUnder18,
-            totalNumberOfVecText: "Total number of bikes",
+            totalNumberOfVecText: "إجمالي عدد الدرجات",
             totalNumberOfVec: editingController3.totalNumber,
-            peopleAdults18Text: "adults (18yrs +)",
-            peopleUnder18Text: "children (under 18yrs)")
+            peopleAdults18Text: "البالغين",
+            peopleUnder18Text: "الاطفال")
       ],
     );
   }
@@ -254,7 +254,7 @@ class Q83 extends StatelessWidget {
           children: [
             Expanded(
               child: TextGlobal(
-                text: QuestionsData.qh8_3.keys.first,
+                text: "كم عدد الدراجات الإلكترونية (e-scooters) التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -265,10 +265,10 @@ class Q83 extends StatelessWidget {
         Field(
             peopleAdults18: editingController3.peopleAdults18,
             peopleUnder18: editingController3.peopleUnder18,
-            totalNumberOfVecText: "Total number of bikes",
+            totalNumberOfVecText: "إجمالي عدد الدرجات",
             totalNumberOfVec: editingController3.totalNumber,
-            peopleAdults18Text: "adults (18yrs +)",
-            peopleUnder18Text: "children (under 18yrs)")
+            peopleAdults18Text: "البالغين",
+            peopleUnder18Text: "الاطفال")
       ],
     );
   }
