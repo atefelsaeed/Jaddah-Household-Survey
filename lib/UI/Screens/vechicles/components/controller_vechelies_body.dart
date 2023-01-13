@@ -73,7 +73,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                         onChanged: (d) {
                           setState(() {
                             switch (VehiclesData.vecModel[index].title) {
-                              case "car":
+                              case "سيارة":
                                 VehModel.vecCar = [];
                                 for (int i = 0; i < int.parse(d!); i++) {
                                   VehModel.vecCar.add(
@@ -89,7 +89,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                 }
 
                                 break;
-                              case "Large Car (SUV etc.)":
+                              case "سيارة كبيرة (SUV وما إلى ذلك)":
                                 VehModel.largeCar = [];
                                 for (int i = 0; i < int.parse(d!); i++) {
                                   VehModel.largeCar.add(
@@ -104,7 +104,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   );
                                 }
                                 break;
-                              case "Van":
+                              case "ونيت":
                                 VehModel.vecVan = [];
                                 for (int i = 0; i < int.parse(d!); i++) {
                                   VehModel.vecVan.add(
@@ -119,7 +119,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   );
                                 }
                                 break;
-                              case "E-Scooter":
+                              case "شاحنة":
                                 VehModel.eScooter = [];
                                 for (int i = 0; i < int.parse(d!); i++) {
                                   VehModel.eScooter.add(
@@ -134,7 +134,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   );
                                 }
                                 break;
-                              case "Pick up":
+                              case "دراجة نارية":
                                 VehModel.pickUp = [];
                                 for (int i = 0; i < int.parse(d!); i++) {
                                   VehModel.pickUp.add(
@@ -149,7 +149,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   );
                                 }
                                 break;
-                              case "other":
+                              case "اسكوتر":
                                 VehModel.other = [];
                                 for (int i = 0; i < int.parse(d!); i++) {
                                   VehModel.other.add(

@@ -3,7 +3,7 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/action_trip_screen.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
-import 'package:jaddah_household_survey/UI/Screens/trips/components/how_did_you_travel.dart';
+
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 
@@ -17,9 +17,9 @@ import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
 import 'components/purpose_of)being.dart';
-import 'components/time_leave.dart';
+
 import 'components/trip_hold_address.dart';
-import 'components/where_did_you_go.dart';
+
 
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
@@ -29,6 +29,7 @@ class TripScreen extends StatefulWidget {
 }
 
 class _TripScreenState extends State<TripScreen> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,7 +45,7 @@ class _TripScreenState extends State<TripScreen> {
                 child: Column(
                   children: [
                     const HeadlinePerson(
-                        text: "Trips- Household Travel Diary Survey"),
+                        text: "الرحلات"),
                     AppSize.spaceHeight2(context),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -56,6 +57,7 @@ class _TripScreenState extends State<TripScreen> {
                                 type: false,
                                 isTravelAlone: false,
                                 tripReason: "",
+                                taxiTravelTypeEditingControl: TextEditingController(),
                                 //whereDidYouGo
                                 purposeTravel: "",
                                 departureTime: TextEditingController(),
@@ -63,6 +65,9 @@ class _TripScreenState extends State<TripScreen> {
                                 typeTravelCondition: "0",
                                 travelTypeModel: TravelTypeModel(
                                   carParkingPlace: "",
+                                  otherWhereDidYouParking: TextEditingController(),
+                                  ticketSub: TextEditingController(),
+                                  taxiTravelTypeOther: TextEditingController(),
                                   taxiFare: TextEditingController(),
                                   taxiTravelType: '',
                                   passTravelType: '',
@@ -75,6 +80,7 @@ class _TripScreenState extends State<TripScreen> {
                                 travelWithOtherModel: TravelWithOtherModel(
                                     adultsNumber: TextEditingController(),
                                     childrenNumber: TextEditingController(),
+
                                     hhsMembersTraveled: "",
                                     text: "?If with other how many"),
                                 travelAloneHouseHold: TravelWithOtherModel(
@@ -115,7 +121,7 @@ class _TripScreenState extends State<TripScreen> {
                           },
                           isWidget: true,
                           btnWidth: width(context) * .24,
-                          text: "Add New Trip",
+                          text: "أضافة رحلة جديدة",
                           widget: const Icon(Icons.arrow_forward),
                         )
                       ],
@@ -141,15 +147,19 @@ class _TripScreenState extends State<TripScreen> {
                                 AppSize.spaceHeight3(context),
                                 const HeadlineTrip(
                                     text:
-                                        "?What was the purpose of being there"),
+                                        "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
                                 const Divider(),
                                 PurposeOfTheBeing(
                                   indexTripModel: i,
                                 ),
-                                const HeadlineTrip(
-                                    text: "?What time did you leave"),
-                                const Divider(),
-                                AppSize.spaceHeight2(context),
+                               /* const HeadlineTrip(
+                                    text: "كیف سافرت ؟"),*/
+
+                               // const Divider(),
+                                //AppSize.spaceHeight2(context),
+                               /* HowDidYouTravel(
+                                  i: i,
+                                ),
                                 TimeLeave(
                                   expectedDeparture: TripModeList
                                       .tripModeList[i].departureTime!,
@@ -169,20 +179,19 @@ class _TripScreenState extends State<TripScreen> {
                                 WhyDidYouGo(
                                   indexTripModel: i,
                                 ),
-                                AppSize.spaceHeight2(context),
-                                HowDidYouTravel(
-                                  i: i,
-                                ),
+                                AppSize.spaceHeight2(context),*/
+
                                 TravelAlone(index: i),
                                 AppSize.spaceHeight2(context),
                                 WhereDidYouPark(
                                   costTaxi: TripModeList.tripModeList[i]
                                       .travelTypeModel!.taxiFare!,
                                   index: i,
+
                                 ),
                                 AppSize.spaceHeight2(context),
                                 DepartTime(
-                                    tripModel: TripModeList.tripModeList[i]),
+                                    tripModel: TripModeList.tripModeList[i], i: i,textEditingControl:TripModeList.tripModeList[i].taxiTravelTypeEditingControl! ,),
                               ],
                             ),
                           ),
@@ -212,7 +221,7 @@ class TextTrip extends StatelessWidget {
     // TODO: implement build
     int indexc = index + 1;
     return TextGlobal(
-      text: "Trip ${indexc.toString()}",
+      text: "رحلة  ${indexc.toString()}",
       fontSize: height(context) * .023,
       color: ColorManager.orangeTxtColor,
     );

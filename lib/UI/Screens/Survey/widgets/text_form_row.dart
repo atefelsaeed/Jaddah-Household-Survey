@@ -62,16 +62,12 @@ class TextFormer extends StatelessWidget {
             width: width(context) * .45,
             child: Row(
               children: [
-                TextGlobal(
-                  text: headLabel,
-                  fontSize: height(context) * .017,
-                  color: ColorManager.orangeTxtColor,
-                ),
-                TextGlobal(
+
+               Expanded(child: TextGlobal(
                   text: text,
                   fontSize: height(context) * .017,
                   color: ColorManager.black,
-                )
+                ))
               ],
             )),
         AppSize.spaceHeight1(context),

@@ -1,16 +1,16 @@
 class TripData {
   static Map<String, dynamic> purposeOfBeingThere = {
     "QPurposeOfBeingThere": [
-      {"value": 'home', "isChick": false},
-      {"value": 'Holiday Home/Hotel', "isChick": false},
-      {"value": ' Work', "isChick": false},
-      {"value": 'Employer Business', "isChick": false},
+      {"value": 'كنت في المنزل', "isChick": false},
+      {"value": 'كنت العطلات / الفندق', "isChick": false},
+      {"value": ' كنت في  العمل', "isChick": false},
+      {"value": 'مكان تعليمي', "isChick": false},
       {"value": 'Education', "isChick": false},
-      {"value": 'Personal Business', "isChick": false},
-      {"value": 'Visiting Friends/Relatives', "isChick": false},
-      {"value": 'Recreation/Leisure', "isChick": false},
-      {"value": ' Escort for other purpose', "isChick": false},
-      {"value": 'Other', "isChick": false},
+      {"value": 'التسوق', "isChick": false},
+      {"value": 'عمل شخصي', "isChick": false},
+      {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+      {"value": 'استجمام / وقت الفراغ', "isChick": false},
+      {"value": 'توص الىᣠ المدرسة ', "isChick": false},
     ],
     "title": "?What was the purpose of being there",
     "subTitle":
@@ -74,7 +74,7 @@ class TripData {
       'On-street - marked space',
       'On-street - unmarked space',
       'Valet parking',
-      'Valet parking',
+
       'Dropped Off - taxi',
       'public Transporter',
       'Other'

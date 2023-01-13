@@ -22,7 +22,7 @@ class TransporterMobilty extends StatelessWidget {
                .toList()
                .first
                .toString()),
-           hint: PersonData.transporterMoblity.keys.first.toString(),
+           hint: "هل لديك أي إعاقة / احتياجات خاصة لحركة النقل؟",
            options: PersonData
                .transporterMoblity[PersonData.transporterMoblity.keys.first]!
                .toList(),

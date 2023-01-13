@@ -18,7 +18,7 @@ class AdultsOrNot extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextGlobal(
               text: adultsModel.text!,
@@ -29,7 +29,7 @@ class AdultsOrNot extends StatelessWidget {
         ),
         AppSize.spaceHeight2(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -40,7 +40,7 @@ class AdultsOrNot extends StatelessWidget {
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
-                  text: "children (under 18yrs)",
+                  text: "الاطفال",
                   fontSize: height(context) * .015,
                   color: ColorManager.black,
                 ),
@@ -56,7 +56,7 @@ class AdultsOrNot extends StatelessWidget {
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
-                  text: "adults (18yrs +)",
+                  text: "البالغين",
                   fontSize: height(context) * .017,
                   color: ColorManager.grayColor,
                 ),

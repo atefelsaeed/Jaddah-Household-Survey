@@ -12,6 +12,7 @@ import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
+import '../Survey/widgets/text_form_row.dart';
 import 'components/controller_vechelies_body.dart';
 import 'components/owner_ship_code.dart';
 import 'components/q2_vec_screen.dart';
@@ -25,7 +26,9 @@ class VehiclesScreen extends StatefulWidget {
 
 class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
-
+  final TextEditingController fuelTypeCode= TextEditingController();
+  final TextEditingController ownerShipCode= TextEditingController();
+  final TextEditingController parkThisCar= TextEditingController();
   @override
   Widget build(BuildContext context) {
 
@@ -44,13 +47,13 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         AppSize.spaceWidth1(context),
                         Expanded(
                           child: TextGlobal(
                             text:
-                                " Vehicles in the Household - Household Travel Diary Survey",
+                                "المركبات في المنزل",
                             fontSize: height(context) * .023,
                             color: ColorManager.orangeTxtColor,
                           ),
@@ -61,18 +64,34 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     const MotorisedVec(),
 
                     const ControllerVehiclesBody(),
-                    const FuelTypeCode(),
+                     FuelTypeCode(textEditingController: fuelTypeCode,),
                     AppSize.spaceHeight2(context),
-                    const OwnerShipCode(),
+                     OwnerShipCode(textEditingController:ownerShipCode ,),
                     AppSize.spaceHeight2(context),
-                    const ParkThisCar(),
-                    AppSize.spaceHeight3(context),
-
-                    Q2VecScreen(
-                      editingController3: VehModel.editingController3,
-                    ),
+                     ParkThisCar(textEditingController: parkThisCar,),
+                    // AppSize.spaceHeight3(context),
+                    //
+                    // Q2VecScreen(
+                    //   editingController3: VehModel.editingController3,
+                    // ),
                     AppSize.spaceHeight3(context),
                     const NearestTransporter(),
+                    AppSize.spaceHeight3(context),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: TextFormer(
+                            controller: VehModel.editingController3.totalNumber,
+                            text: "3.خلال الأسبوع الماضي ، كم عدد الطرود والبقالة والأطعمة والإمدادات الأخرى التي استلمتھا أسرتك",
+                            label: "Enter",
+                            headLabel: '',
+                          ),
+                        ),
+                      ],
+                    ),
                     AppSize.spaceHeight2(context),
                     const ActionVecScreen(),
                     AppSize.spaceHeight2(context),

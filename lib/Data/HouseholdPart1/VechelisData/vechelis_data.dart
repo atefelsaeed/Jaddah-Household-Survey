@@ -3,30 +3,36 @@ import 'package:flutter/cupertino.dart';
 class VehiclesData {
   static List<VecModel> vecModel = [
     VecModel(
-        title: "car",
+        title: "سيارة",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
-        title: "Van",
+        title: "سيارة كبيرة (SUV وما إلى ذلك)",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
-        title: "Large Car (SUV etc.)",
+        title: "ونيت",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
-        title: "E-Scooter",
+        title: "شاحنة",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
-        title: "Pick up",
+        title: "دراجة نارية",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
+  VecModel(
+  title: " اسكوتر",
+  isChosen: false,
+  number: 0,
+  textEditingController: TextEditingController()),
+
     VecModel(
         title: "other",
         isChosen: false,

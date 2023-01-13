@@ -28,7 +28,7 @@ class NextStep extends StatelessWidget {
         );
       },
       isWidget: true,
-      text: "Next",
+      text: "التالي",
       widget: const Icon(Icons.arrow_forward),
     );
   }

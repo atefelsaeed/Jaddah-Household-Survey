@@ -43,11 +43,11 @@ class _NationalityState extends State<Nationality> {
 
             print(base.personalHeadData!.nationalityType);
           },
-          title: "Nationality",
+          title: "الجنسية ",
           question: PersonData.nationality[PersonData.nationality.keys.first]!
               .toList(),
           subTitle:
-              "Nationality -In case one has dual nationality; please record passport/nationality on which a person has the UAE residence visa ",
+              "record passport/nationality on which a person has the UAE residence visa ",
         ),
         AppSize.spaceHeight2(context),
         showText == true

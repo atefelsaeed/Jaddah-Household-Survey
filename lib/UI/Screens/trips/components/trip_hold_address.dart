@@ -16,7 +16,7 @@ class TripHoldAddress extends StatelessWidget {
     return Column(
       children: [
         AppSize.spaceHeight2(context),
-        const HeadlineTrip(text: "?Where did you start beginning of the day"),
+        const HeadlineTrip(text: "من أین بدأت الیوم؟"),
         AppSize.spaceHeight1(context),
         const Divider(
           thickness: 1,
@@ -29,13 +29,13 @@ class TripHoldAddress extends StatelessWidget {
             children: [
               TextForm(
                 controller: tripModel.buildingName!,
-                text: "Building Name",
-                label: "Enter Building Name",
+                text: "اسم المبنى",
+                label: "اسم المبنى",
               ),
               TextForm(
                 controller: tripModel.streetName!,
-                text: "street Name",
-                label: "Enter Street Name",
+                text: "أسم الشارع",
+                label: "أسم الشارع",
               )
             ],
           ),
@@ -48,13 +48,13 @@ class TripHoldAddress extends StatelessWidget {
             children: [
               TextForm(
                 controller: tripModel.streetNumber!,
-                label: "Street Number",
-                text: "Enter Street Number",
+                label: "رقم الشارع",
+                text: "رقم الشارع",
               ),
               TextForm(
                 controller: tripModel.nearestLandMark!,
-                label: "Nearest Land Mark ",
-                text: "Enter Nearest Land Mark ",
+                label: "اقرب معلم",
+                text: "",
               )
             ],
           ),
@@ -67,13 +67,13 @@ class TripHoldAddress extends StatelessWidget {
             children: [
               TextForm(
                 controller: tripModel.block!,
-                text: "Block/Nearest two cross streets",
-                label: "Enter Block/Nearest two cross streets",
+                text: "مجمع / أقرب شارعین متقاطعین",
+                label: "مجمع / أقرب شارعین متقاطعین",
               ),
               TextForm(
                 controller: tripModel.area!,
-                text: "Area (Suburb)",
-                label: "Enter Area (Suburb) ",
+                text: "المنطقة (الضاحیة)",
+                label: "المنطقة (الضاحیة)",
               )
             ],
           ),
@@ -86,14 +86,14 @@ class TripHoldAddress extends StatelessWidget {
             children: [
               TextForm(
                 controller: tripModel.city!,
-                text: "City/ Town",
+                text: "المدينة / البلدة",
                 label: "Enter City/ Town",
               ),
-              TextForm(
-                controller: tripModel.referToMap!,
-                text: "Refer to Map",
-                label: "Enter Refer to Map ",
-              )
+              // TextForm(
+              //   controller: tripModel.referToMap!,
+              //   text: "Refer to Map",
+              //   label: "Enter Refer to Map ",
+              // )
             ],
           ),
         ),

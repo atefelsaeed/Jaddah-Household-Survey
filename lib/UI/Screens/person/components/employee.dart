@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/components/transporter_moblity.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -29,7 +30,7 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first["value"]
                   .toString()),
-              hint: mainOccupationKey.toString(),
+              hint:"الوظيفة الأساسية",
               options: PersonData.mainOccupation[mainOccupationKey]!.toList(),
               onChange: (String? p) {
                 List value =
@@ -41,6 +42,7 @@ class Employee extends StatelessWidget {
                         value[inr]["value"];
                   }
                 }
+
               },
             ),
             DropDownFormInput(
@@ -48,7 +50,7 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.occupationSector.keys.first.toString(),
+              hint: "لو عمل ما هو قطا ع العمل",
               options:
                   PersonData.occupationSector[occupationSectorKey]!.toList(),
               onChange: (String? p) {},
@@ -64,7 +66,7 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.occupationLevelSector.keys.first.toString(),
+              hint: "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للسفر إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
               options: PersonData.occupationLevelSector[PersonData.occupationLevelSector.keys.first]!
                   .toList(),
               onChange: (String? p) {},
@@ -90,7 +92,7 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.commute.keys.first.toString(),
+              hint: "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للسفر إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
               options:
                   PersonData.commute[PersonData.commute.keys.first]!.toList(),
               onChange: (String? p) {},
@@ -100,19 +102,19 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.bike.keys.first.toString(),
+              hint:"ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
               options: PersonData.bike[PersonData.bike.keys.first]!.toList(),
               onChange: (String? p) {},
             ),
           ],
         ),
         AppSize.spaceHeight2(context),
-        const HeadLine(
+      /*  const HeadLine(
             title: "Address of the Main Occupation  (work or study place) ",
             subTitle:
                 "Write both if a person is a part- time student and also part- time employed; then ask both education and work address"),
-        AppSize.spaceHeight3(context),
-        Directionality(
+        AppSize.spaceHeight3(context),*/
+      /*  Directionality(
           textDirection: TextDirection.ltr,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,8 +159,8 @@ class Employee extends StatelessWidget {
               onChange: (String? p) {},
             ),
           ],
-        ),
-        AppSize.spaceHeight3(context),
+        ),*/
+        /*AppSize.spaceHeight3(context),
         Directionality(
           textDirection: TextDirection.ltr,
           child: Row(
@@ -176,8 +178,8 @@ class Employee extends StatelessWidget {
               )
             ],
           ),
-        ),
-        AppSize.spaceHeight3(context),
+        ),*/
+      /*  AppSize.spaceHeight3(context),
         Directionality(
           textDirection: TextDirection.ltr,
           child: Row(
@@ -195,9 +197,9 @@ class Employee extends StatelessWidget {
               )
             ],
           ),
-        ),
+        ),*/
         AppSize.spaceHeight3(context),
-        Row(
+       /* Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
@@ -217,7 +219,7 @@ class Employee extends StatelessWidget {
               label: "Address of the Main Occupation",
             )
           ],
-        ),
+        ),*/
         AppSize.spaceHeight3(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -228,7 +230,7 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.drivingLiences.keys.first.toString(),
+              hint: " مدى توفر سيارة متاحة لك لاستخدامك الشخصي؟(سؤال موجه اسأل فقط إذا كان لديك رخصة قيادة)",
               options: PersonData
                   .drivingLiences[PersonData.drivingLiences.keys.first]!
                   .toList(),
@@ -239,13 +241,15 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.busBuss.keys.first.toString(),
+              hint:"هل لديك تذكرة حافلة" ,
               options:
                   PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
               onChange: (String? p) {},
             ),
+
           ],
         ),
+        TransporterMobilty(index: i)
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/q5.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
@@ -11,6 +12,7 @@ import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../../Widgets/text_form_field.dart';
 import '../vechicles/vechicles_screen.dart';
 import 'components/house_hold_address.dart';
 
@@ -29,7 +31,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final TextEditingController zoneNumber = TextEditingController();
 
   final TextEditingController buildingName = TextEditingController();
-
+  final TextEditingController dewType = TextEditingController();
+  final TextEditingController isDewType = TextEditingController();
   final TextEditingController streetName = TextEditingController();
 
   final TextEditingController streetNumber = TextEditingController();
@@ -73,7 +76,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   bool checked = false;
 
-
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
@@ -101,14 +103,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     streetNumber: streetNumber,
                     zoneNumber: zoneNumber,
                     streetName: streetName,
-                     city: city,
+                    city: city,
                     buildingName: buildingName,
                   ),
 
                   AppSize.spaceHeight3(context),
                   const HouseHoldMember(),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       DropDownFormInput(
                         label: Text(QuestionsData
@@ -116,75 +118,105 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             .toList()
                             .first
                             .toString()),
-                        hint: QuestionsData.qh1.keys.first.toString(),
+                        hint: " 1. ما أفضل وصف لهذا النوع من المسكن؟",
                         options: QuestionsData
                             .qh1[QuestionsData.qh1.keys.first]!
                             .toList(),
                         onChange: (String? p) {
                           print(p);
-                          HhsStatic.householdQuestions.hhsDwellingType = p;
+                          setState(() {
+                            HhsStatic.householdQuestions.hhsDwellingType = p;
+                          });
+
                         },
                       ),
                     ],
                   ),
+                  AppSize.spaceHeight1(context),
+                  HhsStatic.householdQuestions.hhsDwellingType=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
+                    TextForm(
+                      controller: dewType,
+                      text: "1. ما أفضل وصف لهذا النوع من المسكن؟",
+                      label: "1. ما أفضل وصف لهذا النوع من المسكن؟",
+                    )
+                  ],):Container(),
                   AppSize.spaceHeight3(context),
+
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       DropDownFormInput(
                         onChange: (String? p) {
-                          HhsStatic.householdQuestions.hhsIsDwelling = p;
+                          setState(() {
+                            HhsStatic.householdQuestions.hhsIsDwelling = p;
+                          });
+
                         },
                         label: Text(QuestionsData
                             .qh2[QuestionsData.qh2.keys.first]!
                             .toList()
                             .first
                             .toString()),
-                        hint: QuestionsData.qh2.keys.first.toString(),
+                        hint: "2.ما هي حالة إيجار / ملكية المسكن؟",
                         options: QuestionsData
                             .qh2[QuestionsData.qh2.keys.first]!
                             .toList(),
                       ),
                     ],
                   ),
+                  HhsStatic.householdQuestions.hhsIsDwelling=="Other"?
+                  Row(mainAxisAlignment: MainAxisAlignment.start,children: [
+                    TextForm(
+
+                      controller: isDewType,
+                      text: "2.ما هي حالة إيجار / ملكية المسكن؟",
+                      label: "2.ما هي حالة إيجار / ملكية المسكن؟",
+                    )
+                  ],):Container(),
+
                   AppSize.spaceHeight3(context),
-                  ListViewCheckBoxOrange(
-                      onChange: (r) {
-                        print(r);
-                        HhsStatic.householdQuestions.hhsNumberBedRooms = r;
-                      },
-                      title: QuestionsData.qh3.keys.first,
-                      question: QuestionsData.qh3[QuestionsData.qh3.keys.first]!
-                          .toList(),
-                      subTitle: QuestionsData.qh3["subTitle"]),
-                  AppSize.spaceHeight3(context),
+
+
+                  // ListViewCheckBoxOrange(
+                  //     onChange: (r) {
+                  //       print(r);
+                  //       HhsStatic.householdQuestions.hhsNumberBedRooms = r;
+                  //     },
+                  //     title: QuestionsData.qh3.keys.first,
+                  //     question: QuestionsData.qh3[QuestionsData.qh3.keys.first]!
+                  //         .toList(),
+                  //     subTitle: QuestionsData.qh3["subTitle"]),
+                  // AppSize.spaceHeight3(context),
 
                   ListViewCheckBoxOrange(
                     onChange: (r) {
                       HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
                           r;
                     },
-                    title: QuestionsData.qh4.keys.first,
+                    title: "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
                     question: QuestionsData.qh4[QuestionsData.qh4.keys.first]!
                         .toList(),
                     subTitle: QuestionsData.qh4["subTitle"],
                   ),
 
                   AppSize.spaceHeight3(context),
-                  Q5(
-                      peopleAdults18: peopleAdults18,
-                      peopleUnder18: peopleUnder18),
-                  AppSize.spaceHeight2(context),
                   Q6(
                       q6peopleAdults18: q6peopleAdults18,
                       q6peopleUnder18: q6peopleUnder18,
                       q6totalNumberOfVec: q6totalNumberOfVec),
+                  AppSize.spaceHeight2(context),
+
+                  Q5(
+                      peopleAdults18: peopleAdults18,
+                      peopleUnder18: peopleUnder18),
+
+
                   AppSize.spaceHeight3(context),
                   ListViewCheckBoxOrange(
                     onChange: (r) {
                       HhsStatic.householdQuestions.hhsNumberYearsInAddress = r;
                     },
-                    title: QuestionsData.qh7.keys.first,
+                    title: "6.كم سنة عشت أنت / عائلتك في هذا العنوان المحدد؟",
                     question: QuestionsData.qh7[QuestionsData.qh7.keys.first]!
                         .toList(),
                     subTitle: "",
@@ -223,11 +255,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   Q83(editingController3: editingController3Q83),
                   AppSize.spaceHeight2(context),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       DropDownFormInput(
                         label: Text(QuestionsData.qh9.values.first.toString()),
-                        hint: QuestionsData.qh9.keys.first.toString(),
+                        hint: "8.يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟",
                         options: QuestionsData
                             .qh9[QuestionsData.qh9.keys.first]!
                             .toList(),
@@ -251,6 +283,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               q6totalNumberOfVec[i].text,
                             ),
                           );
+                        }
+if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
+  HhsStatic.householdQuestions.hhsDwellingType=dewType.text;
+}
+                        if(HhsStatic.householdQuestions.hhsIsDwelling=="Other"){
+                          HhsStatic.householdQuestions.hhsIsDwelling=isDewType.text;
                         }
 
                         surveyPt.hhsBlockNearestCrossStreets =
@@ -285,15 +323,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         surveyPt.hhsESAdultsBikesNumber =
                             editingController3Q83.peopleAdults18.text;
                         //
-                        surveyPt.headerDistrictName='';
-                        surveyPt.headerZoneNumber='';
-
+                        surveyPt.headerDistrictName = '';
+                        surveyPt.headerZoneNumber = '';
+                        print("survey Data");
                         // surveys.addSurvey(surveyPt.data);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const VehiclesScreen()));
-
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

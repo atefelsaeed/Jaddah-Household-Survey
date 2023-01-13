@@ -16,7 +16,7 @@ class HowDidYouTravel extends StatelessWidget {
     // TODO: implement build
     return Column(
       children: [
-        const HeadlineTrip(text: "?How did you travel"),
+        const HeadlineTrip(text: "كیف سافرت ؟"),
         const Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +26,7 @@ class HowDidYouTravel extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: TripData.AcMode.keys.first.toString(),
+              hint: "الوضع الرئیسي",
               options: TripData.AcMode[TripData.AcMode.keys.first]!.toList(),
               onChange: (String? p) {
                 TripModeList.tripModeList[i].travelWay!.accessMode =
@@ -38,7 +38,7 @@ class HowDidYouTravel extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: TripData.mainMade.keys.first.toString(),
+              hint: "وضع وصول",
               options:
                   TripData.mainMade[TripData.mainMade.keys.first]!.toList(),
               onChange: (String? p) {

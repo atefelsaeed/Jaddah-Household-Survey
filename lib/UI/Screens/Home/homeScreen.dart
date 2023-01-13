@@ -3,6 +3,7 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
+import '../ChooseSurvey/chooseSurveyScreen.dart';
 import '../Login/login_screen.dart';
 import '../Splash/splash_screen.dart';
 import '../Surveies/surveys_screen.dart';
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               : dataSnapshot.data as bool
                   ? Consumer<Auth>(
                       builder: (context, auth, child) => auth.isAuth
-                          ? const SurveysScreen()
+                          ? const ChooseSurveysScreen()
                           : FutureBuilder(
                               future: auth.tryAutoLogin(),
                               builder: (context, snapshot) =>

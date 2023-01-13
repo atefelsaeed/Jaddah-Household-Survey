@@ -27,9 +27,11 @@ class _TravelAloneState extends State<TravelAlone> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
+            const HeadlineTrip(text: "هل سافرت بمفردك أم مع آخرین؟"),
             Row(children: [
               TextGlobal(
-                text: "With other",
+                text: "مع اخرين",
                 //[index].title,
                 fontSize: height(context) * .02,
                 color: ColorManager.grayColor,
@@ -49,11 +51,10 @@ class _TravelAloneState extends State<TravelAlone> {
                   onChanged: (bool? value) {
                     setState(() {
                       TripModeList.tripModeList[widget.index].isTravelAlone =
-                          value!;
+                      value!;
                     });
                   }),
             ]),
-            const HeadlineTrip(text: "Did you travel alone or with others?"),
           ],
         ),
         const Divider(),
@@ -70,7 +71,7 @@ class _TravelAloneState extends State<TravelAlone> {
             : Container(),
         AppSize.spaceHeight2(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             DropDownFormInput(
               label: Text(TripData.memberHouseHoldTravel[
@@ -78,7 +79,7 @@ class _TravelAloneState extends State<TravelAlone> {
                   .toList()
                   .first
                   .toString()),
-              hint: TripData.memberHouseHoldTravel.keys.first.toString(),
+              hint: "اي من أفراد الأسرة سافر معك؟",
               options: TripData.memberHouseHoldTravel[
                       TripData.memberHouseHoldTravel.keys.first]!
                   .toList(),

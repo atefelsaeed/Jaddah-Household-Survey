@@ -163,7 +163,7 @@ class SurveyPT extends Survey {
             (e) => PersonModel.fromJson(e as Map<String, dynamic>))
         .toList();
     tripsList = json['tripsList']
-        .map<TripsModel>((e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .map<TripsModel>((e) => TripsModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 }

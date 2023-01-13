@@ -16,7 +16,7 @@ class TextGlobal extends StatelessWidget {
           color:color,
           fontSize: fontSize,
       ),
-      textAlign: TextAlign.left,
+      textAlign: TextAlign.right,
     );
   }
 }

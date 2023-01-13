@@ -19,7 +19,7 @@ return    Row(
 
       },
       child: SizedBox(width: width(context)-30,  child:    TextGlobal(
-        text: "? How many motorised vehicles are available to the household for personal use",
+        text: " 1.  كم عدد المركبات الآلية المتوفرة للأسرة للاستخدام الشخصي؟",
         fontSize: height(context) * .02,
         color: ColorManager.black,
       )),

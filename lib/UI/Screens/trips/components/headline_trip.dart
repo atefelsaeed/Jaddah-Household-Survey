@@ -14,15 +14,8 @@ class HeadlineTrip extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        AppSize.spaceWidth1(context),
-        TextGlobal(
-          text: text,
-          fontSize: height(context) * .015,
-          color: ColorManager.black,
-        ),
-        AppSize.spaceWidth2(context),
         Column(
           children: [
             CircleAvatar(
@@ -35,7 +28,15 @@ class HeadlineTrip extends StatelessWidget {
               height: height(context) * .003,
             )
           ],
-        )
+        ),
+        AppSize.spaceWidth1(context),
+        TextGlobal(
+          text: text,
+          fontSize: height(context) * .015,
+          color: ColorManager.black,
+        ),
+        AppSize.spaceWidth2(context),
+
       ],
     );
   }

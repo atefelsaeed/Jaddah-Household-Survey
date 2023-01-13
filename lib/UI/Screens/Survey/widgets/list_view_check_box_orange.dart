@@ -41,7 +41,7 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
         ),
 
         AppSize.spaceHeight05(context),
-        Row(
+        /*Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Expanded(
@@ -52,10 +52,10 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
               ),
             ),
           ],
-        ),
+        ),*/
         AppSize.spaceHeight1(context),
         Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: SizedBox(
               height: height(context) * .04,
               child: ListView.builder(

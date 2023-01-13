@@ -38,7 +38,7 @@ class BodyTypeVehicles extends StatelessWidget {
                   color: ColorManager.orangeTxtColor,
                 ),
                 TextGlobal(
-                  text: " Vehicle body type ",
+                  text: " هيكل السيارة",
                   fontSize: height(context) * .02,
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.bold,
@@ -53,55 +53,49 @@ class BodyTypeVehicles extends StatelessWidget {
                 children: [
                   TextFormer(
                     controller: vecBodyType.vehicleFuel,
-                    text: "QHV1-2 Fuel",
+                    text: "الوقود",
                     label: "Enter ${vecBodyType.vehicleFuel}",
                     headLabel: title,
                   ),
                   TextFormer(
                     controller: vecBodyType.vehicleModel,
-                    text: "QHV1-3-Model",
+                    text: "من يملك السيارة",
                     label: "Enter ${vecBodyType.vehicleModel}",
                     headLabel: title,
                   )
                 ],
               ),
             ),
+            // AppSize.spaceHeight1(context),
+            // Directionality(
+            //   textDirection: TextDirection.ltr,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       TextFormer(
+            //         controller: vecBodyType.vehicleAnnualMileage,
+            //         text: "QHV1-4- Annual Mileage",
+            //         label: "Enter ${vecBodyType.vehicleAnnualMileage}",
+            //         headLabel: title,
+            //       ),
+            //       TextFormer(
+            //         controller: vecBodyType.vehicleAge,
+            //         text: "QHV1-5- Age of vehicle",
+            //         label: "Enter ${vecBodyType.vehicleAge}",
+            //         headLabel: title,
+            //       )
+            //     ],
+            //   ),
+            // ),
             AppSize.spaceHeight1(context),
             Directionality(
               textDirection: TextDirection.ltr,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextFormer(
-                    controller: vecBodyType.vehicleAnnualMileage,
-                    text: "QHV1-4- Annual Mileage",
-                    label: "Enter ${vecBodyType.vehicleAnnualMileage}",
-                    headLabel: title,
-                  ),
-                  TextFormer(
-                    controller: vecBodyType.vehicleAge,
-                    text: "QHV1-5- Age of vehicle",
-                    label: "Enter ${vecBodyType.vehicleAge}",
-                    headLabel: title,
-                  )
-                ],
-              ),
-            ),
-            AppSize.spaceHeight1(context),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // TextFormer(
-                  //   controller: vecBodyType.v,
-                  //   text: "QHV1-6- Annual Mileage",
-                  //   label: "Enter ${vecBodyType.annual}",
-                  //   headLabel: title,
-                  // ),
                   TextFormer(
                     controller: vecBodyType.vehicleOwner,
-                    text: "Write the name of person",
+                    text: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
                     label: "Enter ${vecBodyType.vehicleOwner}",
                     headLabel: title,
                   )

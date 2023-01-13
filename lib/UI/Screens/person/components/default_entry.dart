@@ -7,8 +7,9 @@ import '../../../Widgets/dropdown_form_input.dart';
 import '../../../Widgets/text.dart';
 
 class DefaultEntry extends StatefulWidget {
-   final int i;
-  const DefaultEntry({super.key,required this.i});
+  final int i;
+
+  const DefaultEntry({super.key, required this.i});
 
   @override
   State<DefaultEntry> createState() => _DefaultEntryState();
@@ -17,27 +18,30 @@ class DefaultEntry extends StatefulWidget {
 class _DefaultEntryState extends State<DefaultEntry> {
   @override
   Widget build(BuildContext context) {
-    int index=widget.i+1;
+    int index = widget.i + 1;
     // TODO: implement build
     return Column(
       children: [
         TextGlobal(
-          text: "Person ${index.toString()}",
+          text: "الشخص  ${index.toString()}",
           fontSize: height(context) * .023,
           color: ColorManager.orangeTxtColor,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
               label: Text(PersonData.gender[PersonData.gender.keys.first]!
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.gender.keys.first.toString(),
+              hint: " القرابة برب الأسرة",
               options:
                   PersonData.gender[PersonData.gender.keys.first]!.toList(),
-              onChange: (String? p) {},
+              onChange: (String? p) {
+
+
+              },
             ),
             DropDownFormInput(
               label: Text(PersonData.relationshipToTheHeadOfHousehold[
@@ -45,20 +49,16 @@ class _DefaultEntryState extends State<DefaultEntry> {
                   .toList()
                   .first
                   .toString()),
-              hint: PersonData.relationshipToTheHeadOfHousehold.keys.first
-                  .toString(),
+              hint: "نوع الجنس",
               options: PersonData.relationshipToTheHeadOfHousehold[
                       PersonData.relationshipToTheHeadOfHousehold.keys.first]!
                   .toList(),
               onChange: (var p) {
 
-                print(p);
               },
             ),
           ],
         ),
-
-
       ],
     );
   }

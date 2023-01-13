@@ -48,7 +48,7 @@ class _PersonScreenState extends State<PersonScreen> {
       child: Scaffold(
         body: SingleChildScrollView(
             child: Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Form(
@@ -59,7 +59,7 @@ class _PersonScreenState extends State<PersonScreen> {
                   children: [
                     const HeadlinePerson(
                       text:
-                          "Person Socioeconomic- Household Travel Diary Survey",
+                          "المعلومات الاجتماعية والاقتصادية للأسر المعيشية",
                     ),
                     AppSize.spaceHeight2(context),
                     Row(
@@ -142,11 +142,12 @@ class _PersonScreenState extends State<PersonScreen> {
                           },
                           isWidget: true,
                           btnWidth: width(context) * .24,
-                          text: "Add New Person",
+                          text: "أضافة شخص جديد",
                           widget: const Icon(Icons.arrow_forward),
                         )
                       ],
                     ),
+                    AppSize.spaceHeight2(context),
                     for (int i = 0;
                         i < PersonModelList.personModelList.length;
                         i++)
@@ -164,22 +165,22 @@ class _PersonScreenState extends State<PersonScreen> {
                                 DefaultEntry(i: i),
                                 AppSize.spaceHeight2(context),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     TextGlobal(
-                                      text: "Age",
+                                      text: "العمر",
                                       fontSize: height(context) * .025,
                                       color: ColorManager.black,
                                     ),
                                   ],
                                 ),
                                 Directionality(
-                                  textDirection: TextDirection.ltr,
+                                  textDirection: TextDirection.rtl,
                                   child: Row(
                                     children: [
                                       Row(children: [
                                         TextGlobal(
-                                          text: "With other",
+                                          text: "العمر",
                                           //[index].title,
                                           fontSize: height(context) * .02,
                                           color: ColorManager.grayColor,
@@ -212,14 +213,16 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
+                                          widthForm: width(context)*.15,
                                                 label: "age",
                                                 controller: base[i]
                                                     .personalHeadData!
                                                     .age,
                                               )
                                             : Container(),
+                                        AppSize.spaceWidth2(context),
                                         TextGlobal(
-                                          text: "refuses to tell age",
+                                          text: "لا ",
                                           //[index].title,
                                           fontSize: height(context) * .02,
                                           color: ColorManager.grayColor,
@@ -310,9 +313,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                     : base[i].occupationModel!.isEmployee == "2"
                                         ? EducationLevel(i: i)
                                         : Container(),
-                                base[i].occupationModel!.isEmployee != "0"
-                                    ? TransporterMobilty(index: i)
-                                    : Container(),
+
                               ],
                             ),
                           ),

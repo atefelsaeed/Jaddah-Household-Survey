@@ -11,12 +11,18 @@ class TripModeList {
       type: false,
       isTravelAlone: false,
       tripReason: "",
+
       purposeTravel: "",
+      otherWhereDidYouParkEditingControl: TextEditingController(),
+      taxiTravelTypeEditingControl: TextEditingController(),
       departureTime: TextEditingController(),
       typeTravel: '',
       typeTravelCondition: "0",
       travelTypeModel: TravelTypeModel(
         carParkingPlace: "",
+        ticketSub: TextEditingController(),
+        taxiTravelTypeOther: TextEditingController(),
+otherWhereDidYouParking: TextEditingController(),
         taxiFare: TextEditingController(),
         taxiTravelType: '',
         passTravelType: '',
@@ -30,12 +36,12 @@ class TripModeList {
           adultsNumber: TextEditingController(),
           childrenNumber: TextEditingController(),
           hhsMembersTraveled: "",
-          text: "?If with other how many"),
+          text: "إذا كان مع الآخرین كم أعمارھم؟"),
       travelAloneHouseHold: TravelWithOtherModel(
           adultsNumber: TextEditingController(),
           childrenNumber: TextEditingController(),
           hhsMembersTraveled: "",
-          text: "Non Household persons"),
+          text: "اي من أفراد الأسرة سافر معك؟"),
       arrivalDepartTime: ArrivalDepartTime(
         arriveDestinationTime: TextEditingController(),
         departTime: TextEditingController(),
