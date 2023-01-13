@@ -162,7 +162,7 @@ class _PersonScreenState extends State<PersonScreen> {
                             padding: EdgeInsets.all(AppSize.padding1(context)),
                             child: Column(
                               children: [
-                                DefaultzEntry(i: i),
+                                DefaultEntry(i: i),
                                 AppSize.spaceHeight2(context),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
