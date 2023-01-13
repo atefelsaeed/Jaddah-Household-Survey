@@ -16,6 +16,7 @@ import '../../../Resources/sizes.dart';
 import '../../Widgets/connection_error.dart';
 import '../Survey/syrvey_screen.dart';
 import '../UserSurveys/userSurveys.dart';
+import 'chooseSurveyBody.dart';
 
 class ChooseSurveysScreen extends StatefulWidget {
   const ChooseSurveysScreen({Key? key}) : super(key: key);
@@ -64,8 +65,6 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Auth auth = Provider.of<Auth>(context, listen: false);
-
     return Scaffold(
       // appBar: AppBar(
       //   backgroundColor: ColorManager.primaryColor,
@@ -110,8 +109,6 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
       body: FutureBuilder(
           future: Provider.of<SurveysProvider>(context, listen: false).fetch(),
           builder: (fctx, dataSnapshot) {
-
-
             if (dataSnapshot.connectionState == ConnectionState.waiting) {
               return const Padding(
                 padding: EdgeInsets.all(40),
@@ -120,82 +117,21 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
                 ),
               );
             } else {
-              SurveysProvider p = Provider.of<SurveysProvider>(context);
-              p.syncAll();
-              List<Survey> surveyList = p.surveys;
-              print("Survey List length: ${surveyList.length}");
-
-              FirebaseMessaging.onMessage.listen((e) async {
-                p.syncAll();
-                Fluttertoast.showToast(
-                  msg: "Syncing",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
-                  textColor: Colors.white,
-                  fontSize: 16.0,
-                );
-                // _messageHandler(e);
-              });
-              return Container(
-                  height: height(context),
-                  width: width(context),
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(ImageAssets.homeBackground),
-                        fit: BoxFit.fill),
-                  ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        AppSize.spaceHeight5(context),
-                        Text(
-                          'Welcome ${auth.user!.name}',
-                          style: TextStyle(
-                            color: ColorManager.wight,
-                            fontSize: width(context) * .065,
+              return dataSnapshot.hasError
+                  ? Padding(
+                      padding: const EdgeInsets.all(50),
+                      child: ConnectionError(() => setState(() => {})),
+                    )
+                  : dataSnapshot.hasData
+                      ? ChooseSurveyBody()
+                      : const Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Center(
+                            child: Text(
+                              'There are no surveys',
+                            ),
                           ),
-                        ),
-                        InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SurveyScreen(),
-                                ),
-                              );
-                            },
-                            child: ItemHomeSurvey(
-                                count: surveyList.length != null
-                                    ? surveyList.length
-                                    : 0)),
-                        InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const UserSurveysScreen(),
-                                ),
-                              );
-                            },
-                            child: const ItemHomeSurvey(count: 0)),
-                        InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const UserSurveysScreen(),
-                                ),
-                              );
-                            },
-                            child: const ItemHomeSurvey(count: 0)),
-                      ],
-                    ),
-                  ));
+                        );
             }
           }),
     );

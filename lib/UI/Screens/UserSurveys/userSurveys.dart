@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/UserSurveys/itemSurveyModel.dart';
 
 import 'itemUserSurvey.dart';
 
@@ -26,7 +27,7 @@ class UserSurveysScreen extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    'Home',
+                    'العودة للرئيسية',
                     style: TextStyle(
                         color: ColorManager.primaryColor,
                         fontWeight: FontWeight.w600,
@@ -39,7 +40,12 @@ class UserSurveysScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 itemBuilder: (context, index) {
-                  return const ItemUserSurvey();
+                  return ItemUserSurvey(
+                    itemSurveyModel: ItemSurveyModel(
+                      numberSurvey: 15,
+                      locationLink: '',
+                    ),
+                  );
                 },
                 separatorBuilder: (context, index) {
                   return Divider(
