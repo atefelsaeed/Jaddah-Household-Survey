@@ -135,7 +135,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   AppSize.spaceHeight1(context),
                   HhsStatic.householdQuestions.hhsDwellingType=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
                     TextForm(
-                      controller: dewType,
+                      controller: HhsStatic.householdQuestions.hhsDwellingTypeOther!,
                       text: "1. ما أفضل وصف لهذا النوع من المسكن؟",
                       label: "1. ما أفضل وصف لهذا النوع من المسكن؟",
                     )
@@ -285,10 +285,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           );
                         }
 if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
-  HhsStatic.householdQuestions.hhsDwellingType=dewType.text;
+  HhsStatic.householdQuestions.hhsDwellingType=HhsStatic.householdQuestions.hhsDwellingTypeOther!.text;
 }
                         if(HhsStatic.householdQuestions.hhsIsDwelling=="Other"){
-                          HhsStatic.householdQuestions.hhsIsDwelling=isDewType.text;
+                          HhsStatic.householdQuestions.hhsIsDwelling=HhsStatic.householdQuestions.hhsIsDwellingOther!.text;
                         }
 
                         surveyPt.hhsBlockNearestCrossStreets =
