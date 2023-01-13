@@ -30,13 +30,28 @@ class EducationLevel extends StatelessWidget {
             onChange: (String? p) {},
           ),
           TextForm(
-            controller: base.occupationModel!.earliestTimeStartingWork!,
+            controller: base.occupationModel!.earliestTimeStartingWork,
             text: "Education address -full details and get geocode",
             label: "Education address -full details and get geocode",
           )
 
         ],
       ),
+      Row(mainAxisAlignment: MainAxisAlignment.start,children: [
+        DropDownFormInput(
+          label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
+              .toList()
+              .first
+              .toString()),
+          hint:"هل لديك تذكرة حافلة" ,
+          options:
+          PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
+          onChange: (String? p) {
+            PersonModelList.personModelList[i].personalQuestion!.haveBusPass=p.toString();
+          },
+        ),
+      ],),
+
       TransporterMobilty(index: i)
 
     ],);

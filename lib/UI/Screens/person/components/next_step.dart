@@ -7,6 +7,7 @@ import 'package:jaddah_household_survey/UI/Screens/trips/trip_screen.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Providers/surveys.dart';
 import '../../../Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
@@ -19,6 +20,8 @@ class NextStep extends StatelessWidget {
     return DefaultButton(
       function: () {
         SavePersonData.saveData(context);
+        print(PersonModelList.personModelList[0].personalHeadData!.age.text);
+
         print('Saving Data :: ');
         Navigator.push(
           context,

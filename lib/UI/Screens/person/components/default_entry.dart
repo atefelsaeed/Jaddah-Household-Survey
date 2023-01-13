@@ -56,6 +56,7 @@ PersonModelList.personModelList[widget.i].personalHeadData!.gender=p.toString();
                   .toList(),
               onChange: (var p) {
                 PersonModelList.personModelList[widget.i].personalHeadData!.relationshipHeadHHS=p.toString();
+                print(PersonModelList.personModelList[widget.i].personalHeadData!.relationshipHeadHHS);
               },
             ),
           ],

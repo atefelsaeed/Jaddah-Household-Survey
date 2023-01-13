@@ -32,7 +32,7 @@ class ActionVecScreen extends StatelessWidget {
         );
       },
       isWidget: true,
-      text: "Finish",
+      text: "التالي",
       widget: const Icon(Icons.arrow_forward),
     );
   }

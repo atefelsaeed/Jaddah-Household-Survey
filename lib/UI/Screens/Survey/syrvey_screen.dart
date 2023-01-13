@@ -29,7 +29,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final TextEditingController area = TextEditingController();
 
   final TextEditingController zoneNumber = TextEditingController();
-
+  final TextEditingController yes = TextEditingController();
   final TextEditingController buildingName = TextEditingController();
   final TextEditingController dewType = TextEditingController();
   final TextEditingController isDewType = TextEditingController();
@@ -224,21 +224,34 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
                   ListViewCheckBoxOrange(
                     onChange: (r) {
-                      if (r == "Yes") {
-                        HhsStatic.householdQuestions.hhsIsDemolishedAreas =
-                            true;
-                      } else {
-                        HhsStatic.householdQuestions.hhsIsDemolishedAreas =
-                            false;
-                      }
+                      setState(() {
+                        if (r == "نعم") {
+                          HhsStatic.householdQuestions.hhsIsDemolishedAreas =
+                          true;
+                        } else {
+                          HhsStatic.householdQuestions.hhsIsDemolishedAreas =
+                          false;
+                        }
+                      });
+                      print(r);
+
                     },
-                    title: QuestionsData.qh7_2.keys.first,
+                    title: "هل انتقلت إلى هنا من أي منطقة من المناطق المهدومة في جدة ، إذا كانت الإجابة بنعم أي واحدة",
                     question: QuestionsData
                         .qh7_2[QuestionsData.qh7_2.keys.first]!
                         .toList(),
                     subTitle: "",
                   ),
 
+                  HhsStatic.householdQuestions.hhsIsDemolishedAreas==true? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
+                    TextForm(
+
+                      controller:yes,
+                      text: "  فمن أي منطقة (يُظهر المحاور قائمة بالمنطقة المهدومة)",
+                      label: " فمن أي منطقة (يُظهر المحاور قائمة بالمنطقة المهدومة)",
+                    )
+                  ],):Container(),
+                  AppSize.spaceHeight2(context),
                   /*   ListQ7(
                       title: "title",
                       question: QuestionsData
@@ -264,7 +277,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             .qh9[QuestionsData.qh9.keys.first]!
                             .toList(),
                         onChange: (String p) {
+                          print(p);
+
                           HhsStatic.householdQuestions.hhsTotalIncome = p;
+                          print(HhsStatic.householdQuestions.hhsTotalIncome );
                         },
                       ),
                     ],
@@ -303,7 +319,7 @@ if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
                         surveyPt.hhsNumberBedRooms = peopleUnder18.text;
 
                         surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
-
+                        surveyPt.hhsTotalIncome=HhsStatic.householdQuestions.hhsTotalIncome;
                         surveyPt.hhsPCChildrenBikesNumber =
                             editingController3Q81.peopleUnder18.text;
                         surveyPt.hhsPCTotalBikesNumber =
@@ -323,6 +339,8 @@ if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
                         surveyPt.hhsESAdultsBikesNumber =
                             editingController3Q83.peopleAdults18.text;
                         //
+
+                     surveyPt.hhsDemolishedAreas=yes.text;
                         surveyPt.headerDistrictName = '';
                         surveyPt.headerZoneNumber = '';
                         print("survey Data");
@@ -342,7 +360,7 @@ if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
                       }
                     },
                     isWidget: true,
-                    text: "Next Step",
+                    text: "التالي",
                     widget: const Icon(Icons.arrow_forward),
                   ),
                   // HouseholdAddressSection()

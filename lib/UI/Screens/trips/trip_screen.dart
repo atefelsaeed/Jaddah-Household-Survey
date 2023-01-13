@@ -150,6 +150,7 @@ class _TripScreenState extends State<TripScreen> {
                                 const HeadlineTrip(
                                     text:
                                         "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
+
                                 const Divider(),
                                 PurposeOfTheBeing(
                                   indexTripModel: i,
@@ -168,6 +169,12 @@ class _TripScreenState extends State<TripScreen> {
                                 ),
                                 AppSize.spaceHeight2(context),
                                 const Divider(),
+                                const HeadlineTrip(
+                                    text:
+                                    "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
+
+                                AppSize.spaceHeight2(context),
+                                const Divider(),
                                 WhyDidYouGo(
                                   indexTripModel: i,
                                 ),
@@ -182,6 +189,8 @@ class _TripScreenState extends State<TripScreen> {
                                 AppSize.spaceHeight2(context),
                                 TravelAlone(index: i),
                                 AppSize.spaceHeight2(context),
+
+
                                 WhereDidYouPark(
                                   costTaxi: TripModeList.tripModeList[i]
                                       .travelTypeModel!.taxiFare!,

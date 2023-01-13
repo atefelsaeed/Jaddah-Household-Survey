@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Resources/sizes.dart';
@@ -14,7 +15,7 @@ class TransporterMobilty extends StatelessWidget {
    return Column(children: [
      AppSize.spaceHeight3(context),
      Row(
-       mainAxisAlignment: MainAxisAlignment.end,
+       mainAxisAlignment: MainAxisAlignment.start,
        children: [
          DropDownFormInput(
            label: Text(PersonData
@@ -26,7 +27,9 @@ class TransporterMobilty extends StatelessWidget {
            options: PersonData
                .transporterMoblity[PersonData.transporterMoblity.keys.first]!
                .toList(),
-           onChange: (String? p) {},
+           onChange: (String? p) {
+             PersonModelList.personModelList[index].personalQuestion!.haveDisabilityTransportMobility=p.toString();
+           },
          ),
        ],
      ),

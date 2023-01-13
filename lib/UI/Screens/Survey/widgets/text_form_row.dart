@@ -72,7 +72,7 @@ class TextFormer extends StatelessWidget {
             )),
         AppSize.spaceHeight1(context),
         MyTextForm(
-          label: label,
+          label: "",
           controller: controller,
         ),
       ],

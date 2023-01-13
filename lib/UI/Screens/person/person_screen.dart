@@ -162,7 +162,7 @@ class _PersonScreenState extends State<PersonScreen> {
                             padding: EdgeInsets.all(AppSize.padding1(context)),
                             child: Column(
                               children: [
-                                DefaultEntry(i: i),
+                                DefaultzEntry(i: i),
                                 AppSize.spaceHeight2(context),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -213,6 +213,21 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
+                                          onChanged: (d){
+                                            setState(() {
+                                              if(d!.isNotEmpty) {
+                                                if (int.parse(d.toString()) >
+                                                    18) {
+                                                  base[i].occupationModel!
+                                                      .isEmployee = "1";
+                                                } else {
+                                                  base[i].occupationModel!
+                                                      .isEmployee = "0";
+                                                }
+                                              }
+                                            });
+
+                                          },
                                           widthForm: width(context)*.15,
                                                 label: "age",
                                                 controller: base[i]
@@ -272,6 +287,9 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             .first]!
                                                     .toList(),
                                                 onChange: (String? p) {
+                                                  base[i].personalHeadData!.age.text=p.toString();
+                                                  print(base[i].personalHeadData!.age.text);
+                                                  print(base[i].personalHeadData!.age.text);
                                                   List value = PersonData
                                                       .groupAge[PersonData
                                                           .groupAge.keys.first]

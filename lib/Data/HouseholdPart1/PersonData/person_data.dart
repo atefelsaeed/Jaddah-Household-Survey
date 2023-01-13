@@ -38,7 +38,7 @@ class PersonData {
       {"value": '45 - 54', "type": "1", "isChick": false},
       {"value": '55 - 64', "isChick": false, "type": "1"},
       {"value": '65 - 74', "isChick": false, "type": "1"},
-      {"value": '65 - 74', "isChick": false, "type": "1"},
+
       {"value": '>74', "isChick": false, "type": "retired", "type": "retire"},
     ],
     "title": "MainOccupation",

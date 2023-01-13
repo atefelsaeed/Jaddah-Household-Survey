@@ -95,8 +95,8 @@ class QuestionsData {
   static Map<String, dynamic> qh7_2 = {
     'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
         [
-      {"value": 'Yes', "isChick": false},
-      {"value": 'No', "isChick": false},
+      {"value": 'نعم', "isChick": false},
+      {"value": 'لا', "isChick": false},
     ]
   };
   static Map<String, dynamic> qh8_1 = {

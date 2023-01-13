@@ -16,10 +16,10 @@ class TimeLeave extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextGlobal(
-              text: "Expected Departure Time	 (24 hour clock)",
+              text: "في أي وقت غادرت؟",
               fontSize: height(context) * .020,
               color: ColorManager.black,
             )
@@ -29,18 +29,13 @@ class TimeLeave extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: TextGlobal(
-                text: "	the very first trip should be the one after 03.00am",
-                fontSize: height(context) * .015,
-                color: ColorManager.grayColor,
-              ),
-            ),
-            AppSize.spaceWidth2(context),
+
+
             MyTextForm(
-              label: "Expected Departure Time	 (24 hour clock)",
+              label: "وقت المغادرة المتوقع",
               controller: expectedDeparture,
             ),
+            AppSize.spaceWidth2(context),
 
             //  TextForm(controller: expectedDeparture,text: "	Expected Departure Time	 (24 hour clock)",label: "Enter 	Expected Departure Time	 (24 hour clock)",),
           ],
