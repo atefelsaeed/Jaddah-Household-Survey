@@ -12,6 +12,7 @@ import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
+import '../Survey/widgets/text_form_row.dart';
 import 'components/controller_vechelies_body.dart';
 import 'components/owner_ship_code.dart';
 import 'components/q2_vec_screen.dart';
@@ -66,13 +67,29 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     const OwnerShipCode(),
                     AppSize.spaceHeight2(context),
                     const ParkThisCar(),
-                    AppSize.spaceHeight3(context),
-
-                    Q2VecScreen(
-                      editingController3: VehModel.editingController3,
-                    ),
+                    // AppSize.spaceHeight3(context),
+                    //
+                    // Q2VecScreen(
+                    //   editingController3: VehModel.editingController3,
+                    // ),
                     AppSize.spaceHeight3(context),
                     const NearestTransporter(),
+                    AppSize.spaceHeight3(context),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: TextFormer(
+                            controller: VehModel.editingController3.totalNumber,
+                            text: "3. During the past week, how many parcels, groceries, foods, and other supplies did your household receive?",
+                            label: "Enter",
+                            headLabel: '',
+                          ),
+                        ),
+                      ],
+                    ),
                     AppSize.spaceHeight2(context),
                     const ActionVecScreen(),
                     AppSize.spaceHeight2(context),

@@ -66,39 +66,33 @@ class BodyTypeVehicles extends StatelessWidget {
                 ],
               ),
             ),
+            // AppSize.spaceHeight1(context),
+            // Directionality(
+            //   textDirection: TextDirection.ltr,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       TextFormer(
+            //         controller: vecBodyType.vehicleAnnualMileage,
+            //         text: "QHV1-4- Annual Mileage",
+            //         label: "Enter ${vecBodyType.vehicleAnnualMileage}",
+            //         headLabel: title,
+            //       ),
+            //       TextFormer(
+            //         controller: vecBodyType.vehicleAge,
+            //         text: "QHV1-5- Age of vehicle",
+            //         label: "Enter ${vecBodyType.vehicleAge}",
+            //         headLabel: title,
+            //       )
+            //     ],
+            //   ),
+            // ),
             AppSize.spaceHeight1(context),
             Directionality(
               textDirection: TextDirection.ltr,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextFormer(
-                    controller: vecBodyType.vehicleAnnualMileage,
-                    text: "QHV1-4- Annual Mileage",
-                    label: "Enter ${vecBodyType.vehicleAnnualMileage}",
-                    headLabel: title,
-                  ),
-                  TextFormer(
-                    controller: vecBodyType.vehicleAge,
-                    text: "QHV1-5- Age of vehicle",
-                    label: "Enter ${vecBodyType.vehicleAge}",
-                    headLabel: title,
-                  )
-                ],
-              ),
-            ),
-            AppSize.spaceHeight1(context),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // TextFormer(
-                  //   controller: vecBodyType.v,
-                  //   text: "QHV1-6- Annual Mileage",
-                  //   label: "Enter ${vecBodyType.annual}",
-                  //   headLabel: title,
-                  // ),
                   TextFormer(
                     controller: vecBodyType.vehicleOwner,
                     text: "Write the name of person",

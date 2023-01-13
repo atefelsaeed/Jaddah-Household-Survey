@@ -9,6 +9,7 @@ import '../../../../Providers/auth.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Providers/surveys.dart';
 import '../../../Widgets/custom_buttton.dart';
+import '../../ChooseSurvey/chooseSurveyScreen.dart';
 import '../../Surveies/surveys_screen.dart';
 
 class ActionTripScreen extends StatelessWidget {
@@ -39,7 +40,6 @@ class ActionTripScreen extends StatelessWidget {
     return await location.getLocation();
   }
 
-
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
@@ -50,10 +50,9 @@ class ActionTripScreen extends StatelessWidget {
         listen: false); // TODO: implement build
     return DefaultButton(
       function: () {
-
         Random random = Random();
         int randomNumber = random.nextInt(10000);
-        surveyPt.headerLat =  0;
+        surveyPt.headerLat = 0;
         surveyPt.interViewDate = DateTime.now();
         surveyPt.headerLong = 0;
         surveyPt.headerEmpNumber = auth.uid;
@@ -64,9 +63,10 @@ class ActionTripScreen extends StatelessWidget {
         surveys.addSurvey(surveyPt.data);
         print('Saving Data :: ');
         Navigator.push(
-          context,MaterialPageRoute(
-          builder: (context) => const SurveysScreen(),
-        ),
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ChooseSurveysScreen(),
+          ),
         );
         /*getLocation().then(
           (value) {

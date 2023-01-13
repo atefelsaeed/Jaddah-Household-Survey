@@ -89,11 +89,11 @@ class TripHoldAddress extends StatelessWidget {
                 text: "City/ Town",
                 label: "Enter City/ Town",
               ),
-              TextForm(
-                controller: tripModel.referToMap!,
-                text: "Refer to Map",
-                label: "Enter Refer to Map ",
-              )
+              // TextForm(
+              //   controller: tripModel.referToMap!,
+              //   text: "Refer to Map",
+              //   label: "Enter Refer to Map ",
+              // )
             ],
           ),
         ),

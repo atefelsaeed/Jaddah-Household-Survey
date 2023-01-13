@@ -11,6 +11,7 @@ import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../../Widgets/text_form_field.dart';
 import '../vechicles/vechicles_screen.dart';
 import 'components/house_hold_address.dart';
 
@@ -73,7 +74,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   bool checked = false;
 
-
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
@@ -101,7 +101,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     streetNumber: streetNumber,
                     zoneNumber: zoneNumber,
                     streetName: streetName,
-                     city: city,
+                    city: city,
                     buildingName: buildingName,
                   ),
 
@@ -148,16 +148,16 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     ],
                   ),
                   AppSize.spaceHeight3(context),
-                  ListViewCheckBoxOrange(
-                      onChange: (r) {
-                        print(r);
-                        HhsStatic.householdQuestions.hhsNumberBedRooms = r;
-                      },
-                      title: QuestionsData.qh3.keys.first,
-                      question: QuestionsData.qh3[QuestionsData.qh3.keys.first]!
-                          .toList(),
-                      subTitle: QuestionsData.qh3["subTitle"]),
-                  AppSize.spaceHeight3(context),
+                  // ListViewCheckBoxOrange(
+                  //     onChange: (r) {
+                  //       print(r);
+                  //       HhsStatic.householdQuestions.hhsNumberBedRooms = r;
+                  //     },
+                  //     title: QuestionsData.qh3.keys.first,
+                  //     question: QuestionsData.qh3[QuestionsData.qh3.keys.first]!
+                  //         .toList(),
+                  //     subTitle: QuestionsData.qh3["subTitle"]),
+                  // AppSize.spaceHeight3(context),
 
                   ListViewCheckBoxOrange(
                     onChange: (r) {
@@ -285,15 +285,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         surveyPt.hhsESAdultsBikesNumber =
                             editingController3Q83.peopleAdults18.text;
                         //
-                        surveyPt.headerDistrictName='';
-                        surveyPt.headerZoneNumber='';
-
+                        surveyPt.headerDistrictName = '';
+                        surveyPt.headerZoneNumber = '';
+                        print("survey Data");
                         // surveys.addSurvey(surveyPt.data);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const VehiclesScreen()));
-
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

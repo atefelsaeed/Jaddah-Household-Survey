@@ -69,8 +69,8 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
 
                     TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
                         [chosenIndex]["isChick"] = true;
-                    TripModeList.tripModeList[widget.indexTripModel]
-                            .purposeTravel =
+                    TripModeList
+                            .tripModeList[widget.indexTripModel].purposeTravel =
                         TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
                             [chosenIndex]["value"];
                   });

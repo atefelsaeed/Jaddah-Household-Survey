@@ -7,8 +7,9 @@ import '../../../Widgets/dropdown_form_input.dart';
 import '../../../Widgets/text.dart';
 
 class DefaultEntry extends StatefulWidget {
-   final int i;
-  const DefaultEntry({super.key,required this.i});
+  final int i;
+
+  const DefaultEntry({super.key, required this.i});
 
   @override
   State<DefaultEntry> createState() => _DefaultEntryState();
@@ -17,7 +18,7 @@ class DefaultEntry extends StatefulWidget {
 class _DefaultEntryState extends State<DefaultEntry> {
   @override
   Widget build(BuildContext context) {
-    int index=widget.i+1;
+    int index = widget.i + 1;
     // TODO: implement build
     return Column(
       children: [
@@ -51,14 +52,11 @@ class _DefaultEntryState extends State<DefaultEntry> {
                       PersonData.relationshipToTheHeadOfHousehold.keys.first]!
                   .toList(),
               onChange: (var p) {
-
                 print(p);
               },
             ),
           ],
         ),
-
-
       ],
     );
   }
