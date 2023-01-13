@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/HHSData/questions_data.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 
 import '../../../../Resources/colors.dart';

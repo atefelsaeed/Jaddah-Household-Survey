@@ -3,7 +3,6 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/action_trip_screen.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
-
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 
@@ -18,7 +17,6 @@ import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
 import 'components/purpose_of)being.dart';
-
 import 'components/time_leave.dart';
 import 'components/trip_hold_address.dart';
 import 'components/where_did_you_go.dart';

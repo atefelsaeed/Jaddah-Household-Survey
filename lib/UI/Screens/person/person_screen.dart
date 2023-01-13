@@ -7,14 +7,9 @@ import 'package:jaddah_household_survey/UI/Screens/person/components/default_ent
 import 'package:jaddah_household_survey/UI/Screens/person/components/education_level.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/next_step.dart';
-import 'package:jaddah_household_survey/UI/Screens/person/components/transporter_moblity.dart';
-import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
-import '../../../Providers/auth.dart';
-import '../../../Providers/survey_hhs.dart';
-import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';

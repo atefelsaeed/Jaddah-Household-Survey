@@ -10,7 +10,6 @@ import '../../../../Providers/survey_hhs.dart';
 import '../../../../Providers/surveys.dart';
 import '../../../Widgets/custom_buttton.dart';
 import '../../ChooseSurvey/chooseSurveyScreen.dart';
-import '../../Surveies/surveys_screen.dart';
 
 class ActionTripScreen extends StatelessWidget {
   const ActionTripScreen({super.key});
@@ -50,28 +49,27 @@ class ActionTripScreen extends StatelessWidget {
         listen: false); // TODO: implement build
     return DefaultButton(
       function: () {
-        Random random = Random();
-        int randomNumber = (1000 + random.nextInt(10000 - 1000));
-        int num = int.parse('${auth.uid}001$randomNumber');
-        surveyPt.headerLat = 0;
-        surveyPt.interViewDate = DateTime.now();
-        surveyPt.headerLong = 0;
-        surveyPt.headerEmpNumber = auth.uid;
-        surveyPt.headerInterviewNumber = num;
-        surveyPt.id = auth.uid.toString();
-        SaveTripsData.saveData(context);
-        print("after save");
-        surveys.addSurvey(surveyPt.data);
-        print('Saving Data :: ');
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ChooseSurveysScreen(),
-          ),
-        );
-        /*getLocation().then(
+        getLocation().then(
           (value) {
-
+            Random random = Random();
+            int randomNumber = (1000 + random.nextInt(10000 - 1000));
+            int num = int.parse('${auth.uid}001$randomNumber');
+            surveyPt.headerLat = value.latitude ?? 0;
+            surveyPt.interViewDate = DateTime.now();
+            surveyPt.headerLong = value.longitude ?? 0;
+            surveyPt.headerEmpNumber = auth.uid;
+            surveyPt.headerInterviewNumber = num;
+            surveyPt.id = auth.uid.toString();
+            SaveTripsData.saveData(context);
+            print("after save");
+            surveys.addSurvey(surveyPt.data);
+            print('Saving Data :: ');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ChooseSurveysScreen(),
+              ),
+            );
           },
         ).onError(
           (error, stackTrace) {
@@ -85,10 +83,10 @@ class ActionTripScreen extends StatelessWidget {
               ),
             );
           },
-        );*/
+        );
       },
       isWidget: true,
-      text: "Finish",
+      text: "أنتهينا",
       widget: const Icon(Icons.arrow_forward),
     );
   }

@@ -1,21 +1,13 @@
 import 'dart:developer';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:jaddah_household_survey/Resources/assets_manager.dart';
-import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/itemHomeSurvey.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Models/survey.dart';
 import '../../../Providers/auth.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
-import '../../../Resources/sizes.dart';
 import '../../Widgets/connection_error.dart';
-import '../Survey/syrvey_screen.dart';
-import '../UserSurveys/userSurveys.dart';
 import 'chooseSurveyBody.dart';
 
 class ChooseSurveysScreen extends StatefulWidget {

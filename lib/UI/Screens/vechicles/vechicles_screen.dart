@@ -6,16 +6,12 @@ import 'package:jaddah_household_survey/UI/Screens/vechicles/components/fuel_typ
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/motorisedvechiels.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/nearest_transporter.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/park_this_car.dart';
-import 'package:provider/provider.dart';
 
-import '../../../Providers/survey_hhs.dart';
-import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
 import '../Survey/widgets/text_form_row.dart';
 import 'components/controller_vechelies_body.dart';
 import 'components/owner_ship_code.dart';
-import 'components/q2_vec_screen.dart';
 
 class VehiclesScreen extends StatefulWidget {
   const VehiclesScreen({super.key});

@@ -6,7 +6,6 @@ import '../../../Providers/auth.dart';
 import '../ChooseSurvey/chooseSurveyScreen.dart';
 import '../Login/login_screen.dart';
 import '../Splash/splash_screen.dart';
-import '../Surveies/surveys_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
