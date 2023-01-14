@@ -21,31 +21,6 @@ class ChooseSurveysScreen extends StatefulWidget {
 }
 
 class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
-  Future<LocationData> getLocation() async {
-    Location location = Location();
-
-    bool serviceEnabled;
-    PermissionStatus permissionGranted;
-
-    serviceEnabled = await location.serviceEnabled();
-    if (!serviceEnabled) {
-      serviceEnabled = await location.requestService();
-      if (!serviceEnabled) {
-        return Future.error(0);
-      }
-    }
-
-    permissionGranted = await location.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
-      permissionGranted = await location.requestPermission();
-      if (permissionGranted != PermissionStatus.granted) {
-        return Future.error(1);
-      }
-    }
-
-    return await location.getLocation();
-  }
-
   late bool clicked;
 
   @override
@@ -61,33 +36,9 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
       appBar: AppBar(
         backgroundColor: ColorManager.primaryColor,
         actions: [
-          // IconButton(
-          //   onPressed: () {
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (context) => const SurveyScreen()));
-          //   },
-          //   icon: const Icon(Icons.add),
-          // ),
-          // const SizedBox(width: 20),
           IconButton(
             onPressed: () async {
-              await getLocation().then((value) {}).onError(
-                    (error, stackTrace) {
-                  log(stackTrace.toString());
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("The location service must be running"),
-                      duration: Duration(seconds: 3),
-                      elevation: 1,
-                    ),
-                  );
-                  setState(() {
-                    clicked = false;
-                  });
-                },
-              );
+              Provider.of<SurveysProvider>(context, listen: false).syncAll();
             },
             icon: const Icon(Icons.sync),
           ),

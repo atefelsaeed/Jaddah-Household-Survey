@@ -30,7 +30,7 @@ class VehiclesModel {
     // numberAirTubedAdultsWorkUse = json['numberAirTubedAdultsWorkUse'] ?? 0;
     // numberAirTubedAdultsLeisure = json['numberAirTubedAdultsLeisure'] ?? 0;
     // numberAirTubedChildren = json['numberAirTubedChildren'] ?? 0;
-    numberParcels = json['numberParcels'] ?? "";
+    numberParcels = json['numberParcels'] ?? "";//last is numberAirTubedAdultsLeisure
     nearestBusStop = json['nearestBusStop'] ?? '';
   }
 

@@ -37,7 +37,7 @@ class PersonalQuestion {
     data['drivingLicenceType'] = drivingLicenceType ?? "";
     data['haveBusPass'] = haveBusPass ?? "";
     data['mainOccupationType'] = mainOccupationType ?? "";
-     data['haveDisabilityTransportMobility'] =haveDisabilityTransportMobility;
+    data['haveDisabilityTransportMobility'] = haveDisabilityTransportMobility;
 
     data['availablePersonalCar'] = availablePersonalCar ?? "";
     data['haveCarSharing'] = haveCarSharing ?? "";
