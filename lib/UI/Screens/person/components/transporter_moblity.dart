@@ -1,14 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 
-class TransporterMobilty extends StatelessWidget {
+class TransporterMobilty extends StatefulWidget {
   final int index;
 
-  const TransporterMobilty({super.key, required this.index});
+  TransporterMobilty({super.key, required this.index});
+
+  @override
+  State<TransporterMobilty> createState() => _TransporterMobiltyState();
+}
+
+class _TransporterMobiltyState extends State<TransporterMobilty> {
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +38,28 @@ class TransporterMobilty extends StatelessWidget {
                   .transporterMoblity[PersonData.transporterMoblity.keys.first]!
                   .toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[index].personalQuestion!
-                    .haveDisabilityTransportMobility = p.toString();
+                setState(() {
+                  PersonModelList
+                      .personModelList[widget.index]
+                      .personalQuestion!
+                      .haveDisabilityTransportMobility = p.toString();
+                });
               },
             ),
+            PersonModelList.personModelList[widget.index].personalQuestion!
+                        .haveDisabilityTransportMobility ==
+                    'أخرى .. حدد'
+                ? MyTextForm(
+                    label: 'إذكر الإعاقة / احتياجات خاصة',
+                    controller: textEditingController,
+                    onChanged: (value) {
+                      PersonModelList
+                          .personModelList[widget.index]
+                          .personalQuestion!
+                          .haveDisabilityTransportMobility = value;
+                    },
+                  )
+                : Container()
           ],
         ),
       ],

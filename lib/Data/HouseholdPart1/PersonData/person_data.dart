@@ -49,19 +49,21 @@ class PersonData {
 
   static Map<String, dynamic> occupationSector = {
     "what is the Occupation Sector": [
-      'Offices Government',
-      'Education School',
-      'Education University',
-      'Medical Hospital- Health Centre (private)',
-      'Medical Hospital- Health Centre (government)',
-      'Construction Building',
-      'Construction- infrastructure',
-      'Business trading- non-office',
-      'Other specify',
-      'ndustrial/Mechanics, shops factory, logistic'
-          'n-house maid, servant, driver, Gardner etc.',
-      'Transport- port/harbour',
-      'Industrial - QP/Gas',
+      'مكاتب - حكومية',
+      ' مكتب - خاص',
+      'تعليم- مدرسة',
+      'التعليم - الجامعة',
+      'مستشفى طبي- مركز صحي (خاص)',
+      'مستشفى طبي- مركز صحي (حكومي)',
+      'بناء البناء',
+      'البناء- البنية التحتية',
+      'خادمة في المنزل ، وخادم ، وسائق ، مزارع ، إلخ.',
+      'النقل - الميناء / الميناء',
+      'صناعية - قطر للبترول / غاز',
+      'صناعية / ميكانيكا ، مصنع محلات تجارية ، لوجستية',
+      'التجارة التجارية - غير المكتبية',
+      'سائق- باص ، تاكسي ، ليموزين',
+      ' حدد أخرى',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -214,9 +216,9 @@ class PersonData {
   };
   static Map<String, dynamic> drivingLiences = {
     "?What type of driving licence do you have": [
-      'always',
-      'never',
-      'some Time',
+      'دائما',
+      'بعض الاحيان',
+      'أبدا',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -225,8 +227,8 @@ class PersonData {
 
   static Map<String, dynamic> busBuss = {
     " ?Do you have a Bus Pass": [
-      'Yes',
-      'No',
+      'نعم',
+      'لا',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -235,13 +237,14 @@ class PersonData {
 
   static Map<String, dynamic> licence = {
     " ? What type of driving licence do you have": [
-      'Car only',
-      'Motorcycle only',
-      'Car and Motorcycle both',
-      'Light Goods Vehicles',
-      'Heavy Goods Vehicles',
-      'No Licence',
-      'Other',
+      'السيارة فقط',
+      'دراجة نارية فقط',
+      'السيارة والدراجات النارية على حد سواء',
+      'مركبات البضائع الخفيفة',
+      'مركبات نقل البضائع الثقيلة',
+      'رخصة مؤقتة (تصريح / متعلم)',
+      'بدون ترخيص',
+      'آخر',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -250,13 +253,13 @@ class PersonData {
 
   static Map<String, dynamic> transporterMoblity = {
     "?Do you have any disability/Special Needs for Transport Mobility": [
-      'no problem',
-      'wheelchair user',
-      'partially blind',
-      'blind',
-      'speech and heading impairment',
-      'difficulty in standing/walking',
-      'Other.. Specify',
+      'لا مشكلة',
+      'مستخدم لكرسي متحرك',
+      'أعمى جزئيا',
+      'أعمى',
+      'ضعف الكلام والعنوان',
+      'صعوبة في الوقوف / المشي',
+      'أخرى .. حدد',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -307,11 +310,7 @@ class PersonData {
         "isChick": false,
         "type": "student",
       },
-      {
-        "value": 'طالب - مدرسة ثانوية',
-        "isChick": false,
-        "type": "student"
-      },
+      {"value": 'طالب - مدرسة ثانوية', "isChick": false, "type": "student"},
       {
         "value": ' طالب - الكلية: بدوام كامل (لا يعمل)',
         "type": "student",
@@ -342,16 +341,8 @@ class PersonData {
         "isChick": false,
         "type": "student"
       },
-      {
-        "value": 'شخص البيت',
-        "isChick": false,
-        "type": "student"
-      },
-      {
-        "value": 'معاق / مريض',
-        "isChick": false,
-        "type": "student"
-      },
+      {"value": 'شخص البيت', "isChick": false, "type": "student"},
+      {"value": 'معاق / مريض', "isChick": false, "type": "student"},
       {
         "value": 'متقاعد',
         "isChick": false,

@@ -16,46 +16,48 @@ class EducationLevel extends StatelessWidget {
     // TODO: implement build
 
     var base = PersonModelList.personModelList[i];
-    return Column(children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          DropDownFormInput(
-            label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
-                .toList()
-                .first
-                .toString()),
-            hint: PersonData.busBuss.keys.first.toString(),
-            options: PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
-            onChange: (String? p) {},
-          ),
-          TextForm(
-            controller: base.occupationModel!.earliestTimeStartingWork,
-            text: "Education address -full details and get geocode",
-            label: "Education address -full details and get geocode",
-          )
-
-        ],
-      ),
-      Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-        DropDownFormInput(
-          label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
-              .toList()
-              .first
-              .toString()),
-          hint:"هل لديك تذكرة حافلة" ,
-          options:
-          PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
-          onChange: (String? p) {
-            PersonModelList.personModelList[i].personalQuestion!.haveBusPass=p.toString();
-          },
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            DropDownFormInput(
+              label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
+                  .toList()
+                  .first
+                  .toString()),
+              hint: PersonData.busBuss.keys.first.toString(),
+              options:
+                  PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
+              onChange: (String? p) {},
+            ),
+            TextForm(
+              controller: base.occupationModel!.earliestTimeStartingWork,
+              text: "Education address -full details and get geocode",
+              label: "Education address -full details and get geocode",
+            )
+          ],
         ),
-      ],),
-
-      TransporterMobilty(index: i)
-
-    ],);
-
-
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            DropDownFormInput(
+              label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
+                  .toList()
+                  .first
+                  .toString()),
+              hint: "هل لديك تذكرة حافلة",
+              options:
+                  PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
+              onChange: (String? p) {
+                PersonModelList.personModelList[i].personalQuestion!
+                    .haveBusPass = p.toString();
+              },
+            ),
+          ],
+        ),
+        TransporterMobilty(index: i)
+      ],
+    );
   }
 }
