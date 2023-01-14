@@ -64,7 +64,10 @@ class BikesType {
   late String childrenBikesNumber;
 
   BikesType(
-      this.adultsBikesNumber, this.totalBikesNumber, this.childrenBikesNumber);
+    this.adultsBikesNumber,
+    this.totalBikesNumber,
+    this.childrenBikesNumber,
+  );
 }
 
 class SeparateFamilies {

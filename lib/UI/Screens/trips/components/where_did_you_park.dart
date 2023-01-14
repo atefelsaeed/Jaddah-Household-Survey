@@ -49,7 +49,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
             ),
             TripModeList.tripModeList[widget.index].travelTypeModel!
                         .travelType ==
-                    "Car"
+                    "سيارة"
                 ? DropDownFormInput(
                     label: Text(TripData
                         .whereDidYouPark[TripData.whereDidYouPark.keys.first]!
@@ -70,47 +70,40 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       setState(() {
                         TripModeList.tripModeList[widget.index].travelTypeModel!
                             .carParkingPlace = p.toString();
-
-                        for (int inr = 0; inr < value.length; inr++) {
-                          if (p == "Dropped Off - taxi") {
-                            TripModeList.tripModeList[widget.index]
-                                .typeTravelCondition = "1";
-                          } else {
-                            TripModeList.tripModeList[widget.index]
-                                .typeTravelCondition = "0";
-                          }
-                        }
                       });
                     })
-                : TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .travelType ==
-                        "Taxi"
-                    ? DropDownFormInput(
-                        label: Text(TripData
-                            .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
-                            .toList()
-                            .first
-                            .toString()),
-                        hint:
-                            "نوع التاكسي الذي استخدمتھ وكم الأجرة التي دفعتھا؟",
-                        options: TripData
-                            .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
-                            .toList(),
-                        onChange: (String? p) {
-                          setState(() {
-                            TripModeList.tripModeList[widget.index]
-                                .travelTypeModel!.taxiTravelType = p.toString();
-                          });
-                        })
-                    : Container(),
+                : Container(),
+            TripModeList.tripModeList[widget.index].travelTypeModel!
+                        .travelType ==
+                    "تاكسي"
+                ? DropDownFormInput(
+                    label: Text(TripData
+                        .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
+                        .toList()
+                        .first
+                        .toString()),
+                    hint: "نوع التاكسي الذي استخدمتھ وكم الأجرة التي دفعتھا؟",
+                    options: TripData
+                        .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
+                        .toList(),
+                    onChange: (String? p) {
+                      setState(() {
+                        TripModeList.tripModeList[widget.index].travelTypeModel!
+                            .taxiTravelType = p.toString();
+                      });
+                    })
+                : Container(),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TripModeList.tripModeList[widget.index].travelTypeModel!
-                        .carParkingPlace ==
-                    "Other"
+            (TripModeList.tripModeList[widget.index].travelTypeModel!
+                            .carParkingPlace ==
+                        "أخر" &&
+                    TripModeList.tripModeList[widget.index].travelTypeModel!
+                            .travelType ==
+                        "سيارة")
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -119,21 +112,6 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                             .travelTypeModel!.otherWhereDidYouParking!,
                         text: "أین أوقفت سیارتك؟",
                         label: "أین أوقفت سیارتك؟",
-                      )
-                    ],
-                  )
-                : Container(),
-            TripModeList.tripModeList[widget.index].travelTypeModel!
-                        .taxiTravelType ==
-                    "Other"
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      TextForm(
-                        controller: TripModeList.tripModeList[widget.index]
-                            .travelTypeModel!.taxiTravelTypeOther!,
-                        text: "بماذا سافرت ؟",
-                        label: "بماذا سافرت ؟",
                       )
                     ],
                   )
@@ -148,7 +126,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
             children: [
               TripModeList.tripModeList[widget.index].travelTypeModel!
                           .travelType ==
-                      "Taxi"
+                      "تاكسي"
                   ? TextForm(
                       controller: widget.costTaxi,
                       text: "كم أجرة التاكسي دفعتھ؟",
@@ -159,9 +137,8 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           ),
         ),
         AppSize.spaceHeight2(context),
-        TripModeList.tripModeList[widget.index].travelTypeModel!
-                    .travelType ==
-                "Public Transport"
+        TripModeList.tripModeList[widget.index].travelTypeModel!.travelType ==
+                "وسائل النقل العام"
             ? Directionality(
                 textDirection: TextDirection.ltr,
                 child: Row(

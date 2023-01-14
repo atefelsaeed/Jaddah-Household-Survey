@@ -38,16 +38,21 @@ class TripData {
 
   static Map<String, dynamic> mainMade = {
     "mainMade": [
-      'Car Passenger',
-      'Taxi (ask about type of taxi)',
-      ' Car Driver',
-      'Public Bus',
-      'Company Bus',
-      'School Bus'
-          'Motorcycle'
-          'Walk',
-      'Bi-cycle'
-          'Other'
+      'سائق سيارة',
+      'ركاب السيارة',
+      'تاكسي (اسأل عن نوع التاكسي',
+      'الحافلات العامة',
+      'حافة الشركة',
+      'باص المدرسة',
+      'تاكسي المدرسة',
+      'دراجة نارية',
+      'المشي <5 دقائق',
+      'المشي> 6-10 دقائق',
+      'المشي> 11-15 دقيقة',
+      'المشي> 16-20 دقيقة',
+      'المشي> 20 + ناقص',
+      'دراجة',
+      'أخر'
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -55,16 +60,21 @@ class TripData {
   };
   static Map<String, dynamic> AcMode = {
     "AcMode": [
-      'Car Passenger',
-      'Taxi (ask about type of taxi)',
-      ' Car Driver',
-      'Public Bus',
-      'Company Bus',
-      'School Bus'
-          'Motorcycle'
-          'Walk',
-      'Bi-cycle'
-          'Other'
+      'سائق سيارة',
+      'ركاب السيارة',
+      'تاكسي (اسأل عن نوع التاكسي',
+      'الحافلات العامة',
+      'حافة الشركة',
+      'باص المدرسة',
+      'تاكسي المدرسة',
+      'دراجة نارية',
+      'المشي <5 دقائق',
+      'المشي> 6-10 دقائق',
+      'المشي> 11-15 دقيقة',
+      'المشي> 16-20 دقيقة',
+      'المشي> 20 + ناقص',
+      'دراجة',
+      'أخر'
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -89,13 +99,15 @@ class TripData {
 
   static Map<String, dynamic> whereDidYouPark = {
     "?where did you park": [
-      'Public Car Park - paid',
-      'On-street - marked space',
-      'On-street - unmarked space',
-      'Valet parking',
-      'Dropped Off - taxi',
-      'public Transporter',
-      'Other'
+      'موقف سيارات خاص - محجوز',
+      'موقف سيارات خاص - غير محجوز',
+      'موقف سيارات عام - مدفوع',
+      'في الشارع - مساحة محددة',
+      'في الشارع - مساحة غير محددة',
+      'خدمة صف السيارات',
+      'تم النزول - خاص',
+      'نزلت - سيارة أجرة',
+      'أخر'
     ],
     "title": "?where did you park",
     "subTitle": "mainMade",
@@ -104,9 +116,9 @@ class TripData {
 
   static Map<String, dynamic> whatTypeOfTravel = {
     "What did you travel to?": [
-      'Car',
-      'Taxi',
-      'Public Transport',
+      'سيارة',
+      'تاكسي',
+      'وسائل النقل العام',
     ],
     "title": "?where did you park",
     "subTitle": "mainMade",
@@ -114,10 +126,10 @@ class TripData {
   };
   static Map<String, dynamic> whatTypeOfTaxi = {
     "?what type of taxi did you use and how much fare did you pay": [
-      'Uber',
-      'Careem',
-      'Pixi',
-      'Green Taxi',
+      'تاكسي',
+      'اوبر',
+      'كريم',
+      // "أخر"
     ],
     "title": "?where did you park",
     "subTitle": "mainMade",
@@ -126,12 +138,12 @@ class TripData {
 
   static Map<String, dynamic> howOftenDoYouMakeThisTrip = {
     "?How often do you make this Trip": [
-      '  5 days a week',
-      " 4 days a week",
-      "3 days a week",
-      "2 days a week",
-      "less than once a week",
-      "less than once a mont'"
+      '5 أيام في الأسبوع',
+      "4 أيام في الأسبوع",
+      "3 أيام في الأسبوع",
+      "2 أيام في الأسبوع",
+      "أقل من مرة فى الأسبوع",
+      "أقل من مرة فى الشهر"
     ],
     "title": "?How often do you make this Trip",
     "subTitle": "mainMade",
