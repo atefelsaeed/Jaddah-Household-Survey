@@ -51,7 +51,7 @@ class SurveyPT extends Survey {
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;
-    data['hhsNumberBedRooms'] = householdQuestions.hhsNumberBedRooms;
+    // data['hhsNumberBedRooms'] = householdQuestions.hhsNumberBedRooms;
     data['hhsNumberSeparateFamilies'] =
         householdQuestions.hhsNumberSeparateFamilies;
     data['hhsNumberAdults'] = householdQuestions.hhsNumberAdults;
@@ -117,7 +117,7 @@ class SurveyPT extends Survey {
     //================householdQuestions================
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
-    householdQuestions.hhsNumberBedRooms = json['hhsNumberBedRooms'];
+    // householdQuestions.hhsNumberBedRooms = json['hhsNumberBedRooms'];
     householdQuestions.hhsNumberSeparateFamilies =
         json['hhsNumberSeparateFamilies'];
     householdQuestions.hhsNumberAdults = json['hhsNumberAdults'];

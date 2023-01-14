@@ -28,7 +28,7 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first["value"]
                   .toString()),
-              hint:"الوظيفة الأساسية",
+              hint: "الوظيفة الأساسية",
               options: PersonData.mainOccupation[mainOccupationKey]!.toList(),
               onChange: (String? p) {
                 List value =
@@ -40,8 +40,8 @@ class Employee extends StatelessWidget {
                         value[inr]["value"];
                   }
                 }
-                PersonModelList.personModelList[i].personalQuestion!.mainOccupationType=p.toString();
-
+                PersonModelList.personModelList[i].personalQuestion!
+                    .mainOccupationType = p.toString();
               },
             ),
             DropDownFormInput(
@@ -53,7 +53,8 @@ class Employee extends StatelessWidget {
               options:
                   PersonData.occupationSector[occupationSectorKey]!.toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].occupationModel!.occupationSector=p.toString();
+                PersonModelList.personModelList[i].occupationModel!
+                    .occupationSector = p.toString();
               },
             ),
           ],
@@ -67,11 +68,12 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للسفر إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
+              hint:
+                  "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للسفر إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
               options: PersonData.workplace[PersonData.workplace.keys.first]!
                   .toList(),
               onChange: (String? p) {
-               // PersonModelList.personModelList[i].personalQuestion.=p.toString();
+                // PersonModelList.personModelList[i].personalQuestion.=p.toString();
               },
             ),
             DropDownFormInput(
@@ -79,22 +81,23 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint:"ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
-              options: PersonData.licence[PersonData.licence.keys.first]!.toList(),
+              hint: "ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
+              options:
+                  PersonData.licence[PersonData.licence.keys.first]!.toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].personalQuestion!.drivingLicenceType=p.toString();
+                PersonModelList.personModelList[i].personalQuestion!
+                    .drivingLicenceType = p.toString();
               },
             ),
           ],
         ),
 
-
-      /*  const HeadLine(
+        /*  const HeadLine(
             title: "Address of the Main Occupation  (work or study place) ",
             subTitle:
                 "Write both if a person is a part- time student and also part- time employed; then ask both education and work address"),
         AppSize.spaceHeight3(context),*/
-      /*  Directionality(
+        /*  Directionality(
           textDirection: TextDirection.ltr,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -159,7 +162,7 @@ class Employee extends StatelessWidget {
             ],
           ),
         ),*/
-      /*  AppSize.spaceHeight3(context),
+        /*  AppSize.spaceHeight3(context),
         Directionality(
           textDirection: TextDirection.ltr,
           child: Row(
@@ -179,7 +182,7 @@ class Employee extends StatelessWidget {
           ),
         ),*/
         AppSize.spaceHeight3(context),
-       /* Row(
+        /* Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
@@ -210,12 +213,14 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint: " مدى توفر سيارة متاحة لك لاستخدامك الشخصي؟(سؤال موجه اسأل فقط إذا كان لديك رخصة قيادة)",
+              hint:
+                  " مدى توفر سيارة متاحة لك لاستخدامك الشخصي؟(سؤال موجه اسأل فقط إذا كان لديك رخصة قيادة)",
               options: PersonData
                   .drivingLiences[PersonData.drivingLiences.keys.first]!
                   .toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].personalQuestion!.availablePersonalCar=p.toString();
+                PersonModelList.personModelList[i].personalQuestion!
+                    .availablePersonalCar = p.toString();
               },
             ),
             DropDownFormInput(
@@ -223,14 +228,14 @@ class Employee extends StatelessWidget {
                   .toList()
                   .first
                   .toString()),
-              hint:"هل لديك تذكرة حافلة" ,
+              hint: "هل لديك تذكرة حافلة",
               options:
                   PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].personalQuestion!.haveBusPass=p.toString();
+                PersonModelList.personModelList[i].personalQuestion!
+                    .haveBusPass = p.toString();
               },
             ),
-
           ],
         ),
         TransporterMobilty(index: i)

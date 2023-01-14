@@ -27,9 +27,9 @@ class VehiclesModel {
     vehicleFuelType = json['vehicleFuelType'] ?? '';
     vehicleOwnership = json['vehicleOwnership'] ?? '';
     vehicleParking = json['vehicleParking'] ?? '';
-    // numberAirTubedAdultsWorkUse = json['numberAirTubedAdultsWorkUse'] ?? 0;
-    // numberAirTubedAdultsLeisure = json['numberAirTubedAdultsLeisure'] ?? 0;
-    // numberAirTubedChildren = json['numberAirTubedChildren'] ?? 0;
+    numberAirTubedAdultsWorkUse = json['numberAirTubedAdultsWorkUse'] ?? "";
+    numberAirTubedAdultsLeisure = json['numberAirTubedAdultsLeisure'] ?? "";
+    numberAirTubedChildren = json['numberAirTubedChildren'] ?? "";
     numberParcels = json['numberParcels'] ?? "";//last is numberAirTubedAdultsLeisure
     nearestBusStop = json['nearestBusStop'] ?? '';
   }
@@ -39,10 +39,10 @@ class VehiclesModel {
     data['vehicleFuelType'] = vehicleFuelType ?? '';
     data['vehicleOwnership'] = vehicleOwnership ?? '';
     data['vehicleParking'] = vehicleParking ?? '';
-    // data['numberAirTubedAdultsWorkUse'] = numberAirTubedAdultsWorkUse ?? 0;
+    data['numberAirTubedAdultsWorkUse'] = numberAirTubedAdultsWorkUse ?? "";
     data['numberParcels'] = numberParcels ??"";
-    // data['numberAirTubedAdultsLeisure'] = numberAirTubedAdultsLeisure ?? 0;
-    // data['numberAirTubedChildren'] = numberAirTubedChildren ?? 0;
+    data['numberAirTubedAdultsLeisure'] = numberAirTubedAdultsLeisure ?? "";
+    data['numberAirTubedChildren'] = numberAirTubedChildren ?? "";
     data['nearestBusStop'] = nearestBusStop ?? '';
     return data;
   }

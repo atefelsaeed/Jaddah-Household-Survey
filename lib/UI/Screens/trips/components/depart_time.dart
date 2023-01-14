@@ -14,7 +14,11 @@ class DepartTime extends StatefulWidget {
   int i;
   final TextEditingController textEditingControl;
 
-  DepartTime({super.key, required this.tripModel,required this.i,required this.textEditingControl});
+  DepartTime(
+      {super.key,
+      required this.tripModel,
+      required this.i,
+      required this.textEditingControl});
 
   @override
   State<DepartTime> createState() => _DepartTimeState();
@@ -34,7 +38,6 @@ class _DepartTimeState extends State<DepartTime> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               TextForm(
                 fontSize: height(context) * .014,
                 controller: widget.tripModel.arrivalDepartTime!.departTime,
@@ -43,11 +46,10 @@ class _DepartTimeState extends State<DepartTime> {
               ),
               TextForm(
                 fontSize: height(context) * .012,
-                controller: widget.tripModel.arrivalDepartTime!.arriveDestinationTime,
-                text:
-                "وقت الوصول",
-                label:
-                "وقت الوصول",
+                controller:
+                    widget.tripModel.arrivalDepartTime!.arriveDestinationTime,
+                text: "وقت الوصول",
+                label: "وقت الوصول",
               ),
             ],
           ),
@@ -68,22 +70,25 @@ class _DepartTimeState extends State<DepartTime> {
                   .toList(),
               onChange: (String? p) {
                 setState(() {
-                  TripModeList.tripModeList[widget.i].arrivalDepartTime?.numberRepeatTrip=p;
+                  TripModeList.tripModeList[widget.i].arrivalDepartTime
+                      ?.numberRepeatTrip = p;
                 });
-
-
               },
             ),
           ],
         ),
-        TripModeList.tripModeList[widget.i].arrivalDepartTime=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-          TextForm(
-
-            controller:widget.textEditingControl,
-            text: "أكواد نوع الوقود",
-            label: "أكواد نوع الوقود",
-          )
-        ],):Container(),
+        TripModeList.tripModeList[widget.i].arrivalDepartTime == "Other"
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TextForm(
+                    controller: widget.textEditingControl,
+                    text: "أكواد نوع الوقود",
+                    label: "أكواد نوع الوقود",
+                  )
+                ],
+              )
+            : Container(),
       ],
     );
   }

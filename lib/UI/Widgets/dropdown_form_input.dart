@@ -35,14 +35,16 @@ class DropDownFormInput2<T> extends StatelessWidget {
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
         children: [
-    SizedBox(width: width(context)*.4,child:       Text(
-            hint.toString(),
-            style: TextStyle(
-                fontWeight: FontWeight.w400,
-                color: ColorManager.black,
-                fontSize: height(context) * .02),
-            textAlign: TextAlign.right,
-          )),
+          SizedBox(
+              width: width(context) * .4,
+              child: Text(
+                hint.toString(),
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: ColorManager.black,
+                    fontSize: height(context) * .02),
+                textAlign: TextAlign.right,
+              )),
           AppSize.spaceHeight1(context),
           SizedBox(
             width: width(context) * .4,
@@ -93,7 +95,6 @@ class DropDownFormInput2<T> extends StatelessWidget {
   }
 }
 
-
 class DropDownFormInput<T> extends StatelessWidget {
   final List<T> options;
   final String? hint;
@@ -126,19 +127,22 @@ class DropDownFormInput<T> extends StatelessWidget {
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
         children: [
-
-          SizedBox(width: width(context)*.45-10,
-              child:   TextGlobal(text:hint.toString(), fontSize:height(context)*.015 ,color: ColorManager.black,)),
-
+          SizedBox(
+              width: width(context) * .45 - 10,
+              child: TextGlobal(
+                text: hint.toString(),
+                fontSize: height(context) * .015,
+                color: ColorManager.black,
+              )),
           AppSize.spaceHeight1(context),
           SizedBox(
-            width: width(context) * .45-10,
-            height: height(context) * .06,
+            width: width(context) * .45 - 10,
+            height: height(context) * .1,
             child: Directionality(
               textDirection: TextDirection.ltr,
               child: InputDecorator(
                   decoration:
-                  const InputDecoration(border: OutlineInputBorder()),
+                      const InputDecoration(border: OutlineInputBorder()),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
@@ -154,10 +158,10 @@ class DropDownFormInput<T> extends StatelessWidget {
                       items: options
                           .map(
                             (T v) => DropdownMenuItem<T>(
-                          value: v,
-                          child: Text(v.toString()),
-                        ),
-                      )
+                              value: v,
+                              child: Text(v.toString()),
+                            ),
+                          )
                           .toList(),
                     ),
                   )),
@@ -165,14 +169,14 @@ class DropDownFormInput<T> extends StatelessWidget {
           ),
           field.hasError
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                field.errorText!,
-                style: TextStyle(color: Colors.red[700], fontSize: 12),
-              ),
-            ],
-          )
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      field.errorText!,
+                      style: TextStyle(color: Colors.red[700], fontSize: 12),
+                    ),
+                  ],
+                )
               : const SizedBox.shrink()
         ],
       ),

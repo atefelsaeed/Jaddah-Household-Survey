@@ -42,37 +42,37 @@ class VehiclesData {
 
   static Map<String, List<dynamic>> fuelTypeCodes = {
     "Fuel type codes- V2-F": [
-      'Petrol',
-      'Diesel',
-      'PNG/LPG',
-      'Son/Daughter',
-      'Fully Hybrid(HEV)',
-      'Mild Hybrid(MHEV)',
-      'Electric -Bike',
-      'Electric',
-      'Other'
+      'بنزين',
+      'ديزل',
+      'المكونات الكهربائية الهجينة (PHEV)',
+      'هجين بالكامل (HEV)',
+      'هجين معتدل (HEV)',
+      'PNG / غاز البترول المسال',
+      'كهربائى',
+      'دراجة كهربائية',
+      'أخر'
     ]
   };
 
   static Map<String, List<dynamic>> ownership = {
     "Ownership codes- V3-O": [
-      'Select',
-      'Employer s',
-      'Household',
-      'Rented',
-      'Other',
+      'أسرة',
+      'أرباب العمل',
+      'مستأجرة',
+      'أخر',
+
     ]
   };
   static Map<String, List<dynamic>> parkThisCar = {
     "Ownership codes- V3-O": [
-      'Personal Garage(home)',
-      'Roadside free',
-      'Roadside charged',
-      'On site residential free',
-      'Off road free',
-      'Off Road charged',
-      'On Site Res charged',
-      'Other'
+      'المرأب الشخصى (المنزل)',
+      'على جانب الطريق خالية',
+      'على جانب الطريق مشحونة',
+      'خارج الطريق / شاعرة',
+      'الطرق الوعرة خالية',
+      'خارج الطريق مشحونة',
+      'فى الموقع سكنى مجانى',
+      'على الموقع الدقة المشحونة'
     ]
   };
 

@@ -1,15 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
 
-class TimeLeave extends StatelessWidget {
+class TimeLeave extends StatefulWidget {
   final TextEditingController expectedDeparture;
 
   const TimeLeave({super.key, required this.expectedDeparture});
 
+  @override
+  State<TimeLeave> createState() => _TimeLeaveState();
+}
+
+class _TimeLeaveState extends State<TimeLeave> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -29,11 +34,26 @@ class TimeLeave extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
-
             MyTextForm(
               label: "وقت المغادرة المتوقع",
-              controller: expectedDeparture,
+              controller: widget.expectedDeparture,
+              readOnly: true,
+              //set it true, so that user will not able to edit text
+              onTap: () async {
+                TimeOfDay? pickedTime = await showTimePicker(
+                  initialTime: TimeOfDay.now(),
+                  context: context,
+                );
+
+                if (pickedTime != null) {
+                  setState(() {
+                    widget.expectedDeparture.text = pickedTime
+                        .format(context); //set the value of text field.
+                  });
+                } else {
+                  print("Time is not selected");
+                }
+              },
             ),
             AppSize.spaceWidth2(context),
 

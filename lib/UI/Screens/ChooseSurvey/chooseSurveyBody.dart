@@ -11,7 +11,6 @@ import '../../../Resources/assets_manager.dart';
 import '../../../Resources/colors.dart';
 import '../../../Resources/sizes.dart';
 import '../Survey/syrvey_screen.dart';
-import '../UserSurveys/userSurveys.dart';
 import 'itemHomeSurvey.dart';
 
 class ChooseSurveyBody extends StatefulWidget {

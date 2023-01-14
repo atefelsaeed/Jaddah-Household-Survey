@@ -22,47 +22,43 @@ class DefaultButton extends StatelessWidget {
 
   DefaultButton(
       {Key? key,
-        required this.function,
-        this.text,
-        this.background,
-        this.btnWidth,
-        this.textColor,
-        required this.isWidget,
-        this.fontSize,
-        this.fontWeight,
-        this.radius,
-        this.btnHeight,
-        this.widget})
+      required this.function,
+      this.text,
+      this.background,
+      this.btnWidth,
+      this.textColor,
+      required this.isWidget,
+      this.fontSize,
+      this.fontWeight,
+      this.radius,
+      this.btnHeight,
+      this.widget})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      height: btnHeight ?? height(context)*.05,    //It will take a 20% of screen width
-      width: btnWidth ?? width(context)*.18,
+      height: btnHeight ?? height(context) * .06,
+      //It will take a 20% of screen width
+      width: btnWidth ?? width(context) * .25,
 
       decoration: BoxDecoration(
-          color: background ??ColorManager.orangeTxtColor,
-        borderRadius: BorderRadius.circular(
-          radius ?? 10.0,
-        ),
-          border: Border.all(color: ColorManager.orangeTxtColor)
-      ),
+          color: background ?? ColorManager.orangeTxtColor,
+          borderRadius: BorderRadius.circular(
+            radius ?? 10.0,
+          ),
+          border: Border.all(color: ColorManager.orangeTxtColor)),
       child: MaterialButton(
-        onPressed:() {
+        onPressed: () {
           function();
-        } ,
+        },
         child: Text(
           text!,
-          style:  TextStyle(
-              color: textColor ??ColorManager.whiteColor,
-              fontWeight: FontWeight.bold
-          ),
+          style: TextStyle(
+              color: textColor ?? ColorManager.whiteColor,
+              fontWeight: FontWeight.bold),
         ),
       ),
     );
-
   }
 }
-

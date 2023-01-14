@@ -29,7 +29,7 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
         addAutomaticKeepAlives: true,
         scrollDirection: Axis.vertical,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: TripData.purposeOfBeingThere["QPurposeOfBeingThere"].length,
+        itemCount: TripData.tripReason["TripReason"].length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, childAspectRatio: 4),
         itemBuilder: (context, index) => SizedBox(
@@ -38,7 +38,7 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
             SizedBox(
               width: width(context) * .23,
               child: TextGlobal(
-                text: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                text: TripData.tripReason["TripReason"]
                     [index]["value"],
                 //[index].title,
                 fontSize: height(context) * .02,
@@ -56,18 +56,18 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                 checkColor: ColorManager.whiteColor,
                 focusColor: ColorManager.orangeTxtColor,
                 activeColor: ColorManager.orangeTxtColor,
-                value: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                value: TripData.tripReason["TripReason"]
                     [index]["isChick"],
                 onChanged: (bool? value) {
                   setState(() {
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                    TripData.tripReason["TripReason"]
                         [chosenindex]["isChick"] = false;
                     chosenindex = index;
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                    TripData.tripReason["TripReason"]
                         [chosenindex]["isChick"] = true;
                     TripModeList
                             .tripModeList[widget.indexTripModel].tripReason =
-                        TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                        TripData.tripReason["TripReason"]
                             [chosenindex]["value"];
                   });
                 }),

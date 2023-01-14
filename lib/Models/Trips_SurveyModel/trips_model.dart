@@ -9,11 +9,11 @@ class TripsModel {
   String? typeTravelCondition;
   String? typeTravel;
   StartBeginningModel? endingAddress;
-   TextEditingController? otherWhereDidYouParkEditingControl;
- TextEditingController? taxiTravelTypeEditingControl;
+  TextEditingController? otherWhereDidYouParkEditingControl;
+  TextEditingController? taxiTravelTypeEditingControl;
 
   String? purposeTravel;
-  TextEditingController departureTime=TextEditingController();
+  TextEditingController departureTime = TextEditingController();
 
   String? tripReason;
   TravelWay? travelWay;
@@ -33,7 +33,6 @@ class TripsModel {
     this.typeTravelCondition,
     this.travelWithOtherModel,
     this.taxiTravelTypeEditingControl,
-
     this.travelAloneHouseHold,
     this.arrivalDepartTime,
     this.travelWay,

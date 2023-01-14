@@ -65,7 +65,6 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                     }),
                 VehiclesData.vecModel[index].isChosen == true
                     ? MyTextForm(
-
                         textInputType: TextInputType.number,
                         widthForm: width(context) * .120,
                         controller:
@@ -73,7 +72,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                         label: '',
                         onChanged: (d) {
                           setState(() {
-                            if(d!.isNotEmpty) {
+                            if (d!.isNotEmpty) {
                               switch (VehiclesData.vecModel[index].title) {
                                 case "سيارة":
                                   VehModel.vecCar = [];
@@ -84,7 +83,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         vehicleOwner: TextEditingController(),
                                         vehicleAge: TextEditingController(),
                                         vehicleAnnualMileage:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         vehicleFuel: TextEditingController(),
                                       ),
                                     );
@@ -100,7 +99,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         vehicleOwner: TextEditingController(),
                                         vehicleAge: TextEditingController(),
                                         vehicleAnnualMileage:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         vehicleFuel: TextEditingController(),
                                       ),
                                     );
@@ -115,7 +114,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         vehicleOwner: TextEditingController(),
                                         vehicleAge: TextEditingController(),
                                         vehicleAnnualMileage:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         vehicleFuel: TextEditingController(),
                                       ),
                                     );
@@ -130,7 +129,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         vehicleOwner: TextEditingController(),
                                         vehicleAge: TextEditingController(),
                                         vehicleAnnualMileage:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         vehicleFuel: TextEditingController(),
                                       ),
                                     );
@@ -145,7 +144,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         vehicleOwner: TextEditingController(),
                                         vehicleAge: TextEditingController(),
                                         vehicleAnnualMileage:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         vehicleFuel: TextEditingController(),
                                       ),
                                     );
@@ -160,7 +159,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         vehicleOwner: TextEditingController(),
                                         vehicleAge: TextEditingController(),
                                         vehicleAnnualMileage:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         vehicleFuel: TextEditingController(),
                                       ),
                                     );

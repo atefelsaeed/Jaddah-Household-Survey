@@ -3,25 +3,26 @@
 class QuestionsData {
   static Map<String, List<dynamic>> qh1 = {
     "? What best describes this dwelling type": [
-      ' shared Villa',
-      ' villa',
-      ' flat- family',
-      ' own room in a flat- single person',
-      'shared flat- family',
-      ' shared room in a flat with one other',
-      ' Arabian House',
-      'shared room in a flat with more than one/bed-space ',
-      'Other'
+      'فيلا',
+      'فيلا مشتركة',
+      'البيت العربي',
+      'البيت العربي - مشترك',
+      'شقة - عائلة واحدة',
+      'شقة -مشتركة بين عائلتين أو أكثر',
+      'تملك غرفة فى شقة - شخص واحد',
+      'غرفة مشتركة فى شقة مع بعضها البعض',
+      'غرفة مشتركة في شقة مع أكثر من واحد / مساحة السرير',
+      'أخر'
     ]
   };
 
   static Map<String, List<dynamic>> qh2 = {
     "Is this dwelling...": [
-      'Owner occupied',
-      'Rented',
-      'Provided by the employer',
-      'Provided by the government',
-      'Other'
+      'مالك',
+      'مستأجر',
+      'مقدمة من صاحب العمل',
+      'مقدمة من الحكومة',
+      'أخر'
     ]
   };
   static Map<String, dynamic> qh3 = {
@@ -85,11 +86,11 @@ class QuestionsData {
 
   static Map<String, dynamic> qh7 = {
     "?How many years have you/your family lived at this particular address": [
-      {"value": 'under 1 yr.', "isChick": false},
-      {"value": '1 - 3 yrs.', "isChick": false},
-      {"value": '3 - 5 yrs.', "isChick": false},
-      {"value": '3 - 5 yrs.', "isChick": false},
-      {"value": '10 yrs. +', "isChick": false},
+      {"value": 'أقل من 1 سنة', "isChick": false},
+      {"value": '- 3 سنوات', "isChick": false},
+      {"value": '- 5 سنوات', "isChick": false},
+      {"value": '- 10 سنوات', "isChick": false},
+      {"value": '+ 10 سنوات', "isChick": false},
     ]
   };
   static Map<String, dynamic> qh7_2 = {
@@ -123,16 +124,16 @@ class QuestionsData {
   static Map<String, dynamic> qh9 = {
     "Please indicate in which of the following bands your total monthly household income inclusive of benefits falls?":
         [
-      '< 1500 SAR',
-      '1500 - 2000 SAR',
-      '2000 - 3000 SAR',
-      '3000 - 5000 SAR',
-      '5000 - 8000 SAR',
-      '8000 - 12000 SAR',
-      '12000 - 18000 SAR',
-      '18000 - 25000 SAR',
-      'Over 25,000 SAR',
-      'Confidential',
+      '< 1500 ريال سعودي',
+      '1500 - 2000 ريال سعودي',
+      '2000 - 3000 ريال سعودي',
+      '3000 - 5000 ريال سعودي',
+      '5000 - 8000 ريال سعودي',
+      '8000 - 12000 ريال سعودي',
+      '12000 - 18000 ريال سعودي',
+      '18000 - 25000 ريال سعودي',
+      'أكثر من 25,000 ريال سعودي',
+      'سرية / مرفوضة',
     ]
   };
 }

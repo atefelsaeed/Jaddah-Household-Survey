@@ -12,12 +12,15 @@ class ListViewCheckBoxOrange extends StatefulWidget {
   late Function onChange;
 
   ListViewCheckBoxOrange(
-      {super.key, required this.title, required this.question,required this.subTitle,required this.onChange});
+      {super.key,
+      required this.title,
+      required this.question,
+      required this.subTitle,
+      required this.onChange});
 
   @override
   State<ListViewCheckBoxOrange> createState() => _ListViewCheckBoxOrangeState();
 }
-
 
 class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
   int chosenIndex = 0;
@@ -39,7 +42,6 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
             ),
           ],
         ),
-
         AppSize.spaceHeight05(context),
         /*Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -64,34 +66,33 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                 itemCount: widget.question.length,
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
-
-                      Checkbox(
-                          side: BorderSide(
-                            color: ColorManager.orangeTxtColor,
-                            width: 1.5,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          checkColor: ColorManager.whiteColor,
-                          focusColor: ColorManager.orangeTxtColor,
-                          activeColor: ColorManager.orangeTxtColor,
-                          value: widget.question[index]["isChick"],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              widget.question[chosenIndex]["isChick"] = false;
-                              chosenIndex = index;
-                              widget.question[index]["isChick"] = value;
-                            });
-                            print(widget.question[index]["value"] );
-                         widget.onChange(widget.question[index]["value"] );
-                          }),
-                      TextGlobal(
-                        text: widget.question[index]["value"],
-                        fontSize: height(context) * .02,
-                        color: ColorManager.grayColor,
+                  Checkbox(
+                      side: BorderSide(
+                        color: ColorManager.orangeTxtColor,
+                        width: 1.5,
                       ),
-                    ]),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      checkColor: ColorManager.whiteColor,
+                      focusColor: ColorManager.orangeTxtColor,
+                      activeColor: ColorManager.orangeTxtColor,
+                      value: widget.question[index]["isChick"],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          widget.question[chosenIndex]["isChick"] = false;
+                          chosenIndex = index;
+                          widget.question[index]["isChick"] = value;
+                        });
+                        print(widget.question[index]["value"]);
+                        widget.onChange(widget.question[index]["value"]);
+                      }),
+                  TextGlobal(
+                    text: widget.question[index]["value"],
+                    fontSize: height(context) * .02,
+                    color: ColorManager.grayColor,
+                  ),
+                ]),
               )),
         ),
       ],
@@ -99,16 +100,18 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
   }
 }
 
-
-
-
 class ListQ7 extends StatefulWidget {
   final String title;
   final String subTitle;
   List<dynamic> question;
-final TextEditingController textEditingController;
+  final TextEditingController textEditingController;
+
   ListQ7(
-      {super.key, required this.title, required this.question,required this.subTitle,required this.textEditingController});
+      {super.key,
+      required this.title,
+      required this.question,
+      required this.subTitle,
+      required this.textEditingController});
 
   @override
   State<ListQ7> createState() => _ListQ7();
@@ -116,7 +119,7 @@ final TextEditingController textEditingController;
 
 class _ListQ7 extends State<ListQ7> {
   int chosenIndex = 0;
-  bool indexBool=false;
+  bool indexBool = false;
 
   @override
   Widget build(BuildContext context) {
@@ -137,9 +140,10 @@ class _ListQ7 extends State<ListQ7> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SizedBox(width: width(context)-140,child:
-             TextGlobal(
-                text:widget.subTitle,
+            SizedBox(
+              width: width(context) - 140,
+              child: TextGlobal(
+                text: widget.subTitle,
                 fontSize: height(context) * .013,
                 color: ColorManager.grayColor,
               ),
@@ -157,38 +161,42 @@ class _ListQ7 extends State<ListQ7> {
                 itemCount: widget.question.length,
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
-                      TextGlobal(
-                        text: widget.question[index]["value"],
-                        fontSize: height(context) * .02,
-                        color: ColorManager.grayColor,
+                  TextGlobal(
+                    text: widget.question[index]["value"],
+                    fontSize: height(context) * .02,
+                    color: ColorManager.grayColor,
+                  ),
+                  Checkbox(
+                      side: BorderSide(
+                        color: ColorManager.orangeTxtColor,
+                        width: 1.5,
                       ),
-                      Checkbox(
-                          side: BorderSide(
-                            color: ColorManager.orangeTxtColor,
-                            width: 1.5,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          checkColor: ColorManager.whiteColor,
-                          focusColor: ColorManager.orangeTxtColor,
-                          activeColor: ColorManager.orangeTxtColor,
-                          value: widget.question[index]["isChick"],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              widget.question[chosenIndex]["isChick"] = false;
-                              chosenIndex = index;
-                              widget.question[index]["isChick"] = value;
-                            //  w
-                            });
-                          }),
-                    ]),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      checkColor: ColorManager.whiteColor,
+                      focusColor: ColorManager.orangeTxtColor,
+                      activeColor: ColorManager.orangeTxtColor,
+                      value: widget.question[index]["isChick"],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          widget.question[chosenIndex]["isChick"] = false;
+                          chosenIndex = index;
+                          widget.question[index]["isChick"] = value;
+                          //  w
+                        });
+                      }),
+                ]),
               )),
-          
         ),
-
-        widget.question[chosenIndex]["isChick"] = true&&  widget.question[chosenIndex]["value"] ==true ?
-        TextForm(controller:widget. textEditingController, label: 'Name of the demolished area', text: 'Name of the demolished area',):Container()
+        widget.question[chosenIndex]["isChick"] =
+            true && widget.question[chosenIndex]["value"] == true
+                ? TextForm(
+                    controller: widget.textEditingController,
+                    label: 'Name of the demolished area',
+                    text: 'Name of the demolished area',
+                  )
+                : Container()
       ],
     );
   }

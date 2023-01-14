@@ -69,7 +69,7 @@ class _TravelAloneState extends State<TravelAlone> {
                     .tripModeList[widget.index].travelAloneHouseHold!)
             : Container(),
         AppSize.spaceHeight2(context),
-        Row(
+        TripModeList.tripModeList[widget.index].isTravelAlone == true? Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             DropDownFormInput(
@@ -88,7 +88,7 @@ class _TravelAloneState extends State<TravelAlone> {
               },
             ),
           ],
-        ),
+        ):Container(),
       ],
     );
   }

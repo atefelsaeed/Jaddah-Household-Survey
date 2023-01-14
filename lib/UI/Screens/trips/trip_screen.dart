@@ -70,6 +70,7 @@ class _TripScreenState extends State<TripScreen> {
                                   taxiTravelTypeOther: TextEditingController(),
                                   taxiFare: TextEditingController(),
                                   taxiTravelType: '',
+                                  travelType : '',
                                   passTravelType: '',
                                   publicTransportFare: '',
                                 ),
@@ -147,7 +148,7 @@ class _TripScreenState extends State<TripScreen> {
                                 AppSize.spaceHeight3(context),
                                 const HeadlineTrip(
                                     text:
-                                        "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
+                                        "ما ھو الغرض من التواجد ھناك؟"),
 
                                 const Divider(),
                                 PurposeOfTheBeing(

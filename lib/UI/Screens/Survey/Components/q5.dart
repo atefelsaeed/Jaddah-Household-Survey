@@ -23,14 +23,16 @@ class Q5 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-        Expanded(child:     TextGlobal(
-              text: "5.كم عدد أفراد عائلتك الذين يعيشون بشكل دائم في هذا المنزل؟",
+            Expanded(
+                child: TextGlobal(
+              text:
+                  "5.كم عدد أفراد عائلتك الذين يعيشون بشكل دائم في هذا المنزل؟",
               fontSize: height(context) * .02,
               color: ColorManager.black,
             )),
           ],
         ),
-       /* Row(
+        /* Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextGlobal(
@@ -113,15 +115,16 @@ class _Q6State extends State<Q6> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-    Expanded(child:         TextGlobal(
-              text:"4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟",
+            Expanded(
+                child: TextGlobal(
+              text: "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟",
               fontSize: height(context) * .02,
               color: ColorManager.black,
             )),
           ],
         ),
         AppSize.spaceHeight1(context),
-      /*  Row(
+        /*  Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextGlobal(
@@ -139,8 +142,7 @@ class _Q6State extends State<Q6> {
                   peopleAdults18: widget.q6peopleAdults18[i],
                   peopleUnder18Text: "الاطفال",
                   peopleAdults18Text: "البالغين",
-                  totalNumberOfVecText:
-                      "إجمالي عدد المركبات في كل عائلة",
+                  totalNumberOfVecText: "إجمالي عدد المركبات في كل عائلة",
                   peopleUnder18: widget.q6peopleUnder18[i],
                   totalNumberOfVec: widget.q6totalNumberOfVec[i]),
               AppSize.spaceHeight2(context),
@@ -183,7 +185,8 @@ class Q81 extends StatelessWidget {
           children: [
             Expanded(
               child: TextGlobal(
-                text: "7. كم عدد الدراجات الهوائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                text:
+                    "7. كم عدد الدراجات الهوائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -218,7 +221,8 @@ class Q82 extends StatelessWidget {
           children: [
             Expanded(
               child: TextGlobal(
-                text:"كم عدد الدراجات الكهربائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                text:
+                    "كم عدد الدراجات الكهربائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -253,7 +257,8 @@ class Q83 extends StatelessWidget {
           children: [
             Expanded(
               child: TextGlobal(
-                text: "كم عدد الدراجات الإلكترونية (e-scooters) التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                text:
+                    "كم عدد الدراجات الإلكترونية (e-scooters) التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -331,25 +336,25 @@ class Field extends StatelessWidget {
         ),
         AppSize.spaceWidth3(context),
         Expanded(
-          flex: 3,
+            flex: 3,
             child: Row(
-          children: [
-            MyTextForm(
-              label: "",
-              controller: peopleAdults18,
-              widthForm: width(context) * .07,
-            ),
-            AppSize.spaceWidth1(context),
-            Expanded(
-              flex: 1,
-              child: TextGlobal(
-                text: peopleAdults18Text,
-                fontSize: height(context) * .014,
-                color: ColorManager.grayColor,
-              ),
-            ),
-          ],
-        )),
+              children: [
+                MyTextForm(
+                  label: "",
+                  controller: peopleAdults18,
+                  widthForm: width(context) * .07,
+                ),
+                AppSize.spaceWidth1(context),
+                Expanded(
+                  flex: 1,
+                  child: TextGlobal(
+                    text: peopleAdults18Text,
+                    fontSize: height(context) * .014,
+                    color: ColorManager.grayColor,
+                  ),
+                ),
+              ],
+            )),
         AppSize.spaceWidth3(context),
         Expanded(
           flex: 3,

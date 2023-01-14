@@ -1,16 +1,17 @@
 class PersonData {
   static Map<String, dynamic> relationshipToTheHeadOfHousehold = {
     " Relationship to the Head of Household": [
-      'Self/Head of household',
-      ' Husband',
-      'Wife',
-      'Son/Daughter',
-      'Parents/Grandparents',
-      'Siblings',
-      'Fellow worker',
-      'Live in Maid/Servant',
-      'Live in Driver'
-          ' Non relative'
+      'ذاتي / رب الأسرة',
+      'زوج',
+      'زوجة',
+      'إبن / إبنه',
+      'الاباء / الاجداد',
+      'إخوة',
+      'أقارب أخرين',
+      'زميل فى العمل',
+      'خادمة',
+      'سائق',
+      'غير ذى صلة',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -276,58 +277,100 @@ class PersonData {
 
   static Map<String, dynamic> mainOccupation = {
     "MainOccupation": [
-      {"value": 'Full time employed', "isChick": false, "type": "employee"},
       {
-        "value": 'Un-employed -looking for work',
+        "value": 'يعمل بدوام كامل',
         "isChick": false,
-        "type": "unemployee"
+        "type": "employee",
       },
       {
-        "value": 'Un-employed not looking for work',
+        "value": 'عاطلين عن العمل',
         "isChick": false,
-        "type": "unemployee"
+        "type": "unemployee",
       },
       {
-        "value": 'Part time work (< 5 hours per day)',
+        "value": 'العمل بدوام جزئي (أقل من 5 ساعات في اليوم)',
+        "isChick": false,
+        "type": "employee"
+      },
+      {
+        "value": 'العاملين لحسابهم الخاص (الأعمال الخاصة)',
         "isChick": false,
         "type": "employee"
       },
       {
-        "value": 'Self-employed (own business)',
+        "value": 'طالب - مدرسة ابتدائية',
         "isChick": false,
-        "type": "employee"
+        "type": "employee",
       },
-      {"value": 'Student- primary school', "isChick": false, "type": "student"},
       {
-        "value": 'Student- secondary school',
+        "value": 'طالب - مدرسة متوسطة',
+        "isChick": false,
+        "type": "student",
+      },
+      {
+        "value": 'طالب - مدرسة ثانوية',
         "isChick": false,
         "type": "student"
       },
       {
-        "value": 'Student- College: Full-time ( does not work)',
+        "value": ' طالب - الكلية: بدوام كامل (لا يعمل)',
         "type": "student",
         "isChick": false
       },
       {
-        "value": 'Student- College: Full- time -works part- time',
+        "value": ' الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي',
         "isChick": false,
         "type": "student"
       },
       {
-        "value": 'Student- University: Part- Time - works part-time',
+        "value": 'طالب - كلية: دوام جزئي - يعمل بدوام جزئي',
         "isChick": false,
         "type": "student"
       },
       {
-        "value": 'Student- Vocational Training',
+        "value": 'طالب - جامعي: دوام كامل (لا يعمل) ',
         "isChick": false,
         "type": "student"
       },
       {
-        "value": 'Retired',
+        "value": 'طالب - جامعي: دوام كامل - يعمل بدوام جزئي ',
+        "isChick": false,
+        "type": "student"
+      },
+      {
+        "value": 'طالب - جامعي: دوام جزئي - يعمل بدوام جزئي ',
+        "isChick": false,
+        "type": "student"
+      },
+      {
+        "value": 'شخص البيت',
+        "isChick": false,
+        "type": "student"
+      },
+      {
+        "value": 'معاق / مريض',
+        "isChick": false,
+        "type": "student"
+      },
+      {
+        "value": 'متقاعد',
         "isChick": false,
         "type": "retired",
-        "type": "retire"
+      },
+      {
+        "value": 'طفل فى الحضانة',
+        "isChick": false,
+        "type": "retired",
+      },
+      {
+        "value": 'طفل ليس فى الحضانة',
+        "isChick": false,
+        "type": "retired",
+      },
+      {
+        "value": 'رفض',
+        "isChick": false,
+        "type": "retired",
       },
     ],
     "title": "MainOccupation",

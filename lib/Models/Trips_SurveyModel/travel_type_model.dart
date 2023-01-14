@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class TravelTypeModel {
   String? carParkingPlace;
+  String? travelType;
   String? taxiTravelType;
   TextEditingController? taxiTravelTypeOther;
-  TextEditingController ?  otherWhereDidYouParking;
+  TextEditingController? otherWhereDidYouParking;
   String? passTravelType;
   TextEditingController taxiFare = TextEditingController();
   TextEditingController ticketSub = TextEditingController();
@@ -13,6 +14,7 @@ class TravelTypeModel {
   TravelTypeModel({
     this.carParkingPlace,
     this.passTravelType,
+    this.travelType,
     this.taxiTravelTypeOther,
     this.otherWhereDidYouParking,
     this.publicTransportFare,
@@ -24,6 +26,7 @@ class TravelTypeModel {
   TravelTypeModel.fromJson(Map<String, dynamic> json) {
     carParkingPlace = json['carParkingPlace'];
     taxiTravelType = json['taxiTravelType'];
+    travelType  = json['travelType '];
     passTravelType = json['passTravelType'];
     taxiFare.text = json['taxiFare'];
     publicTransportFare = json['publicTransportFare'];
@@ -31,8 +34,11 @@ class TravelTypeModel {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['carParkingPlace'] = carParkingPlace=="Other"?otherWhereDidYouParking!.text:carParkingPlace;
+    data['carParkingPlace'] = carParkingPlace == "Other"
+        ? otherWhereDidYouParking!.text
+        : carParkingPlace;
     data['taxiTravelType'] = taxiTravelType;
+    data['travelType '] = travelType ;
     data['passTravelType'] = passTravelType;
     data['taxiFare'] = taxiFare.text;
     data['publicTransportFare'] = publicTransportFare;

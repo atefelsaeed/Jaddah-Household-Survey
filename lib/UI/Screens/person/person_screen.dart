@@ -117,7 +117,7 @@ class _PersonScreenState extends State<PersonScreen> {
                             //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
                           },
                           isWidget: true,
-                          btnWidth: width(context) * .24,
+                          btnWidth: width(context) * .25,
                           text: "أضافة شخص جديد",
                           widget: const Icon(Icons.arrow_forward),
                         )

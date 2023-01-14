@@ -11,6 +11,7 @@ class MyTextForm extends StatelessWidget {
   final double? widthForm;
   final TextInputType? textInputType;
   bool? isPassword = false;
+  bool? readOnly;
   IconData? suffix;
   final Function? suffixPressed;
   String? Function()? validate;
@@ -25,6 +26,7 @@ class MyTextForm extends StatelessWidget {
       Key? key,
       this.errorText,
       this.validate,
+      this.readOnly,
       this.keyboardType,
       this.title,
       this.widthForm,
@@ -46,10 +48,11 @@ class MyTextForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-
           width: widthForm ?? width(context) * .45,
           child: TextFormField(
             controller: controller,
+            readOnly: readOnly ?? false,
+            onTap: onTap,
             style: TextStyle(
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,

@@ -126,19 +126,24 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           setState(() {
                             HhsStatic.householdQuestions.hhsDwellingType = p;
                           });
-
                         },
                       ),
                     ],
                   ),
                   AppSize.spaceHeight1(context),
-                  HhsStatic.householdQuestions.hhsDwellingType=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-                    TextForm(
-                      controller: HhsStatic.householdQuestions.hhsDwellingTypeOther!,
-                      text: "1. ما أفضل وصف لهذا النوع من المسكن؟",
-                      label: "1. ما أفضل وصف لهذا النوع من المسكن؟",
-                    )
-                  ],):Container(),
+                  HhsStatic.householdQuestions.hhsDwellingType == "أخر"
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextForm(
+                              controller: HhsStatic
+                                  .householdQuestions.hhsDwellingTypeOther!,
+                              text: "1. ما أفضل وصف لهذا النوع من المسكن؟",
+                              label: "1. ما أفضل وصف لهذا النوع من المسكن؟",
+                            )
+                          ],
+                        )
+                      : Container(),
                   AppSize.spaceHeight3(context),
 
                   Row(
@@ -149,7 +154,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           setState(() {
                             HhsStatic.householdQuestions.hhsIsDwelling = p;
                           });
-
                         },
                         label: Text(QuestionsData
                             .qh2[QuestionsData.qh2.keys.first]!
@@ -163,18 +167,20 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       ),
                     ],
                   ),
-                  HhsStatic.householdQuestions.hhsIsDwelling=="Other"?
-                  Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-                    TextForm(
-
-                      controller: isDewType,
-                      text: "2.ما هي حالة إيجار / ملكية المسكن؟",
-                      label: "2.ما هي حالة إيجار / ملكية المسكن؟",
-                    )
-                  ],):Container(),
+                  HhsStatic.householdQuestions.hhsIsDwelling == "أخر"
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextForm(
+                              controller: isDewType,
+                              text: "2.ما هي حالة إيجار / ملكية المسكن؟",
+                              label: "2.ما هي حالة إيجار / ملكية المسكن؟",
+                            )
+                          ],
+                        )
+                      : Container(),
 
                   AppSize.spaceHeight3(context),
-
 
                   // ListViewCheckBoxOrange(
                   //     onChange: (r) {
@@ -192,7 +198,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
                           r;
                     },
-                    title: "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
+                    title:
+                        "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
                     question: QuestionsData.qh4[QuestionsData.qh4.keys.first]!
                         .toList(),
                     subTitle: QuestionsData.qh4["subTitle"],
@@ -208,7 +215,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   Q5(
                       peopleAdults18: peopleAdults18,
                       peopleUnder18: peopleUnder18),
-
 
                   AppSize.spaceHeight3(context),
                   ListViewCheckBoxOrange(
@@ -226,30 +232,36 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       setState(() {
                         if (r == "نعم") {
                           HhsStatic.householdQuestions.hhsIsDemolishedAreas =
-                          true;
+                              true;
                         } else {
                           HhsStatic.householdQuestions.hhsIsDemolishedAreas =
-                          false;
+                              false;
                         }
                       });
                       print(r);
-
                     },
-                    title: "هل انتقلت إلى هنا من أي منطقة من المناطق المهدومة في جدة ، إذا كانت الإجابة بنعم أي واحدة",
+                    title:
+                        "هل انتقلت إلى هنا من أي منطقة من المناطق المهدومة في جدة ، إذا كانت الإجابة بنعم أي واحدة",
                     question: QuestionsData
                         .qh7_2[QuestionsData.qh7_2.keys.first]!
                         .toList(),
                     subTitle: "",
                   ),
 
-                  HhsStatic.householdQuestions.hhsIsDemolishedAreas==true? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-                    TextForm(
-
-                      controller:yes,
-                      text: "  فمن أي منطقة (يُظهر المحاور قائمة بالمنطقة المهدومة)",
-                      label: " فمن أي منطقة (يُظهر المحاور قائمة بالمنطقة المهدومة)",
-                    )
-                  ],):Container(),
+                  HhsStatic.householdQuestions.hhsIsDemolishedAreas == true
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextForm(
+                              controller: yes,
+                              text:
+                                  "  فمن أي منطقة (يُظهر المحاور قائمة بالمنطقة المهدومة)",
+                              label:
+                                  " فمن أي منطقة (يُظهر المحاور قائمة بالمنطقة المهدومة)",
+                            )
+                          ],
+                        )
+                      : Container(),
                   AppSize.spaceHeight2(context),
                   /*   ListQ7(
                       title: "title",
@@ -271,7 +283,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     children: [
                       DropDownFormInput(
                         label: Text(QuestionsData.qh9.values.first.toString()),
-                        hint: "8.يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟",
+                        hint:
+                            "8.يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟",
                         options: QuestionsData
                             .qh9[QuestionsData.qh9.keys.first]!
                             .toList(),
@@ -279,7 +292,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           print(p);
 
                           HhsStatic.householdQuestions.hhsTotalIncome = p;
-                          print(HhsStatic.householdQuestions.hhsTotalIncome );
+                          print(HhsStatic.householdQuestions.hhsTotalIncome);
                         },
                       ),
                     ],
@@ -299,11 +312,16 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             ),
                           );
                         }
-if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
-  HhsStatic.householdQuestions.hhsDwellingType=HhsStatic.householdQuestions.hhsDwellingTypeOther!.text;
-}
-                        if(HhsStatic.householdQuestions.hhsIsDwelling=="Other"){
-                          HhsStatic.householdQuestions.hhsIsDwelling=HhsStatic.householdQuestions.hhsIsDwellingOther!.text;
+                        if (HhsStatic.householdQuestions.hhsDwellingType ==
+                            "Other") {
+                          HhsStatic.householdQuestions.hhsDwellingType =
+                              HhsStatic.householdQuestions.hhsDwellingTypeOther!
+                                  .text;
+                        }
+                        if (HhsStatic.householdQuestions.hhsIsDwelling ==
+                            "Other") {
+                          HhsStatic.householdQuestions.hhsIsDwelling = HhsStatic
+                              .householdQuestions.hhsIsDwellingOther!.text;
                         }
 
                         surveyPt.hhsBlockNearestCrossStreets =
@@ -318,7 +336,8 @@ if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
                         surveyPt.hhsNumberChildren = peopleUnder18.text;
 
                         surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
-                        surveyPt.hhsTotalIncome=HhsStatic.householdQuestions.hhsTotalIncome;
+                        surveyPt.hhsTotalIncome =
+                            HhsStatic.householdQuestions.hhsTotalIncome;
                         surveyPt.hhsPCChildrenBikesNumber =
                             editingController3Q81.peopleUnder18.text;
                         surveyPt.hhsPCTotalBikesNumber =
@@ -339,7 +358,7 @@ if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
                             editingController3Q83.peopleAdults18.text;
                         //
 
-                     surveyPt.hhsDemolishedAreas=yes.text;
+                        surveyPt.hhsDemolishedAreas = yes.text;
                         surveyPt.headerDistrictName = '';
                         surveyPt.headerZoneNumber = '';
                         print("survey Data");

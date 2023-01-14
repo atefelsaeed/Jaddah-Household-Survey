@@ -6,8 +6,9 @@ import '../../../Widgets/dropdown_form_input.dart';
 import '../../Survey/widgets/text_form_row.dart';
 
 class OwnerShipCode extends StatefulWidget {
-   const OwnerShipCode({super.key,required this.textEditingController});
-final TextEditingController textEditingController;
+  const OwnerShipCode({super.key, required this.textEditingController});
+
+  final TextEditingController textEditingController;
 
   @override
   State<OwnerShipCode> createState() => _OwnerShipCodeState();
@@ -32,17 +33,20 @@ class _OwnerShipCodeState extends State<OwnerShipCode> {
             setState(() {
               VehModel.ownerShipCode = p.toString();
             });
-
           },
         ),
-        VehModel.ownerShipCode=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-          TextForm(
-
-            controller:widget.textEditingController,
-            text: "رموز الملكية",
-            label: "رموز الملكية",
-          )
-        ],):Container(),
+        VehModel.ownerShipCode == "أخر"
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TextForm(
+                    controller: widget.textEditingController,
+                    text: "رموز الملكية",
+                    label: "رموز الملكية",
+                  )
+                ],
+              )
+            : Container(),
       ],
     );
   }

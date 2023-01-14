@@ -13,7 +13,6 @@ import 'Helper/messageHandler.dart';
 import 'Providers/auth.dart';
 import 'Providers/surveys.dart';
 import 'Resources/colors.dart';
-import 'UI/Screens/Home/homeScreen.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 import 'UI/Screens/SplashScreen/splashScreen.dart';
