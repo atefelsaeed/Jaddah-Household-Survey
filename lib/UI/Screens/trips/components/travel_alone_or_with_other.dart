@@ -27,7 +27,6 @@ class _TravelAloneState extends State<TravelAlone> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             const HeadlineTrip(text: "هل سافرت بمفردك أم مع آخرین؟"),
             Row(children: [
               TextGlobal(
@@ -51,7 +50,7 @@ class _TravelAloneState extends State<TravelAlone> {
                   onChanged: (bool? value) {
                     setState(() {
                       TripModeList.tripModeList[widget.index].isTravelAlone =
-                      value!;
+                          value!;
                     });
                   }),
             ]),
@@ -83,7 +82,10 @@ class _TravelAloneState extends State<TravelAlone> {
               options: TripData.memberHouseHoldTravel[
                       TripData.memberHouseHoldTravel.keys.first]!
                   .toList(),
-              onChange: (String? p) {},
+              onChange: (String? p) {
+                TripModeList.tripModeList[widget.index].travelWithOtherModel!
+                    .hhsMembersTraveled = p.toString();
+              },
             ),
           ],
         ),

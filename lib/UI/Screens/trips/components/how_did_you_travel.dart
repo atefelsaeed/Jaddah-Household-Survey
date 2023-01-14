@@ -29,7 +29,7 @@ class HowDidYouTravel extends StatelessWidget {
               hint: "الوضع الرئیسي",
               options: TripData.AcMode[TripData.AcMode.keys.first]!.toList(),
               onChange: (String? p) {
-                TripModeList.tripModeList[i].travelWay!.accessMode =
+                TripModeList.tripModeList[i].travelWay!.mainMode =
                     p.toString();
               },
             ),

@@ -11,7 +11,6 @@ class WhereDidYouPark extends StatefulWidget {
   final TextEditingController costTaxi;
   final int index;
 
-
   const WhereDidYouPark(
       {super.key, required this.costTaxi, required this.index});
 
@@ -31,7 +30,6 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             DropDownFormInput(
                 label: Text(TripData
                     .whereDidYouPark[TripData.whereDidYouPark.keys.first]!
@@ -43,32 +41,27 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                     .whereDidYouPark[TripData.whereDidYouPark.keys.first]!
                     .toList(),
                 onChange: (String? p) {
-                  TripModeList.tripModeList[widget.index].travelTypeModel!.carParkingPlace =
-                      p.toString();
+                  TripModeList.tripModeList[widget.index].travelTypeModel!
+                      .carParkingPlace = p.toString();
 
                   List value = TripData
                       .whereDidYouPark[TripData.whereDidYouPark.keys.first]
                       .toList();
                   setState(() {
-                    TripModeList.tripModeList[widget.index].travelTypeModel!.carParkingPlace =
-                        p.toString();
+                    TripModeList.tripModeList[widget.index].travelTypeModel!
+                        .carParkingPlace = p.toString();
 
                     for (int inr = 0; inr < value.length; inr++) {
                       if (p == "Dropped Off - taxi") {
-
-                          TripModeList.tripModeList[widget.index]
-                              .typeTravelCondition = "1";
-
-
-
-                      }else{
+                        TripModeList.tripModeList[widget.index]
+                            .typeTravelCondition = "1";
+                      } else {
                         TripModeList.tripModeList[widget.index]
                             .typeTravelCondition = "0";
                       }
                     }
                   });
                 }),
-
             TripModeList.tripModeList[widget.index].typeTravelCondition == "1"
                 ? DropDownFormInput(
                     label: Text(TripData
@@ -82,38 +75,52 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         .toList(),
                     onChange: (String? p) {
                       setState(() {
-                        TripModeList.tripModeList[widget.index].travelTypeModel!.taxiTravelType =
-                            p.toString();
+                        TripModeList.tripModeList[widget.index].travelTypeModel!
+                            .taxiTravelType = p.toString();
                       });
 
-                      print(TripModeList.tripModeList[widget.index].travelTypeModel!.taxiTravelType);
+                      print(TripModeList.tripModeList[widget.index]
+                          .travelTypeModel!.taxiTravelType);
                     },
                   )
                 : Container(),
-
           ],
         ),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-          TripModeList.tripModeList[widget.index].travelTypeModel!.carParkingPlace=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-            TextForm(
-
-              controller:TripModeList.tripModeList[widget.index].travelTypeModel!.otherWhereDidYouParking!,
-              text: "أین أوقفت سیارتك؟",
-              label: "أین أوقفت سیارتك؟",
-            )
-          ],):Container(),
-          TripModeList.tripModeList[widget.index].travelTypeModel!.taxiTravelType=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-            TextForm(
-
-              controller:TripModeList.tripModeList[widget.index].travelTypeModel!.taxiTravelTypeOther!,
-              text: "بماذا سافرت ؟",
-              label: "بماذا سافرت ؟",
-            )
-          ],):Container(),
-        ],),
-
-
-
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TripModeList.tripModeList[widget.index].travelTypeModel!
+                        .carParkingPlace ==
+                    "Other"
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      TextForm(
+                        controller: TripModeList.tripModeList[widget.index]
+                            .travelTypeModel!.otherWhereDidYouParking!,
+                        text: "أین أوقفت سیارتك؟",
+                        label: "أین أوقفت سیارتك؟",
+                      )
+                    ],
+                  )
+                : Container(),
+            TripModeList.tripModeList[widget.index].travelTypeModel!
+                        .taxiTravelType ==
+                    "Other"
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      TextForm(
+                        controller: TripModeList.tripModeList[widget.index]
+                            .travelTypeModel!.taxiTravelTypeOther!,
+                        text: "بماذا سافرت ؟",
+                        label: "بماذا سافرت ؟",
+                      )
+                    ],
+                  )
+                : Container(),
+          ],
+        ),
         AppSize.spaceHeight2(context),
         Directionality(
           textDirection: TextDirection.ltr,
@@ -127,35 +134,39 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       label: "كم أجرة التاكسي دفعتھ؟",
                     )
                   : Container(),
-
             ],
           ),
         ),
         AppSize.spaceHeight2(context),
-        TripModeList.tripModeList[widget.index].travelTypeModel!.carParkingPlace=="public Transporter"?     Directionality(
-    textDirection: TextDirection.ltr,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextForm(
-          controller: TripModeList.tripModeList[widget.index].travelTypeModel!.taxiFare,
-          text: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
-          label: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
-        ),
-           Column(children: [
-             AppSize.spaceHeight3(context),
-             TextForm(
-               controller: TripModeList.tripModeList[widget.index].travelTypeModel!.ticketSub,
-               text: "في حالة استخدام تذكرة دائمة، ما نوعھا",
-               label: "في حالة استخدام تذكرة دائمة، ما نوعھا",
-             ),
-
-           ],)
-
-
-      ],
-    ),
-  ):Container(),
+        TripModeList.tripModeList[widget.index].travelTypeModel!
+                    .carParkingPlace ==
+                "public Transporter"
+            ? Directionality(
+                textDirection: TextDirection.ltr,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextForm(
+                      controller: TripModeList
+                          .tripModeList[widget.index].travelTypeModel!.taxiFare,
+                      text: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
+                      label: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
+                    ),
+                    Column(
+                      children: [
+                        AppSize.spaceHeight3(context),
+                        TextForm(
+                          controller: TripModeList.tripModeList[widget.index]
+                              .travelTypeModel!.ticketSub,
+                          text: "في حالة استخدام تذكرة دائمة، ما نوعھا",
+                          label: "في حالة استخدام تذكرة دائمة، ما نوعھا",
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              )
+            : Container(),
       ],
     );
   }

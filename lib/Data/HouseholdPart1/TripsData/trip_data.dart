@@ -84,6 +84,16 @@ class TripData {
     "chosenIndex": 0,
   };
 
+  static Map<String, dynamic> whatTypeOfTravel= {
+    "What did you travel to?": [
+      'Car',
+      'Taxi',
+      'Public Transport',
+    ],
+    "title": "?where did you park",
+    "subTitle": "mainMade",
+    "chosenIndex": 0,
+  };
   static Map<String, dynamic> whatTypeOfTaxi = {
     "?what type of taxi did you use and how much fare did you pay": [
       'Uber',
