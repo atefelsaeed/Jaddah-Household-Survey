@@ -18,8 +18,8 @@ class PersonData {
   };
   static Map<String, dynamic> gender = {
     "gender": [
-      'Gender',
-      'Female',
+      'ذكر',
+      'أنثى',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -38,7 +38,6 @@ class PersonData {
       {"value": '45 - 54', "type": "1", "isChick": false},
       {"value": '55 - 64', "isChick": false, "type": "1"},
       {"value": '65 - 74', "isChick": false, "type": "1"},
-
       {"value": '>74', "isChick": false, "type": "retired", "type": "retire"},
     ],
     "title": "MainOccupation",
@@ -265,10 +264,9 @@ class PersonData {
 
   static Map<String, dynamic> nationality = {
     "QPurposeOfBeingThere": [
-      {"value": 'Saudi National', "isChick": false},
-      {"value": 'Arab Expats', "isChick": false},
-      {"value": ' No Arab Expats', "isChick": false},
-      {"value": 'dual nationality', "isChick": false},
+      {"value": 'سعودي', "isChick": false},
+      {"value": 'وافد عربي', "isChick": false},
+      {"value": 'وافد اجنبي', "isChick": false},
     ],
     "title": "nationality",
     "subTitle":

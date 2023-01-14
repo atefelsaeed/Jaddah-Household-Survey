@@ -189,9 +189,9 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsNumberAdults(String? l);
 
-  int? get hhsNumberChildren;
+  String? get hhsNumberChildren;
 
-  set hhsNumberChildren(int? l);
+  set hhsNumberChildren(String? l);
 
   String? get hhsNumberYearsInAddress;
 

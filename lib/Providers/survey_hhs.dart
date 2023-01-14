@@ -376,10 +376,10 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   // TODO: implement hhsNumberChildren
-  int get hhsNumberChildren => throw UnimplementedError();
+  String get hhsNumberChildren => throw UnimplementedError();
 
   @override
-  set hhsNumberChildren(int? l) {
+  set hhsNumberChildren(String? l) {
     // TODO: implement hhsNumberChildren
   }
 }

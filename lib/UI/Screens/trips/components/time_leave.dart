@@ -37,7 +37,7 @@ class TimeLeave extends StatelessWidget {
             ),
             AppSize.spaceWidth2(context),
 
-            //  TextForm(controller: expectedDeparture,text: "	Expected Departure Time	 (24 hour clock)",label: "Enter 	Expected Departure Time	 (24 hour clock)",),
+            //  TextForm(controller: expectedDeparture,text: "	Expected Departure Time	 (24 hour clock)",label: "أدخل  	Expected Departure Time	 (24 hour clock)",),
           ],
         )
       ],

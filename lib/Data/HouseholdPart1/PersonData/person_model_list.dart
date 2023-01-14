@@ -12,7 +12,7 @@ class PersonModelList {
         age: TextEditingController(),
         nationality: TextEditingController(),
         nationalityType: '',
-        gender: 'mail',
+        gender: '',
         checkAge: false,
         refuseToTellAge: false,
         relationshipHeadHHS: '',

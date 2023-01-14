@@ -136,7 +136,7 @@ class HouseHoldAddress extends StatelessWidget {
                 text: "المدينة / البلدة",
                 label: "المدينة / البلدة",
               ),
-              //  TextForm(controller: area,text: "Area (Suburb)",label: "Enter Area (Suburb) ",)
+              //  TextForm(controller: area,text: "Area (Suburb)",label: "أدخل  Area (Suburb) ",)
             ],
           ),
         ),

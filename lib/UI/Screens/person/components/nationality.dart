@@ -31,13 +31,14 @@ class _NationalityState extends State<Nationality> {
         ListViewCheckBoxOrange(
           onChange: (r) {
             base.personalHeadData!.nationalityType = r;
-            if (base.personalHeadData!.nationalityType != "Saudi National") {
+            if (base.personalHeadData!.nationalityType != "سعودي") {
               setState(() {
                 showText = true;
               });
             } else {
               setState(() {
                 showText = false;
+                base.personalHeadData!.nationality.text = r;
               });
             }
 

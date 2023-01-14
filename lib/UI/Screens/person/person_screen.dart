@@ -64,32 +64,13 @@ class _PersonScreenState extends State<PersonScreen> {
                           function: () {
                             setState(() {
                               PersonModelList.personModelList.add(
-                                  //     PersonModel(
-                                  //   nationality: "",
-                                  //   addressMainOccuption: TextEditingController(),
-                                  //   earlyAndLateFinish: TextEditingController(),
-                                  //   earlyAndLateStart: TextEditingController(),
-                                  //   startYourWork: TextEditingController(),
-                                  //   endYourWork: TextEditingController(),
-                                  //   geocode: TextEditingController(),
-                                  //   educateAddress: TextEditingController(),
-                                  //   isEmployee: "0",
-                                  //   address: TextEditingController(),
-                                  //   realtionShipOfTheHeadHouse: "",
-                                  //   nationallityEditingController:
-                                  //       TextEditingController(),
-                                  //   gender: "male",
-                                  //   checkAge: false,
-                                  //   refuseToTellAge: false,
-                                  //   needAge: TextEditingController(),
-                                  // )
                                 PersonModel(
                                   //==personalHeadData==
                                   personalHeadData: PersonalHeadData(
                                     age: TextEditingController(),
                                     nationality: TextEditingController(),
                                     nationalityType: '',
-                                    gender: 'mail',
+                                    gender: '',
                                     checkAge: false,
                                     refuseToTellAge: false,
                                     relationshipHeadHHS: '',

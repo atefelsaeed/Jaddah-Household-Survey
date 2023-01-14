@@ -54,13 +54,13 @@ class BodyTypeVehicles extends StatelessWidget {
                   TextFormer(
                     controller: vecBodyType.vehicleFuel,
                     text: "الوقود",
-                    label: "Enter ${vecBodyType.vehicleFuel}",
+                    label: "أدخل  ${vecBodyType.vehicleFuel}",
                     headLabel: title,
                   ),
                   TextFormer(
-                    controller: vecBodyType.vehicleModel,
+                    controller: vecBodyType.vehicleOwner,
                     text: "من يملك السيارة",
-                    label: "Enter ${vecBodyType.vehicleModel}",
+                    label: "أدخل  ${vecBodyType. vehicleOwner}",
                     headLabel: title,
                   )
                 ],
@@ -75,13 +75,13 @@ class BodyTypeVehicles extends StatelessWidget {
             //       TextFormer(
             //         controller: vecBodyType.vehicleAnnualMileage,
             //         text: "QHV1-4- Annual Mileage",
-            //         label: "Enter ${vecBodyType.vehicleAnnualMileage}",
+            //         label: "أدخل  ${vecBodyType.vehicleAnnualMileage}",
             //         headLabel: title,
             //       ),
             //       TextFormer(
             //         controller: vecBodyType.vehicleAge,
             //         text: "QHV1-5- Age of vehicle",
-            //         label: "Enter ${vecBodyType.vehicleAge}",
+            //         label: "أدخل  ${vecBodyType.vehicleAge}",
             //         headLabel: title,
             //       )
             //     ],
@@ -94,9 +94,9 @@ class BodyTypeVehicles extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextFormer(
-                    controller: vecBodyType.vehicleOwner,
+                    controller: vecBodyType.vehicleModel,
                     text: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
-                    label: "Enter ${vecBodyType.vehicleOwner}",
+                    label: "أدخل  ${vecBodyType.vehicleModel}",
                     headLabel: title,
                   )
                 ],

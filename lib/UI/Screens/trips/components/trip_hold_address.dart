@@ -87,12 +87,12 @@ final String titel;
               TextForm(
                 controller: tripModel.city!,
                 text: "المدينة / البلدة",
-                label: "Enter City/ Town",
+                label: "أدخل  City/ Town",
               ),
               // TextForm(
               //   controller: tripModel.referToMap!,
               //   text: "Refer to Map",
-              //   label: "Enter Refer to Map ",
+              //   label: "أدخل  Refer to Map ",
               // )
             ],
           ),

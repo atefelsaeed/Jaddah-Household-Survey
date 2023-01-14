@@ -315,7 +315,7 @@ if(HhsStatic.householdQuestions.hhsDwellingType=="Other"){
                         surveyPt.hhsNearestLandMark = nearestLandMark.text;
                         surveyPt.hhsCity = city.text;
                         surveyPt.hhsNumberAdults = peopleAdults18.text;
-                        surveyPt.hhsNumberBedRooms = peopleUnder18.text;
+                        surveyPt.hhsNumberChildren = peopleUnder18.text;
 
                         surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
                         surveyPt.hhsTotalIncome=HhsStatic.householdQuestions.hhsTotalIncome;

@@ -22,12 +22,14 @@ class SaveVehiclesData {
     survey.vehiclesData.nearestBusStop = VehModel.nearestPublicTransporter;
     survey.vehiclesData.vehicleParking = VehModel.parkThisCar;
     survey.vehiclesData.vehicleOwnership = VehModel.ownerShipCode;
-    survey.vehiclesData.numberAirTubedAdultsWorkUse =
-        VehModel.editingController3.peopleAdults18.text;
-    survey.vehiclesData.numberAirTubedAdultsLeisure =
+    // survey.vehiclesData.numberAirTubedAdultsWorkUse =
+    //     VehModel.editingController3.peopleAdults18.text;
+    // survey.vehiclesData.numberAirTubedAdultsLeisure =
+    // VehModel.editingController3.totalNumber.text;
+    // survey.vehiclesData.numberAirTubedChildren =
+    //     VehModel.editingController3.peopleUnder18.text;
+    survey.vehiclesData.numberParcels =
         VehModel.editingController3.totalNumber.text;
-    survey.vehiclesData.numberAirTubedChildren =
-        VehModel.editingController3.peopleUnder18.text;
 
     List<VehiclesBodyType> vehicles = [
       VehiclesBodyType(
@@ -67,14 +69,16 @@ class SaveVehiclesData {
 
 class SavePersonData {
   static saveData(context) {
-    SurveyPTProvider survey = Provider.of<SurveyPTProvider>(context, listen: false);
+    SurveyPTProvider survey =
+        Provider.of<SurveyPTProvider>(context, listen: false);
     survey.personData = PersonModelList.personModelList;
   }
 }
 
 class SaveTripsData {
   static saveData(context) {
-    SurveyProvider survey = Provider.of<SurveyPTProvider>(context, listen: false);
+    SurveyProvider survey =
+        Provider.of<SurveyPTProvider>(context, listen: false);
     survey.tripsList = TripModeList.tripModeList;
   }
 }

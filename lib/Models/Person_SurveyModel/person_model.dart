@@ -37,7 +37,7 @@ class PersonalHeadData {
   TextEditingController age = TextEditingController();
   String? nationalityType;
   TextEditingController nationality =
-      TextEditingController(); //open if not Saudi National
+      TextEditingController(); //open if not سعودي
 
   PersonalHeadData({
     required this.age,
