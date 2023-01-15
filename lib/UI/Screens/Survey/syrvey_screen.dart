@@ -172,7 +172,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             TextForm(
-                              controller: isDewType,
+                              controller: HhsStatic
+                                  .householdQuestions.hhsIsDwellingOther!,
                               text: "2.ما هي حالة إيجار / ملكية المسكن؟",
                               label: "2.ما هي حالة إيجار / ملكية المسكن؟",
                             )
@@ -207,14 +208,16 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
                   AppSize.spaceHeight3(context),
                   Q6(
-                      q6peopleAdults18: q6peopleAdults18,
-                      q6peopleUnder18: q6peopleUnder18,
-                      q6totalNumberOfVec: q6totalNumberOfVec),
+                    q6peopleAdults18: q6peopleAdults18,
+                    q6peopleUnder18: q6peopleUnder18,
+                    q6totalNumberOfVec: q6totalNumberOfVec,
+                  ),
                   AppSize.spaceHeight2(context),
 
                   Q5(
-                      peopleAdults18: peopleAdults18,
-                      peopleUnder18: peopleUnder18),
+                    peopleAdults18: peopleAdults18,
+                    peopleUnder18: peopleUnder18,
+                  ),
 
                   AppSize.spaceHeight3(context),
                   ListViewCheckBoxOrange(
@@ -236,6 +239,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         } else {
                           HhsStatic.householdQuestions.hhsIsDemolishedAreas =
                               false;
+                          yes.text = 'لا';
                         }
                       });
                       print(r);
@@ -313,27 +317,36 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           );
                         }
                         if (HhsStatic.householdQuestions.hhsDwellingType ==
-                            "Other") {
+                            "أخر") {
                           HhsStatic.householdQuestions.hhsDwellingType =
                               HhsStatic.householdQuestions.hhsDwellingTypeOther!
                                   .text;
                         }
                         if (HhsStatic.householdQuestions.hhsIsDwelling ==
-                            "Other") {
+                            "أخر") {
                           HhsStatic.householdQuestions.hhsIsDwelling = HhsStatic
                               .householdQuestions.hhsIsDwellingOther!.text;
                         }
 
                         surveyPt.hhsBlockNearestCrossStreets =
-                            blockNearestTwoCrossStreets.text;
-                        surveyPt.hhsAreaSuburb = area.text;
+                            blockNearestTwoCrossStreets.text; //solve
+                        surveyPt.hhsAreaSuburb = area.text; //solve
+                        surveyPt.hhsDwellingType = HhsStatic
+                            .householdQuestions.hhsDwellingType; //solve
+                        surveyPt.hhsIsDwellingType =
+                            HhsStatic.householdQuestions.hhsIsDwelling; //solve
+                        surveyPt.hhsNumberSeparateFamilies = HhsStatic
+                            .householdQuestions
+                            .hhsNumberSeparateFamilies; //solve
+                        surveyPt.hhsNumberYearsInAddress = HhsStatic
+                            .householdQuestions.hhsNumberYearsInAddress; //solve
                         surveyPt.hhsStreetName = streetName.text;
                         surveyPt.hhsBuildingName = buildingName.text;
                         surveyPt.hhsStreetNumber = streetNumber.text;
                         surveyPt.hhsNearestLandMark = nearestLandMark.text;
                         surveyPt.hhsCity = city.text;
                         surveyPt.hhsNumberAdults = peopleAdults18.text;
-                        surveyPt.hhsNumberChildren = peopleUnder18.text;
+                        surveyPt.hhsNumberChildren = peopleUnder18.text; //solve
 
                         surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
                         surveyPt.hhsTotalIncome =
@@ -356,7 +369,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             editingController3Q83.totalNumber.text;
                         surveyPt.hhsESAdultsBikesNumber =
                             editingController3Q83.peopleAdults18.text;
-                        //
 
                         surveyPt.hhsDemolishedAreas = yes.text;
                         surveyPt.headerDistrictName = '';

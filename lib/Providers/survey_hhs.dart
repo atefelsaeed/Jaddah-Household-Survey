@@ -153,20 +153,20 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   String? get hhsBlockNearestCrossStreets =>
-      _data.header.householdAddress.nearestLandMark;
+      _data.header.householdAddress.blockNearestCrossStreets;
 
   @override
   set hhsBlockNearestCrossStreets(String? i) {
-    _data.header.householdAddress.nearestLandMark = i;
+    _data.header.householdAddress.blockNearestCrossStreets = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsAreaSuburb => _data.header.householdAddress.nearestLandMark;
+  String? get hhsAreaSuburb => _data.header.householdAddress.areaSuburb;
 
   @override
   set hhsAreaSuburb(String? i) {
-    _data.header.householdAddress!.nearestLandMark = i;
+    _data.header.householdAddress!.areaSuburb = i;
     // notifyListeners();
   }
 
@@ -375,11 +375,10 @@ class SurveyPTProvider extends SurveyProvider {
   List<TripsModel> get tripsList => [...?_data.tripsList];
 
   @override
-  // TODO: implement hhsNumberChildren
-  String get hhsNumberChildren => throw UnimplementedError();
+  String? get hhsNumberChildren => _data.householdQuestions.hhsNumberChildren;
 
   @override
   set hhsNumberChildren(String? l) {
-    // TODO: implement hhsNumberChildren
+    _data.householdQuestions.hhsNumberChildren = l;
   }
 }

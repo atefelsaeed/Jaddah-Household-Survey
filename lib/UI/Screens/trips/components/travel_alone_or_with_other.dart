@@ -69,26 +69,30 @@ class _TravelAloneState extends State<TravelAlone> {
                     .tripModeList[widget.index].travelAloneHouseHold!)
             : Container(),
         AppSize.spaceHeight2(context),
-        TripModeList.tripModeList[widget.index].isTravelAlone == true? Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            DropDownFormInput(
-              label: Text(TripData.memberHouseHoldTravel[
-                      TripData.memberHouseHoldTravel.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
-              hint: "اي من أفراد الأسرة سافر معك؟",
-              options: TripData.memberHouseHoldTravel[
-                      TripData.memberHouseHoldTravel.keys.first]!
-                  .toList(),
-              onChange: (String? p) {
-                TripModeList.tripModeList[widget.index].travelWithOtherModel!
-                    .hhsMembersTraveled = p.toString();
-              },
-            ),
-          ],
-        ):Container(),
+        TripModeList.tripModeList[widget.index].isTravelAlone == true
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DropDownFormInput(
+                    label: Text(TripData.memberHouseHoldTravel[
+                            TripData.memberHouseHoldTravel.keys.first]!
+                        .toList()
+                        .first
+                        .toString()),
+                    hint: "اي من أفراد الأسرة سافر معك؟",
+                    options: TripData.memberHouseHoldTravel[
+                            TripData.memberHouseHoldTravel.keys.first]!
+                        .toList(),
+                    onChange: (String? p) {
+                      TripModeList
+                          .tripModeList[widget.index]
+                          .travelWithOtherModel!
+                          .hhsMembersTraveled = p.toString();
+                    },
+                  ),
+                ],
+              )
+            : Container(),
       ],
     );
   }

@@ -37,7 +37,6 @@ class _PersonScreenState extends State<PersonScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     var base = PersonModelList.personModelList;
     return SafeArea(
       child: Scaffold(
@@ -53,8 +52,7 @@ class _PersonScreenState extends State<PersonScreen> {
                 child: Column(
                   children: [
                     const HeadlinePerson(
-                      text:
-                          "المعلومات الاجتماعية والاقتصادية للأسر المعيشية",
+                      text: "المعلومات الاجتماعية والاقتصادية للأسر المعيشية",
                     ),
                     AppSize.spaceHeight2(context),
                     Row(
@@ -91,13 +89,16 @@ class _PersonScreenState extends State<PersonScreen> {
                                   ),
                                   //==occupationModel==
                                   occupationModel: OccupationModel(
-                                    earliestTimeFinishingWork: TextEditingController(),
-                                    earliestTimeStartingWork: TextEditingController(),
+                                    earliestTimeFinishingWork:
+                                        TextEditingController(),
+                                    earliestTimeStartingWork:
+                                        TextEditingController(),
                                     endingWoke: TextEditingController(),
                                     startingWoke: TextEditingController(),
                                     address: TextEditingController(),
                                     geoCodes: TextEditingController(),
-                                    mainOccupationAddress: TextEditingController(),
+                                    mainOccupationAddress:
+                                        TextEditingController(),
                                     bestWorkspaceLocation: '',
                                     bikeWorkDays: 0,
                                     commuteWorkDays: 0,
@@ -109,7 +110,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                     occupationSector: '',
                                   ),
                                 ),
-
                               );
 //                              AllData.personModel[0].isEmployee=1;
                             });
@@ -189,22 +189,24 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
-                                          onChanged: (d){
-                                            setState(() {
-                                              if(d!.isNotEmpty) {
-                                                if (int.parse(d.toString()) >
-                                                    18) {
-                                                  base[i].occupationModel!
-                                                      .isEmployee = "1";
-                                                } else {
-                                                  base[i].occupationModel!
-                                                      .isEmployee = "0";
-                                                }
-                                              }
-                                            });
-
-                                          },
-                                          widthForm: width(context)*.15,
+                                                onChanged: (d) {
+                                                  setState(() {
+                                                    if (d!.isNotEmpty) {
+                                                      if (int.parse(
+                                                              d.toString()) >
+                                                          18) {
+                                                        base[i]
+                                                            .occupationModel!
+                                                            .isEmployee = "1";
+                                                      } else {
+                                                        base[i]
+                                                            .occupationModel!
+                                                            .isEmployee = "0";
+                                                      }
+                                                    }
+                                                  });
+                                                },
+                                                widthForm: width(context) * .15,
                                                 label: "age",
                                                 controller: base[i]
                                                     .personalHeadData!
@@ -263,9 +265,18 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             .first]!
                                                     .toList(),
                                                 onChange: (String? p) {
-                                                  base[i].personalHeadData!.age.text=p.toString();
-                                                  print(base[i].personalHeadData!.age.text);
-                                                  print(base[i].personalHeadData!.age.text);
+                                                  base[i]
+                                                      .personalHeadData!
+                                                      .age
+                                                      .text = p.toString();
+                                                  print(base[i]
+                                                      .personalHeadData!
+                                                      .age
+                                                      .text);
+                                                  print(base[i]
+                                                      .personalHeadData!
+                                                      .age
+                                                      .text);
                                                   List value = PersonData
                                                       .groupAge[PersonData
                                                           .groupAge.keys.first]
@@ -305,7 +316,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                     : base[i].occupationModel!.isEmployee == "2"
                                         ? EducationLevel(i: i)
                                         : Container(),
-
                               ],
                             ),
                           ),

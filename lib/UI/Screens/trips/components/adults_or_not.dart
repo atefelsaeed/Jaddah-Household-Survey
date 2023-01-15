@@ -37,6 +37,7 @@ class AdultsOrNot extends StatelessWidget {
                   label: "",
                   controller: adultsModel.childrenNumber,
                   widthForm: width(context) * .07,
+                  keyboardType: TextInputType.number,
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
@@ -53,6 +54,7 @@ class AdultsOrNot extends StatelessWidget {
                   label: "",
                   controller: adultsModel.adultsNumber,
                   widthForm: width(context) * .07,
+                  keyboardType: TextInputType.number,
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(

@@ -22,13 +22,12 @@ class VehiclesScreen extends StatefulWidget {
 
 class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
-  final TextEditingController fuelTypeCode= TextEditingController();
-  final TextEditingController ownerShipCode= TextEditingController();
-  final TextEditingController parkThisCar= TextEditingController();
+  final TextEditingController fuelTypeCode = TextEditingController();
+  final TextEditingController ownerShipCode = TextEditingController();
+  final TextEditingController parkThisCar = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-
-
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -48,8 +47,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                         AppSize.spaceWidth1(context),
                         Expanded(
                           child: TextGlobal(
-                            text:
-                                "المركبات في المنزل",
+                            text: "المركبات في المنزل",
                             fontSize: height(context) * .023,
                             color: ColorManager.orangeTxtColor,
                           ),
@@ -60,11 +58,17 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     const MotorisedVec(),
 
                     const ControllerVehiclesBody(),
-                     FuelTypeCode(textEditingController: fuelTypeCode,),
+                    FuelTypeCode(
+                      textEditingController: fuelTypeCode,
+                    ),
                     AppSize.spaceHeight2(context),
-                     OwnerShipCode(textEditingController:ownerShipCode ,),
+                    OwnerShipCode(
+                      textEditingController: ownerShipCode,
+                    ),
                     AppSize.spaceHeight2(context),
-                     ParkThisCar(textEditingController: parkThisCar,),
+                    ParkThisCar(
+                      textEditingController: parkThisCar,
+                    ),
                     // AppSize.spaceHeight3(context),
                     //
                     // Q2VecScreen(
@@ -81,9 +85,11 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                           flex: 1,
                           child: TextFormer(
                             controller: VehModel.editingController3.totalNumber,
-                            text: "3.خلال الأسبوع الماضي ، كم عدد الطرود والبقالة والأطعمة والإمدادات الأخرى التي استلمتھا أسرتك",
+                            text:
+                                "3.خلال الأسبوع الماضي ، كم عدد الطرود والبقالة والأطعمة والإمدادات الأخرى التي استلمتھا أسرتك",
                             label: "أدخل ",
                             headLabel: '',
+                            type: TextInputType.number,
                           ),
                         ),
                       ],

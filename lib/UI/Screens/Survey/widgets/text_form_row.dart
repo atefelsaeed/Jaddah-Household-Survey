@@ -11,11 +11,15 @@ class TextForm extends StatelessWidget {
   final double? fontSize;
   final String text;
 
-  const TextForm(
+  bool? readOnly;
+  Function? onTap;
+
+   TextForm(
       {super.key,
       required this.controller,
       required this.label,
       required this.text,
+      this.onTap,this.readOnly,
       this.fontSize});
 
   @override
@@ -34,6 +38,8 @@ class TextForm extends StatelessWidget {
         MyTextForm(
           label: label,
           controller: controller,
+            readOnly:readOnly,
+          onTap: onTap!(),
         ),
       ],
     );
@@ -45,9 +51,11 @@ class TextFormer extends StatelessWidget {
   final String label;
   final String headLabel;
   final String text;
+  TextInputType ?type;
 
-  const TextFormer(
+   TextFormer(
       {super.key,
+      this.type,
       required this.controller,
       required this.label,
       required this.text,
@@ -74,6 +82,7 @@ class TextFormer extends StatelessWidget {
         MyTextForm(
           label: "",
           controller: controller,
+          keyboardType: type,
         ),
       ],
     );

@@ -43,6 +43,24 @@ class _DepartTimeState extends State<DepartTime> {
                 controller: widget.tripModel.arrivalDepartTime!.departTime,
                 text: "وقت المغادرة",
                 label: "وقت المغادرة",
+                readOnly: true,
+                //set it true, so that user will not able to edit text
+                onTap: () async {
+                  TimeOfDay? pickedTime = await showTimePicker(
+                    initialTime: TimeOfDay.now(),
+                    context: context,
+                  );
+
+                  if (pickedTime != null) {
+                    setState(() {
+                      widget.tripModel.arrivalDepartTime!.departTime.text =
+                          pickedTime
+                              .format(context); //set the value of text field.
+                    });
+                  } else {
+                    print("Time is not selected");
+                  }
+                },
               ),
               TextForm(
                 fontSize: height(context) * .012,
@@ -50,6 +68,25 @@ class _DepartTimeState extends State<DepartTime> {
                     widget.tripModel.arrivalDepartTime!.arriveDestinationTime,
                 text: "وقت الوصول",
                 label: "وقت الوصول",
+                readOnly: true,
+                //set it true, so that user will not able to edit text
+                onTap: () async {
+                  TimeOfDay? pickedTime = await showTimePicker(
+                    initialTime: TimeOfDay.now(),
+                    context: context,
+                  );
+
+                  if (pickedTime != null) {
+                    setState(() {
+                      widget.tripModel.arrivalDepartTime!.arriveDestinationTime
+                              .text =
+                          pickedTime
+                              .format(context); //set the value of text field.
+                    });
+                  } else {
+                    print("Time is not selected");
+                  }
+                },
               ),
             ],
           ),

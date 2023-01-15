@@ -7,8 +7,11 @@ import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
 
 class Q5 extends StatelessWidget {
-  const Q5(
-      {super.key, required this.peopleAdults18, required this.peopleUnder18});
+  const Q5({
+    super.key,
+    required this.peopleAdults18,
+    required this.peopleUnder18,
+  });
 
   final TextEditingController peopleAdults18;
 
@@ -32,16 +35,6 @@ class Q5 extends StatelessWidget {
             )),
           ],
         ),
-        /* Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextGlobal(
-              text: QuestionsData.qh5["subTitle"],
-              fontSize: height(context) * .015,
-              color: ColorManager.grayColor,
-            ),
-          ],
-        ),*/
         AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -52,6 +45,7 @@ class Q5 extends StatelessWidget {
                   label: "",
                   controller: peopleUnder18,
                   widthForm: width(context) * .07,
+                  keyboardType: TextInputType.number,
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
@@ -68,6 +62,7 @@ class Q5 extends StatelessWidget {
                   label: "",
                   controller: peopleAdults18,
                   widthForm: width(context) * .07,
+                  keyboardType: TextInputType.number,
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
@@ -321,6 +316,7 @@ class Field extends StatelessWidget {
                 label: "",
                 controller: peopleUnder18,
                 widthForm: width(context) * .07,
+                keyboardType: TextInputType.number,
               ),
               AppSize.spaceWidth1(context),
               Expanded(
@@ -343,6 +339,7 @@ class Field extends StatelessWidget {
                   label: "",
                   controller: peopleAdults18,
                   widthForm: width(context) * .07,
+                  keyboardType: TextInputType.number,
                 ),
                 AppSize.spaceWidth1(context),
                 Expanded(
@@ -364,6 +361,7 @@ class Field extends StatelessWidget {
                 label: "",
                 controller: totalNumberOfVec,
                 widthForm: width(context) * .07,
+                keyboardType: TextInputType.number,
               ),
               AppSize.spaceWidth1(context),
               Expanded(
