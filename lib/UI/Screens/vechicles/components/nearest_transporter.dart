@@ -10,19 +10,15 @@ class NearestTransporter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-   return ListViewCheckBoxOrange(
-      onChange: (r){
+    return ListViewCheckBoxOrange(
+      onChange: (r) {
         print(r);
-        VehModel.nearestPublicTransporter=r.toString();
+        VehModel.nearestPublicTransporter = r.toString();
       },
       title: "2.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟",
-      question: VehiclesData
-          .q3VecData[VehiclesData.q3VecData.keys.first]!
-          .toList(),
+      question:
+          VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!.toList(),
       subTitle: "",
     );
   }
-
-
-
 }
