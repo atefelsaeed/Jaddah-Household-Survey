@@ -246,7 +246,30 @@ class _TripScreenState extends State<TripScreen> {
                     AppSize.spaceHeight2(context),
                     DefaultButton(
                       function: () {
-                        if (_key.currentState!.validate()) {
+
+                        Random random = Random();
+                        int randomNumber =
+                        (1000 + random.nextInt(10000 - 1000));
+                        int num =
+                        int.parse('${auth.uid}001$randomNumber');
+                        surveyPt.headerLat = 0;
+                        surveyPt.interViewDate = DateTime.now();
+                        surveyPt.headerLong = 0;
+                        surveyPt.headerEmpNumber = auth.uid;
+                        surveyPt.headerInterviewNumber = num;
+                        surveyPt.id = auth.uid.toString();
+                        SaveTripsData.saveData(context);
+                        print("after save");
+                        surveys.addSurvey(surveyPt.data);
+                        print('Saving Data :: ');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const ChooseSurveysScreen(),
+                          ),
+                        );
+                  /*      if (_key.currentState!.validate()) {
                           getLocation().then(
                             (value) {
                               Random random = Random();
@@ -293,7 +316,7 @@ class _TripScreenState extends State<TripScreen> {
                               elevation: 1,
                             ),
                           );
-                        }
+                        }*/
                       },
                       isWidget: true,
                       text: "أنتهينا",

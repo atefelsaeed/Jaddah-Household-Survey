@@ -65,6 +65,29 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                           VehiclesData.vecModel[index].textEditingController
                               .text = 0.toString();
                         }
+                        if(value==false) {
+                          switch (VehiclesData.vecModel[index].title) {
+                            case "سيارة":
+                              VehModel.vecCar.clear();
+                              break;
+                            case "سيارة كبيرة (SUV وما إلى ذلك)":
+                              VehModel.largeCar.clear();
+                              break;
+                            case "other":
+                              VehModel.other.clear();
+                              break;
+                            case " اسكوتر":
+                              VehModel.eScooter.clear();
+                              break;
+                            case "ونيت":
+                              VehModel.vecVan.clear();
+                              break;
+                            case "دراجة نارية":
+                              VehModel.pickUp.clear();
+                              break;
+                          }
+                        }
+                        print(value);
                       });
                     }),
                 VehiclesData.vecModel[index].isChosen == true
@@ -75,23 +98,27 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                             VehiclesData.vecModel[index].textEditingController,
                         label: '',
                         onChanged: (d) {
+                          print(d);
                           setState(() {
                             if (d!.isNotEmpty) {
                               switch (VehiclesData.vecModel[index].title) {
                                 case "سيارة":
-                                  VehModel.vecCar = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecCar.add(
-                                      VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
-                                      ),
-                                    );
-                                  }
+
+                                    print("object");
+                                    VehModel.vecCar = [];
+                                    for (int i = 0; i < int.parse(d); i++) {
+                                      VehModel.vecCar.add(
+                                        VehicleBodyDetails(
+                                          vehicleModel: TextEditingController(),
+                                          vehicleOwner: TextEditingController(),
+                                          vehicleAge: TextEditingController(),
+                                          vehicleAnnualMileage:
+                                              TextEditingController(),
+                                          vehicleFuel: TextEditingController(),
+                                        ),
+                                      );
+                                    }
+
 
                                   break;
                                 case "سيارة كبيرة (SUV وما إلى ذلك)":
@@ -154,7 +181,22 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     );
                                   }
                                   break;
-                                case "اسكوتر":
+                                case " اسكوتر":
+                                  VehModel.eScooter = [];
+                                  for (int i = 0; i < int.parse(d!); i++) {
+                                    VehModel.eScooter.add(
+                                      VehicleBodyDetails(
+                                        vehicleModel: TextEditingController(),
+                                        vehicleOwner: TextEditingController(),
+                                        vehicleAge: TextEditingController(),
+                                        vehicleAnnualMileage:
+                                            TextEditingController(),
+                                        vehicleFuel: TextEditingController(),
+                                      ),
+                                    );
+                                  }
+                                  break;
+                                case "other":
                                   VehModel.other = [];
                                   for (int i = 0; i < int.parse(d!); i++) {
                                     VehModel.other.add(
@@ -170,6 +212,29 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   }
                                   break;
                               }
+                            }else{
+    switch (VehiclesData.vecModel[index].title) {
+    case "سيارة":
+      VehModel.vecCar.clear();
+      break;
+      case "سيارة كبيرة (SUV وما إلى ذلك)":
+        VehModel.largeCar.clear();
+        break;
+      case "other":
+        VehModel.other.clear();
+        break;
+      case " اسكوتر":
+        VehModel.eScooter.clear();
+        break;
+      case  "ونيت":
+        VehModel.vecVan.clear();
+        break;
+      case "دراجة نارية":
+        VehModel.pickUp.clear();
+        break;
+
+    }
+
                             }
                           });
 
@@ -211,6 +276,12 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             vecBodyType: VehModel.eScooter[i],
             index: i + 1,
             title: "سكوتر الكترونى",
+          ),
+        for (int i = 0; i < VehModel.other.length; i++)
+          BodyTypeVehicles(
+            vecBodyType: VehModel.other[i],
+            index: i + 1,
+            title: "other",
           ),
         AppSize.spaceHeight3(context),
       ],

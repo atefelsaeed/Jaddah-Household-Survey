@@ -4,9 +4,7 @@ import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.d
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/default_entry.dart';
-import 'package:jaddah_household_survey/UI/Screens/person/components/education_level.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
-import 'package:jaddah_household_survey/UI/Screens/person/components/next_step.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -195,7 +193,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
-
                                                 onChanged: (d) {
                                                   setState(() {
                                                     if (d!.isNotEmpty) {
@@ -210,7 +207,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             .occupationModel!
                                                             .isEmployee = "0";
                                                       }
-                                                    }else{
+                                                    } else {
                                                       base[i]
                                                           .occupationModel!
                                                           .isEmployee = "";
@@ -283,7 +280,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                                       .age
                                                       .text = p.toString();
 
-
                                                   List value = PersonData
                                                       .groupAge[PersonData
                                                           .groupAge.keys.first]
@@ -320,70 +316,136 @@ class _PersonScreenState extends State<PersonScreen> {
                                 ),
                                 AppSize.spaceHeight3(context),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    base[i].occupationModel!.isEmployee == ""?Container():   DropDownFormInput2(
-                                      label: Text(PersonData.mainOccupation[mainOccupationKey]!
-                                          .toList()
-                                          .first["value"]
-                                          .toString()),
-                                      hint: "الوظيفة الأساسية",
-                                      options: PersonData.mainOccupation[mainOccupationKey]!.toList(),
-                                      onChange: (String? p) {
-                                        List value =
-                                        PersonData.mainOccupation[mainOccupationKey].toList();
+                                    base[i].occupationModel!.isEmployee == ""
+                                        ? Container()
+                                        : DropDownFormInput2(
+                                            label: Text(PersonData
+                                                .mainOccupation[
+                                                    mainOccupationKey]!
+                                                .toList()
+                                                .first["value"]
+                                                .toString()),
+                                            hint: "الوظيفة الأساسية",
+                                            options: PersonData.mainOccupation[
+                                                    mainOccupationKey]!
+                                                .toList(),
+                                            onChange: (String? p) {
+                                              List value = PersonData
+                                                  .mainOccupation[
+                                                      mainOccupationKey]
+                                                  .toList();
 
-                                        for (int inr = 0; inr < value.length; inr++) {
-                                          if (p == value[inr]["value"]) {
-                                            PersonModelList.personModelList[i].personalQuestion!.mainOccupationType =
-                                            value[inr]["value"];
-                                          }
-                                        }
-                                        setState(() {
-                                          PersonModelList.personModelList[i].personalQuestion!
-                                              .mainOccupationType ==p.toString();
-                                        });
+                                              for (int inr = 0;
+                                                  inr < value.length;
+                                                  inr++) {
+                                                if (p == value[inr]["value"]) {
+                                                  PersonModelList
+                                                          .personModelList[i]
+                                                          .personalQuestion!
+                                                          .mainOccupationType =
+                                                      value[inr]["value"];
+                                                }
+                                              }
+                                              setState(() {
+                                                PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType ==
+                                                    p.toString();
+                                              });
 
-                                        print(p.toString());
-                                      },
-                                    ),
-                                    base[i].occupationModel!.isEmployee == ""? Container():    base[i].occupationModel!.isEmployee == "1"?
-                                    PersonModelList.personModelList[i].personalQuestion!
-                                        .mainOccupationType =="عاطلين عن العمل"|| PersonModelList.personModelList[i].personalQuestion!
-                                        .mainOccupationType ==  "طالب - جامعي: دوام كامل (لا يعمل) "||PersonModelList.personModelList[i].personalQuestion!
-                                        .mainOccupationType =="شخص البيت"||PersonModelList.personModelList[i].personalQuestion!
-                                        .mainOccupationType =="طفل فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
-                                        .mainOccupationType =="طفل ليس فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
-            .mainOccupationType =="رفض"||PersonModelList.personModelList[i].personalQuestion!
-                                        .mainOccupationType=="معاق / مريض"?Container():
-
-                                    DropDownFormInput(
-                                      label: Text(PersonData.occupationSector[occupationSectorKey]!
-                                          .toList()
-                                          .first
-                                          .toString()),
-                                      hint: "لو عمل ما هو قطا ع العمل",
-                                      options:
-                                      PersonData.occupationSector[occupationSectorKey]!.toList(),
-                                      onChange: (String? p) {
-                                        PersonModelList.personModelList[i].occupationModel!
-                                            .occupationSector = p.toString();
-                                      },
-                                    ):Container(),
+                                              print(p.toString());
+                                            },
+                                          ),
+                                    base[i].occupationModel!.isEmployee == ""
+                                        ? Container()
+                                        : base[i].occupationModel!.isEmployee ==
+                                                "1"
+                                            ? PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "عاطلين عن العمل" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "طالب - جامعي: دوام كامل (لا يعمل) " ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "شخص البيت" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "طفل فى الحضانة" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "طفل ليس فى الحضانة" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "رفض" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "معاق / مريض"
+                                                ? Container()
+                                                : DropDownFormInput(
+                                                    label: Text(PersonData
+                                                        .occupationSector[
+                                                            occupationSectorKey]!
+                                                        .toList()
+                                                        .first
+                                                        .toString()),
+                                                    hint:
+                                                        "لو عمل ما هو قطا ع العمل",
+                                                    options: PersonData
+                                                        .occupationSector[
+                                                            occupationSectorKey]!
+                                                        .toList(),
+                                                    onChange: (String? p) {
+                                                      PersonModelList
+                                                              .personModelList[i]
+                                                              .occupationModel!
+                                                              .occupationSector =
+                                                          p.toString();
+                                                    },
+                                                  )
+                                            : Container(),
                                   ],
                                 ),
-
                                 base[i].occupationModel!.isEmployee == "1"
-
-                                    ?PersonModelList.personModelList[i].personalQuestion!
-                                    .mainOccupationType =="طفل ليس فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
-                                    .mainOccupationType =="طفل فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
-                              .mainOccupationType =="رفض" ?Container():Employee(i: i)
-
-
-                                        : Container(),
-                                base[i].occupationModel!.isEmployee == ""?Container(): TransporterMobilty(index: i)
-
+                                    ? PersonModelList
+                                                    .personModelList[i]
+                                                    .personalQuestion!
+                                                    .mainOccupationType ==
+                                                "طفل ليس فى الحضانة" ||
+                                            PersonModelList
+                                                    .personModelList[i]
+                                                    .personalQuestion!
+                                                    .mainOccupationType ==
+                                                "طفل فى الحضانة" ||
+                                            PersonModelList
+                                                    .personModelList[i]
+                                                    .personalQuestion!
+                                                    .mainOccupationType ==
+                                                "رفض"
+                                        ? Container()
+                                        : Employee(i: i)
+                                    : Container(),
+                                base[i].occupationModel!.isEmployee == ""
+                                    ? Container()
+                                    : TransporterMobilty(index: i)
                               ],
                             ),
                           ),

@@ -6,12 +6,13 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../Models/user_serveys_model.dart';
 import 'itemSurveyModel.dart';
 
 class ItemUserSurvey extends StatelessWidget {
   const ItemUserSurvey({Key? key, required this.itemSurveyModel})
       : super(key: key);
-  final ItemSurveyModel itemSurveyModel;
+  final UserSurveysModelData itemSurveyModel;
 
   Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(
@@ -46,7 +47,7 @@ class ItemUserSurvey extends StatelessWidget {
               const Image(image: AssetImage(ImageAssets.lampIcon)),
               AppSize.spaceWidth1(context),
               Text(
-                "رقم الاسرة : ${itemSurveyModel.numberSurvey}",
+                "رقم الاسرة : ${itemSurveyModel.id}",
                 style: TextStyle(
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.w700,
@@ -72,23 +73,28 @@ class ItemUserSurvey extends StatelessWidget {
             children: [
               const Image(image: AssetImage(ImageAssets.locationIcon)),
               AppSize.spaceWidth1(context),
-              Text(
-                "عنوان الاسرة  :  يكتب العنوان بالتفاصيل ",
-                style: TextStyle(
-                  color: ColorManager.grayColor,
-                  fontWeight: FontWeight.w700,
+              Flexible(
+                flex: 8,
+                child: Text(
+                  "عنوان الاسرة  :  ${itemSurveyModel.qTANAME} ",
+                  style: TextStyle(
+                    color: ColorManager.grayColor,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-              TextButton(
-                onPressed: () async {
-                  await launchURL(itemSurveyModel.lat, itemSurveyModel.long);
-                },
-                child: Text(
-                  'افتح خرائط جوجل',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold,
-                    color: ColorManager.black,
+              Flexible(flex: 4,
+                child: TextButton(
+                  onPressed: () async {
+                    await launchURL(itemSurveyModel.pOINTX.toString(), itemSurveyModel.pOINTY.toString());
+                  },
+                  child: Text(
+                    'افتح خرائط جوجل',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.bold,
+                      color: ColorManager.black,
+                    ),
                   ),
                 ),
               ),

@@ -24,10 +24,34 @@ class UserSurveysProvider with ChangeNotifier {
   bool isSearching = false;
   List<UserSurveysModelData> searchList = [];
 
-  void search(String value) {
+  void searchHAY(String value) {
     searchList.clear();
     _userSurveysSurveysList.forEach((element) {
-      if (element.hAEName
+      if (element.hAENO
+          .toString()
+          .toLowerCase()
+          .contains(value.toString().toLowerCase())) {
+        searchList.add(element);
+      }
+    });
+    notifyListeners();
+  }
+  void searchQTA(String value) {
+    searchList.clear();
+    _userSurveysSurveysList.forEach((element) {
+      if (element.qTANO
+          .toString()
+          .toLowerCase()
+          .contains(value.toString().toLowerCase())) {
+        searchList.add(element);
+      }
+    });
+    notifyListeners();
+  }
+  void searchBLOK(String value) {
+    searchList.clear();
+    _userSurveysSurveysList.forEach((element) {
+      if (element.bLOKNO
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {

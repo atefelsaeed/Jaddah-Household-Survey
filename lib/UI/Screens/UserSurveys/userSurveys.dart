@@ -30,9 +30,20 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
   @override
   Widget build(BuildContext context) {
     final userSurveysProvider = Provider.of<UserSurveysProvider>(context);
-    List<UserSurveysModelData> list = userSurveysProvider.isSearching
-        ? userSurveysProvider.searchList
-        : userSurveysProvider.userSurveys;
+    List<UserSurveysModelData> list;
+    if (userSurveysProvider.isSearching) {
+      print('searchList');
+      list = userSurveysProvider.searchList;
+    // } else if (userSurveysProvider.isSearchingQTA) {
+    //   print('searchQTAList');
+    //   list = userSurveysProvider.searchQTAList;
+    // } else if (userSurveysProvider.isSearchingBLOK) {
+    //   print('searchBLOKList');
+    //   list = userSurveysProvider.searchBLOKList;
+    } else {
+      print('userSurveys');
+      list = userSurveysProvider.userSurveys;
+    }
     return Scaffold(
         body: userSurveysProvider.loading != true
             ? SafeArea(
@@ -61,30 +72,107 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                       ],
                     ),
                     AppSize.spaceHeight2(context),
-                    MyTextForm(
-                      onChanged: (value) {
-                        userSurveysProvider.search(value!);
-                      },
-                      label: "بحث",
-                      isPassword: false,
-                      suffix: !userSurveysProvider.isSearching
-                          ? Icons.search
-                          : null,
-                      suffixPressed: () {
-                        userSurveysProvider.changeIcon();
-                      },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            const Text(
+                              'رقم الحى',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            AppSize.spaceHeight1(context),
+                            MyTextForm(
+                              onChanged: (value) {
+                                userSurveysProvider.searchHAY(value!);
+                              },
+                              label: "بحث",
+                              widthForm: width(context) * .2,
+                              keyboardType: TextInputType.number,
+                              isPassword: false,
+                            ),
+                          ],
+                        ),
+                        AppSize.spaceWidth3(context),
+                        Column(
+                          children: [
+                            const Text(
+                              'رقم القطاع',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            AppSize.spaceHeight1(context),
+                            MyTextForm(
+                              onChanged: (value) {
+                                userSurveysProvider.searchQTA(value!);
+                              },
+                              label: "بحث",
+                              onTap: () {},
+                              widthForm: width(context) * .2,
+                              keyboardType: TextInputType.number,
+                              isPassword: false,
+                            ),
+                          ],
+                        ),
+                        AppSize.spaceWidth3(context),
+                        Column(
+                          children: [
+                            const Text(
+                              'رقم البلوك',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            AppSize.spaceHeight1(context),
+                            MyTextForm(
+                              onChanged: (value) {
+                                userSurveysProvider.searchBLOK(value!);
+                              },
+                              label: "بحث",
+                              widthForm: width(context) * .2,
+                              keyboardType: TextInputType.number,
+                              isPassword: false,
+                            ),
+                          ],
+                        ),
+                        AppSize.spaceWidth3(context),
+                        Column(
+                          children: [
+                            const Text(
+                              'بحث',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            AppSize.spaceHeight1(context),
+                            Container(
+                             width: width(context)*.15,
+                               padding: EdgeInsets.all(AppSize.padding1(context)),
+                              decoration: BoxDecoration(
+                                  color: userSurveysProvider.isSearching
+                                      ? ColorManager.grayColor
+                                      : ColorManager.primaryColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: IconButton(
+                                  onPressed: () {
+                                    userSurveysProvider.changeIcon();
+                                    // suffix: !userSurveysProvider.isSearching
+                                    //     ? Icons.search
+                                    //     : null,
+                                    // suffixPressed: () {
+                                    //
+                                    // },
+                                  },
+                                  icon: Icon(
+                                    Icons.filter_alt_outlined,
+                                    color: ColorManager.wight,
+                                    size: width(context) * .05,
+                                  )),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
                     AppSize.spaceHeight2(context),
                     Expanded(
                       child: ListView.separated(
                         itemBuilder: (context, index) {
-                          return ItemUserSurvey(
-                            itemSurveyModel: ItemSurveyModel(
-                              numberSurvey: list[index].bLOKNO.toString(),
-                              lat: list[index].pOINTX.toString(),
-                              long: list[index].pOINTY.toString(),
-                            ),
-                          );
+                          return ItemUserSurvey(itemSurveyModel: list[index]);
                         },
                         separatorBuilder: (context, index) {
                           return Divider(
@@ -97,7 +185,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                   ],
                 ),
               ))
-            : Center(child: CircularProgressIndicator())
+            : const Center(child: CircularProgressIndicator())
         //             : const Padding(
         //                 padding: EdgeInsets.all(12.0),
         //                 child: Center(
