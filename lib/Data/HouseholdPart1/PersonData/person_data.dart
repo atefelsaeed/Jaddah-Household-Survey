@@ -36,10 +36,10 @@ class PersonData {
       {"value": '19 -24', "isChick": false, "type": "1"},
       {"value": ' 25 - 34', "isChick": false, "type": "1"},
       {"value": '35 - 44', "isChick": false, "type": "1"},
-      {"value": '45 - 54', "type": "1", "isChick": false},
+      {"value": '45 - 54', "isChick": false, "type": "1"},
       {"value": '55 - 64', "isChick": false, "type": "1"},
       {"value": '65 - 74', "isChick": false, "type": "1"},
-      {"value": '>74', "isChick": false, "type": "retired", "type": "retire"},
+      {"value": '>74', "isChick": false, "type": "retired"},
     ],
     "title": "MainOccupation",
     "subTitle":
@@ -69,23 +69,23 @@ class PersonData {
     "subTitle": "mainMade",
     "chosenIndex": 0,
   };
-  static Map<String, dynamic> occupationLevelSector = {
-    "Occupation Level Sector": [
-      'High level director',
-      ' Specialists/Experts',
-      'Technicians',
-      'Documenters',
-      'Shop employees',
-      'Agriculture and fishing workers',
-      'Crafts workers',
-      'Industrial workshop workers',
-      'Other mid-level employees',
-      'Other (specify)',
-    ],
-    "title": "mainMade",
-    "subTitle": "mainMade",
-    "chosenIndex": 0,
-  };
+  // static Map<String, dynamic> occupationLevelSector = {
+  //   "Occupation Level Sector": [
+  //     'High level director',
+  //     ' Specialists/Experts',
+  //     'Technicians',
+  //     'Documenters',
+  //     'Shop employees',
+  //     'Agriculture and fishing workers',
+  //     'Crafts workers',
+  //     'Industrial workshop workers',
+  //     'Other mid-level employees',
+  //     'Other (specify)',
+  //   ],
+  //   "title": "mainMade",
+  //   "subTitle": "mainMade",
+  //   "chosenIndex": 0,
+  // };
 
   static Map<String, dynamic> workingHour = {
     " Do you have flexible working hours?": [

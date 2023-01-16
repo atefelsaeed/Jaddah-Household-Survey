@@ -27,12 +27,11 @@ class VehiclesData {
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
-  VecModel(
-  title: " اسكوتر",
-  isChosen: false,
-  number: 0,
-  textEditingController: TextEditingController()),
-
+    VecModel(
+        title: " اسكوتر",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
     VecModel(
         title: "other",
         isChosen: false,
@@ -60,7 +59,6 @@ class VehiclesData {
       'أرباب العمل',
       'مستأجرة',
       'أخر',
-
     ]
   };
   static Map<String, List<dynamic>> parkThisCar = {
@@ -108,4 +106,3 @@ class VecModel {
     required this.textEditingController,
   });
 }
-

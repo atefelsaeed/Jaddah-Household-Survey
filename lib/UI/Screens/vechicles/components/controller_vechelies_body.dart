@@ -61,6 +61,10 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                     onChanged: (bool? value) {
                       setState(() {
                         VehiclesData.vecModel[index].isChosen = value!;
+                        if (VehiclesData.vecModel[index].isChosen == false) {
+                          VehiclesData.vecModel[index].textEditingController
+                              .text = 0.toString();
+                        }
                       });
                     }),
                 VehiclesData.vecModel[index].isChosen == true
@@ -182,31 +186,31 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
           BodyTypeVehicles(
             vecBodyType: VehModel.vecCar[i],
             index: i + 1,
-            title: "car",
+            title: "سيارة",
           ),
         for (int i = 0; i < VehModel.vecVan.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.vecVan[i],
             index: i + 1,
-            title: "Van",
+            title: "شاحنة",
           ),
         for (int i = 0; i < VehModel.largeCar.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.largeCar[i],
             index: i + 1,
-            title: "large car",
+            title: "سيارة كبيرة",
           ),
         for (int i = 0; i < VehModel.pickUp.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.pickUp[i],
             index: i + 1,
-            title: "pickUp",
+            title: "دراجة نارية",
           ),
         for (int i = 0; i < VehModel.eScooter.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.eScooter[i],
             index: i + 1,
-            title: "Escooter",
+            title: "سكوتر الكترونى",
           ),
         AppSize.spaceHeight3(context),
       ],

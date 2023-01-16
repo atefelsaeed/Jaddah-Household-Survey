@@ -9,7 +9,7 @@ import '../../../Widgets/dropdown_form_input.dart';
 class TransporterMobilty extends StatefulWidget {
   final int index;
 
-  TransporterMobilty({super.key, required this.index});
+  const TransporterMobilty({super.key, required this.index});
 
   @override
   State<TransporterMobilty> createState() => _TransporterMobiltyState();

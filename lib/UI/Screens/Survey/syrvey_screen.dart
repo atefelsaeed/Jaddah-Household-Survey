@@ -236,6 +236,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         if (r == "نعم") {
                           HhsStatic.householdQuestions.hhsIsDemolishedAreas =
                               true;
+                          yes.text = '';
                         } else {
                           HhsStatic.householdQuestions.hhsIsDemolishedAreas =
                               false;
