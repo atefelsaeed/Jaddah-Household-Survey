@@ -20,6 +20,7 @@ import '../Survey/components/q5.dart';
 import '../trips/trip_screen.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
+import 'components/transporter_moblity.dart';
 
 class PersonScreen extends StatefulWidget {
   const PersonScreen({super.key});
@@ -31,6 +32,9 @@ class PersonScreen extends StatefulWidget {
 class _PersonScreenState extends State<PersonScreen> {
   bool type = false;
   bool typeAlone = true;
+  var mainOccupationKey = PersonData.mainOccupation.keys.first;
+
+  var occupationSectorKey = PersonData.occupationSector.keys.first;
   final GlobalKey<FormState> _key = GlobalKey();
   late EditingController3 editingController3 = EditingController3(
       peopleUnder18: TextEditingController(),
@@ -191,6 +195,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
+
                                                 onChanged: (d) {
                                                   setState(() {
                                                     if (d!.isNotEmpty) {
@@ -205,6 +210,10 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             .occupationModel!
                                                             .isEmployee = "0";
                                                       }
+                                                    }else{
+                                                      base[i]
+                                                          .occupationModel!
+                                                          .isEmployee = "";
                                                     }
                                                   });
                                                 },
@@ -273,14 +282,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                                       .personalHeadData!
                                                       .age
                                                       .text = p.toString();
-                                                  print(base[i]
-                                                      .personalHeadData!
-                                                      .age
-                                                      .text);
-                                                  print(base[i]
-                                                      .personalHeadData!
-                                                      .age
-                                                      .text);
+
+
                                                   List value = PersonData
                                                       .groupAge[PersonData
                                                           .groupAge.keys.first]
@@ -315,11 +318,72 @@ class _PersonScreenState extends State<PersonScreen> {
                                 Nationality(
                                   i: i,
                                 ),
+                                AppSize.spaceHeight3(context),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    base[i].occupationModel!.isEmployee == ""?Container():   DropDownFormInput2(
+                                      label: Text(PersonData.mainOccupation[mainOccupationKey]!
+                                          .toList()
+                                          .first["value"]
+                                          .toString()),
+                                      hint: "الوظيفة الأساسية",
+                                      options: PersonData.mainOccupation[mainOccupationKey]!.toList(),
+                                      onChange: (String? p) {
+                                        List value =
+                                        PersonData.mainOccupation[mainOccupationKey].toList();
+
+                                        for (int inr = 0; inr < value.length; inr++) {
+                                          if (p == value[inr]["value"]) {
+                                            PersonModelList.personModelList[i].personalQuestion!.mainOccupationType =
+                                            value[inr]["value"];
+                                          }
+                                        }
+                                        setState(() {
+                                          PersonModelList.personModelList[i].personalQuestion!
+                                              .mainOccupationType ==p.toString();
+                                        });
+
+                                        print(p.toString());
+                                      },
+                                    ),
+                                    base[i].occupationModel!.isEmployee == ""? Container():    base[i].occupationModel!.isEmployee == "1"?
+                                    PersonModelList.personModelList[i].personalQuestion!
+                                        .mainOccupationType =="عاطلين عن العمل"|| PersonModelList.personModelList[i].personalQuestion!
+                                        .mainOccupationType ==  "طالب - جامعي: دوام كامل (لا يعمل) "||PersonModelList.personModelList[i].personalQuestion!
+                                        .mainOccupationType =="شخص البيت"||PersonModelList.personModelList[i].personalQuestion!
+                                        .mainOccupationType =="طفل فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
+                                        .mainOccupationType =="طفل ليس فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
+            .mainOccupationType =="رفض"||PersonModelList.personModelList[i].personalQuestion!
+                                        .mainOccupationType=="معاق / مريض"?Container():
+
+                                    DropDownFormInput(
+                                      label: Text(PersonData.occupationSector[occupationSectorKey]!
+                                          .toList()
+                                          .first
+                                          .toString()),
+                                      hint: "لو عمل ما هو قطا ع العمل",
+                                      options:
+                                      PersonData.occupationSector[occupationSectorKey]!.toList(),
+                                      onChange: (String? p) {
+                                        PersonModelList.personModelList[i].occupationModel!
+                                            .occupationSector = p.toString();
+                                      },
+                                    ):Container(),
+                                  ],
+                                ),
+
                                 base[i].occupationModel!.isEmployee == "1"
-                                    ? Employee(i: i)
-                                    : base[i].occupationModel!.isEmployee == "2"
-                                        ? EducationLevel(i: i)
+
+                                    ?PersonModelList.personModelList[i].personalQuestion!
+                                    .mainOccupationType =="طفل ليس فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
+                                    .mainOccupationType =="طفل فى الحضانة"||PersonModelList.personModelList[i].personalQuestion!
+                              .mainOccupationType =="رفض" ?Container():Employee(i: i)
+
+
                                         : Container(),
+                                base[i].occupationModel!.isEmployee == ""?Container(): TransporterMobilty(index: i)
+
                               ],
                             ),
                           ),

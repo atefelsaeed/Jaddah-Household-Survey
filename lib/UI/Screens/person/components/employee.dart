@@ -7,14 +7,19 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 
 // TODO: implement build
-class Employee extends StatelessWidget {
+class Employee extends StatefulWidget {
   final int i;
 
   const Employee({super.key, required this.i});
 
   @override
+  State<Employee> createState() => _EmployeeState();
+}
+
+class _EmployeeState extends State<Employee> {
+  @override
   Widget build(BuildContext context) {
-    var base = PersonModelList.personModelList[i];
+    var base = PersonModelList.personModelList[widget.i];
     var mainOccupationKey = PersonData.mainOccupation.keys.first;
     var occupationSectorKey = PersonData.occupationSector.keys.first;
     return Column(
@@ -23,47 +28,11 @@ class Employee extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            DropDownFormInput2(
-              label: Text(PersonData.mainOccupation[mainOccupationKey]!
-                  .toList()
-                  .first["value"]
-                  .toString()),
-              hint: "الوظيفة الأساسية",
-              options: PersonData.mainOccupation[mainOccupationKey]!.toList(),
-              onChange: (String? p) {
-                List value =
-                    PersonData.mainOccupation[mainOccupationKey].toList();
-
-                for (int inr = 0; inr < value.length; inr++) {
-                  if (p == value[inr]["value"]) {
-                    base.personalQuestion!.mainOccupationType =
-                        value[inr]["value"];
-                  }
-                }
-                PersonModelList.personModelList[i].personalQuestion!
-                    .mainOccupationType = p.toString();
-              },
-            ),
-            DropDownFormInput(
-              label: Text(PersonData.occupationSector[occupationSectorKey]!
-                  .toList()
-                  .first
-                  .toString()),
-              hint: "لو عمل ما هو قطا ع العمل",
-              options:
-                  PersonData.occupationSector[occupationSectorKey]!.toList(),
-              onChange: (String? p) {
-                PersonModelList.personModelList[i].occupationModel!
-                    .occupationSector = p.toString();
-              },
-            ),
-          ],
-        ),
-        AppSize.spaceHeight3(context),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            DropDownFormInput(
+            PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType =="عاطلين عن العمل" || PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType ==  "طالب - جامعي: دوام كامل (لا يعمل) " ||PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType =="شخص البيت"||PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType=="معاق / مريض"? Container(): DropDownFormInput(
               label: Text(PersonData.workplace[PersonData.workplace.keys.first]!
                   .toList()
                   .first
@@ -73,10 +42,15 @@ class Employee extends StatelessWidget {
               options: PersonData.workplace[PersonData.workplace.keys.first]!
                   .toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].occupationModel!.bestWorkspaceLocation=p.toString();
+                PersonModelList.personModelList[widget.i].occupationModel!.bestWorkspaceLocation=p.toString();
               },
             ),
-            DropDownFormInput(
+            PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType=="طالب - مدرسة ابتدائية"|| PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType=="طالب - مدرسة متوسطة"|| PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType=="طالب - مدرسة ثانوية"||
+            PersonModelList.personModelList[widget.i].personalQuestion!
+                .mainOccupationType==  " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"?Container():    DropDownFormInput(
               label: Text(PersonData.licence[PersonData.licence.keys.first]!
                   .toList()
                   .first
@@ -85,12 +59,31 @@ class Employee extends StatelessWidget {
               options:
                   PersonData.licence[PersonData.licence.keys.first]!.toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].personalQuestion!
-                    .drivingLicenceType = p.toString();
+                setState(() {
+                  PersonModelList.personModelList[widget.i].personalQuestion!
+                      .drivingLicenceType = p.toString();
+                });
+
               },
             ),
           ],
         ),
+
+       /* Row(children: [
+          DropDownFormInput(
+            label: Text(PersonData.licence[PersonData.licence.keys.first]!
+                .toList()
+                .first
+                .toString()),
+            hint: "ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
+            options:
+            PersonData.licence[PersonData.licence.keys.first]!.toList(),
+            onChange: (String? p) {
+              PersonModelList.personModelList[i].personalQuestion!
+                  .drivingLicenceType = p.toString();
+            },
+          ),
+        ],),*/
 
         /*  const HeadLine(
             title: "Address of the Main Occupation  (work or study place) ",
@@ -207,7 +200,8 @@ class Employee extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            DropDownFormInput(
+            PersonModelList.personModelList[widget.i].personalQuestion!
+                .drivingLicenceType==    "بدون ترخيص"?Container() :   DropDownFormInput(
               label: Text(PersonData
                   .drivingLiences[PersonData.drivingLiences.keys.first]!
                   .toList()
@@ -219,7 +213,7 @@ class Employee extends StatelessWidget {
                   .drivingLiences[PersonData.drivingLiences.keys.first]!
                   .toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].personalQuestion!
+                PersonModelList.personModelList[widget.i].personalQuestion!
                     .availablePersonalCar = p.toString();
               },
             ),
@@ -232,13 +226,18 @@ class Employee extends StatelessWidget {
               options:
                   PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[i].personalQuestion!
-                    .haveBusPass = p.toString();
+
+                  PersonModelList.personModelList[widget.i].personalQuestion!
+                      .haveBusPass = p.toString();
+
+
+
+
               },
             ),
           ],
         ),
-        TransporterMobilty(index: i)
+        TransporterMobilty(index: widget.i)
       ],
     );
   }

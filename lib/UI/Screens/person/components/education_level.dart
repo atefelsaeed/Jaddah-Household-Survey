@@ -56,7 +56,7 @@ class EducationLevel extends StatelessWidget {
             ),
           ],
         ),
-        TransporterMobilty(index: i)
+
       ],
     );
   }

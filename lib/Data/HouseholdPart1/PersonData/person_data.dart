@@ -346,11 +346,6 @@ class PersonData {
       {"value": 'شخص البيت', "isChick": false, "type": "student"},
       {"value": 'معاق / مريض', "isChick": false, "type": "student"},
       {
-        "value": 'متقاعد',
-        "isChick": false,
-        "type": "retired",
-      },
-      {
         "value": 'طفل فى الحضانة',
         "isChick": false,
         "type": "retired",

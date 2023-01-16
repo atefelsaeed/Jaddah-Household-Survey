@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OccupationModel {
   String? occupationSector;
-  String? isEmployee;
+  String? isEmployee="";
   String? occupationLevelSector;
   String? bestWorkspaceLocation;
   int? commuteWorkDays;
