@@ -1,9 +1,11 @@
 class ItemSurveyModel {
-  final int numberSurvey;
-  final String locationLink;
+  final String numberSurvey;
+  final String long;
+  final String lat;
 
   ItemSurveyModel({
     required this.numberSurvey,
-    required this.locationLink,
+    required this.long,
+    required this.lat,
   });
 }

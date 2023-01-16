@@ -6,10 +6,13 @@ import 'package:jaddah_household_survey/UI/Screens/vechicles/components/fuel_typ
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/motorisedvechiels.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/nearest_transporter.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/park_this_car.dart';
+import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
+import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
 import '../Survey/widgets/text_form_row.dart';
+import '../person/person_screen.dart';
 import 'components/controller_vechelies_body.dart';
 import 'components/owner_ship_code.dart';
 
@@ -95,7 +98,33 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                       ],
                     ),
                     AppSize.spaceHeight2(context),
-                    const ActionVecScreen(),
+                    DefaultButton(
+                      function: () {
+                        if (_key.currentState!.validate()) {
+                          _key.currentState!.save();
+                          SaveVehiclesData.saveData(context);
+
+                          print('Saving Data :: ');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PersonScreen(),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("يوجد خطأ بالبيانات"),
+                              duration: Duration(seconds: 3),
+                              elevation: 1,
+                            ),
+                          );
+                        }
+                      },
+                      isWidget: true,
+                      text: "التالي",
+                      widget: const Icon(Icons.arrow_forward),
+                    ),
                     AppSize.spaceHeight2(context),
                     // HouseholdAddressSection()
                   ],

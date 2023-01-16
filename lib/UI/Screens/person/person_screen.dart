@@ -10,12 +10,14 @@ import 'package:jaddah_household_survey/UI/Screens/person/components/next_step.d
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
+import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/text.dart';
 import '../../Widgets/text_form_field.dart';
 import '../Survey/components/q5.dart';
+import '../trips/trip_screen.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
 
@@ -206,6 +208,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     }
                                                   });
                                                 },
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 widthForm: width(context) * .15,
                                                 label: "age",
                                                 controller: base[i]
@@ -322,7 +326,36 @@ class _PersonScreenState extends State<PersonScreen> {
                         ),
                       ),
                     AppSize.spaceHeight2(context),
-                    const NextStep(),
+                    DefaultButton(
+                      function: () {
+                        if (_key.currentState!.validate()) {
+                          _key.currentState!.save();
+
+                          SavePersonData.saveData(context);
+                          print(PersonModelList
+                              .personModelList[0].personalHeadData!.age.text);
+
+                          print('Saving Data :: ');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TripScreen(),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("يوجد خطأ بالبيانات"),
+                              duration: Duration(seconds: 3),
+                              elevation: 1,
+                            ),
+                          );
+                        }
+                      },
+                      isWidget: true,
+                      text: "التالي",
+                      widget: const Icon(Icons.arrow_forward),
+                    ),
                   ],
                 ),
               ),

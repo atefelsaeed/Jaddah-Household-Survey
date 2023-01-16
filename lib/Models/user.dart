@@ -2,9 +2,7 @@ class User {
   late final int id;
   late final String name;
   late final String email;
-  // late final String phone;
   late final String password;
-  // late final String avatar;
 
   User({
     required this.id,
@@ -14,16 +12,10 @@ class User {
   });
 
   User.fromJson(Map<String, dynamic> json) {
-    print(json);
-    // print(json);
     id = json['id'];
-    // print(json);
     name = json['name'];
     password = json['password'];
     email = json['email'];
-
-    // print(json['expires']);
-    // print('tmam');
   }
 
   Map<String, dynamic> toJson() {

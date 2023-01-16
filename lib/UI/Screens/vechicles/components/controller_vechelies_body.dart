@@ -65,7 +65,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                     }),
                 VehiclesData.vecModel[index].isChosen == true
                     ? MyTextForm(
-                        textInputType: TextInputType.number,
+                        keyboardType: TextInputType.number,
                         widthForm: width(context) * .120,
                         controller:
                             VehiclesData.vecModel[index].textEditingController,
@@ -76,7 +76,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                               switch (VehiclesData.vecModel[index].title) {
                                 case "سيارة":
                                   VehModel.vecCar = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
+                                  for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.vecCar.add(
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
+import 'package:jaddah_household_survey/UI/Screens/UserSurveys/userSurveys.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
@@ -14,7 +15,7 @@ import '../Survey/syrvey_screen.dart';
 import 'itemHomeSurvey.dart';
 
 class ChooseSurveyBody extends StatefulWidget {
-   ChooseSurveyBody({Key? key}) : super(key: key);
+  ChooseSurveyBody({Key? key}) : super(key: key);
 
   @override
   State<ChooseSurveyBody> createState() => _ChooseSurveyBodyState();
@@ -28,7 +29,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
     super.initState();
 
     subscription = Connectivity().onConnectivityChanged.listen(
-          (ConnectivityResult result) {
+      (ConnectivityResult result) {
         if (result == ConnectivityResult.mobile ||
             result == ConnectivityResult.wifi) setState(() {});
         // Got a new connectivity status!
@@ -43,6 +44,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
 
     subscription.cancel();
   }
+
   @override
   Widget build(BuildContext context) {
     SurveysProvider p = Provider.of<SurveysProvider>(context);
@@ -70,8 +72,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
         padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(ImageAssets.homeBackground),
-              fit: BoxFit.fill),
+              image: AssetImage(ImageAssets.homeBackground), fit: BoxFit.fill),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -89,36 +90,16 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SurveyScreen(),
+                        builder: (context) =>
+                            UserSurveysScreen(id: auth.user!.id),
                       ),
                     );
                   },
                   child: ItemHomeSurvey(
-                      count: surveyList.length != null
-                          ? surveyList.length
-                          : 0)),
-              InkWell(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>
-                    //         const UserSurveysScreen(),
-                    //   ),
-                    // );
-                  },
-                  child: const ItemHomeSurvey(count: 0)),
-              InkWell(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>
-                    //         const UserSurveysScreen(),
-                    //   ),
-                    // );
-                  },
-                  child: const ItemHomeSurvey(count: 0)),
+                      count:
+                          surveyList.length != null ? surveyList.length : 0)),
+              InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
+              InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
             ],
           ),
         ));

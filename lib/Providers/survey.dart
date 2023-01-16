@@ -27,27 +27,6 @@ abstract class SurveyProvider with ChangeNotifier {
     _authHeader = authHeader;
   }
 
-  // Future<bool> fetch() async {
-  //   // var response = await APIHelper.getData(
-  //   //   url: "events/${_data.id}",
-  //   //   body: _authHeader,
-  //   // );
-  //   // print('fetching');
-  //   // if (response.statusCode == 200) {
-  //   //   var data = json.decode(response.body);
-  //   //   _members = (data['data']['familyMembers'] as List)
-  //   //       .map((e) => MemberInfo.fromJson(e))
-  //   //       .toList();
-  //   //   _members.insert(0, MemberInfo(id: -1, name: "Me", image: ''));
-  //   //   notifyListeners();
-  //   //   return true;
-  //   // } else {
-  //   //   throw Future.error('Couldn\'t fetch data');
-  //   // }
-  //   notifyListeners();
-  //   return true;
-  // }
-
   Future<bool> sync({callback, bool force = false}) async {
     // print('trying to ${data.header.date}');
     final prefs = await SharedPreferences.getInstance();
@@ -127,7 +106,7 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set headerEmpNumber(int l);
 
-  int ?get headerInterviewNumber;
+  int? get headerInterviewNumber;
 
   set headerInterviewNumber(int? l);
 

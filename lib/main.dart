@@ -12,6 +12,7 @@ import 'Helper/LifecycleEventHandlerClass.dart';
 import 'Helper/messageHandler.dart';
 import 'Providers/auth.dart';
 import 'Providers/surveys.dart';
+import 'Providers/user_surveys.dart';
 import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
@@ -60,6 +61,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => SurveyPTProvider(SurveyPT())),
         ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
+        ChangeNotifierProvider<UserSurveysProvider>(create: (ctx) => UserSurveysProvider()),
         ChangeNotifierProxyProvider<Auth, SurveysProvider>(
           create: (ctx) => SurveysProvider(),
           update: (ctx, _auth, _old) =>

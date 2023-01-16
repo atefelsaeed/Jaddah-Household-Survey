@@ -100,10 +100,12 @@ class PersonData {
 
   static Map<String, dynamic> workplace = {
     "what best describe your workplace location(s)?": [
-      'Have one work location (outside of home, may also telework)',
-      'Work location regularly varies (work in different offices or jobsites)',
-      'Work at home only (only telework or self-employed)',
-      'Drive/Travel for a living (e.g. Bus/truck driver, delivery person)',
+      'سيارة',
+      'سيارة كبيرة',
+      'ونيت',
+      'شاحنة',
+      'دراجة نارية',
+      'سكوتر الكترونى',
     ],
     "title": "mainMade",
     "subTitle": "mainMade",

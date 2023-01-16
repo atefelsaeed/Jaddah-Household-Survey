@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,6 +19,20 @@ class ItemUserSurvey extends StatelessWidget {
       mode: LaunchMode.externalApplication,
     )) {
       throw 'Could not launch $url';
+    }
+  }
+
+  launchURL(String lat, long) async {
+    final String googleMapslocationUrl =
+        "https://www.google.com/maps/search/?api=1&query=$lat,$long";
+
+    final String encodedURl = Uri.encodeFull(googleMapslocationUrl);
+    print(encodedURl);
+    if (await canLaunch(encodedURl)) {
+      await launch(encodedURl);
+    } else {
+      print('Could not launch $encodedURl');
+      throw 'Could not launch $encodedURl';
     }
   }
 
@@ -39,7 +54,13 @@ class ItemUserSurvey extends StatelessWidget {
               ),
               const Spacer(),
               DefaultButton(
-                function: () {},
+                function: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SurveyScreen()),
+                  );
+                },
                 isWidget: true,
                 text: 'بدأ استبيان',
                 btnWidth: width(context) * .35,
@@ -60,8 +81,7 @@ class ItemUserSurvey extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () async {
-                  var uri = Uri.parse(itemSurveyModel.locationLink);
-                  await _launchInBrowser(uri);
+                  await launchURL(itemSurveyModel.lat, itemSurveyModel.long);
                 },
                 child: Text(
                   'افتح خرائط جوجل',

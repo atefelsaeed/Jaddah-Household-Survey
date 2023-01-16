@@ -73,7 +73,7 @@ class Employee extends StatelessWidget {
               options: PersonData.workplace[PersonData.workplace.keys.first]!
                   .toList(),
               onChange: (String? p) {
-                // PersonModelList.personModelList[i].personalQuestion.=p.toString();
+                PersonModelList.personModelList[i].occupationModel!.bestWorkspaceLocation=p.toString();
               },
             ),
             DropDownFormInput(
