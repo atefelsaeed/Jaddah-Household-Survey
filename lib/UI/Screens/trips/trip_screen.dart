@@ -75,260 +75,235 @@ class _TripScreenState extends State<TripScreen> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-            child: Directionality(
-          textDirection: TextDirection.ltr,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Form(
-              key: _key,
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: Column(
-                  children: [
-                    const HeadlinePerson(text: "الرحلات"),
-                    AppSize.spaceHeight2(context),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DefaultButton(
-                          function: () {
-                            setState(() {
-                              TripModeList.tripModeList.add(TripsModel(
-                                type: false,
-                                isTravelAlone: false,
-                                tripReason: "",
-                                taxiTravelTypeEditingControl:
-                                    TextEditingController(),
-                                //whereDidYouGo
-                                purposeTravel: "",
-                                departureTime: TextEditingController(),
-                                typeTravel: '',
-                                typeTravelCondition: "0",
-                                travelTypeModel: TravelTypeModel(
-                                  carParkingPlace: "",
-                                  otherWhereDidYouParking:
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Form(
+                key: _key,
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Column(
+                    children: [
+                      const HeadlinePerson(text: "الرحلات"),
+                      AppSize.spaceHeight2(context),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          DefaultButton(
+                            function: () {
+                              setState(() {
+                                TripModeList.tripModeList.add(TripsModel(
+                                  type: false,
+                                  isTravelAlone: false,
+                                  tripReason: "",
+                                  taxiTravelTypeEditingControl:
                                       TextEditingController(),
-                                  ticketSub: TextEditingController(),
-                                  taxiTravelTypeOther: TextEditingController(),
-                                  taxiFare: TextEditingController(),
-                                  taxiTravelType: '',
-                                  travelType: '',
-                                  passTravelType: '',
-                                  publicTransportFare: '',
-                                ),
-                                travelWay: TravelWay(
-                                  mainMode: "",
-                                  accessMode: "",
-                                ),
-                                travelWithOtherModel: TravelWithOtherModel(
-                                    adultsNumber: TextEditingController(),
-                                    childrenNumber: TextEditingController(),
-                                    hhsMembersTraveled: "",
-                                    text: "?If with other how many"),
-                                travelAloneHouseHold: TravelWithOtherModel(
-                                    adultsNumber: TextEditingController(),
-                                    childrenNumber: TextEditingController(),
-                                    hhsMembersTraveled: "",
-                                    text: "Non Household persons"),
-                                arrivalDepartTime: ArrivalDepartTime(
-                                  arriveDestinationTime:
-                                      TextEditingController(),
-                                  departTime: TextEditingController(),
-                                  numberRepeatTrip: '',
-                                ),
-                                startBeginningModel: StartBeginningModel(
-                                  area: TextEditingController(),
-                                  buildingName: TextEditingController(),
-                                  city: TextEditingController(),
-                                  block: TextEditingController(),
-                                  nearestLandMark: TextEditingController(),
-                                  streetName: TextEditingController(),
-                                  streetNumber: TextEditingController(),
-                                  referToMap: TextEditingController(),
-                                ),
-                                endingAddress: StartBeginningModel(
-                                  area: TextEditingController(),
-                                  buildingName: TextEditingController(),
-                                  city: TextEditingController(),
-                                  block: TextEditingController(),
-                                  nearestLandMark: TextEditingController(),
-                                  streetName: TextEditingController(),
-                                  streetNumber: TextEditingController(),
-                                  referToMap: TextEditingController(),
-                                ),
-                              ));
-                            });
+                                  //whereDidYouGo
+                                  purposeTravel: "",
+                                  departureTime: TextEditingController(),
+                                  typeTravel: '',
+                                  typeTravelCondition: "0",
+                                  travelTypeModel: TravelTypeModel(
+                                    carParkingPlace: "",
+                                    otherWhereDidYouParking:
+                                        TextEditingController(),
+                                    ticketSub: TextEditingController(),
+                                    taxiTravelTypeOther: TextEditingController(),
+                                    taxiFare: TextEditingController(),
+                                    taxiTravelType: '',
+                                    travelType: '',
+                                    passTravelType: '',
+                                    publicTransportFare: '',
+                                  ),
+                                  travelWay: TravelWay(
+                                    mainMode: "",
+                                    accessMode: "",
+                                  ),
+                                  travelWithOtherModel: TravelWithOtherModel(
+                                      adultsNumber: TextEditingController(),
+                                      childrenNumber: TextEditingController(),
+                                      hhsMembersTraveled: "",
+                                      text: "?If with other how many"),
+                                  travelAloneHouseHold: TravelWithOtherModel(
+                                      adultsNumber: TextEditingController(),
+                                      childrenNumber: TextEditingController(),
+                                      hhsMembersTraveled: "",
+                                      text: "Non Household persons"),
+                                  arrivalDepartTime: ArrivalDepartTime(
+                                    arriveDestinationTime:
+                                        TextEditingController(),
+                                    departTime: TextEditingController(),
+                                    numberRepeatTrip: '',
+                                  ),
+                                  startBeginningModel: StartBeginningModel(
+                                    area: TextEditingController(),
+                                    buildingName: TextEditingController(),
+                                    city: TextEditingController(),
+                                    block: TextEditingController(),
+                                    nearestLandMark: TextEditingController(),
+                                    streetName: TextEditingController(),
+                                    streetNumber: TextEditingController(),
+                                    referToMap: TextEditingController(),
+                                  ),
+                                  endingAddress: StartBeginningModel(
+                                    area: TextEditingController(),
+                                    buildingName: TextEditingController(),
+                                    city: TextEditingController(),
+                                    block: TextEditingController(),
+                                    nearestLandMark: TextEditingController(),
+                                    streetName: TextEditingController(),
+                                    streetNumber: TextEditingController(),
+                                    referToMap: TextEditingController(),
+                                  ),
+                                ));
+                              });
 
-                            //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
-                          },
-                          isWidget: true,
-                          btnWidth: width(context) * .24,
-                          text: "أضافة رحلة جديدة",
-                          widget: const Icon(Icons.arrow_forward),
-                        )
-                      ],
-                    ),
-                    AppSize.spaceHeight2(context),
-                    for (int i = 0; i < TripModeList.tripModeList.length; i++)
-                      Padding(
-                        padding: EdgeInsets.all(AppSize.padding1(context)),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: ColorManager.gray2Color)),
-                          child: Padding(
-                            padding: EdgeInsets.all(AppSize.padding2(context)),
-                            child: Column(
-                              children: [
-                                TextTrip(index: i),
-                                AppSize.spaceHeight2(context),
-                                TripHoldAddress(
-                                  tripModel: TripModeList
-                                      .tripModeList[i].startBeginningModel!,
-                                  titel: "من أین بدأت الیوم؟",
-                                ),
-                                AppSize.spaceHeight3(context),
-                                const HeadlineTrip(
-                                    text: "ما ھو الغرض من التواجد ھناك؟"),
-                                const Divider(),
-                                PurposeOfTheBeing(
-                                  indexTripModel: i,
-                                ),
-                                AppSize.spaceHeight3(context),
-                                const Divider(),
-                                TimeLeave(
-                                  expectedDeparture: TripModeList
-                                      .tripModeList[i].departureTime!,
-                                ),
-                                AppSize.spaceHeight3(context),
-                                TripHoldAddress(
-                                  tripModel: TripModeList
-                                      .tripModeList[i].endingAddress!,
-                                  titel: "الى أي عنوان ذھبت؟",
-                                ),
-                                AppSize.spaceHeight2(context),
-                                const Divider(),
-                                const HeadlineTrip(
-                                    text:
-                                        "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
-                                AppSize.spaceHeight2(context),
-                                const Divider(),
-                                WhyDidYouGo(
-                                  indexTripModel: i,
-                                ),
-                                AppSize.spaceHeight2(context),
-                                HowDidYouTravel(
-                                  i: i,
-                                ),
-                                AppSize.spaceHeight2(context),
-                                const Divider(),
-                                AppSize.spaceHeight2(context),
-                                TravelAlone(index: i),
-                                AppSize.spaceHeight2(context),
-                                WhereDidYouPark(
-                                  costTaxi: TripModeList.tripModeList[i]
-                                      .travelTypeModel!.taxiFare!,
-                                  index: i,
-                                ),
-                                AppSize.spaceHeight2(context),
-                                DepartTime(
-                                  tripModel: TripModeList.tripModeList[i],
-                                  i: i,
-                                  textEditingControl: TripModeList
-                                      .tripModeList[i]
-                                      .taxiTravelTypeEditingControl!,
-                                ),
-                              ],
+                              //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
+                            },
+                            isWidget: true,
+                            btnWidth: width(context) * .24,
+                            text: "أضافة رحلة جديدة",
+                            widget: const Icon(Icons.arrow_forward),
+                          )
+                        ],
+                      ),
+                      AppSize.spaceHeight2(context),
+                      for (int i = 0; i < TripModeList.tripModeList.length; i++)
+                        Padding(
+                          padding: EdgeInsets.all(AppSize.padding1(context)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: ColorManager.gray2Color)),
+                            child: Padding(
+                              padding: EdgeInsets.all(AppSize.padding2(context)),
+                              child: Column(
+                                children: [
+                                  TextTrip(index: i),
+                                  AppSize.spaceHeight2(context),
+                                  TripHoldAddress(
+                                    tripModel: TripModeList
+                                        .tripModeList[i].startBeginningModel!,
+                                    titel: "من أین بدأت الیوم؟",
+                                  ),
+                                  AppSize.spaceHeight3(context),
+                                  const HeadlineTrip(
+                                      text: "ما ھو الغرض من التواجد ھناك؟"),
+                                  const Divider(),
+                                  PurposeOfTheBeing(
+                                    indexTripModel: i,
+                                  ),
+                                  AppSize.spaceHeight3(context),
+                                  const Divider(),
+                                  TimeLeave(
+                                    expectedDeparture: TripModeList
+                                        .tripModeList[i].departureTime!,
+                                  ),
+                                  AppSize.spaceHeight3(context),
+                                  TripHoldAddress(
+                                    tripModel: TripModeList
+                                        .tripModeList[i].endingAddress!,
+                                    titel: "الى أي عنوان ذھبت؟",
+                                  ),
+                                  AppSize.spaceHeight2(context),
+                                  const Divider(),
+                                  const HeadlineTrip(
+                                      text:
+                                          "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
+                                  AppSize.spaceHeight2(context),
+                                  const Divider(),
+                                  WhyDidYouGo(
+                                    indexTripModel: i,
+                                  ),
+                                  AppSize.spaceHeight2(context),
+                                  HowDidYouTravel(
+                                    i: i,
+                                  ),
+                                  AppSize.spaceHeight2(context),
+                                  const Divider(),
+                                  AppSize.spaceHeight2(context),
+                                  TravelAlone(index: i),
+                                  AppSize.spaceHeight2(context),
+                                  WhereDidYouPark(
+                                    costTaxi: TripModeList.tripModeList[i]
+                                        .travelTypeModel!.taxiFare!,
+                                    index: i,
+                                  ),
+                                  AppSize.spaceHeight2(context),
+                                  DepartTime(
+                                    tripModel: TripModeList.tripModeList[i],
+                                    i: i,
+                                    textEditingControl: TripModeList
+                                        .tripModeList[i]
+                                        .taxiTravelTypeEditingControl!,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
+                      AppSize.spaceHeight2(context),
+                      DefaultButton(
+                        function: () {
+
+                   if (_key.currentState!.validate()) {
+                            getLocation().then(
+                              (value) {
+                                Random random = Random();
+                                int randomNumber =
+                                    (1000 + random.nextInt(10000 - 1000));
+                                int num =
+                                    int.parse('${auth.uid}001$randomNumber');
+                                surveyPt.headerLat = value.latitude ?? 0;
+                                surveyPt.interViewDate = DateTime.now();
+                                surveyPt.headerLong = value.longitude ?? 0;
+                                surveyPt.headerEmpNumber = auth.uid;
+                                surveyPt.headerInterviewNumber = num;
+                                surveyPt.id = auth.uid.toString();
+                                SaveTripsData.saveData(context);
+                                print("after save");
+                                surveys.addSurvey(surveyPt.data);
+                                print('Saving Data :: ');
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ChooseSurveysScreen(),
+                                  ),
+                                );
+                              },
+                            ).onError(
+                              (error, stackTrace) {
+                                print(error);
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("يجب تشغيل خدمة تحديد الموقع"),
+                                    duration: Duration(seconds: 3),
+                                    elevation: 1,
+                                  ),
+                                );
+                              },
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("يوجد خطأ بالبيانات"),
+                                duration: Duration(seconds: 3),
+                                elevation: 1,
+                              ),
+                            );
+                          }
+                        },
+                        isWidget: true,
+                        text: "أنتهينا",
+                        widget: const Icon(Icons.arrow_forward),
                       ),
-                    AppSize.spaceHeight2(context),
-                    DefaultButton(
-                      function: () {
-
-                        Random random = Random();
-                        int randomNumber =
-                        (1000 + random.nextInt(10000 - 1000));
-                        int num =
-                        int.parse('${auth.uid}001$randomNumber');
-                        surveyPt.headerLat = 0;
-                        surveyPt.interViewDate = DateTime.now();
-                        surveyPt.headerLong = 0;
-                        surveyPt.headerEmpNumber = auth.uid;
-                        surveyPt.headerInterviewNumber = num;
-                        surveyPt.id = auth.uid.toString();
-                        SaveTripsData.saveData(context);
-                        print("after save");
-                        surveys.addSurvey(surveyPt.data);
-                        print('Saving Data :: ');
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                            const ChooseSurveysScreen(),
-                          ),
-                        );
-                  /*      if (_key.currentState!.validate()) {
-                          getLocation().then(
-                            (value) {
-                              Random random = Random();
-                              int randomNumber =
-                                  (1000 + random.nextInt(10000 - 1000));
-                              int num =
-                                  int.parse('${auth.uid}001$randomNumber');
-                              surveyPt.headerLat = value.latitude ?? 0;
-                              surveyPt.interViewDate = DateTime.now();
-                              surveyPt.headerLong = value.longitude ?? 0;
-                              surveyPt.headerEmpNumber = auth.uid;
-                              surveyPt.headerInterviewNumber = num;
-                              surveyPt.id = auth.uid.toString();
-                              SaveTripsData.saveData(context);
-                              print("after save");
-                              surveys.addSurvey(surveyPt.data);
-                              print('Saving Data :: ');
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ChooseSurveysScreen(),
-                                ),
-                              );
-                            },
-                          ).onError(
-                            (error, stackTrace) {
-                              print(error);
-
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("يجب تشغيل خدمة تحديد الموقع"),
-                                  duration: Duration(seconds: 3),
-                                  elevation: 1,
-                                ),
-                              );
-                            },
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text("يوجد خطأ بالبيانات"),
-                              duration: Duration(seconds: 3),
-                              elevation: 1,
-                            ),
-                          );
-                        }*/
-                      },
-                      isWidget: true,
-                      text: "أنتهينا",
-                      widget: const Icon(Icons.arrow_forward),
-                    ),
-                    AppSize.spaceHeight2(context),
-                  ],
+                      AppSize.spaceHeight2(context),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        )),
+            )),
       ),
     );
   }

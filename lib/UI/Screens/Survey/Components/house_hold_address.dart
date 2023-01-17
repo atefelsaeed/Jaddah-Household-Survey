@@ -119,8 +119,8 @@ class HouseHoldAddress extends StatelessWidget {
               ),
               TextForm(
                 controller: area,
-                text: "المنطقة (الضاحية)",
-                label: "المنطقة (الضاحية)",
+                text: "المنطقة (الحى)",
+                label: "المنطقة (الحى)",
               )
             ],
           ),
@@ -133,8 +133,8 @@ class HouseHoldAddress extends StatelessWidget {
             children: [
               TextForm(
                 controller: city,
-                text: "المدينة / البلدة",
-                label: "المدينة / البلدة",
+                text: "المدينة",
+                label: "المدينة",
               ),
               //  TextForm(controller: area,text: "Area (Suburb)",label: "أدخل  Area (Suburb) ",)
             ],

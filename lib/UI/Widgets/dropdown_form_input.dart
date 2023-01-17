@@ -48,7 +48,7 @@ class DropDownFormInput2<T> extends StatelessWidget {
           AppSize.spaceHeight1(context),
           SizedBox(
             width: width(context) * .4,
-            height: height(context) * .06,
+            height: height(context) * .1,
             child: Directionality(
               textDirection: TextDirection.ltr,
               child: InputDecorator(

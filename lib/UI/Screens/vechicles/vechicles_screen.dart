@@ -78,25 +78,8 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     //   editingController3: VehModel.editingController3,
                     // ),
                     AppSize.spaceHeight3(context),
-                    const NearestTransporter(),
-                    AppSize.spaceHeight3(context),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: TextFormer(
-                            controller: VehModel.editingController3.totalNumber,
-                            text:
-                                "3.خلال الأسبوع الماضي ، كم عدد الطرود والبقالة والأطعمة والإمدادات الأخرى التي استلمتھا أسرتك",
-                            label: "أدخل ",
-                            headLabel: '',
-                            type: TextInputType.number,
-                          ),
-                        ),
-                      ],
-                    ),
+
                     AppSize.spaceHeight2(context),
                     DefaultButton(
                       function: () {

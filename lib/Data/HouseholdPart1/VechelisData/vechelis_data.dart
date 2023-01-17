@@ -84,11 +84,11 @@ class VehiclesData {
   static Map<String, dynamic> q3VecData = {
     " How far is the nearest public transport bus stop from your home by walk (in minutes) ?":
         [
-      {"value": '< 5 mins walk', "isChick": false},
-      {"value": '6-10 mins walk', "isChick": false},
-      {"value": '11  - 15 mins walk', "isChick": false},
-      {"value": ' More than 15 mins', "isChick": false},
-      {"value": ' don’t know', "isChick": false},
+      {"value": '<5 دقائق سيرا على الأقدام', "isChick": false},
+      {"value": '6-10 دقائق سيرا على الأقدام', "isChick": false},
+      {"value": '11 - 15 دقيقة مشي', "isChick": false},
+      {"value": ' أكثر من 15 دقيقة', "isChick": false},
+      {"value": ' لا اعرف', "isChick": false},
     ]
   };
 }

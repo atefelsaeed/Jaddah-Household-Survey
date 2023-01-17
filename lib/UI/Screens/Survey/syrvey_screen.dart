@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_model.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/q5.dart';
@@ -12,6 +13,7 @@ import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../vechicles/components/nearest_transporter.dart';
 import '../vechicles/vechicles_screen.dart';
 import 'components/house_hold_address.dart';
 
@@ -299,6 +301,25 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           HhsStatic.householdQuestions.hhsTotalIncome = p;
                           print(HhsStatic.householdQuestions.hhsTotalIncome);
                         },
+                      ),
+                    ],
+                  ),
+                  AppSize.spaceHeight3(context),
+                  const NearestTransporter(),
+                  AppSize.spaceHeight3(context),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: TextFormer(
+                          controller: VehModel.editingController3.totalNumber,
+                          text:
+                              " خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
+                          label: "أدخل ",
+                          headLabel: '',
+                          type: TextInputType.number,
+                        ),
                       ),
                     ],
                   ),

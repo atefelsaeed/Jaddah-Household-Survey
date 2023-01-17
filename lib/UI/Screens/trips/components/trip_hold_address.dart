@@ -72,8 +72,8 @@ final String titel;
               ),
               TextForm(
                 controller: tripModel.area!,
-                text: "المنطقة (الضاحیة)",
-                label: "المنطقة (الضاحیة)",
+                text: "المنطقة (الحى)",
+                label: "المنطقة (الحى)",
               )
             ],
           ),
@@ -86,14 +86,9 @@ final String titel;
             children: [
               TextForm(
                 controller: tripModel.city!,
-                text: "المدينة / البلدة",
-                label: "أدخل  City/ Town",
+                text: "المدينة",
+                label: "أدخل المدينة",
               ),
-              // TextForm(
-              //   controller: tripModel.referToMap!,
-              //   text: "Refer to Map",
-              //   label: "أدخل  Refer to Map ",
-              // )
             ],
           ),
         ),
