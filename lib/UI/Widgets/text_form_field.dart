@@ -74,23 +74,21 @@ class MyTextForm extends StatelessWidget {
                       ))
                   : null,
               prefixIcon: prefixIcon,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: ColorManager.gray2Color,
-                  width: 1.0,
-                ),
+                borderSide: BorderSide(width: 1, color: Colors.grey.shade400),
+                borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: ColorManager.gray2Color,
-                  width: 1.0,
-                ),
+                borderSide:
+                BorderSide(width: 1.5, color: ColorManager.primaryColor),
+                borderRadius: BorderRadius.circular(10.0),
               ),
-              errorBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.red,
-                  width: 1.0,
-                ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 1.5, color: ColorManager.error),
+                borderRadius: BorderRadius.circular(10.0),
               ),
             ),
             textDirection: TextDirection.ltr,

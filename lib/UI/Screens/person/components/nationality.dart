@@ -44,11 +44,12 @@ class _NationalityState extends State<Nationality> {
 
             print(base.personalHeadData!.nationalityType);
           },
+          isListView: true,
           title: "الجنسية ",
           question: PersonData.nationality[PersonData.nationality.keys.first]!
               .toList(),
           subTitle:
-              "record passport/nationality on which a person has the UAE residence visa ",
+              " في حالة ازدواج الجنسية ؛ يرجى تسجيل جواز السفر / الجنسية التي يحمل عليها الشخص تأشيرة الإقامة في المملكة العربية السعودية ",
         ),
         AppSize.spaceHeight2(context),
         showText == true
@@ -61,7 +62,7 @@ class _NationalityState extends State<Nationality> {
                   ),
                   AppSize.spaceWidth2(context),
                   TextGlobal(
-                    text: "Write down your nationality",
+                    text: "اكتب جنسيتك",
                     fontSize: height(context) * .023,
                     color: ColorManager.gray2Color,
                   ),

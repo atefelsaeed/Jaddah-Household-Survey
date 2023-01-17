@@ -80,9 +80,9 @@ class Auth with ChangeNotifier {
   Future<bool> login(String? email, String? password) async {
     _isAuth = false;
     print("trying");
-    _users.forEach((element) {
+    for (var element in _users) {
       print(element.toJson());
-    });
+    }
     for (User u in _users) {
       if (u.email == email) {
         if (u.password == password) {

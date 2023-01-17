@@ -12,67 +12,65 @@ class HouseholdAddressSection extends StatefulWidget {
 class _HouseholdAddressSectionState extends State<HouseholdAddressSection> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Flexible(
-                flex: 1,
-                child: Row(
-                  children: [
-                    Text('District Name:'),
-                    TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: const InputDecoration(
-                        label: Text("District Name"),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                      ),
-                      validator: (String? value) => Validator.validateEmpty(
-                        value: value,
-                        message: "يجب اعطاء اجابة",
-                      ),
-                      onChanged: (String? s) {
-                        //-------------send data to backend------------------
-                        // survey.data.header.districtName = s!;
-                        // print(survey.journeyStarDistrictName);
-                      },
+    return Column(
+      children: [
+        Row(
+          children: [
+            Flexible(
+              flex: 1,
+              child: Row(
+                children: [
+                  const Text('District Name:'),
+                  TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                      label: Text("District Name"),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 8),
                     ),
-                    const SizedBox(height: 10),
-
-                  ],
-                ),
-              ),
-              Flexible(
-                flex: 1,
-                child: Row(
-                  children: [
-                    Text('Zone Number:'),
-                    TextFormField(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: const InputDecoration(
-                        label: Text("Zone Number"),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                      ),
-                      validator: (String? value) => Validator.validateEmpty(
-                        value: value,
-                        message: "يجب اعطاء اجابة",
-                      ),
-                      onChanged: (String? s) {
-                        //-------------send data to backend------------------
-                        // survey.data.header.districtName = s!;
-                        // print(survey.journeyStarDistrictName);
-                      },
+                    validator: (String? value) => Validator.validateEmpty(
+                      value: value,
+                      message: "يجب اعطاء اجابة",
                     ),
-                    const SizedBox(height: 10),
+                    onChanged: (String? s) {
+                      //-------------send data to backend------------------
+                      // survey.data.header.districtName = s!;
+                      // print(survey.journeyStarDistrictName);
+                    },
+                  ),
+                  const SizedBox(height: 10),
 
-                  ],
-                ),
+                ],
               ),
-            ],
-          )
-        ],
-      ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Row(
+                children: [
+                  const Text('Zone Number:'),
+                  TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                      label: Text("Zone Number"),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                    ),
+                    validator: (String? value) => Validator.validateEmpty(
+                      value: value,
+                      message: "يجب اعطاء اجابة",
+                    ),
+                    onChanged: (String? s) {
+                      //-------------send data to backend------------------
+                      // survey.data.header.districtName = s!;
+                      // print(survey.journeyStarDistrictName);
+                    },
+                  ),
+                  const SizedBox(height: 10),
+
+                ],
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

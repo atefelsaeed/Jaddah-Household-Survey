@@ -24,7 +24,7 @@ class _SaveButtonState extends State<SaveButton> {
   }
 
   Future<LocationData> getLocation() async {
-    Location location = new Location();
+    Location location = Location();
 
     bool _serviceEnabled;
     PermissionStatus _permissionGranted;

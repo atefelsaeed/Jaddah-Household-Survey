@@ -5,7 +5,6 @@ import '../../../Providers/auth.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/connection_error.dart';
-import '../UserSurveys/userSurveys.dart';
 import 'chooseSurveyBody.dart';
 
 class ChooseSurveysScreen extends StatefulWidget {
@@ -65,7 +64,7 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
                       child: ConnectionError(() => setState(() => {})),
                     )
                   : dataSnapshot.hasData
-                      ? ChooseSurveyBody()
+                      ? const ChooseSurveyBody()
                       : const Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Center(

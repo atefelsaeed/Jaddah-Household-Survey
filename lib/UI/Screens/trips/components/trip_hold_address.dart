@@ -28,12 +28,12 @@ final String titel;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.buildingName!,
+                controller: tripModel.buildingName,
                 text: "اسم المبنى",
                 label: "اسم المبنى",
               ),
               TextForm(
-                controller: tripModel.streetName!,
+                controller: tripModel.streetName,
                 text: "أسم الشارع",
                 label: "أسم الشارع",
               )
@@ -47,14 +47,15 @@ final String titel;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.streetNumber!,
+                controller: tripModel.streetNumber,
                 label: "رقم الشارع",
                 text: "رقم الشارع",
+                keyboardType: TextInputType.number,
               ),
               TextForm(
-                controller: tripModel.nearestLandMark!,
+                controller: tripModel.nearestLandMark,
                 label: "اقرب معلم",
-                text: "",
+                text: "اقرب معلم",
               )
             ],
           ),
@@ -66,12 +67,12 @@ final String titel;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.block!,
+                controller: tripModel.block,
                 text: "مجمع / أقرب شارعین متقاطعین",
                 label: "مجمع / أقرب شارعین متقاطعین",
               ),
               TextForm(
-                controller: tripModel.area!,
+                controller: tripModel.area,
                 text: "المنطقة (الحى)",
                 label: "المنطقة (الحى)",
               )
@@ -85,7 +86,7 @@ final String titel;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.city!,
+                controller: tripModel.city,
                 text: "المدينة",
                 label: "أدخل المدينة",
               ),

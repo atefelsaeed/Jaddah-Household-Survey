@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/Helper/validator.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
@@ -13,13 +12,14 @@ class TextForm extends StatelessWidget {
   final String text;
 
   bool? readOnly;
-  Function? onTap;
+  TextInputType? keyboardType;
 
   TextForm(
       {super.key,
       required this.controller,
       required this.label,
       required this.text,
+      this.keyboardType,
       this.readOnly,
       this.fontSize});
 
@@ -40,6 +40,7 @@ class TextForm extends StatelessWidget {
           label: label,
           controller: controller,
           readOnly: readOnly,
+          keyboardType: keyboardType ?? TextInputType.text,
         ),
       ],
     );

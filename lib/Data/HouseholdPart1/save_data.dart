@@ -58,9 +58,9 @@ class SaveVehiclesData {
         vehicleTypeDetails: VehModel.pickUp,
       ),
       VehiclesBodyType(
-        vehicleTypeName: 'Other',
-        vehicleTypeQuantity: VehModel.other.length,
-        vehicleTypeDetails: VehModel.other,
+        vehicleTypeName: 'Wanet',
+        vehicleTypeQuantity: VehModel.vecWanet.length,
+        vehicleTypeDetails: VehModel.vecWanet,
       )
     ];
     survey.vehiclesBodyType = vehicles;

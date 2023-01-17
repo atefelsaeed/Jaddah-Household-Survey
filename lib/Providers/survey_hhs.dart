@@ -115,29 +115,29 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  String? get hhsBuildingName => _data.header.householdAddress!.buildingName;
+  String? get hhsBuildingName => _data.header.householdAddress.buildingName;
 
   @override
   set hhsBuildingName(String? i) {
-    _data.header.householdAddress!.buildingName = i;
+    _data.header.householdAddress.buildingName = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsStreetName => _data.header.householdAddress!.streetName;
+  String? get hhsStreetName => _data.header.householdAddress.streetName;
 
   @override
   set hhsStreetName(String? i) {
-    _data.header.householdAddress!.streetName = i;
+    _data.header.householdAddress.streetName = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsStreetNumber => _data.header.householdAddress!.streetNumber;
+  String? get hhsStreetNumber => _data.header.householdAddress.streetNumber;
 
   @override
   set hhsStreetNumber(String? i) {
-    _data.header.householdAddress!.streetNumber = i;
+    _data.header.householdAddress.streetNumber = i;
     // notifyListeners();
   }
 
@@ -166,7 +166,7 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   set hhsAreaSuburb(String? i) {
-    _data.header.householdAddress!.areaSuburb = i;
+    _data.header.householdAddress.areaSuburb = i;
     // notifyListeners();
   }
 

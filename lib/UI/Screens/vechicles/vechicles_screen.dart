@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_model.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/components/action_vec_screen.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/fuel_type_code.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/motorisedvechiels.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/components/nearest_transporter.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/park_this_car.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
-import '../Survey/widgets/text_form_row.dart';
 import '../person/person_screen.dart';
 import 'components/controller_vechelies_body.dart';
 import 'components/owner_ship_code.dart';

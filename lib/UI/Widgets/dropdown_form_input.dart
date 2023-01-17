@@ -57,7 +57,7 @@ class DropDownFormInput2<T> extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
-                      hint: label,
+                      hint: const Text('إختار'),
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
@@ -146,7 +146,7 @@ class DropDownFormInput<T> extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
-                      hint: label,
+                      hint: const Text('إختار'),//lable
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {

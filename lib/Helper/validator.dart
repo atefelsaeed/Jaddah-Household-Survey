@@ -11,6 +11,7 @@ class Validator {
     if (value.trim().isEmpty) {
       return message;
     }
+    return null;
   }
 
   static String? validatePassword(
@@ -20,6 +21,7 @@ class Validator {
     } else if (value.length < 5) {
       return message;
     }
+    return null;
   }
 
   static String? validateGTE({
@@ -92,6 +94,7 @@ class Validator {
         value.length < 10) {
       return message;
     }
+    return null;
   }
 
   static String? validatePasswordConfirm({

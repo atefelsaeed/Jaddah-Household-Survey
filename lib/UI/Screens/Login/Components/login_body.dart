@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
@@ -48,12 +47,12 @@ class LoginBody extends StatelessWidget {
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
-                            Image(image: AssetImage(ImageAssets.logo)),
+                            const Image(image: AssetImage(ImageAssets.logo)),
                           ],
                         ),
-                        SizedBox(height: 30),
-                        LoginForm(),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 30),
+                        const LoginForm(),
+                        const SizedBox(height: 20),
                       ],
                     ),
                   ),

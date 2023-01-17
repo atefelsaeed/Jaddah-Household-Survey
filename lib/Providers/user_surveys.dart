@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
-import '../Models/user.dart';
 import '../Models/user_serveys_model.dart';
 
 class UserSurveysProvider with ChangeNotifier {
@@ -26,38 +25,38 @@ class UserSurveysProvider with ChangeNotifier {
 
   void searchHAY(String value) {
     searchList.clear();
-    _userSurveysSurveysList.forEach((element) {
+    for (var element in _userSurveysSurveysList) {
       if (element.hAENO
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         searchList.add(element);
       }
-    });
+    }
     notifyListeners();
   }
   void searchQTA(String value) {
     searchList.clear();
-    _userSurveysSurveysList.forEach((element) {
+    for (var element in _userSurveysSurveysList) {
       if (element.qTANO
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         searchList.add(element);
       }
-    });
+    }
     notifyListeners();
   }
   void searchBLOK(String value) {
     searchList.clear();
-    _userSurveysSurveysList.forEach((element) {
+    for (var element in _userSurveysSurveysList) {
       if (element.bLOKNO
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         searchList.add(element);
       }
-    });
+    }
     notifyListeners();
   }
 

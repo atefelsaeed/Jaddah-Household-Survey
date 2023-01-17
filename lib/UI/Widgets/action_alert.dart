@@ -25,7 +25,7 @@ class _ActionAlertState extends State<ActionAlert> {
       ),
       title: didAction ? const SizedBox.shrink() : const Text("هل أنت متأكد؟"),
       content: didAction
-          ? SizedBox(child: widget.actionState, height: 220)
+          ? SizedBox(height: 220, child: widget.actionState)
           : widget.child,
       actions: didAction
           ? []

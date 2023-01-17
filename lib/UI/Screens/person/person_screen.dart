@@ -188,6 +188,13 @@ class _PersonScreenState extends State<PersonScreen> {
                                                 base[i]
                                                     .personalHeadData!
                                                     .checkAge = value!;
+                                                base[i]
+                                                    .personalHeadData!
+                                                    .age
+                                                    .text = '';
+                                                base[i]
+                                                    .personalHeadData!
+                                                    .refuseToTellAge = false;
                                               });
                                             }),
                                         base[i].personalHeadData!.checkAge ==
@@ -263,18 +270,17 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     .refuseToTellAge ==
                                                 true
                                             ? DropDownFormInput2(
-                                                label: Text(PersonData.groupAge[
-                                                        PersonData.groupAge.keys
-                                                            .first]!
-                                                    .toList()
-                                                    .first["value"]
-                                                    .toString()),
+                                                label: const Text('إختار'),
                                                 hint: "الفئة العمرية",
                                                 options: PersonData.groupAge[
                                                         PersonData.groupAge.keys
                                                             .first]!
                                                     .toList(),
                                                 onChange: (String? p) {
+                                                  base[i]
+                                                      .personalHeadData!
+                                                      .checkAge = false;
+
                                                   base[i]
                                                       .personalHeadData!
                                                       .age

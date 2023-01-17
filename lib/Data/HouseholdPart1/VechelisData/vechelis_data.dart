@@ -32,11 +32,11 @@ class VehiclesData {
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
-    VecModel(
-        title: "other",
-        isChosen: false,
-        number: 0,
-        textEditingController: TextEditingController()),
+    // VecModel(
+    //     title: "other",
+    //     isChosen: false,
+    //     number: 0,
+    //     textEditingController: TextEditingController()),
   ];
 
   static Map<String, List<dynamic>> fuelTypeCodes = {

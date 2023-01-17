@@ -43,8 +43,6 @@ class QuestionsData {
     "subTitle":
         " A separate family is defined as who share the kitchen expenses and meals",
     "chosenIndex": 0,
-    "subTitle":
-        " A separate family is defined as who share the kitchen expenses and meals"
   };
   static Map<String, dynamic> qh4 = {
     "? How many separate families live at this address": [

@@ -196,7 +196,7 @@ class _TripScreenState extends State<TripScreen> {
                                   const Divider(),
                                   TimeLeave(
                                     expectedDeparture: TripModeList
-                                        .tripModeList[i].departureTime!,
+                                        .tripModeList[i].departureTime,
                                   ),
                                   AppSize.spaceHeight3(context),
                                   TripHoldAddress(
@@ -225,7 +225,7 @@ class _TripScreenState extends State<TripScreen> {
                                   AppSize.spaceHeight2(context),
                                   WhereDidYouPark(
                                     costTaxi: TripModeList.tripModeList[i]
-                                        .travelTypeModel!.taxiFare!,
+                                        .travelTypeModel!.taxiFare,
                                     index: i,
                                   ),
                                   AppSize.spaceHeight2(context),
@@ -312,7 +312,7 @@ class _TripScreenState extends State<TripScreen> {
 class TextTrip extends StatelessWidget {
   final int index;
 
-  const TextTrip({required this.index});
+  const TextTrip({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {

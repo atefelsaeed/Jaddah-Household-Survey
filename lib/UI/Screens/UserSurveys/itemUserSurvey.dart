@@ -7,7 +7,6 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Models/user_serveys_model.dart';
-import 'itemSurveyModel.dart';
 
 class ItemUserSurvey extends StatelessWidget {
   const ItemUserSurvey({Key? key, required this.itemSurveyModel})
@@ -39,70 +38,68 @@ class ItemUserSurvey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              const Image(image: AssetImage(ImageAssets.lampIcon)),
-              AppSize.spaceWidth1(context),
-              Text(
-                "رقم الاسرة : ${itemSurveyModel.id}",
+    return Column(
+      children: [
+        Row(
+          children: [
+            const Image(image: AssetImage(ImageAssets.lampIcon)),
+            AppSize.spaceWidth1(context),
+            Text(
+              "رقم الاسرة : ${itemSurveyModel.id}",
+              style: TextStyle(
+                color: ColorManager.grayColor,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const Spacer(),
+            DefaultButton(
+              function: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SurveyScreen()),
+                );
+              },
+              isWidget: true,
+              text: 'بدأ استبيان',
+              btnWidth: width(context) * .35,
+            ),
+          ],
+        ),
+        AppSize.spaceHeight2(context),
+        Row(
+          children: [
+            const Image(image: AssetImage(ImageAssets.locationIcon)),
+            AppSize.spaceWidth1(context),
+            Flexible(
+              flex: 8,
+              child: Text(
+                "عنوان الاسرة  :  ${itemSurveyModel.qTANAME} ",
                 style: TextStyle(
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              const Spacer(),
-              DefaultButton(
-                function: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SurveyScreen()),
-                  );
+            ),
+            Flexible(flex: 4,
+              child: TextButton(
+                onPressed: () async {
+                  await launchURL(itemSurveyModel.pOINTX.toString(), itemSurveyModel.pOINTY.toString());
                 },
-                isWidget: true,
-                text: 'بدأ استبيان',
-                btnWidth: width(context) * .35,
-              ),
-            ],
-          ),
-          AppSize.spaceHeight2(context),
-          Row(
-            children: [
-              const Image(image: AssetImage(ImageAssets.locationIcon)),
-              AppSize.spaceWidth1(context),
-              Flexible(
-                flex: 8,
                 child: Text(
-                  "عنوان الاسرة  :  ${itemSurveyModel.qTANAME} ",
+                  'افتح خرائط جوجل',
                   style: TextStyle(
-                    color: ColorManager.grayColor,
-                    fontWeight: FontWeight.w700,
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                    color: ColorManager.black,
                   ),
                 ),
               ),
-              Flexible(flex: 4,
-                child: TextButton(
-                  onPressed: () async {
-                    await launchURL(itemSurveyModel.pOINTX.toString(), itemSurveyModel.pOINTY.toString());
-                  },
-                  child: Text(
-                    'افتح خرائط جوجل',
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.bold,
-                      color: ColorManager.black,
-                    ),
-                  ),
-                ),
-              ),
-              const Spacer(),
-            ],
-          ),
-        ],
-      ),
+            ),
+            const Spacer(),
+          ],
+        ),
+      ],
     );
   }
 }

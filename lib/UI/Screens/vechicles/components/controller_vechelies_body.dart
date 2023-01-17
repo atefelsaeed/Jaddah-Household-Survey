@@ -65,7 +65,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                           VehiclesData.vecModel[index].textEditingController
                               .text = 0.toString();
                         }
-                        if(value==false) {
+                        if (value == false) {
                           switch (VehiclesData.vecModel[index].title) {
                             case "سيارة":
                               VehModel.vecCar.clear();
@@ -73,14 +73,14 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                             case "سيارة كبيرة (SUV وما إلى ذلك)":
                               VehModel.largeCar.clear();
                               break;
-                            case "other":
-                              VehModel.other.clear();
+                            case "شاحنة":
+                              VehModel.vecVan.clear();
                               break;
                             case " اسكوتر":
                               VehModel.eScooter.clear();
                               break;
                             case "ونيت":
-                              VehModel.vecVan.clear();
+                              VehModel.vecWanet.clear();
                               break;
                             case "دراجة نارية":
                               VehModel.pickUp.clear();
@@ -103,27 +103,24 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                             if (d!.isNotEmpty) {
                               switch (VehiclesData.vecModel[index].title) {
                                 case "سيارة":
-
-                                    print("object");
-                                    VehModel.vecCar = [];
-                                    for (int i = 0; i < int.parse(d); i++) {
-                                      VehModel.vecCar.add(
-                                        VehicleBodyDetails(
-                                          vehicleModel: TextEditingController(),
-                                          vehicleOwner: TextEditingController(),
-                                          vehicleAge: TextEditingController(),
-                                          vehicleAnnualMileage:
-                                              TextEditingController(),
-                                          vehicleFuel: TextEditingController(),
-                                        ),
-                                      );
-                                    }
-
-
+                                  print("object");
+                                  VehModel.vecCar = [];
+                                  for (int i = 0; i < int.parse(d); i++) {
+                                    VehModel.vecCar.add(
+                                      VehicleBodyDetails(
+                                        vehicleModel: TextEditingController(),
+                                        vehicleOwner: TextEditingController(),
+                                        vehicleAge: TextEditingController(),
+                                        vehicleAnnualMileage:
+                                            TextEditingController(),
+                                        vehicleFuel: TextEditingController(),
+                                      ),
+                                    );
+                                  }
                                   break;
                                 case "سيارة كبيرة (SUV وما إلى ذلك)":
                                   VehModel.largeCar = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
+                                  for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.largeCar.add(
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
@@ -137,9 +134,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   }
                                   break;
                                 case "ونيت":
-                                  VehModel.vecVan = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
-                                    VehModel.vecVan.add(
+                                  VehModel.vecWanet = [];
+                                  for (int i = 0; i < int.parse(d); i++) {
+                                    VehModel.vecWanet.add(
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
@@ -152,9 +149,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   }
                                   break;
                                 case "شاحنة":
-                                  VehModel.eScooter = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
-                                    VehModel.eScooter.add(
+                                  VehModel.vecVan = [];
+                                  for (int i = 0; i < int.parse(d); i++) {
+                                    VehModel.vecVan.add(
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
@@ -168,7 +165,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   break;
                                 case "دراجة نارية":
                                   VehModel.pickUp = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
+                                  for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.pickUp.add(
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
@@ -183,7 +180,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   break;
                                 case " اسكوتر":
                                   VehModel.eScooter = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
+                                  for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.eScooter.add(
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
@@ -196,49 +193,45 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     );
                                   }
                                   break;
-                                case "other":
-                                  VehModel.other = [];
-                                  for (int i = 0; i < int.parse(d!); i++) {
-                                    VehModel.other.add(
-                                      VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
-                                      ),
-                                    );
-                                  }
+                                // case "other":
+                                //   VehModel.vecWanet = [];
+                                //   for (int i = 0; i < int.parse(d); i++) {
+                                //     VehModel.vecWanet.add(
+                                //       VehicleBodyDetails(
+                                //         vehicleModel: TextEditingController(),
+                                //         vehicleOwner: TextEditingController(),
+                                //         vehicleAge: TextEditingController(),
+                                //         vehicleAnnualMileage:
+                                //             TextEditingController(),
+                                //         vehicleFuel: TextEditingController(),
+                                //       ),
+                                //     );
+                                //   }
+                                //   break;
+                              }
+                            } else {
+                              switch (VehiclesData.vecModel[index].title) {
+                                case "سيارة":
+                                  VehModel.vecCar.clear();
+                                  break;
+                                case "سيارة كبيرة (SUV وما إلى ذلك)":
+                                  VehModel.largeCar.clear();
+                                  break;
+                                case "شاحنة":
+                                  VehModel.vecVan.clear();
+                                  break;
+                                case " اسكوتر":
+                                  VehModel.eScooter.clear();
+                                  break;
+                                case "ونيت":
+                                  VehModel.vecWanet.clear();
+                                  break;
+                                case "دراجة نارية":
+                                  VehModel.pickUp.clear();
                                   break;
                               }
-                            }else{
-    switch (VehiclesData.vecModel[index].title) {
-    case "سيارة":
-      VehModel.vecCar.clear();
-      break;
-      case "سيارة كبيرة (SUV وما إلى ذلك)":
-        VehModel.largeCar.clear();
-        break;
-      case "other":
-        VehModel.other.clear();
-        break;
-      case " اسكوتر":
-        VehModel.eScooter.clear();
-        break;
-      case  "ونيت":
-        VehModel.vecVan.clear();
-        break;
-      case "دراجة نارية":
-        VehModel.pickUp.clear();
-        break;
-
-    }
-
                             }
                           });
-
-                          //   VehiclesData.vecCar.add(VecBodyType(ageOfVec: ageOfVec, annual: annual, fuel: fuel, model: model, whoOwn: whoOwn))
                         },
                         onTap: () {},
                       )
@@ -277,11 +270,11 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             index: i + 1,
             title: "سكوتر الكترونى",
           ),
-        for (int i = 0; i < VehModel.other.length; i++)
+        for (int i = 0; i < VehModel.vecWanet.length; i++)
           BodyTypeVehicles(
-            vecBodyType: VehModel.other[i],
+            vecBodyType: VehModel.vecWanet[i],
             index: i + 1,
-            title: "other",
+            title: "ونيت",
           ),
         AppSize.spaceHeight3(context),
       ],

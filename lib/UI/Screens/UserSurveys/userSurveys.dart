@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/UserSurveys/itemSurveyModel.dart';
-import 'package:jaddah_household_survey/UI/Widgets/connection_error.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 

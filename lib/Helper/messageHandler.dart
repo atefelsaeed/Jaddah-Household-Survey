@@ -35,13 +35,17 @@ Future<bool> syncall() async {
       default:
     }
   }
-  _surveys.forEach((e) => print(e.synced));
+  for (var e in _surveys) {
+    print(e.synced);
+  }
 
   for (Survey i in _surveys) {
     print(i.header.interviewDate);
     await i.provider.sync(force: true);
   }
-  _surveys.forEach((e) => print(e.synced));
+  for (var e in _surveys) {
+    print(e.synced);
+  }
 
   prefs
       .setStringList(

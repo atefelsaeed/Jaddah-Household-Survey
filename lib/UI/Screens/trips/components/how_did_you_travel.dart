@@ -5,7 +5,6 @@ import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
-import '../../Survey/widgets/text_form_row.dart';
 import 'headline_trip.dart';
 
 class HowDidYouTravel extends StatefulWidget {

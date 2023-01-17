@@ -10,12 +10,14 @@ class ListViewCheckBoxOrange extends StatefulWidget {
   final String subTitle;
   List<dynamic> question;
   late Function onChange;
+  bool? isListView;
 
   ListViewCheckBoxOrange(
       {super.key,
       required this.title,
       required this.question,
       required this.subTitle,
+      this.isListView,
       required this.onChange});
 
   @override
@@ -43,7 +45,7 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
           ],
         ),
         AppSize.spaceHeight05(context),
-        /*Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Expanded(
@@ -54,7 +56,13 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
               ),
             ),
           ],
-        ),*/
+        ),
+        widget.isListView == true
+            ? Container()
+            : Icon(
+                Icons.west_sharp,
+                color: ColorManager.primaryColor,
+              ),
         AppSize.spaceHeight1(context),
         Directionality(
           textDirection: TextDirection.rtl,
@@ -95,6 +103,14 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                 ]),
               )),
         ),
+        widget.isListView == true
+            ? Container()
+            : RotatedBox(
+                quarterTurns: 90,
+                child: Icon(
+                  Icons.west_sharp,
+                  color: ColorManager.primaryColor,
+                )),
       ],
     );
   }

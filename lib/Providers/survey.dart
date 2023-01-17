@@ -44,7 +44,7 @@ abstract class SurveyProvider with ChangeNotifier {
     // log(json.encode(data));
     final res;
     try {
-      print('push_url.= ' + push_url);
+      print('push_url.= $push_url');
       res = await APIHelper.postData(
         url: push_url,
         body: json.encode(data.toJson()),

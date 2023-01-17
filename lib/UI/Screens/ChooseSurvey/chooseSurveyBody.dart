@@ -11,11 +11,10 @@ import '../../../Providers/auth.dart';
 import '../../../Resources/assets_manager.dart';
 import '../../../Resources/colors.dart';
 import '../../../Resources/sizes.dart';
-import '../Survey/syrvey_screen.dart';
 import 'itemHomeSurvey.dart';
 
 class ChooseSurveyBody extends StatefulWidget {
-  ChooseSurveyBody({Key? key}) : super(key: key);
+  const ChooseSurveyBody({Key? key}) : super(key: key);
 
   @override
   State<ChooseSurveyBody> createState() => _ChooseSurveyBodyState();
@@ -97,7 +96,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                   },
                   child: ItemHomeSurvey(
                       count:
-                          surveyList.length != null ? surveyList.length : 0)),
+                          surveyList.length ?? 0)),
               InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
               InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
             ],

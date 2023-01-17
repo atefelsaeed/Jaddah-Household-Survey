@@ -51,7 +51,9 @@ class SurveysProvider with ChangeNotifier {
       }
       // _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
       print('synced');
-      _surveys.forEach((e) => print(e.synced));
+      for (var e in _surveys) {
+        print(e.synced);
+      }
 
       notifyListeners();
       return true;

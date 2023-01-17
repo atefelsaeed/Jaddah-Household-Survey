@@ -205,7 +205,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
                     question: QuestionsData.qh4[QuestionsData.qh4.keys.first]!
                         .toList(),
-                    subTitle: QuestionsData.qh4["subTitle"],
+                    subTitle:'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
                   ),
 
                   AppSize.spaceHeight3(context),
@@ -247,6 +247,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       });
                       print(r);
                     },
+                    isListView: true,
                     title:
                         "هل انتقلت إلى هنا من أي منطقة من المناطق المهدومة في جدة ، إذا كانت الإجابة بنعم أي واحدة",
                     question: QuestionsData
@@ -317,7 +318,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           text:
                               " خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
                           label: "أدخل ",
-                          headLabel: '',
+                          headLabel: 'أدخل',
                           type: TextInputType.number,
                         ),
                       ),

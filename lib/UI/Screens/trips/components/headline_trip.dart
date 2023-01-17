@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Resources/colors.dart';
@@ -8,7 +7,7 @@ import '../../../Widgets/text.dart';
 class HeadlineTrip extends StatelessWidget {
   final String text;
 
-  const HeadlineTrip({required this.text});
+  const HeadlineTrip({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

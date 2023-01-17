@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:provider/provider.dart';
@@ -17,16 +16,19 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _isView = true;
 
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final _auth = Provider.of<Auth>(context, listen: false);
     try {
       _auth.fetch();
-    } catch (e) {}
+    } catch (e) {
+      rethrow;
+    }
 
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
 
     return Form(
       key: _formKey,
@@ -53,7 +55,6 @@ class _LoginFormState extends State<LoginForm> {
             controller: email,
             decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  // borderSide: BorderSide(width: 0, color: Colors.transparent),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -98,8 +99,20 @@ class _LoginFormState extends State<LoginForm> {
           TextFormField(
             controller: password,
             decoration: InputDecoration(
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isView = !_isView;
+                      });
+                    },
+                    icon: Icon(
+                      _isView == true
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                      color: ColorManager.gray2Color,
+                      size: width(context) * .06,
+                    )),
                 border: OutlineInputBorder(
-                  // borderSide: BorderSide(width: 0, color: Colors.transparent),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -117,7 +130,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 labelText: "أدخل كلمة السر"),
             textDirection: TextDirection.ltr,
-            obscureText: true,
+            obscureText: _isView,
             enableSuggestions: false,
             autocorrect: false,
             validator: (value) => Validator.validatePassword(

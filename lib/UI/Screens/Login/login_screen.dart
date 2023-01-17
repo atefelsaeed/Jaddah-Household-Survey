@@ -8,8 +8,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const LoginBody(),
+    return const Scaffold(
+      body: LoginBody(),
     );
   }
 }

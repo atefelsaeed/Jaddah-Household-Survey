@@ -97,6 +97,7 @@ class HouseHoldAddress extends StatelessWidget {
                 controller: streetNumber,
                 label: "رقم الشارع",
                 text: "رقم الشارع",
+                keyboardType: TextInputType.number,
               ),
               TextForm(
                 controller: nearestLandMark,
