@@ -6,18 +6,24 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
 
-class BodyTypeVehicles extends StatelessWidget {
+class BodyTypeVehicles extends StatefulWidget {
   const BodyTypeVehicles({
     super.key,
     required this.vecBodyType,
     required this.index,
-    required this.title,
+    required this.title, required this.function,
   });
 
   final VehicleBodyDetails vecBodyType;
   final int index;
   final String title;
+  final Function function;
 
+  @override
+  State<BodyTypeVehicles> createState() => _BodyTypeVehiclesState();
+}
+
+class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -30,9 +36,10 @@ class BodyTypeVehicles extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Spacer(),
                 TextGlobal(
                   fontWeight: FontWeight.bold,
-                  text: "${index.toString()} ${title.toString()}",
+                  text: "${widget.index.toString()} ${widget.title.toString()}",
                   fontSize: height(context) * .02,
                   color: ColorManager.orangeTxtColor,
                 ),
@@ -42,6 +49,15 @@ class BodyTypeVehicles extends StatelessWidget {
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.bold,
                 ),
+                Spacer(),
+                IconButton(
+                    onPressed:(){
+                      widget.function();
+                    },
+                    icon: Icon(
+                      Icons.delete,
+                      color: ColorManager.primaryColor,
+                    ))
               ],
             ),
             AppSize.spaceHeight2(context),
@@ -51,16 +67,16 @@ class BodyTypeVehicles extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextFormer(
-                    controller: vecBodyType.vehicleFuel,
+                    controller: widget.vecBodyType.vehicleFuel,
                     text: "الوقود",
-                    label: "أدخل  ${vecBodyType.vehicleFuel}",
-                    headLabel: title,
+                    label: "أدخل  ${widget.vecBodyType.vehicleFuel}",
+                    headLabel: widget.title,
                   ),
                   TextFormer(
-                    controller: vecBodyType.vehicleOwner,
+                    controller: widget.vecBodyType.vehicleOwner,
                     text: "من يملك السيارة",
-                    label: "أدخل  ${vecBodyType. vehicleOwner}",
-                    headLabel: title,
+                    label: "أدخل  ${widget.vecBodyType.vehicleOwner}",
+                    headLabel: widget.title,
                   )
                 ],
               ),
@@ -93,10 +109,10 @@ class BodyTypeVehicles extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextFormer(
-                    controller: vecBodyType.vehicleModel,
+                    controller: widget.vecBodyType.vehicleModel,
                     text: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
-                    label: "أدخل  ${vecBodyType.vehicleModel}",
-                    headLabel: title,
+                    label: "أدخل  ${widget.vecBodyType.vehicleModel}",
+                    headLabel: widget.title,
                   )
                 ],
               ),

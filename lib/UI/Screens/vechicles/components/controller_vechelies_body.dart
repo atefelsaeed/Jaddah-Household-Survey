@@ -245,36 +245,66 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             vecBodyType: VehModel.vecCar[i],
             index: i + 1,
             title: "سيارة",
+            function: () {
+              setState(() {
+                VehModel.vecCar.removeAt(i);
+              });
+            },
           ),
         for (int i = 0; i < VehModel.vecVan.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.vecVan[i],
             index: i + 1,
             title: "شاحنة",
+            function: () {
+              setState(() {
+                VehModel.vecVan.removeAt(i);
+              });
+            },
           ),
         for (int i = 0; i < VehModel.largeCar.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.largeCar[i],
             index: i + 1,
             title: "سيارة كبيرة",
+            function: () {
+              setState(() {
+                VehModel.largeCar.removeAt(i);
+              });
+            },
           ),
         for (int i = 0; i < VehModel.pickUp.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.pickUp[i],
             index: i + 1,
             title: "دراجة نارية",
+            function: () {
+              setState(() {
+                VehModel.pickUp.removeAt(i);
+              });
+            },
           ),
         for (int i = 0; i < VehModel.eScooter.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.eScooter[i],
             index: i + 1,
             title: "سكوتر الكترونى",
+            function: () {
+              setState(() {
+                VehModel.eScooter.removeAt(i);
+              });
+            },
           ),
         for (int i = 0; i < VehModel.vecWanet.length; i++)
           BodyTypeVehicles(
             vecBodyType: VehModel.vecWanet[i],
             index: i + 1,
             title: "ونيت",
+            function: () {
+              setState(() {
+                VehModel.vecWanet.removeAt(i);
+              });
+            },
           ),
         AppSize.spaceHeight3(context),
       ],

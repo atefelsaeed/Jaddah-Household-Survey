@@ -149,6 +149,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                           .tripModeList[widget.index].travelTypeModel!.taxiFare,
                       text: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
                       label: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
+                      keyboardType: TextInputType.number,
                     ),
                     Column(
                       children: [

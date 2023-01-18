@@ -6,10 +6,20 @@ import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import '../../../../Data/select_time.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../../Resources/style_manager.dart';
 import '../../../Widgets/dropdown_form_input.dart';
+import '../../../Widgets/time_selected_error.dart';
 import '../../Survey/widgets/text_form_row.dart';
 import 'headline_trip.dart';
+
+extension on DateTime {
+  DateTime roundDown({Duration delta = const Duration(minutes: 5)}) {
+    return DateTime.fromMillisecondsSinceEpoch(
+        millisecondsSinceEpoch - millisecondsSinceEpoch % delta.inMilliseconds);
+  }
+}
 
 class DepartTime extends StatefulWidget {
   TripsModel tripModel;
@@ -26,7 +36,7 @@ class DepartTime extends StatefulWidget {
   State<DepartTime> createState() => _DepartTimeState();
 }
 
-class _DepartTimeState extends State<DepartTime> {
+class _DepartTimeState extends State<DepartTime> with SelectTimeData {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -53,24 +63,59 @@ class _DepartTimeState extends State<DepartTime> {
                   MyTextForm(
                     label: "وقت المغادرة",
                     controller: widget.tripModel.arrivalDepartTime!.departTime,
-
                     readOnly: true,
-                    // set it true, so that user will not able to edit text
                     onTap: () async {
-                      TimeOfDay? pickedTime = await showTimePicker(
-                        initialTime: TimeOfDay.now(),
-                        context: context,
-                      );
-
-                      if (pickedTime != null) {
-                        setState(() {
-                          widget.tripModel.arrivalDepartTime!.departTime.text =
-                              pickedTime.format(
-                                  context); //set the value of text field.
-                        });
+                      if (widget.tripModel.arrivalDepartTime!
+                          .arriveDestinationTime.text.isEmpty) {
+                        showDialog<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const TimeSelectedError(
+                                title: 'يجب إدخال وقت الوصول ',
+                                content: 'يجب إدخال وقت الوصول أولاً!',
+                              );
+                            });
                       } else {
-                        print("Time is not selected");
+                        TimeOfDay? pickedTime = await showTimePicker(
+                          builder: (context, child) {
+                            return StyleManager.selectTime(context, child);
+                          },
+                          initialTime: TimeOfDay.fromDateTime(
+                              DateTime.now().roundDown()),
+                          context: context,
+                        );
+                        String arrival = widget.tripModel.arrivalDepartTime!
+                            .arriveDestinationTime.text;
+                        int newFromTime =
+                            int.parse(time12to24Format(arrival.toString()));
+                        int picked = int.parse(time12to24Format(
+                            pickedTime!.format(context).toString()));
+                        if (picked != null) {
+                          if (picked < newFromTime) {
+                            setState(() {
+                              widget.tripModel.arrivalDepartTime!.departTime
+                                  .text = pickedTime.format(context); //s
+                            });
+                          } else {
+                            showDialog<void>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const TimeSelectedError(
+                                    title: 'يجب إختيار وقت آخر',
+                                    content:
+                                        'وقت المغادرة يجب أن يكون قبل وقت الوصول!',
+                                  );
+                                });
+                            setState(() {
+                              widget.tripModel.arrivalDepartTime!.departTime
+                                  .text = '';
+                            });
+                            print("Time is not selected");
+                          }
+                        }
                       }
+
+                      FocusScope.of(context).requestFocus(FocusNode());
                     },
                   ),
                 ],
@@ -87,19 +132,25 @@ class _DepartTimeState extends State<DepartTime> {
                   AppSize.spaceHeight1(context),
                   MyTextForm(
                     label: "وقت الوصول",
-                    controller: widget.tripModel.arrivalDepartTime!.arriveDestinationTime,
+                    controller: widget
+                        .tripModel.arrivalDepartTime!.arriveDestinationTime,
 
                     readOnly: true,
                     // set it true, so that user will not able to edit text
                     onTap: () async {
                       TimeOfDay? pickedTime = await showTimePicker(
-                        initialTime: TimeOfDay.now(),
+                        initialTime:
+                            TimeOfDay.fromDateTime(DateTime.now().roundDown()),
+                        builder: (context, child) {
+                          return StyleManager.selectTime(context, child);
+                        },
                         context: context,
                       );
 
                       if (pickedTime != null) {
                         setState(() {
-                          widget.tripModel.arrivalDepartTime!.arriveDestinationTime.text =
+                          widget.tripModel.arrivalDepartTime!
+                                  .arriveDestinationTime.text =
                               pickedTime.format(
                                   context); //set the value of text field.
                         });
@@ -110,7 +161,6 @@ class _DepartTimeState extends State<DepartTime> {
                   ),
                 ],
               ),
-
             ],
           ),
         ),
