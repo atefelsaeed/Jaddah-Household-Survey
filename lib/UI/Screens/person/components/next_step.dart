@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/save_data.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/trip_screen.dart';
 
-import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Widgets/custom_buttton.dart';
 
 class NextStep extends StatelessWidget {
@@ -13,8 +12,6 @@ class NextStep extends StatelessWidget {
     return DefaultButton(
       function: () {
         SavePersonData.saveData(context);
-        print(PersonModelList.personModelList[0].personalHeadData!.age.text);
-
         print('Saving Data :: ');
         Navigator.push(
           context,

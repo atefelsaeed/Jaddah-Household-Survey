@@ -13,12 +13,11 @@ class StyleManager {
           ),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              textStyle: const TextStyle(
+              foregroundColor: Colors.white, textStyle: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
                 fontSize: 12,
-              ),
-              primary: Colors.white, // color of button's letters
+              ), // color of button's letters
               backgroundColor: ColorManager.primaryColor,
               // Background color
               shape: RoundedRectangleBorder(

@@ -39,15 +39,13 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: btnHeight ?? height(context) * .06,
-      //It will take a 20% of screen width
       width: btnWidth ?? width(context) * .25,
 
       decoration: BoxDecoration(
           color: background ?? ColorManager.orangeTxtColor,
           borderRadius: BorderRadius.circular(
             radius ?? 10.0,
-          ),
-          border: Border.all(color: ColorManager.orangeTxtColor)),
+          )),
       child: MaterialButton(
         onPressed: () {
           function();
@@ -55,8 +53,9 @@ class DefaultButton extends StatelessWidget {
         child: Text(
           text!,
           style: TextStyle(
-              color: textColor ?? ColorManager.whiteColor,
-              fontWeight: FontWeight.bold),
+            color: textColor ?? ColorManager.whiteColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

@@ -131,6 +131,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       controller: widget.costTaxi,
                       text: "كم أجرة التاكسي دفعتھ؟",
                       label: "كم أجرة التاكسي دفعتھ؟",
+                      keyboardType: TextInputType.number,
                     )
                   : Container(),
             ],

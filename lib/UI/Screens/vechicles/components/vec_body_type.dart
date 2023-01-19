@@ -36,7 +36,7 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
+                const Spacer(),
                 TextGlobal(
                   fontWeight: FontWeight.bold,
                   text: "${widget.index.toString()} ${widget.title.toString()}",
@@ -49,7 +49,7 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.bold,
                 ),
-                Spacer(),
+                const Spacer(),
                 IconButton(
                     onPressed:(){
                       widget.function();

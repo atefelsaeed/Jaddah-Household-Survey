@@ -20,16 +20,17 @@ class HouseHoldAddress extends StatelessWidget {
   final TextEditingController nearestLandMark;
   final TextEditingController blockNearestTwoCrossStreets;
 
-  const HouseHoldAddress(
-      {super.key,
-      required this.area,
-      required this.blockNearestTwoCrossStreets,
-      required this.city,
-      required this.nearestLandMark,
-      required this.streetNumber,
-      required this.zoneNumber,
-      required this.streetName,
-      required this.buildingName});
+  const HouseHoldAddress({
+    super.key,
+    required this.area,
+    required this.blockNearestTwoCrossStreets,
+    required this.city,
+    required this.nearestLandMark,
+    required this.streetNumber,
+    required this.zoneNumber,
+    required this.streetName,
+    required this.buildingName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,6 @@ class HouseHoldAddress extends StatelessWidget {
               color: ColorManager.black,
             ),
             AppSize.spaceWidth2(context),
-
           ],
         ),
         AppSize.spaceHeight1(context),

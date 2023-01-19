@@ -1,0 +1,3 @@
+class EmptyTrips{
+  static emptyTrips(){}
+}

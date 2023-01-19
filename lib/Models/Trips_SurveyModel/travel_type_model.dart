@@ -26,7 +26,7 @@ class TravelTypeModel {
   TravelTypeModel.fromJson(Map<String, dynamic> json) {
     carParkingPlace = json['carParkingPlace'];
     taxiTravelType = json['taxiTravelType'];
-    travelType  = json['travelType '];
+    travelType = json['travelType '];
     passTravelType = json['passTravelType'];
     taxiFare.text = json['taxiFare'];
     publicTransportFare = json['publicTransportFare'];
@@ -38,7 +38,7 @@ class TravelTypeModel {
         ? otherWhereDidYouParking!.text
         : carParkingPlace;
     data['taxiTravelType'] = taxiTravelType;
-    data['travelType '] = travelType ;
+    data['travelType '] = travelType;
     data['passTravelType'] = passTravelType;
     data['taxiFare'] = taxiFare.text;
     data['publicTransportFare'] = publicTransportFare;

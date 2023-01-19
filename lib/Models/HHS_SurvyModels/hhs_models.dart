@@ -9,14 +9,15 @@ class HouseholdAddress {
   String? areaSuburb;
   String? city;
 
-  HouseholdAddress(
-      {this.nearestLandMark,
-      this.streetNumber,
-      this.buildingName,
-      this.streetName,
-      this.city,
-      this.areaSuburb,
-      this.blockNearestCrossStreets});
+  HouseholdAddress({
+    this.nearestLandMark,
+    this.streetNumber,
+    this.buildingName,
+    this.streetName,
+    this.city,
+    this.areaSuburb,
+    this.blockNearestCrossStreets,
+  });
 }
 
 class HouseholdQuestions {
@@ -40,22 +41,23 @@ class HouseholdQuestions {
 
   String? hhsTotalIncome;
 
-  HouseholdQuestions(
-      {this.hhsDwellingType,
-      this.hhsIsDwelling,
-      this.hhsNumberBedRooms,
-      this.hhsNumberSeparateFamilies,
-      this.hhsTotalIncome,
-      this.hhsDwellingTypeOther,
-      this.hhsIsDwellingOther,
-      this.hhsNumberYearsInAddress,
-      required this.hhsElectricCycles,
-      required this.hhsElectricScooter,
-      required this.hhsPedalCycles,
-      this.hhsDemolishedAreas,
-      this.hhsIsDemolishedAreas,
-      this.hhsNumberChildren,
-      this.hhsNumberAdults});
+  HouseholdQuestions({
+    this.hhsDwellingType,
+    this.hhsIsDwelling,
+    this.hhsNumberBedRooms,
+    this.hhsNumberSeparateFamilies,
+    this.hhsTotalIncome,
+    this.hhsDwellingTypeOther,
+    this.hhsIsDwellingOther,
+    this.hhsNumberYearsInAddress,
+    required this.hhsElectricCycles,
+    required this.hhsElectricScooter,
+    required this.hhsPedalCycles,
+    this.hhsDemolishedAreas,
+    this.hhsIsDemolishedAreas,
+    this.hhsNumberChildren,
+    this.hhsNumberAdults,
+  });
 }
 
 class BikesType {
@@ -76,7 +78,10 @@ class SeparateFamilies {
   String? totalNumberVehicles;
 
   SeparateFamilies(
-      this.numberAdults, this.numberChildren, this.totalNumberVehicles);
+    this.numberAdults,
+    this.numberChildren,
+    this.totalNumberVehicles,
+  );
 
   SeparateFamilies.fromJson(Map<String, dynamic> json) {
     numberChildren = json['numberChildren'] ?? 0;

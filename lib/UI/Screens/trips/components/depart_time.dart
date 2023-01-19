@@ -90,28 +90,26 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                             int.parse(time12to24Format(arrival.toString()));
                         int picked = int.parse(time12to24Format(
                             pickedTime!.format(context).toString()));
-                        if (picked != null) {
-                          if (picked < newFromTime) {
-                            setState(() {
-                              widget.tripModel.arrivalDepartTime!.departTime
-                                  .text = pickedTime.format(context); //s
-                            });
-                          } else {
-                            showDialog<void>(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return const TimeSelectedError(
-                                    title: 'يجب إختيار وقت آخر',
-                                    content:
-                                        'وقت المغادرة يجب أن يكون قبل وقت الوصول!',
-                                  );
-                                });
-                            setState(() {
-                              widget.tripModel.arrivalDepartTime!.departTime
-                                  .text = '';
-                            });
-                            print("Time is not selected");
-                          }
+                        if (picked < newFromTime) {
+                          setState(() {
+                            widget.tripModel.arrivalDepartTime!.departTime
+                                .text = pickedTime.format(context); //s
+                          });
+                        } else {
+                          showDialog<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const TimeSelectedError(
+                                  title: 'يجب إختيار وقت آخر',
+                                  content:
+                                      'وقت المغادرة يجب أن يكون قبل وقت الوصول!',
+                                );
+                              });
+                          setState(() {
+                            widget.tripModel.arrivalDepartTime!.departTime
+                                .text = '';
+                          });
+                          print("Time is not selected");
                         }
                       }
 

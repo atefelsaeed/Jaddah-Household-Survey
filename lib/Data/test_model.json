@@ -1,0 +1,205 @@
+{
+  "id": "1",
+  "type": "Pt",
+  "synced": false,
+  "headerLat": 0.0,
+  "headerLong": 0.0,
+  "headerDate": "2023-01-18 23:33:37.316171",
+  "vehiclesData": {
+    "vehicleFuelType": "المكونات الكهربائية الهجينة (PHEV)",
+    "vehicleOwnership": "أرباب العمل",
+    "vehicleParking": "على جانب الطريق مشحونة",
+    "numberAirTubedAdultsWorkUse": "",
+    "numberParcels": "٤",
+    "numberAirTubedAdultsLeisure": "",
+    "numberAirTubedChildren": "",
+    "nearestBusStop": "6-10 دقائق سيرا على الأقدام"
+  },
+  "headerEmpNumber": 1,
+  "headerInterviewNumber": 10012656,
+  "headerDistrictName": "",
+  "headerZoneNumber": "",
+  "hhsCity": "المدينه",
+  "hhsBuildingName": "اسم المبنس",
+  "hhsStreetName": "اسم الشارع",
+  "hhsStreetNumber": "رقم الشارع",
+  "hhsNearestLandMark": "اقرب معلم",
+  "hhsBlockNearestCrossStreets": "مجمع اقرب شارع",
+  "hhsAreaSuburb": "المنطقه",
+  "hhsDwellingType": "البيت العربي - مشترك",
+  "hhsIsDwelling": "مستأجر",
+  "hhsNumberSeparateFamilies": "6",
+  "hhsNumberAdults": "٥",
+  "hhsNumberChildren": "٥",
+  "hhsNumberYearsInAddress": "- 3 سنوات",
+  "hhsDemolishedAreas": "مهدومه",
+  "hhsPCTotalBikesNumber": "٣",
+  "hhsPCAdultsBikesNumber": "٤",
+  "hhsPCChildrenBikesNumber": "٥",
+  "hhsECTotalBikesNumber": "٢٢",
+  "hhsECAdultsBikesNumber": "٢٢",
+  "hhsECChildrenBikesNumber": "١٢٢",
+  "hhsESTotalBikesNumber": "١١",
+  "hhsESAdultsBikesNumber": "٤٤٥٦",
+  "hhsESChildrenBikesNumber": "٦٦",
+  "hhsTotalIncome": "1500 - 2000 ريال سعودي",
+  "hhsSeparateFamilies": [
+    {
+      "numberChildren": "",
+      "numberAdults": "",
+      "totalNumberVehicles": ""
+    },
+    {
+      "numberChildren": "٣",
+      "numberAdults": "٣",
+      "totalNumberVehicles": "٣"
+    }
+  ],
+  "vehiclesBodyType": [
+    {
+      "vehicleTypeName": "Car",
+      "vehicleTypeQuantity": 0,
+      "vehicleTypeDetails": []
+    },
+    {
+      "vehicleTypeName": "Van",
+      "vehicleTypeQuantity": 0,
+      "vehicleTypeDetails": []
+    },
+    {
+      "vehicleTypeName": "Large Car",
+      "vehicleTypeQuantity": 0,
+      "vehicleTypeDetails": []
+    },
+    {
+      "vehicleTypeName": "E-Scooter",
+      "vehicleTypeQuantity": 0,
+      "vehicleTypeDetails": []
+    },
+    {
+      "vehicleTypeName": "Pick Up",
+      "vehicleTypeQuantity": 2,
+      "vehicleTypeDetails": [
+        {
+          "vehicleFuel": "fuel code",
+          "vehicleModel": "car parking",
+          "vehicleAnnualMileage": "",
+          "vehicleAge": "",
+          "vehicleIsHousehold": false,
+          "vehicleOwner": "who car"
+        },
+        {
+          "vehicleFuel": "",
+          "vehicleModel": "",
+          "vehicleAnnualMileage": "",
+          "vehicleAge": "",
+          "vehicleIsHousehold": false,
+          "vehicleOwner": ""
+        }
+      ]
+    },
+    {
+      "vehicleTypeName": "Wanet",
+      "vehicleTypeQuantity": 0,
+      "vehicleTypeDetails": []
+    }
+  ],
+  "personData": [
+    {
+      "personalHeadData": {
+        "relationshipHeadHHS": "أقارب أخرين",
+        "gender": "أنثى",
+        "checkAge": false,
+        "refuseToTellAge": true,
+        "age": "45 - 54",
+        "nationalityType": "سعودي",
+        "nationality": "سعودي"
+      },
+      "occupationModel": {
+        "occupationSector": "بناء البناء",
+        "isEmployee": "1",
+        "occupationLevelSector": "",
+        "bestWorkspaceLocation": "سيارة كبيرة",
+        "commuteWorkDays": 0,
+        "bikeWorkDays": 0,
+        "address": "",
+        "geoCodes": "",
+        "isWorkFromHome": false,
+        "numberWorkFromHome": 0,
+        "startingWoke": "",
+        "endingWoke": "",
+        "flexibleWorkingHours": "",
+        "earliestTimeStartingWork": "",
+        "earliestTimeFinishingWork": "",
+        "mainOccupationAddress": ""
+      },
+      "personalQuestion": {
+        "drivingLicenceType": "",
+        "haveBusPass": "نعم",
+        "mainOccupationType": " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي",
+        "haveDisabilityTransportMobility": "مستخدم لكرسي متحرك",
+        "availablePersonalCar": "بعض الاحيان",
+        "haveCarSharing": false,
+        "educationAddress": {
+          "fullAddress": "",
+          "geocodes": ""
+        }
+      }
+    }
+  ],
+  "tripsList": [
+    {
+      "startBeginningModel": {
+        "buildingName": "building",
+        "streetName": "strreet",
+        "streetNumber": "strret number",
+        "nearestLandMark": "malam",
+        "block": "malam",
+        "area": "area",
+        "city": "city",
+        "referToMap": ""
+      },
+      "endingAddress": {
+        "buildingName": "building",
+        "streetName": "strreet",
+        "streetNumber": "street number",
+        "nearestLandMark": "malaam",
+        "block": "malaam",
+        "area": "area",
+        "city": "city",
+        "referToMap": ""
+      },
+      "travelWay": {
+        "mainMode": "تاكسي المدرسة",
+        "accessMode": "دراجة نارية"
+      },
+      "travelWithOtherModel": {
+        "adultsNumber": "4",
+        "childrenNumber": "4",
+        "hhsMembersTraveled": "3"
+      },
+      "travelAloneHouseHold": {
+        "adultsNumber": "4",
+        "childrenNumber": "4",
+        "hhsMembersTraveled": ""
+      },
+      "arrivalDepartTime": {
+        "departTime": "10:31 م",
+        "arriveDestinationTime": "12:20 م",
+        "numberRepeatTrip": "4 أيام في الأسبوع"
+      },
+      "travelTypeModel": {
+        "carParkingPlace": "",
+        "taxiTravelType": "اوبر",
+        "travelType ": "تاكسي",
+        "passTravelType": "",
+        "taxiFare": "23",
+        "publicTransportFare": ""
+      },
+      "purposeTravel": "كنت العطلات / الفندق",
+      "departureTime": "3:29 م",
+      "tripReason": "كنت العطلات / الفندق",
+      "isTravelAlone": true
+    }
+  ]
+}

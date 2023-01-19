@@ -9,8 +9,13 @@ import '../../../Widgets/text.dart';
 
 class DefaultEntry extends StatefulWidget {
   final int i;
+  final Function function;
 
-  const DefaultEntry({super.key, required this.i});
+  const DefaultEntry({
+    super.key,
+    required this.i,
+    required this.function,
+  });
 
   @override
   State<DefaultEntry> createState() => _DefaultEntryState();
@@ -23,10 +28,26 @@ class _DefaultEntryState extends State<DefaultEntry> {
     // TODO: implement build
     return Column(
       children: [
-        TextGlobal(
-          text: "الشخص  ${index.toString()}",
-          fontSize: height(context) * .023,
-          color: ColorManager.orangeTxtColor,
+        Row(
+          children: [
+            const Spacer(),
+            TextGlobal(
+              text: "الشخص  ${index.toString()}",
+              fontSize: height(context) * .023,
+              color: ColorManager.orangeTxtColor,
+            ),
+            const Spacer(),
+            widget.i >= 1
+                ? IconButton(
+                    onPressed: () {
+                      widget.function();
+                    },
+                    icon: Icon(
+                      Icons.delete,
+                      color: ColorManager.primaryColor,
+                    ))
+                : Container()
+          ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,8 +78,6 @@ class _DefaultEntryState extends State<DefaultEntry> {
               onChange: (var p) {
                 PersonModelList.personModelList[widget.i].personalHeadData!
                     .relationshipHeadHHS = p.toString();
-                print(PersonModelList.personModelList[widget.i]
-                    .personalHeadData!.relationshipHeadHHS);
               },
             ),
           ],

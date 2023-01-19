@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../../Resources/style_manager.dart';
 import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
 
@@ -42,6 +43,9 @@ class _TimeLeaveState extends State<TimeLeave> {
               onTap: () async {
                 TimeOfDay? pickedTime = await showTimePicker(
                   initialTime: TimeOfDay.now(),
+                  builder: (context, child) {
+                    return StyleManager.selectTime(context, child);
+                  },
                   context: context,
                 );
 

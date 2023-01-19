@@ -66,29 +66,7 @@ class _SaveButtonState extends State<SaveButton> {
                 _key.currentState!.save();
                 getLocation().then(
                   (value) {
-                    // survey.id = auth.uid.toString();
-                    // survey.data.provider.journeyStarDistrictName=survey.journeyStarDistrictName;
-                    // survey.headerLat = value.latitude ?? 0;
-                    // survey.headerDate = DateTime.now();
-                    // survey.headerLong = value.longitude ?? 0;
-                    // survey.headerEndTime = DateTime.now();
-                    // survey.headerFormNumber = 0;
-                    // survey.headerEmpNumber = auth.uid;
-                    // survey.headerCity = "";
-                    // if (survey.type != SurveyType.freight) {
-                    //   if (survey.journeyExamples.isNotEmpty) {
-                    //     survey.journeyExamples.first.transportType =
-                    //         survey.journeyGoType;
-                    //     // survey.journeyExamples.first.startPose
-                    //     //         .name =
-                    //     //     survey.journeyStartLocationName ;
-                    //
-                    //     survey.journeyExamples.last.transportType =
-                    //         survey.journeyBackType;
-                    //     // survey.journeyExamples.last.endPose.name =
-                    //     //     survey.journeyEndLocationName ;
-                    //   }
-                    // }
+
                     surveys.addSurvey(survey.data);
                     setState(() {
                       // initManualLocation = survey.manualLocation;

@@ -1,4 +1,15 @@
+import 'package:flutter/material.dart';
+
 class Validator {
+  static showSnack(context, value) =>
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(value),
+          duration: const Duration(seconds: 3),
+          elevation: 1,
+        ),
+      );
+
   static String? noValidate({required String value}) {
     return null;
   }
@@ -120,7 +131,10 @@ class Validator {
   }
 
   static String? validateLessThan(
-      {required String? value, required String message, required int number,required }) {
+      {required String? value,
+      required String message,
+      required int number,
+      required}) {
     if (value == null) {
       return message;
     }

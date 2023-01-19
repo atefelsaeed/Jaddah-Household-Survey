@@ -6,8 +6,9 @@ import '../../../Widgets/dropdown_form_input.dart';
 import '../../Survey/widgets/text_form_row.dart';
 
 class ParkThisCar extends StatefulWidget {
-   const ParkThisCar({super.key,required this.textEditingController});
-final TextEditingController textEditingController;
+  const ParkThisCar({super.key, required this.textEditingController});
+
+  final TextEditingController textEditingController;
 
   @override
   State<ParkThisCar> createState() => _ParkThisCarState();
@@ -26,7 +27,8 @@ class _ParkThisCarState extends State<ParkThisCar> {
               .toList()
               .first
               .toString()),
-          hint:"عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
+          hint:
+              "عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
           options: VehiclesData
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),
@@ -34,18 +36,20 @@ class _ParkThisCarState extends State<ParkThisCar> {
             setState(() {
               VehModel.parkThisCar = p.toString();
             });
-
           },
         ),
-
-        VehModel.parkThisCar=="Other"? Row(mainAxisAlignment: MainAxisAlignment.start,children: [
-          TextForm(
-
-            controller:widget.textEditingController,
-            text: "رموز نوع وقوف السيارات",
-            label: "رموز نوع وقوف السيارات",
-          )
-        ],):Container(),
+        VehModel.parkThisCar == "Other"
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TextForm(
+                    controller: widget.textEditingController,
+                    text: "رموز نوع وقوف السيارات",
+                    label: "رموز نوع وقوف السيارات",
+                  )
+                ],
+              )
+            : Container(),
       ],
     );
   }

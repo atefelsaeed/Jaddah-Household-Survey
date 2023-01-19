@@ -2,7 +2,7 @@
 
 const String IMAGE_PATH = 'assets/images';
 //===========UI Design URL===========
-//
+//https://www.figma.com/file/fDF6Wi0kCeoxfkqSFvcfdg/Untitled?node-id=0%3A1&t=XNKSgpDHVMOVFjdz-1
 class ImageAssets {
   // static const String logo = '$IMAGE_PATH/icon.png';
   static const String logo = '$IMAGE_PATH/logo.png';

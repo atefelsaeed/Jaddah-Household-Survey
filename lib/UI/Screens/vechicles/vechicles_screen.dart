@@ -68,41 +68,47 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     ParkThisCar(
                       textEditingController: parkThisCar,
                     ),
-                    // AppSize.spaceHeight3(context),
-                    //
-                    // Q2VecScreen(
-                    //   editingController3: VehModel.editingController3,
-                    // ),
                     AppSize.spaceHeight3(context),
-
-
                     AppSize.spaceHeight2(context),
-                    DefaultButton(
-                      function: () {
-                        if (_key.currentState!.validate()) {
-                          _key.currentState!.save();
-                          SaveVehiclesData.saveData(context);
-
-                          print('Saving Data :: ');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PersonScreen(),
-                            ),
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text("يوجد خطأ بالبيانات"),
-                              duration: Duration(seconds: 3),
-                              elevation: 1,
-                            ),
-                          );
-                        }
-                      },
-                      isWidget: true,
-                      text: "التالي",
-                      widget: const Icon(Icons.arrow_forward),
+                    Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        DefaultButton(
+                          function: () {
+                            if (_key.currentState!.validate()) {
+                              _key.currentState!.save();
+                              SaveVehiclesData.saveData(context);
+                              print('Saving Data :: ');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PersonScreen(),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("يوجد خطأ بالبيانات"),
+                                  duration: Duration(seconds: 3),
+                                  elevation: 1,
+                                ),
+                              );
+                            }
+                          },
+                          isWidget: true,
+                          text: "التالي",
+                          widget: const Icon(Icons.arrow_forward),
+                        ),
+                        AppSize.spaceWidth3(context),
+                        DefaultButton(
+                          function: () {
+                            Navigator.pop(context);
+                          },
+                          isWidget: true,
+                          background: ColorManager.grayColor,
+                          text: "السابق",
+                          widget: const Icon(Icons.arrow_back_rounded),
+                        ),
+                      ],
                     ),
                     AppSize.spaceHeight2(context),
                     // HouseholdAddressSection()

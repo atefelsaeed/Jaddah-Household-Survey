@@ -6,7 +6,8 @@ class HouseholdAddressSection extends StatefulWidget {
   const HouseholdAddressSection({Key? key}) : super(key: key);
 
   @override
-  _HouseholdAddressSectionState createState() => _HouseholdAddressSectionState();
+  _HouseholdAddressSectionState createState() =>
+      _HouseholdAddressSectionState();
 }
 
 class _HouseholdAddressSectionState extends State<HouseholdAddressSection> {
@@ -31,14 +32,9 @@ class _HouseholdAddressSectionState extends State<HouseholdAddressSection> {
                       value: value,
                       message: "يجب اعطاء اجابة",
                     ),
-                    onChanged: (String? s) {
-                      //-------------send data to backend------------------
-                      // survey.data.header.districtName = s!;
-                      // print(survey.journeyStarDistrictName);
-                    },
+                    onChanged: (String? s) {},
                   ),
                   const SizedBox(height: 10),
-
                 ],
               ),
             ),
@@ -58,13 +54,10 @@ class _HouseholdAddressSectionState extends State<HouseholdAddressSection> {
                       message: "يجب اعطاء اجابة",
                     ),
                     onChanged: (String? s) {
-                      //-------------send data to backend------------------
-                      // survey.data.header.districtName = s!;
-                      // print(survey.journeyStarDistrictName);
+
                     },
                   ),
                   const SizedBox(height: 10),
-
                 ],
               ),
             ),

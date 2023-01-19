@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
+import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
-import '../../../../Resources/colors.dart';
-import '../../../../Resources/sizes.dart';
-import '../../../Widgets/text.dart';
-
-class ListViewCheckBoxOrange extends StatefulWidget {
+class ListQ7 extends StatefulWidget {
   final String title;
   final String subTitle;
   List<dynamic> question;
-  late Function onChange;
-  bool? isListView;
+  final TextEditingController textEditingController;
 
-  ListViewCheckBoxOrange({
-    super.key,
-    required this.title,
-    required this.question,
-    required this.subTitle,
-    this.isListView,
-    required this.onChange,
-  });
+  ListQ7(
+      {super.key,
+      required this.title,
+      required this.question,
+      required this.subTitle,
+      required this.textEditingController});
 
   @override
-  State<ListViewCheckBoxOrange> createState() => _ListViewCheckBoxOrangeState();
+  State<ListQ7> createState() => _ListQ7();
 }
 
-class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
+class _ListQ7 extends State<ListQ7> {
   int chosenIndex = 0;
+  bool indexBool = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +33,10 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Expanded(
-              child: TextGlobal(
-                text: widget.title,
-                fontSize: height(context) * .02,
-                color: ColorManager.black,
-              ),
+            TextGlobal(
+              text: widget.title,
+              fontSize: height(context) * .02,
+              color: ColorManager.black,
             ),
           ],
         ),
@@ -48,7 +44,8 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Expanded(
+            SizedBox(
+              width: width(context) - 140,
               child: TextGlobal(
                 text: widget.subTitle,
                 fontSize: height(context) * .013,
@@ -57,15 +54,9 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
             ),
           ],
         ),
-        widget.isListView == true
-            ? Container()
-            : Icon(
-                Icons.west_sharp,
-                color: ColorManager.primaryColor,
-              ),
         AppSize.spaceHeight1(context),
         Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: SizedBox(
               height: height(context) * .04,
               child: ListView.builder(
@@ -74,6 +65,11 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                 itemCount: widget.question.length,
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
+                  TextGlobal(
+                    text: widget.question[index]["value"],
+                    fontSize: height(context) * .02,
+                    color: ColorManager.grayColor,
+                  ),
                   Checkbox(
                       side: BorderSide(
                         color: ColorManager.orangeTxtColor,
@@ -91,26 +87,20 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                           widget.question[chosenIndex]["isChick"] = false;
                           chosenIndex = index;
                           widget.question[index]["isChick"] = value;
+                          //  w
                         });
-                        print(widget.question[index]["value"]);
-                        widget.onChange(widget.question[index]["value"]);
                       }),
-                  TextGlobal(
-                    text: widget.question[index]["value"],
-                    fontSize: height(context) * .02,
-                    color: ColorManager.grayColor,
-                  ),
                 ]),
               )),
         ),
-        widget.isListView == true
-            ? Container()
-            : RotatedBox(
-                quarterTurns: 90,
-                child: Icon(
-                  Icons.west_sharp,
-                  color: ColorManager.primaryColor,
-                )),
+        widget.question[chosenIndex]["isChick"] =
+            true && widget.question[chosenIndex]["value"] == true
+                ? TextForm(
+                    controller: widget.textEditingController,
+                    label: 'Name of the demolished area',
+                    text: 'Name of the demolished area',
+                  )
+                : Container()
       ],
     );
   }

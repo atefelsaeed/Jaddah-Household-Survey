@@ -5,18 +5,24 @@ import '../../Resources/colors.dart';
 import 'custom_buttton.dart';
 
 class TimeSelectedError extends StatelessWidget {
-  const TimeSelectedError({Key? key, required this.title, required this.content}) : super(key: key);
-final String title,content;
+  const TimeSelectedError(
+      {Key? key, required this.title, required this.content})
+      : super(key: key);
+  final String title, content;
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30.0))),
-      title:  Center(child: Text(title)),
-      content:  SizedBox(
+        borderRadius: BorderRadius.all(
+          Radius.circular(30.0),
+        ),
+      ),
+      title: Center(child: Text(title)),
+      content: SizedBox(
         child: Text(
-         content,
-          style: TextStyle(fontWeight: FontWeight.w700),
+          content,
+          style: const TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
       actions: <Widget>[

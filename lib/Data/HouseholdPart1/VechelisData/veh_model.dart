@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../Models/Vehicles_SurveyModel/vehicles_model.dart';
-import '../../../UI/Screens/Survey/Components/q5.dart';
+import '../../../UI/Screens/Survey/widgets/editing_controler3.dart';
 
 class VehModel {
   static VehiclesModel vehiclesModel = VehiclesModel(

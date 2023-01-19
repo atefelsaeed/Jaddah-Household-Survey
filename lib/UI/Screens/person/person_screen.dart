@@ -14,7 +14,7 @@ import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/text.dart';
 import '../../Widgets/text_form_field.dart';
-import '../Survey/components/q5.dart';
+import '../Survey/widgets/editing_controler3.dart';
 import '../trips/trip_screen.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
@@ -115,10 +115,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                   ),
                                 ),
                               );
-//                              AllData.personModel[0].isEmployee=1;
                             });
-
-                            //   surveyPt.vehiclesData.vehiclesBodyType.vehicleTypeName="kkk";
                           },
                           isWidget: true,
                           btnWidth: width(context) * .25,
@@ -142,7 +139,15 @@ class _PersonScreenState extends State<PersonScreen> {
                             padding: EdgeInsets.all(AppSize.padding1(context)),
                             child: Column(
                               children: [
-                                DefaultEntry(i: i),
+                                DefaultEntry(
+                                  i: i,
+                                  function: () {
+                                    setState(() {
+                                      PersonModelList.personModelList
+                                          .removeAt(i);
+                                    });
+                                  },
+                                ),
                                 AppSize.spaceHeight2(context),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -458,35 +463,46 @@ class _PersonScreenState extends State<PersonScreen> {
                         ),
                       ),
                     AppSize.spaceHeight2(context),
-                    DefaultButton(
-                      function: () {
-                        if (_key.currentState!.validate()) {
-                          _key.currentState!.save();
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        DefaultButton(
+                          function: () {
+                            if (_key.currentState!.validate()) {
+                              _key.currentState!.save();
 
-                          SavePersonData.saveData(context);
-                          print(PersonModelList
-                              .personModelList[0].personalHeadData!.age.text);
-
-                          print('Saving Data :: ');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const TripScreen(),
-                            ),
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text("يوجد خطأ بالبيانات"),
-                              duration: Duration(seconds: 3),
-                              elevation: 1,
-                            ),
-                          );
-                        }
-                      },
-                      isWidget: true,
-                      text: "التالي",
-                      widget: const Icon(Icons.arrow_forward),
+                              SavePersonData.saveData(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const TripScreen(),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("يوجد خطأ بالبيانات"),
+                                  duration: Duration(seconds: 3),
+                                  elevation: 1,
+                                ),
+                              );
+                            }
+                          },
+                          isWidget: true,
+                          text: "التالي",
+                          widget: const Icon(Icons.arrow_forward),
+                        ),
+                        AppSize.spaceWidth3(context),
+                        DefaultButton(
+                          function: () {
+                            Navigator.pop(context);
+                          },
+                          isWidget: true,
+                          background: ColorManager.grayColor,
+                          text: "السابق",
+                          widget: const Icon(Icons.arrow_back_rounded),
+                        ),
+                      ],
                     ),
                   ],
                 ),
