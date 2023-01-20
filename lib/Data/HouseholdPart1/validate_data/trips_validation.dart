@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data.dart';
@@ -41,19 +43,16 @@ class CheckTripsValidation {
       // }
 
       else {
-        log("After save");
-        await surveys.addSurvey(surveyPt.data).then(
-          (value) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ChooseSurveysScreen(),
-              ),
-            );
-            log('Empty Data ......');
-            HHSEmptyData.emptyData();
-          },
+        print("after save");
+        await surveys.addSurvey(surveyPt.data);
+        log('Empty Data');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ChooseSurveysScreen(),
+          ),
         );
+        HHSEmptyData.emptyData();
       }
     }
   }
