@@ -67,7 +67,7 @@ class PersonalHeadData {
     data['refuseToTellAge'] = refuseToTellAge;
     data['age'] = age.text ?? "";
     data['nationalityType'] = nationalityType ?? "";
-    data['nationality'] = nationality.text ?? "";
+    data['nationality'] = nationality.text;
     return data;
   }
 }

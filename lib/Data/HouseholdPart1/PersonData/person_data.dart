@@ -1,15 +1,33 @@
 class PersonData {
-  static Map<String, dynamic> relationshipToTheHeadOfHousehold = {
+
+
+
+  static Map<String, dynamic> relationshipToTheHeadOfHouseholdWoman = {
     " Relationship to the Head of Household": [
       'ذاتي / رب الأسرة',
-      'زوج',
       'زوجة',
-      'إبن / إبنه',
+      'إبنه',
       'الاباء / الاجداد',
       'إخوة',
       'أقارب أخرين',
       'زميل فى العمل',
       'خادمة',
+      'غير ذى صلة',
+    ],
+    "title": "mainMade",
+    "subTitle": "mainMade",
+    "chosenIndex": 0,
+  };
+
+  static Map<String, dynamic> relationshipToTheHeadOfHouseholdMan = {
+    " Relationship to the Head of Household": [
+      'ذاتي / رب الأسرة',
+      'زوج',
+      'إبن',
+      'الاباء / الاجداد',
+      'إخوة',
+      'أقارب أخرين',
+      'زميل فى العمل',
       'سائق',
       'غير ذى صلة',
     ],

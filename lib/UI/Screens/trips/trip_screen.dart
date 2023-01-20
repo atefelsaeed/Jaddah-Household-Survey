@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
 import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
@@ -277,17 +278,7 @@ class _TripScreenState extends State<TripScreen> {
                                 surveyPt.headerInterviewNumber = num;
                                 surveyPt.id = auth.uid.toString();
                                 SaveTripsData.saveData(context);
-                                print("after save");
-                                surveys.addSurvey(surveyPt.data);
-                                print('Saving Data :: ');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ChooseSurveysScreen(),
-                                  ),
-                                );
-                                HHSEmptyData.emptyData();
+                                CheckTripsValidation.validatePerson(context);
                               },
                             ).onError(
                               (error, stackTrace) {

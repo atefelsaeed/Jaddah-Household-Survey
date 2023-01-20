@@ -32,12 +32,12 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
     if (userSurveysProvider.isSearching) {
       print('searchList');
       list = userSurveysProvider.searchList;
-    // } else if (userSurveysProvider.isSearchingQTA) {
-    //   print('searchQTAList');
-    //   list = userSurveysProvider.searchQTAList;
-    // } else if (userSurveysProvider.isSearchingBLOK) {
-    //   print('searchBLOKList');
-    //   list = userSurveysProvider.searchBLOKList;
+      // } else if (userSurveysProvider.isSearchingQTA) {
+      //   print('searchQTAList');
+      //   list = userSurveysProvider.searchQTAList;
+      // } else if (userSurveysProvider.isSearchingBLOK) {
+      //   print('searchBLOKList');
+      //   list = userSurveysProvider.searchBLOKList;
     } else {
       print('userSurveys');
       list = userSurveysProvider.userSurveys;
@@ -46,154 +46,150 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
         body: userSurveysProvider.loading != true
             ? SafeArea(
                 child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.subdirectory_arrow_left_rounded,
-                          color: ColorManager.primaryColor,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            'العودة للرئيسية',
-                            style: TextStyle(
-                                color: ColorManager.primaryColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: width(context) * .045),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.subdirectory_arrow_left_rounded,
+                            color: ColorManager.primaryColor,
                           ),
-                        ),
-                      ],
-                    ),
-                    AppSize.spaceHeight2(context),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            const Text(
-                              'رقم الحى',
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'العودة للرئيسية',
+                              style: TextStyle(
+                                  color: ColorManager.primaryColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: width(context) * .045),
                             ),
-                            AppSize.spaceHeight1(context),
-                            MyTextForm(
-                              onChanged: (value) {
-                                userSurveysProvider.searchHAY(value!);
-                              },
-                              label: "بحث",
-                              widthForm: width(context) * .2,
-                              keyboardType: TextInputType.number,
-                              isPassword: false,
-                            ),
-                          ],
-                        ),
-                        AppSize.spaceWidth3(context),
-                        Column(
-                          children: [
-                            const Text(
-                              'رقم القطاع',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            AppSize.spaceHeight1(context),
-                            MyTextForm(
-                              onChanged: (value) {
-                                userSurveysProvider.searchQTA(value!);
-                              },
-                              label: "بحث",
-                              onTap: () {},
-                              widthForm: width(context) * .2,
-                              keyboardType: TextInputType.number,
-                              isPassword: false,
-                            ),
-                          ],
-                        ),
-                        AppSize.spaceWidth3(context),
-                        Column(
-                          children: [
-                            const Text(
-                              'رقم البلوك',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            AppSize.spaceHeight1(context),
-                            MyTextForm(
-                              onChanged: (value) {
-                                userSurveysProvider.searchBLOK(value!);
-                              },
-                              label: "بحث",
-                              widthForm: width(context) * .2,
-                              keyboardType: TextInputType.number,
-                              isPassword: false,
-                            ),
-                          ],
-                        ),
-                        AppSize.spaceWidth3(context),
-                        Column(
-                          children: [
-                            const Text(
-                              'بحث',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            AppSize.spaceHeight1(context),
-                            Container(
-                             width: width(context)*.15,
-                               padding: EdgeInsets.all(AppSize.padding1(context)),
-                              decoration: BoxDecoration(
-                                  color: userSurveysProvider.isSearching
-                                      ? ColorManager.grayColor
-                                      : ColorManager.primaryColor,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: IconButton(
-                                  onPressed: () {
-                                    userSurveysProvider.changeIcon();
-                                    // suffix: !userSurveysProvider.isSearching
-                                    //     ? Icons.search
-                                    //     : null,
-                                    // suffixPressed: () {
-                                    //
-                                    // },
-                                  },
-                                  icon: Icon(
-                                    Icons.filter_alt_outlined,
-                                    color: ColorManager.wight,
-                                    size: width(context) * .05,
-                                  )),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    AppSize.spaceHeight2(context),
-                    Expanded(
-                      child: ListView.separated(
-                        itemBuilder: (context, index) {
-                          return ItemUserSurvey(itemSurveyModel: list[index]);
-                        },
-                        separatorBuilder: (context, index) {
-                          return Divider(
-                            color: ColorManager.grayColor,
-                          );
-                        },
-                        itemCount: list.length,
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      AppSize.spaceHeight2(context),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              const Text(
+                                'رقم الحى',
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              AppSize.spaceHeight1(context),
+                              MyTextForm(
+                                onChanged: (value) {
+                                  userSurveysProvider.searchHAY(value!);
+                                },
+                                label: "بحث",
+                                widthForm: width(context) * .2,
+                                keyboardType: TextInputType.number,
+                                isPassword: false,
+                              ),
+                            ],
+                          ),
+                          AppSize.spaceWidth3(context),
+                          Column(
+                            children: [
+                              const Text(
+                                'رقم القطاع',
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              AppSize.spaceHeight1(context),
+                              MyTextForm(
+                                onChanged: (value) {
+                                  userSurveysProvider.searchQTA(value!);
+                                },
+                                label: "بحث",
+                                onTap: () {},
+                                widthForm: width(context) * .2,
+                                keyboardType: TextInputType.number,
+                                isPassword: false,
+                              ),
+                            ],
+                          ),
+                          AppSize.spaceWidth3(context),
+                          Column(
+                            children: [
+                              const Text(
+                                'رقم البلوك',
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              AppSize.spaceHeight1(context),
+                              MyTextForm(
+                                onChanged: (value) {
+                                  userSurveysProvider.searchBLOK(value!);
+                                },
+                                label: "بحث",
+                                widthForm: width(context) * .2,
+                                keyboardType: TextInputType.number,
+                                isPassword: false,
+                              ),
+                            ],
+                          ),
+                          AppSize.spaceWidth3(context),
+                          Column(
+                            children: [
+                              const Text(
+                                'بحث',
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              AppSize.spaceHeight1(context),
+                              Container(
+                                width: width(context) * .15,
+                                padding:
+                                    EdgeInsets.all(AppSize.padding1(context)),
+                                decoration: BoxDecoration(
+                                    color: userSurveysProvider.isSearching
+                                        ? ColorManager.grayColor
+                                        : ColorManager.primaryColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: IconButton(
+                                    onPressed: () {
+                                      userSurveysProvider.changeIcon();
+                                    },
+                                    icon: Icon(
+                                      Icons.filter_alt_outlined,
+                                      color: ColorManager.wight,
+                                      size: width(context) * .05,
+                                    )),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      AppSize.spaceHeight2(context),
+                      list.isNotEmpty
+                          ? Expanded(
+                              child: ListView.separated(
+                                itemBuilder: (context, index) {
+                                  return ItemUserSurvey(
+                                      itemSurveyModel: list[index]);
+                                },
+                                separatorBuilder: (context, index) {
+                                  return Divider(
+                                    color: ColorManager.grayColor,
+                                  );
+                                },
+                                itemCount: list.length,
+                              ),
+                            )
+                          : const Padding(
+                              padding: EdgeInsets.all(12.0),
+                              child: Center(
+                                child: Text(
+                                  'لا يوجد استبيانات',
+                                ),
+                              ),
+                            ),
+                    ],
+                  ),
                 ),
-              ))
+              )
             : const Center(child: CircularProgressIndicator())
-        //             : const Padding(
-        //                 padding: EdgeInsets.all(12.0),
-        //                 child: Center(
-        //                   child: Text(
-        //                     'لا يوجد استبيانات',
-        //                   ),
-        //                 ),
-        //               );
-        //   }
-        // }),
         );
   }
 }

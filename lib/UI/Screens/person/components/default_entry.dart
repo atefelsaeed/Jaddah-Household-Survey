@@ -65,21 +65,46 @@ class _DefaultEntryState extends State<DefaultEntry> {
                     .gender = p.toString();
               },
             ),
-            DropDownFormInput(
-              label: Text(PersonData.relationshipToTheHeadOfHousehold[
-                      PersonData.relationshipToTheHeadOfHousehold.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
-              hint: "القرابة برب الأسرة ",
-              options: PersonData.relationshipToTheHeadOfHousehold[
-                      PersonData.relationshipToTheHeadOfHousehold.keys.first]!
-                  .toList(),
-              onChange: (var p) {
-                PersonModelList.personModelList[widget.i].personalHeadData!
-                    .relationshipHeadHHS = p.toString();
-              },
-            ),
+            (PersonModelList.personModelList[widget.i].personalHeadData!
+                            .gender ==
+                        'ذكر' ||
+                    PersonModelList.personModelList[widget.i].personalHeadData!
+                            .gender ==
+                        '')
+                ? DropDownFormInput(
+                    label: Text(PersonData.relationshipToTheHeadOfHouseholdMan[
+                            PersonData.relationshipToTheHeadOfHouseholdMan.keys
+                                .first]!
+                        .toList()
+                        .first
+                        .toString()),
+                    hint: "القرابة برب الأسرة ",
+                    options: PersonData.relationshipToTheHeadOfHouseholdMan[
+                            PersonData.relationshipToTheHeadOfHouseholdMan.keys
+                                .first]!
+                        .toList(),
+                    onChange: (var p) {
+                      PersonModelList.personModelList[widget.i]
+                          .personalHeadData!.relationshipHeadHHS = p.toString();
+                    },
+                  )
+                : DropDownFormInput(
+                    label: Text(PersonData
+                        .relationshipToTheHeadOfHouseholdWoman[PersonData
+                            .relationshipToTheHeadOfHouseholdWoman.keys.first]!
+                        .toList()
+                        .first
+                        .toString()),
+                    hint: "القرابة برب الأسرة ",
+                    options: PersonData.relationshipToTheHeadOfHouseholdWoman[
+                            PersonData.relationshipToTheHeadOfHouseholdWoman
+                                .keys.first]!
+                        .toList(),
+                    onChange: (var p) {
+                      PersonModelList.personModelList[widget.i]
+                          .personalHeadData!.relationshipHeadHHS = p.toString();
+                    },
+                  ),
           ],
         ),
       ],

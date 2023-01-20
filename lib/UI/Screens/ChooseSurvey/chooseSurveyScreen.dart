@@ -48,33 +48,34 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
         leading: Container(),
       ),
       body: FutureBuilder(
-          future: Provider.of<SurveysProvider>(context, listen: false).fetch(),
-          builder: (fctx, dataSnapshot) {
-            if (dataSnapshot.connectionState == ConnectionState.waiting) {
-              return const Padding(
-                padding: EdgeInsets.all(40),
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            } else {
-              return dataSnapshot.hasError
-                  ? Padding(
-                      padding: const EdgeInsets.all(50),
-                      child: ConnectionError(() => setState(() => {})),
-                    )
-                  : dataSnapshot.hasData
-                      ? const ChooseSurveyBody()
-                      : const Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Center(
-                            child: Text(
-                              'لا يوجد استبيانات',
-                            ),
+        future: Provider.of<SurveysProvider>(context, listen: false).fetch(),
+        builder: (fctx, dataSnapshot) {
+          if (dataSnapshot.connectionState == ConnectionState.waiting) {
+            return const Padding(
+              padding: EdgeInsets.all(40),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else {
+            return dataSnapshot.hasError
+                ? Padding(
+                    padding: const EdgeInsets.all(50),
+                    child: ConnectionError(() => setState(() => {})),
+                  )
+                : dataSnapshot.hasData
+                    ? const ChooseSurveyBody()
+                    : const Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Center(
+                          child: Text(
+                            'لا يوجد استبيانات',
                           ),
-                        );
-            }
-          }),
+                        ),
+                      );
+          }
+        },
+      ),
     );
   }
 }

@@ -62,8 +62,8 @@ class EducationAddress {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['fullAddress'] = fullAddress.text ?? "";
-    data['geocodes'] = geocodes.text ?? "";
+    data['fullAddress'] = fullAddress.text;
+    data['geocodes'] = geocodes.text;
     return data;
   }
 }

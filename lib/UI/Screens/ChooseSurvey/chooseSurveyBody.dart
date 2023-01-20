@@ -85,18 +85,17 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                 ),
               ),
               InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            UserSurveysScreen(id: auth.user!.id),
-                      ),
-                    );
-                  },
-                  child: ItemHomeSurvey(
-                      count:
-                          surveyList.length ?? 0)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          UserSurveysScreen(id: auth.user!.id),
+                    ),
+                  );
+                },
+                child: ItemHomeSurvey(count: surveyList.length ?? 0),
+              ),
               InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
               InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
             ],

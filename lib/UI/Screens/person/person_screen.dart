@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/person_validation.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
@@ -118,7 +119,7 @@ class _PersonScreenState extends State<PersonScreen> {
                             });
                           },
                           isWidget: true,
-                          btnWidth: width(context) * .25,
+                          btnWidth: width(context) * .35,
                           text: "أضافة شخص جديد",
                           widget: const Icon(Icons.arrow_forward),
                         )
@@ -470,14 +471,8 @@ class _PersonScreenState extends State<PersonScreen> {
                           function: () {
                             if (_key.currentState!.validate()) {
                               _key.currentState!.save();
-
                               SavePersonData.saveData(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const TripScreen(),
-                                ),
-                              );
+                              CheckPersonValidation.validatePerson(context);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

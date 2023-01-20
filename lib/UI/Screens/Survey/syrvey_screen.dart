@@ -325,6 +325,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     DefaultButton(
                       function: () {
                         if (_key.currentState!.validate()) {
+
                           _key.currentState!.save();
 
                           for (int i = 0; i < q6peopleUnder18.length; i++) {

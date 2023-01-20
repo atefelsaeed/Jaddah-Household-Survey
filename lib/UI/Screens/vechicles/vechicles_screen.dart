@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/vehicles_validation.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/fuel_type_code.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/motorisedvechiels.dart';
@@ -78,12 +79,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                               _key.currentState!.save();
                               SaveVehiclesData.saveData(context);
                               print('Saving Data :: ');
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PersonScreen(),
-                                ),
-                              );
+                             CheckVehiclesValidation.validate(context);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
