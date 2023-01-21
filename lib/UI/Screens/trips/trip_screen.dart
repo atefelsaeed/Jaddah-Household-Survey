@@ -264,7 +264,7 @@ class _TripScreenState extends State<TripScreen> {
                       DefaultButton(
                         function: () {
                           if (_key.currentState!.validate()) {
-                            /* getLocation().then(
+                             getLocation().then(
                               (value) {
                                 Random random = Random();
                                 int randomNumber =
@@ -293,8 +293,8 @@ class _TripScreenState extends State<TripScreen> {
                                   ),
                                 );
                               },
-                            );*/
-                            Random random = Random();
+                            );
+                           /* Random random = Random();
                             int randomNumber =
                                 (1000 + random.nextInt(10000 - 1000));
                             int num = int.parse('${auth.uid}001$randomNumber');
@@ -305,7 +305,7 @@ class _TripScreenState extends State<TripScreen> {
                             surveyPt.headerInterviewNumber = num;
                             surveyPt.id = auth.uid.toString();
                             SaveTripsData.saveData(context);
-                            CheckTripsValidation.validatePerson(context);
+                            CheckTripsValidation.validatePerson(context);*/
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(

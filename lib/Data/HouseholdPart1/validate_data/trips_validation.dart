@@ -11,7 +11,7 @@ import 'package:jaddah_household_survey/providers/survey_hhs.dart';
 import 'package:provider/provider.dart';
 
 class CheckTripsValidation {
-  static validatePerson(context) async {
+  static validatePerson(BuildContext context) async {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
 

@@ -13,9 +13,6 @@ class CheckVehiclesValidation {
     } else if (VehModel.parkThisCar == '') {
       return Validator.showSnack(context,
           "عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات يجب إخيار ");
-    } else if (VehModel.nearestPublicTransporter == '') {
-      return Validator.showSnack(context,
-          ".كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟ يجب إخيار ");
     } else {
       Navigator.push(
         context,

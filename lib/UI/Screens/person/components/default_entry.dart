@@ -61,8 +61,10 @@ class _DefaultEntryState extends State<DefaultEntry> {
               options:
                   PersonData.gender[PersonData.gender.keys.first]!.toList(),
               onChange: (String? p) {
-                PersonModelList.personModelList[widget.i].personalHeadData!
-                    .gender = p.toString();
+                setState(() {
+                  PersonModelList.personModelList[widget.i].personalHeadData!
+                      .gender = p.toString();
+                });
               },
             ),
             (PersonModelList.personModelList[widget.i].personalHeadData!
@@ -84,8 +86,12 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                 .first]!
                         .toList(),
                     onChange: (var p) {
-                      PersonModelList.personModelList[widget.i]
-                          .personalHeadData!.relationshipHeadHHS = p.toString();
+                      setState(() {
+                        PersonModelList
+                            .personModelList[widget.i]
+                            .personalHeadData!
+                            .relationshipHeadHHS = p.toString();
+                      });
                     },
                   )
                 : DropDownFormInput(
@@ -101,8 +107,12 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                 .keys.first]!
                         .toList(),
                     onChange: (var p) {
-                      PersonModelList.personModelList[widget.i]
-                          .personalHeadData!.relationshipHeadHHS = p.toString();
+                      setState(() {
+                        PersonModelList
+                            .personModelList[widget.i]
+                            .personalHeadData!
+                            .relationshipHeadHHS = p.toString();
+                      });
                     },
                   ),
           ],
