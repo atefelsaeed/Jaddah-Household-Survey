@@ -13,7 +13,11 @@ class CheckPersonValidation {
         return Validator.showSnack(context, "الجنسية؟ يجب إخيار ");
       } else if (element.personalHeadData!.gender == '') {
         return Validator.showSnack(context, "الجنس يجب إخيار ");
-      } else if (element.personalHeadData!.relationshipHeadHHS == '') {
+      }
+
+
+
+      else if (element.personalHeadData!.relationshipHeadHHS == '') {
         return Validator.showSnack(context, "القرابة برب الاسرة؟ يجب إخيار ");
       } else {
         Navigator.push(context,

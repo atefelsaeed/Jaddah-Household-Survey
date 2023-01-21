@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../Helper/validator.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../UI/Screens/vechicles/vechicles_screen.dart';
+import '../VechelisData/veh_model.dart';
 
 class CheckHHSValidation {
   static validate(context) {
@@ -19,10 +20,15 @@ class CheckHHSValidation {
     } else if (HhsStatic.householdQuestions.hhsIsDwelling == null) {
       return Validator.showSnack(
           context, " 2.ما هي حالة إيجار / ملكية المسكن؟ يجب إخيار ");
-    } else if (HhsStatic.householdQuestions.hhsTotalIncome == null) {
+    } else if (HhsStatic.householdQuestions.hhsTotalIncome == null||HhsStatic.householdQuestions.hhsTotalIncome == "") {
       return Validator.showSnack(context,
           " 8.يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟ يجب إخيار ");
-    } else {
+    } else if (VehModel.nearestPublicTransporter == '') {
+      return Validator.showSnack(context,
+          ".كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟ يجب إخيار ");
+    }
+
+    else {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const VehiclesScreen()));
     }

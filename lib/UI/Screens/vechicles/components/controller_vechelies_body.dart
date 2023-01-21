@@ -34,7 +34,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: 6,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, childAspectRatio: 4),
+                crossAxisCount: 3, childAspectRatio: 2),
             itemBuilder: (context, index) => SizedBox(
               width: width(context) / 2,
               child: Row(children: [
