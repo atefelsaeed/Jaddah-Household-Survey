@@ -6,6 +6,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../Models/user_serveys_model.dart';
 
 class ItemUserSurvey extends StatelessWidget {
@@ -57,8 +58,10 @@ class ItemUserSurvey extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const SurveyScreen()),
+                    builder: (context) => const SurveyScreen(),
+                  ),
                 );
+                HHSEmptyData.emptyData();
               },
               isWidget: true,
               text: 'بدأ استبيان',
@@ -81,10 +84,12 @@ class ItemUserSurvey extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(flex: 4,
+            Flexible(
+              flex: 4,
               child: TextButton(
                 onPressed: () async {
-                  await launchURL(itemSurveyModel.pOINTX.toString(), itemSurveyModel.pOINTY.toString());
+                  await launchURL(itemSurveyModel.pOINTX.toString(),
+                      itemSurveyModel.pOINTY.toString());
                 },
                 child: Text(
                   'افتح خرائط جوجل',
