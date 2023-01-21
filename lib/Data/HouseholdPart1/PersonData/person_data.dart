@@ -20,7 +20,7 @@ class PersonData {
   };
 
   static Map<String, dynamic> relationshipToTheHeadOfHouseholdMan = {
-    " Relationship to the Head of Household": [
+    " Relationship2 to the Head of Household": [
       'ذاتي / رب الأسرة',
       'زوج',
       'إبن',

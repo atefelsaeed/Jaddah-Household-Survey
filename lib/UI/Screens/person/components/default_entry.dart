@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
@@ -22,6 +24,8 @@ class DefaultEntry extends StatefulWidget {
 }
 
 class _DefaultEntryState extends State<DefaultEntry> {
+  bool x=true;
+
   @override
   Widget build(BuildContext context) {
     int index = widget.i + 1;
@@ -62,17 +66,27 @@ class _DefaultEntryState extends State<DefaultEntry> {
                   PersonData.gender[PersonData.gender.keys.first]!.toList(),
               onChange: (String? p) {
                 setState(() {
+                  print(p);
                   PersonModelList.personModelList[widget.i].personalHeadData!
                       .gender = p.toString();
+                  if(p=="ذكر"){
+                    setState(() {
+                      x=true;
+                    });
+                  }else{
+                    setState(() {
+                      x=false;
+                    });
+                  }
+
                 });
+
               },
             ),
-            (PersonModelList.personModelList[widget.i].personalHeadData!
+           /* PersonModelList.personModelList[widget.i].personalHeadData!
                             .gender ==
-                        'ذكر' ||
-                    PersonModelList.personModelList[widget.i].personalHeadData!
-                            .gender ==
-                        '')
+                        'ذكر'*/
+    x==true
                 ? DropDownFormInput(
                     label: Text(PersonData.relationshipToTheHeadOfHouseholdMan[
                             PersonData.relationshipToTheHeadOfHouseholdMan.keys
@@ -86,15 +100,16 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                 .first]!
                         .toList(),
                     onChange: (var p) {
-                      setState(() {
-                        PersonModelList
-                            .personModelList[widget.i]
-                            .personalHeadData!
-                            .relationshipHeadHHS = p.toString();
-                      });
+
+                        PersonModelList.personModelList[widget.i]
+                            .personalHeadData!.relationshipHeadHHS = p.toString();
+
+
                     },
                   )
-                : DropDownFormInput(
+                :Container(),
+
+         x==false?   DropDownFormInput(
                     label: Text(PersonData
                         .relationshipToTheHeadOfHouseholdWoman[PersonData
                             .relationshipToTheHeadOfHouseholdWoman.keys.first]!
@@ -107,14 +122,13 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                 .keys.first]!
                         .toList(),
                     onChange: (var p) {
-                      setState(() {
-                        PersonModelList
-                            .personModelList[widget.i]
-                            .personalHeadData!
-                            .relationshipHeadHHS = p.toString();
-                      });
+
+                        PersonModelList.personModelList[widget.i]
+                            .personalHeadData!.relationshipHeadHHS = p.toString();
+
+
                     },
-                  ),
+                  ):Container(),
           ],
         ),
       ],
