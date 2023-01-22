@@ -7,12 +7,12 @@ import '../VechelisData/veh_model.dart';
 class CheckVehiclesValidation {
   static validate(context) {
     if (VehModel.fuelTypeCode == '') {
-      return Validator.showSnack(context, "أكواد نوع الوقود؟ يجب إخيار ");
+      return Validator.showSnack(context, " يجب إخيار ! أكواد نوع الوقود؟");
     } else if (VehModel.ownerShipCode == '') {
-      return Validator.showSnack(context, "رموز الملكية؟ يجب إخيار ");
+      return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
     } else if (VehModel.parkThisCar == '') {
       return Validator.showSnack(context,
-          "عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات يجب إخيار ");
+          " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
     } else {
       Navigator.push(
         context,

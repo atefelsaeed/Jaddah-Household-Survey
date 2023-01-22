@@ -37,8 +37,8 @@ class Q82 extends StatelessWidget {
             peopleUnder18: editingController3.peopleUnder18,
             totalNumberOfVecText: "إجمالي عدد الدرجات",
             totalNumberOfVec: editingController3.totalNumber,
-            peopleAdults18Text: "البالغين",
-            peopleUnder18Text: "الاطفال")
+            peopleAdults18Text: "عدد الدرجات للبالغين",
+            peopleUnder18Text: "عدد الدرجات للاطفال")
       ],
     );
   }

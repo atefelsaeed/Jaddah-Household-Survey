@@ -6,7 +6,6 @@ import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
@@ -15,7 +14,6 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
-import '../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_type_model.dart';

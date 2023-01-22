@@ -22,10 +22,10 @@ class CheckHHSValidation {
           context, " 2.ما هي حالة إيجار / ملكية المسكن؟ يجب إخيار ");
     } else if (HhsStatic.householdQuestions.hhsTotalIncome == null||HhsStatic.householdQuestions.hhsTotalIncome == "") {
       return Validator.showSnack(context,
-          " 8.يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟ يجب إخيار ");
+          "  يجب إخيار ! .يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟");
     } else if (VehModel.nearestPublicTransporter == '') {
       return Validator.showSnack(context,
-          ".كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟ يجب إخيار ");
+          " يجب إخيار ! .كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟");
     }
 
     else {

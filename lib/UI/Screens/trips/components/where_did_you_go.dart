@@ -31,15 +31,16 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: TripData.tripReason["TripReason"].length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 4),
+          crossAxisCount: 3,
+          childAspectRatio: 4,
+        ),
         itemBuilder: (context, index) => SizedBox(
           width: width(context) / 2,
           child: Row(children: [
             SizedBox(
-              width: width(context) * .23,
+              width: width(context) * .2,
               child: TextGlobal(
-                text: TripData.tripReason["TripReason"]
-                    [index]["value"],
+                text: TripData.tripReason["TripReason"][index]["value"],
                 //[index].title,
                 fontSize: height(context) * .02,
                 color: ColorManager.grayColor,
@@ -56,19 +57,17 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                 checkColor: ColorManager.whiteColor,
                 focusColor: ColorManager.orangeTxtColor,
                 activeColor: ColorManager.orangeTxtColor,
-                value: TripData.tripReason["TripReason"]
-                    [index]["isChick"],
+                value: TripData.tripReason["TripReason"][index]["isChick"],
                 onChanged: (bool? value) {
                   setState(() {
-                    TripData.tripReason["TripReason"]
-                        [chosenindex]["isChick"] = false;
+                    TripData.tripReason["TripReason"][chosenindex]["isChick"] =
+                        false;
                     chosenindex = index;
-                    TripData.tripReason["TripReason"]
-                        [chosenindex]["isChick"] = true;
+                    TripData.tripReason["TripReason"][chosenindex]["isChick"] =
+                        true;
                     TripModeList
                             .tripModeList[widget.indexTripModel].tripReason =
-                        TripData.tripReason["TripReason"]
-                            [chosenindex]["value"];
+                        TripData.tripReason["TripReason"][chosenindex]["value"];
                   });
                 }),
           ]),

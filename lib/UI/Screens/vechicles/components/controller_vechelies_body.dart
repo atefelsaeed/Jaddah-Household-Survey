@@ -67,10 +67,10 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                         }
                         if (value == false) {
                           switch (VehiclesData.vecModel[index].title) {
-                            case "سيارة":
+                            case "سيارة صغيرة":
                               VehModel.vecCar.clear();
                               break;
-                            case "سيارة كبيرة (SUV وما إلى ذلك)":
+                            case "سيارة كبيرة  ":
                               VehModel.largeCar.clear();
                               break;
                             case "شاحنة":
@@ -102,7 +102,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                           setState(() {
                             if (d!.isNotEmpty) {
                               switch (VehiclesData.vecModel[index].title) {
-                                case "سيارة":
+                                case "سيارة صغيرة":
                                   print("object");
                                   VehModel.vecCar = [];
                                   for (int i = 0; i < int.parse(d); i++) {
@@ -118,7 +118,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     );
                                   }
                                   break;
-                                case "سيارة كبيرة (SUV وما إلى ذلك)":
+                                case "سيارة كبيرة  ":
                                   VehModel.largeCar = [];
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.largeCar.add(
@@ -193,28 +193,13 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     );
                                   }
                                   break;
-                                // case "other":
-                                //   VehModel.vecWanet = [];
-                                //   for (int i = 0; i < int.parse(d); i++) {
-                                //     VehModel.vecWanet.add(
-                                //       VehicleBodyDetails(
-                                //         vehicleModel: TextEditingController(),
-                                //         vehicleOwner: TextEditingController(),
-                                //         vehicleAge: TextEditingController(),
-                                //         vehicleAnnualMileage:
-                                //             TextEditingController(),
-                                //         vehicleFuel: TextEditingController(),
-                                //       ),
-                                //     );
-                                //   }
-                                //   break;
                               }
                             } else {
                               switch (VehiclesData.vecModel[index].title) {
-                                case "سيارة":
+                                case "سيارة صغيرة":
                                   VehModel.vecCar.clear();
                                   break;
-                                case "سيارة كبيرة (SUV وما إلى ذلك)":
+                                case "سيارة كبيرة  ":
                                   VehModel.largeCar.clear();
                                   break;
                                 case "شاحنة":
@@ -244,7 +229,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
           BodyTypeVehicles(
             vecBodyType: VehModel.vecCar[i],
             index: i + 1,
-            title: "سيارة",
+            title: "سيارة صغيرة",
             function: () {
               setState(() {
                 VehModel.vecCar.removeAt(i);

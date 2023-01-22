@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../Helper/validator.dart';
 import '../../Resources/colors.dart';
 import '../../Resources/sizes.dart';
 

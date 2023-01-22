@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Data/HouseholdPart1/empty_data.dart';
@@ -54,13 +55,16 @@ class ItemUserSurvey extends StatelessWidget {
             ),
             const Spacer(),
             DefaultButton(
-              function: () {
+              function: () async {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const SurveyScreen(),
                   ),
                 );
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setInt('userSurveyId', itemSurveyModel.id!);
+                itemSurveyModel.id;
                 HHSEmptyData.emptyData();
               },
               isWidget: true,

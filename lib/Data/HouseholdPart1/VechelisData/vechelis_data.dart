@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 class VehiclesData {
   static List<VecModel> vecModel = [
     VecModel(
-        title: "سيارة",
+        title: "سيارة صغيرة",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
-        title: "سيارة كبيرة (SUV وما إلى ذلك)",
+        title: "سيارة كبيرة  ",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
@@ -32,11 +32,6 @@ class VehiclesData {
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
-    // VecModel(
-    //     title: "other",
-    //     isChosen: false,
-    //     number: 0,
-    //     textEditingController: TextEditingController()),
   ];
 
   static Map<String, List<dynamic>> fuelTypeCodes = {

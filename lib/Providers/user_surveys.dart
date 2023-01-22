@@ -59,7 +59,6 @@ class UserSurveysProvider with ChangeNotifier {
     }
     notifyListeners();
   }
-
   void changeIcon() {
     isSearching = !isSearching;
     notifyListeners();
@@ -103,4 +102,5 @@ class UserSurveysProvider with ChangeNotifier {
       return true;
     }
   }
+
 }

@@ -9,7 +9,6 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
-import '../person/person_screen.dart';
 import 'components/controller_vechelies_body.dart';
 import 'components/owner_ship_code.dart';
 

@@ -7,13 +7,6 @@ import 'package:provider/provider.dart';
 import 'TripsData/trip_mode_list.dart';
 import 'VechelisData/veh_model.dart';
 
-class SaveHHSData {
-  static saveData(context) {
-    SurveyProvider survey = Provider.of<SurveyProvider>(context, listen: true);
-    // survey.
-  }
-}
-
 class SaveVehiclesData {
   static saveData(context) {
     SurveyPTProvider survey =
@@ -33,32 +26,32 @@ class SaveVehiclesData {
 
     List<VehiclesBodyType> vehicles = [
       VehiclesBodyType(
-        vehicleTypeName: 'Car',
+        vehicleTypeName: 'سيارة صغيرة',
         vehicleTypeQuantity: VehModel.vecCar.length,
         vehicleTypeDetails: VehModel.vecCar,
       ),
       VehiclesBodyType(
-        vehicleTypeName: 'Van',
+        vehicleTypeName: 'شاحنة',
         vehicleTypeQuantity: VehModel.vecVan.length,
         vehicleTypeDetails: VehModel.vecVan,
       ),
       VehiclesBodyType(
-        vehicleTypeName: 'Large Car',
+        vehicleTypeName: "سيارة كبيرة",
         vehicleTypeQuantity: VehModel.largeCar.length,
         vehicleTypeDetails: VehModel.largeCar,
       ),
       VehiclesBodyType(
-        vehicleTypeName: 'E-Scooter',
+        vehicleTypeName: 'اسكوتر',
         vehicleTypeQuantity: VehModel.eScooter.length,
         vehicleTypeDetails: VehModel.eScooter,
       ),
       VehiclesBodyType(
-        vehicleTypeName: 'Pick Up',
+        vehicleTypeName: 'دراجة نارية',
         vehicleTypeQuantity: VehModel.pickUp.length,
         vehicleTypeDetails: VehModel.pickUp,
       ),
       VehiclesBodyType(
-        vehicleTypeName: 'Wanet',
+        vehicleTypeName: 'ونيت',
         vehicleTypeQuantity: VehModel.vecWanet.length,
         vehicleTypeDetails: VehModel.vecWanet,
       )

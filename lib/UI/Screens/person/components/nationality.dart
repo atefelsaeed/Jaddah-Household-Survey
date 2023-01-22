@@ -34,6 +34,7 @@ class _NationalityState extends State<Nationality> {
             if (base.personalHeadData!.nationalityType != "سعودي") {
               setState(() {
                 showText = true;
+                base.personalHeadData!.nationality.text = r;
               });
             } else {
               setState(() {
@@ -41,8 +42,6 @@ class _NationalityState extends State<Nationality> {
                 base.personalHeadData!.nationality.text = r;
               });
             }
-
-            print(base.personalHeadData!.nationalityType);
           },
           isListView: true,
           title: "الجنسية ",
