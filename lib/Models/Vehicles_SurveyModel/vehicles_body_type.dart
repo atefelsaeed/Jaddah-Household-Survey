@@ -33,13 +33,13 @@ class VehicleBodyDetails {
   TextEditingController vehicleFuel = TextEditingController();
   TextEditingController vehicleModel = TextEditingController();
   TextEditingController vehicleAnnualMileage = TextEditingController();
-  TextEditingController vehicleAge = TextEditingController();
+  TextEditingController fuelTypeCode = TextEditingController();
   bool? vehicleIsHousehold;
   TextEditingController vehicleOwner = TextEditingController();
 
   VehicleBodyDetails({
     required this.vehicleFuel,
-    required this.vehicleAge,
+    required this.fuelTypeCode,
     required this.vehicleAnnualMileage,
     this.vehicleIsHousehold,
     required this.vehicleModel,
@@ -50,7 +50,7 @@ class VehicleBodyDetails {
     vehicleFuel.text = json['vehicleFuel'];
     vehicleModel.text = json['vehicleModel'];
     vehicleAnnualMileage.text = json['vehicleAnnualMileage'];
-    vehicleAge.text = json['vehicleAge'] ?? '';
+    fuelTypeCode.text = json['vehicleAge'] ?? '';
     vehicleIsHousehold = json['vehicleIsHousehold'] ?? false;
     vehicleOwner.text = json['vehicleOwner'] ?? '';
   }
@@ -60,7 +60,7 @@ class VehicleBodyDetails {
     data['vehicleFuel'] = vehicleFuel.text;
     data['vehicleModel'] = vehicleModel.text;
     data['vehicleAnnualMileage'] = vehicleAnnualMileage.text;
-    data['vehicleAge'] = vehicleAge.text;
+    data['vehicleAge'] = fuelTypeCode.text;
     data['vehicleIsHousehold'] = vehicleIsHousehold ?? false;
     data['vehicleOwner'] = vehicleOwner.text;
     return data;

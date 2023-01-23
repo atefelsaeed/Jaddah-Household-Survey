@@ -110,7 +110,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
+                                        fuelTypeCode: TextEditingController(),
                                         vehicleAnnualMileage:
                                             TextEditingController(),
                                         vehicleFuel: TextEditingController(),
@@ -125,7 +125,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
+                                        fuelTypeCode: TextEditingController(),
                                         vehicleAnnualMileage:
                                             TextEditingController(),
                                         vehicleFuel: TextEditingController(),
@@ -140,7 +140,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
+                                        fuelTypeCode: TextEditingController(),
                                         vehicleAnnualMileage:
                                             TextEditingController(),
                                         vehicleFuel: TextEditingController(),
@@ -155,7 +155,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
+                                        fuelTypeCode: TextEditingController(),
                                         vehicleAnnualMileage:
                                             TextEditingController(),
                                         vehicleFuel: TextEditingController(),
@@ -170,7 +170,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
+                                        fuelTypeCode: TextEditingController(),
                                         vehicleAnnualMileage:
                                             TextEditingController(),
                                         vehicleFuel: TextEditingController(),
@@ -185,7 +185,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       VehicleBodyDetails(
                                         vehicleModel: TextEditingController(),
                                         vehicleOwner: TextEditingController(),
-                                        vehicleAge: TextEditingController(),
+                                        fuelTypeCode: TextEditingController(),
                                         vehicleAnnualMileage:
                                             TextEditingController(),
                                         vehicleFuel: TextEditingController(),
