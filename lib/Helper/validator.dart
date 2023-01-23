@@ -95,6 +95,16 @@ class Validator {
     return null;
   }
 
+  static String? validateName(
+      {required String value, required String message}) {
+    if (value.trim().isEmpty) {
+      return message;
+    } else if (RegExp('[0-9]').hasMatch(value)) {//r'^[a-zA-Z0-9]+$'
+      return message;
+    }
+    return null;
+  }
+
   static String? validatePhone(
       {required String value, required String message}) {
     if (value.trim().isEmpty) {

@@ -34,12 +34,12 @@ class _NationalityState extends State<Nationality> {
             if (base.personalHeadData!.nationalityType != "سعودي") {
               setState(() {
                 showText = true;
-                base.personalHeadData!.nationality.text = r;
+                // base.personalHeadData!.nationality.text = r;
               });
             } else {
               setState(() {
                 showText = false;
-                base.personalHeadData!.nationality.text = r;
+                base.personalHeadData!.nationality.text = "سعودي";
               });
             }
           },

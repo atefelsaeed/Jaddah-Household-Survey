@@ -40,34 +40,34 @@ class Q5 extends StatelessWidget {
           children: [
             Row(
               children: [
-                MyTextForm(
-                  label: "",
-                  controller: peopleUnder18,
-                  widthForm: width(context) * .07,
-                  keyboardType: TextInputType.number,
-                ),
-                AppSize.spaceWidth1(context),
                 TextGlobal(
                   text: "الاطفال",
                   fontSize: height(context) * .015,
                   color: ColorManager.black,
+                ),
+                AppSize.spaceWidth1(context),
+                MyTextForm(
+                  label: "",
+                  controller: peopleUnder18,
+                  widthForm: width(context) * .1,
+                  keyboardType: TextInputType.number,
                 ),
               ],
             ),
             AppSize.spaceWidth3(context),
             Row(
               children: [
-                MyTextForm(
-                  label: "",
-                  controller: peopleAdults18,
-                  widthForm: width(context) * .07,
-                  keyboardType: TextInputType.number,
-                ),
-                AppSize.spaceWidth1(context),
                 TextGlobal(
                   text: "البالغين",
                   fontSize: height(context) * .017,
                   color: ColorManager.grayColor,
+                ),
+                AppSize.spaceWidth1(context),
+                MyTextForm(
+                  label: "",
+                  controller: peopleAdults18,
+                  widthForm: width(context) * .1,
+                  keyboardType: TextInputType.number,
                 ),
               ],
             ),

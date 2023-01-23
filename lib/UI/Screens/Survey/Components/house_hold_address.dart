@@ -7,16 +7,10 @@ import '../widgets/text_form_row.dart';
 
 class HouseHoldAddress extends StatelessWidget {
   final TextEditingController area;
-
-  final TextEditingController zoneNumber;
-
-  final TextEditingController buildingName;
-
   final TextEditingController streetName;
 
   final TextEditingController streetNumber;
 
-  final TextEditingController city;
   final TextEditingController nearestLandMark;
   final TextEditingController blockNearestTwoCrossStreets;
 
@@ -24,12 +18,9 @@ class HouseHoldAddress extends StatelessWidget {
     super.key,
     required this.area,
     required this.blockNearestTwoCrossStreets,
-    required this.city,
     required this.nearestLandMark,
     required this.streetNumber,
-    required this.zoneNumber,
     required this.streetName,
-    required this.buildingName,
   });
 
   @override
@@ -75,15 +66,16 @@ class HouseHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: buildingName,
-                text: "اسم المبنى",
-                label: "اسم المبنى",
+                controller: area,
+                text: "الحى",
+                label: "الحى",
               ),
               TextForm(
-                controller: streetName,
-                text: "اسم الشارع",
-                label: "اسم الشارع",
-              )
+                controller: streetNumber,
+                label: "رقم الشارع",
+                text: "رقم الشارع",
+                keyboardType: TextInputType.number,
+              ),
             ],
           ),
         ),
@@ -94,10 +86,9 @@ class HouseHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: streetNumber,
-                label: "رقم الشارع",
-                text: "رقم الشارع",
-                keyboardType: TextInputType.number,
+                controller: streetName,
+                text: "اسم الشارع",
+                label: "اسم الشارع",
               ),
               TextForm(
                 controller: nearestLandMark,
@@ -115,33 +106,13 @@ class HouseHoldAddress extends StatelessWidget {
             children: [
               TextForm(
                 controller: blockNearestTwoCrossStreets,
-                text: "مجمع / أقرب شارعين متقاطعين",
-                label: "مجمع / أقرب شارعين متقاطعين",
+                text: "أقرب تقاطع",
+                label: "أقرب تقاطع",
               ),
-              TextForm(
-                controller: area,
-                text: "المنطقة (الحى)",
-                label: "المنطقة (الحى)",
-              )
             ],
           ),
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.rtl,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TextForm(
-                controller: city,
-                text: "المدينة",
-                label: "المدينة",
-              ),
-              //  TextForm(controller: area,text: "Area (Suburb)",label: "أدخل  Area (Suburb) ",)
-            ],
-          ),
-        ),
-        AppSize.spaceHeight3(context),
       ],
     );
   }

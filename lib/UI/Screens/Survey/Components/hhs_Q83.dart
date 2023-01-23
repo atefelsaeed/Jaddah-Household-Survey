@@ -21,7 +21,7 @@ class Q83 extends StatelessWidget {
             Expanded(
               child: TextGlobal(
                 text:
-                "كم عدد الدراجات الإلكترونية (e-scooters) التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                "كم عدد الدراجات الإلكترونية(إسكوتر) التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -34,7 +34,7 @@ class Q83 extends StatelessWidget {
             showDeleteIcon: false,
             peopleAdults18: editingController3.peopleAdults18,
             peopleUnder18: editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدرجات",
+            totalNumberOfVecText: "إجمالي عدد الدراجات الإلكترونية(إسكوتر)",
             totalNumberOfVec: editingController3.totalNumber,
             peopleAdults18Text: "عدد الدرجات للبالغين",
             peopleUnder18Text: "عدد الدرجات للاطفال")

@@ -14,14 +14,15 @@ class TextForm extends StatelessWidget {
   bool? readOnly;
   TextInputType? keyboardType;
 
-  TextForm(
-      {super.key,
-      required this.controller,
-      required this.label,
-      required this.text,
-      this.keyboardType,
-      this.readOnly,
-      this.fontSize});
+  TextForm({
+    super.key,
+    required this.controller,
+    required this.label,
+    required this.text,
+    this.keyboardType,
+    this.readOnly,
+    this.fontSize,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -73,6 +73,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Jaddah Household Survey',
         theme: ThemeData(
           primaryColor: ColorManager.primaryColor,
+          fontFamily: 'Somar'
         ),
         localizationsDelegates: const [
           GlobalCupertinoLocalizations.delegate,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Helper/validator.dart';
 import '../../Resources/colors.dart';
 import '../../Resources/sizes.dart';
 
@@ -55,10 +56,10 @@ class MyTextForm extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .015),
-        /*    validator: (String? val) => Validator.validateEmpty(
-              value: val,
-              message: "يجب اعطاء اجابة",
-            ),*/
+            validator: (String? val) =>  Validator.validateEmpty(
+                    value: val,
+                    message: "يجب إعطاء إجابة!",
+                  ),
             decoration: InputDecoration(
               labelText: label,
               suffixIcon: suffix != null
@@ -82,7 +83,7 @@ class MyTextForm extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide:
-                BorderSide(width: 1.5, color: ColorManager.primaryColor),
+                    BorderSide(width: 1.5, color: ColorManager.primaryColor),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               errorBorder: OutlineInputBorder(
@@ -92,7 +93,6 @@ class MyTextForm extends StatelessWidget {
             ),
             textDirection: TextDirection.ltr,
             keyboardType: keyboardType ?? TextInputType.text,
-            // validator: (value) => validate!(),
             onChanged: onChanged,
           ),
         ),

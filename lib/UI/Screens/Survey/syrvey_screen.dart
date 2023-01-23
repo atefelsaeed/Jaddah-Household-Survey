@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_model.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/Components/house_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
 import 'package:jaddah_household_survey/UI/Widgets/exit_screen.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
@@ -20,7 +22,6 @@ import 'Components/hhs_Q6.dart';
 import 'Components/hhs_Q81.dart';
 import 'Components/hhs_Q82.dart';
 import 'Components/hhs_Q83.dart';
-import 'components/house_hold_address.dart';
 
 class SurveyScreen extends StatefulWidget {
   const SurveyScreen({super.key});
@@ -34,9 +35,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   final TextEditingController area = TextEditingController();
 
-  final TextEditingController zoneNumber = TextEditingController();
   final TextEditingController yes = TextEditingController();
-  final TextEditingController buildingName = TextEditingController();
   final TextEditingController dewType = TextEditingController();
   final TextEditingController isDewType = TextEditingController();
   final TextEditingController streetName = TextEditingController();
@@ -48,7 +47,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final TextEditingController peopleAdults18 = TextEditingController();
 
   final TextEditingController peopleUnder18 = TextEditingController();
-  final TextEditingController city = TextEditingController();
 
   final TextEditingController blockNearestTwoCrossStreets =
       TextEditingController();
@@ -117,10 +115,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       blockNearestTwoCrossStreets: blockNearestTwoCrossStreets,
                       nearestLandMark: nearestLandMark,
                       streetNumber: streetNumber,
-                      zoneNumber: zoneNumber,
                       streetName: streetName,
-                      city: city,
-                      buildingName: buildingName,
                     ),
 
                     AppSize.spaceHeight3(context),
@@ -134,7 +129,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               .toList()
                               .first
                               .toString()),
-                          hint: " 1. ما أفضل وصف لهذا النوع من المسكن؟",
+                          hint: "1. وصف المسكن؟",
                           options: QuestionsData
                               .qh1[QuestionsData.qh1.keys.first]!
                               .toList(),
@@ -155,8 +150,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               TextForm(
                                 controller: HhsStatic
                                     .householdQuestions.hhsDwellingTypeOther!,
-                                text: "1. ما أفضل وصف لهذا النوع من المسكن؟",
-                                label: "1. ما أفضل وصف لهذا النوع من المسكن؟",
+                                text: "1. وصف المسكن؟",
+                                label: "1. وصف المسكن؟",
                               )
                             ],
                           )
@@ -177,7 +172,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               .toList()
                               .first
                               .toString()),
-                          hint: "2.ما هي حالة إيجار / ملكية المسكن؟",
+                          hint: "2.ملكية المسكن؟",
                           options: QuestionsData
                               .qh2[QuestionsData.qh2.keys.first]!
                               .toList(),
@@ -191,8 +186,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               TextForm(
                                 controller: HhsStatic
                                     .householdQuestions.hhsIsDwellingOther!,
-                                text: "2.ما هي حالة إيجار / ملكية المسكن؟",
-                                label: "2.ما هي حالة إيجار / ملكية المسكن؟",
+                                text: "2.ملكية المسكن؟",
+                                label: "2.ملكية المسكن؟",
                               )
                             ],
                           )
@@ -251,7 +246,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             yes.text = 'لا';
                           }
                         });
-                        print(r);
                       },
                       isListView: true,
                       title:
@@ -277,7 +271,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           )
                         : Container(),
                     AppSize.spaceHeight2(context),
-
                     AppSize.spaceHeight3(context),
                     Q81(editingController3: editingController3Q81),
                     AppSize.spaceHeight3(context),
@@ -292,7 +285,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           label:
                               Text(QuestionsData.qh9.values.first.toString()),
                           hint:
-                              "8.يرجى الإشارة إلى أي من النطاقات التالية يقع إجمالي دخل أسرتك الشهري بما في ذلك المزايا؟",
+                              "8.متوسط دخل جميع أفراد الاسرة الشهري مع المزايا؟",
                           options: QuestionsData
                               .qh9[QuestionsData.qh9.keys.first]!
                               .toList(),
@@ -305,19 +298,18 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     AppSize.spaceHeight3(context),
                     const NearestTransporter(),
                     AppSize.spaceHeight3(context),
-                    Row(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Flexible(
-                          flex: 1,
-                          child: TextFormer(
-                            controller: VehModel.editingController3.totalNumber,
-                            text:
-                                "10. خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
-                            label: "أدخل ",
-                            headLabel: 'أدخل',
-                            type: TextInputType.number,
-                          ),
+                        Text(
+                          "10. خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
+                          style: TextStyle(fontSize: height(context) * 0.02),
+                        ),
+                        AppSize.spaceHeight2(context),
+                        MyTextForm(
+                          controller: VehModel.editingController3.totalNumber,
+                          label: "أدخل ",
+                          keyboardType: TextInputType.number,
                         ),
                       ],
                     ),
@@ -325,7 +317,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     DefaultButton(
                       function: () {
                         if (_key.currentState!.validate()) {
-
                           _key.currentState!.save();
 
                           for (int i = 0; i < q6peopleUnder18.length; i++) {
@@ -364,10 +355,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               .householdQuestions
                               .hhsNumberYearsInAddress; //solve
                           surveyPt.hhsStreetName = streetName.text;
-                          surveyPt.hhsBuildingName = buildingName.text;
+                          surveyPt.hhsBuildingName = ""; //removed from UI
+                          surveyPt.hhsCity = ""; //removed from UI
                           surveyPt.hhsStreetNumber = streetNumber.text;
                           surveyPt.hhsNearestLandMark = nearestLandMark.text;
-                          surveyPt.hhsCity = city.text;
+
                           surveyPt.hhsNumberAdults = peopleAdults18.text;
                           surveyPt.hhsNumberChildren =
                               peopleUnder18.text; //solve
