@@ -31,10 +31,12 @@ class _NationalityState extends State<Nationality> {
         ListViewCheckBoxOrange(
           onChange: (r) {
             base.personalHeadData!.nationalityType = r;
+
             if (base.personalHeadData!.nationalityType != "سعودي") {
               setState(() {
-                showText = !showText;
-                // base.personalHeadData!.nationality.text = r;
+                showText = true;
+                PersonData.nationality["isChick"] = true;
+                base.personalHeadData!.nationality.text = "";
               });
             } else {
               setState(() {
@@ -51,13 +53,17 @@ class _NationalityState extends State<Nationality> {
               " في حالة ازدواج الجنسية ؛ يرجى تسجيل جواز السفر / الجنسية التي يحمل عليها الشخص تأشيرة الإقامة في المملكة العربية السعودية ",
         ),
         AppSize.spaceHeight2(context),
-        showText == true
+        (showText == true)
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   MyTextForm(
-                    label: base.personalHeadData!.nationalityType!,
+                    label: "أدخل جنسيتك",
                     controller: base.personalHeadData!.nationality,
+                    onChanged: (String? val) {
+                      print('object');
+                      print(base.personalHeadData!.nationality.text);
+                    },
                   ),
                   AppSize.spaceWidth2(context),
                   TextGlobal(
