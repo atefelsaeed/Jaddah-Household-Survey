@@ -9,6 +9,7 @@ class ListViewCheckBoxOrange extends StatefulWidget {
   final String subTitle;
   List<dynamic> question;
   late Function onChange;
+  late Map map;
   bool? isListView;
 
   ListViewCheckBoxOrange({
@@ -17,6 +18,7 @@ class ListViewCheckBoxOrange extends StatefulWidget {
     required this.question,
     required this.subTitle,
     this.isListView,
+    required this.map,
     required this.onChange,
   });
 
@@ -92,6 +94,9 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                           chosenIndex = index;
                           widget.question[index]["isChick"] = value;
                         });
+            widget.map["index"]=chosenIndex;
+
+                      print(  widget.map["index"]);
                         print(widget.question[index]["value"]);
                         widget.onChange(widget.question[index]["value"]);
                       }),

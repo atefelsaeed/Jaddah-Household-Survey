@@ -472,6 +472,8 @@ class _PersonScreenState extends State<PersonScreen> {
                             if (_key.currentState!.validate()) {
                               _key.currentState!.save();
                               SavePersonData.saveData(context);
+                              PersonData.nationality[PersonData.nationality.keys.first]!
+                                  .toList()[PersonData.nationality["index"]]["isChick"]=false;
                               if (CheckPersonValidation.validatePerson(
                                   context)) {
                                 Navigator.push(

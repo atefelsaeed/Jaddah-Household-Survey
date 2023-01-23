@@ -11,6 +11,7 @@ import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
+import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/validate_data/hhs_validation.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Providers/survey_hhs.dart';
@@ -93,11 +94,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
-    return WillPopScope(
-      onWillPop: () {
-        return OnExitScreen.onWillPop(context);
-      },
-      child: Scaffold(
+   return Scaffold(
         body: SingleChildScrollView(
             child: Directionality(
           textDirection: TextDirection.ltr,
@@ -196,9 +193,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     AppSize.spaceHeight3(context),
 
                     ListViewCheckBoxOrange(
+                      map:QuestionsData.qh4 ,
                       onChange: (r) {
                         HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
                             r;
+      print( QuestionsData.qh4[QuestionsData.qh4.keys.first]!
+                            .toList()[ QuestionsData.qh4["index"]]["isChick"]);//=false;
+
                       },
                       title:
                           "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
@@ -223,6 +224,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
                     AppSize.spaceHeight3(context),
                     ListViewCheckBoxOrange(
+                        map: QuestionsData.qh7,
                       onChange: (r) {
                         HhsStatic.householdQuestions.hhsNumberYearsInAddress =
                             r;
@@ -234,6 +236,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     ),
 
                     ListViewCheckBoxOrange(
+                      map: QuestionsData.qh7_2,
                       onChange: (r) {
                         setState(() {
                           if (r == "نعم") {
@@ -383,9 +386,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               editingController3Q83.peopleUnder18.text;
                           surveyPt.hhsESTotalBikesNumber =
                               editingController3Q83.totalNumber.text;
+
+
                           surveyPt.hhsESAdultsBikesNumber =
                               editingController3Q83.peopleAdults18.text;
-
+                          QuestionsData.qh4[QuestionsData.qh4.keys.first]!
+                              .toList()[0]["isChick"]=false;
                           surveyPt.hhsDemolishedAreas = yes.text;
                           surveyPt.headerDistrictName = '';
                           surveyPt.headerZoneNumber = '';
@@ -411,7 +417,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
             ),
           ),
         )),
-      ),
+
     );
   }
 }

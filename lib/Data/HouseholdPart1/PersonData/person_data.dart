@@ -295,7 +295,7 @@ class PersonData {
     "title": "nationality",
     "subTitle":
         " A separate family is defined as who share the kitchen expenses and meals",
-    "chosenIndex": 0,
+    "index": 0,
   };
 
   static Map<String, dynamic> mainOccupation = {
