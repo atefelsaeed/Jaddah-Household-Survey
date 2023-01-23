@@ -116,7 +116,8 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                               );
                             });
                       } else {
-                        TimeOfDay? pickedTime = await showTimePicker(
+                        TimeOfDay? pickedTime =
+                        await showTimePicker(
                           builder: (context, child) {
                             return StyleManager.selectTime(context, child);
                           },

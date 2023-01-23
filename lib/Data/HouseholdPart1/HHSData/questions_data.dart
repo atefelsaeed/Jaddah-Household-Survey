@@ -42,7 +42,7 @@ class QuestionsData {
     ],
     "subTitle":
         " A separate family is defined as who share the kitchen expenses and meals",
-    "chosenIndex": 0,
+    "index":0
   };
   static Map<String, dynamic> qh4 = {
     "? How many separate families live at this address": [
@@ -59,7 +59,7 @@ class QuestionsData {
     ],
     "subTitle":
         " A separate family is defined as who share the kitchen expenses and meals",
-    "chosenIndex": 0,
+    "index":0
   };
 
   static Map<String, dynamic> qh5 = {
@@ -89,21 +89,25 @@ class QuestionsData {
       {"value": '- 5 سنوات', "isChick": false},
       {"value": '- 10 سنوات', "isChick": false},
       {"value": '+ 10 سنوات', "isChick": false},
-    ]
+    ],
+    "index":0
   };
   static Map<String, dynamic> qh7_2 = {
     'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
         [
       {"value": 'نعم', "isChick": false},
       {"value": 'لا', "isChick": false},
-    ]
+
+    ],
+    "index":0
   };
   static Map<String, dynamic> qh8_1 = {
     "?How many pedal-cycles are owned or used by this household": {
       "adults (18yrs +)": "0",
       "children (under 18yrs)": "0",
       "Total Number of Vehicles in each family": "0"
-    }
+    },
+
   };
   static Map<String, dynamic> qh8_2 = {
     "?How many Electric Bicycles are owned or used by this household": {

@@ -84,7 +84,8 @@ class VehiclesData {
       {"value": '11 - 15 دقيقة مشي', "isChick": false},
       {"value": ' أكثر من 15 دقيقة', "isChick": false},
       {"value": ' لا اعرف', "isChick": false},
-    ]
+    ],
+    "index":0
   };
 }
 

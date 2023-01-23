@@ -11,6 +11,7 @@ class NearestTransporter extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return ListViewCheckBoxOrange(
+      map: VehiclesData.q3VecData,
       onChange: (r) {
         VehModel.nearestPublicTransporter = r.toString();
       },
