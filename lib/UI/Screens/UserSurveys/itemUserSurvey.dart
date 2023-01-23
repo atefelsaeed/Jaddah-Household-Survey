@@ -7,6 +7,9 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
+import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
+import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../Models/user_serveys_model.dart';
 
@@ -65,6 +68,16 @@ class ItemUserSurvey extends StatelessWidget {
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setInt('userSurveyId', itemSurveyModel.id!);
                 itemSurveyModel.id;
+                QuestionsData.qh4[QuestionsData.qh4.keys.first]!
+                    .toList()[ QuestionsData.qh4["index"]]["isChick"]=false;
+                QuestionsData.qh7[QuestionsData.qh7.keys.first]!
+                    .toList()[ QuestionsData.qh7["index"]]["isChick"]=false;
+                QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first]!
+                    .toList()[ QuestionsData.qh7_2["index"]]["isChick"]=false;
+                VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
+                    .toList()[VehiclesData.q3VecData["index"]]["isChick"]=false;
+                PersonData.nationality[PersonData.nationality.keys.first]!
+                    .toList()[PersonData.nationality["index"]]["isChick"]=false;
                 HHSEmptyData.emptyData();
               },
               isWidget: true,
