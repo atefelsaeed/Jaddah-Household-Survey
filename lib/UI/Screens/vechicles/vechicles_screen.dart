@@ -56,9 +56,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     AppSize.spaceHeight3(context),
                     const MotorisedVec(),
                     const ControllerVehiclesBody(),
-                    FuelTypeCode(
-                      textEditingController: fuelTypeCode,
-                    ),
+
                     AppSize.spaceHeight2(context),
                     OwnerShipCode(
                       textEditingController: ownerShipCode,

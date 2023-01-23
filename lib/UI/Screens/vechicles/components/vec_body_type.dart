@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
+import 'fuel_type_code.dart';
 
 class BodyTypeVehicles extends StatefulWidget {
   const BodyTypeVehicles({
@@ -53,6 +55,7 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
                 IconButton(
                     onPressed:(){
                       widget.function();
+
                     },
                     icon: Icon(
                       Icons.delete,
@@ -102,21 +105,28 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
             //     ],
             //   ),
             // ),
-            AppSize.spaceHeight1(context),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextFormer(
-                    controller: widget.vecBodyType.vehicleModel,
-                    text: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
-                    label: "أدخل  ${widget.vecBodyType.vehicleModel}",
-                    headLabel: widget.title,
-                  )
-                ],
+
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+              FuelTypeCode(
+                textEditingController:widget.vecBodyType.fuelTypeCode ,
               ),
-            ),
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextFormer(
+                      controller: widget.vecBodyType.vehicleModel,
+                      text: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
+                      label: "أدخل  ${widget.vecBodyType.vehicleModel}",
+                      headLabel: widget.title,
+                    )
+                  ],
+                ),
+              ),
+            ],),
+            AppSize.spaceHeight1(context),
+
           ],
         ));
   }
