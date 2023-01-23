@@ -18,7 +18,7 @@ final int count;
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'مسح يوميات السفر المنزلي',
+              'مسح يوميات الذهاب المنزلي',
               style: TextStyle(fontWeight: FontWeight.w800),
             ),
             AppSize.spaceHeight5(context),

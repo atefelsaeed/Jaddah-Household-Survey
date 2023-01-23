@@ -41,7 +41,7 @@ class TripModeList {
           adultsNumber: TextEditingController(),
           childrenNumber: TextEditingController(),
           hhsMembersTraveled: "",
-          text: "اي من أفراد الأسرة سافر معك؟"),
+          text: "اي من أفراد الأسرة ذهب معك؟"),
       arrivalDepartTime: ArrivalDepartTime(
         arriveDestinationTime: TextEditingController(),
         departTime: TextEditingController(),

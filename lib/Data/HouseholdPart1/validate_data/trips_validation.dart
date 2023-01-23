@@ -32,7 +32,7 @@ class CheckTripsValidation {
         return Validator.showSnack(context, " يجب إخيار ! وضع وصول؟");
       } else if (element.travelTypeModel!.travelType == null ||
           element.travelTypeModel!.travelType == '') {
-        return Validator.showSnack(context, " يجب إخيار ! بماذا سافرت ؟ ");
+        return Validator.showSnack(context, " يجب إخيار ! بماذا ذهبت ؟ ");
       } else if (element.arrivalDepartTime!.numberRepeatTrip == null ||
           element.arrivalDepartTime!.numberRepeatTrip == '') {
         return Validator.showSnack(
@@ -40,7 +40,7 @@ class CheckTripsValidation {
       } else if (element.arrivalDepartTime!.numberRepeatTrip == null ||
           element.arrivalDepartTime!.numberRepeatTrip == "") {
         return Validator.showSnack(
-            context, " يجب إخيار ! هل سافرت بمفردك أم مع آخرین؟ ");
+            context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
       }
       else {
         print("after save");

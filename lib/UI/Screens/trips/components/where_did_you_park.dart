@@ -36,7 +36,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                   .toList()
                   .first
                   .toString()),
-              hint: "بماذا سافرت ؟",
+              hint: "بماذا ذهبت ؟",
               options: TripData
                   .whatTypeOfTravel[TripData.whatTypeOfTravel.keys.first]!
                   .toList(),

@@ -47,7 +47,7 @@ class _EmployeeState extends State<Employee> {
                         .first
                         .toString()),
                     hint:
-                        "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للسفر إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
+                        "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للذهاب إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
                     options: PersonData
                         .workplace[PersonData.workplace.keys.first]!
                         .toList(),

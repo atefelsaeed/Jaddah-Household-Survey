@@ -48,7 +48,7 @@ class HouseHoldAddress extends StatelessWidget {
             ),
             AppSize.spaceWidth2(context),
             TextGlobal(
-              text: "مسح يوميات السفر المنزلي",
+              text: "مسح يوميات الذاهاب المنزلي",
               fontSize: height(context) * .023,
               color: ColorManager.black,
             ),

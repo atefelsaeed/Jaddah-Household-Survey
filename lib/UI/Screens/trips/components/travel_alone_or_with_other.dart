@@ -27,7 +27,7 @@ class _TravelAloneState extends State<TravelAlone> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const HeadlineTrip(text: "7. هل سافرت بمفردك أم مع آخرین؟"),
+            const HeadlineTrip(text: "7. هل ذهبت بمفردك أم مع آخرین؟"),
             Row(children: [
               TextGlobal(
                 text: "مع اخرين",
@@ -79,7 +79,7 @@ class _TravelAloneState extends State<TravelAlone> {
                         .toList()
                         .first
                         .toString()),
-                    hint: "اي من أفراد الأسرة سافر معك؟",
+                    hint: "اي من أفراد الأسرة ذهب معك؟",
                     options: TripData.memberHouseHoldTravel[
                             TripData.memberHouseHoldTravel.keys.first]!
                         .toList(),

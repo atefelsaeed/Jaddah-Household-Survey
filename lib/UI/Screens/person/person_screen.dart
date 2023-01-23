@@ -60,72 +60,6 @@ class _PersonScreenState extends State<PersonScreen> {
                       text: "المعلومات الاجتماعية والاقتصادية للأسر المعيشية",
                     ),
                     AppSize.spaceHeight2(context),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DefaultButton(
-                          function: () {
-                            setState(() {
-                              PersonModelList.personModelList.add(
-                                PersonModel(
-                                  //==personalHeadData==
-                                  personalHeadData: PersonalHeadData(
-                                    age: TextEditingController(),
-                                    nationality: TextEditingController(),
-                                    nationalityType: '',
-                                    gender: '',
-                                    checkAge: false,
-                                    refuseToTellAge: false,
-                                    relationshipHeadHHS: '',
-                                  ),
-                                  //==personalQuestion==
-                                  personalQuestion: PersonalQuestion(
-                                    mainOccupationType: '',
-                                    asPassenger: '',
-                                    availablePersonalCar: '',
-                                    drivingLicenceType: '',
-                                    haveBusPass: '',
-                                    haveDisabilityTransportMobility: '',
-                                    haveCarSharing: false,
-                                    educationAddress: EducationAddress(
-                                      fullAddress: TextEditingController(),
-                                      geocodes: TextEditingController(),
-                                    ),
-                                  ),
-                                  //==occupationModel==
-                                  occupationModel: OccupationModel(
-                                    earliestTimeFinishingWork:
-                                        TextEditingController(),
-                                    earliestTimeStartingWork:
-                                        TextEditingController(),
-                                    endingWoke: TextEditingController(),
-                                    startingWoke: TextEditingController(),
-                                    address: TextEditingController(),
-                                    geoCodes: TextEditingController(),
-                                    mainOccupationAddress:
-                                        TextEditingController(),
-                                    bestWorkspaceLocation: '',
-                                    bikeWorkDays: 0,
-                                    commuteWorkDays: 0,
-                                    flexibleWorkingHours: '',
-                                    isEmployee: '',
-                                    isWorkFromHome: false,
-                                    numberWorkFromHome: 0,
-                                    occupationLevelSector: '',
-                                    occupationSector: '',
-                                  ),
-                                ),
-                              );
-                            });
-                          },
-                          isWidget: true,
-                          btnWidth: width(context) * .35,
-                          text: "أضافة شخص جديد",
-                          widget: const Icon(Icons.arrow_forward),
-                        )
-                      ],
-                    ),
-                    AppSize.spaceHeight2(context),
                     for (int i = 0;
                         i < PersonModelList.personModelList.length;
                         i++)
@@ -464,6 +398,72 @@ class _PersonScreenState extends State<PersonScreen> {
                         ),
                       ),
                     AppSize.spaceHeight2(context),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        DefaultButton(
+                          function: () {
+                            setState(() {
+                              PersonModelList.personModelList.add(
+                                PersonModel(
+                                  //==personalHeadData==
+                                  personalHeadData: PersonalHeadData(
+                                    age: TextEditingController(),
+                                    nationality: TextEditingController(),
+                                    nationalityType: '',
+                                    gender: '',
+                                    checkAge: false,
+                                    refuseToTellAge: false,
+                                    relationshipHeadHHS: '',
+                                  ),
+                                  //==personalQuestion==
+                                  personalQuestion: PersonalQuestion(
+                                    mainOccupationType: '',
+                                    asPassenger: '',
+                                    availablePersonalCar: '',
+                                    drivingLicenceType: '',
+                                    haveBusPass: '',
+                                    haveDisabilityTransportMobility: '',
+                                    haveCarSharing: false,
+                                    educationAddress: EducationAddress(
+                                      fullAddress: TextEditingController(),
+                                      geocodes: TextEditingController(),
+                                    ),
+                                  ),
+                                  //==occupationModel==
+                                  occupationModel: OccupationModel(
+                                    earliestTimeFinishingWork:
+                                        TextEditingController(),
+                                    earliestTimeStartingWork:
+                                        TextEditingController(),
+                                    endingWoke: TextEditingController(),
+                                    startingWoke: TextEditingController(),
+                                    address: TextEditingController(),
+                                    geoCodes: TextEditingController(),
+                                    mainOccupationAddress:
+                                        TextEditingController(),
+                                    bestWorkspaceLocation: '',
+                                    bikeWorkDays: 0,
+                                    commuteWorkDays: 0,
+                                    flexibleWorkingHours: '',
+                                    isEmployee: '',
+                                    isWorkFromHome: false,
+                                    numberWorkFromHome: 0,
+                                    occupationLevelSector: '',
+                                    occupationSector: '',
+                                  ),
+                                ),
+                              );
+                            });
+                          },
+                          isWidget: true,
+                          btnWidth: width(context) * .35,
+                          text: "أضافة شخص جديد",
+                          widget: const Icon(Icons.arrow_forward),
+                        )
+                      ],
+                    ),
+                    AppSize.spaceHeight6(context),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
