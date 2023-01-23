@@ -42,14 +42,54 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
     // TODO: implement build
     return Column(
       children: [
-        const HeadlineTrip(text: "وقت الوصول والمغادرة"),
+        const HeadlineTrip(text: "9. وقت الوصول والمغادرة"),
         const Divider(),
         AppSize.spaceHeight2(context),
         Directionality(
           textDirection: TextDirection.ltr,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: [  Column(
+              children: [
+                SizedBox(
+                    width: width(context) * .45,
+                    child: TextGlobal(
+                      text: "وقت الوصول",
+                      fontSize: height(context) * .02,
+                      color: ColorManager.black,
+                    )),
+                AppSize.spaceHeight1(context),
+                MyTextForm(
+                  label: "وقت الوصول",
+                  controller: widget
+                      .tripModel.arrivalDepartTime!.arriveDestinationTime,
+
+                  readOnly: true,
+                  // set it true, so that user will not able to edit text
+                  onTap: () async {
+                    TimeOfDay? pickedTime = await showTimePicker(
+                      initialTime:
+                      TimeOfDay.fromDateTime(DateTime.now().roundDown()),
+                      builder: (context, child) {
+                        return StyleManager.selectTime(context, child);
+                      },
+                      context: context,
+                    );
+
+                    if (pickedTime != null) {
+                      setState(() {
+                        widget.tripModel.arrivalDepartTime!
+                            .arriveDestinationTime.text =
+                            pickedTime.format(
+                                context); //set the value of text field.
+                      });
+                    } else {
+                      print("Time is not selected");
+                    }
+                  },
+                ),
+              ],
+            ),
               Column(
                 children: [
                   SizedBox(
@@ -118,47 +158,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  SizedBox(
-                      width: width(context) * .45,
-                      child: TextGlobal(
-                        text: "وقت الوصول",
-                        fontSize: height(context) * .02,
-                        color: ColorManager.black,
-                      )),
-                  AppSize.spaceHeight1(context),
-                  MyTextForm(
-                    label: "وقت الوصول",
-                    controller: widget
-                        .tripModel.arrivalDepartTime!.arriveDestinationTime,
 
-                    readOnly: true,
-                    // set it true, so that user will not able to edit text
-                    onTap: () async {
-                      TimeOfDay? pickedTime = await showTimePicker(
-                        initialTime:
-                            TimeOfDay.fromDateTime(DateTime.now().roundDown()),
-                        builder: (context, child) {
-                          return StyleManager.selectTime(context, child);
-                        },
-                        context: context,
-                      );
-
-                      if (pickedTime != null) {
-                        setState(() {
-                          widget.tripModel.arrivalDepartTime!
-                                  .arriveDestinationTime.text =
-                              pickedTime.format(
-                                  context); //set the value of text field.
-                        });
-                      } else {
-                        print("Time is not selected");
-                      }
-                    },
-                  ),
-                ],
-              ),
             ],
           ),
         ),

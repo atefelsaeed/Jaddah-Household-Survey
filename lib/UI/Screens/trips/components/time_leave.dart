@@ -25,7 +25,7 @@ class _TimeLeaveState extends State<TimeLeave> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextGlobal(
-              text: "في أي وقت غادرت؟",
+              text: "3. في أي وقت غادرت؟",
               fontSize: height(context) * .020,
               color: ColorManager.black,
             )

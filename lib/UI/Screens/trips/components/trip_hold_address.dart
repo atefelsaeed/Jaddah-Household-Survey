@@ -7,8 +7,13 @@ import '../../Survey/widgets/text_form_row.dart';
 
 class TripHoldAddress extends StatelessWidget {
   final StartBeginningModel tripModel;
-final String titel;
-  const TripHoldAddress({super.key, required this.tripModel, required this.titel});
+  final String titel;
+
+  const TripHoldAddress({
+    super.key,
+    required this.tripModel,
+    required this.titel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ final String titel;
     return Column(
       children: [
         AppSize.spaceHeight2(context),
-         HeadlineTrip(text:titel),
+        HeadlineTrip(text: titel),
         AppSize.spaceHeight1(context),
         const Divider(
           thickness: 1,
@@ -28,14 +33,15 @@ final String titel;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.buildingName,
-                text: "اسم المبنى",
-                label: "اسم المبنى",
+                controller: tripModel.area,
+                text: "الحى",
+                label: "الحى",
               ),
               TextForm(
-                controller: tripModel.streetName,
-                text: "أسم الشارع",
-                label: "أسم الشارع",
+                controller: tripModel.streetNumber,
+                text: "رقم الشارع",
+                label: "رقم الشارع",
+                keyboardType: TextInputType.number,
               )
             ],
           ),
@@ -47,10 +53,9 @@ final String titel;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: tripModel.streetNumber,
-                label: "رقم الشارع",
-                text: "رقم الشارع",
-                keyboardType: TextInputType.number,
+                controller: tripModel.streetName,
+                label: "إسم الشارع",
+                text: "إسم الشارع",
               ),
               TextForm(
                 controller: tripModel.nearestLandMark,
@@ -68,31 +73,13 @@ final String titel;
             children: [
               TextForm(
                 controller: tripModel.block,
-                text: "مجمع / أقرب شارعین متقاطعین",
-                label: "مجمع / أقرب شارعین متقاطعین",
+                text: "أقرب تقاطع",
+                label: "أقرب تقاطع",
               ),
-              TextForm(
-                controller: tripModel.area,
-                text: "المنطقة (الحى)",
-                label: "المنطقة (الحى)",
-              )
             ],
           ),
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: tripModel.city,
-                text: "المدينة",
-                label: "أدخل المدينة",
-              ),
-            ],
-          ),
-        ),
       ],
     );
   }

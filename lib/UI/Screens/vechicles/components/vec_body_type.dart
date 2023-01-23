@@ -43,12 +43,12 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
                   fontSize: height(context) * .02,
                   color: ColorManager.orangeTxtColor,
                 ),
-                TextGlobal(
-                  text: " هيكل السيارة",
-                  fontSize: height(context) * .02,
-                  color: ColorManager.grayColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                // TextGlobal(
+                //   text: " هيكل السيارة",
+                //   fontSize: height(context) * .02,
+                //   color: ColorManager.grayColor,
+                //   fontWeight: FontWeight.bold,
+                // ),
                 const Spacer(),
                 IconButton(
                     onPressed:(){

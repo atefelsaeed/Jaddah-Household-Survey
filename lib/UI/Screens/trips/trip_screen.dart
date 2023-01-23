@@ -198,11 +198,11 @@ class _TripScreenState extends State<TripScreen> {
                               TripHoldAddress(
                                 tripModel: TripModeList
                                     .tripModeList[i].startBeginningModel!,
-                                titel: "من أین بدأت الیوم؟",
+                                titel: "1. من أین بدأت الیوم؟",
                               ),
                               AppSize.spaceHeight3(context),
                               const HeadlineTrip(
-                                  text: "ما ھو الغرض من التواجد ھناك؟"),
+                                  text: "2. ما ھو الغرض من التواجد ھناك؟"),
                               const Divider(),
                               PurposeOfTheBeing(
                                 indexTripModel: i,
@@ -217,13 +217,13 @@ class _TripScreenState extends State<TripScreen> {
                               TripHoldAddress(
                                 tripModel:
                                     TripModeList.tripModeList[i].endingAddress!,
-                                titel: "الى أي عنوان ذھبت؟",
+                                titel: "4. الى أي عنوان ذھبت؟",
                               ),
                               AppSize.spaceHeight2(context),
                               const Divider(),
                               const HeadlineTrip(
                                   text:
-                                      "ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
+                                      "5. ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
                               AppSize.spaceHeight2(context),
                               const Divider(),
                               WhyDidYouGo(

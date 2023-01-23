@@ -27,7 +27,7 @@ class _TravelAloneState extends State<TravelAlone> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const HeadlineTrip(text: "هل سافرت بمفردك أم مع آخرین؟"),
+            const HeadlineTrip(text: "7. هل سافرت بمفردك أم مع آخرین؟"),
             Row(children: [
               TextGlobal(
                 text: "مع اخرين",
