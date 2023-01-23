@@ -85,6 +85,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                   userSurveysProvider.searchHAY(value!);
                                 },
                                 label: "بحث",
+
                                 widthForm: width(context) * .2,
                                 keyboardType: TextInputType.number,
                                 isPassword: false,

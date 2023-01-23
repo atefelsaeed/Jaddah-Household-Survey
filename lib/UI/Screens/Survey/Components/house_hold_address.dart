@@ -6,7 +6,7 @@ import '../../../Widgets/text.dart';
 import '../widgets/text_form_row.dart';
 
 class HouseHoldAddress extends StatelessWidget {
-  final TextEditingController area;
+  final String area;
   final TextEditingController streetName;
 
   final TextEditingController streetNumber;
@@ -25,6 +25,8 @@ class HouseHoldAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController hayController = TextEditingController();
+    hayController.text = area;
     // TODO: implement build
     return Column(
       children: [
@@ -66,8 +68,9 @@ class HouseHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: area,
+                controller: hayController,
                 text: "الحى",
+                readOnly: true,
                 label: "الحى",
               ),
               TextForm(

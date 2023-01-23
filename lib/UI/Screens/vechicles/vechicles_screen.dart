@@ -69,7 +69,8 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     ),
                     AppSize.spaceHeight3(context),
                     AppSize.spaceHeight2(context),
-                    Row(mainAxisAlignment: MainAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         DefaultButton(
                           function: () {
@@ -77,7 +78,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                               _key.currentState!.save();
                               SaveVehiclesData.saveData(context);
                               print('Saving Data :: ');
-                             CheckVehiclesValidation.validate(context);
+                              CheckVehiclesValidation.validate(context);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

@@ -25,8 +25,8 @@ import 'Components/hhs_Q82.dart';
 import 'Components/hhs_Q83.dart';
 
 class SurveyScreen extends StatefulWidget {
-  const SurveyScreen({super.key});
-
+  const SurveyScreen({super.key, required this.hayName});
+final String hayName;
   @override
   State<SurveyScreen> createState() => _SurveyScreenState();
 }
@@ -108,7 +108,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   children: [
                     // SurveyHeader(),
                     HouseHoldAddress(
-                      area: area,
+                      area: widget.hayName,
                       blockNearestTwoCrossStreets: blockNearestTwoCrossStreets,
                       nearestLandMark: nearestLandMark,
                       streetNumber: streetNumber,
@@ -386,8 +386,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               editingController3Q83.peopleUnder18.text;
                           surveyPt.hhsESTotalBikesNumber =
                               editingController3Q83.totalNumber.text;
-
-
                           surveyPt.hhsESAdultsBikesNumber =
                               editingController3Q83.peopleAdults18.text;
                           QuestionsData.qh4[QuestionsData.qh4.keys.first]!
