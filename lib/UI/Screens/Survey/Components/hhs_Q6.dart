@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
+import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/custom_buttton.dart';
@@ -76,9 +77,13 @@ class _Q6State extends State<Q6> {
             DefaultButton(
               function: () {
                 setState(() {
-                  widget.q6peopleAdults18.add(TextEditingController());
-                  widget.q6peopleUnder18.add(TextEditingController());
-                  widget.q6totalNumberOfVec.add(TextEditingController());
+                  int x=int.parse(  HhsStatic.householdQuestions.hhsNumberSeparateFamilies.toString() );
+                  print(HhsStatic.householdQuestions.hhsNumberSeparateFamilies.toString() );
+                 if(widget.q6peopleUnder18.length<x) {
+                   widget.q6peopleAdults18.add(TextEditingController());
+                   widget.q6peopleUnder18.add(TextEditingController());
+                   widget.q6totalNumberOfVec.add(TextEditingController());
+                 }
                 });
               },
               isWidget: true,
