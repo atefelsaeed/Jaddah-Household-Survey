@@ -265,7 +265,7 @@ class _TripScreenState extends State<TripScreen> {
                       DefaultButton(
                         function: () {
                           if (_key.currentState!.validate()) {
-                             getLocation().then(
+                            getLocation().then(
                               (value) {
                                 Random random = Random();
                                 int randomNumber =
@@ -279,17 +279,27 @@ class _TripScreenState extends State<TripScreen> {
                                 surveyPt.headerInterviewNumber = num;
                                 surveyPt.id = auth.uid.toString();
                                 SaveTripsData.saveData(context);
-                                QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                                    .toList()[ QuestionsData.qh4["index"]]["isChick"]=false;
-                                QuestionsData.qh7[QuestionsData.qh7.keys.first]!
-                                    .toList()[ QuestionsData.qh7["index"]]["isChick"]=false;
-                                QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first]!
-                                    .toList()[ QuestionsData.qh7_2["index"]]["isChick"]=false;
-                                VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
-                                    .toList()[VehiclesData.q3VecData["index"]]["isChick"]=false;
-                                PersonData.nationality[PersonData.nationality.keys.first]!
-                                    .toList()[PersonData.nationality["index"]]["isChick"]=false;
                                 CheckTripsValidation.validatePerson(context);
+                                QuestionsData.qh4[QuestionsData.qh4.keys.first]!
+                                        .toList()[QuestionsData.qh4["index"]]
+                                    ["isChick"] = false;
+                                QuestionsData.qh7[QuestionsData.qh7.keys.first]!
+                                        .toList()[QuestionsData.qh7["index"]]
+                                    ["isChick"] = false;
+                                QuestionsData
+                                        .qh7_2[QuestionsData.qh7_2.keys.first]!
+                                        .toList()[QuestionsData.qh7_2["index"]]
+                                    ["isChick"] = false;
+                                VehiclesData.q3VecData[VehiclesData
+                                                .q3VecData.keys.first]!
+                                            .toList()[
+                                        VehiclesData.q3VecData["index"]]
+                                    ["isChick"] = false;
+                                PersonData.nationality[PersonData
+                                                .nationality.keys.first]!
+                                            .toList()[
+                                        PersonData.nationality["index"]]
+                                    ["isChick"] = false;
                               },
                             ).onError(
                               (error, stackTrace) {

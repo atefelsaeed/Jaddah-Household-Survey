@@ -21,6 +21,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
   Widget build(BuildContext context) {
     // TODO: implement build
     TextEditingController acModeController = TextEditingController();
+    TextEditingController mainModeController = TextEditingController();
     return Column(
       children: [
         const HeadlineTrip(text: "6. كیف ذهبت ؟"),
@@ -75,7 +76,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                 : Container(),
             TripModeList.tripModeList[widget.i].travelWay!.mainMode == "أخر"
                 ? MyTextForm(
-                    controller: acModeController,
+                    controller: mainModeController,
                     onChanged: (value) {
                       TripModeList.tripModeList[widget.i].travelWay!.mainMode =
                           value;
