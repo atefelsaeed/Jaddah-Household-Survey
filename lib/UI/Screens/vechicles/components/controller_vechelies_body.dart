@@ -105,6 +105,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                 case "سيارة صغيرة":
                                   print("object");
                                   VehModel.vecCar = [];
+
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.vecCar.add(
                                       VehicleBodyDetails(
@@ -233,6 +234,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             function: () {
               setState(() {
                 VehModel.vecCar.removeAt(i);
+                VehiclesData.vecModel[0].textEditingController
+                    .text =VehModel.vecCar.length.toString();
               });
             },
           ),
@@ -244,6 +247,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             function: () {
               setState(() {
                 VehModel.vecVan.removeAt(i);
+                VehiclesData.vecModel[3].textEditingController
+                    .text =VehModel.vecVan.length.toString();
               });
             },
           ),
@@ -255,6 +260,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             function: () {
               setState(() {
                 VehModel.largeCar.removeAt(i);
+                VehiclesData.vecModel[1].textEditingController
+                    .text =VehModel.largeCar.length.toString();
               });
             },
           ),
@@ -266,6 +273,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             function: () {
               setState(() {
                 VehModel.pickUp.removeAt(i);
+                VehiclesData.vecModel[4].textEditingController
+                    .text =VehModel.pickUp.length.toString();
               });
             },
           ),
@@ -277,6 +286,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             function: () {
               setState(() {
                 VehModel.eScooter.removeAt(i);
+                VehiclesData.vecModel[5].textEditingController
+                    .text =VehModel.eScooter.length.toString();
               });
             },
           ),
@@ -288,6 +299,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
             function: () {
               setState(() {
                 VehModel.vecWanet.removeAt(i);
+                VehiclesData.vecModel[2].textEditingController
+                    .text =VehModel.eScooter.length.toString();
               });
             },
           ),
