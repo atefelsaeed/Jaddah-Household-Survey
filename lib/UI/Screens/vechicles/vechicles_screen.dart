@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/vehicles_validation.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/components/fuel_type_code.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/motorisedvechiels.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/components/park_this_car.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
 import 'components/controller_vechelies_body.dart';
-import 'components/owner_ship_code.dart';
 
 class VehiclesScreen extends StatefulWidget {
   const VehiclesScreen({super.key});
@@ -56,17 +53,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                     AppSize.spaceHeight3(context),
                     const MotorisedVec(),
                     const ControllerVehiclesBody(),
-
-                    AppSize.spaceHeight2(context),
-                    OwnerShipCode(
-                      textEditingController: ownerShipCode,
-                    ),
-                    AppSize.spaceHeight2(context),
-                    ParkThisCar(
-                      textEditingController: parkThisCar,
-                    ),
-                    AppSize.spaceHeight3(context),
-                    AppSize.spaceHeight2(context),
+                    AppSize.spaceHeight5(context),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

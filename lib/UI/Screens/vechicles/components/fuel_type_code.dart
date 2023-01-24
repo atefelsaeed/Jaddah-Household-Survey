@@ -18,8 +18,7 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
         DropDownFormInput(
           label: Text(VehiclesData
@@ -27,7 +26,7 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
               .toList()
               .first
               .toString()),
-          hint: "أكواد نوع الوقود",
+          hint: " نوع الوقود",
           options: VehiclesData
               .fuelTypeCodes[VehiclesData.fuelTypeCodes.keys.first]!
               .toList(),
@@ -43,8 +42,8 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
                 children: [
                   TextForm(
                     controller: widget.textEditingController,
-                    text: "أكواد نوع الوقود",
-                    label: "أكواد نوع الوقود",
+                    text: " نوع الوقود",
+                    label: " نوع الوقود",
                   )
                 ],
               )

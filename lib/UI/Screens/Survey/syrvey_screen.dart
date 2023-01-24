@@ -6,12 +6,10 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
-import 'package:jaddah_household_survey/UI/Widgets/exit_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
-import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/validate_data/hhs_validation.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Providers/survey_hhs.dart';

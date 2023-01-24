@@ -17,7 +17,6 @@ import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 import 'UI/Screens/SplashScreen/splashScreen.dart';
-import 'UI/Screens/vechicles/vechicles_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

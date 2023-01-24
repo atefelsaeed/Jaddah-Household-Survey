@@ -192,8 +192,8 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                 children: [
                   TextForm(
                     controller: widget.textEditingControl,
-                    text: "أكواد نوع الوقود",
-                    label: "أكواد نوع الوقود",
+                    text: " نوع الوقود",
+                    label: " نوع الوقود",
                   )
                 ],
               )

@@ -28,7 +28,7 @@ class _ParkThisCarState extends State<ParkThisCar> {
               .first
               .toString()),
           hint:
-              "عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
+              "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات",
           options: VehiclesData
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),

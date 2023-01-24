@@ -68,8 +68,9 @@ class _PersonScreenState extends State<PersonScreen> {
                         child: Container(
                           padding: const EdgeInsets.all(3.0),
                           decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: ColorManager.gray2Color)),
+                            border: Border.all(color: ColorManager.gray2Color),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           child: Padding(
                             padding: EdgeInsets.all(AppSize.padding1(context)),
                             child: Column(
@@ -472,8 +473,10 @@ class _PersonScreenState extends State<PersonScreen> {
                             if (_key.currentState!.validate()) {
                               _key.currentState!.save();
                               SavePersonData.saveData(context);
-                              PersonData.nationality[PersonData.nationality.keys.first]!
-                                  .toList()[PersonData.nationality["index"]]["isChick"]=false;
+                              PersonData.nationality[
+                                          PersonData.nationality.keys.first]!
+                                      .toList()[PersonData.nationality["index"]]
+                                  ["isChick"] = false;
                               if (CheckPersonValidation.validatePerson(
                                   context)) {
                                 Navigator.push(
