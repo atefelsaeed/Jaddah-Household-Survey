@@ -98,7 +98,7 @@ class ItemUserSurvey extends StatelessWidget {
             Flexible(
               flex: 8,
               child: Text(
-                "عنوان الاسرة  :  ${itemSurveyModel.qTANAME} ",
+                "عنوان الاسرة  :  ${itemSurveyModel.hAEName} ",
                 style: TextStyle(
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.w700,

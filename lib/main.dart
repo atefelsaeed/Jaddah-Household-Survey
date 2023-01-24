@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home: const VehiclesScreen(),
+        home: const SplashView(),
       ),
     );
   }
