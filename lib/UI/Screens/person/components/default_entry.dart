@@ -8,6 +8,7 @@ import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../../Widgets/text.dart';
+import '../../Survey/widgets/text_form_row.dart';
 
 class DefaultEntry extends StatefulWidget {
   final int i;
@@ -40,6 +41,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
               fontSize: height(context) * .023,
               color: ColorManager.orangeTxtColor,
             ),
+
             const Spacer(),
             widget.i >= 1
                 ? IconButton(
@@ -51,6 +53,16 @@ class _DefaultEntryState extends State<DefaultEntry> {
                       color: ColorManager.primaryColor,
                     ))
                 : Container()
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextForm(
+              controller: PersonModelList.personModelList[widget.i].personName,
+              text: "اسم الشخص",
+              label: "اسم الشخص",
+            )
           ],
         ),
         Row(

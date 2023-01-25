@@ -7,6 +7,8 @@ class PersonModel {
   PersonalHeadData? personalHeadData;
   OccupationModel? occupationModel;
   PersonalQuestion? personalQuestion;
+  TextEditingController personName = TextEditingController();
+
 
   PersonModel({
     this.personalQuestion,
