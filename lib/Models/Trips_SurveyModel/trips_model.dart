@@ -12,7 +12,17 @@ class TripsModel {
   TextEditingController? otherWhereDidYouParkEditingControl;
   TextEditingController? taxiTravelTypeEditingControl;
   List<String> person=[""];
-  List<Map> friendPerson=[{"value":"","isChick":false}];
+  List<String> chosenFriendPerson=[];
+  String chosenPerson="";
+  Map friendPerson={
+    "friendPerson": [
+      {"value": '', "isChick": false},
+    ],
+    "title": "friendPerson",
+    "subTitle":
+    " A separate family is defined as who share the kitchen expenses and meals",
+    "index": 0,
+  };
   late bool showFriend=false;
   String? purposeTravel;
   TextEditingController departureTime = TextEditingController();

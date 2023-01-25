@@ -156,6 +156,7 @@ class DropDownFormInput<T> extends StatelessWidget {
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
                         field.didChange(newValue);
+
                         if (onChange != null) {
                           onChange!(newValue);
                         }
