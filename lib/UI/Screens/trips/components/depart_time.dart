@@ -102,6 +102,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                   AppSize.spaceHeight1(context),
                   MyTextForm(
                     label: "وقت المغادرة",
+
                     controller: widget.tripModel.arrivalDepartTime!.departTime,
                     readOnly: true,
                     onTap: () async {

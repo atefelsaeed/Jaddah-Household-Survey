@@ -26,7 +26,7 @@ class UserSurveysProvider with ChangeNotifier {
   void searchHAY(String value) {
     searchList.clear();
     for (var element in _userSurveysSurveysList) {
-      if (element.hAENO
+      if (element.haeno
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
@@ -38,7 +38,7 @@ class UserSurveysProvider with ChangeNotifier {
   void searchQTA(String value) {
     searchList.clear();
     for (var element in _userSurveysSurveysList) {
-      if (element.qTANO
+      if (element.qta
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
@@ -50,7 +50,7 @@ class UserSurveysProvider with ChangeNotifier {
   void searchBLOK(String value) {
     searchList.clear();
     for (var element in _userSurveysSurveysList) {
-      if (element.bLOKNO
+      if (element.blok
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {

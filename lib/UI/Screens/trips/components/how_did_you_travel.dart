@@ -67,6 +67,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
             TripModeList.tripModeList[widget.i].travelWay!.accessMode == "أخر"
                 ? MyTextForm(
                     controller: acModeController,
+              isNumber: false,
                     onChanged: (value) {
                       TripModeList
                           .tripModeList[widget.i].travelWay!.accessMode = value;
@@ -77,6 +78,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
             TripModeList.tripModeList[widget.i].travelWay!.mainMode == "أخر"
                 ? MyTextForm(
                     controller: mainModeController,
+              isNumber: false,
                     onChanged: (value) {
                       TripModeList.tripModeList[widget.i].travelWay!.mainMode =
                           value;

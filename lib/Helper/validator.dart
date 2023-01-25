@@ -97,9 +97,11 @@ class Validator {
 
   static String? validateName(
       {required String value, required String message}) {
+    RegExp rex = RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
+
     if (value.trim().isEmpty) {
       return message;
-    } else if (RegExp('[0-9]').hasMatch(value)) {//r'^[a-zA-Z0-9]+$'
+    } else if (rex.hasMatch(value)) {//r'^[a-zA-Z0-9]+$'
       return message;
     }
     return null;

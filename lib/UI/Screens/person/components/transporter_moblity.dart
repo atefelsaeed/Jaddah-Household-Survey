@@ -52,6 +52,7 @@ class _TransporterMobiltyState extends State<TransporterMobilty> {
                 ? MyTextForm(
                     label: 'إذكر الإعاقة / احتياجات خاصة',
                     controller: textEditingController,
+                    isNumber: false,
                     onChanged: (value) {
                       PersonModelList
                           .personModelList[widget.index]

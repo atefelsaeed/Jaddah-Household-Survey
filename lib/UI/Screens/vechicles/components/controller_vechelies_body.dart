@@ -93,6 +93,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                 VehiclesData.vecModel[index].isChosen == true
                     ? MyTextForm(
                         keyboardType: TextInputType.number,
+                        isNumber: true,
                         widthForm: width(context) * .120,
                         controller:
                             VehiclesData.vecModel[index].textEditingController,

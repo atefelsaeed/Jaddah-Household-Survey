@@ -60,6 +60,7 @@ class _NationalityState extends State<Nationality> {
                 children: [
                   MyTextForm(
                     label: "أدخل جنسيتك",
+                    isNumber: false,
                     controller: base.personalHeadData!.nationality,
                     onChanged: (String? val) {
                       print('object');

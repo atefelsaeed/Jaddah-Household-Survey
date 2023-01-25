@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../../../Helper/validator.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
@@ -10,7 +11,7 @@ class TextForm extends StatelessWidget {
   final String label;
   final double? fontSize;
   final String text;
-
+  bool? isNumber;
   bool? readOnly;
   TextInputType? keyboardType;
 
@@ -21,6 +22,7 @@ class TextForm extends StatelessWidget {
     required this.text,
     this.keyboardType,
     this.readOnly,
+    this.isNumber,
     this.fontSize,
   });
 
@@ -41,7 +43,9 @@ class TextForm extends StatelessWidget {
           label: label,
           controller: controller,
           readOnly: readOnly,
+          isNumber: isNumber,
           keyboardType: keyboardType ?? TextInputType.text,
+          // isNumber: true,
         ),
       ],
     );

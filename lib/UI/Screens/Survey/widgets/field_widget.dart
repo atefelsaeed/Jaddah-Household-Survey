@@ -60,6 +60,7 @@ class Field extends StatelessWidget {
                     controller: peopleUnder18,
                     widthForm: width(context) * .1,
                     keyboardType: TextInputType.number,
+                    isNumber: true,
                   ),
                   AppSize.spaceWidth1(context),
                   Expanded(
@@ -83,6 +84,7 @@ class Field extends StatelessWidget {
                       controller: peopleAdults18,
                       widthForm: width(context) * .1,
                       keyboardType: TextInputType.number,
+                      isNumber: true,
                     ),
                     AppSize.spaceWidth1(context),
                     Expanded(
@@ -105,6 +107,7 @@ class Field extends StatelessWidget {
                     controller: totalNumberOfVec,
                     widthForm: width(context) * .1,
                     keyboardType: TextInputType.number,
+                    isNumber: true,
                   ),
                   AppSize.spaceWidth1(context),
                   Expanded(

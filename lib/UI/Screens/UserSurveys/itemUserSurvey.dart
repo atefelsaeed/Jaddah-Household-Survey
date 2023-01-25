@@ -63,7 +63,7 @@ class ItemUserSurvey extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => SurveyScreen(
-                      hayName: itemSurveyModel.hAEName ?? '',
+                      hayName: itemSurveyModel.hAEName ?? '',//not filled
                     ),
                   ),
                 );
@@ -109,8 +109,8 @@ class ItemUserSurvey extends StatelessWidget {
               flex: 4,
               child: TextButton(
                 onPressed: () async {
-                  await launchURL(itemSurveyModel.pOINTX.toString(),
-                      itemSurveyModel.pOINTY.toString());
+                  await launchURL(itemSurveyModel.x.toString(),
+                      itemSurveyModel.y.toString());
                 },
                 child: Text(
                   'افتح خرائط جوجل',

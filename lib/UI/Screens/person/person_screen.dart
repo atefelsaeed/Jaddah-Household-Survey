@@ -154,6 +154,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
+                                          isNumber: true,
                                                 onChanged: (d) {
                                                   setState(() {
                                                     if (d!.isNotEmpty) {

@@ -35,21 +35,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
 
   final TextEditingController yes = TextEditingController();
-  final TextEditingController dewType = TextEditingController();
-  final TextEditingController isDewType = TextEditingController();
+
   final TextEditingController streetName = TextEditingController();
-
   final TextEditingController streetNumber = TextEditingController();
-
   final TextEditingController nearestLandMark = TextEditingController();
+  final TextEditingController blockNearestTwoCrossStreets =
+  TextEditingController();
 
   final TextEditingController peopleAdults18 = TextEditingController();
-
   final TextEditingController peopleUnder18 = TextEditingController();
-
-  final TextEditingController blockNearestTwoCrossStreets =
-      TextEditingController();
-
   List<TextEditingController> q6peopleAdults18 = <TextEditingController>[
     TextEditingController()
   ];
@@ -330,7 +324,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       MyTextForm(
                         controller: VehModel.editingController3.totalNumber,
                         label: "أدخل ",
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.number,isNumber: true,
                       ),
                     ],
                   ),
@@ -360,7 +354,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           HhsStatic.householdQuestions.hhsIsDwelling = HhsStatic
                               .householdQuestions.hhsIsDwellingOther!.text;
                         }
-
 
                         surveyPt.hhsDwellingType = HhsStatic
                             .householdQuestions.hhsDwellingType; //solve

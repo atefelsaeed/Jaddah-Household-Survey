@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Helper/validator.dart';
 import '../../Resources/colors.dart';
 import '../../Resources/sizes.dart';
 
@@ -12,8 +13,9 @@ class MyTextForm extends StatelessWidget {
   bool? isPassword = false;
   bool? readOnly;
   IconData? suffix;
+  bool? isNumber;
   final Function? suffixPressed;
-  String? Function()? validate;
+  String? Function(String?)? validator;
   Function()? onTap;
   Function(String?)? onChanged;
   Iterable<String>? autofillHints;
@@ -24,8 +26,9 @@ class MyTextForm extends StatelessWidget {
       {this.controller,
       Key? key,
       this.errorText,
-      this.validate,
+      this.validator,
       this.readOnly,
+      this.isNumber,
       this.keyboardType,
       this.title,
       this.widthForm,
@@ -57,10 +60,15 @@ class MyTextForm extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .015),
-            // validator: (String? val) => Validator.validateEmpty(
-            //   value: val,
-            //   message: "يجب إعطاء إجابة!",
-            // ),
+            validator: (String? val) => isNumber == true
+                ? Validator.validateEmpty(
+                    value: val,
+                    message: 'يجب يجب إعطاء إجابة!',
+                  )
+                : Validator.validateName(
+                    value: val!,
+                    message: 'يجب يجب إعطاء إجابة صحيحة!',
+                  ),
             decoration: InputDecoration(
               labelText: label,
               suffixIcon: suffix != null
