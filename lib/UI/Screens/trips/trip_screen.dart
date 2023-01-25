@@ -370,23 +370,18 @@ print(   TripModeList.tripModeList[i].friendPerson);
                                       ),
                                       startBeginningModel: StartBeginningModel(
                                         area: TextEditingController(),
-                                        buildingName: TextEditingController(),
-                                        city: TextEditingController(),
                                         block: TextEditingController(),
                                         nearestLandMark: TextEditingController(),
                                         streetName: TextEditingController(),
                                         streetNumber: TextEditingController(),
-                                        referToMap: TextEditingController(),
                                       ),
                                       endingAddress: StartBeginningModel(
                                         area: TextEditingController(),
-                                        buildingName: TextEditingController(),
-                                        city: TextEditingController(),
+
                                         block: TextEditingController(),
                                         nearestLandMark: TextEditingController(),
                                         streetName: TextEditingController(),
                                         streetNumber: TextEditingController(),
-                                        referToMap: TextEditingController(),
                                       ),
                                     ));
                                   });
