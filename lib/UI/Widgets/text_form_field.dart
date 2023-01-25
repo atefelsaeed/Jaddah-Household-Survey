@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../Helper/validator.dart';
 import '../../Resources/colors.dart';
 import '../../Resources/sizes.dart';
 
@@ -52,14 +51,16 @@ class MyTextForm extends StatelessWidget {
             controller: controller,
             readOnly: readOnly ?? false,
             onTap: onTap,
+            textInputAction: TextInputAction.next,
+            onEditingComplete: () => FocusScope.of(context).nextFocus(),
             style: TextStyle(
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .015),
-            // validator: (String? val) =>  Validator.validateEmpty(
-            //         value: val,
-            //         message: "يجب إعطاء إجابة!",
-            //       ),
+            // validator: (String? val) => Validator.validateEmpty(
+            //   value: val,
+            //   message: "يجب إعطاء إجابة!",
+            // ),
             decoration: InputDecoration(
               labelText: label,
               suffixIcon: suffix != null

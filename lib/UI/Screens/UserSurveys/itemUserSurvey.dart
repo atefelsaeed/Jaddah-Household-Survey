@@ -62,22 +62,26 @@ class ItemUserSurvey extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SurveyScreen(),
+                    builder: (context) => SurveyScreen(
+                      hayName: itemSurveyModel.hAEName ?? '',
+                    ),
                   ),
                 );
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setInt('userSurveyId', itemSurveyModel.id!);
                 itemSurveyModel.id;
                 QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                    .toList()[ QuestionsData.qh4["index"]]["isChick"]=false;
+                    .toList()[QuestionsData.qh4["index"]]["isChick"] = false;
                 QuestionsData.qh7[QuestionsData.qh7.keys.first]!
-                    .toList()[ QuestionsData.qh7["index"]]["isChick"]=false;
+                    .toList()[QuestionsData.qh7["index"]]["isChick"] = false;
                 QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first]!
-                    .toList()[ QuestionsData.qh7_2["index"]]["isChick"]=false;
+                    .toList()[QuestionsData.qh7_2["index"]]["isChick"] = false;
                 VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
-                    .toList()[VehiclesData.q3VecData["index"]]["isChick"]=false;
+                        .toList()[VehiclesData.q3VecData["index"]]["isChick"] =
+                    false;
                 PersonData.nationality[PersonData.nationality.keys.first]!
-                    .toList()[PersonData.nationality["index"]]["isChick"]=false;
+                        .toList()[PersonData.nationality["index"]]["isChick"] =
+                    false;
                 HHSEmptyData.emptyData();
               },
               isWidget: true,
@@ -94,7 +98,7 @@ class ItemUserSurvey extends StatelessWidget {
             Flexible(
               flex: 8,
               child: Text(
-                "عنوان الاسرة  :  ${itemSurveyModel.qTANAME} ",
+                "عنوان الاسرة  :  ${itemSurveyModel.hAEName} ",
                 style: TextStyle(
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.w700,

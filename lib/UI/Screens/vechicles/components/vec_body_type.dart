@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Screens/vechicles/components/owner_ship_code.dart';
 
-import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
-import '../../Survey/widgets/text_form_row.dart';
 import 'fuel_type_code.dart';
+import 'park_this_car.dart';
 
 class BodyTypeVehicles extends StatefulWidget {
   const BodyTypeVehicles({
     super.key,
     required this.vecBodyType,
     required this.index,
-    required this.title, required this.function,
+    required this.title,
+    required this.function,
   });
 
   final VehicleBodyDetails vecBodyType;
@@ -32,7 +33,9 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
     return Container(
         margin: const EdgeInsets.all(15.0),
         padding: const EdgeInsets.all(3.0),
-        decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
             Row(
@@ -45,17 +48,10 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
                   fontSize: height(context) * .02,
                   color: ColorManager.orangeTxtColor,
                 ),
-                // TextGlobal(
-                //   text: " هيكل السيارة",
-                //   fontSize: height(context) * .02,
-                //   color: ColorManager.grayColor,
-                //   fontWeight: FontWeight.bold,
-                // ),
                 const Spacer(),
                 IconButton(
-                    onPressed:(){
+                    onPressed: () {
                       widget.function();
-
                     },
                     icon: Icon(
                       Icons.delete,
@@ -64,69 +60,28 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
               ],
             ),
             AppSize.spaceHeight2(context),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextFormer(
-                    controller: widget.vecBodyType.vehicleFuel,
-                    text: "الوقود",
-                    label: "أدخل  ${widget.vecBodyType.vehicleFuel}",
-                    headLabel: widget.title,
-                  ),
-                  TextFormer(
-                    controller: widget.vecBodyType.vehicleOwner,
-                    text: "من يملك السيارة",
-                    label: "أدخل  ${widget.vecBodyType.vehicleOwner}",
-                    headLabel: widget.title,
-                  )
-                ],
-              ),
-            ),
-            // AppSize.spaceHeight1(context),
-            // Directionality(
-            //   textDirection: TextDirection.ltr,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       TextFormer(
-            //         controller: vecBodyType.vehicleAnnualMileage,
-            //         text: "QHV1-4- Annual Mileage",
-            //         label: "أدخل  ${vecBodyType.vehicleAnnualMileage}",
-            //         headLabel: title,
-            //       ),
-            //       TextFormer(
-            //         controller: vecBodyType.vehicleAge,
-            //         text: "QHV1-5- Age of vehicle",
-            //         label: "أدخل  ${vecBodyType.vehicleAge}",
-            //         headLabel: title,
-            //       )
-            //     ],
-            //   ),
-            // ),
-
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-              FuelTypeCode(
-                textEditingController:widget.vecBodyType.fuelTypeCode ,
-              ),
-              Directionality(
-                textDirection: TextDirection.ltr,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextFormer(
-                      controller: widget.vecBodyType.vehicleModel,
-                      text: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات ",
-                      label: "أدخل  ${widget.vecBodyType.vehicleModel}",
-                      headLabel: widget.title,
-                    )
-                  ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OwnerShipCode(
+                  textEditingController: widget.vecBodyType.vehicleOwner,
                 ),
-              ),
-            ],),
+                AppSize.spaceWidth2(context),
+                FuelTypeCode(
+                  textEditingController: widget.vecBodyType.fuelTypeCode,
+                ),
+              ],
+            ),
+            AppSize.spaceHeight2(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ParkThisCar(
+                  textEditingController: widget.vecBodyType.vehicleModel,
+                ),
+              ],
+            ),
             AppSize.spaceHeight1(context),
-
           ],
         ));
   }

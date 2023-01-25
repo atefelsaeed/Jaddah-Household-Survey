@@ -158,8 +158,8 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         TextForm(
                           controller: TripModeList.tripModeList[widget.index]
                               .travelTypeModel!.ticketSub,
-                          text: "في حالة استخدام تذكرة دائمة، ما نوعھا",
-                          label: "في حالة استخدام تذكرة دائمة، ما نوعھا",
+                          text: " في حالة استخدام تذكرة دائمة، ما نوعھا . فى حالة عدم وجود تذكرة يكتب (لا)",
+                          label: "نوع التذكرة",
                         ),
                       ],
                     )

@@ -24,6 +24,13 @@ class QuestionsData {
       'مقدمة من الحكومة',
       'أخر'
     ]
+  };  static Map<String, List<dynamic>> qh6_2 = {
+    "Is this dwelling...": [
+      'الدمام',
+      'الخبر',
+      'حائل',
+      'أخر'
+    ]
   };
   static Map<String, dynamic> qh3 = {
     "?How many bedrooms are there in the accommodation you live in": [

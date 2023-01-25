@@ -13,9 +13,9 @@ class EmptyVehicles {
     VehModel.pickUp = [];
     VehModel.eScooter = [];
     VehModel.largeCar = [];
-    VehiclesData.vecModel.forEach((element) {
+    for (var element in VehiclesData.vecModel) {
       element.textEditingController.text = '';
-    });
+    }
     VehModel.vehiclesModel = VehiclesModel(
       nearestBusStop: '',
       numberAirTubedAdultsLeisure: '',

@@ -27,24 +27,21 @@ class TripHoldAddress extends StatelessWidget {
           thickness: 1,
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: tripModel.area,
-                text: "الحى",
-                label: "الحى",
-              ),
-              TextForm(
-                controller: tripModel.streetNumber,
-                text: "رقم الشارع",
-                label: "رقم الشارع",
-                keyboardType: TextInputType.number,
-              )
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextForm(
+              controller: tripModel.area,
+              text: "الحى",
+              label: "الحى",
+            ),
+            TextForm(
+              controller: tripModel.streetNumber,
+              text: "رقم الشارع",
+              label: "رقم الشارع",
+              keyboardType: TextInputType.number,
+            )
+          ],
         ),
         AppSize.spaceHeight2(context),
         Directionality(

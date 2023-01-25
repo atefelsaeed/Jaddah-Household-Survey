@@ -18,15 +18,14 @@ class _OwnerShipCodeState extends State<OwnerShipCode> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
         DropDownFormInput(
           label: Text(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
               .toList()
               .first
               .toString()),
-          hint: "رموز الملكية",
+          hint: "من يملك السيارة",
           options: VehiclesData.ownership[VehiclesData.ownership.keys.first]!
               .toList(),
           onChange: (String? p) {

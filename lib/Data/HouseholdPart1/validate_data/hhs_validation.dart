@@ -29,8 +29,7 @@ class CheckHHSValidation {
         HhsStatic.householdQuestions.hhsTotalIncome == "") {
       return Validator.showSnack(context,
           " يجب إخيار ! 8.متوسط دخل جميع أفراد الاسرة الشهري مع المزايا؟");
-    } else if (VehModel.nearestPublicTransporter == null ||
-        VehModel.nearestPublicTransporter == '') {
+    } else if (VehModel.nearestPublicTransporter == '') {
       return Validator.showSnack(context,
           ".يجب إخيار ! 9.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟");
     } else {

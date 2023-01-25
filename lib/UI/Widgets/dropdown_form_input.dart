@@ -107,7 +107,6 @@ class DropDownFormInput<T> extends StatelessWidget {
   final Function(T?)? onSaved;
 
   const DropDownFormInput({
-
     Key? key,
     required this.options,
     this.hint,
@@ -142,12 +141,15 @@ class DropDownFormInput<T> extends StatelessWidget {
             child: Directionality(
               textDirection: TextDirection.ltr,
               child: InputDecorator(
-                  decoration:
-                      const InputDecoration(border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
-                      hint: const Text('إختار'),//lable
+                      hint: const Text('إختار'),
+                      //lable
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
