@@ -28,32 +28,63 @@ class _TravelAloneState extends State<TravelAlone> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const HeadlineTrip(text: "7. هل ذهبت بمفردك أم مع آخرین؟"),
-            Row(children: [
-              TextGlobal(
-                text: "مع اخرين",
-                //[index].title,
-                fontSize: height(context) * .02,
-                color: ColorManager.grayColor,
-              ),
-              Checkbox(
-                  side: BorderSide(
-                    color: ColorManager.orangeTxtColor,
-                    width: 1.5,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  checkColor: ColorManager.whiteColor,
-                  focusColor: ColorManager.orangeTxtColor,
-                  activeColor: ColorManager.orangeTxtColor,
-                  value: TripModeList.tripModeList[widget.index].isTravelAlone,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      TripModeList.tripModeList[widget.index].isTravelAlone =
-                          value!;
-                    });
-                  }),
-            ]),
+           Row(children: [
+
+             Row(children: [
+               TextGlobal(
+                 text: "مع اخرين",
+                 //[index].title,
+                 fontSize: height(context) * .02,
+                 color: ColorManager.grayColor,
+               ),
+               Checkbox(
+                   side: BorderSide(
+                     color: ColorManager.orangeTxtColor,
+                     width: 1.5,
+                   ),
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(5.0),
+                   ),
+                   checkColor: ColorManager.whiteColor,
+                   focusColor: ColorManager.orangeTxtColor,
+                   activeColor: ColorManager.orangeTxtColor,
+                   value: TripModeList.tripModeList[widget.index].isTravelAlone,
+                   onChanged: (bool? value) {
+                     setState(() {
+                       TripModeList.tripModeList[widget.index].isTravelAlone =
+                       value!;
+                     });
+                   }),
+             ]),
+             Row(children: [
+               TextGlobal(
+                 text: "بمفردك",
+                 //[index].title,
+                 fontSize: height(context) * .02,
+                 color: ColorManager.grayColor,
+               ),
+               Checkbox(
+                   side: BorderSide(
+                     color: ColorManager.orangeTxtColor,
+                     width: 1.5,
+                   ),
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(5.0),
+                   ),
+                   checkColor: ColorManager.whiteColor,
+                   focusColor: ColorManager.orangeTxtColor,
+                   activeColor: ColorManager.orangeTxtColor,
+                   value: TripModeList.tripModeList[widget.index].isTravelAlone!,
+                   onChanged: (bool? value) {
+                     setState(() {
+                       TripModeList.tripModeList[widget.index].isTravelAlone =
+                       value!;
+                     });
+                   }),
+             ]),
+           ],),
+
+
           ],
         ),
         const Divider(),

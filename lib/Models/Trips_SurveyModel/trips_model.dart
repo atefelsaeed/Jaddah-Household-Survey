@@ -11,7 +11,9 @@ class TripsModel {
   StartBeginningModel? endingAddress;
   TextEditingController? otherWhereDidYouParkEditingControl;
   TextEditingController? taxiTravelTypeEditingControl;
-
+  List<String> person=[""];
+  List<Map> friendPerson=[{"value":"","isChick":false}];
+  late bool showFriend=false;
   String? purposeTravel;
   TextEditingController departureTime = TextEditingController();
 

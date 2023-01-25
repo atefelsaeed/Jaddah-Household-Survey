@@ -16,6 +16,7 @@ import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/text.dart';
 import '../../Widgets/text_form_field.dart';
 import '../Survey/widgets/editing_controler3.dart';
+import '../Survey/widgets/text_form_row.dart';
 import '../trips/trip_screen.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
@@ -74,6 +75,8 @@ class _PersonScreenState extends State<PersonScreen> {
                             padding: EdgeInsets.all(AppSize.padding1(context)),
                             child: Column(
                               children: [
+
+
                                 DefaultEntry(
                                   i: i,
                                   function: () {
@@ -83,6 +86,16 @@ class _PersonScreenState extends State<PersonScreen> {
                                     });
                                   },
                                 ),
+                              /*  Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    TextForm(
+                                      controller: PersonModelList.personModelList[i].personName,
+                                      text: "اسم الشخص",
+                                      label: "اسم الشخص",
+                                    )
+                                  ],
+                                ),*/
                                 AppSize.spaceHeight2(context),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,

@@ -16,8 +16,8 @@ import 'Providers/user_surveys.dart';
 import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
-import 'UI/Screens/SplashScreen/splashScreen.dart';
-import 'UI/Screens/vechicles/vechicles_screen.dart';
+import 'UI/Screens/person/person_screen.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home: const VehiclesScreen(),
+        home: const PersonScreen(),
       ),
     );
   }
