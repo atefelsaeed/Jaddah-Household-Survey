@@ -11,7 +11,7 @@ class TripsModel {
   StartBeginningModel? endingAddress;
   TextEditingController? otherWhereDidYouParkEditingControl;
   TextEditingController? taxiTravelTypeEditingControl;
-  List<String> person=[""];
+  List<String> person=[];
   List<String> chosenFriendPerson=[];
   String chosenPerson="";
   Map friendPerson={
