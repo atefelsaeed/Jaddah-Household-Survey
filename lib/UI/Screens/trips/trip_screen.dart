@@ -75,12 +75,13 @@ class _TripScreenState extends State<TripScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    TripModeList.tripModeList[0].person=[];
-    for(int i=0;i<  PersonModelList.personModelList.length;i++){
-      TripModeList.tripModeList[0].person.add( PersonModelList.personModelList[i].personName.text);
+    TripModeList.tripModeList[0].person = [];
+    for (int i = 0; i < PersonModelList.personModelList.length; i++) {
+      TripModeList.tripModeList[0].person
+          .add(PersonModelList.personModelList[i].personName.text);
     }
-
   }
+
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
@@ -108,7 +109,6 @@ class _TripScreenState extends State<TripScreen> {
                       DefaultButton(
                         function: () {
                           setState(() {
-
                             TripModeList.tripModeList.add(TripsModel(
                               type: false,
                               isTravelAlone: false,
@@ -166,8 +166,12 @@ class _TripScreenState extends State<TripScreen> {
                                 streetNumber: TextEditingController(),
                               ),
                             ));
-                            for(int i=0;i<  PersonModelList.personModelList.length;i++){
-                              TripModeList.tripModeList[i].person.add( PersonModelList.personModelList[i].personName.text);
+                            for (int i = 0;
+                                i < PersonModelList.personModelList.length;
+                                i++) {
+                              TripModeList.tripModeList[i].person.add(
+                                  PersonModelList
+                                      .personModelList[i].personName.text);
                             }
                           });
                         },
@@ -210,38 +214,50 @@ class _TripScreenState extends State<TripScreen> {
                                 ],
                               ),
                               AppSize.spaceHeight2(context),
-
-
-
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   DropDownFormInput(
-                                    label: Text(TripModeList.tripModeList[i].person.first),
+                                    label: Text(TripModeList
+                                        .tripModeList[i].person.first),
                                     hint: "صاحب الرحله",
-                                    options: TripModeList.tripModeList[i].person,
-
+                                    options:
+                                        TripModeList.tripModeList[i].person,
                                     onChange: (String? p) {
-                                      TripModeList.tripModeList[i].friendPerson=[];
-for(int x=0;x<TripModeList.tripModeList[i].person.length;x++){
-  print(x);
-  setState(() {
-    if(TripModeList.tripModeList[i].person[x]!=p) {
-      TripModeList.tripModeList[i].friendPerson.add({"value":
-          TripModeList.tripModeList[i].person[x],"isChick":false});
-    }
+                                      TripModeList
+                                          .tripModeList[i].friendPerson = [];
+                                      for (int x = 0;
+                                          x <
+                                              TripModeList.tripModeList[i]
+                                                  .person.length;
+                                          x++) {
+                                        print(x);
+                                        setState(() {
+                                          if (TripModeList
+                                                  .tripModeList[i].person[x] !=
+                                              p) {
+                                            TripModeList
+                                                .tripModeList[i].friendPerson
+                                                .add({
+                                              "value": TripModeList
+                                                  .tripModeList[i].person[x],
+                                              "isChick": false
+                                            });
+                                          }
+                                        });
 
-  });
-
-print(   TripModeList.tripModeList[i].friendPerson);
-}
-                                      if(TripModeList.tripModeList[i].friendPerson.isNotEmpty){
-                                        TripModeList.tripModeList[i].showFriend=true;
+                                        print(TripModeList
+                                            .tripModeList[i].friendPerson);
+                                      }
+                                      if (TripModeList.tripModeList[i]
+                                          .friendPerson.isNotEmpty) {
+                                        TripModeList
+                                            .tripModeList[i].showFriend = true;
                                       }
                                     },
                                   ),
 
-                                /*  TripModeList.tripModeList[i].showFriend==true?                         DropDownFormInput(
+                                  /*  TripModeList.tripModeList[i].showFriend==true?                         DropDownFormInput(
                                     label: Text(TripModeList.tripModeList[i].friendPerson.first),
                                     hint: "مع من سوف تذهب",
                                     options: TripModeList.tripModeList[i].friendPerson,
@@ -323,7 +339,7 @@ print(   TripModeList.tripModeList[i].friendPerson);
                                 ],
                               ),
                               ListViewCheckBoxOrange(
-                                map:const {"":""} ,
+                                map: const {"": ""},
                                 onChange: (r) {
                                   setState(() {
                                     TripModeList.tripModeList.add(TripsModel(
@@ -331,7 +347,7 @@ print(   TripModeList.tripModeList[i].friendPerson);
                                       isTravelAlone: false,
                                       tripReason: "",
                                       taxiTravelTypeEditingControl:
-                                      TextEditingController(),
+                                          TextEditingController(),
                                       //whereDidYouGo
                                       purposeTravel: "",
                                       departureTime: TextEditingController(),
@@ -340,9 +356,10 @@ print(   TripModeList.tripModeList[i].friendPerson);
                                       travelTypeModel: TravelTypeModel(
                                         carParkingPlace: "",
                                         otherWhereDidYouParking:
-                                        TextEditingController(),
+                                            TextEditingController(),
                                         ticketSub: TextEditingController(),
-                                        taxiTravelTypeOther: TextEditingController(),
+                                        taxiTravelTypeOther:
+                                            TextEditingController(),
                                         taxiFare: TextEditingController(),
                                         taxiTravelType: '',
                                         travelType: '',
@@ -353,48 +370,54 @@ print(   TripModeList.tripModeList[i].friendPerson);
                                         mainMode: "",
                                         accessMode: "",
                                       ),
-                                      travelWithOtherModel: TravelWithOtherModel(
-                                          adultsNumber: TextEditingController(),
-                                          childrenNumber: TextEditingController(),
-                                          hhsMembersTraveled: "",
-                                          text: "?If with other how many"),
-                                      travelAloneHouseHold: TravelWithOtherModel(
-                                          adultsNumber: TextEditingController(),
-                                          childrenNumber: TextEditingController(),
-                                          hhsMembersTraveled: "",
-                                          text: "Non Household persons"),
+                                      travelWithOtherModel:
+                                          TravelWithOtherModel(
+                                              adultsNumber:
+                                                  TextEditingController(),
+                                              childrenNumber:
+                                                  TextEditingController(),
+                                              hhsMembersTraveled: "",
+                                              text: "?If with other how many"),
+                                      travelAloneHouseHold:
+                                          TravelWithOtherModel(
+                                              adultsNumber:
+                                                  TextEditingController(),
+                                              childrenNumber:
+                                                  TextEditingController(),
+                                              hhsMembersTraveled: "",
+                                              text: "Non Household persons"),
                                       arrivalDepartTime: ArrivalDepartTime(
-                                        arriveDestinationTime: TextEditingController(),
+                                        arriveDestinationTime:
+                                            TextEditingController(),
                                         departTime: TextEditingController(),
                                         numberRepeatTrip: '',
                                       ),
                                       startBeginningModel: StartBeginningModel(
                                         area: TextEditingController(),
                                         block: TextEditingController(),
-                                        nearestLandMark: TextEditingController(),
+                                        nearestLandMark:
+                                            TextEditingController(),
                                         streetName: TextEditingController(),
                                         streetNumber: TextEditingController(),
                                       ),
                                       endingAddress: StartBeginningModel(
                                         area: TextEditingController(),
-
                                         block: TextEditingController(),
-                                        nearestLandMark: TextEditingController(),
+                                        nearestLandMark:
+                                            TextEditingController(),
                                         streetName: TextEditingController(),
                                         streetNumber: TextEditingController(),
                                       ),
                                     ));
                                   });
-
-
                                 },
                                 title:
-                                "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
-                                question:  TripModeList.tripModeList[i].friendPerson,
+                                    "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
+                                question:
+                                    TripModeList.tripModeList[i].friendPerson,
                                 subTitle:
-                                'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
+                                    'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
                               ),
-
                               TripHoldAddress(
                                 tripModel: TripModeList
                                     .tripModeList[i].startBeginningModel!,
