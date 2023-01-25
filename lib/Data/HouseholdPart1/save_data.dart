@@ -11,19 +11,9 @@ class SaveVehiclesData {
   static saveData(context) {
     SurveyPTProvider survey =
         Provider.of<SurveyPTProvider>(context, listen: false);
-    survey.vehiclesData.vehicleFuelType = VehModel.fuelTypeCode;
     survey.vehiclesData.nearestBusStop = VehModel.nearestPublicTransporter;
-    survey.vehiclesData.vehicleParking = VehModel.parkThisCar;
-    survey.vehiclesData.vehicleOwnership = VehModel.ownerShipCode;
-    // survey.vehiclesData.numberAirTubedAdultsWorkUse =
-    //     VehModel.editingController3.peopleAdults18.text;
-    // survey.vehiclesData.numberAirTubedAdultsLeisure =
-    // VehModel.editingController3.totalNumber.text;
-    // survey.vehiclesData.numberAirTubedChildren =
-    //     VehModel.editingController3.peopleUnder18.text;
     survey.vehiclesData.numberParcels =
         VehModel.editingController3.totalNumber.text;
-
     List<VehiclesBodyType> vehicles = [
       VehiclesBodyType(
         vehicleTypeName: 'سيارة صغيرة',

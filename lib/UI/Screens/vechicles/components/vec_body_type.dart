@@ -64,11 +64,11 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 OwnerShipCode(
-                  textEditingController: widget.vecBodyType.vehicleOwner,
+                  textEditingController: widget.vecBodyType.vehicleOwnership,
                 ),
                 AppSize.spaceWidth2(context),
                 FuelTypeCode(
-                  textEditingController: widget.vecBodyType.fuelTypeCode,
+                  textEditingController: widget.vecBodyType.vehicleFuelType,
                 ),
               ],
             ),
@@ -77,7 +77,7 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ParkThisCar(
-                  textEditingController: widget.vecBodyType.vehicleModel,
+                  textEditingController: widget.vecBodyType.vehicleParking,
                 ),
               ],
             ),

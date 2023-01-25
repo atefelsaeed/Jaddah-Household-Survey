@@ -119,13 +119,6 @@ abstract class SurveyProvider with ChangeNotifier {
   set headerZoneNumber(String l);
 
 //==========HHS Address============
-  String? get hhsCity;
-
-  set hhsCity(String? l);
-
-  String? get hhsBuildingName;
-
-  set hhsBuildingName(String? l);
 
   String? get hhsStreetName;
 

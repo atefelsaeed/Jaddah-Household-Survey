@@ -11,7 +11,6 @@ import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
   HouseholdQuestions householdQuestions = HouseholdQuestions(
-
       hhsPedalCycles: BikesType("", "", ""),
       hhsElectricCycles: BikesType("", "", ""),
       hhsElectricScooter: BikesType("", "", ""));
@@ -40,8 +39,6 @@ class SurveyPT extends Survey {
     data['headerInterviewNumber'] = header.interviewNumber;
     data['headerDistrictName'] = header.districtName;
     data['headerZoneNumber'] = header.zoneNumber;
-    data['hhsCity'] = header.householdAddress.city;
-    data['hhsBuildingName'] = header.householdAddress.buildingName;
     data['hhsStreetName'] = header.householdAddress.streetName;
     data['hhsStreetNumber'] = header.householdAddress.streetNumber;
     data['hhsNearestLandMark'] = header.householdAddress.nearestLandMark;
@@ -106,8 +103,6 @@ class SurveyPT extends Survey {
     header.interviewNumber = json['headerInterviewNumber'];
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
-    header.householdAddress.city = json['hhsCity'];
-    header.householdAddress.buildingName = json['hhsBuildingName'];
     header.householdAddress.streetName = json['hhsStreetName'];
     header.householdAddress.streetNumber = json['hhsStreetNumber'];
     header.householdAddress.nearestLandMark = json['hhsNearestLandMark'];

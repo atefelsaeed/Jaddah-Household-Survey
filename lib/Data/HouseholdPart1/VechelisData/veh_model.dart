@@ -5,15 +5,8 @@ import '../../../Models/Vehicles_SurveyModel/vehicles_model.dart';
 import '../../../UI/Screens/Survey/widgets/editing_controler3.dart';
 
 class VehModel {
-  static VehiclesModel vehiclesModel = VehiclesModel(
-    nearestBusStop: '',
-    numberAirTubedAdultsLeisure: '',
-    numberAirTubedAdultsWorkUse: '',
-    numberAirTubedChildren: '',
-    vehicleOwnership: '',
-    vehicleParking: '',
-    vehicleFuelType: '',
-  );
+  static VehiclesModel vehiclesModel =
+      VehiclesModel(nearestBusStop: '', numberParcels: '');
 
   static EditingController3 editingController3 = EditingController3(
     peopleUnder18: TextEditingController(),

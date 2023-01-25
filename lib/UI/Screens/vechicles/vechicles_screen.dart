@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/vehicles_validation.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/components/motorisedvechiels.dart';
+import 'package:jaddah_household_survey/UI/Screens/vechicles/components/vechiels_header.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
 import '../../../Data/HouseholdPart1/save_data.dart';
@@ -37,21 +37,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                 textDirection: TextDirection.rtl,
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        AppSize.spaceWidth1(context),
-                        Expanded(
-                          child: TextGlobal(
-                            text: "المركبات في المنزل",
-                            fontSize: height(context) * .023,
-                            color: ColorManager.orangeTxtColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    AppSize.spaceHeight3(context),
-                    const MotorisedVec(),
+                    const VehiclesHeader(),
                     const ControllerVehiclesBody(),
                     AppSize.spaceHeight5(context),
                     Row(

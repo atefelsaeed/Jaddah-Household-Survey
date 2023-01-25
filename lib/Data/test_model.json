@@ -9,18 +9,13 @@
     "vehicleFuelType": "المكونات الكهربائية الهجينة (PHEV)",
     "vehicleOwnership": "أرباب العمل",
     "vehicleParking": "على جانب الطريق مشحونة",
-    "numberAirTubedAdultsWorkUse": "",
     "numberParcels": "٤",
-    "numberAirTubedAdultsLeisure": "",
-    "numberAirTubedChildren": "",
     "nearestBusStop": "6-10 دقائق سيرا على الأقدام"
   },
   "headerEmpNumber": 1,
   "headerInterviewNumber": 10012656,
   "headerDistrictName": "",
   "headerZoneNumber": "",
-  "hhsCity": "المدينه",
-  "hhsBuildingName": "اسم المبنس",
   "hhsStreetName": "اسم الشارع",
   "hhsStreetNumber": "رقم الشارع",
   "hhsNearestLandMark": "اقرب معلم",
@@ -150,24 +145,18 @@
   "tripsList": [
     {
       "startBeginningModel": {
-        "buildingName": "building",
         "streetName": "strreet",
         "streetNumber": "strret number",
         "nearestLandMark": "malam",
         "block": "malam",
-        "area": "area",
-        "city": "city",
-        "referToMap": ""
+        "area": "area"
       },
       "endingAddress": {
-        "buildingName": "building",
         "streetName": "strreet",
         "streetNumber": "street number",
         "nearestLandMark": "malaam",
         "block": "malaam",
-        "area": "area",
-        "city": "city",
-        "referToMap": ""
+        "area": "area"
       },
       "travelWay": {
         "mainMode": "تاكسي المدرسة",

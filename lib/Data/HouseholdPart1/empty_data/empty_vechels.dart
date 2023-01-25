@@ -18,22 +18,15 @@ class EmptyVehicles {
     }
     VehModel.vehiclesModel = VehiclesModel(
       nearestBusStop: '',
-      numberAirTubedAdultsLeisure: '',
-      numberAirTubedAdultsWorkUse: '',
-      numberAirTubedChildren: '',
-      vehicleOwnership: '',
-      vehicleParking: '',
-      vehicleFuelType: '',
+      numberParcels: '',
     );
-
+    VehModel.fuelTypeCode = "";
+    VehModel.ownerShipCode = "";
+    VehModel.parkThisCar = "";
     VehModel.editingController3 = EditingController3(
       peopleUnder18: TextEditingController(),
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController(),
     );
-
-    VehModel.fuelTypeCode = "";
-    VehModel.parkThisCar = '';
-    VehModel.ownerShipCode = '';
   }
 }

@@ -104,25 +104,6 @@ class SurveyPTProvider extends SurveyProvider {
     // notifyListeners();
   }
 
-  //HHS Address
-  @override
-  String? get hhsCity => _data.header.householdAddress.city;
-
-  @override
-  set hhsCity(String? i) {
-    _data.header.householdAddress.city = i;
-    // notifyListeners();
-  }
-
-  @override
-  String? get hhsBuildingName => _data.header.householdAddress.buildingName;
-
-  @override
-  set hhsBuildingName(String? i) {
-    _data.header.householdAddress.buildingName = i;
-    // notifyListeners();
-  }
-
   @override
   String? get hhsStreetName => _data.header.householdAddress.streetName;
 

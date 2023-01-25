@@ -30,39 +30,27 @@ class VehiclesBodyType {
 }
 
 class VehicleBodyDetails {
-  TextEditingController vehicleFuel = TextEditingController();
-  TextEditingController vehicleModel = TextEditingController();
-  TextEditingController vehicleAnnualMileage = TextEditingController();
-  TextEditingController fuelTypeCode = TextEditingController();
-  bool? vehicleIsHousehold;
-  TextEditingController vehicleOwner = TextEditingController();
+  TextEditingController vehicleFuelType = TextEditingController();
+  TextEditingController vehicleParking = TextEditingController();
+  TextEditingController vehicleOwnership = TextEditingController();
 
   VehicleBodyDetails({
-    required this.vehicleFuel,
-    required this.fuelTypeCode,
-    required this.vehicleAnnualMileage,
-    this.vehicleIsHousehold,
-    required this.vehicleModel,
-    required this.vehicleOwner,
+    required this.vehicleFuelType,
+    required this.vehicleParking,
+    required this.vehicleOwnership,
   });
 
   VehicleBodyDetails.fromJson(Map<String, dynamic> json) {
-    vehicleFuel.text = json['vehicleFuel'];
-    vehicleModel.text = json['vehicleModel'];
-    vehicleAnnualMileage.text = json['vehicleAnnualMileage'];
-    fuelTypeCode.text = json['vehicleAge'] ?? '';
-    vehicleIsHousehold = json['vehicleIsHousehold'] ?? false;
-    vehicleOwner.text = json['vehicleOwner'] ?? '';
+    vehicleFuelType.text = json['vehicleFuelType'];
+    vehicleParking.text = json['vehicleParking'];
+    vehicleOwnership.text = json['vehicleOwnership'] ?? '';
   }
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['vehicleFuel'] = vehicleFuel.text;
-    data['vehicleModel'] = vehicleModel.text;
-    data['vehicleAnnualMileage'] = vehicleAnnualMileage.text;
-    data['vehicleAge'] = fuelTypeCode.text;
-    data['vehicleIsHousehold'] = vehicleIsHousehold ?? false;
-    data['vehicleOwner'] = vehicleOwner.text;
+    data['vehicleFuelType'] = vehicleFuelType.text;
+    data['vehicleParking'] = vehicleParking.text;
+    data['vehicleOwnership'] = vehicleOwnership.text;
     return data;
   }
 }

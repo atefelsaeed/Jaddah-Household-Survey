@@ -34,8 +34,6 @@ class SurveyScreen extends StatefulWidget {
 class _SurveyScreenState extends State<SurveyScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
 
-  final TextEditingController area = TextEditingController();
-
   final TextEditingController yes = TextEditingController();
   final TextEditingController dewType = TextEditingController();
   final TextEditingController isDewType = TextEditingController();
@@ -363,9 +361,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               .householdQuestions.hhsIsDwellingOther!.text;
                         }
 
-                        surveyPt.hhsBlockNearestCrossStreets =
-                            blockNearestTwoCrossStreets.text; //solve
-                        surveyPt.hhsAreaSuburb = area.text; //solve
+
                         surveyPt.hhsDwellingType = HhsStatic
                             .householdQuestions.hhsDwellingType; //solve
                         surveyPt.hhsIsDwellingType =
@@ -375,9 +371,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             .hhsNumberSeparateFamilies; //solve
                         surveyPt.hhsNumberYearsInAddress = HhsStatic
                             .householdQuestions.hhsNumberYearsInAddress; //solve
+
+                        surveyPt.hhsBlockNearestCrossStreets =
+                            blockNearestTwoCrossStreets.text; //solve
+                        surveyPt.hhsAreaSuburb = widget.hayName; //solve
                         surveyPt.hhsStreetName = streetName.text;
-                        surveyPt.hhsBuildingName = ""; //removed from UI
-                        surveyPt.hhsCity = ""; //removed from UI
                         surveyPt.hhsStreetNumber = streetNumber.text;
                         surveyPt.hhsNearestLandMark = nearestLandMark.text;
 

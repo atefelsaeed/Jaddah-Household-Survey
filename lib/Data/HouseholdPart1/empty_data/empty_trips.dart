@@ -32,19 +32,15 @@ class EmptyTrips {
       element.travelWithOtherModel?.text = '';
       //startBeginningModel
       element.startBeginningModel?.block.text = '';
-      element.startBeginningModel?.city.text = '';
       element.startBeginningModel?.streetName.text = '';
       element.startBeginningModel?.streetNumber.text = '';
       element.startBeginningModel?.nearestLandMark.text = '';
-      element.startBeginningModel?.buildingName.text = '';
       element.startBeginningModel?.area.text = '';
       //endingAddress
       element.endingAddress?.block.text = '';
-      element.endingAddress?.city.text = '';
       element.endingAddress?.streetName.text = '';
       element.endingAddress?.streetNumber.text = '';
       element.endingAddress?.nearestLandMark.text = '';
-      element.endingAddress?.buildingName.text = '';
       element.endingAddress?.area.text = '';
     }
   }

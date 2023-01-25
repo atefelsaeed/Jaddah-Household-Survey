@@ -103,18 +103,13 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                             if (d!.isNotEmpty) {
                               switch (VehiclesData.vecModel[index].title) {
                                 case "سيارة صغيرة":
-                                  print("object");
                                   VehModel.vecCar = [];
-
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.vecCar.add(
                                       VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        fuelTypeCode: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
+                                        vehicleParking: TextEditingController(),
+                                        vehicleOwnership: TextEditingController(),
+                                        vehicleFuelType: TextEditingController(),
                                       ),
                                     );
                                   }
@@ -124,12 +119,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.largeCar.add(
                                       VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        fuelTypeCode: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
+                                        vehicleParking: TextEditingController(),
+                                        vehicleOwnership: TextEditingController(),
+                                        vehicleFuelType: TextEditingController(),
                                       ),
                                     );
                                   }
@@ -139,12 +131,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.vecWanet.add(
                                       VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        fuelTypeCode: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
+                                        vehicleParking: TextEditingController(),
+                                        vehicleOwnership: TextEditingController(),
+                                        vehicleFuelType: TextEditingController(),
                                       ),
                                     );
                                   }
@@ -154,12 +143,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.vecVan.add(
                                       VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        fuelTypeCode: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
+                                        vehicleParking: TextEditingController(),
+                                        vehicleOwnership: TextEditingController(),
+                                        vehicleFuelType: TextEditingController(),
                                       ),
                                     );
                                   }
@@ -169,12 +155,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.pickUp.add(
                                       VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        fuelTypeCode: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
+                                        vehicleParking: TextEditingController(),
+                                        vehicleOwnership: TextEditingController(),
+                                        vehicleFuelType: TextEditingController(),
                                       ),
                                     );
                                   }
@@ -184,12 +167,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                   for (int i = 0; i < int.parse(d); i++) {
                                     VehModel.eScooter.add(
                                       VehicleBodyDetails(
-                                        vehicleModel: TextEditingController(),
-                                        vehicleOwner: TextEditingController(),
-                                        fuelTypeCode: TextEditingController(),
-                                        vehicleAnnualMileage:
-                                            TextEditingController(),
-                                        vehicleFuel: TextEditingController(),
+                                        vehicleParking: TextEditingController(),
+                                        vehicleOwnership: TextEditingController(),
+                                        vehicleFuelType: TextEditingController(),
                                       ),
                                     );
                                   }

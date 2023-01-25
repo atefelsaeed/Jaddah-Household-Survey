@@ -33,6 +33,9 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
           onChange: (String? p) {
             setState(() {
               VehModel.fuelTypeCode = p.toString();
+              if (VehModel.fuelTypeCode != "أخر") {
+                widget.textEditingController.text = VehModel.fuelTypeCode;
+              }
             });
           },
         ),

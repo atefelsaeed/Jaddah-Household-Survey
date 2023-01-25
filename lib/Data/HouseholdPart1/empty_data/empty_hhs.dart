@@ -28,11 +28,9 @@ class EmptyHHS {
       nearestLandMark: '',
       streetNumber: '',
       streetName: '',
-      city: '',
       areaSuburb: '',
       blockNearestCrossStreets: '',
-      buildingName: '',
-    );
+  );
     VehModel.editingController3.totalNumber.text = "";
     VehModel.nearestPublicTransporter = '';
   }

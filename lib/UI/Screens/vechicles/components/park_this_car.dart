@@ -35,6 +35,9 @@ class _ParkThisCarState extends State<ParkThisCar> {
           onChange: (String? p) {
             setState(() {
               VehModel.parkThisCar = p.toString();
+              if (VehModel.parkThisCar != "أخر") {
+                widget.textEditingController.text = VehModel.parkThisCar;
+              }
             });
           },
         ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
@@ -52,8 +53,9 @@ class DropDownFormInput2<T> extends StatelessWidget {
             child: Directionality(
               textDirection: TextDirection.ltr,
               child: InputDecorator(
-                  decoration:
-                      const InputDecoration(border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15))),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
