@@ -11,19 +11,20 @@ class TripsModel {
   StartBeginningModel? endingAddress;
   TextEditingController? otherWhereDidYouParkEditingControl;
   TextEditingController? taxiTravelTypeEditingControl;
-  List<String> person=[];
-  List<String> chosenFriendPerson=[];
-  String chosenPerson="";
-  Map friendPerson={
+  List<String> person = [];
+  List<String> chosenFriendPerson = [];
+  String chosenPerson = "";
+  Map friendPerson = {
     "friendPerson": [
       {"value": '', "isChick": false},
     ],
     "title": "friendPerson",
     "subTitle":
-    " A separate family is defined as who share the kitchen expenses and meals",
+        " A separate family is defined as who share the kitchen expenses and meals",
     "index": 0,
   };
-  late bool showFriend=false;
+
+  late bool showFriend = false;
   String? purposeTravel;
   TextEditingController departureTime = TextEditingController();
 

@@ -8,6 +8,7 @@ class OnExitScreen {
   static Future<bool> onWillPop(context) async {
     return (await showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (context) => AlertDialog(
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30.0))),

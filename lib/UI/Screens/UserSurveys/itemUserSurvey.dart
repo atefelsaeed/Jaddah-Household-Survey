@@ -57,37 +57,49 @@ class ItemUserSurvey extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            DefaultButton(
-              function: () async {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SurveyScreen(
-                      hayName: itemSurveyModel.hAEName ?? '',//not filled
-                    ),
+            itemSurveyModel.status == "not filled"
+                ? DefaultButton(
+                    function: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SurveyScreen(
+                            hayName: itemSurveyModel.hAEName ?? '', //not filled
+                            blockName: itemSurveyModel.blokname ?? "",
+                          ),
+                        ),
+                      );
+                      final prefs = await SharedPreferences.getInstance();
+                      prefs.setInt('userSurveyId', itemSurveyModel.id!);
+                      itemSurveyModel.id;
+                      QuestionsData.qh4[QuestionsData.qh4.keys.first]!
+                              .toList()[QuestionsData.qh4["index"]]["isChick"] =
+                          false;
+                      QuestionsData.qh7[QuestionsData.qh7.keys.first]!
+                              .toList()[QuestionsData.qh7["index"]]["isChick"] =
+                          false;
+                      QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first]!
+                              .toList()[QuestionsData.qh7_2["index"]]
+                          ["isChick"] = false;
+                      VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
+                              .toList()[VehiclesData.q3VecData["index"]]
+                          ["isChick"] = false;
+                      PersonData.nationality[PersonData.nationality.keys.first]!
+                              .toList()[PersonData.nationality["index"]]
+                          ["isChick"] = false;
+                      HHSEmptyData.emptyData();
+                    },
+                    isWidget: true,
+                    text: 'بدأ استبيان',
+                    btnWidth: width(context) * .35,
+                  )
+                : DefaultButton(
+                    function: () {},
+                    isWidget: true,
+                    background: ColorManager.grayColor,
+                    text: 'تم الاستبيان',
+                    btnWidth: width(context) * .35,
                   ),
-                );
-                final prefs = await SharedPreferences.getInstance();
-                prefs.setInt('userSurveyId', itemSurveyModel.id!);
-                itemSurveyModel.id;
-                QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                    .toList()[QuestionsData.qh4["index"]]["isChick"] = false;
-                QuestionsData.qh7[QuestionsData.qh7.keys.first]!
-                    .toList()[QuestionsData.qh7["index"]]["isChick"] = false;
-                QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first]!
-                    .toList()[QuestionsData.qh7_2["index"]]["isChick"] = false;
-                VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
-                        .toList()[VehiclesData.q3VecData["index"]]["isChick"] =
-                    false;
-                PersonData.nationality[PersonData.nationality.keys.first]!
-                        .toList()[PersonData.nationality["index"]]["isChick"] =
-                    false;
-                HHSEmptyData.emptyData();
-              },
-              isWidget: true,
-              text: 'بدأ استبيان',
-              btnWidth: width(context) * .35,
-            ),
           ],
         ),
         AppSize.spaceHeight2(context),
@@ -98,7 +110,7 @@ class ItemUserSurvey extends StatelessWidget {
             Flexible(
               flex: 8,
               child: Text(
-                "عنوان الاسرة  :  ${itemSurveyModel.hAEName} ",
+                "عنوان الاسرة  :  ${itemSurveyModel.hAEName} , ${itemSurveyModel.blokname}",
                 style: TextStyle(
                   color: ColorManager.grayColor,
                   fontWeight: FontWeight.w700,
@@ -106,7 +118,7 @@ class ItemUserSurvey extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 4,
+              flex: 8,
               child: TextButton(
                 onPressed: () async {
                   await launchURL(itemSurveyModel.x.toString(),

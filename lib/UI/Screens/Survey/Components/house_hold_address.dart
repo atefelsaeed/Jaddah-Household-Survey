@@ -12,12 +12,12 @@ class HouseHoldAddress extends StatelessWidget {
   final TextEditingController streetNumber;
 
   final TextEditingController nearestLandMark;
-  final TextEditingController blockNearestTwoCrossStreets;
+  final String blockName;
 
   const HouseHoldAddress({
     super.key,
     required this.area,
-    required this.blockNearestTwoCrossStreets,
+    required this.blockName,
     required this.nearestLandMark,
     required this.streetNumber,
     required this.streetName,
@@ -26,7 +26,9 @@ class HouseHoldAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController hayController = TextEditingController();
+    TextEditingController blockController = TextEditingController();
     hayController.text = area;
+    blockController.text = blockName;
     // TODO: implement build
     return Column(
       children: [
@@ -111,10 +113,11 @@ class HouseHoldAddress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextForm(
-                controller: blockNearestTwoCrossStreets,
+                controller: blockController,
                 text: "أقرب تقاطع",
                 label: "أقرب تقاطع",
                 isNumber: false,
+                readOnly: true,
               ),
             ],
           ),
