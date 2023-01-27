@@ -98,7 +98,8 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
 
                       print(  widget.map["index"]);
                         print(widget.question[index]["value"]);
-                        widget.onChange(widget.question[index]["value"]);
+                        widget.onChange(ChangeBoxResponse( val:widget.question[index]["value"],check:widget.question[index]["isChick"]));
+                      //  widget.onChange(widget.question[index]["value"]);
                       }),
                   TextGlobal(
                     text: widget.question[index]["value"],

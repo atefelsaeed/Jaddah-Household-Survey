@@ -34,12 +34,7 @@ alertMap(Function callBack) {
     context: navigatorKey.currentContext!,
     barrierDismissible: false, // user must tap button!
     builder: (context) {
-      return WillPopScope(
-        onWillPop: () async {
-          print("fff");
-          return false;
-        },
-        child: AlertDialog(
+      return  AlertDialog(
             content: FutureBuilder(
                 future: futureCall(),
                 builder: (_, dataSnapshot) {
@@ -117,8 +112,7 @@ alertMap(Function callBack) {
                           color: Colors.white,
                           child: IconButton(
                             onPressed: () async {
-                              activeLocation(
-                                  placeMarks, context, value, callBack);
+                            Navigator.of(context).pop();
                             },
                             icon: const Icon(Icons.arrow_forward_ios_outlined),
                           ),
@@ -126,8 +120,8 @@ alertMap(Function callBack) {
                       ),
                     ],
                   );
-                })),
-      );
+                }));
+
     },
   );
 }

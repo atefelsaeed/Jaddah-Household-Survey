@@ -30,8 +30,8 @@ class _NationalityState extends State<Nationality> {
       children: [
         ListViewCheckBoxOrange(
           map: PersonData.nationality,
-          onChange: (r) {
-            base.personalHeadData!.nationalityType = r;
+          onChange: (ChangeBoxResponse r ) {
+            base.personalHeadData!.nationalityType = r.val;
 
             if (base.personalHeadData!.nationalityType != "سعودي") {
               setState(() {
