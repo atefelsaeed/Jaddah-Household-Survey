@@ -108,10 +108,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     // SurveyHeader(),
                     HouseHoldAddress(
                       area: widget.hayName,
-                      blockName: widget.blockName,
+
                       nearestLandMark: nearestLandMark,
                       streetNumber: streetNumber,
-                      streetName: streetName,
+                      streetName: streetName, blockNearestTwoCrossStreets: streetName,
                     ),
 
                     AppSize.spaceHeight3(context),
