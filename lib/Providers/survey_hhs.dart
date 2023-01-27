@@ -151,6 +151,15 @@ class SurveyPTProvider extends SurveyProvider {
     // notifyListeners();
   }
 
+  @override
+  String? get hhsPhone => _data.header.householdAddress.hhsPhone;
+
+  @override
+  set hhsPhone(String? i) {
+    _data.header.householdAddress.hhsPhone = i;
+    // notifyListeners();
+  }
+
   ///==========householdQuestions====================
   @override
   String? get hhsDwellingType => _data.householdQuestions.hhsDwellingType;

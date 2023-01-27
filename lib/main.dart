@@ -34,7 +34,7 @@ void main() {
   Intl.defaultLocale = 'ar_EG';
   runApp(const MyApp());
 }
-
+GlobalKey<NavigatorState> navigatorKey =GlobalKey();
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -73,6 +73,7 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Jaddah Household Survey',
+        navigatorKey: navigatorKey,
         theme: ThemeData(
           primaryColor: ColorManager.primaryColor,
           fontFamily: 'Somar'

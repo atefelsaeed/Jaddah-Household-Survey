@@ -33,7 +33,7 @@ class _PersonScreenState extends State<PersonScreen> {
   bool type = false;
   bool typeAlone = true;
   var mainOccupationKey = PersonData.mainOccupation.keys.first;
-
+  TextEditingController occupationSectorController = TextEditingController();
   var occupationSectorKey = PersonData.occupationSector.keys.first;
   final GlobalKey<FormState> _key = GlobalKey();
   late EditingController3 editingController3 = EditingController3(
@@ -76,8 +76,6 @@ class _PersonScreenState extends State<PersonScreen> {
                             padding: EdgeInsets.all(AppSize.padding1(context)),
                             child: Column(
                               children: [
-
-
                                 DefaultEntry(
                                   i: i,
                                   function: () {
@@ -87,7 +85,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                     });
                                   },
                                 ),
-                              /*  Row(
+                                /*  Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     TextForm(
@@ -154,7 +152,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                         base[i].personalHeadData!.checkAge ==
                                                 true
                                             ? MyTextForm(
-                                          isNumber: true,
+                                                isNumber: true,
                                                 onChanged: (d) {
                                                   setState(() {
                                                     if (d!.isNotEmpty) {
@@ -361,28 +359,55 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             .mainOccupationType ==
                                                         "معاق / مريض"
                                                 ? Container()
-                                                : DropDownFormInput(
-                                                    label: Text(PersonData
-                                                        .occupationSector[
-                                                            occupationSectorKey]!
-                                                        .toList()
-                                                        .first
-                                                        .toString()),
-                                                    hint:
-                                                        "لو عمل ما هو قطا ع العمل",
-                                                    options: PersonData
-                                                        .occupationSector[
-                                                            occupationSectorKey]!
-                                                        .toList(),
-                                                    onChange: (String? p) {
+                                                : Column(
+                                                    children: [
+                                                      DropDownFormInput(
+                                                        label: Text(PersonData
+                                                            .occupationSector[
+                                                                occupationSectorKey]!
+                                                            .toList()
+                                                            .first
+                                                            .toString()),
+                                                        hint:
+                                                            "لو عمل ما هو قطا ع العمل",
+                                                        options: PersonData
+                                                            .occupationSector[
+                                                                occupationSectorKey]!
+                                                            .toList(),
+                                                        onChange: (String? p) {
+                                                          setState(() {
+                                                            PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector =
+                                                                p.toString();
+                                                          });
+                                                        },
+                                                      ),
                                                       PersonModelList
-                                                              .personModelList[i]
-                                                              .occupationModel!
-                                                              .occupationSector =
-                                                          p.toString();
-                                                    },
+                                                                  .personModelList[
+                                                                      i]
+                                                                  .occupationModel!
+                                                                  .occupationSector ==
+                                                              " حدد أخرى"
+                                                          ? MyTextForm(
+                                                              controller:
+                                                                  occupationSectorController,
+                                                              label:
+                                                                  " قطاع العمل",
+                                                              onChanged: (val) {
+                                                                PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector = val;
+                                                              },
+                                                            )
+                                                          : Container(),
+                                                    ],
                                                   )
-                                            : Container(),
+                                            : Container()
                                   ],
                                 ),
                                 base[i].occupationModel!.isEmployee == "1"

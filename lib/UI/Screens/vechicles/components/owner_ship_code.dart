@@ -33,6 +33,8 @@ class _OwnerShipCodeState extends State<OwnerShipCode> {
               VehModel.ownerShipCode = p.toString();
               if (VehModel.ownerShipCode != "أخر") {
                 widget.textEditingController.text = VehModel.ownerShipCode;
+              }else{
+                widget.textEditingController.text ='';
               }
             });
           },

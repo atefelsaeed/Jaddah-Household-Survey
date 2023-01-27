@@ -140,6 +140,10 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsAreaSuburb(String? l);
 
+  String? get hhsPhone;
+
+  set hhsPhone(String? l);
+
   ///=========HouseholdQuestions=================
   String? get hhsDwellingType;
 

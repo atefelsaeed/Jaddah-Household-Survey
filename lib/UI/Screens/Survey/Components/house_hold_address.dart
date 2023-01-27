@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Widgets/alert_map.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
@@ -10,7 +11,7 @@ class HouseHoldAddress extends StatelessWidget {
   final TextEditingController streetName;
 
   final TextEditingController streetNumber;
-
+  final TextEditingController phoneController;
   final TextEditingController nearestLandMark;
   final String blockName;
 
@@ -19,6 +20,7 @@ class HouseHoldAddress extends StatelessWidget {
     required this.area,
     required this.blockName,
     required this.nearestLandMark,
+    required this.phoneController,
     required this.streetNumber,
     required this.streetName,
   });
@@ -27,6 +29,7 @@ class HouseHoldAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController hayController = TextEditingController();
     TextEditingController blockController = TextEditingController();
+
     hayController.text = area;
     blockController.text = blockName;
     // TODO: implement build
@@ -119,9 +122,22 @@ class HouseHoldAddress extends StatelessWidget {
                 isNumber: false,
                 readOnly: true,
               ),
+              TextForm(
+                controller: phoneController,
+                text: "رقم الهاتف",
+                label: "رقم الهاتف",
+                isNumber: true,
+                keyboardType: TextInputType.phone,
+              ),
+
             ],
           ),
         ),
+        IconButton(
+            onPressed: () {
+              alertMap(() {});
+            },
+            icon: Icon(Icons.pin_drop)),
         AppSize.spaceHeight2(context),
       ],
     );

@@ -45,6 +45,7 @@ class SurveyPT extends Survey {
     data['hhsBlockNearestCrossStreets'] =
         header.householdAddress.blockNearestCrossStreets;
     data['hhsAreaSuburb'] = header.householdAddress.areaSuburb;
+    data['hhsPhone'] = header.householdAddress.hhsPhone;
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;
@@ -109,6 +110,7 @@ class SurveyPT extends Survey {
     header.householdAddress.blockNearestCrossStreets =
         json['hhsBlockNearestCrossStreets'];
     header.householdAddress.areaSuburb = json['hhsAreaSuburb'];
+    header.householdAddress.hhsPhone = json['hhsPhone'];
     //================householdQuestions================
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];

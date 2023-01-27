@@ -44,6 +44,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final TextEditingController streetName = TextEditingController();
   final TextEditingController streetNumber = TextEditingController();
   final TextEditingController nearestLandMark = TextEditingController();
+  final TextEditingController hhsPhone = TextEditingController();
 
   final TextEditingController peopleAdults18 = TextEditingController();
   final TextEditingController peopleUnder18 = TextEditingController();
@@ -108,10 +109,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     // SurveyHeader(),
                     HouseHoldAddress(
                       area: widget.hayName,
-
+                      phoneController: hhsPhone,
+                      blockName: widget.blockName,
                       nearestLandMark: nearestLandMark,
                       streetNumber: streetNumber,
-                      streetName: streetName, blockNearestTwoCrossStreets: streetName,
+                      streetName: streetName,
                     ),
 
                     AppSize.spaceHeight3(context),
@@ -194,6 +196,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     ListViewCheckBoxOrange(
                       map: QuestionsData.qh4,
                       onChange: (r) {
+
                         HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
                             r;
                         print(QuestionsData.qh4[QuestionsData.qh4.keys.first]!
@@ -286,7 +289,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               ),
                               HhsStatic.householdQuestions.hhsDemolishedAreas ==
                                       "أخر"
-                                  ? TextForm(
+                                  ?
+
+
+                              TextForm(
                                       controller: yes,
                                       text: "  فمن أي منطقة ",
                                       label: " فمن أي منطقة",
@@ -381,6 +387,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           surveyPt.hhsBlockNearestCrossStreets =
                               widget.blockName; //solve
                           surveyPt.hhsAreaSuburb = widget.hayName; //solve
+                          surveyPt.hhsPhone = hhsPhone.text; //solve
                           surveyPt.hhsStreetName = streetName.text;
                           surveyPt.hhsStreetNumber = streetNumber.text;
                           surveyPt.hhsNearestLandMark = nearestLandMark.text;

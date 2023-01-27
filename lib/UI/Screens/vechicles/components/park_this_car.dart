@@ -27,8 +27,7 @@ class _ParkThisCarState extends State<ParkThisCar> {
               .toList()
               .first
               .toString()),
-          hint:
-              "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات",
+          hint: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات",
           options: VehiclesData
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),
@@ -37,6 +36,8 @@ class _ParkThisCarState extends State<ParkThisCar> {
               VehModel.parkThisCar = p.toString();
               if (VehModel.parkThisCar != "أخر") {
                 widget.textEditingController.text = VehModel.parkThisCar;
+              } else {
+                widget.textEditingController.text = "";
               }
             });
           },

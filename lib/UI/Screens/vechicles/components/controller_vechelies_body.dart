@@ -281,7 +281,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
               setState(() {
                 VehModel.vecWanet.removeAt(i);
                 VehiclesData.vecModel[2].textEditingController
-                    .text =VehModel.eScooter.length.toString();
+                    .text =VehModel.vecWanet.length.toString();
               });
             },
           ),

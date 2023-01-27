@@ -6,6 +6,7 @@ class HouseholdAddress {
   String? nearestLandMark;
   String? blockNearestCrossStreets;
   String? areaSuburb;
+  String? hhsPhone;
 
   HouseholdAddress({
     this.nearestLandMark,
@@ -13,6 +14,7 @@ class HouseholdAddress {
     this.streetName,
     this.areaSuburb,
     this.blockNearestCrossStreets,
+    this.hhsPhone
   });
 }
 

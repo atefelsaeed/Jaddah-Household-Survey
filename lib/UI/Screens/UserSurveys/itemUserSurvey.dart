@@ -29,7 +29,7 @@ class ItemUserSurvey extends StatelessWidget {
 
   launchURL(String lat, long) async {
     final String googleMapslocationUrl =
-        "https://www.google.com/maps/search/?api=1&query=$lat,$long";
+        "https://www.google.com/maps/search/?api=1&query=$long,$lat";
 
     final String encodedURl = Uri.encodeFull(googleMapslocationUrl);
     print(encodedURl);
