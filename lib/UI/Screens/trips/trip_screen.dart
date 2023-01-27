@@ -36,6 +36,8 @@ import 'components/time_leave.dart';
 import 'components/trip_hold_address.dart';
 import 'components/where_did_you_go.dart';
 
+
+List personTripList=[""];
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
 
@@ -80,6 +82,7 @@ class _TripScreenState extends State<TripScreen> {
       TripModeList.tripModeList[0].person
           .add(PersonModelList.personModelList[i].personName.text);
     }
+
   }
 
   @override
@@ -110,6 +113,8 @@ class _TripScreenState extends State<TripScreen> {
                         function: () {
                           setState(() {
                             TripModeList.tripModeList.add(TripsModel(
+                              person:  TripModeList.tripModeList[0].person ,
+
                               type: false,
                               isTravelAlone: false,
                               tripReason: "",
@@ -164,15 +169,8 @@ class _TripScreenState extends State<TripScreen> {
                                 nearestLandMark: TextEditingController(),
                                 streetName: TextEditingController(),
                                 streetNumber: TextEditingController(),
-                              ),
+                              ), chosenFriendPerson: [],
                             ));
-                            for (int x = 0;
-                                x < PersonModelList.personModelList.length;
-                                x++) {
-                              TripModeList.tripModeList[x].person.add(
-                                  PersonModelList
-                                      .personModelList[x].personName.text);
-                            }
                           });
                         },
                         isWidget: true,
@@ -217,41 +215,55 @@ class _TripScreenState extends State<TripScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  i == 0
-                                      ? DropDownFormInput(
+                                DropDownFormInput(
                                           hint: "صاحب الرحله",
-                                          options: TripModeList
-                                              .tripModeList[i].person,
+                                          options:TripModeList.tripModeList[i].person,
                                           onChange: (String? p) {
                                             print("p");
+                                            //personTrip.add(p!);
+
                                             TripModeList.tripModeList[i]
-                                                .chosenPerson = p!;
-                                            print(p);
-                                            TripModeList.tripModeList[i]
-                                                    .friendPerson[
-                                                "friendPerson"] = [];
+                                                .friendPerson[
+                                            "friendPerson"] = [];
                                             for (int x = 0;
-                                                x <
-                                                    TripModeList.tripModeList[i]
-                                                        .person.length;
-                                                x++) {
+                                            x <
+
+                                                TripModeList.tripModeList[i].person.length;
+                                            x++) {
                                               print(x);
                                               setState(() {
-                                                if (TripModeList.tripModeList[i]
-                                                        .person[x] !=
+                                                if (TripModeList.tripModeList[i].person[x] !=
                                                     p) {
                                                   TripModeList
                                                       .tripModeList[i]
                                                       .friendPerson[
-                                                          "friendPerson"]
+                                                  "friendPerson"]
                                                       .add({
-                                                    "value": TripModeList
-                                                        .tripModeList[i]
-                                                        .person[x],
+                                                    "value":
+                                                    TripModeList.tripModeList[i].person[x],
                                                     "isChick": false
                                                   });
+
                                                 }
                                               });
+                                              TripModeList.tripModeList[i]
+                                                  .chosenPerson = p!;
+                                              print(  personTrip);
+                                            setState(() {
+                                              for(int x=0;x<TripModeList.tripModeList.length;x++){
+                                                if(TripModeList.tripModeList[x].chosenFriendPerson.contains(p)&&personTrip.contains(p)==false){
+personTrip.add(p);
+                                                  TripModeList.tripModeList[i]=TripModeList.tripModeList[x];
+                                                  break;
+                                                }
+                                              }
+                                            });
+
+
+
+                                            print(p);
+
+
 
                                               print(TripModeList.tripModeList[i]
                                                   .friendPerson);
@@ -263,14 +275,22 @@ class _TripScreenState extends State<TripScreen> {
                                             }
                                           },
                                         )
-                                      : Container(),
+                                    
                                 ],
                               ),
                               ListViewCheckBoxOrange2(
                                 map: TripModeList.tripModeList[i].friendPerson,
                                 onChange: (ChangeBoxResponse p) {
-                                  bool chosenVal = false;
-                                  print(TripModeList.tripModeList[0].person);
+                                  if(TripModeList.tripModeList[i].chosenFriendPerson.contains(p.val)==false&&p.check==true){
+                                    TripModeList.tripModeList[i].chosenFriendPerson.add(p.val);
+                                  }
+
+                                  /*bool chosenVal = false;
+print("Before");
+                                  print(TripModeList.tripModeList[0].friendPerson);
+                                  print(TripModeList.tripModeList.length);
+
+
 
                                   print(TripModeList
                                       .tripModeList[i].chosenPerson);
@@ -281,50 +301,36 @@ class _TripScreenState extends State<TripScreen> {
                                             TripModeList
                                                 .tripModeList[x].chosenPerson &&
                                         p.check == false) {
-                                      print("object34");
+
                                       setState(() {
                                         print(x);
-                                        print(TripModeList
-                                            .tripModeList[0].person);
+
                                         print(p.val);
-                                        for (int i = 0;
-                                            i <
-                                                PersonModelList
-                                                    .personModelList.length;
-                                            i++) {
-                                          TripModeList.tripModeList[0].person
-                                              .add(PersonModelList
-                                                  .personModelList[i]
-                                                  .personName
-                                                  .text);
-                                        }
+                                        print("After");
+                                        print(TripModeList.tripModeList[0].friendPerson);
+                                        chosenVal = true;
                                         TripModeList.tripModeList.removeAt(x);
+                                        print("After2");
+                                        print(TripModeList.tripModeList[0].friendPerson);
+                                        return;
                                       });
 
-                                      chosenVal = true;
-                                      TripModeList
-                                          .tripModeList[i].chosenPerson = p.val;
-                                      print("atef");
-                                      print(TripModeList
-                                          .tripModeList[i].chosenPerson);
-                                      print(
-                                          TripModeList.tripModeList[i].person);
-                                      print(TripModeList
-                                          .tripModeList[0].chosenPerson);
-                                      print("atef2");
-                                      print(
-                                          TripModeList.tripModeList[0].person);
-                                      print(
-                                          TripModeList.tripModeList[0].person);
+
+
+
+
+
                                     }
                                   }
                                   print(chosenVal);
                                   print(TripModeList.tripModeList.length);
 
-                                  setState(() {
+                                setState(() {
+                                  print("after 3");
                                     if (chosenVal == false && p.check == true) {
                                       TripModeList
                                           .tripModeList[i].chosenPerson = p.val;
+                                      print("after 3");
                                       //TripModeList.tripModeList[i].person=TripModeList.tripModeList[0].person;
                                       TripModeList.tripModeList.add(TripsModel(
                                         type: false,
@@ -396,7 +402,7 @@ class _TripScreenState extends State<TripScreen> {
                                         ),
                                       ));
                                     }
-                                  });
+                                  });*/
                                 },
                                 title:
                                     "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",

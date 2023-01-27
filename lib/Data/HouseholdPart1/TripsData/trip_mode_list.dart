@@ -8,6 +8,8 @@ import '../../../Models/Trips_SurveyModel/trips_model.dart';
 class TripModeList {
   static List<TripsModel> tripModeList = [
     TripsModel(
+      person: [],
+
       type: false,
       isTravelAlone: false,
       tripReason: "",
@@ -60,7 +62,7 @@ class TripModeList {
         nearestLandMark: TextEditingController(),
         streetName: TextEditingController(),
         streetNumber: TextEditingController(),
-      ),
+      ), chosenFriendPerson: [],
     ),
   ];
 }
