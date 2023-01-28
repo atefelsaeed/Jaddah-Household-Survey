@@ -6,7 +6,6 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
-import '../../Widgets/text.dart';
 import 'components/controller_vechelies_body.dart';
 
 class VehiclesScreen extends StatefulWidget {

@@ -75,8 +75,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
 
-  bool checked = false;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -195,21 +193,19 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
                     ListViewCheckBoxOrange(
                       map: QuestionsData.qh4,
-                      onChange: (  ChangeBoxResponse r) {
-
-if(r.check==true){
-  HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
-      r.val;
-}else{
-  setState(() {
-    q6peopleAdults18=[TextEditingController()];
-    q6peopleUnder18=[TextEditingController()];
-    q6totalNumberOfVec=[TextEditingController()];
-
-  });
-  HhsStatic.householdQuestions.hhsNumberSeparateFamilies ="1";
-}
-
+                      onChange: (ChangeBoxResponse r) {
+                        if (r.check == true) {
+                          HhsStatic.householdQuestions
+                              .hhsNumberSeparateFamilies = r.val;
+                        } else {
+                          setState(() {
+                            q6peopleAdults18 = [TextEditingController()];
+                            q6peopleUnder18 = [TextEditingController()];
+                            q6totalNumberOfVec = [TextEditingController()];
+                          });
+                          HhsStatic.householdQuestions
+                              .hhsNumberSeparateFamilies = "1";
+                        }
 
                         print(QuestionsData.qh4[QuestionsData.qh4.keys.first]!
                                 .toList()[QuestionsData.qh4["index"]]
@@ -239,9 +235,9 @@ if(r.check==true){
                     AppSize.spaceHeight3(context),
                     ListViewCheckBoxOrange(
                       map: QuestionsData.qh7,
-                      onChange: (r) {
+                      onChange: (ChangeBoxResponse r) {
                         HhsStatic.householdQuestions.hhsNumberYearsInAddress =
-                            r;
+                            r.val;
                       },
                       title: "6.كم سنة عشت أنت / عائلتك في هذا العنوان المحدد؟",
                       question: QuestionsData.qh7[QuestionsData.qh7.keys.first]!
@@ -251,9 +247,9 @@ if(r.check==true){
 
                     ListViewCheckBoxOrange(
                       map: QuestionsData.qh7_2,
-                      onChange: (r) {
+                      onChange: (ChangeBoxResponse r) {
                         setState(() {
-                          if (r == "نعم") {
+                          if (r.val == "نعم") {
                             HhsStatic.householdQuestions.hhsIsDemolishedAreas =
                                 true;
                             yes.text = '';
@@ -299,17 +295,6 @@ if(r.check==true){
                                     .qh6_2[QuestionsData.qh6_2.keys.first]!
                                     .toList(),
                               ),
-                              HhsStatic.householdQuestions.hhsDemolishedAreas ==
-                                      "أخر"
-                                  ?
-
-
-                              TextForm(
-                                      controller: yes,
-                                      text: "  فمن أي منطقة ",
-                                      label: " فمن أي منطقة",
-                                    )
-                                  : Container()
                             ],
                           )
                         : Container(),
@@ -449,7 +434,6 @@ if(r.check==true){
                       text: "التالي",
                       widget: const Icon(Icons.arrow_forward),
                     ),
-                    // HouseholdAddressSection()
                   ],
                 ),
               ),

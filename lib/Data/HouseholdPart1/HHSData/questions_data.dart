@@ -1,5 +1,3 @@
-
-
 class QuestionsData {
   static Map<String, List<dynamic>> qh1 = {
     "? What best describes this dwelling type": [
@@ -24,12 +22,44 @@ class QuestionsData {
       'مقدمة من الحكومة',
       'أخر'
     ]
-  };  static Map<String, List<dynamic>> qh6_2 = {
+  };
+
+  static Map<String, List<dynamic>> qh6_2 = {
     "Is this dwelling...": [
-      'الدمام',
-      'الخبر',
-      'حائل',
-      'أخر'
+      'النزهه',
+      'السلامه',
+      'الربوة',
+      'العزيزيه',
+      'الرحاب',
+      'بني مالك',
+      'مشرفه',
+      'الورود',
+      'الشرفيه',
+      'البغداديه',
+      'الكندره',
+      'العماريه',
+      'الصحيفه',
+      'السبيل',
+      'الهنداويه',
+      'البلد',
+      'الثعاليه',
+      'القريات',
+      'بترومين',
+      'غليل',
+      'النزله اليمانيه',
+      'النزله الشرقيه',
+      'الوزيريه',
+      'الجوهره',
+      'الجامعه',
+      'الثغر',
+      'الرواني',
+      'قویژه',
+      'المنتزهات',
+      'مدائن الفهد',
+      'الفاروق',
+      'العدل',
+      'الفضل',
+      'ام السلم',
     ]
   };
   static Map<String, dynamic> qh3 = {
@@ -49,7 +79,7 @@ class QuestionsData {
     ],
     "subTitle":
         " A separate family is defined as who share the kitchen expenses and meals",
-    "index":0
+    "index": 0
   };
   static Map<String, dynamic> qh4 = {
     "? How many separate families live at this address": [
@@ -66,7 +96,7 @@ class QuestionsData {
     ],
     "subTitle":
         " A separate family is defined as who share the kitchen expenses and meals",
-    "index":0
+    "index": 0
   };
 
   static Map<String, dynamic> qh5 = {
@@ -97,16 +127,15 @@ class QuestionsData {
       {"value": '- 10 سنوات', "isChick": false},
       {"value": '+ 10 سنوات', "isChick": false},
     ],
-    "index":0
+    "index": 0
   };
   static Map<String, dynamic> qh7_2 = {
     'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
         [
       {"value": 'نعم', "isChick": false},
       {"value": 'لا', "isChick": false},
-
     ],
-    "index":0
+    "index": 0
   };
   static Map<String, dynamic> qh8_1 = {
     "?How many pedal-cycles are owned or used by this household": {
@@ -114,7 +143,6 @@ class QuestionsData {
       "children (under 18yrs)": "0",
       "Total Number of Vehicles in each family": "0"
     },
-
   };
   static Map<String, dynamic> qh8_2 = {
     "?How many Electric Bicycles are owned or used by this household": {

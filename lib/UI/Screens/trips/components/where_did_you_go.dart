@@ -64,7 +64,7 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                         false;
                     chosenindex = index;
                     TripData.tripReason["TripReason"][chosenindex]["isChick"] =
-                        true;
+                        value;
                     TripModeList
                             .tripModeList[widget.indexTripModel].tripReason =
                         TripData.tripReason["TripReason"][chosenindex]["value"];

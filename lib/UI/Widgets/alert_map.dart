@@ -12,7 +12,7 @@ import 'custom_buttton.dart';
 alertMap(Function callBack) {
   final Completer<GoogleMapController> completer = Completer();
   late double initZoom = 19.151926040649414;
-  late LatLng initCoordinates = LatLng(37.43296265331129, -122.08832357078792);
+  late LatLng initCoordinates = const LatLng(37.43296265331129, -122.08832357078792);
   /*"Y": "21.4754090019",
             "X": "39.1832734517",*/
   List<Placemark> placeMarks = [];

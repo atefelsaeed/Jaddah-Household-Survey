@@ -16,7 +16,6 @@ import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
-import '../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
@@ -28,7 +27,6 @@ import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/text.dart';
-import '../Survey/widgets/list_view_check_box_orange.dart';
 import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
 import 'components/purpose_of)being.dart';
@@ -105,81 +103,7 @@ class _TripScreenState extends State<TripScreen> {
                 children: [
                   const HeadlinePerson(text: "الرحلات"),
                   AppSize.spaceHeight2(context),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      DefaultButton(
-                        function: () {
-                          setState(() {
-                            TripModeList.tripModeList.add(TripsModel(
-                              person: TripModeList.tripModeList[0].person,
 
-                              type: false,
-                              isTravelAlone: false,
-                              tripReason: "",
-                              taxiTravelTypeEditingControl:
-                                  TextEditingController(),
-                              //whereDidYouGo
-                              purposeTravel: "",
-                              departureTime: TextEditingController(),
-                              typeTravel: '',
-                              typeTravelCondition: "0",
-                              travelTypeModel: TravelTypeModel(
-                                carParkingPlace: "",
-                                otherWhereDidYouParking:
-                                    TextEditingController(),
-                                ticketSub: TextEditingController(),
-                                taxiTravelTypeOther: TextEditingController(),
-                                taxiFare: TextEditingController(),
-                                taxiTravelType: '',
-                                travelType: '',
-                                passTravelType: '',
-                                publicTransportFare: '',
-                              ),
-                              travelWay: TravelWay(
-                                mainMode: "",
-                                accessMode: "",
-                              ),
-                              travelWithOtherModel: TravelWithOtherModel(
-                                  adultsNumber: TextEditingController(),
-                                  childrenNumber: TextEditingController(),
-                                  hhsMembersTraveled: "",
-                                  text: "?If with other how many"),
-                              travelAloneHouseHold: TravelWithOtherModel(
-                                  adultsNumber: TextEditingController(),
-                                  childrenNumber: TextEditingController(),
-                                  hhsMembersTraveled: "",
-                                  text: "Non Household persons"),
-                              arrivalDepartTime: ArrivalDepartTime(
-                                arriveDestinationTime: TextEditingController(),
-                                departTime: TextEditingController(),
-                                numberRepeatTrip: '',
-                              ),
-                              startBeginningModel: StartBeginningModel(
-                                area: TextEditingController(),
-                                block: TextEditingController(),
-                                nearestLandMark: TextEditingController(),
-                                streetName: TextEditingController(),
-                                streetNumber: TextEditingController(),
-                              ),
-                              endingAddress: StartBeginningModel(
-                                area: TextEditingController(),
-                                block: TextEditingController(),
-                                nearestLandMark: TextEditingController(),
-                                streetName: TextEditingController(),
-                                streetNumber: TextEditingController(),
-                              ),
-                              chosenFriendPerson: [],
-                            ));
-                          });
-                        },
-                        isWidget: true,
-                        btnWidth: width(context) * .24,
-                        text: "أضافة رحلة جديدة",
-                        widget: const Icon(Icons.arrow_forward),
-                      )
-                    ],
-                  ),
                   AppSize.spaceHeight2(context),
                   for (int i = 0; i < TripModeList.tripModeList.length; i++)
                     Padding(
@@ -280,145 +204,6 @@ class _TripScreenState extends State<TripScreen> {
                                   )
                                 ],
                               ),
-                              ListViewCheckBoxOrange2(
-                                map: TripModeList.tripModeList[i].friendPerson,
-                                onChange: (ChangeBoxResponse p) {
-                                  if (TripModeList.tripModeList[i]
-                                              .chosenFriendPerson
-                                              .contains(p.val) ==
-                                          false &&
-                                      p.check == true) {
-                                    TripModeList
-                                        .tripModeList[i].chosenFriendPerson
-                                        .add(p.val);
-                                  }
-
-                                  /*bool chosenVal = false;
-print("Before");
-                                  print(TripModeList.tripModeList[0].friendPerson);
-                                  print(TripModeList.tripModeList.length);
-
-
-
-                                  print(TripModeList
-                                      .tripModeList[i].chosenPerson);
-                                  for (int x = 0;
-                                      x < TripModeList.tripModeList.length;
-                                      x++) {
-                                    if (p.val ==
-                                            TripModeList
-                                                .tripModeList[x].chosenPerson &&
-                                        p.check == false) {
-
-                                      setState(() {
-                                        print(x);
-
-                                        print(p.val);
-                                        print("After");
-                                        print(TripModeList.tripModeList[0].friendPerson);
-                                        chosenVal = true;
-                                        TripModeList.tripModeList.removeAt(x);
-                                        print("After2");
-                                        print(TripModeList.tripModeList[0].friendPerson);
-                                        return;
-                                      });
-
-
-
-
-
-
-                                    }
-                                  }
-                                  print(chosenVal);
-                                  print(TripModeList.tripModeList.length);
-
-                                setState(() {
-                                  print("after 3");
-                                    if (chosenVal == false && p.check == true) {
-                                      TripModeList
-                                          .tripModeList[i].chosenPerson = p.val;
-                                      print("after 3");
-                                      //TripModeList.tripModeList[i].person=TripModeList.tripModeList[0].person;
-                                      TripModeList.tripModeList.add(TripsModel(
-                                        type: false,
-                                        isTravelAlone: false,
-                                        tripReason: "",
-                                        taxiTravelTypeEditingControl:
-                                            TextEditingController(),
-                                        //whereDidYouGo
-                                        purposeTravel: "",
-                                        departureTime: TextEditingController(),
-                                        typeTravel: '',
-                                        typeTravelCondition: "0",
-                                        travelTypeModel: TravelTypeModel(
-                                          carParkingPlace: "",
-                                          otherWhereDidYouParking:
-                                              TextEditingController(),
-                                          ticketSub: TextEditingController(),
-                                          taxiTravelTypeOther:
-                                              TextEditingController(),
-                                          taxiFare: TextEditingController(),
-                                          taxiTravelType: '',
-                                          travelType: '',
-                                          passTravelType: '',
-                                          publicTransportFare: '',
-                                        ),
-                                        travelWay: TravelWay(
-                                          mainMode: "",
-                                          accessMode: "",
-                                        ),
-                                        travelWithOtherModel:
-                                            TravelWithOtherModel(
-                                                adultsNumber:
-                                                    TextEditingController(),
-                                                childrenNumber:
-                                                    TextEditingController(),
-                                                hhsMembersTraveled: "",
-                                                text:
-                                                    "?If with other how many"),
-                                        travelAloneHouseHold:
-                                            TravelWithOtherModel(
-                                                adultsNumber:
-                                                    TextEditingController(),
-                                                childrenNumber:
-                                                    TextEditingController(),
-                                                hhsMembersTraveled: "",
-                                                text: "Non Household persons"),
-                                        arrivalDepartTime: ArrivalDepartTime(
-                                          arriveDestinationTime:
-                                              TextEditingController(),
-                                          departTime: TextEditingController(),
-                                          numberRepeatTrip: '',
-                                        ),
-                                        startBeginningModel:
-                                            StartBeginningModel(
-                                          area: TextEditingController(),
-                                          block: TextEditingController(),
-                                          nearestLandMark:
-                                              TextEditingController(),
-                                          streetName: TextEditingController(),
-                                          streetNumber: TextEditingController(),
-                                        ),
-                                        endingAddress: StartBeginningModel(
-                                          area: TextEditingController(),
-                                          block: TextEditingController(),
-                                          nearestLandMark:
-                                              TextEditingController(),
-                                          streetName: TextEditingController(),
-                                          streetNumber: TextEditingController(),
-                                        ),
-                                      ));
-                                    }
-                                  });*/
-                                },
-                                title:
-                                    "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
-                                question: TripModeList.tripModeList[i]
-                                    .friendPerson["friendPerson"],
-                                subTitle:
-                                    'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
-                              ),
                               TripHoldAddress(
                                 tripModel: TripModeList
                                     .tripModeList[i].startBeginningModel!,
@@ -479,7 +264,83 @@ print("Before");
                         ),
                       ),
                     ),
-                  AppSize.spaceHeight2(context),
+                  AppSize.spaceHeight5(context),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      DefaultButton(
+                        function: () {
+                          setState(() {
+                            TripModeList.tripModeList.add(TripsModel(
+                              person: TripModeList.tripModeList[0].person,
+
+                              type: false,
+                              isTravelAlone: false,
+                              tripReason: "",
+                              taxiTravelTypeEditingControl:
+                              TextEditingController(),
+                              //whereDidYouGo
+                              purposeTravel: "",
+                              departureTime: TextEditingController(),
+                              typeTravel: '',
+                              typeTravelCondition: "0",
+                              travelTypeModel: TravelTypeModel(
+                                carParkingPlace: "",
+                                otherWhereDidYouParking:
+                                TextEditingController(),
+                                ticketSub: TextEditingController(),
+                                taxiTravelTypeOther: TextEditingController(),
+                                taxiFare: TextEditingController(),
+                                taxiTravelType: '',
+                                travelType: '',
+                                passTravelType: '',
+                                publicTransportFare: '',
+                              ),
+                              travelWay: TravelWay(
+                                mainMode: "",
+                                accessMode: "",
+                              ),
+                              travelWithOtherModel: TravelWithOtherModel(
+                                  adultsNumber: TextEditingController(),
+                                  childrenNumber: TextEditingController(),
+                                  hhsMembersTraveled: "",
+                                  text: "?If with other how many"),
+                              travelAloneHouseHold: TravelWithOtherModel(
+                                  adultsNumber: TextEditingController(),
+                                  childrenNumber: TextEditingController(),
+                                  hhsMembersTraveled: "",
+                                  text: "Non Household persons"),
+                              arrivalDepartTime: ArrivalDepartTime(
+                                arriveDestinationTime: TextEditingController(),
+                                departTime: TextEditingController(),
+                                numberRepeatTrip: '',
+                              ),
+                              startBeginningModel: StartBeginningModel(
+                                area: TextEditingController(),
+                                block: TextEditingController(),
+                                nearestLandMark: TextEditingController(),
+                                streetName: TextEditingController(),
+                                streetNumber: TextEditingController(),
+                              ),
+                              endingAddress: StartBeginningModel(
+                                area: TextEditingController(),
+                                block: TextEditingController(),
+                                nearestLandMark: TextEditingController(),
+                                streetName: TextEditingController(),
+                                streetNumber: TextEditingController(),
+                              ),
+                              chosenFriendPerson: [],
+                            ));
+                          });
+                        },
+                        isWidget: true,
+                        btnWidth: width(context) * .24,
+                        text: "أضافة رحلة جديدة",
+                        widget: const Icon(Icons.arrow_forward),
+                      )
+                    ],
+                  ),
+                  AppSize.spaceHeight6(context),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

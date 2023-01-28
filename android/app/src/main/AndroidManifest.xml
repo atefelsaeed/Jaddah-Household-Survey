@@ -10,6 +10,10 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="Jaddah Household Survey">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAMIcLjXga58HVN5RkLX5NGf1zh-Qkk4fg"/>
+<!--            android:value="AIzaSyABNZFI60qHA-QDXQY5p5Y4TXP3jSvVx2w"/>-->
+<!--            android:value="AIzaSyAjhDCW3Dgntboyst4tJeu76l7UezVrKJk"/>-->
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -25,8 +29,7 @@
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
-            <meta-data android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyAKdzVrvgbwo1oXHwuHkZvuzx7Wv0ddmVM"/>
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

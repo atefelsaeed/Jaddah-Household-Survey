@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -16,6 +17,8 @@ class Employee extends StatefulWidget {
 }
 
 class _EmployeeState extends State<Employee> {
+  TextEditingController drivingLicenceType = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var base = PersonModelList.personModelList[widget.i];
@@ -69,24 +72,41 @@ class _EmployeeState extends State<Employee> {
                             .mainOccupationType ==
                         " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"
                 ? Container()
-                : DropDownFormInput(
-                    label: Text(PersonData
-                        .licence[PersonData.licence.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
-                    hint:
-                        "ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
-                    options: PersonData.licence[PersonData.licence.keys.first]!
-                        .toList(),
-                    onChange: (String? p) {
-                      setState(() {
-                        PersonModelList
-                            .personModelList[widget.i]
-                            .personalQuestion!
-                            .drivingLicenceType = p.toString();
-                      });
-                    },
+                : Column(
+                    children: [
+                      DropDownFormInput(
+                        label: Text(PersonData
+                            .licence[PersonData.licence.keys.first]!
+                            .toList()
+                            .first
+                            .toString()),
+                        hint:
+                            "ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
+                        options: PersonData
+                            .licence[PersonData.licence.keys.first]!
+                            .toList(),
+                        onChange: (String? p) {
+                          setState(() {
+                            PersonModelList
+                                .personModelList[widget.i]
+                                .personalQuestion!
+                                .drivingLicenceType = p.toString();
+                          });
+                        },
+                      ),
+                      PersonModelList.personModelList[widget.i]
+                                  .personalQuestion!.drivingLicenceType ==
+                              "آخر"
+                          ? MyTextForm(
+                              controller: drivingLicenceType,
+                              label: " نوع الرخصة",
+                              onChanged: (val) {
+                                PersonModelList.personModelList[widget.i]
+                                    .personalQuestion!.drivingLicenceType = val;
+                              },
+                            )
+                          : Container(),
+                    ],
                   ),
           ],
         ),

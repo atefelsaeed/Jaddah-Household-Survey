@@ -65,7 +65,7 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
                         [chosenIndex]["isChick"] = false;
                     chosenIndex = index;
                     TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
-                        [chosenIndex]["isChick"] = true;
+                        [chosenIndex]["isChick"] = value;
                     TripModeList
                             .tripModeList[widget.indexTripModel].purposeTravel =
                         TripData.purposeOfBeingThere["QPurposeOfBeingThere"]

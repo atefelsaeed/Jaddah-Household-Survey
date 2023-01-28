@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
+import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -44,16 +45,23 @@ class ItemUserSurvey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             const Image(image: AssetImage(ImageAssets.lampIcon)),
             AppSize.spaceWidth1(context),
             Text(
-              "رقم الاسرة : ${itemSurveyModel.id}",
+              "رقم الاسرة : ",
               style: TextStyle(
                 color: ColorManager.grayColor,
                 fontWeight: FontWeight.w700,
+              ),
+            ), Text(
+              "${itemSurveyModel.id}",
+              style: TextStyle(
+                color: ColorManager.primaryColor,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const Spacer(),
@@ -107,36 +115,52 @@ class ItemUserSurvey extends StatelessWidget {
           children: [
             const Image(image: AssetImage(ImageAssets.locationIcon)),
             AppSize.spaceWidth1(context),
-            Flexible(
-              flex: 8,
-              child: Text(
-                "عنوان الاسرة  :  ${itemSurveyModel.hAEName} , ${itemSurveyModel.blokname}",
-                style: TextStyle(
-                  color: ColorManager.grayColor,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 8,
-              child: TextButton(
-                onPressed: () async {
-                  await launchURL(itemSurveyModel.x.toString(),
-                      itemSurveyModel.y.toString());
-                },
-                child: Text(
-                  'افتح خرائط جوجل',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold,
-                    color: ColorManager.black,
-                  ),
-                ),
+            Text(
+              "عنوان الاسرة: ",
+              style: TextStyle(
+                color: ColorManager.grayColor,
+                fontWeight: FontWeight.w700,
               ),
             ),
             const Spacer(),
+            TextButton(
+              onPressed: () async {
+                await launchURL(
+                    itemSurveyModel.x.toString(), itemSurveyModel.y.toString());
+              },
+              child: Text(
+                'افتح خرائط جوجل',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold,
+                  color: ColorManager.black,
+                ),
+              ),
+            ),
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ItemTextSpan(
+                title: "إسم الحى",
+                subTitle: itemSurveyModel.hAEName.toString()),
+            ItemTextSpan(
+                title: "رقم الحى", subTitle: itemSurveyModel.haeno.toString()),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ItemTextSpan(
+                title: "إسم البلوك",
+                subTitle: itemSurveyModel.blokname.toString()),
+            ItemTextSpan(
+                title: "رقم البلوك", subTitle: itemSurveyModel.blok.toString()),
+          ],
+        ),
+        ItemTextSpan(
+            title: "رقم القطاع", subTitle: itemSurveyModel.qta.toString()),
       ],
     );
   }

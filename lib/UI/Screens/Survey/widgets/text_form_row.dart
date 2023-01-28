@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../Helper/validator.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';

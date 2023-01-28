@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/UI/Widgets/alert_map.dart';
+import 'package:jaddah_household_survey/Resources/assets_manager.dart';
+import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
+import 'package:jaddah_household_survey/UI/Widgets/map.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/text.dart';
 import '../widgets/text_form_row.dart';
 
@@ -67,77 +70,45 @@ class HouseHoldAddress extends StatelessWidget {
           thickness: 1,
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.rtl,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: hayController,
-                text: "الحى",
-                readOnly: true,
-                label: "الحى",
-              ),
-              TextForm(
-                controller: streetNumber,
-                label: "رقم الشارع",
-                text: "رقم الشارع",
-                keyboardType: TextInputType.number,
-                isNumber: true,
-              ),
-            ],
-          ),
+        Row(
+          children: [
+            const Image(image: AssetImage(ImageAssets.locationIcon)),
+            AppSize.spaceWidth2(context),
+            const Text('الإحداثيات'),
+            const Spacer(),
+            IconButton(
+                onPressed: () {
+                  alertMap(() {});
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => MapSample()));
+                },
+                icon: Icon(
+                  Icons.pin_drop,
+                  color: ColorManager.primaryColor,
+                  size: width(context) * .1,
+                )),
+          ],
+        ),
+        Row(
+          children: [
+            const ItemTextSpan(title: "Lat", subTitle: "55555555"),
+            AppSize.spaceWidth3(context),
+            const ItemTextSpan(title: "Long", subTitle: "55555555"),
+          ],
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.rtl,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: streetName,
-                text: "اسم الشارع",
-                label: "اسم الشارع",
-                isNumber: false,
-              ),
-              TextForm(
-                controller: nearestLandMark,
-                label: " أقرب معلم",
-                text: " أقرب معلم",
-                isNumber: false,
-              )
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextForm(
+              controller: phoneController,
+              text: "رقم الهاتف",
+              label: "رقم الهاتف",
+              isNumber: true,
+              keyboardType: TextInputType.phone,
+            ),
+          ],
         ),
-        AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.rtl,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: blockController,
-                text: "أقرب تقاطع",
-                label: "أقرب تقاطع",
-                isNumber: false,
-                readOnly: true,
-              ),
-              TextForm(
-                controller: phoneController,
-                text: "رقم الهاتف",
-                label: "رقم الهاتف",
-                isNumber: true,
-                keyboardType: TextInputType.phone,
-              ),
-
-            ],
-          ),
-        ),
-        IconButton(
-            onPressed: () {
-              alertMap(() {});
-            },
-            icon: Icon(Icons.pin_drop)),
         AppSize.spaceHeight2(context),
       ],
     );

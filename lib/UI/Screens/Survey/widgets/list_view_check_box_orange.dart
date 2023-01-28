@@ -94,12 +94,13 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
                           chosenIndex = index;
                           widget.question[index]["isChick"] = value;
                         });
-            widget.map["index"]=chosenIndex;
-
-                      print(  widget.map["index"]);
+                        widget.map["index"] = chosenIndex;
+                        print(widget.map["index"]);
                         print(widget.question[index]["value"]);
-                        widget.onChange(ChangeBoxResponse( val:widget.question[index]["value"],check:widget.question[index]["isChick"]));
-                      //  widget.onChange(widget.question[index]["value"]);
+                        widget.onChange(ChangeBoxResponse(
+                            val: widget.question[index]["value"],
+                            check: widget.question[index]["isChick"]));
+                        //  widget.onChange(widget.question[index]["value"]);
                       }),
                   TextGlobal(
                     text: widget.question[index]["value"],
@@ -141,7 +142,8 @@ class ListViewCheckBoxOrange2 extends StatefulWidget {
   });
 
   @override
-  State<ListViewCheckBoxOrange2> createState() => _ListViewCheckBoxOrangeState2();
+  State<ListViewCheckBoxOrange2> createState() =>
+      _ListViewCheckBoxOrangeState2();
 }
 
 class _ListViewCheckBoxOrangeState2 extends State<ListViewCheckBoxOrange2> {
@@ -180,9 +182,9 @@ class _ListViewCheckBoxOrangeState2 extends State<ListViewCheckBoxOrange2> {
         widget.isListView == true
             ? Container()
             : Icon(
-          Icons.west_sharp,
-          color: ColorManager.primaryColor,
-        ),
+                Icons.west_sharp,
+                color: ColorManager.primaryColor,
+              ),
         AppSize.spaceHeight1(context),
         Directionality(
           textDirection: TextDirection.rtl,
@@ -194,49 +196,51 @@ class _ListViewCheckBoxOrangeState2 extends State<ListViewCheckBoxOrange2> {
                 itemCount: widget.question.length,
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
-                      Checkbox(
-                          side: BorderSide(
-                            color: ColorManager.orangeTxtColor,
-                            width: 1.5,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          checkColor: ColorManager.whiteColor,
-                          focusColor: ColorManager.orangeTxtColor,
-                          activeColor: ColorManager.orangeTxtColor,
-                          value: widget.question[index]["isChick"],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              widget.question[index]["isChick"] = value;
-                            });
-
-
-                              widget.onChange(ChangeBoxResponse( val:widget.question[index]["value"],check:widget.question[index]["isChick"]));
-
-                          }),
-                      TextGlobal(
-                        text: widget.question[index]["value"],
-                        fontSize: height(context) * .02,
-                        color: ColorManager.grayColor,
+                  Checkbox(
+                      side: BorderSide(
+                        color: ColorManager.orangeTxtColor,
+                        width: 1.5,
                       ),
-                    ]),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      checkColor: ColorManager.whiteColor,
+                      focusColor: ColorManager.orangeTxtColor,
+                      activeColor: ColorManager.orangeTxtColor,
+                      value: widget.question[index]["isChick"],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          widget.question[index]["isChick"] = value;
+                        });
+
+                        widget.onChange(ChangeBoxResponse(
+                            val: widget.question[index]["value"],
+                            check: widget.question[index]["isChick"]));
+                      }),
+                  TextGlobal(
+                    text: widget.question[index]["value"],
+                    fontSize: height(context) * .02,
+                    color: ColorManager.grayColor,
+                  ),
+                ]),
               )),
         ),
         widget.isListView == true
             ? Container()
             : RotatedBox(
-            quarterTurns: 90,
-            child: Icon(
-              Icons.west_sharp,
-              color: ColorManager.primaryColor,
-            )),
+                quarterTurns: 90,
+                child: Icon(
+                  Icons.west_sharp,
+                  color: ColorManager.primaryColor,
+                )),
       ],
     );
   }
 }
-class ChangeBoxResponse{
-late  String val;
- late bool check;
- ChangeBoxResponse({required this.check,required this.val});
+
+class ChangeBoxResponse {
+  late String val;
+  late bool check;
+
+  ChangeBoxResponse({required this.check, required this.val});
 }

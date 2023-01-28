@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
-import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
-import '../../../Widgets/dropdown_form_input.dart';
-import '../../../Widgets/text.dart';
 import 'adults_or_not.dart';
-import 'headline_trip.dart';
 
 class TravelAlone extends StatefulWidget {
   final int index;
@@ -19,73 +16,32 @@ class TravelAlone extends StatefulWidget {
 }
 
 class _TravelAloneState extends State<TravelAlone> {
+  bool isTravel = false;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const HeadlineTrip(text: "7. هل ذهبت بمفردك أم مع آخرین؟"),
-           Row(children: [
-
-             Row(children: [
-               TextGlobal(
-                 text: "مع اخرين",
-                 //[index].title,
-                 fontSize: height(context) * .02,
-                 color: ColorManager.grayColor,
-               ),
-               Checkbox(
-                   side: BorderSide(
-                     color: ColorManager.orangeTxtColor,
-                     width: 1.5,
-                   ),
-                   shape: RoundedRectangleBorder(
-                     borderRadius: BorderRadius.circular(5.0),
-                   ),
-                   checkColor: ColorManager.whiteColor,
-                   focusColor: ColorManager.orangeTxtColor,
-                   activeColor: ColorManager.orangeTxtColor,
-                   value: TripModeList.tripModeList[widget.index].isTravelAlone,
-                   onChanged: (bool? value) {
-                     setState(() {
-                       TripModeList.tripModeList[widget.index].isTravelAlone =
-                       value!;
-                     });
-                   }),
-             ]),
-             Row(children: [
-               TextGlobal(
-                 text: "بمفردك",
-                 //[index].title,
-                 fontSize: height(context) * .02,
-                 color: ColorManager.grayColor,
-               ),
-               Checkbox(
-                   side: BorderSide(
-                     color: ColorManager.orangeTxtColor,
-                     width: 1.5,
-                   ),
-                   shape: RoundedRectangleBorder(
-                     borderRadius: BorderRadius.circular(5.0),
-                   ),
-                   checkColor: ColorManager.whiteColor,
-                   focusColor: ColorManager.orangeTxtColor,
-                   activeColor: ColorManager.orangeTxtColor,
-                   value: TripModeList.tripModeList[widget.index].isTravelAlone!,
-                   onChanged: (bool? value) {
-                     setState(() {
-                       TripModeList.tripModeList[widget.index].isTravelAlone =
-                       value!;
-                     });
-                   }),
-             ]),
-           ],),
-
-
-          ],
+        ListViewCheckBoxOrange(
+          map: TripData.travelWithOther,
+          onChange: (ChangeBoxResponse r) {
+            setState(() {
+              if (r.val == "بمفردك") {
+                TripModeList.tripModeList[widget.index].isTravelAlone = false;
+              } else if (r.val == "مع الأخرين" && r.check == true) {
+                TripModeList.tripModeList[widget.index].isTravelAlone = true;
+              } else {
+                TripModeList.tripModeList[widget.index].isTravelAlone = false;
+              }
+            });
+          },
+          isListView: true,
+          title: "7. هل ذهبت بمفردك أم مع آخرین؟",
+          question: TripData
+              .travelWithOther[TripData.travelWithOther.keys.first]!
+              .toList(),
+          subTitle: "",
         ),
         const Divider(),
         TripModeList.tripModeList[widget.index].isTravelAlone == true
@@ -101,27 +57,21 @@ class _TravelAloneState extends State<TravelAlone> {
             : Container(),
         AppSize.spaceHeight2(context),
         TripModeList.tripModeList[widget.index].isTravelAlone == true
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  DropDownFormInput(
-                    label: Text(TripData.memberHouseHoldTravel[
-                            TripData.memberHouseHoldTravel.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
-                    hint: "اي من أفراد الأسرة ذهب معك؟",
-                    options: TripData.memberHouseHoldTravel[
-                            TripData.memberHouseHoldTravel.keys.first]!
-                        .toList(),
-                    onChange: (String? p) {
-                      TripModeList
-                          .tripModeList[widget.index]
-                          .travelWithOtherModel!
-                          .hhsMembersTraveled = p.toString();
-                    },
-                  ),
-                ],
+            ? ListViewCheckBoxOrange2(
+                map: TripModeList.tripModeList[widget.index].friendPerson,
+                onChange: (ChangeBoxResponse p) {
+                  if (TripModeList.tripModeList[widget.index].chosenFriendPerson
+                              .contains(p.val) ==
+                          false &&
+                      p.check == true) {
+                    TripModeList.tripModeList[widget.index].chosenFriendPerson
+                        .add(p.val);
+                  }
+                },
+                title: "أى من أفراد الاسرة سافر معك؟",
+                question: TripModeList
+                    .tripModeList[widget.index].friendPerson["friendPerson"],
+                subTitle:"أى من أفراد الاسرة سافر معك"
               )
             : Container(),
       ],

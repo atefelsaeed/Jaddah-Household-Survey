@@ -17,6 +17,14 @@ class TripData {
         " A separate family is defined as who share the kitchen expenses and meals",
     "chosenIndex": 0,
   };
+  static Map<String, dynamic> travelWithOther = {
+    'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+    [
+      {"value": 'مع الأخرين', "isChick": false},
+      {"value": 'بمفردك', "isChick": false},
+    ],
+    "index": 0
+  };
   static Map<String, dynamic> tripReason = {
     "TripReason": [
       {"value": 'كنت في المنزل', "isChick": false},

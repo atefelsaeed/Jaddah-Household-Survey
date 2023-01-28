@@ -17,7 +17,6 @@ import 'Providers/user_surveys.dart';
 import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
-import 'UI/Screens/person/person_screen.dart';
 
 
 void main() {
@@ -91,7 +90,7 @@ class _MyAppState extends State<MyApp> {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home: const PersonScreen(),
+        home: const SplashView(),
       ),
     );
   }

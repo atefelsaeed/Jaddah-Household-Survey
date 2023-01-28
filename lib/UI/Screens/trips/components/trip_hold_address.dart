@@ -94,41 +94,36 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
               text: "رقم الشارع",
               label: "رقم الشارع",
               keyboardType: TextInputType.number,
+              isNumber: true,
             )
           ],
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: widget.tripModel.streetName,
-                label: "إسم الشارع",
-                text: "إسم الشارع",
-              ),
-              TextForm(
-                controller: widget.tripModel.nearestLandMark,
-                label: "اقرب معلم",
-                text: "اقرب معلم",
-              )
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextForm(
+              controller: widget.tripModel.streetName,
+              label: "إسم الشارع",
+              text: "إسم الشارع",
+            ),
+            TextForm(
+              controller: widget.tripModel.nearestLandMark,
+              label: "اقرب معلم",
+              text: "اقرب معلم",
+            )
+          ],
         ),
         AppSize.spaceHeight2(context),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextForm(
-                controller: widget.tripModel.block,
-                text: "أقرب تقاطع",
-                label: "أقرب تقاطع",
-              ),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextForm(
+              controller: widget.tripModel.block,
+              text: "أقرب تقاطع",
+              label: "أقرب تقاطع",
+            ),
+          ],
         ),
         AppSize.spaceHeight2(context),
       ],

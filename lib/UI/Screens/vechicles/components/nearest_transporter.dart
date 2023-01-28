@@ -12,8 +12,8 @@ class NearestTransporter extends StatelessWidget {
     // TODO: implement build
     return ListViewCheckBoxOrange(
       map: VehiclesData.q3VecData,
-      onChange: (r) {
-        VehModel.nearestPublicTransporter = r.toString();
+      onChange: (ChangeBoxResponse r) {
+        VehModel.nearestPublicTransporter = r.val.toString();
       },
       title: "9.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟",
       question:
