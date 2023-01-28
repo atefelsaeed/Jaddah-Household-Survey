@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/start_beginning_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_other_model.dart';
-List <String> personTrip=[];
+
+List<String> personTrip = [];
+
 class TripsModel {
   bool? type;
   StartBeginningModel? startBeginningModel;
@@ -11,19 +13,19 @@ class TripsModel {
   StartBeginningModel? endingAddress;
   TextEditingController? otherWhereDidYouParkEditingControl;
   TextEditingController? taxiTravelTypeEditingControl;
-  List<String>  person=["asd"];
-  List<String> chosenFriendPerson=[];
-  String chosenPerson="";
-  Map  friendPerson={
+  List<String> person = ["asd"];
+  List<String> chosenFriendPerson = [];
+  String chosenPerson = "";
+  Map friendPerson = {
     "friendPerson": [
       {"value": '', "isChick": false},
     ],
     "title": "friendPerson",
     "subTitle":
-    " A separate family is defined as who share the kitchen expenses and meals",
+        " A separate family is defined as who share the kitchen expenses and meals",
     "index": 0,
   };
-  late bool showFriend=false;
+  late bool showFriend = false;
   String? purposeTravel;
   TextEditingController departureTime = TextEditingController();
 

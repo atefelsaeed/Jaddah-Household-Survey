@@ -53,20 +53,14 @@ class TripModeList {
         numberRepeatTrip: '',
       ),
       startBeginningModel: StartBeginningModel(
-        area: TextEditingController(),
-        block: TextEditingController(),
-        nearestLandMark: TextEditingController(),
-        streetName: TextEditingController(),
-        streetNumber: TextEditingController(),
+        tripAddressLat: "",
+        tripAddressLong: "",
       ),
       endingAddress: StartBeginningModel(
-        area: TextEditingController(),
-        block: TextEditingController(),
-        nearestLandMark: TextEditingController(),
-        streetName: TextEditingController(),
-        streetNumber: TextEditingController(),
-      ), chosenFriendPerson: [],
+        tripAddressLat: "",
+        tripAddressLong: "",
+      ),
+      chosenFriendPerson: [],
     ),
   ];
 }
-

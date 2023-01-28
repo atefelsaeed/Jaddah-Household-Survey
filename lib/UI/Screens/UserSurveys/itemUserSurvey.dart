@@ -57,7 +57,8 @@ class ItemUserSurvey extends StatelessWidget {
                 color: ColorManager.grayColor,
                 fontWeight: FontWeight.w700,
               ),
-            ), Text(
+            ),
+            Text(
               "${itemSurveyModel.id}",
               style: TextStyle(
                 color: ColorManager.primaryColor,
@@ -71,10 +72,7 @@ class ItemUserSurvey extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SurveyScreen(
-                            hayName: itemSurveyModel.hAEName ?? '', //not filled
-                            blockName: itemSurveyModel.blokname ?? "",
-                          ),
+                          builder: (context) => SurveyScreen(),
                         ),
                       );
                       final prefs = await SharedPreferences.getInstance();

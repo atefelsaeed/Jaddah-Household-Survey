@@ -103,7 +103,6 @@ class _TripScreenState extends State<TripScreen> {
                 children: [
                   const HeadlinePerson(text: "الرحلات"),
                   AppSize.spaceHeight2(context),
-
                   AppSize.spaceHeight2(context),
                   for (int i = 0; i < TripModeList.tripModeList.length; i++)
                     Padding(
@@ -278,7 +277,7 @@ class _TripScreenState extends State<TripScreen> {
                               isTravelAlone: false,
                               tripReason: "",
                               taxiTravelTypeEditingControl:
-                              TextEditingController(),
+                                  TextEditingController(),
                               //whereDidYouGo
                               purposeTravel: "",
                               departureTime: TextEditingController(),
@@ -287,7 +286,7 @@ class _TripScreenState extends State<TripScreen> {
                               travelTypeModel: TravelTypeModel(
                                 carParkingPlace: "",
                                 otherWhereDidYouParking:
-                                TextEditingController(),
+                                    TextEditingController(),
                                 ticketSub: TextEditingController(),
                                 taxiTravelTypeOther: TextEditingController(),
                                 taxiFare: TextEditingController(),
@@ -316,18 +315,12 @@ class _TripScreenState extends State<TripScreen> {
                                 numberRepeatTrip: '',
                               ),
                               startBeginningModel: StartBeginningModel(
-                                area: TextEditingController(),
-                                block: TextEditingController(),
-                                nearestLandMark: TextEditingController(),
-                                streetName: TextEditingController(),
-                                streetNumber: TextEditingController(),
+                                tripAddressLat: "",
+                                tripAddressLong: "",
                               ),
                               endingAddress: StartBeginningModel(
-                                area: TextEditingController(),
-                                block: TextEditingController(),
-                                nearestLandMark: TextEditingController(),
-                                streetName: TextEditingController(),
-                                streetNumber: TextEditingController(),
+                                tripAddressLat: "",
+                                tripAddressLong: "",
                               ),
                               chosenFriendPerson: [],
                             ));

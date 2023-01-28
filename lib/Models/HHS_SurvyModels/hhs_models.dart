@@ -1,20 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
 class HouseholdAddress {
-  String? streetNumber;
-  String? streetName;
-  String? nearestLandMark;
-  String? blockNearestCrossStreets;
-  String? areaSuburb;
+  String? hhsAddressLat;
+  String? hhsAddressLong;
   String? hhsPhone;
 
   HouseholdAddress({
-    this.nearestLandMark,
-    this.streetNumber,
-    this.streetName,
-    this.areaSuburb,
-    this.blockNearestCrossStreets,
-    this.hhsPhone
+    this.hhsAddressLat,
+    this.hhsAddressLong,
+    this.hhsPhone,
   });
 }
 

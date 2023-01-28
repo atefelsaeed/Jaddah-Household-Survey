@@ -31,17 +31,11 @@ class EmptyTrips {
       element.travelWithOtherModel?.hhsMembersTraveled = '';
       element.travelWithOtherModel?.text = '';
       //startBeginningModel
-      element.startBeginningModel?.block.text = '';
-      element.startBeginningModel?.streetName.text = '';
-      element.startBeginningModel?.streetNumber.text = '';
-      element.startBeginningModel?.nearestLandMark.text = '';
-      element.startBeginningModel?.area.text = '';
+      element.startBeginningModel?.tripAddressLat= '';
+      element.startBeginningModel?.tripAddressLong = '';
       //endingAddress
-      element.endingAddress?.block.text = '';
-      element.endingAddress?.streetName.text = '';
-      element.endingAddress?.streetNumber.text = '';
-      element.endingAddress?.nearestLandMark.text = '';
-      element.endingAddress?.area.text = '';
+      element.endingAddress?.tripAddressLat = '';
+      element.endingAddress?.tripAddressLong = '';
     }
   }
 }

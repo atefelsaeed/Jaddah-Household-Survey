@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +7,8 @@ import 'package:provider/provider.dart';
 import '../../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../Widgets/alert_map.dart';
+import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
 
@@ -62,67 +65,45 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                 setState(() {
                   isHome = value!;
                   if (isHome == true) {
-                    widget.tripModel.area.text = surveyPt.hhsAreaSuburb!;
-                    widget.tripModel.streetNumber.text =
-                        surveyPt.hhsStreetNumber!;
-                    widget.tripModel.streetName.text = surveyPt.hhsStreetName!;
-                    widget.tripModel.nearestLandMark.text =
-                        surveyPt.hhsNearestLandMark!;
-                    widget.tripModel.block.text =
-                        surveyPt.hhsBlockNearestCrossStreets!;
+                    widget.tripModel.tripAddressLong = surveyPt.hhsAddressLong!;
+                    widget.tripModel.tripAddressLat = surveyPt.hhsAddressLat!;
                   } else {
-                    widget.tripModel.area.text = "";
-                    widget.tripModel.streetNumber.text = "";
-                    widget.tripModel.streetName.text = "";
-                    widget.tripModel.nearestLandMark.text = "";
-                    widget.tripModel.block.text = "";
+                    widget.tripModel.tripAddressLong = "";
+                    widget.tripModel.tripAddressLat = "";
                   }
                 });
               })
         ]),
         AppSize.spaceHeight2(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextForm(
-              controller: widget.tripModel.area,
-              text: "الحى",
-              label: "الحى",
-            ),
-            TextForm(
-              controller: widget.tripModel.streetNumber,
-              text: "رقم الشارع",
-              label: "رقم الشارع",
-              keyboardType: TextInputType.number,
-              isNumber: true,
-            )
+            const Image(image: AssetImage(ImageAssets.locationIcon)),
+            AppSize.spaceWidth2(context),
+            const Text('الإحداثيات'),
+            const Spacer(),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>  AlertMap(title:"" ,)));
+                },
+                icon: Icon(
+                  Icons.pin_drop,
+                  color: ColorManager.primaryColor,
+                  size: width(context) * .1,
+                )),
           ],
         ),
-        AppSize.spaceHeight2(context),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextForm(
-              controller: widget.tripModel.streetName,
-              label: "إسم الشارع",
-              text: "إسم الشارع",
-            ),
-            TextForm(
-              controller: widget.tripModel.nearestLandMark,
-              label: "اقرب معلم",
-              text: "اقرب معلم",
-            )
-          ],
-        ),
-        AppSize.spaceHeight2(context),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextForm(
-              controller: widget.tripModel.block,
-              text: "أقرب تقاطع",
-              label: "أقرب تقاطع",
-            ),
+            ItemTextSpan(
+                title: "Lat",
+                subTitle: Constants.location2?.latitude.toString() ?? ""),
+            AppSize.spaceWidth3(context),
+            ItemTextSpan(
+                title: "Long",
+                subTitle: Constants.location2?.longitude.toString() ?? ""),
           ],
         ),
         AppSize.spaceHeight2(context),

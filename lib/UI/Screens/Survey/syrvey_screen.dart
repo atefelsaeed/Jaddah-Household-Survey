@@ -6,6 +6,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
+import 'package:jaddah_household_survey/UI/Widgets/alert_map.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
@@ -26,11 +27,7 @@ import 'Components/hhs_Q83.dart';
 class SurveyScreen extends StatefulWidget {
   const SurveyScreen({
     super.key,
-    required this.hayName,
-    required this.blockName,
   });
-
-  final String hayName, blockName;
 
   @override
   State<SurveyScreen> createState() => _SurveyScreenState();
@@ -41,9 +38,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   final TextEditingController yes = TextEditingController();
 
-  final TextEditingController streetName = TextEditingController();
-  final TextEditingController streetNumber = TextEditingController();
-  final TextEditingController nearestLandMark = TextEditingController();
   final TextEditingController hhsPhone = TextEditingController();
 
   final TextEditingController peopleAdults18 = TextEditingController();
@@ -106,12 +100,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   children: [
                     // SurveyHeader(),
                     HouseHoldAddress(
-                      area: widget.hayName,
                       phoneController: hhsPhone,
-                      blockName: widget.blockName,
-                      nearestLandMark: nearestLandMark,
-                      streetNumber: streetNumber,
-                      streetName: streetName,
                     ),
 
                     AppSize.spaceHeight3(context),
@@ -380,14 +369,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           surveyPt.hhsNumberYearsInAddress = HhsStatic
                               .householdQuestions
                               .hhsNumberYearsInAddress; //solve
-
-                          surveyPt.hhsBlockNearestCrossStreets =
-                              widget.blockName; //solve
-                          surveyPt.hhsAreaSuburb = widget.hayName; //solve
                           surveyPt.hhsPhone = hhsPhone.text; //solve
-                          surveyPt.hhsStreetName = streetName.text;
-                          surveyPt.hhsStreetNumber = streetNumber.text;
-                          surveyPt.hhsNearestLandMark = nearestLandMark.text;
+                          surveyPt.hhsAddressLat =
+                              Constants.location2?.latitude.toString() ?? "";
+                          surveyPt.hhsAddressLong =
+                              Constants.location2?.latitude.toString() ?? "";
 
                           surveyPt.hhsNumberAdults = peopleAdults18.text;
                           surveyPt.hhsNumberChildren =

@@ -120,25 +120,13 @@ abstract class SurveyProvider with ChangeNotifier {
 
 //==========HHS Address============
 
-  String? get hhsStreetName;
+  String? get hhsAddressLat;
 
-  set hhsStreetName(String? l);
+  set hhsAddressLat(String? l);
 
-  String? get hhsStreetNumber;
+  String? get hhsAddressLong;
 
-  set hhsStreetNumber(String? l);
-
-  String? get hhsNearestLandMark;
-
-  set hhsNearestLandMark(String? l);
-
-  String? get hhsBlockNearestCrossStreets;
-
-  set hhsBlockNearestCrossStreets(String? l);
-
-  String? get hhsAreaSuburb;
-
-  set hhsAreaSuburb(String? l);
+  set hhsAddressLong(String? l);
 
   String? get hhsPhone;
 

@@ -105,49 +105,20 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  String? get hhsStreetName => _data.header.householdAddress.streetName;
+  String? get hhsAddressLong => _data.header.householdAddress.hhsAddressLong;
 
   @override
-  set hhsStreetName(String? i) {
-    _data.header.householdAddress.streetName = i;
+  set hhsAddressLong(String? i) {
+    _data.header.householdAddress.hhsAddressLong = i;
     // notifyListeners();
   }
 
   @override
-  String? get hhsStreetNumber => _data.header.householdAddress.streetNumber;
+  String? get hhsAddressLat => _data.header.householdAddress.hhsAddressLat;
 
   @override
-  set hhsStreetNumber(String? i) {
-    _data.header.householdAddress.streetNumber = i;
-    // notifyListeners();
-  }
-
-  @override
-  String? get hhsNearestLandMark =>
-      _data.header.householdAddress.nearestLandMark;
-
-  @override
-  set hhsNearestLandMark(String? i) {
-    _data.header.householdAddress.nearestLandMark = i;
-    // notifyListeners();
-  }
-
-  @override
-  String? get hhsBlockNearestCrossStreets =>
-      _data.header.householdAddress.blockNearestCrossStreets;
-
-  @override
-  set hhsBlockNearestCrossStreets(String? i) {
-    _data.header.householdAddress.blockNearestCrossStreets = i;
-    // notifyListeners();
-  }
-
-  @override
-  String? get hhsAreaSuburb => _data.header.householdAddress.areaSuburb;
-
-  @override
-  set hhsAreaSuburb(String? i) {
-    _data.header.householdAddress.areaSuburb = i;
+  set hhsAddressLat(String? i) {
+    _data.header.householdAddress.hhsAddressLat;
     // notifyListeners();
   }
 

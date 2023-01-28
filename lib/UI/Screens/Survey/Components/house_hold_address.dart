@@ -5,36 +5,28 @@ import 'package:jaddah_household_survey/UI/Widgets/map.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../../main.dart';
 import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/text.dart';
 import '../widgets/text_form_row.dart';
 
-class HouseHoldAddress extends StatelessWidget {
-  final String area;
-  final TextEditingController streetName;
-
-  final TextEditingController streetNumber;
+class HouseHoldAddress extends StatefulWidget {
   final TextEditingController phoneController;
-  final TextEditingController nearestLandMark;
-  final String blockName;
+
 
   const HouseHoldAddress({
     super.key,
-    required this.area,
-    required this.blockName,
-    required this.nearestLandMark,
     required this.phoneController,
-    required this.streetNumber,
-    required this.streetName,
   });
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController hayController = TextEditingController();
-    TextEditingController blockController = TextEditingController();
+  State<HouseHoldAddress> createState() => _HouseHoldAddressState();
+}
 
-    hayController.text = area;
-    blockController.text = blockName;
+class _HouseHoldAddressState extends State<HouseHoldAddress> {
+  @override
+  Widget build(BuildContext context) {
+    setState(() {});
     // TODO: implement build
     return Column(
       children: [
@@ -78,9 +70,10 @@ class HouseHoldAddress extends StatelessWidget {
             const Spacer(),
             IconButton(
                 onPressed: () {
-                  alertMap(() {});
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => MapSample()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AlertMap(title: '',)));
                 },
                 icon: Icon(
                   Icons.pin_drop,
@@ -91,9 +84,13 @@ class HouseHoldAddress extends StatelessWidget {
         ),
         Row(
           children: [
-            const ItemTextSpan(title: "Lat", subTitle: "55555555"),
+            ItemTextSpan(
+                title: "Lat",
+                subTitle: Constants.location2?.latitude.toString() ?? ""),
             AppSize.spaceWidth3(context),
-            const ItemTextSpan(title: "Long", subTitle: "55555555"),
+            ItemTextSpan(
+                title: "Long",
+                subTitle: Constants.location2?.longitude.toString() ?? ""),
           ],
         ),
         AppSize.spaceHeight2(context),
@@ -101,7 +98,7 @@ class HouseHoldAddress extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextForm(
-              controller: phoneController,
+              controller: widget.phoneController,
               text: "رقم الهاتف",
               label: "رقم الهاتف",
               isNumber: true,

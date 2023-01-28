@@ -24,13 +24,8 @@ class EmptyHHS {
     HhsStatic.householdQuestions.hhsNumberYearsInAddress = '';
     HhsStatic.householdQuestions.hhsDwellingTypeOther!.text = '';
     HhsStatic.householdQuestions.hhsIsDwellingOther!.text = '';
-    HhsStatic.householdAddress = HouseholdAddress(
-      nearestLandMark: '',
-      streetNumber: '',
-      streetName: '',
-      areaSuburb: '',
-      blockNearestCrossStreets: '',
-  );
+    HhsStatic.householdAddress =
+        HouseholdAddress(hhsPhone: "", hhsAddressLong: "", hhsAddressLat: "");
     VehModel.editingController3.totalNumber.text = "";
     VehModel.nearestPublicTransporter = '';
   }
