@@ -12,7 +12,8 @@ import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
-  LatLng? latLng= LatLng(0.0, 0.0);
+
+
 
 class TripHoldAddress extends StatefulWidget {
   final StartBeginningModel tripModel;
@@ -85,18 +86,19 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
             const Spacer(),
             IconButton(
                 onPressed: () {
-                alertMap( (c){
-                            latLng?.latitude!=c.latitude;
-                            setState(() {
+                  alertMap(
+                    (c) {
+                      surveyPt.latLng=c;
+                      setState(() {
 
-
-
-                           print("123");
-                           print(c.latitude);
-                           print(latLng?.latitude);
-                              latLng?.longitude!=c.longitude;
-                            });
-                          },);
+                        print("123");
+                        print(c.latitude);
+                        print(surveyPt.initLatLng?.latitude);
+                        surveyPt.initLatLng?.latitude != c.latitude;
+                        surveyPt.initLatLng?.longitude != c.longitude;
+                      });
+                    },
+                  );
                 },
                 icon: Icon(
                   Icons.pin_drop,
@@ -108,12 +110,10 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
         Row(
           children: [
             ItemTextSpan(
-                title: "Lat",
-                subTitle: latLng?.latitude.toString() ?? ""),
+                title: "Lat", subTitle: surveyPt.initLatLng?.latitude.toString() ?? ""),
             AppSize.spaceWidth3(context),
             ItemTextSpan(
-                title: "Long",
-                subTitle: latLng?.longitude.toString() ?? ""),
+                title: "Long", subTitle: surveyPt.initLatLng?.longitude.toString() ?? ""),
           ],
         ),
         AppSize.spaceHeight2(context),
@@ -121,5 +121,3 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
     );
   }
 }
-
-

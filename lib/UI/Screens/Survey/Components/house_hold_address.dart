@@ -70,10 +70,10 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
             const Spacer(),
             IconButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AlertMap(title: '',)));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => const AlertMap(title: '',)));
                 },
                 icon: Icon(
                   Icons.pin_drop,
@@ -82,17 +82,17 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
                 )),
           ],
         ),
-        Row(
-          children: [
-            ItemTextSpan(
-                title: "Lat",
-                subTitle: Constants.location2?.latitude.toString() ?? ""),
-            AppSize.spaceWidth3(context),
-            ItemTextSpan(
-                title: "Long",
-                subTitle: Constants.location2?.longitude.toString() ?? ""),
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     ItemTextSpan(
+        //         title: "Lat",
+        //         subTitle: Constants.location2?.latitude.toString() ?? ""),
+        //     AppSize.spaceWidth3(context),
+        //     ItemTextSpan(
+        //         title: "Long",
+        //         subTitle: Constants.location2?.longitude.toString() ?? ""),
+        //   ],
+        // ),
         AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -11,7 +11,7 @@ import 'custom_buttton.dart';
 
 class Constants {
   static LatLng location = const LatLng(21.492500, 39.177570);
-  static LatLng? location2;
+   LatLng? location2;
 
   static double defaultZoom = 19.151926040649414;
 }
@@ -271,6 +271,7 @@ alertMap(Function callBack) {
                               text: "حفظ",
                               function: () {
                              callBack(value);
+                             Navigator.pop(context);
                               },
                               isWidget: true),
                         ),
