@@ -370,10 +370,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               .householdQuestions
                               .hhsNumberYearsInAddress; //solve
                           surveyPt.hhsPhone = hhsPhone.text; //solve
-                          // surveyPt.hhsAddressLat =
-                          //     Constants.location2?.latitude.toString() ?? "";
-                          // surveyPt.hhsAddressLong =
-                          //     Constants.location2?.latitude.toString() ?? "";
 
                           surveyPt.hhsNumberAdults = peopleAdults18.text;
                           surveyPt.hhsNumberChildren =

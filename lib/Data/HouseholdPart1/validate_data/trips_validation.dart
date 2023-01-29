@@ -7,6 +7,10 @@ import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
 import 'package:provider/provider.dart';
 
+import '../HHSData/questions_data.dart';
+import '../PersonData/person_data.dart';
+import '../VechelisData/vechelis_data.dart';
+
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {
     SurveyPTProvider surveyPt =
@@ -60,6 +64,27 @@ class CheckTripsValidation {
             builder: (context) => const ChooseSurveysScreen(),
           ),
         );
+
+        // QuestionsData.qh4[QuestionsData.qh4.keys.first]!
+        //     .toList()[QuestionsData.qh4["index"]]
+        // ["isChick"] = false;
+        // QuestionsData.qh7[QuestionsData.qh7.keys.first]!
+        //     .toList()[QuestionsData.qh7["index"]]
+        // ["isChick"] = false;
+        // QuestionsData
+        //     .qh7_2[QuestionsData.qh7_2.keys.first]!
+        //     .toList()[QuestionsData.qh7_2["index"]]
+        // ["isChick"] = false;
+        // VehiclesData.q3VecData[VehiclesData
+        //     .q3VecData.keys.first]!
+        //     .toList()[
+        // VehiclesData.q3VecData["index"]]
+        // ["isChick"] = false;
+        // PersonData.nationality[PersonData
+        //     .nationality.keys.first]!
+        //     .toList()[
+        // PersonData.nationality["index"]]
+        // ["isChick"] = false;
         // HHSEmptyData.emptyData();
       }
     }

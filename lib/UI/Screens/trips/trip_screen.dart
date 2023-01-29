@@ -299,15 +299,14 @@ class _TripScreenState extends State<TripScreen> {
                                 mainMode: "",
                                 accessMode: "",
                               ),
+                              hhsMembersTraveled: [],
                               travelWithOtherModel: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  hhsMembersTraveled: "",
                                   text: "?If with other how many"),
                               travelAloneHouseHold: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  hhsMembersTraveled: "",
                                   text: "Non Household persons"),
                               arrivalDepartTime: ArrivalDepartTime(
                                 arriveDestinationTime: TextEditingController(),
@@ -339,57 +338,42 @@ class _TripScreenState extends State<TripScreen> {
                     children: [
                       DefaultButton(
                         function: () {
+                          print('save1');
                           if (_key.currentState!.validate()) {
-                            getLocation().then(
-                              (value) {
-                                Random random = Random();
-                                int randomNumber =
-                                    (1000 + random.nextInt(10000 - 1000));
-                                int num =
-                                    int.parse('${auth.uid}001$randomNumber');
-                                surveyPt.headerLat = value.latitude ?? 0;
-                                surveyPt.interViewDate = DateTime.now();
-                                surveyPt.headerLong = value.longitude ?? 0;
-                                surveyPt.headerEmpNumber = auth.uid;
-                                surveyPt.headerInterviewNumber = num;
-                                surveyPt.id = auth.uid.toString();
-                                SaveTripsData.saveData(context);
-                                CheckTripsValidation.validatePerson(context);
-                                QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                                        .toList()[QuestionsData.qh4["index"]]
-                                    ["isChick"] = false;
-                                QuestionsData.qh7[QuestionsData.qh7.keys.first]!
-                                        .toList()[QuestionsData.qh7["index"]]
-                                    ["isChick"] = false;
-                                QuestionsData
-                                        .qh7_2[QuestionsData.qh7_2.keys.first]!
-                                        .toList()[QuestionsData.qh7_2["index"]]
-                                    ["isChick"] = false;
-                                VehiclesData.q3VecData[VehiclesData
-                                                .q3VecData.keys.first]!
-                                            .toList()[
-                                        VehiclesData.q3VecData["index"]]
-                                    ["isChick"] = false;
-                                PersonData.nationality[PersonData
-                                                .nationality.keys.first]!
-                                            .toList()[
-                                        PersonData.nationality["index"]]
-                                    ["isChick"] = false;
-                              },
-                            ).onError(
-                              (error, stackTrace) {
-                                print(error);
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content:
-                                        Text("يجب تشغيل خدمة تحديد الموقع"),
-                                    duration: Duration(seconds: 3),
-                                    elevation: 1,
-                                  ),
-                                );
-                              },
-                            );
+                            print('save2');
+                            // getLocation()
+                            //     .then(
+                            //   (value) {},
+                            // )
+                            //     .onError(
+                            //   (error, stackTrace) {
+                            //     print(error);
+                            //
+                            //     ScaffoldMessenger.of(context).showSnackBar(
+                            //       const SnackBar(
+                            //         content:
+                            //             Text("يجب تشغيل خدمة تحديد الموقع"),
+                            //         duration: Duration(seconds: 3),
+                            //         elevation: 1,
+                            //       ),
+                            //     );
+                            //   },
+                            // );
+                            Random random = Random();
+                            int randomNumber =
+                                (1000 + random.nextInt(10000 - 1000));
+                            int num = int.parse('${auth.uid}001$randomNumber');
+                            print('save3');
+                            surveyPt.headerLat = 0;
+                            surveyPt.interViewDate = DateTime.now();
+                            surveyPt.headerLong = 0;
+                            surveyPt.headerEmpNumber = auth.uid;
+                            surveyPt.headerInterviewNumber = num;
+                            surveyPt.id = auth.uid.toString();
+                            print('kkkk');
+                            SaveTripsData.saveData(context);
+                            print("validate");
+                            CheckTripsValidation.validatePerson(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(

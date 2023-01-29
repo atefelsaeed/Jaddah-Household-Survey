@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:jaddah_household_survey/UI/Widgets/map.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../../main.dart';
@@ -12,7 +15,6 @@ import '../widgets/text_form_row.dart';
 
 class HouseHoldAddress extends StatefulWidget {
   final TextEditingController phoneController;
-
 
   const HouseHoldAddress({
     super.key,
@@ -26,7 +28,8 @@ class HouseHoldAddress extends StatefulWidget {
 class _HouseHoldAddressState extends State<HouseHoldAddress> {
   @override
   Widget build(BuildContext context) {
-    setState(() {});
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
     // TODO: implement build
     return Column(
       children: [
@@ -70,10 +73,23 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
             const Spacer(),
             IconButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const AlertMap(title: '',)));
+                  alertMap(
+                    (LatLng latLong) {
+                      // surveyPt.latLng = latLong;
+                      setState(() {
+                        // surveyPt.initLatLng?.latitude != latLong.latitude;
+                        // surveyPt.initLatLng?.longitude != latLong.longitude;
+
+                        surveyPt.hhsAddressLat =
+                            latLong.latitude.toString();
+                        surveyPt.hhsAddressLong =
+                            latLong.longitude.toString();
+                      });
+
+                      print('lat');
+                      print(surveyPt.hhsAddressLong.toString());
+                    },
+                  );
                 },
                 icon: Icon(
                   Icons.pin_drop,
@@ -82,17 +98,17 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
                 )),
           ],
         ),
-        // Row(
-        //   children: [
-        //     ItemTextSpan(
-        //         title: "Lat",
-        //         subTitle: Constants.location2?.latitude.toString() ?? ""),
-        //     AppSize.spaceWidth3(context),
-        //     ItemTextSpan(
-        //         title: "Long",
-        //         subTitle: Constants.location2?.longitude.toString() ?? ""),
-        //   ],
-        // ),
+        Row(
+          children: [
+            ItemTextSpan(
+                title: "Lat",
+                subTitle: surveyPt.hhsAddressLat.toString() ?? "0"),
+            AppSize.spaceWidth3(context),
+            ItemTextSpan(
+                title: "Long",
+                subTitle: surveyPt.hhsAddressLong.toString() ?? "0"),
+          ],
+        ),
         AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

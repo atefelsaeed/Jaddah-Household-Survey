@@ -13,8 +13,6 @@ import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
 
-
-
 class TripHoldAddress extends StatefulWidget {
   final StartBeginningModel tripModel;
   final String titel;
@@ -68,8 +66,10 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                 setState(() {
                   isHome = value!;
                   if (isHome == true) {
-                    widget.tripModel.tripAddressLong = surveyPt.hhsAddressLong!;
-                    widget.tripModel.tripAddressLat = surveyPt.hhsAddressLat!;
+                    widget.tripModel.tripAddressLong =
+                        surveyPt.hhsAddressLong ?? '';
+                    widget.tripModel.tripAddressLat =
+                        surveyPt.hhsAddressLat ?? '';
                   } else {
                     widget.tripModel.tripAddressLong = "";
                     widget.tripModel.tripAddressLat = "";
@@ -87,15 +87,17 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
             IconButton(
                 onPressed: () {
                   alertMap(
-                    (c) {
-                      surveyPt.latLng=c;
+                    (LatLng latLong) {
+                      surveyPt.latLng = latLong;
                       setState(() {
-
-                        print("123");
-                        print(c.latitude);
-                        print(surveyPt.initLatLng?.latitude);
-                        surveyPt.initLatLng?.latitude != c.latitude;
-                        surveyPt.initLatLng?.longitude != c.longitude;
+                        surveyPt.initLatLng?.latitude != latLong.latitude;
+                        surveyPt.initLatLng?.longitude != latLong.longitude;
+                      });
+                      setState(() {
+                        widget.tripModel.tripAddressLong =
+                            surveyPt.initLatLng?.longitude.toString();
+                        widget.tripModel.tripAddressLat =
+                            surveyPt.initLatLng?.latitude.toString();
                       });
                     },
                   );
@@ -110,10 +112,12 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
         Row(
           children: [
             ItemTextSpan(
-                title: "Lat", subTitle: surveyPt.initLatLng?.latitude.toString() ?? ""),
+                title: "Lat",
+                subTitle: surveyPt.initLatLng?.latitude.toString() ?? ""),
             AppSize.spaceWidth3(context),
             ItemTextSpan(
-                title: "Long", subTitle: surveyPt.initLatLng?.longitude.toString() ?? ""),
+                title: "Long",
+                subTitle: surveyPt.initLatLng?.longitude.toString() ?? ""),
           ],
         ),
         AppSize.spaceHeight2(context),

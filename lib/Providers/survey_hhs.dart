@@ -126,7 +126,7 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   set hhsAddressLat(String? i) {
-    _data.header.householdAddress.hhsAddressLat;
+    _data.header.householdAddress.hhsAddressLat=i;
     // notifyListeners();
   }
 

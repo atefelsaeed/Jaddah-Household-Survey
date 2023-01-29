@@ -14,12 +14,14 @@ class PersonModel {
     this.personalQuestion,
     this.occupationModel,
     this.personalHeadData,
+    required this.personName,
   });
 
   PersonModel.fromJson(Map<String, dynamic> json) {
     personalHeadData = PersonalHeadData.fromJson(json['personalHeadData']);
     occupationModel = OccupationModel.fromJson(json['occupationModel']);
     personalQuestion = PersonalQuestion.fromJson(json['personalQuestion']);
+    personName.text = json['personName'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +29,7 @@ class PersonModel {
     data['personalHeadData'] = personalHeadData!.toJson();
     data['occupationModel'] = occupationModel!.toJson();
     data['personalQuestion'] = personalQuestion!.toJson();
+    data['personName'] = personName.text;
     return data;
   }
 }

@@ -37,15 +37,14 @@ class TripModeList {
         mainMode: "",
         accessMode: "",
       ),
+      hhsMembersTraveled: [],
       travelWithOtherModel: TravelWithOtherModel(
           adultsNumber: TextEditingController(),
           childrenNumber: TextEditingController(),
-          hhsMembersTraveled: "",
           text: "إذا كان مع الآخرین كم أعمارھم؟"),
       travelAloneHouseHold: TravelWithOtherModel(
           adultsNumber: TextEditingController(),
           childrenNumber: TextEditingController(),
-          hhsMembersTraveled: "",
           text: "اي من أفراد الأسرة ذهب معك؟"),
       arrivalDepartTime: ArrivalDepartTime(
         arriveDestinationTime: TextEditingController(),
