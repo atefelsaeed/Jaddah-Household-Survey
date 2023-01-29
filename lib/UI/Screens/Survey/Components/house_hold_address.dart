@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:jaddah_household_survey/UI/Widgets/map.dart';
@@ -24,6 +25,8 @@ class HouseHoldAddress extends StatefulWidget {
 }
 
 class _HouseHoldAddressState extends State<HouseHoldAddress> {
+ late  LatLng latLng;
+
   @override
   Widget build(BuildContext context) {
     setState(() {});
@@ -34,7 +37,7 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            AppSize.spaceWidth2(context),
+            //ApppaceWidth2(context),
             Column(
               children: [
                 CircleAvatar(
@@ -70,10 +73,16 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
             const Spacer(),
             IconButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AlertMap(title: '',)));
+                  alertMap((LatLng lat){
+                            print("call back");
+print(lat);
+
+setState(() {
+  Constants.location2?.latitude!=lat.latitude;
+  print(Constants.location2?.latitude);
+  Constants.location2?.longitude!=lat.longitude;
+});
+                          },);
                 },
                 icon: Icon(
                   Icons.pin_drop,

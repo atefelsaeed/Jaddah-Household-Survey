@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 
@@ -49,7 +50,12 @@ class SurveyPTProvider extends SurveyProvider {
     _data.header.locationLat = l;
     // notifyListeners();
   }
+  LatLng? initLatLng;
 
+  set latLng(LatLng l) {
+    initLatLng = l;
+    notifyListeners();
+  }
   @override
   double get headerLong => _data.header.locationLong;
 

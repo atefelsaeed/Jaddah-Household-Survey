@@ -12,7 +12,7 @@ import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
-  LatLng? latLng= LatLng(0.0, 0.0);
+
 
 class TripHoldAddress extends StatefulWidget {
   final StartBeginningModel tripModel;
@@ -86,16 +86,15 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
             IconButton(
                 onPressed: () {
                 alertMap( (c){
-                            latLng?.latitude!=c.latitude;
-                            setState(() {
+                  surveyPt.latLng=c;
+                  setState(() {
 
-
-
-                           print("123");
-                           print(c.latitude);
-                           print(latLng?.latitude);
-                              latLng?.longitude!=c.longitude;
-                            });
+                    print("123");
+                    print(c.latitude);
+                    print(surveyPt.initLatLng?.latitude);
+                    surveyPt.initLatLng?.latitude != c.latitude;
+                    surveyPt.initLatLng?.longitude != c.longitude;
+                  });
                           },);
                 },
                 icon: Icon(
@@ -109,11 +108,11 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
           children: [
             ItemTextSpan(
                 title: "Lat",
-                subTitle: latLng?.latitude.toString() ?? ""),
+                subTitle: surveyPt.initLatLng!.latitude.toString() ?? ""),
             AppSize.spaceWidth3(context),
             ItemTextSpan(
                 title: "Long",
-                subTitle: latLng?.longitude.toString() ?? ""),
+                subTitle: surveyPt.initLatLng?.longitude.toString() ?? ""),
           ],
         ),
         AppSize.spaceHeight2(context),
