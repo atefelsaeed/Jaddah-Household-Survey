@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
@@ -11,6 +12,7 @@ import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
+  LatLng? latLng= LatLng(0.0, 0.0);
 
 class TripHoldAddress extends StatefulWidget {
   final StartBeginningModel tripModel;
@@ -83,10 +85,18 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
             const Spacer(),
             IconButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  AlertMap(title:"" ,)));
+                alertMap( (c){
+                            latLng?.latitude!=c.latitude;
+                            setState(() {
+
+
+
+                           print("123");
+                           print(c.latitude);
+                           print(latLng?.latitude);
+                              latLng?.longitude!=c.longitude;
+                            });
+                          },);
                 },
                 icon: Icon(
                   Icons.pin_drop,
@@ -99,11 +109,11 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
           children: [
             ItemTextSpan(
                 title: "Lat",
-                subTitle: Constants.location2?.latitude.toString() ?? ""),
+                subTitle: latLng?.latitude.toString() ?? ""),
             AppSize.spaceWidth3(context),
             ItemTextSpan(
                 title: "Long",
-                subTitle: Constants.location2?.longitude.toString() ?? ""),
+                subTitle: latLng?.longitude.toString() ?? ""),
           ],
         ),
         AppSize.spaceHeight2(context),
@@ -111,3 +121,5 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
     );
   }
 }
+
+
