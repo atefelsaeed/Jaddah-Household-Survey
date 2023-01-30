@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_model.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
@@ -39,43 +40,43 @@ class SurveyScreen extends StatefulWidget {
 }
 
 class _SurveyScreenState extends State<SurveyScreen> {
-  Future<LocationData> getLocation() async {
-    Location location = Location();
-
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-
-    _serviceEnabled = await location.serviceEnabled();
-    print('get location');
-    // if (!_serviceEnabled) {
-    //   print('get location1');
-    //   _serviceEnabled = await location.requestService();
-    //   print('get location2');
-    //   if (!_serviceEnabled) {
-    //     return Future.error(0);
-    //   }
-    // }
-
-    _permissionGranted = await location.hasPermission();
-    print('get location3');
-    if (_permissionGranted == PermissionStatus.denied) {
-      print('get location4');
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        print('error');
-      }
-    }
-
-    location.changeSettings(accuracy: LocationAccuracy.high);
-
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        print('error');
-      }
-    }
-    return await location.getLocation();
-  }
+  // Future<LocationData> getLocation() async {
+  //   Location location = Location();
+  //
+  //   bool _serviceEnabled;
+  //   PermissionStatus _permissionGranted;
+  //
+  //   _serviceEnabled = await location.serviceEnabled();
+  //   print('get location');
+  //   // if (!_serviceEnabled) {
+  //   //   print('get location1');
+  //   //   _serviceEnabled = await location.requestService();
+  //   //   print('get location2');
+  //   //   if (!_serviceEnabled) {
+  //   //     return Future.error(0);
+  //   //   }
+  //   // }
+  //
+  //   _permissionGranted = await location.hasPermission();
+  //   print('get location3');
+  //   if (_permissionGranted == PermissionStatus.denied) {
+  //     print('get location4');
+  //     _permissionGranted = await location.requestPermission();
+  //     if (_permissionGranted != PermissionStatus.granted) {
+  //       print('error');
+  //     }
+  //   }
+  //
+  //   location.changeSettings(accuracy: LocationAccuracy.high);
+  //
+  //   if (!_serviceEnabled) {
+  //     _serviceEnabled = await location.requestService();
+  //     if (!_serviceEnabled) {
+  //       print('error');
+  //     }
+  //   }
+  //   return await location.getLocation();
+  // }
 
   final GlobalKey<FormState> _key = GlobalKey();
 
@@ -111,6 +112,43 @@ class _SurveyScreenState extends State<SurveyScreen> {
       peopleUnder18: TextEditingController(),
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    // When we reach here, permissions are granted and we can
+    // continue accessing the position of the device.
+    return await Geolocator.getCurrentPosition();
+  }
 
   @override
   void initState() {
@@ -390,14 +428,33 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsDemolishedAreas = yes.text;
                             surveyPt.headerDistrictName = '';
                             surveyPt.headerZoneNumber = '';
-                            RegExp regex =
-                            RegExp(r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
-                             if(!regex.hasMatch(hhsPhone.text) ){
-                              return Validator.showSnack(context,  'رقم الهاتف غير صحيح..!');
+                            RegExp regex = RegExp(
+                                r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
+                            if (!regex.hasMatch(hhsPhone.text)) {
+                              return Validator.showSnack(
+                                  context, 'رقم الهاتف غير صحيح..!');
                             }
-                            // Validator.validatePhone(
-                            //     value: hhsPhone.text,
-                            //     message: 'رقم الهاتف غير صحيح!');
+                            await _determinePosition().then((value) {
+                              surveyPt.hhsAddressLat =
+                                  value.latitude.toString();
+                              surveyPt.hhsAddressLong =
+                                  value.longitude.toString();
+                              print("location:::");
+                              print(surveyPt.hhsAddressLat);
+                              print(surveyPt.hhsAddressLong);
+                            }).onError(
+                                  (error, stackTrace) {
+                                print(error);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content:
+                                    Text("يجب تشغيل خدمة تحديد الموقع"),
+                                    duration: Duration(seconds: 3),
+                                    elevation: 1,
+                                  ),
+                                );
+                              },
+                            );
                             CheckHHSValidation.validate(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
