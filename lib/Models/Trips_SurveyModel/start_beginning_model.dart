@@ -16,8 +16,8 @@ class StartBeginningModel {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
-    data['streetName'] = tripAddressLat;
-    data['streetNumber'] = tripAddressLong;
+    data['tripAddressLat'] = tripAddressLat;
+    data['tripAddressLong'] = tripAddressLong;
     return data;
   }
 }

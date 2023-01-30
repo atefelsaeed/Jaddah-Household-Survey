@@ -369,7 +369,6 @@ class _TripScreenState extends State<TripScreen> {
                             surveyPt.headerLong = 0;
                             surveyPt.headerEmpNumber = auth.uid;
                             surveyPt.headerInterviewNumber = num;
-                            surveyPt.id = auth.uid.toString();
                             print('kkkk');
                             SaveTripsData.saveData(context);
                             print("validate");

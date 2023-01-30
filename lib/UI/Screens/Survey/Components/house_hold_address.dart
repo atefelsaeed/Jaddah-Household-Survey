@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
-import 'package:jaddah_household_survey/UI/Widgets/map.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
@@ -75,19 +75,12 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
                 onPressed: () {
                   alertMap(
                     (LatLng latLong) {
-                      // surveyPt.latLng = latLong;
                       setState(() {
-                        // surveyPt.initLatLng?.latitude != latLong.latitude;
-                        // surveyPt.initLatLng?.longitude != latLong.longitude;
-
-                        surveyPt.hhsAddressLat =
-                            latLong.latitude.toString();
-                        surveyPt.hhsAddressLong =
-                            latLong.longitude.toString();
+                        surveyPt.hhsAddressLat = latLong.latitude.toString();
+                        surveyPt.hhsAddressLong = latLong.longitude.toString();
+                        HhsStatic.householdAddress.hhsAddressLat= latLong.latitude.toString();
+                        HhsStatic.householdAddress.hhsAddressLong= latLong.longitude.toString();
                       });
-
-                      print('lat');
-                      print(surveyPt.hhsAddressLong.toString());
                     },
                   );
                 },

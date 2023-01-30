@@ -7,7 +7,10 @@ import '../VechelisData/veh_model.dart';
 
 class CheckHHSValidation {
   static validate(context) {
-    if (HhsStatic.householdQuestions.hhsDwellingType == null ||
+    if (HhsStatic.householdAddress.hhsAddressLat == null ||
+        HhsStatic.householdAddress.hhsAddressLat == "") {
+      return Validator.showSnack(context, " يجب إخيار! الاحداثيات أولا !");
+    }if (HhsStatic.householdQuestions.hhsDwellingType == null ||
         HhsStatic.householdQuestions.hhsDwellingType == "") {
       return Validator.showSnack(context, " يجب إخيار! 1.وصف المسكن؟ ");
     } else if (HhsStatic.householdQuestions.hhsIsDwelling == null ||

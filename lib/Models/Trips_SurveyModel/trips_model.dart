@@ -77,7 +77,7 @@ class TripsModel {
     departureTime.text = json['departureTime'];
     tripReason = json['tripReason'];
     isTravelAlone = json['isTravelAlone'];
-    chosenFriendPerson = json['hhsMembersTraveled'];
+    chosenFriendPerson =List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {

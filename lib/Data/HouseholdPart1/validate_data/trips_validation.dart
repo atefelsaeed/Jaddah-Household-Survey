@@ -49,15 +49,6 @@ class CheckTripsValidation {
       else {
         print("after save");
         await surveys.addSurvey(surveyPt.data);
-        // final prefs = await SharedPreferences.getInstance();
-        // var surveyID = prefs.getInt('userSurveyId');
-        // print("After remove");
-        // userSurvey.userSurveys.length;
-        // // userSurveyId
-        // userSurvey.userSurveys.removeWhere((element) => surveyID == element.id);
-        // print("Before remove :::");
-        // userSurvey.userSurveys.length;
-        // log('Empty Data');
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(

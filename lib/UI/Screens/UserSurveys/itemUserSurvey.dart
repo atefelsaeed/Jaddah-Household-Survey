@@ -72,7 +72,7 @@ class ItemUserSurvey extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SurveyScreen(),
+                          builder: (context) => SurveyScreen(id:itemSurveyModel.id.toString() ,),
                         ),
                       );
                       final prefs = await SharedPreferences.getInstance();
