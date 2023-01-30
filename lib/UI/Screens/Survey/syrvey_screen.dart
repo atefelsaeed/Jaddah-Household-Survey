@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_model.dart';
+import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q2.dart';
@@ -316,6 +317,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                 ),
                               );
                             }
+
                             if (HhsStatic.householdQuestions.hhsDwellingType ==
                                 "أخر") {
                               HhsStatic.householdQuestions.hhsDwellingType =
@@ -388,6 +390,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsDemolishedAreas = yes.text;
                             surveyPt.headerDistrictName = '';
                             surveyPt.headerZoneNumber = '';
+                            RegExp regex =
+                            RegExp(r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
+                             if(!regex.hasMatch(hhsPhone.text) ){
+                              return Validator.showSnack(context,  'رقم الهاتف غير صحيح..!');
+                            }
+                            // Validator.validatePhone(
+                            //     value: hhsPhone.text,
+                            //     message: 'رقم الهاتف غير صحيح!');
                             CheckHHSValidation.validate(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(

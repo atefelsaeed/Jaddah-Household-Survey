@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
@@ -64,55 +65,73 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
         const Divider(
           thickness: 1,
         ),
-        AppSize.spaceHeight2(context),
-        Row(
-          children: [
-            const Image(image: AssetImage(ImageAssets.locationIcon)),
-            AppSize.spaceWidth2(context),
-            const Text('الإحداثيات'),
-            const Spacer(),
-            IconButton(
-                onPressed: () {
-                  alertMap(
-                    (LatLng latLong) {
-                      setState(() {
-                        surveyPt.hhsAddressLat = latLong.latitude.toString();
-                        surveyPt.hhsAddressLong = latLong.longitude.toString();
-                        HhsStatic.householdAddress.hhsAddressLat= latLong.latitude.toString();
-                        HhsStatic.householdAddress.hhsAddressLong= latLong.longitude.toString();
-                      });
-                    },
-                  );
-                },
-                icon: Icon(
-                  Icons.pin_drop,
-                  color: ColorManager.primaryColor,
-                  size: width(context) * .1,
-                )),
-          ],
-        ),
-        Row(
-          children: [
-            ItemTextSpan(
-                title: "Lat",
-                subTitle: surveyPt.hhsAddressLat.toString() ?? "0"),
-            AppSize.spaceWidth3(context),
-            ItemTextSpan(
-                title: "Long",
-                subTitle: surveyPt.hhsAddressLong.toString() ?? "0"),
-          ],
-        ),
+        // AppSize.spaceHeight2(context),
+        // Row(
+        //   children: [
+        //     const Image(image: AssetImage(ImageAssets.locationIcon)),
+        //     AppSize.spaceWidth2(context),
+        //     const Text('الإحداثيات'),
+        //     const Spacer(),
+        //     IconButton(
+        //         onPressed: () {
+        //           alertMap(
+        //             (LatLng latLong) {
+        //               setState(() {
+        //                 surveyPt.hhsAddressLat = latLong.latitude.toString();
+        //                 surveyPt.hhsAddressLong = latLong.longitude.toString();
+        //                 HhsStatic.householdAddress.hhsAddressLat= latLong.latitude.toString();
+        //                 HhsStatic.householdAddress.hhsAddressLong= latLong.longitude.toString();
+        //               });
+        //             },
+        //           );
+        //         },
+        //         icon: Icon(
+        //           Icons.pin_drop,
+        //           color: ColorManager.primaryColor,
+        //           size: width(context) * .1,
+        //         )),
+        //   ],
+        // ),
+        // Row(
+        //   children: [
+        //     ItemTextSpan(
+        //         title: "Lat",
+        //         subTitle: surveyPt.hhsAddressLat.toString() ?? "0"),
+        //     AppSize.spaceWidth3(context),
+        //     ItemTextSpan(
+        //         title: "Long",
+        //         subTitle: surveyPt.hhsAddressLong.toString() ?? "0"),
+        //   ],
+        // ),
         AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextForm(
-              controller: widget.phoneController,
-              text: "رقم الهاتف",
-              label: "رقم الهاتف",
-              isNumber: true,
-              keyboardType: TextInputType.phone,
-            ),
+            // TextForm(
+            //   controller: widget.phoneController,
+            //   text: "رقم الهاتف",
+            //   label: "رقم الهاتف",
+            //   isNumber: true,
+            //   keyboardType: TextInputType.phone,
+            // ),
+            Column(
+              children: [
+                SizedBox(
+                    width: width(context) * .45,
+                    child: TextGlobal(
+                      text: "رقم الهاتف",
+                      fontSize: height(context) * .02,
+                      color: ColorManager.black,
+                    )),
+                AppSize.spaceHeight1(context),
+                MyTextForm(
+                  label: "رقم الهاتف",
+                  controller: widget.phoneController,
+                  isNumber: true,
+                  keyboardType: TextInputType.phone,
+                ),
+              ],
+            )
           ],
         ),
         AppSize.spaceHeight2(context),

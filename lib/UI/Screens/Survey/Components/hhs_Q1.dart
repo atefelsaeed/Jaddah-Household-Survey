@@ -46,6 +46,7 @@ class _HHSQ1State extends State<HHSQ1> {
                     text: "عدد الشقق",
                     label: "عدد الشقق",
                     keyboardType: TextInputType.number,
+                    isNumber: true,
                   )
                 : Container(),
             HhsStatic.householdQuestions.hhsDwellingType == "أخر"
@@ -54,6 +55,7 @@ class _HHSQ1State extends State<HHSQ1> {
                         HhsStatic.householdQuestions.hhsDwellingTypeOther!,
                     text: "1. وصف المسكن؟",
                     label: "1. وصف المسكن؟",
+                    isNumber: true,
                   )
                 : Container(),
           ],
@@ -66,13 +68,13 @@ class _HHSQ1State extends State<HHSQ1> {
               controller: HhsStatic.householdQuestions.hhsNumberBedRooms,
               text: "عدد الغرف",
               label: "عدد الغرف",
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.number,isNumber: true,
             ),
             TextForm(
               controller: HhsStatic.householdQuestions.hhsNumberFloors,
               text: "عدد الأدوار",
               label: "عدد الأدوار",
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.number,isNumber: true,
             ),
           ],
         ),
