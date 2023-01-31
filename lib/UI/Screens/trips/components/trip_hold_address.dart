@@ -11,7 +11,6 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
-import '../../Survey/widgets/text_form_row.dart';
 
 class TripHoldAddress extends StatefulWidget {
   final StartBeginningModel tripModel;

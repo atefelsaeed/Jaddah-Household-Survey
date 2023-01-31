@@ -7,10 +7,6 @@ import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
 import 'package:provider/provider.dart';
 
-import '../HHSData/questions_data.dart';
-import '../PersonData/person_data.dart';
-import '../VechelisData/vechelis_data.dart';
-
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {
     SurveyPTProvider surveyPt =

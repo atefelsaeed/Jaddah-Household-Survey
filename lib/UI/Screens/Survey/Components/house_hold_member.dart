@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Widgets/item_point.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
@@ -14,21 +15,7 @@ class HouseHoldMember extends StatelessWidget {
       children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            AppSize.spaceWidth1(context),
-            Column(
-              children: [
-                CircleAvatar(
-                    backgroundColor: ColorManager.orangeTxtColor,
-                    radius: height(context) * .013),
-                AppSize.spaceHeight05(context),
-                Container(
-                  color: ColorManager.orangeTxtColor,
-                  width: width(context) * .03,
-                  height: height(context) * .003,
-                )
-              ],
-            ),
-            AppSize.spaceWidth2(context),
+            const ItemPoint(),
             TextGlobal(
               text: "الجزء الأول أُسرَة",
               fontSize: height(context) * .023,

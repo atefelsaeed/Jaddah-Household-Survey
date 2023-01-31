@@ -114,18 +114,6 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                         print("Time is not selected");
                       }
                     }
-
-
-                    // if (pickedTime != null) {
-                    //   setState(() {
-                    //     widget.tripModel.arrivalDepartTime!
-                    //         .arriveDestinationTime.text =
-                    //         pickedTime.format(
-                    //             context); //set the value of text field.
-                    //   });
-                    // } else {
-                    //   print("Time is not selected");
-                    // }
                   },
                 ),
               ],

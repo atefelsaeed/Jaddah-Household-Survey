@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_data.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
 import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
@@ -14,10 +13,8 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_yo
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
-import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_type_model.dart';

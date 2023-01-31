@@ -10,7 +10,6 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
@@ -40,44 +39,6 @@ class SurveyScreen extends StatefulWidget {
 }
 
 class _SurveyScreenState extends State<SurveyScreen> {
-  // Future<LocationData> getLocation() async {
-  //   Location location = Location();
-  //
-  //   bool _serviceEnabled;
-  //   PermissionStatus _permissionGranted;
-  //
-  //   _serviceEnabled = await location.serviceEnabled();
-  //   print('get location');
-  //   // if (!_serviceEnabled) {
-  //   //   print('get location1');
-  //   //   _serviceEnabled = await location.requestService();
-  //   //   print('get location2');
-  //   //   if (!_serviceEnabled) {
-  //   //     return Future.error(0);
-  //   //   }
-  //   // }
-  //
-  //   _permissionGranted = await location.hasPermission();
-  //   print('get location3');
-  //   if (_permissionGranted == PermissionStatus.denied) {
-  //     print('get location4');
-  //     _permissionGranted = await location.requestPermission();
-  //     if (_permissionGranted != PermissionStatus.granted) {
-  //       print('error');
-  //     }
-  //   }
-  //
-  //   location.changeSettings(accuracy: LocationAccuracy.high);
-  //
-  //   if (!_serviceEnabled) {
-  //     _serviceEnabled = await location.requestService();
-  //     if (!_serviceEnabled) {
-  //       print('error');
-  //     }
-  //   }
-  //   return await location.getLocation();
-  // }
-
   final GlobalKey<FormState> _key = GlobalKey();
 
   final TextEditingController yes = TextEditingController();
@@ -120,9 +81,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
@@ -130,11 +88,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
         return Future.error('Location permissions are denied');
       }
     }
@@ -145,8 +98,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
   }
 
@@ -374,18 +325,18 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             // ===>> Q1=====
                             surveyPt.hhsDwellingType = HhsStatic
                                 .householdQuestions.hhsDwellingType; //solve
-                            surveyPt.hhsNumberApartments?.text = HhsStatic
+                            surveyPt.hhsNumberApartments.text = HhsStatic
                                     .householdQuestions
                                     .hhsNumberApartments
-                                    ?.text ??
+                                    .text ??
                                 '';
-                            surveyPt.hhsNumberFloors?.text = HhsStatic
-                                    .householdQuestions.hhsNumberFloors?.text ??
+                            surveyPt.hhsNumberFloors.text = HhsStatic
+                                    .householdQuestions.hhsNumberFloors.text ??
                                 '';
-                            surveyPt.hhsNumberBedRooms?.text = HhsStatic
+                            surveyPt.hhsNumberBedRooms.text = HhsStatic
                                     .householdQuestions
                                     .hhsNumberBedRooms
-                                    ?.text ??
+                                    .text ??
                                 '';
 
                             surveyPt.hhsIsDwellingType = HhsStatic
@@ -423,8 +374,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                 editingController3Q83.totalNumber.text;
                             surveyPt.hhsESAdultsBikesNumber =
                                 editingController3Q83.peopleAdults18.text;
-                            QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                                .toList()[0]["isChick"] = false;
                             surveyPt.hhsDemolishedAreas = yes.text;
                             surveyPt.headerDistrictName = '';
                             surveyPt.headerZoneNumber = '';
@@ -439,16 +388,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                   value.latitude.toString();
                               surveyPt.hhsAddressLong =
                                   value.longitude.toString();
-                              print("location:::");
-                              print(surveyPt.hhsAddressLat);
-                              print(surveyPt.hhsAddressLong);
                             }).onError(
-                                  (error, stackTrace) {
+                              (error, stackTrace) {
                                 print(error);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content:
-                                    Text("يجب تشغيل خدمة تحديد الموقع"),
+                                        Text("يجب تشغيل خدمة تحديد الموقع"),
                                     duration: Duration(seconds: 3),
                                     elevation: 1,
                                   ),
