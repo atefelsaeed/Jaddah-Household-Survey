@@ -430,7 +430,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.headerZoneNumber = '';
                             RegExp regex = RegExp(
                                 r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
-                            if (!regex.hasMatch(hhsPhone.text)) {
+                            if (!regex.hasMatch(hhsPhone.text.trim())) {
                               return Validator.showSnack(
                                   context, 'رقم الهاتف غير صحيح..!');
                             }
