@@ -31,7 +31,7 @@ class HeadlineTrip extends StatelessWidget {
         AppSize.spaceWidth1(context),
         TextGlobal(
           text: text,
-          fontSize: height(context) * .015,
+          fontSize: height(context) * .02,
           color: ColorManager.black,
         ),
         AppSize.spaceWidth2(context),

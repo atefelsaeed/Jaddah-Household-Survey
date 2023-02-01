@@ -22,48 +22,66 @@ class UserSurveysProvider with ChangeNotifier {
 
   bool isSearching = false;
   List<UserSurveysModelData> searchList = [];
+  List<UserSurveysModelData> hayList = [];
+  List<UserSurveysModelData> qtaList = [];
 
   void searchHAY(String value) {
+    hayList.clear();
+    qtaList.clear();
     searchList.clear();
     for (var element in _userSurveysSurveysList) {
       if (element.haeno
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
-        searchList.add(element);
+        hayList.add(element);
       }
     }
+    print('searchHAY');
+    print(hayList.length);
     notifyListeners();
   }
+
   void searchQTA(String value) {
+    qtaList.clear();
     searchList.clear();
-    for (var element in _userSurveysSurveysList) {
+    for (var element in hayList) {
       if (element.qta
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
-        searchList.add(element);
+        qtaList.add(element);
       }
     }
+    print('searchQTA');
+    print(qtaList.length);
+
     notifyListeners();
   }
+
   void searchBLOK(String value) {
     searchList.clear();
-    for (var element in _userSurveysSurveysList) {
+    for (var element in qtaList) {
       if (element.blok
           .toString()
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         searchList.add(element);
+
       }
     }
+    print('searchBLOK');
+    print(searchList.length);
     notifyListeners();
   }
+
   void changeIcon() {
     isSearching = !isSearching;
     notifyListeners();
   }
+
   bool loading = false;
+
   Future<bool> fetch(int id) async {
     try {
       loading = true;
@@ -102,5 +120,4 @@ class UserSurveysProvider with ChangeNotifier {
       return true;
     }
   }
-
 }

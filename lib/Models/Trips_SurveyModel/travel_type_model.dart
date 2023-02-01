@@ -21,6 +21,7 @@ class TravelTypeModel {
     required this.taxiFare,
     required this.ticketSub,
     this.taxiTravelType,
+
   });
 
   TravelTypeModel.fromJson(Map<String, dynamic> json) {

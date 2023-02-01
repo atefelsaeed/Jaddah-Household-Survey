@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
@@ -22,8 +23,14 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
     userSurveysProvider.fetch(widget.id);
+    userSurveysProvider.isSearching = false;
     super.initState();
   }
+
+  final GlobalKey<FormState> _key = GlobalKey();
+  TextEditingController hayController = TextEditingController();
+  TextEditingController qtaController = TextEditingController();
+  TextEditingController blocController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +39,6 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
     if (userSurveysProvider.isSearching) {
       print('searchList');
       list = userSurveysProvider.searchList;
-      // } else if (userSurveysProvider.isSearchingQTA) {
-      //   print('searchQTAList');
-      //   list = userSurveysProvider.searchQTAList;
-      // } else if (userSurveysProvider.isSearchingBLOK) {
-      //   print('searchBLOKList');
-      //   list = userSurveysProvider.searchBLOKList;
     } else {
       print('userSurveys');
       list = userSurveysProvider.userSurveys;
@@ -70,97 +71,132 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                         ],
                       ),
                       AppSize.spaceHeight2(context),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              const Text(
-                                'رقم الحى',
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              AppSize.spaceHeight1(context),
-                              MyTextForm(
-                                onChanged: (value) {
-                                  userSurveysProvider.searchHAY(value!);
-                                },
-                                label: "بحث",
-
-                                widthForm: width(context) * .2,
-                                keyboardType: TextInputType.number,isNumber: true,
-                                isPassword: false,
-                              ),
-                            ],
-                          ),
-                          AppSize.spaceWidth3(context),
-                          Column(
-                            children: [
-                              const Text(
-                                'رقم القطاع',
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              AppSize.spaceHeight1(context),
-                              MyTextForm(
-                                onChanged: (value) {
-                                  userSurveysProvider.searchQTA(value!);
-                                },
-                                label: "بحث",
-                                onTap: () {},
-                                widthForm: width(context) * .2,
-                                keyboardType: TextInputType.number,isNumber: true,
-                                isPassword: false,
-                              ),
-                            ],
-                          ),
-                          AppSize.spaceWidth3(context),
-                          Column(
-                            children: [
-                              const Text(
-                                'رقم البلوك',
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              AppSize.spaceHeight1(context),
-                              MyTextForm(
-                                onChanged: (value) {
-                                  userSurveysProvider.searchBLOK(value!);
-                                },
-                                label: "بحث",
-                                widthForm: width(context) * .2,
-                                keyboardType: TextInputType.number,isNumber: true,
-                                isPassword: false,
-                              ),
-                            ],
-                          ),
-                          AppSize.spaceWidth3(context),
-                          Column(
-                            children: [
-                              const Text(
-                                'بحث',
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              AppSize.spaceHeight1(context),
-                              Container(
-                                width: width(context) * .15,
-                                padding:
-                                    EdgeInsets.all(AppSize.padding1(context)),
-                                decoration: BoxDecoration(
-                                    color: userSurveysProvider.isSearching
-                                        ? ColorManager.grayColor
-                                        : ColorManager.primaryColor,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: IconButton(
-                                    onPressed: () {
-                                      userSurveysProvider.changeIcon();
-                                    },
-                                    icon: Icon(
-                                      Icons.filter_alt_outlined,
-                                      color: ColorManager.wight,
-                                      size: width(context) * .05,
-                                    )),
-                              ),
-                            ],
-                          )
-                        ],
+                      Form(
+                        key: _key,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                const Text(
+                                  'رقم الحى',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                                AppSize.spaceHeight1(context),
+                                MyTextForm(
+                                  controller: hayController,
+                                  onChanged: (value) {
+                                    userSurveysProvider.searchHAY(value!);
+                                  },
+                                  label: "بحث",
+                                  widthForm: width(context) * .2,
+                                  keyboardType: TextInputType.number,
+                                  isNumber: true,
+                                  isPassword: false,
+                                ),
+                              ],
+                            ),
+                            AppSize.spaceWidth3(context),
+                            Column(
+                              children: [
+                                const Text(
+                                  'رقم القطاع',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                                AppSize.spaceHeight1(context),
+                                MyTextForm(
+                                  controller: qtaController,
+                                  onChanged: (value) {
+                                    userSurveysProvider.searchQTA(value!);
+                                  },
+                                  label: "بحث",
+                                  onTap: () {},
+                                  widthForm: width(context) * .2,
+                                  keyboardType: TextInputType.number,
+                                  isNumber: true,
+                                  isPassword: false,
+                                  readOnly:
+                                      hayController.text.isEmpty ? true : false,
+                                ),
+                              ],
+                            ),
+                            AppSize.spaceWidth3(context),
+                            Column(
+                              children: [
+                                const Text(
+                                  'رقم البلوك',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                                AppSize.spaceHeight1(context),
+                                MyTextForm(
+                                  controller: blocController,
+                                  onChanged: (value) {
+                                    userSurveysProvider.searchBLOK(value!);
+                                  },
+                                  label: "بحث",
+                                  widthForm: width(context) * .2,
+                                  keyboardType: TextInputType.number,
+                                  isNumber: true,
+                                  isPassword: false,
+                                  readOnly:
+                                      qtaController.text.isEmpty ? true : false,
+                                ),
+                              ],
+                            ),
+                            AppSize.spaceWidth3(context),
+                            Column(
+                              children: [
+                                const Text(
+                                  'بحث',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                                AppSize.spaceHeight1(context),
+                                Container(
+                                  width: width(context) * .15,
+                                  padding:
+                                      EdgeInsets.all(AppSize.padding1(context)),
+                                  decoration: BoxDecoration(
+                                      color: userSurveysProvider.isSearching
+                                          ? ColorManager.grayColor
+                                          : ColorManager.primaryColor,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: IconButton(
+                                      onPressed: () {
+                                        if (hayController.text.isNotEmpty) {
+                                          if (qtaController.text.isNotEmpty) {
+                                            if (blocController
+                                                .text.isNotEmpty) {
+                                              userSurveysProvider.changeIcon();
+                                            } else {
+                                              Validator.showSnack(context,
+                                                  'يجب إدخال رقم البلوك!');
+                                            }
+                                          } else {
+                                            Validator.showSnack(context,
+                                                'يجب إدخال رقم القطاع!');
+                                          }
+                                        } else {
+                                          Validator.showSnack(context,
+                                              'يجب إدخال رقم الحى أولاً!');
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.filter_alt_outlined,
+                                        color: ColorManager.wight,
+                                        size: width(context) * .05,
+                                      )),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      AppSize.spaceHeight2(context),
+                      Text(
+                        'هام: فى حالة البحث يجب إختيار رقم الحى ثم رقم القطاع ثم رقم البلوك.',
+                        style: TextStyle(
+                            color: ColorManager.grayColor,
+                            fontSize: width(context) * .035),
                       ),
                       AppSize.spaceHeight2(context),
                       list.isNotEmpty
@@ -173,6 +209,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 separatorBuilder: (context, index) {
                                   return Divider(
                                     color: ColorManager.grayColor,
+                                    height: height(context) * .05,
                                   );
                                 },
                                 itemCount: list.length,
@@ -190,7 +227,6 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                   ),
                 ),
               )
-            : const Center(child: CircularProgressIndicator())
-        );
+            : const Center(child: CircularProgressIndicator()));
   }
 }

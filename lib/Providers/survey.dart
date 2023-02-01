@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -141,9 +141,17 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsIsDwellingType(String? l);
 
-  String? get hhsNumberBedRooms;
+  TextEditingController get hhsNumberBedRooms;
 
-  set hhsNumberBedRooms(String? l);
+  set hhsNumberBedRooms(TextEditingController l);
+
+  TextEditingController get hhsNumberApartments;
+
+  set hhsNumberApartments(TextEditingController l);
+
+  TextEditingController get hhsNumberFloors;
+
+  set hhsNumberFloors(TextEditingController l);
 
   String? get hhsNumberSeparateFamilies;
 

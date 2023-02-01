@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Widgets/dropdown_form_input.dart';
+import '../../../Widgets/item_text_span.dart';
 import '../../Survey/widgets/text_form_row.dart';
 import 'headline_trip.dart';
 
@@ -25,7 +26,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
     return Column(
       children: [
         const HeadlineTrip(text: "8. سؤال متعلق بنوع المركبة"),
-        const Divider(),
+        const MyDivider(),
         AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,6 +133,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       text: "كم أجرة التاكسي دفعتھ؟",
                       label: "كم أجرة التاكسي دفعتھ؟",
                       keyboardType: TextInputType.number,
+                      isNumber: true,
                     )
                   : Container(),
             ],
@@ -150,7 +152,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                           .tripModeList[widget.index].travelTypeModel!.taxiFare,
                       text: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
                       label: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.number,isNumber: true,
                     ),
                     Column(
                       children: [
@@ -158,7 +160,8 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         TextForm(
                           controller: TripModeList.tripModeList[widget.index]
                               .travelTypeModel!.ticketSub,
-                          text: " في حالة استخدام تذكرة دائمة، ما نوعھا . فى حالة عدم وجود تذكرة يكتب (لا)",
+                          text:
+                              " في حالة استخدام تذكرة دائمة، ما نوعھا . فى حالة عدم وجود تذكرة يكتب (لا)",
                           label: "نوع التذكرة",
                         ),
                       ],

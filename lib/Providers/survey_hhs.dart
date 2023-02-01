@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
@@ -36,13 +37,13 @@ class SurveyPTProvider extends SurveyProvider {
     // notifyListeners();
   }
 
-
   LatLng? initLatLng;
 
   set latLng(LatLng l) {
     initLatLng = l;
     notifyListeners();
   }
+
   @override
   SurveyType get type => _data.type;
 
@@ -126,7 +127,7 @@ class SurveyPTProvider extends SurveyProvider {
 
   @override
   set hhsAddressLat(String? i) {
-    _data.header.householdAddress.hhsAddressLat;
+    _data.header.householdAddress.hhsAddressLat = i;
     // notifyListeners();
   }
 
@@ -159,11 +160,32 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  String? get hhsNumberBedRooms => _data.householdQuestions.hhsNumberBedRooms;
+  TextEditingController get hhsNumberBedRooms =>
+      _data.householdQuestions.hhsNumberBedRooms;
 
   @override
-  set hhsNumberBedRooms(String? i) {
+  set hhsNumberBedRooms(TextEditingController i) {
     _data.householdQuestions.hhsNumberBedRooms = i;
+    // notifyListeners();
+  }
+
+  @override
+  TextEditingController get hhsNumberApartments =>
+      _data.householdQuestions.hhsNumberApartments;
+
+  @override
+  set hhsNumberApartments(TextEditingController i) {
+    _data.householdQuestions.hhsNumberApartments = i;
+    // notifyListeners();
+  }
+
+  @override
+  TextEditingController get hhsNumberFloors =>
+      _data.householdQuestions.hhsNumberFloors;
+
+  @override
+  set hhsNumberFloors(TextEditingController i) {
+    _data.householdQuestions.hhsNumberFloors = i;
     // notifyListeners();
   }
 

@@ -69,13 +69,6 @@ class VehiclesData {
     ]
   };
 
-  static Map<String, dynamic> q2VecData = {
-    "? How many bicycles (air-tubed) are there in your household": {
-      "adults (18yrs +) For Work use": "0",
-      "adults (18yrs +)  For Leisure": "0",
-      "children (under 18yrs)": "0"
-    }
-  };
   static Map<String, dynamic> q3VecData = {
     " How far is the nearest public transport bus stop from your home by walk (in minutes) ?":
         [

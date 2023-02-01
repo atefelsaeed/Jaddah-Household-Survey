@@ -11,9 +11,6 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
-import '../../Survey/widgets/text_form_row.dart';
-
-
 
 class TripHoldAddress extends StatefulWidget {
   final StartBeginningModel tripModel;
@@ -42,9 +39,7 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
         AppSize.spaceHeight2(context),
         HeadlineTrip(text: widget.titel),
         AppSize.spaceHeight1(context),
-        const Divider(
-          thickness: 1,
-        ),
+        const MyDivider(),
         Row(children: [
           TextGlobal(
             text: "المنزل",
@@ -68,8 +63,10 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                 setState(() {
                   isHome = value!;
                   if (isHome == true) {
-                    widget.tripModel.tripAddressLong = surveyPt.hhsAddressLong!;
-                    widget.tripModel.tripAddressLat = surveyPt.hhsAddressLat!;
+                    widget.tripModel.tripAddressLong =
+                        surveyPt.hhsAddressLong ?? '';
+                    widget.tripModel.tripAddressLat =
+                        surveyPt.hhsAddressLat ?? '';
                   } else {
                     widget.tripModel.tripAddressLong = "";
                     widget.tripModel.tripAddressLat = "";
@@ -77,45 +74,58 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                 });
               })
         ]),
-        AppSize.spaceHeight2(context),
-        Row(
-          children: [
-            const Image(image: AssetImage(ImageAssets.locationIcon)),
-            AppSize.spaceWidth2(context),
-            const Text('الإحداثيات'),
-            const Spacer(),
-            IconButton(
-                onPressed: () {
-                  alertMap(
-                    (c) {
-                      surveyPt.latLng=c;
-                      setState(() {
-
-                        print("123");
-                        print(c.latitude);
-                        print(surveyPt.initLatLng?.latitude);
-                        surveyPt.initLatLng?.latitude != c.latitude;
-                        surveyPt.initLatLng?.longitude != c.longitude;
-                      });
-                    },
-                  );
-                },
-                icon: Icon(
-                  Icons.pin_drop,
-                  color: ColorManager.primaryColor,
-                  size: width(context) * .1,
-                )),
-          ],
-        ),
-        Row(
-          children: [
-            ItemTextSpan(
-                title: "Lat", subTitle: surveyPt.initLatLng?.latitude.toString() ?? ""),
-            AppSize.spaceWidth3(context),
-            ItemTextSpan(
-                title: "Long", subTitle: surveyPt.initLatLng?.longitude.toString() ?? ""),
-          ],
-        ),
+         Column(
+                children: [
+                  isHome == true
+                      ? Container()
+                      :  Row(
+                    children: [
+                      const Image(image: AssetImage(ImageAssets.locationIcon)),
+                      AppSize.spaceWidth2(context),
+                      const Text('الإحداثيات'),
+                      const Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            alertMap(
+                              (LatLng latLong) {
+                                surveyPt.latLng = latLong;
+                                setState(() {
+                                  surveyPt.initLatLng?.latitude !=
+                                      latLong.latitude;
+                                  surveyPt.initLatLng?.longitude !=
+                                      latLong.longitude;
+                                });
+                                setState(() {
+                                  widget.tripModel.tripAddressLong =
+                                      surveyPt.initLatLng?.longitude.toString();
+                                  widget.tripModel.tripAddressLat =
+                                      surveyPt.initLatLng?.latitude.toString();
+                                });
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            Icons.pin_drop,
+                            color: ColorManager.primaryColor,
+                            size: width(context) * .1,
+                          )),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      ItemTextSpan(
+                          title: "Lat",
+                          subTitle:
+                              surveyPt.initLatLng?.latitude.toString() ?? ""),
+                      AppSize.spaceWidth3(context),
+                      ItemTextSpan(
+                          title: "Long",
+                          subTitle:
+                              surveyPt.initLatLng?.longitude.toString() ?? ""),
+                    ],
+                  ),
+                ],
+              ),
         AppSize.spaceHeight2(context),
       ],
     );

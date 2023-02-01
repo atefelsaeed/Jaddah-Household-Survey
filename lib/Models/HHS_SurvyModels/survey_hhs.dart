@@ -1,4 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
+import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
 import '/providers/survey_hhs.dart';
@@ -11,9 +12,13 @@ import 'hhs_models.dart';
 
 class SurveyPT extends Survey {
   HouseholdQuestions householdQuestions = HouseholdQuestions(
-      hhsPedalCycles: BikesType("", "", ""),
-      hhsElectricCycles: BikesType("", "", ""),
-      hhsElectricScooter: BikesType("", "", ""));
+    hhsPedalCycles: BikesType("", "", ""),
+    hhsElectricCycles: BikesType("", "", ""),
+    hhsElectricScooter: BikesType("", "", ""),
+    hhsNumberBedRooms: TextEditingController(),
+    hhsNumberFloors: TextEditingController(),
+    hhsNumberApartments: TextEditingController(),
+  );
   VehiclesModel vehiclesData = VehiclesModel(); //
   List<PersonModel>? personData; //
   List<SeparateFamilies>? hhsSeparateFamilies;
@@ -31,8 +36,8 @@ class SurveyPT extends Survey {
     data['id'] = id;
     data['type'] = EnumToString.convertToString(type, camelCase: true);
     data['synced'] = synced;
-    data['headerLat'] = header.locationLat;
-    data['headerLong'] = header.locationLong;
+    // data['headerLat'] = header.locationLat;
+    // data['headerLong'] = header.locationLong;
     data['headerDate'] = header.interviewDate.toString();
     data['vehiclesData'] = vehiclesData.toJson();
     data['headerEmpNumber'] = header.empNumber;
@@ -45,7 +50,9 @@ class SurveyPT extends Survey {
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;
-    // data['hhsNumberBedRooms'] = householdQuestions.hhsNumberBedRooms;
+    data['hhsNumberBedRooms'] = householdQuestions.hhsNumberBedRooms.text;
+    data['hhsNumberApartments'] = householdQuestions.hhsNumberApartments.text;
+    data['hhsNumberFloors'] = householdQuestions.hhsNumberFloors.text;
     data['hhsNumberSeparateFamilies'] =
         householdQuestions.hhsNumberSeparateFamilies;
     data['hhsNumberAdults'] = householdQuestions.hhsNumberAdults;
@@ -93,8 +100,8 @@ class SurveyPT extends Survey {
     id = json['id'];
     synced = json['synced'];
     header = HeaderBase();
-    header.locationLat = json['headerLat'];
-    header.locationLong = json['headerLong'];
+    // header.locationLat = json['headerLat'];
+    // header.locationLong = json['headerLong'];
     header.interviewDate = DateTime.parse(json['headerDate']);
     header.empNumber = json['headerEmpNumber'];
     header.interviewNumber = json['headerInterviewNumber'];
@@ -106,7 +113,9 @@ class SurveyPT extends Survey {
     //================householdQuestions================
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
-    // householdQuestions.hhsNumberBedRooms = json['hhsNumberBedRooms'];
+    householdQuestions.hhsNumberBedRooms.text = json['hhsNumberBedRooms'];
+    householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments'];
+    householdQuestions.hhsNumberFloors.text = json['hhsNumberFloors'];
     householdQuestions.hhsNumberSeparateFamilies =
         json['hhsNumberSeparateFamilies'];
     householdQuestions.hhsNumberAdults = json['hhsNumberAdults'];

@@ -4,7 +4,9 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_chec
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../Widgets/item_text_span.dart';
 import 'adults_or_not.dart';
+import 'headline_trip.dart';
 
 class TravelAlone extends StatefulWidget {
   final int index;
@@ -23,6 +25,9 @@ class _TravelAloneState extends State<TravelAlone> {
     // TODO: implement build
     return Column(
       children: [
+        const HeadlineTrip(text:"7. هل ذهبت بمفردك أم مع آخرین؟"),
+        const MyDivider(),
+        AppSize.spaceHeight2(context),
         ListViewCheckBoxOrange(
           map: TripModeList.tripModeList[widget.index].travelWithOther,
           onChange: (ChangeBoxResponse r) {
@@ -43,7 +48,8 @@ class _TravelAloneState extends State<TravelAlone> {
               .toList(),
           subTitle: "",
         ),
-        const Divider(),
+        // const Divider(),
+        AppSize.spaceHeight2(context),
         TripModeList.tripModeList[widget.index].isTravelAlone == true
             ? AdultsOrNot(
                 adultsModel: TripModeList
@@ -71,8 +77,7 @@ class _TravelAloneState extends State<TravelAlone> {
                 title: "أى من أفراد الاسرة سافر معك؟",
                 question: TripModeList
                     .tripModeList[widget.index].friendPerson["friendPerson"],
-                subTitle:"أى من أفراد الاسرة سافر معك"
-              )
+                subTitle: "أى من أفراد الاسرة سافر معك")
             : Container(),
       ],
     );
