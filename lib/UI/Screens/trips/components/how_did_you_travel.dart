@@ -5,6 +5,7 @@ import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
+import '../../../Widgets/item_text_span.dart';
 import 'headline_trip.dart';
 
 class HowDidYouTravel extends StatefulWidget {
@@ -25,7 +26,8 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
     return Column(
       children: [
         const HeadlineTrip(text: "6. كیف ذهبت ؟"),
-        const Divider(),
+        const MyDivider(),
+        AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

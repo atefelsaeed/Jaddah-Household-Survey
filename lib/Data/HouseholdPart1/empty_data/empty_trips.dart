@@ -28,7 +28,7 @@ class EmptyTrips {
       //travelWithOtherModel
       element.travelWithOtherModel?.childrenNumber.text = '';
       element.travelWithOtherModel?.adultsNumber.text = '';
-      element.travelWithOtherModel?.hhsMembersTraveled = '';
+      element.hhsMembersTraveled = [];
       element.travelWithOtherModel?.text = '';
       //startBeginningModel
       element.startBeginningModel?.tripAddressLat= '';

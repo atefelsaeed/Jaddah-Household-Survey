@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/font_manager.dart';
@@ -38,6 +37,17 @@ class ItemTextSpan extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class MyDivider extends StatelessWidget {
+  const MyDivider({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Divider(
+      thickness: 2,
     );
   }
 }

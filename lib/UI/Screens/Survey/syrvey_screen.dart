@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_model.dart';
+import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q2.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/house_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
-import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
-import 'package:jaddah_household_survey/UI/Widgets/alert_map.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +29,10 @@ import 'Components/hhs_Q83.dart';
 class SurveyScreen extends StatefulWidget {
   const SurveyScreen({
     super.key,
+    required this.id,
   });
+
+  final String id;
 
   @override
   State<SurveyScreen> createState() => _SurveyScreenState();
@@ -69,6 +74,33 @@ class _SurveyScreenState extends State<SurveyScreen> {
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
 
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -87,345 +119,310 @@ class _SurveyScreenState extends State<SurveyScreen> {
         return OnExitScreen.onWillPop(context);
       },
       child: Scaffold(
-        body: SingleChildScrollView(
-            child: Directionality(
-          textDirection: TextDirection.ltr,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Form(
-              key: _key,
+        body: SafeArea(
+          child: SingleChildScrollView(
               child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: Column(
-                  children: [
-                    // SurveyHeader(),
-                    HouseHoldAddress(
-                      phoneController: hhsPhone,
-                    ),
-
-                    AppSize.spaceHeight3(context),
-                    const HouseHoldMember(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DropDownFormInput(
-                          label: Text(QuestionsData
-                              .qh1[QuestionsData.qh1.keys.first]!
-                              .toList()
-                              .first
-                              .toString()),
-                          hint: "1. وصف المسكن؟",
-                          options: QuestionsData
-                              .qh1[QuestionsData.qh1.keys.first]!
-                              .toList(),
-                          onChange: (String? p) {
-                            print(p);
-                            setState(() {
-                              HhsStatic.householdQuestions.hhsDwellingType = p;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                    AppSize.spaceHeight1(context),
-                    HhsStatic.householdQuestions.hhsDwellingType == "أخر"
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextForm(
-                                controller: HhsStatic
-                                    .householdQuestions.hhsDwellingTypeOther!,
-                                text: "1. وصف المسكن؟",
-                                label: "1. وصف المسكن؟",
-                              )
-                            ],
-                          )
-                        : Container(),
-                    AppSize.spaceHeight3(context),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DropDownFormInput(
-                          onChange: (String? p) {
-                            setState(() {
-                              HhsStatic.householdQuestions.hhsIsDwelling = p;
-                            });
-                          },
-                          label: Text(QuestionsData
-                              .qh2[QuestionsData.qh2.keys.first]!
-                              .toList()
-                              .first
-                              .toString()),
-                          hint: "2.ملكية المسكن؟",
-                          options: QuestionsData
-                              .qh2[QuestionsData.qh2.keys.first]!
-                              .toList(),
-                        ),
-                      ],
-                    ),
-                    HhsStatic.householdQuestions.hhsIsDwelling == "أخر"
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextForm(
-                                controller: HhsStatic
-                                    .householdQuestions.hhsIsDwellingOther!,
-                                text: "2.ملكية المسكن؟",
-                                label: "2.ملكية المسكن؟",
-                              )
-                            ],
-                          )
-                        : Container(),
-
-                    AppSize.spaceHeight3(context),
-
-                    ListViewCheckBoxOrange(
-                      map: QuestionsData.qh4,
-                      onChange: (ChangeBoxResponse r) {
-                        if (r.check == true) {
-                          HhsStatic.householdQuestions
-                              .hhsNumberSeparateFamilies = r.val;
-                        } else {
-                          setState(() {
-                            q6peopleAdults18 = [TextEditingController()];
-                            q6peopleUnder18 = [TextEditingController()];
-                            q6totalNumberOfVec = [TextEditingController()];
-                          });
-                          HhsStatic.householdQuestions
-                              .hhsNumberSeparateFamilies = "1";
-                        }
-
-                        print(QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                                .toList()[QuestionsData.qh4["index"]]
-                            ["isChick"]); //=false;
-                      },
-                      title:
-                          "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
-                      question: QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                          .toList(),
-                      subTitle:
-                          'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
-                    ),
-
-                    AppSize.spaceHeight3(context),
-                    Q6(
-                      q6peopleAdults18: q6peopleAdults18,
-                      q6peopleUnder18: q6peopleUnder18,
-                      q6totalNumberOfVec: q6totalNumberOfVec,
-                    ),
-                    AppSize.spaceHeight2(context),
-
-                    Q5(
-                      peopleAdults18: peopleAdults18,
-                      peopleUnder18: peopleUnder18,
-                    ),
-
-                    AppSize.spaceHeight3(context),
-                    ListViewCheckBoxOrange(
-                      map: QuestionsData.qh7,
-                      onChange: (ChangeBoxResponse r) {
-                        HhsStatic.householdQuestions.hhsNumberYearsInAddress =
-                            r.val;
-                      },
-                      title: "6.كم سنة عشت أنت / عائلتك في هذا العنوان المحدد؟",
-                      question: QuestionsData.qh7[QuestionsData.qh7.keys.first]!
-                          .toList(),
-                      subTitle: "",
-                    ),
-
-                    ListViewCheckBoxOrange(
-                      map: QuestionsData.qh7_2,
-                      onChange: (ChangeBoxResponse r) {
-                        setState(() {
-                          if (r.val == "نعم") {
-                            HhsStatic.householdQuestions.hhsIsDemolishedAreas =
-                                true;
-                            yes.text = '';
+            textDirection: TextDirection.ltr,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Form(
+                key: _key,
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Column(
+                    children: [
+                      // ===== HouseHoldAddress ===
+                      HouseHoldAddress(
+                        phoneController: hhsPhone,
+                      ),
+                      AppSize.spaceHeight3(context),
+                      const HouseHoldMember(),
+                      // ====Question 1====
+                      const HHSQ1(),
+                      // ====Question 2====
+                      const HHSQ2(),
+                      ListViewCheckBoxOrange(
+                        map: QuestionsData.qh4,
+                        onChange: (ChangeBoxResponse r) {
+                          if (r.check == true) {
+                            HhsStatic.householdQuestions
+                                .hhsNumberSeparateFamilies = r.val;
                           } else {
-                            HhsStatic.householdQuestions.hhsIsDemolishedAreas =
-                                false;
-                            yes.text = 'لا';
+                            setState(() {
+                              q6peopleAdults18 = [TextEditingController()];
+                              q6peopleUnder18 = [TextEditingController()];
+                              q6totalNumberOfVec = [TextEditingController()];
+                            });
+                            HhsStatic.householdQuestions
+                                .hhsNumberSeparateFamilies = "1";
                           }
-                        });
-                      },
-                      isListView: true,
-                      title:
-                          "هل انتقلت إلى هنا من أي منطقة من المناطق المهدومة في جدة ، إذا كانت الإجابة بنعم أي واحدة",
-                      question: QuestionsData
-                          .qh7_2[QuestionsData.qh7_2.keys.first]!
-                          .toList(),
-                      subTitle: "",
-                    ),
+                        },
+                        title:
+                            "3.كم عدد العائلات المنفصلة التي تعيش في هذا العنوان؟",
+                        question: QuestionsData
+                            .qh4[QuestionsData.qh4.keys.first]!
+                            .toList(),
+                        subTitle:
+                            'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
+                      ),
 
-                    HhsStatic.householdQuestions.hhsIsDemolishedAreas == true
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              DropDownFormInput(
-                                onChange: (String? p) {
-                                  setState(() {
-                                    HhsStatic.householdQuestions
-                                        .hhsDemolishedAreas = p;
-                                    p == "أخر"
-                                        ? yes.text = ""
-                                        : yes.text = HhsStatic
-                                            .householdQuestions
-                                            .hhsDemolishedAreas!;
-                                  });
-                                },
-                                label: Text(QuestionsData
-                                    .qh6_2[QuestionsData.qh6_2.keys.first]!
-                                    .toList()
-                                    .first
-                                    .toString()),
-                                hint: "المنطقة المهدومة",
-                                options: QuestionsData
-                                    .qh6_2[QuestionsData.qh6_2.keys.first]!
-                                    .toList(),
-                              ),
-                            ],
-                          )
-                        : Container(),
-                    AppSize.spaceHeight2(context),
-                    AppSize.spaceHeight3(context),
-                    Q81(editingController3: editingController3Q81),
-                    AppSize.spaceHeight3(context),
-                    Q82(editingController3: editingController3Q82),
-                    AppSize.spaceHeight3(context),
-                    Q83(editingController3: editingController3Q83),
-                    AppSize.spaceHeight2(context),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DropDownFormInput(
-                          label:
-                              Text(QuestionsData.qh9.values.first.toString()),
-                          hint:
-                              "8.متوسط دخل جميع أفراد الاسرة الشهري مع المزايا؟",
-                          options: QuestionsData
-                              .qh9[QuestionsData.qh9.keys.first]!
-                              .toList(),
-                          onChange: (String p) {
-                            HhsStatic.householdQuestions.hhsTotalIncome = p;
-                          },
-                        ),
-                      ],
-                    ),
-                    AppSize.spaceHeight3(context),
-                    const NearestTransporter(),
-                    AppSize.spaceHeight3(context),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "10. خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
-                          style: TextStyle(fontSize: height(context) * 0.02),
-                        ),
-                        AppSize.spaceHeight2(context),
-                        MyTextForm(
-                          controller: VehModel.editingController3.totalNumber,
-                          label: "أدخل ",
-                          keyboardType: TextInputType.number,
-                          isNumber: true,
-                        ),
-                      ],
-                    ),
-                    AppSize.spaceHeight3(context),
-                    DefaultButton(
-                      function: () {
-                        if (_key.currentState!.validate()) {
-                          _key.currentState!.save();
+                      AppSize.spaceHeight3(context),
+                      Q6(
+                        q6peopleAdults18: q6peopleAdults18,
+                        q6peopleUnder18: q6peopleUnder18,
+                        q6totalNumberOfVec: q6totalNumberOfVec,
+                      ),
+                      AppSize.spaceHeight2(context),
 
-                          for (int i = 0; i < q6peopleUnder18.length; i++) {
-                            HhsStatic.houseHold.add(
-                              SeparateFamilies(
-                                q6peopleAdults18[i].text,
-                                q6peopleUnder18[i].text,
-                                q6totalNumberOfVec[i].text,
+                      Q5(
+                        peopleAdults18: peopleAdults18,
+                        peopleUnder18: peopleUnder18,
+                      ),
+
+                      AppSize.spaceHeight3(context),
+                      ListViewCheckBoxOrange(
+                        map: QuestionsData.qh7,
+                        onChange: (ChangeBoxResponse r) {
+                          HhsStatic.householdQuestions.hhsNumberYearsInAddress =
+                              r.val;
+                        },
+                        title:
+                            "6.كم سنة عشت أنت / عائلتك في هذا العنوان المحدد؟",
+                        question: QuestionsData
+                            .qh7[QuestionsData.qh7.keys.first]!
+                            .toList(),
+                        subTitle: "",
+                      ),
+
+                      ListViewCheckBoxOrange(
+                        map: QuestionsData.qh7_2,
+                        onChange: (ChangeBoxResponse r) {
+                          setState(() {
+                            if (r.val == "نعم") {
+                              HhsStatic.householdQuestions
+                                  .hhsIsDemolishedAreas = true;
+                              yes.text = '';
+                            } else {
+                              HhsStatic.householdQuestions
+                                  .hhsIsDemolishedAreas = false;
+                              yes.text = 'لا';
+                            }
+                          });
+                        },
+                        isListView: true,
+                        title:
+                            "هل انتقلت إلى هنا من أي منطقة من المناطق المهدومة في جدة ، إذا كانت الإجابة بنعم أي واحدة",
+                        question: QuestionsData
+                            .qh7_2[QuestionsData.qh7_2.keys.first]!
+                            .toList(),
+                        subTitle: "",
+                      ),
+
+                      HhsStatic.householdQuestions.hhsIsDemolishedAreas == true
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                DropDownFormInput(
+                                  onChange: (String? p) {
+                                    setState(() {
+                                      HhsStatic.householdQuestions
+                                          .hhsDemolishedAreas = p;
+                                      p == "أخر"
+                                          ? yes.text = ""
+                                          : yes.text = HhsStatic
+                                              .householdQuestions
+                                              .hhsDemolishedAreas!;
+                                    });
+                                  },
+                                  label: Text(QuestionsData
+                                      .qh6_2[QuestionsData.qh6_2.keys.first]!
+                                      .toList()
+                                      .first
+                                      .toString()),
+                                  hint: "المنطقة المهدومة",
+                                  options: QuestionsData
+                                      .qh6_2[QuestionsData.qh6_2.keys.first]!
+                                      .toList(),
+                                ),
+                              ],
+                            )
+                          : Container(),
+                      AppSize.spaceHeight2(context),
+                      AppSize.spaceHeight3(context),
+                      Q81(editingController3: editingController3Q81),
+                      AppSize.spaceHeight3(context),
+                      Q82(editingController3: editingController3Q82),
+                      AppSize.spaceHeight3(context),
+                      Q83(editingController3: editingController3Q83),
+                      AppSize.spaceHeight2(context),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          DropDownFormInput(
+                            label:
+                                Text(QuestionsData.qh9.values.first.toString()),
+                            hint:
+                                "8.متوسط دخل جميع أفراد الاسرة الشهري مع المزايا؟",
+                            options: QuestionsData
+                                .qh9[QuestionsData.qh9.keys.first]!
+                                .toList(),
+                            onChange: (String p) {
+                              HhsStatic.householdQuestions.hhsTotalIncome = p;
+                            },
+                          ),
+                        ],
+                      ),
+                      AppSize.spaceHeight3(context),
+                      const NearestTransporter(),
+                      AppSize.spaceHeight3(context),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "10. خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
+                            style: TextStyle(fontSize: height(context) * 0.02),
+                          ),
+                          AppSize.spaceHeight2(context),
+                          MyTextForm(
+                            controller: VehModel.editingController3.totalNumber,
+                            label: "أدخل ",
+                            keyboardType: TextInputType.number,
+                            isNumber: true,
+                          ),
+                        ],
+                      ),
+                      AppSize.spaceHeight3(context),
+                      DefaultButton(
+                        function: () async {
+                          if (_key.currentState!.validate()) {
+                            _key.currentState!.save();
+
+                            for (int i = 0; i < q6peopleUnder18.length; i++) {
+                              HhsStatic.houseHold.add(
+                                SeparateFamilies(
+                                  q6peopleAdults18[i].text,
+                                  q6peopleUnder18[i].text,
+                                  q6totalNumberOfVec[i].text,
+                                ),
+                              );
+                            }
+
+                            if (HhsStatic.householdQuestions.hhsDwellingType ==
+                                "أخر") {
+                              HhsStatic.householdQuestions.hhsDwellingType =
+                                  HhsStatic.householdQuestions
+                                      .hhsDwellingTypeOther!.text;
+                            }
+                            if (HhsStatic.householdQuestions.hhsIsDwelling ==
+                                "أخر") {
+                              HhsStatic.householdQuestions.hhsIsDwelling =
+                                  HhsStatic.householdQuestions
+                                      .hhsIsDwellingOther!.text;
+                            }
+
+                            surveyPt.id = widget.id;
+
+                            // ===>> Q1=====
+                            surveyPt.hhsDwellingType = HhsStatic
+                                .householdQuestions.hhsDwellingType; //solve
+                            surveyPt.hhsNumberApartments.text = HhsStatic
+                                    .householdQuestions
+                                    .hhsNumberApartments
+                                    .text ??
+                                '';
+                            surveyPt.hhsNumberFloors.text = HhsStatic
+                                    .householdQuestions.hhsNumberFloors.text ??
+                                '';
+                            surveyPt.hhsNumberBedRooms.text = HhsStatic
+                                    .householdQuestions
+                                    .hhsNumberBedRooms
+                                    .text ??
+                                '';
+
+                            surveyPt.hhsIsDwellingType = HhsStatic
+                                .householdQuestions.hhsIsDwelling; //solve
+
+                            surveyPt.hhsNumberSeparateFamilies = HhsStatic
+                                .householdQuestions
+                                .hhsNumberSeparateFamilies; //solve
+                            surveyPt.hhsNumberYearsInAddress = HhsStatic
+                                .householdQuestions
+                                .hhsNumberYearsInAddress; //solve
+                            surveyPt.hhsPhone = hhsPhone.text; //solve
+
+                            surveyPt.hhsNumberAdults = peopleAdults18.text;
+                            surveyPt.hhsNumberChildren =
+                                peopleUnder18.text; //solve
+                            surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
+                            surveyPt.hhsTotalIncome =
+                                HhsStatic.householdQuestions.hhsTotalIncome;
+                            surveyPt.hhsPCChildrenBikesNumber =
+                                editingController3Q81.peopleUnder18.text;
+                            surveyPt.hhsPCTotalBikesNumber =
+                                editingController3Q81.totalNumber.text;
+                            surveyPt.hhsPCAdultsBikesNumber =
+                                editingController3Q81.peopleAdults18.text;
+                            surveyPt.hhsECChildrenBikesNumber =
+                                editingController3Q82.peopleUnder18.text;
+                            surveyPt.hhsECTotalBikesNumber =
+                                editingController3Q82.totalNumber.text;
+                            surveyPt.hhsECAdultsBikesNumber =
+                                editingController3Q82.peopleAdults18.text;
+                            surveyPt.hhsESChildrenBikesNumber =
+                                editingController3Q83.peopleUnder18.text;
+                            surveyPt.hhsESTotalBikesNumber =
+                                editingController3Q83.totalNumber.text;
+                            surveyPt.hhsESAdultsBikesNumber =
+                                editingController3Q83.peopleAdults18.text;
+                            surveyPt.hhsDemolishedAreas = yes.text;
+                            surveyPt.headerDistrictName = '';
+                            surveyPt.headerZoneNumber = '';
+                            RegExp regex = RegExp(
+                                r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
+                            if (!regex.hasMatch(hhsPhone.text.trim())) {
+                              return Validator.showSnack(
+                                  context, 'رقم الهاتف غير صحيح..!');
+                            }
+                            await _determinePosition().then((value) {
+                              surveyPt.hhsAddressLat =
+                                  value.latitude.toString();
+                              surveyPt.hhsAddressLong =
+                                  value.longitude.toString();
+                            }).onError(
+                              (error, stackTrace) {
+                                print(error);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content:
+                                        Text("يجب تشغيل خدمة تحديد الموقع"),
+                                    duration: Duration(seconds: 3),
+                                    elevation: 1,
+                                  ),
+                                );
+                              },
+                            );
+                            CheckHHSValidation.validate(context);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("يوجد خطأ بالبيانات"),
+                                duration: Duration(seconds: 3),
+                                elevation: 1,
                               ),
                             );
                           }
-                          if (HhsStatic.householdQuestions.hhsDwellingType ==
-                              "أخر") {
-                            HhsStatic.householdQuestions.hhsDwellingType =
-                                HhsStatic.householdQuestions
-                                    .hhsDwellingTypeOther!.text;
-                          }
-                          if (HhsStatic.householdQuestions.hhsIsDwelling ==
-                              "أخر") {
-                            HhsStatic.householdQuestions.hhsIsDwelling =
-                                HhsStatic.householdQuestions.hhsIsDwellingOther!
-                                    .text;
-                          }
-
-                          surveyPt.hhsDwellingType = HhsStatic
-                              .householdQuestions.hhsDwellingType; //solve
-                          surveyPt.hhsIsDwellingType = HhsStatic
-                              .householdQuestions.hhsIsDwelling; //solve
-                          surveyPt.hhsNumberSeparateFamilies = HhsStatic
-                              .householdQuestions
-                              .hhsNumberSeparateFamilies; //solve
-                          surveyPt.hhsNumberYearsInAddress = HhsStatic
-                              .householdQuestions
-                              .hhsNumberYearsInAddress; //solve
-                          surveyPt.hhsPhone = hhsPhone.text; //solve
-                          // surveyPt.hhsAddressLat =
-                          //     Constants.location2?.latitude.toString() ?? "";
-                          // surveyPt.hhsAddressLong =
-                          //     Constants.location2?.latitude.toString() ?? "";
-
-                          surveyPt.hhsNumberAdults = peopleAdults18.text;
-                          surveyPt.hhsNumberChildren =
-                              peopleUnder18.text; //solve
-
-                          surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
-                          surveyPt.hhsTotalIncome =
-                              HhsStatic.householdQuestions.hhsTotalIncome;
-                          surveyPt.hhsPCChildrenBikesNumber =
-                              editingController3Q81.peopleUnder18.text;
-                          surveyPt.hhsPCTotalBikesNumber =
-                              editingController3Q81.totalNumber.text;
-                          surveyPt.hhsPCAdultsBikesNumber =
-                              editingController3Q81.peopleAdults18.text;
-                          surveyPt.hhsECChildrenBikesNumber =
-                              editingController3Q82.peopleUnder18.text;
-                          surveyPt.hhsECTotalBikesNumber =
-                              editingController3Q82.totalNumber.text;
-                          surveyPt.hhsECAdultsBikesNumber =
-                              editingController3Q82.peopleAdults18.text;
-                          surveyPt.hhsESChildrenBikesNumber =
-                              editingController3Q83.peopleUnder18.text;
-                          surveyPt.hhsESTotalBikesNumber =
-                              editingController3Q83.totalNumber.text;
-                          surveyPt.hhsESAdultsBikesNumber =
-                              editingController3Q83.peopleAdults18.text;
-                          QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                              .toList()[0]["isChick"] = false;
-                          surveyPt.hhsDemolishedAreas = yes.text;
-                          surveyPt.headerDistrictName = '';
-                          surveyPt.headerZoneNumber = '';
-                          CheckHHSValidation.validate(context);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text("يوجد خطأ بالبيانات"),
-                              duration: Duration(seconds: 3),
-                              elevation: 1,
-                            ),
-                          );
-                        }
-                      },
-                      isWidget: true,
-                      text: "التالي",
-                      widget: const Icon(Icons.arrow_forward),
-                    ),
-                  ],
+                        },
+                        isWidget: true,
+                        text: "التالي",
+                        widget: const Icon(Icons.arrow_forward),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        )),
+          )),
+        ),
       ),
     );
   }

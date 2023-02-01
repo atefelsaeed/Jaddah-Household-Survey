@@ -98,7 +98,7 @@ class Validator {
   static String? validateName(
       {required String value, required String message}) {
     // RegExp rex = RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
-    RegExp rex =RegExp(r'^-?(([0-9]*)|(([0-9]*)\.([0-9]*)))$');
+    RegExp rex = RegExp(r'^-?(([0-9]*)|(([0-9]*)\.([0-9]*)))$');
 
     if (value.trim().isEmpty) {
       return message;
@@ -111,12 +111,13 @@ class Validator {
 
   static String? validatePhone(
       {required String value, required String message}) {
+    RegExp regex =
+        RegExp(r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
+    //RegExp(
+    //                 r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)'
     if (value.trim().isEmpty) {
       return message;
-    } else if (!RegExp(
-                r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)')
-            .hasMatch(value) ||
-        value.length < 10) {
+    } else if (!regex.hasMatch(value) || value.length <= 10) {
       return message;
     }
     return null;

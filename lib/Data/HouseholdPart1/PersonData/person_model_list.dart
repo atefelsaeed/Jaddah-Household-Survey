@@ -7,6 +7,7 @@ import '../../../Models/Person_SurveyModel/person_model.dart';
 class PersonModelList {
   static List<PersonModel> personModelList = [
     PersonModel(
+      personName: TextEditingController(),
       //==personalHeadData==
       personalHeadData: PersonalHeadData(
         age: TextEditingController(),

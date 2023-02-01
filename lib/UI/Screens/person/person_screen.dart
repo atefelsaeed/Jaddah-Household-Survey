@@ -446,6 +446,7 @@ class _PersonScreenState extends State<PersonScreen> {
                               PersonModelList.personModelList.add(
                                 PersonModel(
                                   //==personalHeadData==
+                                  personName: TextEditingController(),
                                   personalHeadData: PersonalHeadData(
                                     age: TextEditingController(),
                                     nationality: TextEditingController(),

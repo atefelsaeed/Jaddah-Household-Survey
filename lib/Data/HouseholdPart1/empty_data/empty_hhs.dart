@@ -14,11 +14,14 @@ class EmptyHHS {
       hhsPedalCycles: BikesType("", "", ""),
       hhsDwellingTypeOther: TextEditingController(),
       hhsIsDwellingOther: TextEditingController(),
+      hhsNumberApartments: TextEditingController(),
       hhsElectricCycles: BikesType("", "", ""),
       hhsTotalIncome: '',
       hhsElectricScooter: BikesType("", "", ""),
       hhsNumberSeparateFamilies: "",
       hhsNumberYearsInAddress: "",
+      hhsNumberBedRooms: TextEditingController(),
+      hhsNumberFloors: TextEditingController(),
     );
     HhsStatic.householdQuestions.hhsNumberSeparateFamilies = '';
     HhsStatic.householdQuestions.hhsNumberYearsInAddress = '';

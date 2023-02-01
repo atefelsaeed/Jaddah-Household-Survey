@@ -17,7 +17,9 @@ class HouseholdQuestions {
   String? hhsIsDwelling;
   TextEditingController? hhsDwellingTypeOther = TextEditingController();
   TextEditingController? hhsIsDwellingOther = TextEditingController();
-  String? hhsNumberBedRooms;
+  TextEditingController hhsNumberBedRooms = TextEditingController();
+  TextEditingController hhsNumberApartments = TextEditingController();
+  TextEditingController hhsNumberFloors = TextEditingController();
   String? hhsNumberSeparateFamilies;
   String? hhsNumberAdults;
   String? hhsNumberChildren = "";
@@ -36,7 +38,9 @@ class HouseholdQuestions {
   HouseholdQuestions({
     this.hhsDwellingType,
     this.hhsIsDwelling,
-    this.hhsNumberBedRooms,
+    required this.hhsNumberBedRooms,
+    required this.hhsNumberApartments,
+    required this.hhsNumberFloors,
     this.hhsNumberSeparateFamilies,
     this.hhsTotalIncome,
     this.hhsDwellingTypeOther,
@@ -91,10 +95,17 @@ class SeparateFamilies {
 }
 
 class HhsStatic {
-  static HouseholdAddress householdAddress = HouseholdAddress();
+  static HouseholdAddress householdAddress = HouseholdAddress(
+    hhsAddressLat: "",
+    hhsAddressLong: "",
+    hhsPhone: "",
+  );
   static HouseholdQuestions householdQuestions = HouseholdQuestions(
     hhsPedalCycles: BikesType("", "", ""),
     hhsDwellingTypeOther: TextEditingController(),
+    hhsNumberBedRooms: TextEditingController(),
+    hhsNumberApartments: TextEditingController(),
+    hhsNumberFloors: TextEditingController(),
     hhsIsDwellingOther: TextEditingController(),
     hhsElectricCycles: BikesType("", "", ""),
     hhsTotalIncome: '',

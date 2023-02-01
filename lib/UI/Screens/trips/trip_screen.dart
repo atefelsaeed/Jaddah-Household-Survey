@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_data.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
 import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
@@ -14,10 +13,8 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_yo
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
-import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_type_model.dart';
@@ -26,6 +23,7 @@ import '../../../Models/Trips_SurveyModel/trips_model.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../../Widgets/item_text_span.dart';
 import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
@@ -139,7 +137,7 @@ class _TripScreenState extends State<TripScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   DropDownFormInput(
-                                    hint: "صاحب الرحله",
+                                    hint: "صاحب الرحلة",
                                     options:
                                         TripModeList.tripModeList[i].person,
                                     onChange: (String? p) {
@@ -211,12 +209,11 @@ class _TripScreenState extends State<TripScreen> {
                               AppSize.spaceHeight3(context),
                               const HeadlineTrip(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
-                              const Divider(),
+                              const MyDivider(),
                               PurposeOfTheBeing(
                                 indexTripModel: i,
                               ),
                               AppSize.spaceHeight3(context),
-                              const Divider(),
                               TimeLeave(
                                 expectedDeparture:
                                     TripModeList.tripModeList[i].departureTime,
@@ -228,12 +225,11 @@ class _TripScreenState extends State<TripScreen> {
                                 titel: "4. الى أي عنوان ذھبت؟",
                               ),
                               AppSize.spaceHeight2(context),
-                              const Divider(),
                               const HeadlineTrip(
                                   text:
                                       "5. ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
                               AppSize.spaceHeight2(context),
-                              const Divider(),
+                              const MyDivider(),
                               WhyDidYouGo(
                                 indexTripModel: i,
                               ),
@@ -241,9 +237,7 @@ class _TripScreenState extends State<TripScreen> {
                               HowDidYouTravel(
                                 i: i,
                               ),
-                              AppSize.spaceHeight2(context),
-                              const Divider(),
-                              AppSize.spaceHeight2(context),
+                              AppSize.spaceHeight3(context),
                               TravelAlone(index: i),
                               AppSize.spaceHeight2(context),
                               WhereDidYouPark(
@@ -255,8 +249,6 @@ class _TripScreenState extends State<TripScreen> {
                               DepartTime(
                                 tripModel: TripModeList.tripModeList[i],
                                 i: i,
-                                textEditingControl: TripModeList.tripModeList[i]
-                                    .taxiTravelTypeEditingControl!,
                               ),
                             ],
                           ),
@@ -340,15 +332,14 @@ travelWithOther:  {
                                 mainMode: "",
                                 accessMode: "",
                               ),
+                              hhsMembersTraveled: [],
                               travelWithOtherModel: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  hhsMembersTraveled: "",
                                   text: "?If with other how many"),
                               travelAloneHouseHold: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  hhsMembersTraveled: "",
                                   text: "Non Household persons"),
                               arrivalDepartTime: ArrivalDepartTime(
                                 arriveDestinationTime: TextEditingController(),
@@ -380,57 +371,23 @@ travelWithOther:  {
                     children: [
                       DefaultButton(
                         function: () {
+                          print('save1');
                           if (_key.currentState!.validate()) {
-                            getLocation().then(
-                              (value) {
-                                Random random = Random();
-                                int randomNumber =
-                                    (1000 + random.nextInt(10000 - 1000));
-                                int num =
-                                    int.parse('${auth.uid}001$randomNumber');
-                                surveyPt.headerLat = value.latitude ?? 0;
-                                surveyPt.interViewDate = DateTime.now();
-                                surveyPt.headerLong = value.longitude ?? 0;
-                                surveyPt.headerEmpNumber = auth.uid;
-                                surveyPt.headerInterviewNumber = num;
-                                surveyPt.id = auth.uid.toString();
-                                SaveTripsData.saveData(context);
-                                CheckTripsValidation.validatePerson(context);
-                                QuestionsData.qh4[QuestionsData.qh4.keys.first]!
-                                        .toList()[QuestionsData.qh4["index"]]
-                                    ["isChick"] = false;
-                                QuestionsData.qh7[QuestionsData.qh7.keys.first]!
-                                        .toList()[QuestionsData.qh7["index"]]
-                                    ["isChick"] = false;
-                                QuestionsData
-                                        .qh7_2[QuestionsData.qh7_2.keys.first]!
-                                        .toList()[QuestionsData.qh7_2["index"]]
-                                    ["isChick"] = false;
-                                VehiclesData.q3VecData[VehiclesData
-                                                .q3VecData.keys.first]!
-                                            .toList()[
-                                        VehiclesData.q3VecData["index"]]
-                                    ["isChick"] = false;
-                                PersonData.nationality[PersonData
-                                                .nationality.keys.first]!
-                                            .toList()[
-                                        PersonData.nationality["index"]]
-                                    ["isChick"] = false;
-                              },
-                            ).onError(
-                              (error, stackTrace) {
-                                print(error);
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content:
-                                        Text("يجب تشغيل خدمة تحديد الموقع"),
-                                    duration: Duration(seconds: 3),
-                                    elevation: 1,
-                                  ),
-                                );
-                              },
-                            );
+                            print('save2');
+                            Random random = Random();
+                            int randomNumber =
+                                (1000 + random.nextInt(10000 - 1000));
+                            int num = int.parse('${auth.uid}001$randomNumber');
+                            print('save3');
+                            surveyPt.headerLat = 0;
+                            surveyPt.interViewDate = DateTime.now();
+                            surveyPt.headerLong = 0;
+                            surveyPt.headerEmpNumber = auth.uid;
+                            surveyPt.headerInterviewNumber = num;
+                            print('kkkk');
+                            SaveTripsData.saveData(context);
+                            print("validate");
+                            CheckTripsValidation.validatePerson(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(

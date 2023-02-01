@@ -105,6 +105,10 @@ class MyTextForm extends StatelessWidget {
             onChanged: onChanged,
           ),
         ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(40),
+          child: Container(color: Colors.blue,),
+        )
       ],
     );
   }

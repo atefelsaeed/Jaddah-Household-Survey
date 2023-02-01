@@ -14,12 +14,14 @@ class PersonModel {
     this.personalQuestion,
     this.occupationModel,
     this.personalHeadData,
+    required this.personName,
   });
 
   PersonModel.fromJson(Map<String, dynamic> json) {
     personalHeadData = PersonalHeadData.fromJson(json['personalHeadData']);
     occupationModel = OccupationModel.fromJson(json['occupationModel']);
     personalQuestion = PersonalQuestion.fromJson(json['personalQuestion']);
+    personName.text = json['personName'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +29,7 @@ class PersonModel {
     data['personalHeadData'] = personalHeadData!.toJson();
     data['occupationModel'] = occupationModel!.toJson();
     data['personalQuestion'] = personalQuestion!.toJson();
+    data['personName'] = personName.text;
     return data;
   }
 }
@@ -54,7 +57,7 @@ class PersonalHeadData {
   PersonalHeadData.fromJson(Map<String, dynamic> json) {
     relationshipHeadHHS = json['relationshipHeadHHS'] ?? "";
     gender = json['gender'] ?? "";
-    checkAge = json['checkAge'];
+    // checkAge = json['checkAge'];
     refuseToTellAge = json['refuseToTellAge'];
     age.text = json['age'] ?? "";
     nationalityType = json['nationalityType'] ?? "";
@@ -65,7 +68,7 @@ class PersonalHeadData {
     Map<String, dynamic> data = <String, dynamic>{};
     data['relationshipHeadHHS'] = relationshipHeadHHS ?? "";
     data['gender'] = gender ?? "";
-    data['checkAge'] = checkAge;
+    // data['checkAge'] = checkAge;
     data['refuseToTellAge'] = refuseToTellAge;
     data['age'] = age.text ?? "";
     data['nationalityType'] = nationalityType ?? "";

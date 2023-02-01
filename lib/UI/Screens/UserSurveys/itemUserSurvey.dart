@@ -5,7 +5,6 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
@@ -18,15 +17,6 @@ class ItemUserSurvey extends StatelessWidget {
   const ItemUserSurvey({Key? key, required this.itemSurveyModel})
       : super(key: key);
   final UserSurveysModelData itemSurveyModel;
-
-  Future<void> _launchInBrowser(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
 
   launchURL(String lat, long) async {
     final String googleMapslocationUrl =
@@ -72,11 +62,11 @@ class ItemUserSurvey extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SurveyScreen(),
+                          builder: (context) => SurveyScreen(
+                            id: itemSurveyModel.id.toString(),
+                          ),
                         ),
                       );
-                      final prefs = await SharedPreferences.getInstance();
-                      prefs.setInt('userSurveyId', itemSurveyModel.id!);
                       itemSurveyModel.id;
                       QuestionsData.qh4[QuestionsData.qh4.keys.first]!
                               .toList()[QuestionsData.qh4["index"]]["isChick"] =
@@ -140,21 +130,35 @@ class ItemUserSurvey extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ItemTextSpan(
-                title: "إسم الحى",
-                subTitle: itemSurveyModel.hAEName.toString()),
-            ItemTextSpan(
-                title: "رقم الحى", subTitle: itemSurveyModel.haeno.toString()),
+            SizedBox(
+              width: width(context) * .6,
+              child: ItemTextSpan(
+                  title: "إسم الحى",
+                  subTitle: itemSurveyModel.hAEName.toString()),
+            ),
+            SizedBox(
+              width: width(context) * .3,
+              child: ItemTextSpan(
+                  title: "رقم الحى",
+                  subTitle: itemSurveyModel.haeno.toString()),
+            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ItemTextSpan(
-                title: "إسم البلوك",
-                subTitle: itemSurveyModel.blokname.toString()),
-            ItemTextSpan(
-                title: "رقم البلوك", subTitle: itemSurveyModel.blok.toString()),
+            SizedBox(
+              width: width(context) * .6,
+              child: ItemTextSpan(
+                  title: "إسم البلوك",
+                  subTitle: itemSurveyModel.blokname.toString()),
+            ),
+            SizedBox(
+              width: width(context) * .3,
+              child: ItemTextSpan(
+                  title: "رقم البلوك",
+                  subTitle: itemSurveyModel.blok.toString()),
+            ),
           ],
         ),
         ItemTextSpan(

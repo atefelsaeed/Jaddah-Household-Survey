@@ -81,6 +81,7 @@ class TripsModel {
 
   TravelWithOtherModel? travelWithOtherModel;
   TravelWithOtherModel? travelAloneHouseHold;
+  List<String>? hhsMembersTraveled;
   ArrivalDepartTime? arrivalDepartTime;
   TravelTypeModel? travelTypeModel;
 
@@ -90,6 +91,7 @@ class TripsModel {
     this.type,
     required this.purposeOfBeingThere,
     required this.travelWithOther,
+    this.hhsMembersTraveled,
     this.travelTypeModel,
     this.typeTravel,
     this.otherWhereDidYouParkEditingControl,
@@ -123,6 +125,7 @@ class TripsModel {
     departureTime.text = json['departureTime'];
     tripReason = json['tripReason'];
     isTravelAlone = json['isTravelAlone'];
+    chosenFriendPerson =List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {
@@ -138,6 +141,7 @@ class TripsModel {
     data['departureTime'] = departureTime.text;
     data['tripReason'] = tripReason;
     data['isTravelAlone'] = isTravelAlone;
+    data['hhsMembersTraveled'] = chosenFriendPerson.map((e) => e).toList();
     return data;
   }
 }
