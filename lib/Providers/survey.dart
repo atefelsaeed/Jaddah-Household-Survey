@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';

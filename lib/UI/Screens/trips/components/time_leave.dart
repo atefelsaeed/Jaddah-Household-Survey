@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../../Resources/style_manager.dart';
+import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
+import 'headline_trip.dart';
 
 class TimeLeave extends StatefulWidget {
   final TextEditingController expectedDeparture;
@@ -21,16 +23,16 @@ class _TimeLeaveState extends State<TimeLeave> {
     // TODO: implement build
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextGlobal(
-              text: "3. في أي وقت غادرت؟",
-              fontSize: height(context) * .020,
+        const HeadlineTrip(text:"3. في أي وقت غادرت؟"),
+        const MyDivider(),
+        AppSize.spaceHeight1(context),
+        SizedBox(
+            width: width(context) * .45,
+            child: TextGlobal(
+              text: "وقت الوصول",
+              fontSize: height(context) * .02,
               color: ColorManager.black,
-            )
-          ],
-        ),
+            )),
         AppSize.spaceHeight1(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,8 +62,6 @@ class _TimeLeaveState extends State<TimeLeave> {
               },
             ),
             AppSize.spaceWidth2(context),
-
-            //  TextForm(controller: expectedDeparture,text: "	Expected Departure Time	 (24 hour clock)",label: "أدخل  	Expected Departure Time	 (24 hour clock)",),
           ],
         )
       ],

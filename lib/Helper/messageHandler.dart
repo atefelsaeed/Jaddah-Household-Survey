@@ -26,12 +26,6 @@ Future<bool> syncall() async {
       case SurveyType.pt:
         _surveys.add(SurveyPT.fromJson(s));
         break;
-      // case SurveyType.cars:
-      //   _surveys.add(SurveyCars.fromJson(s));
-      //   break;
-      // case SurveyType.freight:
-      //   _surveys.add(SurveyFreight.fromJson(s));
-      //   break;
       default:
     }
   }

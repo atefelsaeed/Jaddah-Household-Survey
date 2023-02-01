@@ -38,7 +38,6 @@ class SurveysProvider with ChangeNotifier {
       log('Survey Data :: ', error: surveysList.toString());
       _surveys = [];
       for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
-
         switch (EnumToString.fromString(SurveyType.values, s['type'],
             camelCase: true)!) {
           case SurveyType.pt:
@@ -49,8 +48,7 @@ class SurveysProvider with ChangeNotifier {
           default:
         }
       }
-      // _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
-      print('synced');
+      _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
       for (var e in _surveys) {
         print(e.synced);
       }

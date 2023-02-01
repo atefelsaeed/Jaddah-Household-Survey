@@ -47,8 +47,8 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
   @override
   Widget build(BuildContext context) {
     SurveysProvider p = Provider.of<SurveysProvider>(context);
-    Auth auth = Provider.of<Auth>(context, listen: false);
     p.syncAll();
+    Auth auth = Provider.of<Auth>(context, listen: false);
     List<Survey> surveyList = p.surveys;
     print("Survey List length: ${surveyList.length}");
 
@@ -65,6 +65,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
       );
       // _messageHandler(e);
     });
+
     return Container(
         height: height(context),
         width: width(context),
@@ -96,8 +97,15 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                 },
                 child: ItemHomeSurvey(count: surveyList.length ?? 0),
               ),
-              InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
-              InkWell(onTap: () {}, child: const ItemHomeSurvey(count: 0)),
+              AppSize.spaceHeight5(context),
+              Text(
+                'إصدار التطبيق  (V.1)',
+                style: TextStyle(
+                  color: ColorManager.wight,
+                  fontSize: width(context) * .035,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ],
           ),
         ));

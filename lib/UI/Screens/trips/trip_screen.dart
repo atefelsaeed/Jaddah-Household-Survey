@@ -23,6 +23,7 @@ import '../../../Models/Trips_SurveyModel/trips_model.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../../Widgets/item_text_span.dart';
 import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
@@ -136,7 +137,7 @@ class _TripScreenState extends State<TripScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   DropDownFormInput(
-                                    hint: "صاحب الرحله",
+                                    hint: "صاحب الرحلة",
                                     options:
                                         TripModeList.tripModeList[i].person,
                                     onChange: (String? p) {
@@ -208,12 +209,11 @@ class _TripScreenState extends State<TripScreen> {
                               AppSize.spaceHeight3(context),
                               const HeadlineTrip(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
-                              const Divider(),
+                              const MyDivider(),
                               PurposeOfTheBeing(
                                 indexTripModel: i,
                               ),
                               AppSize.spaceHeight3(context),
-                              const Divider(),
                               TimeLeave(
                                 expectedDeparture:
                                     TripModeList.tripModeList[i].departureTime,
@@ -225,12 +225,11 @@ class _TripScreenState extends State<TripScreen> {
                                 titel: "4. الى أي عنوان ذھبت؟",
                               ),
                               AppSize.spaceHeight2(context),
-                              const Divider(),
                               const HeadlineTrip(
                                   text:
                                       "5. ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
                               AppSize.spaceHeight2(context),
-                              const Divider(),
+                              const MyDivider(),
                               WhyDidYouGo(
                                 indexTripModel: i,
                               ),
@@ -238,9 +237,7 @@ class _TripScreenState extends State<TripScreen> {
                               HowDidYouTravel(
                                 i: i,
                               ),
-                              AppSize.spaceHeight2(context),
-                              const Divider(),
-                              AppSize.spaceHeight2(context),
+                              AppSize.spaceHeight3(context),
                               TravelAlone(index: i),
                               AppSize.spaceHeight2(context),
                               WhereDidYouPark(
@@ -252,8 +249,6 @@ class _TripScreenState extends State<TripScreen> {
                               DepartTime(
                                 tripModel: TripModeList.tripModeList[i],
                                 i: i,
-                                textEditingControl: TripModeList.tripModeList[i]
-                                    .taxiTravelTypeEditingControl!,
                               ),
                             ],
                           ),
@@ -338,24 +333,6 @@ class _TripScreenState extends State<TripScreen> {
                           print('save1');
                           if (_key.currentState!.validate()) {
                             print('save2');
-                            // getLocation()
-                            //     .then(
-                            //   (value) {},
-                            // )
-                            //     .onError(
-                            //   (error, stackTrace) {
-                            //     print(error);
-                            //
-                            //     ScaffoldMessenger.of(context).showSnackBar(
-                            //       const SnackBar(
-                            //         content:
-                            //             Text("يجب تشغيل خدمة تحديد الموقع"),
-                            //         duration: Duration(seconds: 3),
-                            //         elevation: 1,
-                            //       ),
-                            //     );
-                            //   },
-                            // );
                             Random random = Random();
                             int randomNumber =
                                 (1000 + random.nextInt(10000 - 1000));

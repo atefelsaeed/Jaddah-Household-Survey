@@ -93,7 +93,7 @@ class TripsModel {
     data['departureTime'] = departureTime.text;
     data['tripReason'] = tripReason;
     data['isTravelAlone'] = isTravelAlone;
-    data['hhsMembersTraveled'] = chosenFriendPerson!.map((e) => e).toList();
+    data['hhsMembersTraveled'] = chosenFriendPerson.map((e) => e).toList();
     return data;
   }
 }
