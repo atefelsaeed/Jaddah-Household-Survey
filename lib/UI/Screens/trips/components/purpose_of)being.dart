@@ -29,7 +29,7 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
         addAutomaticKeepAlives: true,
         scrollDirection: Axis.vertical,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: TripData.purposeOfBeingThere["QPurposeOfBeingThere"].length,
+        itemCount: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere["QPurposeOfBeingThere"].length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, childAspectRatio: 4),
         itemBuilder: (context, index) => SizedBox(
@@ -38,7 +38,7 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
             SizedBox(
               width: width(context) * .23,
               child: TextGlobal(
-                text: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                text: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere["QPurposeOfBeingThere"]
                     [index]["value"],
                 //[index].title,
                 fontSize: height(context) * .02,
@@ -56,19 +56,19 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
                 checkColor: ColorManager.whiteColor,
                 focusColor: ColorManager.orangeTxtColor,
                 activeColor: ColorManager.orangeTxtColor,
-                value: TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                value:TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
                     [index]["isChick"],
                 onChanged: (bool? value) {
                   print(value);
                   setState(() {
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                    TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
                         [chosenIndex]["isChick"] = false;
                     chosenIndex = index;
-                    TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                    TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
                         [chosenIndex]["isChick"] = value;
                     TripModeList
                             .tripModeList[widget.indexTripModel].purposeTravel =
-                        TripData.purposeOfBeingThere["QPurposeOfBeingThere"]
+                    TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
                             [chosenIndex]["value"];
                   });
                 }),

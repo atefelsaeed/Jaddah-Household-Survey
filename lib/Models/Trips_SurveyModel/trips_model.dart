@@ -25,6 +25,51 @@ class TripsModel {
         " A separate family is defined as who share the kitchen expenses and meals",
     "index": 0,
   };
+
+   Map<String, dynamic> travelWithOther = {
+    'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+    [
+      {"value": 'مع الأخرين', "isChick": false},
+      {"value": 'بمفردك', "isChick": false},
+    ],
+    "index": 0
+  };
+  Map<String, dynamic> purposeOfBeingThere = {
+    "QPurposeOfBeingThere": [
+      {"value": 'كنت في المنزل', "isChick": false},
+      {"value": 'كنت العطلات / الفندق', "isChick": false},
+      {"value": ' كنت في العمل', "isChick": false},
+      {"value": 'مكان تعليمي', "isChick": false},
+      {"value": 'موظف لصاحب العمل', "isChick": false},
+      {"value": 'التسوق', "isChick": false},
+      {"value": 'عمل شخصي', "isChick": false},
+      {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+      {"value": 'استجمام / وقت الفراغ', "isChick": false},
+      {"value": 'توص الى المدرسة', "isChick": false},
+    ],
+    "title": "?What was the purpose of being there",
+    "subTitle":
+    " A separate family is defined as who share the kitchen expenses and meals",
+    "chosenIndex": 0,
+  };
+  Map<String, dynamic> purposeOfBeingThere2 = {
+    "QPurposeOfBeingThere": [
+      {"value": 'كنت في المنزل', "isChick": false},
+      {"value": 'كنت العطلات / الفندق', "isChick": false},
+      {"value": ' كنت في العمل', "isChick": false},
+      {"value": 'مكان تعليمي', "isChick": false},
+      {"value": 'موظف لصاحب العمل', "isChick": false},
+      {"value": 'التسوق', "isChick": false},
+      {"value": 'عمل شخصي', "isChick": false},
+      {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+      {"value": 'استجمام / وقت الفراغ', "isChick": false},
+      {"value": 'توص الى المدرسة', "isChick": false},
+    ],
+    "title": "?What was the purpose of being there",
+    "subTitle":
+    " A separate family is defined as who share the kitchen expenses and meals",
+    "chosenIndex": 0,
+  };
   late bool showFriend = false;
   String? purposeTravel;
   TextEditingController departureTime = TextEditingController();
@@ -43,6 +88,8 @@ class TripsModel {
     required this.person,
     required this.chosenFriendPerson,
     this.type,
+    required this.purposeOfBeingThere,
+    required this.travelWithOther,
     this.travelTypeModel,
     this.typeTravel,
     this.otherWhereDidYouParkEditingControl,
@@ -52,6 +99,7 @@ class TripsModel {
     this.travelAloneHouseHold,
     this.arrivalDepartTime,
     this.travelWay,
+    required this.purposeOfBeingThere2,
     required this.departureTime,
     this.endingAddress,
     this.isTravelAlone,

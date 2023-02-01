@@ -24,7 +24,7 @@ class _TravelAloneState extends State<TravelAlone> {
     return Column(
       children: [
         ListViewCheckBoxOrange(
-          map: TripData.travelWithOther,
+          map: TripModeList.tripModeList[widget.index].travelWithOther,
           onChange: (ChangeBoxResponse r) {
             setState(() {
               if (r.val == "بمفردك") {
@@ -38,7 +38,7 @@ class _TravelAloneState extends State<TravelAlone> {
           },
           isListView: true,
           title: "7. هل ذهبت بمفردك أم مع آخرین؟",
-          question: TripData
+          question: TripModeList.tripModeList[widget.index]
               .travelWithOther[TripData.travelWithOther.keys.first]!
               .toList(),
           subTitle: "",

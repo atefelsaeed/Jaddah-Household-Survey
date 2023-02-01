@@ -8,10 +8,53 @@ import '../../../Models/Trips_SurveyModel/trips_model.dart';
 class TripModeList {
   static List<TripsModel> tripModeList = [
     TripsModel(
+      purposeOfBeingThere2: {
+        "TripReason": [
+          {"value": 'كنت في المنزل', "isChick": false},
+          {"value": 'كنت العطلات / الفندق', "isChick": false},
+          {"value": ' كنت في العمل', "isChick": false},
+          {"value": 'مكان تعليمي', "isChick": false},
+          {"value": 'موظف لصاحب العمل', "isChick": false},
+          {"value": 'التسوق', "isChick": false},
+          {"value": 'عمل شخصي', "isChick": false},
+          {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+          {"value": 'استجمام / وقت الفراغ', "isChick": false},
+          {"value": 'توص الى المدرسة', "isChick": false},
+        ],
+        "title": "?What was the purpose of being there",
+        "subTitle":
+        " A separate family is defined as who share the kitchen expenses and meals",
+        "chosenIndex": 0,
+      },
+      purposeOfBeingThere: {
+    "QPurposeOfBeingThere": [
+    {"value": 'كنت في المنزل', "isChick": false},
+    {"value": 'كنت العطلات / الفندق', "isChick": false},
+    {"value": ' كنت في العمل', "isChick": false},
+    {"value": 'مكان تعليمي', "isChick": false},
+    {"value": 'موظف لصاحب العمل', "isChick": false},
+    {"value": 'التسوق', "isChick": false},
+    {"value": 'عمل شخصي', "isChick": false},
+    {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+    {"value": 'استجمام / وقت الفراغ', "isChick": false},
+    {"value": 'توص الى المدرسة', "isChick": false},
+    ],
+    "title": "?What was the purpose of being there",
+    "subTitle":
+    " A separate family is defined as who share the kitchen expenses and meals",
+    "chosenIndex": 0,
+    },
       person: [],
-
+travelWithOther: {
+  'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+  [
+    {"value": 'مع الأخرين', "isChick": false},
+    {"value": 'بمفردك', "isChick": false},
+  ],
+  "index": 0
+},
       type: false,
-      isTravelAlone: false,
+
       tripReason: "",
       // person: [],
       purposeTravel: "",

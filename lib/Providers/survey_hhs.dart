@@ -36,6 +36,13 @@ class SurveyPTProvider extends SurveyProvider {
     // notifyListeners();
   }
 
+
+  LatLng? initLatLng;
+
+  set latLng(LatLng l) {
+    initLatLng = l;
+    notifyListeners();
+  }
   @override
   SurveyType get type => _data.type;
 
@@ -50,12 +57,7 @@ class SurveyPTProvider extends SurveyProvider {
     _data.header.locationLat = l;
     // notifyListeners();
   }
-  LatLng? initLatLng;
 
-  set latLng(LatLng l) {
-    initLatLng = l;
-    notifyListeners();
-  }
   @override
   double get headerLong => _data.header.locationLong;
 
