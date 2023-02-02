@@ -14,8 +14,8 @@ mixin SelectTimeData {
         h = 00;
       }
     }
-    // String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
-    String newTime = "${h == 0 ? "00" : h}";
+    String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
+    // String newTime = "${h == 0 ? "00" : h}";
     print('new time is');
     print(newTime);
 

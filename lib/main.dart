@@ -18,7 +18,6 @@ import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   print("something");
@@ -33,7 +32,9 @@ void main() {
   Intl.defaultLocale = 'ar_EG';
   runApp(const MyApp());
 }
-GlobalKey<NavigatorState> navigatorKey =GlobalKey();
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -62,7 +63,8 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => SurveyPTProvider(SurveyPT())),
         ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
-        ChangeNotifierProvider<UserSurveysProvider>(create: (ctx) => UserSurveysProvider()),
+        ChangeNotifierProvider<UserSurveysProvider>(
+            create: (ctx) => UserSurveysProvider()),
         ChangeNotifierProxyProvider<Auth, SurveysProvider>(
           create: (ctx) => SurveysProvider(),
           update: (ctx, _auth, _old) =>
@@ -74,9 +76,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Jaddah Household Survey',
         navigatorKey: navigatorKey,
         theme: ThemeData(
-          primaryColor: ColorManager.primaryColor,
-          fontFamily: 'Somar'
-        ),
+            primaryColor: ColorManager.primaryColor, fontFamily: 'Somar'),
         localizationsDelegates: const [
           GlobalCupertinoLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

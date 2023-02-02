@@ -63,7 +63,8 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
               readOnly: true,
               // set it true, so that user will not able to edit text
               onTap: () async {
-                if (TripModeList.tripModeList[widget.i].departureTime.text.isEmpty) {
+                if (TripModeList
+                    .tripModeList[widget.i].departureTime.text.isEmpty) {
                   showDialog<void>(
                       context: context,
                       builder: (BuildContext context) {
@@ -83,11 +84,28 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                   );
                   String arrival =
                       TripModeList.tripModeList[widget.i].departureTime.text;
-                  int newFromTime =
-                      int.parse(time12to24Format(arrival.toString()));
-                  int picked = int.parse(
-                      time12to24Format(pickedTime!.format(context).toString()));
-                  if (picked > newFromTime) {
+                  String x = time12to24Format(arrival.toString());
+
+                  int newFromTimeHour = int.parse(
+                      time12to24Format(arrival.toString()).split(":").first);
+                  int newFromTimeM = int.parse(
+                      time12to24Format(arrival.toString()).split(":").last);
+
+                  int pickedHour = int.parse(
+                      time12to24Format(pickedTime!.format(context).toString())
+                          .split(":")
+                          .first);
+                  int pickedM = int.parse(
+                      time12to24Format(pickedTime!.format(context).toString())
+                          .split(":")
+                          .last);
+
+                  if (pickedHour == newFromTimeHour && newFromTimeM < pickedM) {
+                    setState(() {
+                      widget.tripModel.arrivalDepartTime!.arriveDestinationTime
+                          .text = pickedTime.format(context); //s
+                    });
+                  } else if (pickedHour > newFromTimeHour) {
                     setState(() {
                       widget.tripModel.arrivalDepartTime!.arriveDestinationTime
                           .text = pickedTime.format(context); //s

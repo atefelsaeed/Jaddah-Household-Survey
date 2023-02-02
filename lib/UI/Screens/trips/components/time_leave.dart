@@ -29,7 +29,7 @@ class _TimeLeaveState extends State<TimeLeave> {
         SizedBox(
             width: width(context) * .45,
             child: TextGlobal(
-              text: "وقت الوصول",
+              text: "وقت المغادرة",
               fontSize: height(context) * .02,
               color: ColorManager.black,
             )),
