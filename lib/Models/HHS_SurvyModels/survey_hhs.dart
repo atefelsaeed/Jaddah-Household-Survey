@@ -19,7 +19,13 @@ class SurveyPT extends Survey {
     hhsNumberFloors: TextEditingController(),
     hhsNumberApartments: TextEditingController(),
   );
-  VehiclesModel vehiclesData = VehiclesModel(); //
+  VehiclesModel vehiclesData = VehiclesModel(
+    numberParcels: TextEditingController(),
+    numberFood: TextEditingController(),
+    numberGrocery: TextEditingController(),
+    numberOtherParcels: TextEditingController(),
+    numberParcelsDeliveries: TextEditingController(),
+  ); //
   List<PersonModel>? personData; //
   List<SeparateFamilies>? hhsSeparateFamilies;
   List<TripsModel>? tripsList; //
@@ -46,7 +52,7 @@ class SurveyPT extends Survey {
     data['headerZoneNumber'] = header.zoneNumber;
     data['hhsAddressLong'] = header.householdAddress.hhsAddressLong;
     data['hhsAddressLat'] = header.householdAddress.hhsAddressLat;
-    data['hhsPhone'] = header.householdAddress.hhsPhone;
+    data['hhsPhone'] = header.householdAddress.hhsPhone.text;
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;
@@ -109,7 +115,7 @@ class SurveyPT extends Survey {
     header.zoneNumber = json['headerZoneNumber'];
     header.householdAddress.hhsAddressLat = json['hhsAddressLat'];
     header.householdAddress.hhsAddressLong = json['hhsAddressLong'];
-    header.householdAddress.hhsPhone = json['hhsPhone'];
+    header.householdAddress.hhsPhone.text = json['hhsPhone'];
     //================householdQuestions================
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];

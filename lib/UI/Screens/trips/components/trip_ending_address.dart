@@ -5,6 +5,7 @@ import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/sizes.dart';
@@ -12,38 +13,37 @@ import '../../../Widgets/alert_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 
-class TripHoldAddress extends StatefulWidget {
-  final StartBeginningModel tripModel;
-  final String titel;
+class TripEndingAddress extends StatefulWidget {
+  final int index;
+  final String title;
 
-  const TripHoldAddress({
+  const TripEndingAddress({
     super.key,
-    required this.tripModel,
-    required this.titel,
+    required this.index,
+    required this.title,
   });
 
   @override
-  State<TripHoldAddress> createState() => _TripHoldAddressState();
+  State<TripEndingAddress> createState() => _TripEndingAddressState();
 }
 
-class _TripHoldAddressState extends State<TripHoldAddress> {
+class _TripEndingAddressState extends State<TripEndingAddress> {
   bool isHome = false;
 
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
+    var endingAddress = TripModeList.tripModeList[widget.index].endingAddress;
+
     // TODO: implement build
     return Column(
       children: [
         AppSize.spaceHeight2(context),
-        HeadlineTrip(text: widget.titel),
-        AppSize.spaceHeight1(context),
-        const MyDivider(),
+        HeadlineText(text: widget.title),
         Row(children: [
           TextGlobal(
             text: "المنزل",
-            //[index].title,
             fontSize: height(context) * .02,
             color: ColorManager.grayColor,
           ),
@@ -63,22 +63,22 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                 setState(() {
                   isHome = value!;
                   if (isHome == true) {
-                    widget.tripModel.tripAddressLong =
-                        surveyPt.hhsAddressLong ?? '';
-                    widget.tripModel.tripAddressLat =
-                        surveyPt.hhsAddressLat ?? '';
+                    endingAddress?.tripAddressLong =surveyPt.hhsAddressLong;
+                    endingAddress?.tripAddressLat = surveyPt.hhsAddressLat;
                   } else {
-                    widget.tripModel.tripAddressLong = "";
-                    widget.tripModel.tripAddressLat = "";
+                    endingAddress?.tripAddressLong =
+                        surveyPt.endingAddressLatLng?.longitude.toString();
+                    endingAddress?.tripAddressLat =
+                        surveyPt.endingAddressLatLng?.latitude.toString();
                   }
                 });
               })
         ]),
-         Column(
-                children: [
-                  isHome == true
-                      ? Container()
-                      :  Row(
+        Column(
+          children: [
+            isHome == true
+                ? Container()
+                : Row(
                     children: [
                       const Image(image: AssetImage(ImageAssets.locationIcon)),
                       AppSize.spaceWidth2(context),
@@ -88,18 +88,20 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                           onPressed: () {
                             alertMap(
                               (LatLng latLong) {
-                                surveyPt.latLng = latLong;
+                                surveyPt.endAddressLatLng = latLong;
                                 setState(() {
-                                  surveyPt.initLatLng?.latitude !=
+                                  surveyPt.endingAddressLatLng?.latitude !=
                                       latLong.latitude;
-                                  surveyPt.initLatLng?.longitude !=
+                                  surveyPt.endingAddressLatLng?.longitude !=
                                       latLong.longitude;
                                 });
                                 setState(() {
-                                  widget.tripModel.tripAddressLong =
-                                      surveyPt.initLatLng?.longitude.toString();
-                                  widget.tripModel.tripAddressLat =
-                                      surveyPt.initLatLng?.latitude.toString();
+                                  endingAddress?.tripAddressLong = surveyPt
+                                      .endingAddressLatLng?.longitude
+                                      .toString();
+                                  endingAddress?.tripAddressLat = surveyPt
+                                      .endingAddressLatLng?.latitude
+                                      .toString();
                                 });
                               },
                             );
@@ -111,21 +113,19 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
                           )),
                     ],
                   ),
-                  Row(
-                    children: [
-                      ItemTextSpan(
-                          title: "Lat",
-                          subTitle:
-                              surveyPt.initLatLng?.latitude.toString() ?? ""),
-                      AppSize.spaceWidth3(context),
-                      ItemTextSpan(
-                          title: "Long",
-                          subTitle:
-                              surveyPt.initLatLng?.longitude.toString() ?? ""),
-                    ],
-                  ),
-                ],
-              ),
+            Row(
+              children: [
+                ItemTextSpan(
+                    title: "Lat",
+                    subTitle: endingAddress?.tripAddressLat ?? ""),
+                AppSize.spaceWidth3(context),
+                ItemTextSpan(
+                    title: "Long",
+                    subTitle: endingAddress?.tripAddressLong ?? ""),
+              ],
+            ),
+          ],
+        ),
         AppSize.spaceHeight2(context),
       ],
     );

@@ -14,6 +14,13 @@ class UserSurveysProvider with ChangeNotifier {
     return _userSurveys;
   }
 
+  int? _totalUserSurveys;
+  int? _totalFinishedUserSurveys;
+
+  int? get totalUserSurveys {
+    _totalUserSurveys;
+  }
+
   List<UserSurveysModelData> get userSurveys {
     return List<UserSurveysModelData>.from(_userSurveysSurveysList)
         .reversed
@@ -67,7 +74,6 @@ class UserSurveysProvider with ChangeNotifier {
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         searchList.add(element);
-
       }
     }
     print('searchBLOK');

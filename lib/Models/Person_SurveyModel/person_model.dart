@@ -26,10 +26,11 @@ class PersonModel {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
+    data['personName'] = personName.text;
     data['personalHeadData'] = personalHeadData!.toJson();
     data['occupationModel'] = occupationModel!.toJson();
     data['personalQuestion'] = personalQuestion!.toJson();
-    data['personName'] = personName.text;
+
     return data;
   }
 }

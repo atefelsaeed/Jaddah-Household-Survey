@@ -4,9 +4,10 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import '../../../../Resources/colors.dart';
 import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
+import '../../trips/components/headline_trip.dart';
 
-class Q5 extends StatelessWidget {
-  const Q5({
+class HHSQ5 extends StatelessWidget {
+  const HHSQ5({
     super.key,
     required this.peopleAdults18,
     required this.peopleUnder18,
@@ -22,19 +23,9 @@ class Q5 extends StatelessWidget {
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Expanded(
-                child: TextGlobal(
-              text:
-                  "5.كم عدد أفراد عائلتك الذين يعيشون بشكل دائم في هذا المنزل؟",
-              fontSize: height(context) * .02,
-              color: ColorManager.black,
-            )),
-          ],
+        const HeadlineText(
+          text: "5.كم عدد أفراد عائلتك الذين يعيشون بشكل دائم في هذا المنزل؟",
         ),
-        AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -50,7 +41,8 @@ class Q5 extends StatelessWidget {
                   label: "",
                   controller: peopleUnder18,
                   widthForm: width(context) * .1,
-                  keyboardType: TextInputType.number,isNumber: true,
+                  keyboardType: TextInputType.number,
+                  isNumber: true,
                 ),
               ],
             ),
@@ -67,7 +59,8 @@ class Q5 extends StatelessWidget {
                   label: "",
                   controller: peopleAdults18,
                   widthForm: width(context) * .1,
-                  keyboardType: TextInputType.number,isNumber: true,
+                  keyboardType: TextInputType.number,
+                  isNumber: true,
                 ),
               ],
             ),

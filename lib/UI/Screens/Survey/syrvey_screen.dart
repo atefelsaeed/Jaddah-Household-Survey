@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/Data/HouseholdPart1/VechelisData/veh_mod
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q10.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q2.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/house_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
@@ -21,7 +22,7 @@ import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
 import 'Components/hhs_Q5.dart';
-import 'Components/hhs_Q6.dart';
+import 'Components/hhs_Q4.dart';
 import 'Components/hhs_Q81.dart';
 import 'Components/hhs_Q82.dart';
 import 'Components/hhs_Q83.dart';
@@ -42,8 +43,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
 
   final TextEditingController yes = TextEditingController();
-
-  final TextEditingController hhsPhone = TextEditingController();
 
   final TextEditingController peopleAdults18 = TextEditingController();
   final TextEditingController peopleUnder18 = TextEditingController();
@@ -132,15 +131,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   child: Column(
                     children: [
                       // ===== HouseHoldAddress ===
-                      HouseHoldAddress(
-                        phoneController: hhsPhone,
-                      ),
+                      HouseHoldAddress(),
                       AppSize.spaceHeight3(context),
                       const HouseHoldMember(),
                       // ====Question 1====
                       const HHSQ1(),
                       // ====Question 2====
                       const HHSQ2(),
+                      // ====Question 3====
                       ListViewCheckBoxOrange(
                         map: QuestionsData.qh4,
                         onChange: (ChangeBoxResponse r) {
@@ -165,21 +163,21 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         subTitle:
                             'يتم تعريف الأسرة المنفصلة على أنها من لا يشارك مصاريف المطبخ والوجبات مع العائلة الأخرى في نفس السكن)',
                       ),
-
                       AppSize.spaceHeight3(context),
-                      Q6(
+                      // ====Question 4====
+                      HHSQ4(
                         q6peopleAdults18: q6peopleAdults18,
                         q6peopleUnder18: q6peopleUnder18,
                         q6totalNumberOfVec: q6totalNumberOfVec,
                       ),
                       AppSize.spaceHeight2(context),
-
-                      Q5(
+                      // ====Question 5====
+                      HHSQ5(
                         peopleAdults18: peopleAdults18,
                         peopleUnder18: peopleUnder18,
                       ),
-
                       AppSize.spaceHeight3(context),
+                      // ====Question 6====
                       ListViewCheckBoxOrange(
                         map: QuestionsData.qh7,
                         onChange: (ChangeBoxResponse r) {
@@ -193,7 +191,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             .toList(),
                         subTitle: "",
                       ),
-
+                      // ====Question 7====
                       ListViewCheckBoxOrange(
                         map: QuestionsData.qh7_2,
                         onChange: (ChangeBoxResponse r) {
@@ -217,7 +215,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             .toList(),
                         subTitle: "",
                       ),
-
                       HhsStatic.householdQuestions.hhsIsDemolishedAreas == true
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -247,8 +244,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                               ],
                             )
                           : Container(),
-                      AppSize.spaceHeight2(context),
-                      AppSize.spaceHeight3(context),
+                      AppSize.spaceHeight5(context),
                       Q81(editingController3: editingController3Q81),
                       AppSize.spaceHeight3(context),
                       Q82(editingController3: editingController3Q82),
@@ -274,24 +270,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       ),
                       AppSize.spaceHeight3(context),
                       const NearestTransporter(),
-                      AppSize.spaceHeight3(context),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "10. خلال الأسبوع الماضي ، كم عدد الطلبات المنزلية والبقالة  والإمدادات الأخرى التي استلمتها أسرتك؟",
-                            style: TextStyle(fontSize: height(context) * 0.02),
-                          ),
-                          AppSize.spaceHeight2(context),
-                          MyTextForm(
-                            controller: VehModel.editingController3.totalNumber,
-                            label: "أدخل ",
-                            keyboardType: TextInputType.number,
-                            isNumber: true,
-                          ),
-                        ],
-                      ),
-                      AppSize.spaceHeight3(context),
+                      const HHSQ10(),
                       DefaultButton(
                         function: () async {
                           if (_key.currentState!.validate()) {
@@ -338,6 +317,17 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                     .hhsNumberBedRooms
                                     .text ??
                                 '';
+                            // ================ HHSQ10 ==============
+                            surveyPt.vehiclesData.numberParcels =
+                                VehModel.vehiclesModel.numberParcels;
+                            surveyPt.vehiclesData.numberParcelsDeliveries =
+                                VehModel.vehiclesModel.numberParcelsDeliveries;
+                            surveyPt.vehiclesData.numberFood =
+                                VehModel.vehiclesModel.numberFood;
+                            surveyPt.vehiclesData.numberGrocery =
+                                VehModel.vehiclesModel.numberGrocery;
+                            surveyPt.vehiclesData.numberOtherParcels =
+                                VehModel.vehiclesModel.numberOtherParcels;
 
                             surveyPt.hhsIsDwellingType = HhsStatic
                                 .householdQuestions.hhsIsDwelling; //solve
@@ -348,7 +338,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsNumberYearsInAddress = HhsStatic
                                 .householdQuestions
                                 .hhsNumberYearsInAddress; //solve
-                            surveyPt.hhsPhone = hhsPhone.text; //solve
+                            surveyPt.hhsPhone =
+                                HhsStatic.householdAddress.hhsPhone; //solve
 
                             surveyPt.hhsNumberAdults = peopleAdults18.text;
                             surveyPt.hhsNumberChildren =
@@ -379,7 +370,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.headerZoneNumber = '';
                             RegExp regex = RegExp(
                                 r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
-                            if (!regex.hasMatch(hhsPhone.text.trim())) {
+                            if (!regex.hasMatch(HhsStatic
+                                .householdAddress.hhsPhone.text
+                                .trim())) {
                               return Validator.showSnack(
                                   context, 'رقم الهاتف غير صحيح..!');
                             }

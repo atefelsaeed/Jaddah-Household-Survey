@@ -27,8 +27,11 @@ class EmptyHHS {
     HhsStatic.householdQuestions.hhsNumberYearsInAddress = '';
     HhsStatic.householdQuestions.hhsDwellingTypeOther!.text = '';
     HhsStatic.householdQuestions.hhsIsDwellingOther!.text = '';
-    HhsStatic.householdAddress =
-        HouseholdAddress(hhsPhone: "", hhsAddressLong: "", hhsAddressLat: "");
+    HhsStatic.householdAddress = HouseholdAddress(
+      hhsPhone: TextEditingController(),
+      hhsAddressLong: "",
+      hhsAddressLat: "",
+    );
     VehModel.editingController3.totalNumber.text = "";
     VehModel.nearestPublicTransporter = '';
   }

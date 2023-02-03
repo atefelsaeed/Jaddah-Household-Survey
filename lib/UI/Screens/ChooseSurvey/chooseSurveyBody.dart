@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
+import 'package:jaddah_household_survey/Resources/strings.dart';
 import 'package:jaddah_household_survey/UI/Screens/UserSurveys/userSurveys.dart';
 import 'package:provider/provider.dart';
 
@@ -99,7 +100,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
               ),
               AppSize.spaceHeight5(context),
               Text(
-                'إصدار التطبيق  (V.1)',
+                'إصدار التطبيق  ${AppStrings.appVersion}',
                 style: TextStyle(
                   color: ColorManager.wight,
                   fontSize: width(context) * .035,

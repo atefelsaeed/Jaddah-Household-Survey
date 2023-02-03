@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 class HouseholdAddress {
   String? hhsAddressLat;
   String? hhsAddressLong;
-  String? hhsPhone;
+  TextEditingController hhsPhone=TextEditingController();
 
   HouseholdAddress({
     this.hhsAddressLat,
     this.hhsAddressLong,
-    this.hhsPhone,
+    required this.hhsPhone,
   });
 }
 
@@ -98,7 +98,7 @@ class HhsStatic {
   static HouseholdAddress householdAddress = HouseholdAddress(
     hhsAddressLat: "",
     hhsAddressLong: "",
-    hhsPhone: "",
+    hhsPhone: TextEditingController(),
   );
   static HouseholdQuestions householdQuestions = HouseholdQuestions(
     hhsPedalCycles: BikesType("", "", ""),

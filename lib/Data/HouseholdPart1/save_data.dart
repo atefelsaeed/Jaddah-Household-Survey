@@ -12,8 +12,7 @@ class SaveVehiclesData {
     SurveyPTProvider survey =
         Provider.of<SurveyPTProvider>(context, listen: false);
     survey.vehiclesData.nearestBusStop = VehModel.nearestPublicTransporter;
-    survey.vehiclesData.numberParcels =
-        VehModel.editingController3.totalNumber.text;
+
     List<VehiclesBodyType> vehicles = [
       VehiclesBodyType(
         vehicleTypeName: 'سيارة صغيرة',

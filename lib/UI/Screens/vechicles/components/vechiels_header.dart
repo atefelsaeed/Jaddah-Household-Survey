@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
+import '../../../Widgets/headline.dart';
 
 class VehiclesHeader extends StatelessWidget {
   const VehiclesHeader({super.key});
@@ -14,19 +15,7 @@ class VehiclesHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            AppSize.spaceWidth1(context),
-            Expanded(
-              child: TextGlobal(
-                text: "المركبات في المنزل",
-                fontSize: height(context) * .023,
-                color: ColorManager.orangeTxtColor,
-              ),
-            ),
-          ],
-        ),
+        const HeadlinePerson(text: 'المركبات في المنزل'),
         AppSize.spaceHeight3(context),
         TextGlobal(
           text: " 1.  كم عدد المركبات الآلية المتوفرة للأسرة للاستخدام الشخصي؟",

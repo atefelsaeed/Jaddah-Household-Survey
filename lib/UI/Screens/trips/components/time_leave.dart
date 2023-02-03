@@ -22,10 +22,9 @@ class _TimeLeaveState extends State<TimeLeave> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HeadlineTrip(text:"3. في أي وقت غادرت؟"),
-        const MyDivider(),
-        AppSize.spaceHeight1(context),
+        const HeadlineText(text:"3. في أي وقت غادرت؟"),
         SizedBox(
             width: width(context) * .45,
             child: TextGlobal(

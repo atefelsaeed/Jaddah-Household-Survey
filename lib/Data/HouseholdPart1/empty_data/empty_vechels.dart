@@ -18,7 +18,11 @@ class EmptyVehicles {
     }
     VehModel.vehiclesModel = VehiclesModel(
       nearestBusStop: '',
-      numberParcels: '',
+      numberParcels: TextEditingController(),
+      numberFood: TextEditingController(),
+      numberGrocery: TextEditingController(),
+      numberOtherParcels: TextEditingController(),
+      numberParcelsDeliveries: TextEditingController(),
     );
     VehModel.fuelTypeCode = "";
     VehModel.ownerShipCode = "";

@@ -25,9 +25,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
     // TODO: implement build
     return Column(
       children: [
-        const HeadlineTrip(text: "8. سؤال متعلق بنوع المركبة"),
-        const MyDivider(),
-        AppSize.spaceHeight2(context),
+        const HeadlineText(text: "8. سؤال متعلق بنوع المركبة"),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

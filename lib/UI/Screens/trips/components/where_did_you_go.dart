@@ -29,7 +29,8 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
         addAutomaticKeepAlives: true,
         scrollDirection: Axis.vertical,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere2["TripReason"].length,
+        itemCount: TripModeList.tripModeList[widget.indexTripModel]
+            .purposeOfBeingThere2["TripReason"].length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           childAspectRatio: 4,
@@ -40,7 +41,8 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
             SizedBox(
               width: width(context) * .2,
               child: TextGlobal(
-                text: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere2["TripReason"][index]["value"],
+                text: TripModeList.tripModeList[widget.indexTripModel]
+                    .purposeOfBeingThere2["TripReason"][index]["value"],
                 //[index].title,
                 fontSize: height(context) * .02,
                 color: ColorManager.grayColor,
@@ -57,14 +59,17 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                 checkColor: ColorManager.whiteColor,
                 focusColor: ColorManager.orangeTxtColor,
                 activeColor: ColorManager.orangeTxtColor,
-                value: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere2["TripReason"][index]["isChick"],
+                value: TripModeList.tripModeList[widget.indexTripModel]
+                    .purposeOfBeingThere2["TripReason"][index]["isChick"],
                 onChanged: (bool? value) {
                   setState(() {
-                    TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere2["TripReason"][chosenindex]["isChick"] =
-                        false;
+                    TripModeList.tripModeList[widget.indexTripModel]
+                            .purposeOfBeingThere2["TripReason"][chosenindex]
+                        ["isChick"] = false;
                     chosenindex = index;
-                    TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere2["TripReason"][chosenindex]["isChick"] =
-                        value;
+                    TripModeList.tripModeList[widget.indexTripModel]
+                            .purposeOfBeingThere2["TripReason"][chosenindex]
+                        ["isChick"] = value;
                     TripModeList
                             .tripModeList[widget.indexTripModel].tripReason =
                         TripData.tripReason["TripReason"][chosenindex]["value"];

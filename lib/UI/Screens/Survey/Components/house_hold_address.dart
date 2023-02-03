@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Models/HHS_SurvyModels/hhs_models.dart';
+import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
-import '../../../Widgets/item_point.dart';
 import '../../../Widgets/text.dart';
 
 class HouseHoldAddress extends StatefulWidget {
-  final TextEditingController phoneController;
-
   const HouseHoldAddress({
     super.key,
-    required this.phoneController,
   });
 
   @override
@@ -24,27 +22,12 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
-    Provider.of<SurveyPTProvider>(context, listen: false);
+        Provider.of<SurveyPTProvider>(context, listen: false);
     // TODO: implement build
     return Column(
       children: [
         AppSize.spaceHeight2(context),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const ItemPoint(),
-            Row(
-              children: [
-                TextGlobal(
-                  text: "مسح يوميات الذاهاب المنزلي",
-                  fontSize: height(context) * .023,
-                  color: ColorManager.black,
-                ),
-              ],
-            ),
-            AppSize.spaceWidth2(context),
-          ],
-        ),
+        const HeadlinePerson(text: 'HHS-'),
         AppSize.spaceHeight1(context),
         const Divider(
           thickness: 1,
@@ -65,7 +48,7 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
                 AppSize.spaceHeight1(context),
                 MyTextForm(
                   label: "رقم الهاتف",
-                  controller: widget.phoneController,
+                  controller: HhsStatic.householdAddress.hhsPhone,
                   isNumber: true,
                   keyboardType: TextInputType.phone,
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
@@ -7,8 +8,8 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/custom_buttton.dart';
 import '../widgets/field_widget.dart';
 
-class Q6 extends StatefulWidget {
-  Q6({
+class HHSQ4 extends StatefulWidget {
+  HHSQ4({
     super.key,
     required this.q6peopleAdults18,
     required this.q6peopleUnder18,
@@ -26,29 +27,18 @@ class Q6 extends StatefulWidget {
   ];
 
   @override
-  State<Q6> createState() => _Q6State();
+  State<HHSQ4> createState() => _HHSQ4State();
 }
 
-class _Q6State extends State<Q6> {
+class _HHSQ4State extends State<HHSQ4> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Expanded(
-                child: TextGlobal(
-              text: "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟",
-              fontSize: height(context) * .02,
-              color: ColorManager.black,
-            )),
-          ],
-        ),
-        AppSize.spaceHeight1(context),
-        AppSize.spaceHeight2(context),
+        const HeadlineText(
+            text: "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟"),
         for (int i = 0; i < widget.q6peopleAdults18.length; i++)
           Column(
             children: [
@@ -77,13 +67,16 @@ class _Q6State extends State<Q6> {
             DefaultButton(
               function: () {
                 setState(() {
-                  int x=int.parse(  HhsStatic.householdQuestions.hhsNumberSeparateFamilies.toString() );
-                  print(HhsStatic.householdQuestions.hhsNumberSeparateFamilies.toString() );
-                 if(widget.q6peopleUnder18.length<x) {
-                   widget.q6peopleAdults18.add(TextEditingController());
-                   widget.q6peopleUnder18.add(TextEditingController());
-                   widget.q6totalNumberOfVec.add(TextEditingController());
-                 }
+                  int x = int.parse(HhsStatic
+                      .householdQuestions.hhsNumberSeparateFamilies
+                      .toString());
+                  print(HhsStatic.householdQuestions.hhsNumberSeparateFamilies
+                      .toString());
+                  if (widget.q6peopleUnder18.length < x) {
+                    widget.q6peopleAdults18.add(TextEditingController());
+                    widget.q6peopleUnder18.add(TextEditingController());
+                    widget.q6totalNumberOfVec.add(TextEditingController());
+                  }
                 });
               },
               isWidget: true,

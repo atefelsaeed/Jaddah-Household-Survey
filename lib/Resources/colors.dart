@@ -5,6 +5,7 @@ class ColorManager {
   static Color yellowLiner = HexColor.fromHex('#C59E24');
   static Color grayLiner = HexColor.fromHex('#F2F2F2');
   static Color grayText = HexColor.fromHex('#161F3D');
+  static Color blackText = HexColor.fromHex('#403D39');
   static Color black = Colors.black;
   static Color whiteLiner = HexColor.fromHex('#F6F6F6');
   static Color backgroundColor = HexColor.fromHex('#F6FCFE');

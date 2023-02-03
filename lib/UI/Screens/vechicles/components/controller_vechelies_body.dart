@@ -22,189 +22,185 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
     // TODO: implement build
     return Column(
       children: [
-        AppSize.spaceHeight1(context),
-        AppSize.spaceHeight1(context),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: GridView.builder(
-            primary: true,
-            shrinkWrap: true,
-            addAutomaticKeepAlives: true,
-            scrollDirection: Axis.vertical,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 6,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, childAspectRatio: 2),
-            itemBuilder: (context, index) => SizedBox(
-              width: width(context) / 2,
-              child: Row(children: [
-                Expanded(
-                  flex: 1,
-                  child: TextGlobal(
-                    text: VehiclesData.vecModel[index].title,
-                    fontSize: height(context) * .02,
-                    color: ColorManager.grayColor,
-                  ),
+        AppSize.spaceHeight2(context),
+        GridView.builder(
+          primary: true,
+          shrinkWrap: true,
+          addAutomaticKeepAlives: true,
+          scrollDirection: Axis.vertical,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: 6,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, childAspectRatio: 2),
+          itemBuilder: (context, index) => SizedBox(
+            width: width(context) / 2,
+            child: Row(children: [
+              Expanded(
+                flex: 1,
+                child: TextGlobal(
+                  text: VehiclesData.vecModel[index].title,
+                  fontSize: height(context) * .02,
+                  color: ColorManager.grayColor,
                 ),
-                Checkbox(
-                    side: BorderSide(
-                      color: ColorManager.orangeTxtColor,
-                      width: 1.5,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    checkColor: ColorManager.whiteColor,
-                    focusColor: ColorManager.orangeTxtColor,
-                    activeColor: ColorManager.orangeTxtColor,
-                    value: VehiclesData.vecModel[index].isChosen,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        VehiclesData.vecModel[index].isChosen = value!;
-                        if (VehiclesData.vecModel[index].isChosen == false) {
-                          VehiclesData.vecModel[index].textEditingController
-                              .text = 0.toString();
+              ),
+              Checkbox(
+                  side: BorderSide(
+                    color: ColorManager.orangeTxtColor,
+                    width: 1.5,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  checkColor: ColorManager.whiteColor,
+                  focusColor: ColorManager.orangeTxtColor,
+                  activeColor: ColorManager.orangeTxtColor,
+                  value: VehiclesData.vecModel[index].isChosen,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      VehiclesData.vecModel[index].isChosen = value!;
+                      if (VehiclesData.vecModel[index].isChosen == false) {
+                        VehiclesData.vecModel[index].textEditingController
+                            .text = 0.toString();
+                      }
+                      if (value == false) {
+                        switch (VehiclesData.vecModel[index].title) {
+                          case "سيارة صغيرة":
+                            VehModel.vecCar.clear();
+                            break;
+                          case "سيارة كبيرة  ":
+                            VehModel.largeCar.clear();
+                            break;
+                          case "شاحنة":
+                            VehModel.vecVan.clear();
+                            break;
+                          case " اسكوتر":
+                            VehModel.eScooter.clear();
+                            break;
+                          case "ونيت":
+                            VehModel.vecWanet.clear();
+                            break;
+                          case "دراجة نارية":
+                            VehModel.pickUp.clear();
+                            break;
                         }
-                        if (value == false) {
-                          switch (VehiclesData.vecModel[index].title) {
-                            case "سيارة صغيرة":
-                              VehModel.vecCar.clear();
-                              break;
-                            case "سيارة كبيرة  ":
-                              VehModel.largeCar.clear();
-                              break;
-                            case "شاحنة":
-                              VehModel.vecVan.clear();
-                              break;
-                            case " اسكوتر":
-                              VehModel.eScooter.clear();
-                              break;
-                            case "ونيت":
-                              VehModel.vecWanet.clear();
-                              break;
-                            case "دراجة نارية":
-                              VehModel.pickUp.clear();
-                              break;
-                          }
-                        }
-                        print(value);
-                      });
-                    }),
-                VehiclesData.vecModel[index].isChosen == true
-                    ? MyTextForm(
-                        keyboardType: TextInputType.number,
-                        isNumber: true,
-                        widthForm: width(context) * .120,
-                        controller:
-                            VehiclesData.vecModel[index].textEditingController,
-                        label: '',
-                        onChanged: (d) {
-                          print(d);
-                          setState(() {
-                            if (d!.isNotEmpty) {
-                              switch (VehiclesData.vecModel[index].title) {
-                                case "سيارة صغيرة":
-                                  VehModel.vecCar = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecCar.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
-                                  }
-                                  break;
-                                case "سيارة كبيرة  ":
-                                  VehModel.largeCar = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.largeCar.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
-                                  }
-                                  break;
-                                case "ونيت":
-                                  VehModel.vecWanet = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecWanet.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
-                                  }
-                                  break;
-                                case "شاحنة":
-                                  VehModel.vecVan = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecVan.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
-                                  }
-                                  break;
-                                case "دراجة نارية":
-                                  VehModel.pickUp = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.pickUp.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
-                                  }
-                                  break;
-                                case " اسكوتر":
-                                  VehModel.eScooter = [];
-                                  for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.eScooter.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
-                                  }
-                                  break;
-                              }
-                            } else {
-                              switch (VehiclesData.vecModel[index].title) {
-                                case "سيارة صغيرة":
-                                  VehModel.vecCar.clear();
-                                  break;
-                                case "سيارة كبيرة  ":
-                                  VehModel.largeCar.clear();
-                                  break;
-                                case "شاحنة":
-                                  VehModel.vecVan.clear();
-                                  break;
-                                case " اسكوتر":
-                                  VehModel.eScooter.clear();
-                                  break;
-                                case "ونيت":
-                                  VehModel.vecWanet.clear();
-                                  break;
-                                case "دراجة نارية":
-                                  VehModel.pickUp.clear();
-                                  break;
-                              }
+                      }
+                      print(value);
+                    });
+                  }),
+              VehiclesData.vecModel[index].isChosen == true
+                  ? MyTextForm(
+                      keyboardType: TextInputType.number,
+                      isNumber: true,
+                      widthForm: width(context) * .120,
+                      controller:
+                          VehiclesData.vecModel[index].textEditingController,
+                      label: '',
+                      onChanged: (d) {
+                        print(d);
+                        setState(() {
+                          if (d!.isNotEmpty) {
+                            switch (VehiclesData.vecModel[index].title) {
+                              case "سيارة صغيرة":
+                                VehModel.vecCar = [];
+                                for (int i = 0; i < int.parse(d); i++) {
+                                  VehModel.vecCar.add(
+                                    VehicleBodyDetails(
+                                      vehicleParking: TextEditingController(),
+                                      vehicleOwnership: TextEditingController(),
+                                      vehicleFuelType: TextEditingController(),
+                                    ),
+                                  );
+                                }
+                                break;
+                              case "سيارة كبيرة  ":
+                                VehModel.largeCar = [];
+                                for (int i = 0; i < int.parse(d); i++) {
+                                  VehModel.largeCar.add(
+                                    VehicleBodyDetails(
+                                      vehicleParking: TextEditingController(),
+                                      vehicleOwnership: TextEditingController(),
+                                      vehicleFuelType: TextEditingController(),
+                                    ),
+                                  );
+                                }
+                                break;
+                              case "ونيت":
+                                VehModel.vecWanet = [];
+                                for (int i = 0; i < int.parse(d); i++) {
+                                  VehModel.vecWanet.add(
+                                    VehicleBodyDetails(
+                                      vehicleParking: TextEditingController(),
+                                      vehicleOwnership: TextEditingController(),
+                                      vehicleFuelType: TextEditingController(),
+                                    ),
+                                  );
+                                }
+                                break;
+                              case "شاحنة":
+                                VehModel.vecVan = [];
+                                for (int i = 0; i < int.parse(d); i++) {
+                                  VehModel.vecVan.add(
+                                    VehicleBodyDetails(
+                                      vehicleParking: TextEditingController(),
+                                      vehicleOwnership: TextEditingController(),
+                                      vehicleFuelType: TextEditingController(),
+                                    ),
+                                  );
+                                }
+                                break;
+                              case "دراجة نارية":
+                                VehModel.pickUp = [];
+                                for (int i = 0; i < int.parse(d); i++) {
+                                  VehModel.pickUp.add(
+                                    VehicleBodyDetails(
+                                      vehicleParking: TextEditingController(),
+                                      vehicleOwnership: TextEditingController(),
+                                      vehicleFuelType: TextEditingController(),
+                                    ),
+                                  );
+                                }
+                                break;
+                              case " اسكوتر":
+                                VehModel.eScooter = [];
+                                for (int i = 0; i < int.parse(d); i++) {
+                                  VehModel.eScooter.add(
+                                    VehicleBodyDetails(
+                                      vehicleParking: TextEditingController(),
+                                      vehicleOwnership: TextEditingController(),
+                                      vehicleFuelType: TextEditingController(),
+                                    ),
+                                  );
+                                }
+                                break;
                             }
-                          });
-                        },
-                        onTap: () {},
-                      )
-                    : Container(),
-              ]),
-            ),
+                          } else {
+                            switch (VehiclesData.vecModel[index].title) {
+                              case "سيارة صغيرة":
+                                VehModel.vecCar.clear();
+                                break;
+                              case "سيارة كبيرة  ":
+                                VehModel.largeCar.clear();
+                                break;
+                              case "شاحنة":
+                                VehModel.vecVan.clear();
+                                break;
+                              case " اسكوتر":
+                                VehModel.eScooter.clear();
+                                break;
+                              case "ونيت":
+                                VehModel.vecWanet.clear();
+                                break;
+                              case "دراجة نارية":
+                                VehModel.pickUp.clear();
+                                break;
+                            }
+                          }
+                        });
+                      },
+                      onTap: () {},
+                    )
+                  : Container(),
+            ]),
           ),
         ),
         for (int i = 0; i < VehModel.vecCar.length; i++)

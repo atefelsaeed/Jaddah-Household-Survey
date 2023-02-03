@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '/providers/survey.dart';
 import '../Data/Enums/hhs_enums.dart';
 import 'HHS_SurvyModels/hhs_models.dart';
@@ -11,7 +13,8 @@ class HeaderBase {
   String? districtName;
   late String zoneNumber;
   late int empNumber;
-  HouseholdAddress householdAddress = HouseholdAddress();
+  HouseholdAddress householdAddress =
+      HouseholdAddress(hhsPhone: TextEditingController());
 
   HeaderBase();
 }

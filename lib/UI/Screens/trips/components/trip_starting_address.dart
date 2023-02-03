@@ -1,0 +1,136 @@
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jaddah_household_survey/Resources/assets_manager.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import '../../../../Models/Trips_SurveyModel/start_beginning_model.dart';
+import '../../../../Providers/survey_hhs.dart';
+import '../../../../Resources/sizes.dart';
+import '../../../Widgets/alert_map.dart';
+import '../../../Widgets/item_text_span.dart';
+import '../../../Widgets/text.dart';
+
+class TripStartingAddress extends StatefulWidget {
+  final int index;
+  final String title;
+
+  const TripStartingAddress({
+    super.key,
+    required this.index,
+    required this.title,
+  });
+
+  @override
+  State<TripStartingAddress> createState() => _TripStartingAddressState();
+}
+
+class _TripStartingAddressState extends State<TripStartingAddress> {
+  bool isHome = false;
+
+  @override
+  Widget build(BuildContext context) {
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+    var startBeginningModel =
+        TripModeList.tripModeList[widget.index].startBeginningModel;
+
+    // TODO: implement build
+    return Column(
+      children: [
+        AppSize.spaceHeight2(context),
+        HeadlineText(text: widget.title),
+        Row(children: [
+          TextGlobal(
+            text: "المنزل",
+            fontSize: height(context) * .02,
+            color: ColorManager.grayColor,
+          ),
+          Checkbox(
+              side: BorderSide(
+                color: ColorManager.orangeTxtColor,
+                width: 1.5,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              checkColor: ColorManager.whiteColor,
+              focusColor: ColorManager.orangeTxtColor,
+              activeColor: ColorManager.orangeTxtColor,
+              value: isHome,
+              onChanged: (bool? value) {
+                setState(() {
+                  isHome = value!;
+                  if (isHome == true) {
+                    startBeginningModel?.tripAddressLong =
+                        surveyPt.hhsAddressLong;
+                    startBeginningModel?.tripAddressLat =
+                        surveyPt.hhsAddressLat;
+                  } else {
+                    startBeginningModel?.tripAddressLong =
+                        surveyPt.startingAddressLatLng?.longitude.toString();
+                    startBeginningModel?.tripAddressLat =
+                        surveyPt.startingAddressLatLng?.latitude.toString();
+                  }
+                });
+              })
+        ]),
+        Column(
+          children: [
+            isHome == true
+                ? Container()
+                : Row(
+                    children: [
+                      const Image(image: AssetImage(ImageAssets.locationIcon)),
+                      AppSize.spaceWidth2(context),
+                      const Text('الإحداثيات'),
+                      const Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            alertMap(
+                              (LatLng latLong) {
+                                surveyPt.startAddressLatLng = latLong;
+                                setState(() {
+                                  surveyPt.startingAddressLatLng?.latitude !=
+                                      latLong.latitude;
+                                  surveyPt.startingAddressLatLng?.longitude !=
+                                      latLong.longitude;
+                                });
+                                setState(() {
+                                  startBeginningModel?.tripAddressLong =
+                                      surveyPt.startingAddressLatLng?.longitude
+                                          .toString();
+                                  startBeginningModel?.tripAddressLat = surveyPt
+                                      .startingAddressLatLng?.latitude
+                                      .toString();
+                                });
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            Icons.pin_drop,
+                            color: ColorManager.primaryColor,
+                            size: width(context) * .1,
+                          )),
+                    ],
+                  ),
+            Row(
+              children: [
+                ItemTextSpan(
+                    title: "Lat",
+                    subTitle: startBeginningModel?.tripAddressLat ?? ""),
+                AppSize.spaceWidth3(context),
+                ItemTextSpan(
+                    title: "Long",
+                    subTitle: startBeginningModel?.tripAddressLong ?? ""),
+              ],
+            ),
+          ],
+        ),
+        AppSize.spaceHeight2(context),
+      ],
+    );
+  }
+}

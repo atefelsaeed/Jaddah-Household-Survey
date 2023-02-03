@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
@@ -45,6 +46,7 @@ abstract class SurveyProvider with ChangeNotifier {
     final res;
     try {
       print('push_url.= $push_url');
+      log("Body Data", error: json.encode(data.toJson()));
       res = await APIHelper.postData(
         url: push_url,
         body: json.encode(data.toJson()),
@@ -128,9 +130,9 @@ abstract class SurveyProvider with ChangeNotifier {
 
   set hhsAddressLong(String? l);
 
-  String? get hhsPhone;
+  TextEditingController get hhsPhone;
 
-  set hhsPhone(String? l);
+  set hhsPhone(TextEditingController l);
 
   ///=========HouseholdQuestions=================
   String? get hhsDwellingType;

@@ -5,7 +5,7 @@ import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.d
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/default_entry.dart';
-import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
+import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -39,10 +39,9 @@ class _PersonScreenState extends State<PersonScreen> {
       peopleUnder18: TextEditingController(),
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
-
+  var base = PersonModelList.personModelList;
   @override
   Widget build(BuildContext context) {
-    var base = PersonModelList.personModelList;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -84,16 +83,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                     });
                                   },
                                 ),
-                                /*  Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    TextForm(
-                                      controller: PersonModelList.personModelList[i].personName,
-                                      text: "اسم الشخص",
-                                      label: "اسم الشخص",
-                                    )
-                                  ],
-                                ),*/
                                 AppSize.spaceHeight2(context),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -255,10 +244,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                                               value[inr]
                                                                   ["type"];
                                                         });
-                                                        print(base[i]
-                                                                .occupationModel!
-                                                                .isEmployee =
-                                                            value[inr]["type"]);
                                                       }
                                                     }
                                                   });

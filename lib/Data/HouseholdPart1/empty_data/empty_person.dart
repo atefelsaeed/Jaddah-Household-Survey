@@ -4,6 +4,7 @@ class EmptyPerson{
   static emptyPerson(){
     for (var element in PersonModelList.personModelList) {
       element.personalHeadData!.age.text = '';
+      element.personName.text = '';
       element.personalHeadData!.nationality.text = '';
       element.personalHeadData!.nationalityType = '';
       element.personalHeadData!.relationshipHeadHHS = '';

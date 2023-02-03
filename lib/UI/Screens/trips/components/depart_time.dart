@@ -41,9 +41,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
     // TODO: implement build
     return Column(
       children: [
-        const HeadlineTrip(text: "9. في أي وقت وصلت؟"),
-        const MyDivider(),
-        AppSize.spaceHeight2(context),
+        const HeadlineText(text: "9. في أي وقت وصلت؟"),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

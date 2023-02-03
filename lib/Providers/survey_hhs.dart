@@ -37,10 +37,16 @@ class SurveyPTProvider extends SurveyProvider {
     // notifyListeners();
   }
 
-  LatLng? initLatLng;
+  LatLng? startingAddressLatLng;
+  LatLng? endingAddressLatLng;
 
-  set latLng(LatLng l) {
-    initLatLng = l;
+  set startAddressLatLng(LatLng l) {
+    startingAddressLatLng = l;
+    notifyListeners();
+  }
+
+  set endAddressLatLng(LatLng l) {
+    endingAddressLatLng = l;
     notifyListeners();
   }
 
@@ -132,10 +138,10 @@ class SurveyPTProvider extends SurveyProvider {
   }
 
   @override
-  String? get hhsPhone => _data.header.householdAddress.hhsPhone;
+  TextEditingController get hhsPhone => _data.header.householdAddress.hhsPhone;
 
   @override
-  set hhsPhone(String? i) {
+  set hhsPhone(TextEditingController i) {
     _data.header.householdAddress.hhsPhone = i;
     // notifyListeners();
   }

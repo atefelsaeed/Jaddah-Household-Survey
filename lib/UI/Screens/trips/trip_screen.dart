@@ -6,9 +6,10 @@ import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/person/components/headline.dart';
+import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
 import 'components/purpose_of)being.dart';
 import 'components/time_leave.dart';
-import 'components/trip_hold_address.dart';
+import 'components/trip_starting_address.dart';
 import 'components/where_did_you_go.dart';
 
 List personTripList = [""];
@@ -201,15 +202,13 @@ class _TripScreenState extends State<TripScreen> {
                                   )
                                 ],
                               ),
-                              TripHoldAddress(
-                                tripModel: TripModeList
-                                    .tripModeList[i].startBeginningModel!,
-                                titel: "1. من أین بدأت الیوم؟",
+                              TripStartingAddress(
+                                index: i,
+                                title: "1. من أین بدأت الیوم؟",
                               ),
                               AppSize.spaceHeight3(context),
-                              const HeadlineTrip(
+                              const HeadlineText(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
-                              const MyDivider(),
                               PurposeOfTheBeing(
                                 indexTripModel: i,
                               ),
@@ -219,17 +218,14 @@ class _TripScreenState extends State<TripScreen> {
                                     TripModeList.tripModeList[i].departureTime,
                               ),
                               AppSize.spaceHeight3(context),
-                              TripHoldAddress(
-                                tripModel:
-                                    TripModeList.tripModeList[i].endingAddress!,
-                                titel: "4. الى أي عنوان ذھبت؟",
+                              TripEndingAddress(
+                                title: "4. الى أي عنوان ذھبت؟",
+                                index: i,
                               ),
                               AppSize.spaceHeight2(context),
-                              const HeadlineTrip(
+                              const HeadlineText(
                                   text:
                                       "5. ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
-                              AppSize.spaceHeight2(context),
-                              const MyDivider(),
                               WhyDidYouGo(
                                 indexTripModel: i,
                               ),
@@ -266,49 +262,80 @@ class _TripScreenState extends State<TripScreen> {
                               purposeOfBeingThere2: {
                                 "TripReason": [
                                   {"value": 'كنت في المنزل', "isChick": false},
-                                  {"value": 'كنت العطلات / الفندق', "isChick": false},
+                                  {
+                                    "value": 'كنت العطلات / الفندق',
+                                    "isChick": false
+                                  },
                                   {"value": ' كنت في العمل', "isChick": false},
                                   {"value": 'مكان تعليمي', "isChick": false},
-                                  {"value": 'موظف لصاحب العمل', "isChick": false},
+                                  {
+                                    "value": 'موظف لصاحب العمل',
+                                    "isChick": false
+                                  },
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
-                                  {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
-                                  {"value": 'استجمام / وقت الفراغ', "isChick": false},
-                                  {"value": 'توص الى المدرسة', "isChick": false},
+                                  {
+                                    "value": 'زیارة الأصدقاء / الأقار',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'استجمام / وقت الفراغ',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى المدرسة',
+                                    "isChick": false
+                                  },
                                 ],
                                 "title": "?What was the purpose of being there",
                                 "subTitle":
-                                " A separate family is defined as who share the kitchen expenses and meals",
+                                    " A separate family is defined as who share the kitchen expenses and meals",
                                 "chosenIndex": 0,
                               },
                               purposeOfBeingThere: {
-                            "QPurposeOfBeingThere": [
-                            {"value": 'كنت في المنزل', "isChick": false},
-                            {"value": 'كنت العطلات / الفندق', "isChick": false},
-                            {"value": ' كنت في العمل', "isChick": false},
-                            {"value": 'مكان تعليمي', "isChick": false},
-                            {"value": 'موظف لصاحب العمل', "isChick": false},
-                            {"value": 'التسوق', "isChick": false},
-                            {"value": 'عمل شخصي', "isChick": false},
-                            {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
-                            {"value": 'استجمام / وقت الفراغ', "isChick": false},
-                            {"value": 'توص الى المدرسة', "isChick": false},
-                            ],
-                            "title": "?What was the purpose of being there",
-                            "subTitle":
-                            " A separate family is defined as who share the kitchen expenses and meals",
-                            "chosenIndex": 0,
-                            },
+                                "QPurposeOfBeingThere": [
+                                  {"value": 'كنت في المنزل', "isChick": false},
+                                  {
+                                    "value": 'كنت العطلات / الفندق',
+                                    "isChick": false
+                                  },
+                                  {"value": ' كنت في العمل', "isChick": false},
+                                  {"value": 'مكان تعليمي', "isChick": false},
+                                  {
+                                    "value": 'موظف لصاحب العمل',
+                                    "isChick": false
+                                  },
+                                  {"value": 'التسوق', "isChick": false},
+                                  {"value": 'عمل شخصي', "isChick": false},
+                                  {
+                                    "value": 'زیارة الأصدقاء / الأقار',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'استجمام / وقت الفراغ',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى المدرسة',
+                                    "isChick": false
+                                  },
+                                ],
+                                "title": "?What was the purpose of being there",
+                                "subTitle":
+                                    " A separate family is defined as who share the kitchen expenses and meals",
+                                "chosenIndex": 0,
+                              },
                               person: TripModeList.tripModeList[0].person,
-travelWithOther:  {
-  'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
-  [
-    {"value": 'مع الأخرين', "isChick": false},
-    {"value": 'بمفردك', "isChick": false},
-  ],
-  "index": 0
-},
-                              type: false, tripReason: "",
+                              travelWithOther: {
+                                'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+                                    [
+                                  {"value": 'مع الأخرين', "isChick": false},
+                                  {"value": 'بمفردك', "isChick": false},
+                                ],
+                                "index": 0
+                              },
+                              type: false,
+                              tripReason: "",
                               taxiTravelTypeEditingControl:
                                   TextEditingController(),
                               //whereDidYouGo

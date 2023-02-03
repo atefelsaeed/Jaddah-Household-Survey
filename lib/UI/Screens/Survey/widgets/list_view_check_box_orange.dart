@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
@@ -34,18 +35,7 @@ class _ListViewCheckBoxOrangeState extends State<ListViewCheckBoxOrange> {
     // TODO: implement build
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Expanded(
-              child: TextGlobal(
-                text: widget.title,
-                fontSize: height(context) * .02,
-                color: ColorManager.black,
-              ),
-            ),
-          ],
-        ),
+        HeadlineText(text: widget.title),
         AppSize.spaceHeight05(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

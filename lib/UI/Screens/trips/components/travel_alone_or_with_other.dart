@@ -25,9 +25,6 @@ class _TravelAloneState extends State<TravelAlone> {
     // TODO: implement build
     return Column(
       children: [
-        const HeadlineTrip(text:"7. هل ذهبت بمفردك أم مع آخرین؟"),
-        const MyDivider(),
-        AppSize.spaceHeight2(context),
         ListViewCheckBoxOrange(
           map: TripModeList.tripModeList[widget.index].travelWithOther,
           onChange: (ChangeBoxResponse r) {

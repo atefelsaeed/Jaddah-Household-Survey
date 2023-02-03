@@ -25,9 +25,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
     TextEditingController mainModeController = TextEditingController();
     return Column(
       children: [
-        const HeadlineTrip(text: "6. كیف ذهبت ؟"),
-        const MyDivider(),
-        AppSize.spaceHeight2(context),
+        const HeadlineText(text: "6. كیف ذهبت ؟"),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

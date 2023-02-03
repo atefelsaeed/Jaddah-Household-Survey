@@ -37,8 +37,8 @@ class CheckHHSValidation {
       return Validator.showSnack(context,
           ".يجب إخيار ! 9.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟");
     } else {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const VehiclesScreen()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => VehiclesScreen()));
     }
   }
 }
