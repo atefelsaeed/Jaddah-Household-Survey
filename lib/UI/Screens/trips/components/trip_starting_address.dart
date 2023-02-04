@@ -45,7 +45,7 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
         Row(children: [
           TextGlobal(
             text: "المنزل",
-            fontSize: height(context) * .02,
+            fontSize: width(context) * .03,
             color: ColorManager.grayColor,
           ),
           Checkbox(

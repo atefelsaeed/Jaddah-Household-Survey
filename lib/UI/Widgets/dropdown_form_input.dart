@@ -139,7 +139,6 @@ class DropDownFormInput<T> extends StatelessWidget {
           SizedBox(
             width: width(context) * .45 - 10,
             height: height(context) * .1,
-
             child: Directionality(
               textDirection: TextDirection.ltr,
               child: InputDecorator(
@@ -155,7 +154,7 @@ class DropDownFormInput<T> extends StatelessWidget {
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
-                        // field.didChange(newValue);
+                        field.didChange(newValue);
 
                         if (onChange != null) {
                           onChange!(newValue);
@@ -165,7 +164,7 @@ class DropDownFormInput<T> extends StatelessWidget {
                           .map(
                             (T v) => DropdownMenuItem<T>(
                               value: v,
-                              child: Text(v.toString(),style: const TextStyle(height: 1.5),),
+                              child: Text(v.toString()),
                             ),
                           )
                           .toList(),

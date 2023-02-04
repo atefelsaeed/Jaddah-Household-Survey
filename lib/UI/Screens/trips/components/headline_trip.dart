@@ -22,7 +22,6 @@ class HeadlineText extends StatelessWidget {
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
-
               children: [
                 CircleAvatar(
                     backgroundColor: ColorManager.black,
@@ -37,14 +36,13 @@ class HeadlineText extends StatelessWidget {
             ),
             AppSize.spaceWidth1(context),
             SizedBox(
-              width: width(context)*.85,
+              width: width(context)*.8,
               child: TextGlobal(
                 text: text,
-                fontSize:width(context) * .021,
+                fontSize:width(context) * .022,
                 color: ColorManager.black,
               ),
             ),
-            AppSize.spaceWidth2(context),
           ],
         ),
         const MyDivider(),

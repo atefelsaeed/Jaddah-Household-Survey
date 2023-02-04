@@ -23,6 +23,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
     return Column(
       children: [
         AppSize.spaceHeight2(context),
+        AppSize.spaceHeight1(context),
         GridView.builder(
           primary: true,
           shrinkWrap: true,

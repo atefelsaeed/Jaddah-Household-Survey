@@ -21,59 +21,62 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: GridView.builder(
-        primary: true,
-        shrinkWrap: true,
-        addAutomaticKeepAlives: true,
-        scrollDirection: Axis.vertical,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere["QPurposeOfBeingThere"].length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 4),
-        itemBuilder: (context, index) => SizedBox(
-          width: width(context) / 2,
-          child: Row(children: [
-            SizedBox(
-              width: width(context) * .23,
-              child: TextGlobal(
-                text: TripModeList.tripModeList[widget.indexTripModel].purposeOfBeingThere["QPurposeOfBeingThere"]
-                    [index]["value"],
-                //[index].title,
-                fontSize: height(context) * .02,
-                color: ColorManager.grayColor,
-              ),
+    return GridView.builder(
+      primary: true,
+      shrinkWrap: true,
+      addAutomaticKeepAlives: true,
+      scrollDirection: Axis.vertical,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: TripModeList.tripModeList[widget.indexTripModel]
+          .purposeOfBeingThere["QPurposeOfBeingThere"].length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3, childAspectRatio: 4),
+      itemBuilder: (context, index) => SizedBox(
+        width: width(context) / 2,
+        child: Row(children: [
+          SizedBox(
+            width: width(context) * .2,
+            child: TextGlobal(
+              text: TripModeList.tripModeList[widget.indexTripModel]
+                      .purposeOfBeingThere["QPurposeOfBeingThere"][index]
+                  ["value"],
+              //[index].title,
+              fontSize: width(context) * .02,
+              color: ColorManager.grayColor,
             ),
-            Checkbox(
-                side: BorderSide(
-                  color: ColorManager.orangeTxtColor,
-                  width: 1.5,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                checkColor: ColorManager.whiteColor,
-                focusColor: ColorManager.orangeTxtColor,
-                activeColor: ColorManager.orangeTxtColor,
-                value:TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
-                    [index]["isChick"],
-                onChanged: (bool? value) {
-                  print(value);
-                  setState(() {
-                    TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
-                        [chosenIndex]["isChick"] = false;
-                    chosenIndex = index;
-                    TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
-                        [chosenIndex]["isChick"] = value;
-                    TripModeList
-                            .tripModeList[widget.indexTripModel].purposeTravel =
-                    TripModeList.tripModeList[widget.indexTripModel] .purposeOfBeingThere["QPurposeOfBeingThere"]
-                            [chosenIndex]["value"];
-                  });
-                }),
-          ]),
-        ),
+          ),
+          Checkbox(
+              side: BorderSide(
+                color: ColorManager.orangeTxtColor,
+                width: 1.5,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              checkColor: ColorManager.whiteColor,
+              focusColor: ColorManager.orangeTxtColor,
+              activeColor: ColorManager.orangeTxtColor,
+              value: TripModeList.tripModeList[widget.indexTripModel]
+                      .purposeOfBeingThere["QPurposeOfBeingThere"][index]
+                  ["isChick"],
+              onChanged: (bool? value) {
+                print(value);
+                setState(() {
+                  TripModeList.tripModeList[widget.indexTripModel]
+                          .purposeOfBeingThere["QPurposeOfBeingThere"]
+                      [chosenIndex]["isChick"] = false;
+                  chosenIndex = index;
+                  TripModeList.tripModeList[widget.indexTripModel]
+                          .purposeOfBeingThere["QPurposeOfBeingThere"]
+                      [chosenIndex]["isChick"] = value;
+                  TripModeList.tripModeList[widget.indexTripModel]
+                      .purposeTravel = TripModeList
+                          .tripModeList[widget.indexTripModel]
+                          .purposeOfBeingThere["QPurposeOfBeingThere"]
+                      [chosenIndex]["value"];
+                });
+              }),
+        ]),
       ),
     );
   }

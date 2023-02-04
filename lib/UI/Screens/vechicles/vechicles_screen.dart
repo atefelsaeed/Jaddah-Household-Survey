@@ -54,6 +54,7 @@ class VehiclesScreen extends StatelessWidget {
                     AppSize.spaceWidth3(context),
                     DefaultButton(
                       function: () {
+                        _key.currentState!.save();
                         Navigator.pop(context);
                       },
                       isWidget: true,

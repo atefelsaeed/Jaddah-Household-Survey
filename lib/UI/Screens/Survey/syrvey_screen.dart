@@ -131,7 +131,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   child: Column(
                     children: [
                       // ===== HouseHoldAddress ===
-                      HouseHoldAddress(),
+                      const HouseHoldAddress(),
                       AppSize.spaceHeight3(context),
                       const HouseHoldMember(),
                       // ====Question 1====
@@ -368,14 +368,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsDemolishedAreas = yes.text;
                             surveyPt.headerDistrictName = '';
                             surveyPt.headerZoneNumber = '';
-                            RegExp regex = RegExp(
-                                r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
-                            if (!regex.hasMatch(HhsStatic
-                                .householdAddress.hhsPhone.text
-                                .trim())) {
-                              return Validator.showSnack(
-                                  context, 'رقم الهاتف غير صحيح..!');
-                            }
+                            // RegExp regex = RegExp(
+                            //     r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
+                            // if (!regex.hasMatch(HhsStatic
+                            //     .householdAddress.hhsPhone.text
+                            //     .trim())) {
+                            //   return Validator.showSnack(
+                            //       context, 'رقم الهاتف غير صحيح..!');
+                            // }
                             await _determinePosition().then((value) {
                               surveyPt.hhsAddressLat =
                                   value.latitude.toString();

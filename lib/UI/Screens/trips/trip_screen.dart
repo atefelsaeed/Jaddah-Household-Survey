@@ -101,8 +101,7 @@ class _TripScreenState extends State<TripScreen> {
               child: Column(
                 children: [
                   const HeadlinePerson(text: "الرحلات"),
-                  AppSize.spaceHeight2(context),
-                  AppSize.spaceHeight2(context),
+                  AppSize.spaceHeight5(context),
                   for (int i = 0; i < TripModeList.tripModeList.length; i++)
                     Padding(
                       padding: EdgeInsets.all(AppSize.padding1(context)),
