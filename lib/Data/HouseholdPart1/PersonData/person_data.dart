@@ -1,7 +1,4 @@
 class PersonData {
-
-
-
   static Map<String, dynamic> relationshipToTheHeadOfHouseholdWoman = {
     " Relationship to the Head of Household": [
       'ذاتي / رب الأسرة',
@@ -87,6 +84,7 @@ class PersonData {
     "subTitle": "mainMade",
     "chosenIndex": 0,
   };
+
   // static Map<String, dynamic> occupationLevelSector = {
   //   "Occupation Level Sector": [
   //     'High level director',

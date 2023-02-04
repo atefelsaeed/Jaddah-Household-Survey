@@ -29,6 +29,7 @@ class EmptyHHS {
     HhsStatic.householdQuestions.hhsIsDwellingOther!.text = '';
     HhsStatic.householdAddress = HouseholdAddress(
       hhsPhone: TextEditingController(),
+      hhsHavePastTrip: TextEditingController(),
       hhsAddressLong: "",
       hhsAddressLat: "",
     );

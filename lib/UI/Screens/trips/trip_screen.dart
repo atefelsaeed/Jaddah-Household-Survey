@@ -138,6 +138,13 @@ class _TripScreenState extends State<TripScreen> {
                                 children: [
                                   DropDownFormInput(
                                     hint: "صاحب الرحلة",
+                                    label: TripModeList
+                                        .tripModeList[i].chosenPerson !=
+                                        ''
+                                        ? Text(TripModeList
+                                        .tripModeList[i].chosenPerson ??
+                                        '')
+                                        : const Text('إختار'),
                                     options:
                                         TripModeList.tripModeList[i].person,
                                     onChange: (String? p) {

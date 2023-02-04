@@ -133,6 +133,9 @@ abstract class SurveyProvider with ChangeNotifier {
   TextEditingController get hhsPhone;
 
   set hhsPhone(TextEditingController l);
+TextEditingController get hhsHavePastTrip;
+
+  set hhsHavePastTrip(TextEditingController l);
 
   ///=========HouseholdQuestions=================
   String? get hhsDwellingType;

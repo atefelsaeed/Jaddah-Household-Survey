@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/person_validation.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
@@ -276,12 +275,17 @@ class _PersonScreenState extends State<PersonScreen> {
                                     base[i].occupationModel!.isEmployee == ""
                                         ? Container()
                                         : DropDownFormInput2(
-                                            label: Text(PersonData
-                                                .mainOccupation[
-                                                    mainOccupationKey]!
-                                                .toList()
-                                                .first["value"]
-                                                .toString()),
+                                            label: PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType !=
+                                                    ''
+                                                ? Text(PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType ??
+                                                    '')
+                                                : const Text('إختار'),
                                             hint: "الوظيفة الأساسية",
                                             options: PersonData.mainOccupation[
                                                     mainOccupationKey]!
@@ -357,12 +361,20 @@ class _PersonScreenState extends State<PersonScreen> {
                                                 : Column(
                                                     children: [
                                                       DropDownFormInput(
-                                                        label: Text(PersonData
-                                                            .occupationSector[
-                                                                occupationSectorKey]!
-                                                            .toList()
-                                                            .first
-                                                            .toString()),
+                                                        label: PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector !=
+                                                                ''
+                                                            ? Text(PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector ??
+                                                                '')
+                                                            : const Text(
+                                                                'إختار'),
                                                         hint:
                                                             "لو عمل ما هو قطا ع العمل",
                                                         options: PersonData

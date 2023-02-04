@@ -21,11 +21,7 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
     return Column(
       children: [
         DropDownFormInput(
-          label: Text(VehiclesData
-              .fuelTypeCodes[VehiclesData.fuelTypeCodes.keys.first]!
-              .toList()
-              .first
-              .toString()),
+          label:const Text('إختار'),
           hint: " نوع الوقود",
           options: VehiclesData
               .fuelTypeCodes[VehiclesData.fuelTypeCodes.keys.first]!

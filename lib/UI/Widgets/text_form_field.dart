@@ -60,15 +60,15 @@ class MyTextForm extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .015),
-            validator: (String? val) => isNumber ?? false
-                ? Validator.validateEmpty(
-                    value: val,
-                    message: 'يجب يجب إعطاء إجابة!',
-                  )
-                : Validator.validateName(
-                    value: val!,
-                    message: 'يجب يجب إعطاء إجابة صحيحة!',
-                  ),
+            // validator: (String? val) => isNumber ?? false
+            //     ? Validator.validateEmpty(
+            //         value: val,
+            //         message: 'يجب يجب إعطاء إجابة!',
+            //       )
+            //     : Validator.validateName(
+            //         value: val!,
+            //         message: 'يجب يجب إعطاء إجابة صحيحة!',
+            //       ),
             decoration: InputDecoration(
               labelText: label,
               suffixIcon: suffix != null

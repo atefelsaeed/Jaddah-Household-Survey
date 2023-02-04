@@ -13,8 +13,10 @@ class HeaderBase {
   String? districtName;
   late String zoneNumber;
   late int empNumber;
-  HouseholdAddress householdAddress =
-      HouseholdAddress(hhsPhone: TextEditingController());
+  HouseholdAddress householdAddress = HouseholdAddress(
+    hhsPhone: TextEditingController(),
+    hhsHavePastTrip: TextEditingController(),
+  );
 
   HeaderBase();
 }

@@ -41,10 +41,13 @@ class EducationLevel extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             DropDownFormInput(
-              label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: PersonModelList
+                          .personModelList[i].personalQuestion!.haveBusPass !=
+                      ''
+                  ? Text(PersonModelList
+                          .personModelList[i].personalQuestion!.haveBusPass ??
+                      '')
+                  : const Text('إختار'),
               hint: "هل لديك تذكرة حافلة",
               options:
                   PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),
@@ -55,7 +58,6 @@ class EducationLevel extends StatelessWidget {
             ),
           ],
         ),
-
       ],
     );
   }

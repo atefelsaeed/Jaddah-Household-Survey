@@ -158,8 +158,6 @@ class DropDownFormInput<T> extends StatelessWidget {
                       onChanged: (T? newValue) {
                         field.didChange(newValue);
                         field.save();
-                        print('value is ::');
-                        print(field.value);
                         if (onChange != null) {
                           onChange!(newValue);
                         }

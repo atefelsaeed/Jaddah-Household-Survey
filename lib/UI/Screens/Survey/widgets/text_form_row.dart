@@ -29,6 +29,7 @@ class TextForm extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
             width: width(context) * .45,

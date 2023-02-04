@@ -4,11 +4,14 @@ class HouseholdAddress {
   String? hhsAddressLat;
   String? hhsAddressLong;
   TextEditingController hhsPhone=TextEditingController();
+  TextEditingController hhsHavePastTrip=TextEditingController();
+
 
   HouseholdAddress({
     this.hhsAddressLat,
     this.hhsAddressLong,
     required this.hhsPhone,
+    required this.hhsHavePastTrip,
   });
 }
 
@@ -99,6 +102,7 @@ class HhsStatic {
     hhsAddressLat: "",
     hhsAddressLong: "",
     hhsPhone: TextEditingController(),
+    hhsHavePastTrip: TextEditingController(),
   );
   static HouseholdQuestions householdQuestions = HouseholdQuestions(
     hhsPedalCycles: BikesType("", "", ""),

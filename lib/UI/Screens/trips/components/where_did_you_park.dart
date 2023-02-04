@@ -30,11 +30,14 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
-              label: Text(TripData
-                  .whatTypeOfTravel[TripData.whatTypeOfTravel.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: TripModeList.tripModeList[widget.index].travelTypeModel!
+                  .travelType!=
+                  ''
+                  ? Text(
+                  TripModeList.tripModeList[widget.index].travelTypeModel!
+                      .travelType ??
+                      '')
+                  : const Text('إختار'),
               hint: "بماذا ذهبت ؟",
               options: TripData
                   .whatTypeOfTravel[TripData.whatTypeOfTravel.keys.first]!
@@ -50,11 +53,14 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         .travelType ==
                     "سيارة"
                 ? DropDownFormInput(
-                    label: Text(TripData
-                        .whereDidYouPark[TripData.whereDidYouPark.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
+                    label: TripModeList.tripModeList[widget.index].travelTypeModel!
+                        .carParkingPlace!=
+                        ''
+                        ? Text(
+                        TripModeList.tripModeList[widget.index].travelTypeModel!
+                            .carParkingPlace ??
+                            '')
+                        : const Text('إختار'),
                     hint: "أین أوقفت سیارتك؟",
                     options: TripData
                         .whereDidYouPark[TripData.whereDidYouPark.keys.first]!
@@ -76,11 +82,14 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         .travelType ==
                     "تاكسي"
                 ? DropDownFormInput(
-                    label: Text(TripData
-                        .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
+                    label: TripModeList.tripModeList[widget.index].travelTypeModel!
+                        .taxiTravelType!=
+                        ''
+                        ? Text(
+                        TripModeList.tripModeList[widget.index].travelTypeModel!
+                            .taxiTravelType ??
+                            '')
+                        : const Text('إختار'),
                     hint: "نوع التاكسي الذي استخدمتھ وكم الأجرة التي دفعتھا؟",
                     options: TripData
                         .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
