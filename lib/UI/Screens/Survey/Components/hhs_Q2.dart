@@ -27,11 +27,9 @@ class _HHSQ2State extends State<HHSQ2> {
                   HhsStatic.householdQuestions.hhsIsDwelling = p;
                 });
               },
-              label: Text(QuestionsData
-                  .qh2[QuestionsData.qh2.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: HhsStatic.householdQuestions.hhsIsDwelling !=null
+                  ? Text(HhsStatic.householdQuestions.hhsIsDwelling??'')
+                  : const Text('إختار'),
               hint: "2.ملكية المسكن؟",
               options: QuestionsData
                   .qh2[QuestionsData.qh2.keys.first]!

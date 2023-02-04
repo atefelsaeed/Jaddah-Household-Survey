@@ -66,10 +66,13 @@ class _DefaultEntryState extends State<DefaultEntry> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
-              label: Text(PersonData.gender[PersonData.gender.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: PersonModelList
+                          .personModelList[widget.i].personalHeadData!.gender !=
+                      ''
+                  ? Text(PersonModelList
+                          .personModelList[widget.i].personalHeadData?.gender ??
+                      '')
+                  : const Text('إختار'),
               hint: " نوع الجنس",
               options:
                   PersonData.gender[PersonData.gender.keys.first]!.toList(),
@@ -95,12 +98,13 @@ class _DefaultEntryState extends State<DefaultEntry> {
                         'ذكر'*/
             x == true
                 ? DropDownFormInput(
-                    label: Text(PersonData.relationshipToTheHeadOfHouseholdMan[
-                            PersonData.relationshipToTheHeadOfHouseholdMan.keys
-                                .first]!
-                        .toList()
-                        .first
-                        .toString()),
+                    label: PersonModelList.personModelList[widget.i]
+                                .personalHeadData!.relationshipHeadHHS !=
+                            ''
+                        ? Text(PersonModelList.personModelList[widget.i]
+                                .personalHeadData?.relationshipHeadHHS ??
+                            '')
+                        : const Text('إختار'),
                     hint: "القرابة برب الأسرة ",
                     options: PersonData.relationshipToTheHeadOfHouseholdMan[
                             PersonData.relationshipToTheHeadOfHouseholdMan.keys

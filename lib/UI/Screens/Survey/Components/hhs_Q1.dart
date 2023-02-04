@@ -22,10 +22,9 @@ class _HHSQ1State extends State<HHSQ1> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
-              label: Text(QuestionsData.qh1[QuestionsData.qh1.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: HhsStatic.householdQuestions.hhsDwellingType != null
+                  ? Text(HhsStatic.householdQuestions.hhsDwellingType??'')
+                  : const Text('إختار'),
               hint: "1. وصف المسكن؟",
               options:
                   QuestionsData.qh1[QuestionsData.qh1.keys.first]!.toList(),
@@ -55,7 +54,7 @@ class _HHSQ1State extends State<HHSQ1> {
                         HhsStatic.householdQuestions.hhsDwellingTypeOther!,
                     text: "1. وصف المسكن؟",
                     label: "1. وصف المسكن؟",
-                    isNumber: true,
+                    isNumber: false,
                   )
                 : Container(),
           ],
@@ -68,13 +67,15 @@ class _HHSQ1State extends State<HHSQ1> {
               controller: HhsStatic.householdQuestions.hhsNumberBedRooms,
               text: "عدد الغرف",
               label: "عدد الغرف",
-              keyboardType: TextInputType.number,isNumber: true,
+              keyboardType: TextInputType.number,
+              isNumber: true,
             ),
             TextForm(
               controller: HhsStatic.householdQuestions.hhsNumberFloors,
               text: "عدد الأدوار",
               label: "عدد الأدوار",
-              keyboardType: TextInputType.number,isNumber: true,
+              keyboardType: TextInputType.number,
+              isNumber: true,
             ),
           ],
         ),

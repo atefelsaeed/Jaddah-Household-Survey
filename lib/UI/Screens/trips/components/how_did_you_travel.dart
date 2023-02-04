@@ -30,10 +30,13 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
-              label: Text(TripData.AcMode[TripData.AcMode.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label:
+                  TripModeList.tripModeList[widget.i].travelWay!.accessMode !=
+                          ''
+                      ? Text(TripModeList
+                              .tripModeList[widget.i].travelWay!.accessMode ??
+                          '')
+                      : const Text('إختار'),
               hint: "الوضع الرئیسي",
               options: TripData.AcMode[TripData.AcMode.keys.first]!.toList(),
               onChange: (String? p) {
@@ -44,10 +47,12 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
               },
             ),
             DropDownFormInput(
-              label: Text(TripData.mainMade[TripData.mainMade.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: TripModeList.tripModeList[widget.i].travelWay!.mainMode !=
+                      ''
+                  ? Text(
+                      TripModeList.tripModeList[widget.i].travelWay!.mainMode ??
+                          '')
+                  : const Text('إختار'),
               hint: "وضع وصول",
               options:
                   TripData.mainMade[TripData.mainMade.keys.first]!.toList(),

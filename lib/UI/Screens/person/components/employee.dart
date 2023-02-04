@@ -44,11 +44,13 @@ class _EmployeeState extends State<Employee> {
                         "معاق / مريض"
                 ? Container()
                 : DropDownFormInput(
-                    label: Text(PersonData
-                        .workplace[PersonData.workplace.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
+                    label: PersonModelList.personModelList[widget.i]
+                                .occupationModel!.bestWorkspaceLocation !=
+                            ''
+                        ? Text(PersonModelList.personModelList[widget.i]
+                                .occupationModel!.bestWorkspaceLocation ??
+                            '')
+                        : const Text('إختار'),
                     hint:
                         "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للذهاب إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
                     options: PersonData
@@ -75,11 +77,13 @@ class _EmployeeState extends State<Employee> {
                 : Column(
                     children: [
                       DropDownFormInput(
-                        label: Text(PersonData
-                            .licence[PersonData.licence.keys.first]!
-                            .toList()
-                            .first
-                            .toString()),
+                        label: PersonModelList.personModelList[widget.i]
+                                    .personalQuestion!.drivingLicenceType !=
+                                ''
+                            ? Text(PersonModelList.personModelList[widget.i]
+                                    .personalQuestion!.drivingLicenceType ??
+                                '')
+                            : const Text('إختار'),
                         hint:
                             "ما نوع رخصة القيادة التي لديك (ضع علامة على كل ما ينطبق)",
                         options: PersonData
@@ -122,11 +126,13 @@ class _EmployeeState extends State<Employee> {
                     "بدون ترخيص"
                 ? Container()
                 : DropDownFormInput(
-                    label: Text(PersonData
-                        .drivingLiences[PersonData.drivingLiences.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
+                    label: PersonModelList.personModelList[widget.i]
+                                .personalQuestion!.availablePersonalCar !=
+                            ''
+                        ? Text(PersonModelList.personModelList[widget.i]
+                                .personalQuestion!.availablePersonalCar ??
+                            '')
+                        : const Text('إختار'),
                     hint:
                         " مدى توفر سيارة متاحة لك لاستخدامك الشخصي؟(سؤال موجه اسأل فقط إذا كان لديك رخصة قيادة)",
                     options: PersonData
@@ -140,10 +146,13 @@ class _EmployeeState extends State<Employee> {
                     },
                   ),
             DropDownFormInput(
-              label: Text(PersonData.busBuss[PersonData.busBuss.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: PersonModelList.personModelList[widget.i].personalQuestion!
+                          .haveBusPass !=
+                      ''
+                  ? Text(PersonModelList.personModelList[widget.i]
+                          .personalQuestion!.haveBusPass ??
+                      '')
+                  : const Text('إختار'),
               hint: "هل لديك تذكرة حافلة",
               options:
                   PersonData.busBuss[PersonData.busBuss.keys.first]!.toList(),

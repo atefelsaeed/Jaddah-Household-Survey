@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/person_validation.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
@@ -11,6 +10,7 @@ import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
+import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
@@ -276,12 +276,17 @@ class _PersonScreenState extends State<PersonScreen> {
                                     base[i].occupationModel!.isEmployee == ""
                                         ? Container()
                                         : DropDownFormInput2(
-                                            label: Text(PersonData
-                                                .mainOccupation[
-                                                    mainOccupationKey]!
-                                                .toList()
-                                                .first["value"]
-                                                .toString()),
+                                            label: PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType !=
+                                                    ''
+                                                ? Text(PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType ??
+                                                    '')
+                                                : const Text('إختار'),
                                             hint: "الوظيفة الأساسية",
                                             options: PersonData.mainOccupation[
                                                     mainOccupationKey]!
@@ -357,12 +362,20 @@ class _PersonScreenState extends State<PersonScreen> {
                                                 : Column(
                                                     children: [
                                                       DropDownFormInput(
-                                                        label: Text(PersonData
-                                                            .occupationSector[
-                                                                occupationSectorKey]!
-                                                            .toList()
-                                                            .first
-                                                            .toString()),
+                                                        label: PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector !=
+                                                                ''
+                                                            ? Text(PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector ??
+                                                                '')
+                                                            : const Text(
+                                                                'إختار'),
                                                         hint:
                                                             "لو عمل ما هو قطا ع العمل",
                                                         options: PersonData
@@ -439,58 +452,69 @@ class _PersonScreenState extends State<PersonScreen> {
                         DefaultButton(
                           function: () {
                             setState(() {
-                              PersonModelList.personModelList.add(
-                                PersonModel(
-                                  //==personalHeadData==
-                                  personName: TextEditingController(),
-                                  personalHeadData: PersonalHeadData(
-                                    age: TextEditingController(),
-                                    nationality: TextEditingController(),
-                                    nationalityType: '',
-                                    gender: '',
-                                    checkAge: false,
-                                    refuseToTellAge: false,
-                                    relationshipHeadHHS: '',
-                                  ),
-                                  //==personalQuestion==
-                                  personalQuestion: PersonalQuestion(
-                                    mainOccupationType: '',
-                                    asPassenger: '',
-                                    availablePersonalCar: '',
-                                    drivingLicenceType: '',
-                                    haveBusPass: '',
-                                    haveDisabilityTransportMobility: '',
-                                    haveCarSharing: false,
-                                    educationAddress: EducationAddress(
-                                      fullAddress: TextEditingController(),
-                                      geocodes: TextEditingController(),
-                                    ),
-                                  ),
-                                  //==occupationModel==
-                                  occupationModel: OccupationModel(
-                                    earliestTimeFinishingWork:
-                                        TextEditingController(),
-                                    earliestTimeStartingWork:
-                                        TextEditingController(),
-                                    endingWoke: TextEditingController(),
-                                    startingWoke: TextEditingController(),
-                                    address: TextEditingController(),
-                                    geoCodes: TextEditingController(),
-                                    mainOccupationAddress:
-                                        TextEditingController(),
-                                    bestWorkspaceLocation: '',
-                                    bikeWorkDays: 0,
-                                    commuteWorkDays: 0,
-                                    flexibleWorkingHours: '',
-                                    isEmployee: '',
-                                    isWorkFromHome: false,
-                                    numberWorkFromHome: 0,
-                                    occupationLevelSector: '',
-                                    occupationSector: '',
-                                  ),
-                                ),
-                              );
+
+                   int x=int.parse(HhsStatic.peopleAdults18.toString())+int.parse(HhsStatic.peopleUnder18.toString());
+
+                   print(PersonModelList.personModelList.length);
+                   PersonModelList.personModelList.length;
+                   if(x> PersonModelList.personModelList.length) {
+setState(() {
+  PersonModelList.personModelList.add(
+    PersonModel(
+      //==personalHeadData==
+      personName: TextEditingController(),
+      personalHeadData: PersonalHeadData(
+        age: TextEditingController(),
+        nationality: TextEditingController(),
+        nationalityType: '',
+        gender: '',
+        checkAge: false,
+        refuseToTellAge: false,
+        relationshipHeadHHS: '',
+      ),
+      //==personalQuestion==
+      personalQuestion: PersonalQuestion(
+        mainOccupationType: '',
+        asPassenger: '',
+        availablePersonalCar: '',
+        drivingLicenceType: '',
+        haveBusPass: '',
+        haveDisabilityTransportMobility: '',
+        haveCarSharing: false,
+        educationAddress: EducationAddress(
+          fullAddress: TextEditingController(),
+          geocodes: TextEditingController(),
+        ),
+      ),
+      //==occupationModel==
+      occupationModel: OccupationModel(
+        earliestTimeFinishingWork:
+        TextEditingController(),
+        earliestTimeStartingWork:
+        TextEditingController(),
+        endingWoke: TextEditingController(),
+        startingWoke: TextEditingController(),
+        address: TextEditingController(),
+        geoCodes: TextEditingController(),
+        mainOccupationAddress:
+        TextEditingController(),
+        bestWorkspaceLocation: '',
+        bikeWorkDays: 0,
+        commuteWorkDays: 0,
+        flexibleWorkingHours: '',
+        isEmployee: '',
+        isWorkFromHome: false,
+        numberWorkFromHome: 0,
+        occupationLevelSector: '',
+        occupationSector: '',
+      ),
+    ),
+  );
+});
+
+                   }
                             });
+
                           },
                           isWidget: true,
                           btnWidth: width(context) * .35,

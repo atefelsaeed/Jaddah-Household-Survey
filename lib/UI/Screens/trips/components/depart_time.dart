@@ -134,11 +134,13 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             DropDownFormInput(
-              label: Text(TripData.howOftenDoYouMakeThisTrip[
-                      TripData.howOftenDoYouMakeThisTrip.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: TripModeList.tripModeList[widget.i].arrivalDepartTime
+                          ?.numberRepeatTrip !=
+                      ''
+                  ? Text(TripModeList.tripModeList[widget.i].arrivalDepartTime
+                          ?.numberRepeatTrip ??
+                      '')
+                  : const Text('إختار'),
               hint: "كم مرة تقوم بهذە الرحلة؟",
               options: TripData.howOftenDoYouMakeThisTrip[
                       TripData.howOftenDoYouMakeThisTrip.keys.first]!

@@ -28,11 +28,13 @@ class _TransporterMobiltyState extends State<TransporterMobilty> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             DropDownFormInput(
-              label: Text(PersonData
-                  .transporterMoblity[PersonData.transporterMoblity.keys.first]!
-                  .toList()
-                  .first
-                  .toString()),
+              label: PersonModelList.personModelList[widget.index]
+                          .personalQuestion!.haveDisabilityTransportMobility !=
+                      ''
+                  ? Text(PersonModelList.personModelList[widget.index]
+                          .personalQuestion!.haveDisabilityTransportMobility ??
+                      '')
+                  : const Text('إختار'),
               hint: "هل لديك أي إعاقة / احتياجات خاصة لحركة النقل؟",
               options: PersonData
                   .transporterMoblity[PersonData.transporterMoblity.keys.first]!

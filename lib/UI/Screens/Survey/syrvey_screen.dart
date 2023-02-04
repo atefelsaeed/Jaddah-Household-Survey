@@ -196,7 +196,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         map: QuestionsData.qh7_2,
                         onChange: (ChangeBoxResponse r) {
                           setState(() {
-                            if (r.val == "نعم") {
+                            if (r.val == "نعم" && r.check == true) {
                               HhsStatic.householdQuestions
                                   .hhsIsDemolishedAreas = true;
                               yes.text = '';
@@ -231,11 +231,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                               .hhsDemolishedAreas!;
                                     });
                                   },
-                                  label: Text(QuestionsData
-                                      .qh6_2[QuestionsData.qh6_2.keys.first]!
-                                      .toList()
-                                      .first
-                                      .toString()),
+                                  label: HhsStatic.householdQuestions
+                                              .hhsDemolishedAreas !=
+                                          null
+                                      ? Text(HhsStatic.householdQuestions
+                                              .hhsDemolishedAreas ??
+                                          '')
+                                      : const Text('إختار'),
                                   hint: "المنطقة المهدومة",
                                   options: QuestionsData
                                       .qh6_2[QuestionsData.qh6_2.keys.first]!
@@ -256,7 +258,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         children: [
                           DropDownFormInput(
                             label:
-                                Text(QuestionsData.qh9.values.first.toString()),
+                                HhsStatic.householdQuestions.hhsTotalIncome !=
+                                        ''
+                                    ? Text(HhsStatic.householdQuestions
+                                            .hhsTotalIncome ??
+                                        '')
+                                    : const Text('إختار'),
                             hint:
                                 "8.متوسط دخل جميع أفراد الاسرة الشهري مع المزايا؟",
                             options: QuestionsData
@@ -318,6 +325,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                     .text ??
                                 '';
                             // ================ HHSQ10 ==============
+                           // surveyPt.hhsSeparateFamilies = HhsStatic.houseHold[0].totalNumberVehicles;
                             surveyPt.vehiclesData.numberParcels =
                                 VehModel.vehiclesModel.numberParcels;
                             surveyPt.vehiclesData.numberParcelsDeliveries =
@@ -339,7 +347,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                 .householdQuestions
                                 .hhsNumberYearsInAddress; //solve
                             surveyPt.hhsPhone =
-                                HhsStatic.householdAddress.hhsPhone; //solve
+                                HhsStatic.householdAddress.hhsPhone;
+                            surveyPt.hhsHavePastTrip = HhsStatic
+                                .householdAddress.hhsHavePastTrip; //solve
 
                             surveyPt.hhsNumberAdults = peopleAdults18.text;
                             surveyPt.hhsNumberChildren =
@@ -353,6 +363,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                 editingController3Q81.totalNumber.text;
                             surveyPt.hhsPCAdultsBikesNumber =
                                 editingController3Q81.peopleAdults18.text;
+                            HhsStatic.peopleUnder18=peopleUnder18.text;
+                            HhsStatic.peopleAdults18=peopleAdults18.text;
                             surveyPt.hhsECChildrenBikesNumber =
                                 editingController3Q82.peopleUnder18.text;
                             surveyPt.hhsECTotalBikesNumber =

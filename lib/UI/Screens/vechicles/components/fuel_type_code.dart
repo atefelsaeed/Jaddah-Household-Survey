@@ -6,9 +6,9 @@ import '../../../Widgets/dropdown_form_input.dart';
 import '../../Survey/widgets/text_form_row.dart';
 
 class FuelTypeCode extends StatefulWidget {
-  FuelTypeCode({super.key, required this.textEditingController});
+const  FuelTypeCode({super.key, required this.textEditingController});
 
-  TextEditingController textEditingController;
+final  TextEditingController textEditingController;
 
   @override
   State<FuelTypeCode> createState() => _FuelTypeCodeState();
@@ -21,11 +21,7 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
     return Column(
       children: [
         DropDownFormInput(
-          label: Text(VehiclesData
-              .fuelTypeCodes[VehiclesData.fuelTypeCodes.keys.first]!
-              .toList()
-              .first
-              .toString()),
+          label: widget.textEditingController.text==""?  const Text('إختار'): Text(widget.textEditingController.text),
           hint: " نوع الوقود",
           options: VehiclesData
               .fuelTypeCodes[VehiclesData.fuelTypeCodes.keys.first]!
