@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/person_validation.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
@@ -40,6 +41,7 @@ class _PersonScreenState extends State<PersonScreen> {
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
   var base = PersonModelList.personModelList;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -211,7 +213,16 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     .refuseToTellAge ==
                                                 true
                                             ? DropDownFormInput2(
-                                                label: const Text('إختار'),
+                                                label: base[i]
+                                                            .personalHeadData!
+                                                            .age
+                                                            .text !=
+                                                        ''
+                                                    ? Text(base[i]
+                                                        .personalHeadData!
+                                                        .age
+                                                        .text)
+                                                    : const Text('إختار'),
                                                 hint: "الفئة العمرية",
                                                 options: PersonData.groupAge[
                                                         PersonData.groupAge.keys

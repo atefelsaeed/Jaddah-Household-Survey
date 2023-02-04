@@ -6,7 +6,7 @@ import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 class DropDownFormInput2<T> extends StatelessWidget {
   final List<Map> options;
   final String? hint;
-  final Widget label;
+   Widget? label;
   final Function? onChange;
 
   final T? initial;
@@ -14,7 +14,7 @@ class DropDownFormInput2<T> extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final Function(T?)? onSaved;
 
-  const DropDownFormInput2({
+   DropDownFormInput2({
     Key? key,
     required this.options,
     this.hint,
@@ -58,11 +58,13 @@ class DropDownFormInput2<T> extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
-                      hint: const Text('إختار'),
+                      hint: label ?? const Text('إختار'),
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
+
                         field.didChange(newValue);
+                        field.save();
                         if (onChange != null) {
                           onChange!(newValue);
                         }
@@ -99,7 +101,7 @@ class DropDownFormInput2<T> extends StatelessWidget {
 class DropDownFormInput<T> extends StatelessWidget {
   final List<T> options;
   final String? hint;
-  final Widget label;
+  Widget? label;
   final Function? onChange;
 
   final T? initial;
@@ -107,7 +109,7 @@ class DropDownFormInput<T> extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final Function(T?)? onSaved;
 
-  const DropDownFormInput({
+  DropDownFormInput({
     Key? key,
     required this.options,
     this.hint,
@@ -149,13 +151,15 @@ class DropDownFormInput<T> extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<T>(
                       isExpanded: true,
-                      hint: const Text('إختار'),
-                      //lable
+                      hint: label ?? const Text('إختار'),
+                      // const Text('إختار')
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
                         field.didChange(newValue);
-
+                        field.save();
+                        print('value is ::');
+                        print(field.value);
                         if (onChange != null) {
                           onChange!(newValue);
                         }

@@ -13,7 +13,7 @@ class MyTextForm extends StatelessWidget {
   bool? isPassword;
   bool? readOnly;
   IconData? suffix;
-  bool? isNumber=false;
+  bool? isNumber = false;
   final Function? suffixPressed;
   String? Function(String?)? validator;
   Function()? onTap;
@@ -60,15 +60,15 @@ class MyTextForm extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .015),
-            // validator: (String? val) => isNumber??false
-            //     ? Validator.validateEmpty(
-            //         value: val,
-            //         message: 'يجب يجب إعطاء إجابة!',
-            //       )
-            //     : Validator.validateName(
-            //         value: val!,
-            //         message: 'يجب يجب إعطاء إجابة صحيحة!',
-            //       ),
+            validator: (String? val) => isNumber ?? false
+                ? Validator.validateEmpty(
+                    value: val,
+                    message: 'يجب يجب إعطاء إجابة!',
+                  )
+                : Validator.validateName(
+                    value: val!,
+                    message: 'يجب يجب إعطاء إجابة صحيحة!',
+                  ),
             decoration: InputDecoration(
               labelText: label,
               suffixIcon: suffix != null
@@ -107,7 +107,9 @@ class MyTextForm extends StatelessWidget {
         ),
         ClipRRect(
           borderRadius: BorderRadius.circular(40),
-          child: Container(color: Colors.blue,),
+          child: Container(
+            color: Colors.blue,
+          ),
         )
       ],
     );
