@@ -22,11 +22,9 @@ class _ParkThisCarState extends State<ParkThisCar> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         DropDownFormInput(
-          label: Text(VehiclesData
-              .parkThisCar[VehiclesData.parkThisCar.keys.first]!
-              .toList()
-              .first
-              .toString()),
+          label: widget.textEditingController.text == ''
+              ? const Text('إختار')
+              : Text(widget.textEditingController.text),
           hint: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات",
           options: VehiclesData
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
@@ -37,7 +35,7 @@ class _ParkThisCarState extends State<ParkThisCar> {
               if (VehModel.parkThisCar != "أخر") {
                 widget.textEditingController.text = VehModel.parkThisCar;
               } else {
-                widget.textEditingController.text = "";
+                widget.textEditingController.text = "أخر";
               }
             });
           },

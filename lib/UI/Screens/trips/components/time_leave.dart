@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../../Resources/style_manager.dart';
-import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
 import 'headline_trip.dart';

@@ -1,3 +1,4 @@
+import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_data.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_person.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_trips.dart';
 
@@ -29,7 +30,10 @@ class HHSEmptyData {
     PersonData.nationality[PersonData.nationality.keys.first]!
         .toList()[PersonData.nationality["index"]]["isChick"] = false;
 
-    PersonData.nationality[PersonData.nationality.keys.first]!
-        .toList()[PersonData.nationality["index"]]["isChick"] = false;
+    //================Trip========================================
+    TripData.tripReason[TripData.tripReason.keys.first]!
+        .toList()[TripData.tripReason["index"]]["isChick"] = false;
+    TripData.purposeOfBeingThere[TripData.purposeOfBeingThere.keys.first]!
+        .toList()[TripData.purposeOfBeingThere["index"]]["isChick"] = false;
   }
 }

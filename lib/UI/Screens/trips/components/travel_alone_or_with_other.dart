@@ -4,9 +4,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_chec
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/sizes.dart';
-import '../../../Widgets/item_text_span.dart';
 import 'adults_or_not.dart';
-import 'headline_trip.dart';
 
 class TravelAlone extends StatefulWidget {
   final int index;

@@ -1,16 +1,18 @@
 class TripData {
   static Map<String, dynamic> purposeOfBeingThere = {
     "QPurposeOfBeingThere": [
-      {"value": 'كنت في المنزل', "isChick": false},
-      {"value": 'كنت العطلات / الفندق', "isChick": false},
-      {"value": ' كنت في العمل', "isChick": false},
-      {"value": 'مكان تعليمي', "isChick": false},
-      {"value": 'موظف لصاحب العمل', "isChick": false},
+      {"value": ' في المنزل', "isChick": false},
+      {"value": 'فى بيت العطلات / الفندق', "isChick": false},
+      {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
+      {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
+      {"value": 'مكان تعليمى', "isChick": false},
       {"value": 'التسوق', "isChick": false},
       {"value": 'عمل شخصي', "isChick": false},
+      {"value": 'طبى / مستشفى', "isChick": false},
       {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
-      {"value": 'استجمام / وقت الفراغ', "isChick": false},
-      {"value": 'توص الى المدرسة', "isChick": false},
+      {"value": 'ترفيه / وقت الفراغ', "isChick": false},
+      {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+      {"value": 'توص الى مكان آخر', "isChick": false},
     ],
     "title": "?What was the purpose of being there",
     "subTitle":
@@ -27,16 +29,18 @@ class TripData {
   };
   static Map<String, dynamic> tripReason = {
     "TripReason": [
-      {"value": 'كنت في المنزل', "isChick": false},
-      {"value": 'كنت العطلات / الفندق', "isChick": false},
-      {"value": ' كنت في العمل', "isChick": false},
-      {"value": 'مكان تعليمي', "isChick": false},
-      {"value": 'موظف لصاحب العمل', "isChick": false},
+      {"value": ' في المنزل', "isChick": false},
+      {"value": 'فى بيت العطلات / الفندق', "isChick": false},
+      {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
+      {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
+      {"value": 'مكان تعليمى', "isChick": false},
       {"value": 'التسوق', "isChick": false},
       {"value": 'عمل شخصي', "isChick": false},
+      {"value": 'طبى / مستشفى', "isChick": false},
       {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
-      {"value": 'استجمام / وقت الفراغ', "isChick": false},
-      {"value": 'توص الى المدرسة', "isChick": false},
+      {"value": 'ترفيه / وقت الفراغ', "isChick": false},
+      {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+      {"value": 'توص الى مكان آخر', "isChick": false},
     ],
     "title": "?What was the purpose of being there",
     "subTitle":

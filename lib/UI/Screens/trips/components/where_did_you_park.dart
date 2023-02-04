@@ -4,7 +4,6 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Widgets/dropdown_form_input.dart';
-import '../../../Widgets/item_text_span.dart';
 import '../../Survey/widgets/text_form_row.dart';
 import 'headline_trip.dart';
 

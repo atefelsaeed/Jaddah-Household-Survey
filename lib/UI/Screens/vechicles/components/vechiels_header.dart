@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
-import '../../../Widgets/text.dart';
 import '../../../Widgets/headline.dart';
+import '../../../Widgets/text.dart';
 
 class VehiclesHeader extends StatelessWidget {
   const VehiclesHeader({super.key});

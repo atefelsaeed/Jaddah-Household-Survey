@@ -6,7 +6,6 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_tri
 import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
-import '../../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/alert_map.dart';

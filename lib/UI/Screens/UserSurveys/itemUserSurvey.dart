@@ -7,9 +7,6 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
-import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
-import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../Models/user_serveys_model.dart';
 

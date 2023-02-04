@@ -21,10 +21,9 @@ class _OwnerShipCodeState extends State<OwnerShipCode> {
     return Column(
       children: [
         DropDownFormInput(
-          label: Text(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
-              .toList()
-              .first
-              .toString()),
+          label:widget.textEditingController.text == ''
+              ? const Text('إختار')
+              : Text(widget.textEditingController.text),
           hint: "من يملك السيارة",
           options: VehiclesData.ownership[VehiclesData.ownership.keys.first]!
               .toList(),
@@ -34,12 +33,12 @@ class _OwnerShipCodeState extends State<OwnerShipCode> {
               if (VehModel.ownerShipCode != "أخر") {
                 widget.textEditingController.text = VehModel.ownerShipCode;
               }else{
-                widget.textEditingController.text ='';
+                widget.textEditingController.text ='أخر';
               }
             });
           },
         ),
-        VehModel.ownerShipCode == "أخر"
+        widget.textEditingController.text == "أخر"
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

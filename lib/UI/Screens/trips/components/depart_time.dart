@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
-import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 

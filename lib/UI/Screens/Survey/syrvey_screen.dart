@@ -10,7 +10,6 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/Components/house_hold_
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
-import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
@@ -21,8 +20,8 @@ import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
-import 'Components/hhs_Q5.dart';
 import 'Components/hhs_Q4.dart';
+import 'Components/hhs_Q5.dart';
 import 'Components/hhs_Q81.dart';
 import 'Components/hhs_Q82.dart';
 import 'Components/hhs_Q83.dart';
@@ -380,14 +379,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsDemolishedAreas = yes.text;
                             surveyPt.headerDistrictName = '';
                             surveyPt.headerZoneNumber = '';
-                            // RegExp regex = RegExp(
-                            //     r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
-                            // if (!regex.hasMatch(HhsStatic
-                            //     .householdAddress.hhsPhone.text
-                            //     .trim())) {
-                            //   return Validator.showSnack(
-                            //       context, 'رقم الهاتف غير صحيح..!');
-                            // }
+                            RegExp regex = RegExp(
+                                r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
+                            if (!regex.hasMatch(HhsStatic
+                                .householdAddress.hhsPhone.text
+                                .trim())) {
+                              return Validator.showSnack(
+                                  context, 'رقم الهاتف غير صحيح..!');
+                            }
                             await _determinePosition().then((value) {
                               surveyPt.hhsAddressLat =
                                   value.latitude.toString();
