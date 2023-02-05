@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/vechiels_header.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
+import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
@@ -18,8 +19,6 @@ class VehiclesScreen extends StatefulWidget {
 
 class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
-
-  bool hasVehicles = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +51,14 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                       checkColor: ColorManager.whiteColor,
                       focusColor: ColorManager.orangeTxtColor,
                       activeColor: ColorManager.orangeTxtColor,
-                      value: hasVehicles,
+                      value: VehModel.hasVehicles,
                       onChanged: (bool? value) {
                         setState(() {
-                          hasVehicles = value!;
+                          VehModel.hasVehicles = value!;
                         });
                       })
                 ]),
-                hasVehicles == true
+                VehModel.hasVehicles == true
                     ? Container()
                     : const ControllerVehiclesBody(),
                 AppSize.spaceHeight5(context),

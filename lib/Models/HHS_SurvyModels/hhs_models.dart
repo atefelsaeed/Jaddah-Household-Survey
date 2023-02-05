@@ -3,9 +3,8 @@ import 'package:flutter/cupertino.dart';
 class HouseholdAddress {
   String? hhsAddressLat;
   String? hhsAddressLong;
-  TextEditingController hhsPhone=TextEditingController();
-  TextEditingController hhsHavePastTrip=TextEditingController();
-
+  TextEditingController hhsPhone = TextEditingController();
+  TextEditingController hhsHavePastTrip = TextEditingController();
 
   HouseholdAddress({
     this.hhsAddressLat,
@@ -117,8 +116,10 @@ class HhsStatic {
   );
   static List<SeparateFamilies> houseHold = [];
   static BikesType hhsPedalCycles = BikesType("", "", "");
-  static String peopleAdults18="";
-  static String peopleUnder18="";
+  static String peopleAdults18 = "";
+  static String peopleUnder18 = "";
+  static bool hasPasTrip = false;
+
   static BikesType hhsElectricCycles = BikesType("", "", "");
 
   static BikesType hhsElectricScooter = BikesType("", "", "");

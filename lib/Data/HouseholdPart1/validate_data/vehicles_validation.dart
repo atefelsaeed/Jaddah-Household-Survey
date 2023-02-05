@@ -10,9 +10,9 @@ class CheckVehiclesValidation {
     //   return Validator.showSnack(context, " يجب إخيار ! أكواد نوع الوقود؟");
     // } else
 
-      if (VehModel.ownerShipCode == '') {
+    if (VehModel.ownerShipCode == '' && VehModel.hasVehicles == false) {
       return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
-    } else if (VehModel.parkThisCar == '') {
+    } else if (VehModel.parkThisCar == '' && VehModel.hasVehicles == false) {
       return Validator.showSnack(context,
           " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
     } else {

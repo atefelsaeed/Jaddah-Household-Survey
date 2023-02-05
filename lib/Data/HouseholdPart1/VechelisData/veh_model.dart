@@ -5,6 +5,7 @@ import '../../../Models/Vehicles_SurveyModel/vehicles_model.dart';
 import '../../../UI/Screens/Survey/widgets/editing_controler3.dart';
 
 class VehModel {
+  static bool hasVehicles = false;
   static VehiclesModel vehiclesModel = VehiclesModel(
     nearestBusStop: '',
     numberParcels: TextEditingController(),
@@ -30,6 +31,7 @@ class VehModel {
   static String ownerShipCode = "";
   static String parkThisCar = "";
   static String nearestPublicTransporter = "";
+
 }
 
 class VehicleBodyDetailsData {

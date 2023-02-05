@@ -384,11 +384,11 @@ class _TripScreenState extends State<TripScreen> {
                               travelWithOtherModel: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  text: "?If with other how many"),
+                                  text: "إذا كان مع الآخرین كم أعمارھم؟"),
                               travelAloneHouseHold: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  text: "Non Household persons"),
+                                  text:"اي من أفراد الأسرة ذهب معك؟"),
                               arrivalDepartTime: ArrivalDepartTime(
                                 arriveDestinationTime: TextEditingController(),
                                 departTime: TextEditingController(),

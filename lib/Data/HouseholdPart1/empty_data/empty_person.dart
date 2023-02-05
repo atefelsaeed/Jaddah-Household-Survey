@@ -1,8 +1,11 @@
+import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../PersonData/person_model_list.dart';
 
 class EmptyPerson {
   static emptyPerson() {
-    PersonModelList.personModelList.length=1;
+    PersonModelList.personModelList.length = 1;
+    HhsStatic.hasPasTrip = false;
+    PersonModelList.showText = false;
     for (var element in PersonModelList.personModelList) {
       element.personalHeadData!.checkAge = false;
       element.personalHeadData!.refuseToTellAge = false;

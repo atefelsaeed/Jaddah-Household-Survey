@@ -277,11 +277,11 @@ class _PersonScreenState extends State<PersonScreen> {
                                   onChange: (ChangeBoxResponse r) {
                                     setState(() {
                                       if (r.val == "لا" && r.check == true) {
-                                        hasPasTrip = true;
+                                        HhsStatic.hasPasTrip  = true;
                                         HhsStatic.householdAddress
                                             .hhsHavePastTrip.text = '';
                                       } else {
-                                        hasPasTrip = false;
+                                        HhsStatic.hasPasTrip  = false;
                                         HhsStatic.householdAddress
                                             .hhsHavePastTrip.text = 'نعم';
                                       }
@@ -295,10 +295,10 @@ class _PersonScreenState extends State<PersonScreen> {
                                       .toList(),
                                   subTitle: "",
                                 ),
-                                hasPasTrip == true
+                                HhsStatic.hasPasTrip == true
                                     ? TextForm(
-                                        label: 'إذكر الرحلة',
-                                        text: 'إذكر الرحلة',
+                                        label: 'إذكر السبب',
+                                        text: 'إذكر السبب',
                                         controller: HhsStatic
                                             .householdAddress.hhsHavePastTrip,
                                       )

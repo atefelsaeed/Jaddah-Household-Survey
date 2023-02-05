@@ -19,6 +19,7 @@ class UserSurveysProvider with ChangeNotifier {
 
   int? get totalUserSurveys {
     _totalUserSurveys;
+    return null;
   }
 
   List<UserSurveysModelData> get userSurveys {

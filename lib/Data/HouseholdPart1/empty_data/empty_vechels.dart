@@ -8,6 +8,7 @@ import '../VechelisData/veh_model.dart';
 class EmptyVehicles {
   static emptyVehicles() {
     VehModel.vecVan = [];
+    VehModel.hasVehicles = false;
     VehModel.vecWanet = [];
     VehModel.vecCar = [];
     VehModel.pickUp = [];
@@ -17,7 +18,7 @@ class EmptyVehicles {
     for (var element in VehiclesData.vecModel) {
       element.textEditingController.text = '';
       element.isChosen = false;
-      element.number=0;
+      element.number = 0;
     }
     VehModel.vehiclesModel = VehiclesModel(
       nearestBusStop: '',

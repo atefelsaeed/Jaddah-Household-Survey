@@ -93,7 +93,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                           .split(":")
                           .first);
                   int pickedM = int.parse(
-                      time12to24Format(pickedTime!.format(context).toString())
+                      time12to24Format(pickedTime.format(context).toString())
                           .split(":")
                           .last);
 

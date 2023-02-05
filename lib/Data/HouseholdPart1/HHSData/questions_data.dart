@@ -13,7 +13,6 @@ class QuestionsData {
       'أخر'
     ]
   };
-
   static Map<String, dynamic> qh2 = {
     "Is this dwelling...": [
       'مالك',
@@ -23,7 +22,6 @@ class QuestionsData {
       'أخر'
     ]
   };
-
   static Map<String,dynamic> qh6_2 = {
     "Is this dwelling...": [
       'النزهه',
@@ -98,18 +96,15 @@ class QuestionsData {
         " A separate family is defined as who share the kitchen expenses and meals",
     "index": 0
   };
-
   static Map<String, dynamic> qh5 = {
     "Qh5": "How many people usually live at this address? ( all families)",
     "subTitle": "Number of people include servants/maid and live-in drivers"
   };
-
   static Map<String, dynamic> qh6 = {
     "?How many people are in each of the separate family living at this address":
         [],
     "subTitle": "Number of people include servants/maid and live-in drivers"
   };
-
   q6Answer(adults, child, totalNumber) {
     Map<String, dynamic> qh5Answer = {
       "adults (18yrs +)": adults.toString(),
@@ -118,7 +113,6 @@ class QuestionsData {
     };
     return qh5Answer;
   }
-
   static Map<String, dynamic> qh7 = {
     "?How many years have you/your family lived at this particular address": [
       {"value": 'أقل من 1 سنة', "isChick": false},

@@ -65,7 +65,6 @@ class ItemUserSurvey extends StatelessWidget {
                         ),
                       );
                       itemSurveyModel.id;
-
                       HHSEmptyData.emptyData();
                     },
                     isWidget: true,
