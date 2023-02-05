@@ -3,6 +3,7 @@ import 'package:jaddah_household_survey/UI/Screens/vechicles/components/vec_body
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
+import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
@@ -20,6 +21,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Column(
@@ -109,85 +111,198 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                 case "سيارة صغيرة":
                                   VehModel.vecCar = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecCar.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+                                    if (x > total) {
+                                      VehModel.vecCar.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking: TextEditingController(),
+                                          vehicleOwnership:
+                                          TextEditingController(),
+                                          vehicleFuelType:
+                                          TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
                                   break;
                                 case "سيارة كبيرة  ":
                                   VehModel.largeCar = [];
+                                  print(HhsStatic
+                                      .houseHold[0].totalNumberVehicles
+                                      .toString());
+
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.largeCar.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+
+                                    if (x > total) {
+                                      VehModel.largeCar.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking:
+                                              TextEditingController(),
+                                          vehicleOwnership:
+                                              TextEditingController(),
+                                          vehicleFuelType:
+                                              TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
+                                  break;
                                   break;
                                 case "ونيت":
                                   VehModel.vecWanet = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecWanet.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+                                    if (x > total) {
+                                      VehModel.vecWanet.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking:
+                                              TextEditingController(),
+                                          vehicleOwnership:
+                                              TextEditingController(),
+                                          vehicleFuelType:
+                                              TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
                                   break;
                                 case "شاحنة":
                                   VehModel.vecVan = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.vecVan.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+                                    if (x > total) {
+                                      VehModel.vecVan.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking: TextEditingController(),
+                                          vehicleOwnership:
+                                          TextEditingController(),
+                                          vehicleFuelType:
+                                          TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
                                   break;
                                 case "دراجة نارية":
                                   VehModel.pickUp = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.pickUp.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+                                    if (x > total) {
+                                      VehModel.pickUp.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking: TextEditingController(),
+                                          vehicleOwnership:
+                                          TextEditingController(),
+                                          vehicleFuelType:
+                                          TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
                                   break;
                                 case "دراجة هوائية":
                                   VehModel.bicycle = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.bicycle.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+                                    if (x > total) {
+                                      VehModel.bicycle.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking: TextEditingController(),
+                                          vehicleOwnership:
+                                          TextEditingController(),
+                                          vehicleFuelType:
+                                          TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
                                   break;
                                 case " اسكوتر":
                                   VehModel.eScooter = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    VehModel.eScooter.add(
-                                      VehicleBodyDetails(
-                                        vehicleParking: TextEditingController(),
-                                        vehicleOwnership: TextEditingController(),
-                                        vehicleFuelType: TextEditingController(),
-                                      ),
-                                    );
+                                    int x = int.parse(HhsStatic
+                                        .houseHold[0].totalNumberVehicles
+                                        .toString());
+
+                                    int total = VehModel.fuelTypeCode.length +
+                                        VehModel.vecCar.length +
+                                        VehModel.largeCar.length +
+                                        VehModel.vecWanet.length +
+                                        VehModel.vecVan.length +
+                                        VehModel.pickUp.length +
+                                        VehModel.eScooter.length;
+                                    if (x > total) {
+                                      VehModel.eScooter.add(
+                                        VehicleBodyDetails(
+                                          vehicleParking: TextEditingController(),
+                                          vehicleOwnership:
+                                          TextEditingController(),
+                                          vehicleFuelType:
+                                          TextEditingController(),
+                                        ),
+                                      );
+                                    }
                                   }
                                   break;
                               }

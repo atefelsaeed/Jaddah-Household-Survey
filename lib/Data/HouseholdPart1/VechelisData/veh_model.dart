@@ -25,6 +25,7 @@ class VehModel {
   static List<VehicleBodyDetails> largeCar = [];
   static List<VehicleBodyDetails> eScooter = [];
   static List<VehicleBodyDetails> pickUp = [];
+
   static List<VehicleBodyDetails> bicycle = [];
   static List<VehicleBodyDetails> vecWanet = [];
   static String fuelTypeCode = "";
