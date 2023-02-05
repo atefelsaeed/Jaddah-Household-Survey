@@ -67,9 +67,12 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
                   textEditingController: widget.vecBodyType.vehicleOwnership,
                 ),
                 AppSize.spaceWidth2(context),
-                FuelTypeCode(
-                  textEditingController: widget.vecBodyType.vehicleFuelType,
-                ),
+                widget.title == "دراجة هوائية"
+                    ? Container()
+                    : FuelTypeCode(
+                        textEditingController:
+                            widget.vecBodyType.vehicleFuelType,
+                      ),
               ],
             ),
             AppSize.spaceHeight2(context),

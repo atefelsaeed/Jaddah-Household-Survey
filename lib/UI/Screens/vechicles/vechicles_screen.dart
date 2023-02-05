@@ -6,12 +6,20 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Resources/colors.dart';
+import '../../Widgets/text.dart';
 import 'components/controller_vechelies_body.dart';
 
-class VehiclesScreen extends StatelessWidget {
-  VehiclesScreen({super.key});
+class VehiclesScreen extends StatefulWidget {
+  const VehiclesScreen({super.key});
 
+  @override
+  State<VehiclesScreen> createState() => _VehiclesScreenState();
+}
+
+class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
+
+  bool hasVehicles = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,35 @@ class VehiclesScreen extends StatelessWidget {
             child: Column(
               children: [
                 const VehiclesHeader(),
-                const ControllerVehiclesBody(),
+                AppSize.spaceHeight2(context),
+                Row(children: [
+                  TextGlobal(
+                    text: "لا يوجد سيارات",
+                    fontSize: width(context) * .03,
+                    color: ColorManager.grayColor,
+                  ),
+                  //================Has-Vehicles=================
+                  Checkbox(
+                      side: BorderSide(
+                        color: ColorManager.orangeTxtColor,
+                        width: 1.5,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      checkColor: ColorManager.whiteColor,
+                      focusColor: ColorManager.orangeTxtColor,
+                      activeColor: ColorManager.orangeTxtColor,
+                      value: hasVehicles,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          hasVehicles = value!;
+                        });
+                      })
+                ]),
+                hasVehicles == true
+                    ? Container()
+                    : const ControllerVehiclesBody(),
                 AppSize.spaceHeight5(context),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

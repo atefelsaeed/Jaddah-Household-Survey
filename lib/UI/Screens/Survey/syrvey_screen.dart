@@ -275,7 +275,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         ],
                       ),
                       AppSize.spaceHeight3(context),
+                      //========HHSQ9=================
                       const NearestTransporter(),
+                      //========HHSQ10=================
                       const HHSQ10(),
                       DefaultButton(
                         function: () async {
@@ -307,6 +309,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
                             surveyPt.id = widget.id;
 
+                            //==========HHS-Header============
+                            surveyPt.hhsPhone =
+                                HhsStatic.householdAddress.hhsPhone;
                             // ===>> Q1=====
                             surveyPt.hhsDwellingType = HhsStatic
                                 .householdQuestions.hhsDwellingType; //solve
@@ -324,7 +329,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                     .text ??
                                 '';
                             // ================ HHSQ10 ==============
-                           // surveyPt.hhsSeparateFamilies = HhsStatic.houseHold[0].totalNumberVehicles;
+                            // surveyPt.hhsSeparateFamilies = HhsStatic.houseHold[0].totalNumberVehicles;
                             surveyPt.vehiclesData.numberParcels =
                                 VehModel.vehiclesModel.numberParcels;
                             surveyPt.vehiclesData.numberParcelsDeliveries =
@@ -345,10 +350,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsNumberYearsInAddress = HhsStatic
                                 .householdQuestions
                                 .hhsNumberYearsInAddress; //solve
-                            surveyPt.hhsPhone =
-                                HhsStatic.householdAddress.hhsPhone;
-                            surveyPt.hhsHavePastTrip = HhsStatic
-                                .householdAddress.hhsHavePastTrip; //solve
 
                             surveyPt.hhsNumberAdults = peopleAdults18.text;
                             surveyPt.hhsNumberChildren =
@@ -362,8 +363,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                 editingController3Q81.totalNumber.text;
                             surveyPt.hhsPCAdultsBikesNumber =
                                 editingController3Q81.peopleAdults18.text;
-                            HhsStatic.peopleUnder18=peopleUnder18.text;
-                            HhsStatic.peopleAdults18=peopleAdults18.text;
+                            HhsStatic.peopleUnder18 = peopleUnder18.text;
+                            HhsStatic.peopleAdults18 = peopleAdults18.text;
                             surveyPt.hhsECChildrenBikesNumber =
                                 editingController3Q82.peopleUnder18.text;
                             surveyPt.hhsECTotalBikesNumber =

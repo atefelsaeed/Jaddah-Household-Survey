@@ -28,6 +28,11 @@ class VehiclesData {
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
+        title: "دراجة هوائية",
+        isChosen: false,
+        number: 0,
+        textEditingController: TextEditingController()),
+    VecModel(
         title: " اسكوتر",
         isChosen: false,
         number: 0,
@@ -77,6 +82,7 @@ class VehiclesData {
       {"value": '11 - 15 دقيقة مشي', "isChick": false},
       {"value": ' أكثر من 15 دقيقة', "isChick": false},
       {"value": ' لا اعرف', "isChick": false},
+      {"value": ' لا يوجد محطة', "isChick": false},
     ],
     "index":0
   };

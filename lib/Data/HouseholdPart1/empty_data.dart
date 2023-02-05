@@ -23,6 +23,8 @@ class HHSEmptyData {
         .toList()[QuestionsData.qh7["index"]]["isChick"] = false;
     QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first]!
         .toList()[QuestionsData.qh7_2["index"]]["isChick"] = false;
+    QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]!
+        .toList()[QuestionsData.hhsHavePastTrip["index"]]["isChick"] = false;
     //=============Vehicles===================
     VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
         .toList()[VehiclesData.q3VecData["index"]]["isChick"] = false;
@@ -32,8 +34,10 @@ class HHSEmptyData {
 
     //================Trip========================================
     TripData.tripReason[TripData.tripReason.keys.first]!
-        .toList()[TripData.tripReason["index"]]["isChick"] = false;
+        .toList()[TripData.tripReason["chosenIndex"]]["isChick"] = false;
     TripData.purposeOfBeingThere[TripData.purposeOfBeingThere.keys.first]!
-        .toList()[TripData.purposeOfBeingThere["index"]]["isChick"] = false;
+        .toList()[TripData.purposeOfBeingThere["chosenIndex"]]["isChick"] = false;
+    TripData.travelWithOther[TripData.travelWithOther.keys.first]!
+        .toList()[TripData.travelWithOther["index"]]["isChick"] = false;
   }
 }

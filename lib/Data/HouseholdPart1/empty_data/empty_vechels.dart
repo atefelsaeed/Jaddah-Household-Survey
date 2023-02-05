@@ -11,10 +11,13 @@ class EmptyVehicles {
     VehModel.vecWanet = [];
     VehModel.vecCar = [];
     VehModel.pickUp = [];
+    VehModel.bicycle = [];
     VehModel.eScooter = [];
     VehModel.largeCar = [];
     for (var element in VehiclesData.vecModel) {
       element.textEditingController.text = '';
+      element.isChosen = false;
+      element.number=0;
     }
     VehModel.vehiclesModel = VehiclesModel(
       nearestBusStop: '',

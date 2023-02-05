@@ -6,9 +6,11 @@ import '../VechelisData/veh_model.dart';
 
 class CheckVehiclesValidation {
   static validate(context) {
-    if (VehModel.fuelTypeCode == '') {
-      return Validator.showSnack(context, " يجب إخيار ! أكواد نوع الوقود؟");
-    } else if (VehModel.ownerShipCode == '') {
+    // if (VehModel.fuelTypeCode == '') {
+    //   return Validator.showSnack(context, " يجب إخيار ! أكواد نوع الوقود؟");
+    // } else
+
+      if (VehModel.ownerShipCode == '') {
       return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
     } else if (VehModel.parkThisCar == '') {
       return Validator.showSnack(context,

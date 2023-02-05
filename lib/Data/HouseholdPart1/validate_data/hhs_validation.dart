@@ -14,10 +14,6 @@ class CheckHHSValidation {
     if (HhsStatic.householdQuestions.hhsDwellingType == null ||
         HhsStatic.householdQuestions.hhsDwellingType == "") {
       return Validator.showSnack(context, " يجب إخيار! 1.وصف المسكن؟ ");
-    }
-    if (HhsStatic.householdAddress.hhsHavePastTrip == null ||
-        HhsStatic.householdAddress.hhsHavePastTrip == "") {
-      return Validator.showSnack(context, " يجب إخيار! هل قمت برحلة فى الأيام السابقة ");
     } else if (HhsStatic.householdQuestions.hhsIsDwelling == null ||
         HhsStatic.householdQuestions.hhsIsDwelling == "") {
       return Validator.showSnack(context, "يجب إخيار! 2.ملكية المسكن؟ ");
@@ -42,7 +38,7 @@ class CheckHHSValidation {
           ".يجب إخيار ! 9.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟");
     } else {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => VehiclesScreen()));
+          context, MaterialPageRoute(builder: (context) => const VehiclesScreen()));
     }
   }
 }

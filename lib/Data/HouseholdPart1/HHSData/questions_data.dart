@@ -137,6 +137,14 @@ class QuestionsData {
     ],
     "index": 0
   };
+  static Map<String, dynamic> hhsHavePastTrip = {
+    'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+        [
+      {"value": 'نعم', "isChick": false},
+      {"value": 'لا', "isChick": false},
+    ],
+    "index": 0
+  };
   static Map<String, dynamic> qh8_1 = {
     "?How many pedal-cycles are owned or used by this household": {
       "adults (18yrs +)": "0",

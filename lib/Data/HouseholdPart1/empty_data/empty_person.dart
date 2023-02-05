@@ -1,8 +1,11 @@
 import '../PersonData/person_model_list.dart';
 
-class EmptyPerson{
-  static emptyPerson(){
+class EmptyPerson {
+  static emptyPerson() {
+    PersonModelList.personModelList.length=1;
     for (var element in PersonModelList.personModelList) {
+      element.personalHeadData!.checkAge = false;
+      element.personalHeadData!.refuseToTellAge = false;
       element.personalHeadData!.age.text = '';
       element.personName.text = '';
       element.personalHeadData!.nationality.text = '';

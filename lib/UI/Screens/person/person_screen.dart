@@ -7,6 +7,7 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/components/default_entry.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 
+import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
@@ -17,6 +18,8 @@ import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/text.dart';
 import '../../Widgets/text_form_field.dart';
 import '../Survey/widgets/editing_controler3.dart';
+import '../Survey/widgets/list_view_check_box_orange.dart';
+import '../Survey/widgets/text_form_row.dart';
 import '../trips/trip_screen.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
@@ -32,6 +35,7 @@ class PersonScreen extends StatefulWidget {
 class _PersonScreenState extends State<PersonScreen> {
   bool type = false;
   bool typeAlone = true;
+  bool hasPasTrip = false;
   var mainOccupationKey = PersonData.mainOccupation.keys.first;
   TextEditingController occupationSectorController = TextEditingController();
   var occupationSectorKey = PersonData.occupationSector.keys.first;
@@ -86,6 +90,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                   },
                                 ),
                                 AppSize.spaceHeight2(context),
+                                //=============Person-Age==================
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -265,9 +270,42 @@ class _PersonScreenState extends State<PersonScreen> {
                                     ],
                                   ),
                                 ),
-                                Nationality(
-                                  i: i,
+                                AppSize.spaceHeight1(context),
+                                //=============HHS-HavePastTrip==================
+                                ListViewCheckBoxOrange(
+                                  map: QuestionsData.hhsHavePastTrip,
+                                  onChange: (ChangeBoxResponse r) {
+                                    setState(() {
+                                      if (r.val == "لا" && r.check == true) {
+                                        hasPasTrip = true;
+                                        HhsStatic.householdAddress
+                                            .hhsHavePastTrip.text = '';
+                                      } else {
+                                        hasPasTrip = false;
+                                        HhsStatic.householdAddress
+                                            .hhsHavePastTrip.text = 'نعم';
+                                      }
+                                    });
+                                  },
+                                  isListView: true,
+                                  title: "هل قمت برحلة فى الأيام السابقة",
+                                  question: QuestionsData.hhsHavePastTrip[
+                                          QuestionsData
+                                              .hhsHavePastTrip.keys.first]!
+                                      .toList(),
+                                  subTitle: "",
                                 ),
+                                hasPasTrip == true
+                                    ? TextForm(
+                                        label: 'إذكر الرحلة',
+                                        text: 'إذكر الرحلة',
+                                        controller: HhsStatic
+                                            .householdAddress.hhsHavePastTrip,
+                                      )
+                                    : Container(),
+                                AppSize.spaceHeight1(context),
+                                //=========Nationality======================
+                                Nationality(i: i),
                                 AppSize.spaceHeight3(context),
                                 Row(
                                   mainAxisAlignment:
@@ -446,75 +484,87 @@ class _PersonScreenState extends State<PersonScreen> {
                         ),
                       ),
                     AppSize.spaceHeight2(context),
+                    //============Add-New-Person-Button=============
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         DefaultButton(
                           function: () {
                             setState(() {
+                              int x = int.parse(
+                                      HhsStatic.peopleAdults18.toString()) +
+                                  int.parse(HhsStatic.peopleUnder18.toString());
 
-                   int x=int.parse(HhsStatic.peopleAdults18.toString())+int.parse(HhsStatic.peopleUnder18.toString());
-
-                   print(PersonModelList.personModelList.length);
-                   PersonModelList.personModelList.length;
-                   if(x> PersonModelList.personModelList.length) {
-setState(() {
-  PersonModelList.personModelList.add(
-    PersonModel(
-      //==personalHeadData==
-      personName: TextEditingController(),
-      personalHeadData: PersonalHeadData(
-        age: TextEditingController(),
-        nationality: TextEditingController(),
-        nationalityType: '',
-        gender: '',
-        checkAge: false,
-        refuseToTellAge: false,
-        relationshipHeadHHS: '',
-      ),
-      //==personalQuestion==
-      personalQuestion: PersonalQuestion(
-        mainOccupationType: '',
-        asPassenger: '',
-        availablePersonalCar: '',
-        drivingLicenceType: '',
-        haveBusPass: '',
-        haveDisabilityTransportMobility: '',
-        haveCarSharing: false,
-        educationAddress: EducationAddress(
-          fullAddress: TextEditingController(),
-          geocodes: TextEditingController(),
-        ),
-      ),
-      //==occupationModel==
-      occupationModel: OccupationModel(
-        earliestTimeFinishingWork:
-        TextEditingController(),
-        earliestTimeStartingWork:
-        TextEditingController(),
-        endingWoke: TextEditingController(),
-        startingWoke: TextEditingController(),
-        address: TextEditingController(),
-        geoCodes: TextEditingController(),
-        mainOccupationAddress:
-        TextEditingController(),
-        bestWorkspaceLocation: '',
-        bikeWorkDays: 0,
-        commuteWorkDays: 0,
-        flexibleWorkingHours: '',
-        isEmployee: '',
-        isWorkFromHome: false,
-        numberWorkFromHome: 0,
-        occupationLevelSector: '',
-        occupationSector: '',
-      ),
-    ),
-  );
-});
-
-                   }
+                              print(PersonModelList.personModelList.length);
+                              PersonModelList.personModelList.length;
+                              if (x > PersonModelList.personModelList.length) {
+                                setState(() {
+                                  PersonModelList.personModelList.add(
+                                    PersonModel(
+                                      //==personalHeadData==
+                                      personName: TextEditingController(),
+                                      personalHeadData: PersonalHeadData(
+                                        age: TextEditingController(),
+                                        nationality: TextEditingController(),
+                                        nationalityType: '',
+                                        gender: '',
+                                        checkAge: false,
+                                        refuseToTellAge: false,
+                                        relationshipHeadHHS: '',
+                                      ),
+                                      //==personalQuestion==
+                                      personalQuestion: PersonalQuestion(
+                                        mainOccupationType: '',
+                                        asPassenger: '',
+                                        availablePersonalCar: '',
+                                        drivingLicenceType: '',
+                                        haveBusPass: '',
+                                        haveDisabilityTransportMobility: '',
+                                        haveCarSharing: false,
+                                        educationAddress: EducationAddress(
+                                          fullAddress: TextEditingController(),
+                                          geocodes: TextEditingController(),
+                                        ),
+                                      ),
+                                      //==occupationModel==
+                                      occupationModel: OccupationModel(
+                                        earliestTimeFinishingWork:
+                                            TextEditingController(),
+                                        earliestTimeStartingWork:
+                                            TextEditingController(),
+                                        endingWoke: TextEditingController(),
+                                        startingWoke: TextEditingController(),
+                                        address: TextEditingController(),
+                                        geoCodes: TextEditingController(),
+                                        mainOccupationAddress:
+                                            TextEditingController(),
+                                        bestWorkspaceLocation: '',
+                                        bikeWorkDays: 0,
+                                        commuteWorkDays: 0,
+                                        flexibleWorkingHours: '',
+                                        isEmployee: '',
+                                        isWorkFromHome: false,
+                                        numberWorkFromHome: 0,
+                                        occupationLevelSector: '',
+                                        occupationSector: '',
+                                      ),
+                                    ),
+                                  );
+                                  PersonData.nationality[PersonData
+                                                  .nationality.keys.first]!
+                                              .toList()[
+                                          PersonData.nationality["index"]]
+                                      ["isChick"] = false;
+                                  QuestionsData.hhsHavePastTrip[QuestionsData
+                                                  .hhsHavePastTrip.keys.first]!
+                                              .toList()[
+                                          QuestionsData
+                                              .hhsHavePastTrip["index"]]
+                                      ["isChick"] = false;
+                                  hasPasTrip = false;
+                                });
+                              }
                             });
-
                           },
                           isWidget: true,
                           btnWidth: width(context) * .35,
@@ -524,6 +574,7 @@ setState(() {
                       ],
                     ),
                     AppSize.spaceHeight6(context),
+                    //======Navigation Buttons================
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -532,10 +583,6 @@ setState(() {
                             if (_key.currentState!.validate()) {
                               _key.currentState!.save();
                               SavePersonData.saveData(context);
-                              PersonData.nationality[
-                                          PersonData.nationality.keys.first]!
-                                      .toList()[PersonData.nationality["index"]]
-                                  ["isChick"] = false;
                               if (CheckPersonValidation.validatePerson(
                                   context)) {
                                 Navigator.push(

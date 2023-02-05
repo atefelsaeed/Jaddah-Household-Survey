@@ -138,11 +138,11 @@ class _TripScreenState extends State<TripScreen> {
                                   DropDownFormInput(
                                     hint: "صاحب الرحلة",
                                     label: TripModeList
-                                        .tripModeList[i].chosenPerson !=
-                                        ''
+                                                .tripModeList[i].chosenPerson !=
+                                            ''
                                         ? Text(TripModeList
-                                        .tripModeList[i].chosenPerson ??
-                                        '')
+                                                .tripModeList[i].chosenPerson ??
+                                            '')
                                         : const Text('إختار'),
                                     options:
                                         TripModeList.tripModeList[i].person,
@@ -266,29 +266,37 @@ class _TripScreenState extends State<TripScreen> {
                             TripModeList.tripModeList.add(TripsModel(
                               purposeOfBeingThere2: {
                                 "TripReason": [
-                                  {"value": 'كنت في المنزل', "isChick": false},
+                                  {"value": ' في المنزل', "isChick": false},
                                   {
-                                    "value": 'كنت العطلات / الفندق',
+                                    "value": 'فى بيت العطلات / الفندق',
                                     "isChick": false
                                   },
-                                  {"value": ' كنت في العمل', "isChick": false},
-                                  {"value": 'مكان تعليمي', "isChick": false},
                                   {
-                                    "value": 'موظف لصاحب العمل',
+                                    "value": 'العمل - فى مكتب / مقر العمل',
                                     "isChick": false
                                   },
+                                  {
+                                    "value": 'العمل - خارج مكتب / مقر العمل',
+                                    "isChick": false
+                                  },
+                                  {"value": 'مكان تعليمى', "isChick": false},
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
+                                  {"value": 'طبى / مستشفى', "isChick": false},
                                   {
                                     "value": 'زیارة الأصدقاء / الأقار',
                                     "isChick": false
                                   },
                                   {
-                                    "value": 'استجمام / وقت الفراغ',
+                                    "value": 'ترفيه / وقت الفراغ',
                                     "isChick": false
                                   },
                                   {
-                                    "value": 'توص الى المدرسة',
+                                    "value": 'توص الى المدرسة / التعليم',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى مكان آخر',
                                     "isChick": false
                                   },
                                 ],
@@ -299,29 +307,37 @@ class _TripScreenState extends State<TripScreen> {
                               },
                               purposeOfBeingThere: {
                                 "QPurposeOfBeingThere": [
-                                  {"value": 'كنت في المنزل', "isChick": false},
+                                  {"value": ' في المنزل', "isChick": false},
                                   {
-                                    "value": 'كنت العطلات / الفندق',
+                                    "value": 'فى بيت العطلات / الفندق',
                                     "isChick": false
                                   },
-                                  {"value": ' كنت في العمل', "isChick": false},
-                                  {"value": 'مكان تعليمي', "isChick": false},
                                   {
-                                    "value": 'موظف لصاحب العمل',
+                                    "value": 'العمل - فى مكتب / مقر العمل',
                                     "isChick": false
                                   },
+                                  {
+                                    "value": 'العمل - خارج مكتب / مقر العمل',
+                                    "isChick": false
+                                  },
+                                  {"value": 'مكان تعليمى', "isChick": false},
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
+                                  {"value": 'طبى / مستشفى', "isChick": false},
                                   {
                                     "value": 'زیارة الأصدقاء / الأقار',
                                     "isChick": false
                                   },
                                   {
-                                    "value": 'استجمام / وقت الفراغ',
+                                    "value": 'ترفيه / وقت الفراغ',
                                     "isChick": false
                                   },
                                   {
-                                    "value": 'توص الى المدرسة',
+                                    "value": 'توص الى المدرسة / التعليم',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى مكان آخر',
                                     "isChick": false
                                   },
                                 ],
