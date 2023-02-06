@@ -16,6 +16,7 @@ class Field extends StatelessWidget {
   required this.peopleAdults18Text,
   required this.function,
   required this.peopleUnder18Text,
+    required this.isHome,
   required this.showDeleteIcon});
 
   final TextEditingController peopleAdults18;
@@ -23,6 +24,7 @@ class Field extends StatelessWidget {
   final TextEditingController peopleUnder18;
   final TextEditingController totalNumberOfVec;
   final String peopleAdults18Text;
+  final bool isHome;
   final String peopleUnder18Text;
   final String totalNumberOfVecText;
   final Function function;
@@ -55,13 +57,13 @@ class Field extends StatelessWidget {
               flex: 3,
               child: Row(
                 children: [
-                  MyTextForm(
+            isHome==false?      MyTextForm(
                     label: "",
                     controller: peopleUnder18,
                     widthForm: width(context) * .1,
                     keyboardType: TextInputType.number,
                     isNumber: true,
-                  ),
+                  ):Text("0"),
                   AppSize.spaceWidth1(context),
                   Expanded(
                     flex: 1,
@@ -79,13 +81,13 @@ class Field extends StatelessWidget {
                 flex: 3,
                 child: Row(
                   children: [
-                    MyTextForm(
+                    isHome==false?   MyTextForm(
                       label: "",
                       controller: peopleAdults18,
                       widthForm: width(context) * .1,
                       keyboardType: TextInputType.number,
                       isNumber: true,
-                    ),
+                    ):Text("0"),
                     AppSize.spaceWidth1(context),
                     Expanded(
                       flex: 1,
@@ -102,13 +104,13 @@ class Field extends StatelessWidget {
               flex: 3,
               child: Row(
                 children: [
-                  MyTextForm(
+               isHome==false?   MyTextForm(
                     label: "",
                     controller: totalNumberOfVec,
                     widthForm: width(context) * .1,
                     keyboardType: TextInputType.number,
                     isNumber: true,
-                  ),
+                  ):Text("0"),
                   AppSize.spaceWidth1(context),
                   Expanded(
                     flex: 1,
