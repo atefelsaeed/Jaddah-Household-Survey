@@ -4,22 +4,16 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
+import '../Helper/api_routing.dart';
 import '../Models/user_serveys_model.dart';
+import '../Models/user_surves_status.dart';
 
 class UserSurveysProvider with ChangeNotifier {
   List<UserSurveysModelData> _userSurveysSurveysList = [];
-  UserSurveysModel? _userSurveys;
+  UserSurveyStatusData? _userSurveyStatusData;
 
-  UserSurveysModel? get userSurvey {
-    return _userSurveys;
-  }
-
-  int? _totalUserSurveys;
-  int? _totalFinishedUserSurveys;
-
-  int? get totalUserSurveys {
-    _totalUserSurveys;
-    return null;
+  UserSurveyStatusData? get userSurveyStatusData {
+    return _userSurveyStatusData;
   }
 
   List<UserSurveysModelData> get userSurveys {
@@ -93,7 +87,7 @@ class UserSurveysProvider with ChangeNotifier {
     try {
       loading = true;
       var response = await APIHelper.getData(
-        url: "getSurveis/$id",
+        url: "${APIRouting.getSurveis}$id",
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
@@ -122,6 +116,45 @@ class UserSurveysProvider with ChangeNotifier {
           .getStringList("userSurveys")!
           .map((e) => UserSurveysModelData.fromJson(json.decode(e)))
           .toList();
+      loading = false;
+      notifyListeners();
+      return true;
+    }
+  }
+
+  Future<bool> fetchUserSurveysStatus(int id) async {
+    try {
+      loading = true;
+      var response = await APIHelper.getData(
+        url: "${APIRouting.userSurveysStatus}$id",
+      );
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        print(data);
+        // if (!data['status']) return false;
+        _userSurveyStatusData = UserSurveyStatusData.fromJson(data['data']);
+        print("fffff");
+        print(_userSurveyStatusData?.allForms.toString());
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString(
+          "userSurveysStatus",
+          json.encode(_userSurveyStatusData),
+        );
+        loading = false;
+        notifyListeners();
+        return true;
+      }
+      loading = false;
+      notifyListeners();
+      return false;
+    } catch (e) {
+      final prefs = await SharedPreferences.getInstance();
+      if (!prefs.containsKey("userSurveysStatus")) return false;
+
+      _userSurveyStatusData = UserSurveyStatusData.fromJson(
+          json.decode(prefs.getString("userSurveysStatus")!));
+      print("fffsssff");
+      print(_userSurveyStatusData?.allForms.toString());
       loading = false;
       notifyListeners();
       return true;

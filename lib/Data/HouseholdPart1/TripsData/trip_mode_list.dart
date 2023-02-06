@@ -58,6 +58,7 @@ class TripModeList {
         "index": 0
       },
       type: false,
+      isHome: false,
 
       tripReason: "",
       // person: [],

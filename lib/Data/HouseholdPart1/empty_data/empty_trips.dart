@@ -19,6 +19,7 @@ class EmptyTrips {
           .toList()[element.friendPerson["index"]]["isChick"] = false;
       //==============Reset-List=================
       element.hhsMembersTraveled = [];
+      element.isHome=false;
       element.person = [];
       element.chosenFriendPerson = [];
       element.departureTime.text = '';

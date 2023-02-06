@@ -356,6 +356,7 @@ class _TripScreenState extends State<TripScreen> {
                                 "index": 0
                               },
                               type: false,
+                              isHome: false,
                               tripReason: "",
                               taxiTravelTypeEditingControl:
                                   TextEditingController(),

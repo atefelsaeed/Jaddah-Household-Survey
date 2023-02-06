@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/validate_data/hhs_validation.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
@@ -30,9 +31,11 @@ class SurveyScreen extends StatefulWidget {
   const SurveyScreen({
     super.key,
     required this.id,
+    required this.itemSurveyModel,
   });
 
   final String id;
+  final UserSurveysModelData itemSurveyModel;
 
   @override
   State<SurveyScreen> createState() => _SurveyScreenState();
@@ -130,7 +133,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   child: Column(
                     children: [
                       // ===== HouseHoldAddress ===
-                      const HouseHoldAddress(),
+                      HouseHoldAddress(
+                        itemSurveyModel: widget.itemSurveyModel,
+                      ),
                       AppSize.spaceHeight3(context),
                       const HouseHoldMember(),
                       // ====Question 1====

@@ -9,6 +9,7 @@ import 'package:jaddah_household_survey/UI/Screens/UserSurveys/userSurveys.dart'
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
+import '../../../Providers/user_surveys.dart';
 import '../../../Resources/assets_manager.dart';
 import '../../../Resources/colors.dart';
 import '../../../Resources/sizes.dart';
@@ -27,7 +28,6 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
   @override
   initState() {
     super.initState();
-
     subscription = Connectivity().onConnectivityChanged.listen(
       (ConnectivityResult result) {
         if (result == ConnectivityResult.mobile ||

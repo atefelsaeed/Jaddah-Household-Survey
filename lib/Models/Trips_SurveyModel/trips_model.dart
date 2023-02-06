@@ -84,9 +84,11 @@ class TripsModel {
   List<String>? hhsMembersTraveled;
   ArrivalDepartTime? arrivalDepartTime;
   TravelTypeModel? travelTypeModel;
+  bool isHome = false;
 
   TripsModel({
     required this.person,
+    required this.isHome,
     required this.chosenFriendPerson,
     this.type,
     required this.purposeOfBeingThere,
