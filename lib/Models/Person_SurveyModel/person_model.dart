@@ -9,7 +9,6 @@ class PersonModel {
   PersonalQuestion? personalQuestion;
   TextEditingController personName = TextEditingController();
 
-
   PersonModel({
     this.personalQuestion,
     this.occupationModel,
@@ -40,6 +39,8 @@ class PersonalHeadData {
   String? gender;
   bool? checkAge;
   bool? refuseToTellAge;
+  bool hasPasTrip = false;
+  TextEditingController hhsHavePastTrip = TextEditingController();
   TextEditingController age = TextEditingController();
   String? nationalityType;
   TextEditingController nationality =
@@ -48,6 +49,8 @@ class PersonalHeadData {
   PersonalHeadData({
     required this.age,
     this.nationalityType,
+    required this.hasPasTrip,
+    required this.hhsHavePastTrip,
     required this.nationality,
     this.gender,
     this.checkAge,

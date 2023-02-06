@@ -61,6 +61,7 @@ class ItemUserSurvey extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => SurveyScreen(
                             id: itemSurveyModel.id.toString(),
+                            itemSurveyModel: itemSurveyModel,
                           ),
                         ),
                       );

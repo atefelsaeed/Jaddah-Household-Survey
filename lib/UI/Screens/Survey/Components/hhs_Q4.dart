@@ -36,26 +36,27 @@ class _HHSQ4State extends State<HHSQ4> {
     return Column(
       children: [
         const HeadlineText(
-            text: "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟"),
+            text: "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟ و كم عدد المركبات ؟"),
         for (int i = 0; i < widget.q6peopleAdults18.length; i++)
           Column(
             children: [
               Field(
+                peopleAdults18: widget.q6peopleAdults18[i],
+                function: () {
+                  setState(() {
+                    widget.q6peopleAdults18.removeAt(i);
+                    widget.q6peopleUnder18.removeAt(i);
+                    widget.q6totalNumberOfVec.removeAt(i);
+                  });
+                },
+                showDeleteIcon: i >= 1 ? true : false,
+                peopleUnder18Text: "الاطفال",
+                peopleAdults18Text: "البالغين",
+                totalNumberOfVecText: "إجمالي عدد المركبات في كل عائلة",
+                peopleUnder18: widget.q6peopleUnder18[i],
+                totalNumberOfVec: widget.q6totalNumberOfVec[i],
                 isHome: false,
-                  peopleAdults18: widget.q6peopleAdults18[i],
-                  function: () {
-                    setState(() {
-                      widget.q6peopleAdults18.removeAt(i);
-                      widget.q6peopleUnder18.removeAt(i);
-                      widget.q6totalNumberOfVec.removeAt(i);
-                    });
-                  },
-                  showDeleteIcon: i >= 1 ? true : false,
-                  peopleUnder18Text: "الاطفال",
-                  peopleAdults18Text: "البالغين",
-                  totalNumberOfVecText: "إجمالي عدد المركبات في كل عائلة",
-                  peopleUnder18: widget.q6peopleUnder18[i],
-                  totalNumberOfVec: widget.q6totalNumberOfVec[i]),
+              ),
               AppSize.spaceHeight2(context),
             ],
           ),

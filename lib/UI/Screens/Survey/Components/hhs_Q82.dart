@@ -16,7 +16,8 @@ class Q82 extends StatefulWidget {
 }
 
 class _Q82State extends State<Q82> {
-  bool isHome=false;
+  bool hasBycle=false;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -36,17 +37,12 @@ class _Q82State extends State<Q82> {
           ],
         ),
         AppSize.spaceHeight2(context),
-        Field(
-          isHome: isHome,
-            function: () {},
-            showDeleteIcon: false,
-            peopleAdults18: widget.editingController3.peopleAdults18,
-            peopleUnder18: widget.editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدراجات الكهربائية",
-            totalNumberOfVec: widget.editingController3.totalNumber,
-            peopleAdults18Text: "عدد الدرجات للبالغين",
-            peopleUnder18Text: "عدد الدرجات للاطفال"),
         Row(children: [
+          TextGlobal(
+            text: "لا يوجد",
+            fontSize: height(context) * .02,
+            color: ColorManager.grayColor,
+          ),
           Checkbox(
               side: BorderSide(
                 color: ColorManager.orangeTxtColor,
@@ -58,25 +54,35 @@ class _Q82State extends State<Q82> {
               checkColor: ColorManager.whiteColor,
               focusColor: ColorManager.orangeTxtColor,
               activeColor: ColorManager.orangeTxtColor,
-              value: isHome,
+              value: hasBycle,
               onChanged: (bool? value) {
                 setState(() {
-                  isHome = value!;
-                  if (isHome == true) {
-
-                  } else {
-
+                  hasBycle = value!;
+                  if (hasBycle == true) {
+                    widget.editingController3.peopleAdults18.text = '0';
+                    widget.editingController3.peopleUnder18.text = '0';
+                    widget.editingController3.totalNumber.text = '0';
+                  }else{
+                    widget.editingController3.peopleAdults18.text = '';
+                    widget.editingController3.peopleUnder18.text = '';
+                    widget.editingController3.totalNumber.text = '';
                   }
                 });
-              }),
-          TextGlobal(
-            text: "لا يوجذ",
-            fontSize: height(context) * .012,
-            color: ColorManager.black,
-          ),
-        ],)
+              })
+        ]),
+        AppSize.spaceHeight2(context),
+        Field(
+            function: () {},
+            showDeleteIcon: false,
+            peopleAdults18: widget.editingController3.peopleAdults18,
+            peopleUnder18: widget.editingController3.peopleUnder18,
+            totalNumberOfVecText: "إجمالي عدد الدراجات الكهربائية",
+            totalNumberOfVec: widget.editingController3.totalNumber,
+            peopleAdults18Text: "عدد الدرجات للبالغين",
+            peopleUnder18Text: "عدد الدرجات للاطفال",
+          isHome: hasBycle,
+        )
       ],
-
     );
   }
 }

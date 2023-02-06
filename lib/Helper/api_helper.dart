@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:jaddah_household_survey/Helper/api_routing.dart';
 
 class APIHelper {
-  static const String baseUrl = "https://research.tkamol.sa/public/api/";
 
   static getData({
     required String url,
     dynamic body,
     bool isGuest = false,
   }) async {
-    var response = await http.get(Uri.parse("$baseUrl$url"), headers: body);
+    var response = await http.get(Uri.parse("${APIRouting.baseURL}$url"), headers: body);
     return response;
   }
 
@@ -22,7 +22,7 @@ class APIHelper {
     Map<String, String> _header = Map.of(header);
     _header['Content-Type'] = "application/json";
     var response = await http.post(
-      Uri.parse("$baseUrl$url"),
+      Uri.parse("${APIRouting.baseURL}$url"),
       body: body,
       headers: _header,
     );
@@ -35,7 +35,7 @@ class APIHelper {
     required String token,
   }) async {
     var response = await http.put(
-      Uri.parse("${baseUrl}v1/$url"),
+      Uri.parse("${APIRouting.baseURL}$url"),
       body: body,
       headers: {
         'Content-Type': 'application/json',

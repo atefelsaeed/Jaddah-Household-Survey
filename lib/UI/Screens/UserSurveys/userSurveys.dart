@@ -256,6 +256,9 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                   ),
                 ),
               )
-            : const Center(child: CircularProgressIndicator()));
+            : Center(
+                child: CircularProgressIndicator(
+                color: ColorManager.primaryColor,
+              )));
   }
 }

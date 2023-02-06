@@ -16,9 +16,9 @@ class Q81 extends StatefulWidget {
 }
 
 class _Q81State extends State<Q81> {
-  @override
+  bool hasBycle = false;
 
-  bool isHome=false;
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Column(
@@ -37,46 +37,51 @@ class _Q81State extends State<Q81> {
           ],
         ),
         AppSize.spaceHeight2(context),
+        Row(children: [
+          TextGlobal(
+            text: "لا يوجد",
+            fontSize: height(context) * .02,
+            color: ColorManager.grayColor,
+          ),
+          Checkbox(
+              side: BorderSide(
+                color: ColorManager.orangeTxtColor,
+                width: 1.5,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              checkColor: ColorManager.whiteColor,
+              focusColor: ColorManager.orangeTxtColor,
+              activeColor: ColorManager.orangeTxtColor,
+              value: hasBycle,
+              onChanged: (bool? value) {
+                setState(() {
+                  hasBycle = value!;
+                  if (hasBycle == true) {
+                    widget.editingController3.peopleAdults18.text = '0';
+                    widget.editingController3.peopleUnder18.text = '0';
+                    widget.editingController3.totalNumber.text = '0';
+                  } else {
+                    widget.editingController3.peopleAdults18.text = '';
+                    widget.editingController3.peopleUnder18.text = '';
+                    widget.editingController3.totalNumber.text = '';
+                  }
+                });
+              })
+        ]),
+        AppSize.spaceHeight2(context),
         Field(
-            function: () {},
-            isHome: isHome,
-            showDeleteIcon: false,
-            peopleAdults18: widget.editingController3.peopleAdults18,
-            peopleUnder18: widget.editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدراجات الهوائية",
-            totalNumberOfVec: widget.editingController3.totalNumber,
-            peopleAdults18Text: "عدد الدرجات للبالغين",
-            peopleUnder18Text: "عدد الدرجات للاطفال"),
-
-     Row(children: [
-       Checkbox(
-           side: BorderSide(
-             color: ColorManager.orangeTxtColor,
-             width: 1.5,
-           ),
-           shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(5.0),
-           ),
-           checkColor: ColorManager.whiteColor,
-           focusColor: ColorManager.orangeTxtColor,
-           activeColor: ColorManager.orangeTxtColor,
-           value: isHome,
-           onChanged: (bool? value) {
-             setState(() {
-               isHome = value!;
-               if (isHome == true) {
-
-               } else {
-
-               }
-             });
-           }),
-       TextGlobal(
-         text: "لا يوجذ",
-         fontSize: height(context) * .012,
-         color: ColorManager.black,
-       ),
-     ],)
+          function: () {},
+          showDeleteIcon: false,
+          peopleAdults18: widget.editingController3.peopleAdults18,
+          peopleUnder18: widget.editingController3.peopleUnder18,
+          totalNumberOfVecText: "إجمالي عدد الدراجات الهوائية",
+          totalNumberOfVec: widget.editingController3.totalNumber,
+          peopleAdults18Text: "عدد الدرجات للبالغين",
+          peopleUnder18Text: "عدد الدرجات للاطفال",
+          isHome: hasBycle,
+        )
       ],
     );
   }

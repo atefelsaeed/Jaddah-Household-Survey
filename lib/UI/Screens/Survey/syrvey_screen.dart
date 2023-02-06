@@ -7,6 +7,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q10.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q2.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/house_hold_address.dart';
+
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
@@ -15,23 +16,27 @@ import 'package:provider/provider.dart';
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/validate_data/hhs_validation.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/survey_hhs.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
-import 'Components/hhs_Q4.dart';
+
 import 'Components/hhs_Q5.dart';
-import 'Components/hhs_Q81.dart';
-import 'Components/hhs_Q82.dart';
-import 'Components/hhs_Q83.dart';
+
+import 'components/hhs_Q4.dart';
+import 'components/hhs_Q81.dart';
+import 'components/hhs_Q82.dart';
+import 'components/hhs_Q83.dart';
 
 class SurveyScreen extends StatefulWidget {
   const SurveyScreen({
     super.key,
     required this.id,
+    required this.itemSurveyModel
   });
-
+  final UserSurveysModelData itemSurveyModel;
   final String id;
 
   @override
@@ -130,7 +135,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   child: Column(
                     children: [
                       // ===== HouseHoldAddress ===
-                      const HouseHoldAddress(),
+                       HouseHoldAddress(itemSurveyModel:widget.itemSurveyModel ,),
                       AppSize.spaceHeight3(context),
                       const HouseHoldMember(),
                       // ====Question 1====

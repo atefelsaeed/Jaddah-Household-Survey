@@ -27,7 +27,7 @@ class TripStartingAddress extends StatefulWidget {
 }
 
 class _TripStartingAddressState extends State<TripStartingAddress> {
-  bool isHome = false;
+  // bool isHome = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +58,11 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
               checkColor: ColorManager.whiteColor,
               focusColor: ColorManager.orangeTxtColor,
               activeColor: ColorManager.orangeTxtColor,
-              value: isHome,
+              value: TripModeList.tripModeList[widget.index].isHome,
               onChanged: (bool? value) {
                 setState(() {
-                  isHome = value!;
-                  if (isHome == true) {
+                  TripModeList.tripModeList[widget.index].isHome = value!;
+                  if (TripModeList.tripModeList[widget.index].isHome == true) {
                     startBeginningModel?.tripAddressLong =
                         surveyPt.hhsAddressLong;
                     startBeginningModel?.tripAddressLat =
@@ -78,7 +78,7 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
         ]),
         Column(
           children: [
-            isHome == true
+            TripModeList.tripModeList[widget.index].isHome == true
                 ? Container()
                 : Row(
                     children: [

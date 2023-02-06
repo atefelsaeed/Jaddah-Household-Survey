@@ -5,6 +5,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/field_widget.d
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
 import '../widgets/editing_controler3.dart';
+
 class Q83 extends StatefulWidget {
   EditingController3 editingController3;
 
@@ -15,7 +16,7 @@ class Q83 extends StatefulWidget {
 }
 
 class _Q83State extends State<Q83> {
-  bool isHome=false;
+  bool hasBycle=false;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -27,7 +28,7 @@ class _Q83State extends State<Q83> {
             Expanded(
               child: TextGlobal(
                 text:
-                "كم عدد الدراجات الإلكترونية(إسكوتر) التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                    "كم عدد الدراجات الإلكترونية(إسكوتر) التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -35,17 +36,12 @@ class _Q83State extends State<Q83> {
           ],
         ),
         AppSize.spaceHeight2(context),
-        Field(
-          isHome: isHome,
-            function: () {},
-            showDeleteIcon: false,
-            peopleAdults18: widget.editingController3.peopleAdults18,
-            peopleUnder18: widget.editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدراجات الإلكترونية(إسكوتر)",
-            totalNumberOfVec: widget.editingController3.totalNumber,
-            peopleAdults18Text: "عدد الدرجات للبالغين",
-            peopleUnder18Text: "عدد الدرجات للاطفال"),
         Row(children: [
+          TextGlobal(
+            text: "لا يوجد",
+            fontSize: height(context) * .02,
+            color: ColorManager.grayColor,
+          ),
           Checkbox(
               side: BorderSide(
                 color: ColorManager.orangeTxtColor,
@@ -57,25 +53,35 @@ class _Q83State extends State<Q83> {
               checkColor: ColorManager.whiteColor,
               focusColor: ColorManager.orangeTxtColor,
               activeColor: ColorManager.orangeTxtColor,
-              value: isHome,
+              value: hasBycle,
               onChanged: (bool? value) {
                 setState(() {
-                  isHome = value!;
-                  if (isHome == true) {
-
-                  } else {
-
+                  hasBycle = value!;
+                  if (hasBycle == true) {
+                    widget.editingController3.peopleAdults18.text = '0';
+                    widget.editingController3.peopleUnder18.text = '0';
+                    widget.editingController3.totalNumber.text = '0';
+                  }else{
+                    widget.editingController3.peopleAdults18.text = '';
+                    widget.editingController3.peopleUnder18.text = '';
+                    widget.editingController3.totalNumber.text = '';
                   }
                 });
-              }),
-          TextGlobal(
-            text: "لا يوجذ",
-            fontSize: height(context) * .012,
-            color: ColorManager.black,
-          ),
-        ],)
+              })
+        ]),
+        AppSize.spaceHeight2(context),
+        Field(
+          function: () {},
+          showDeleteIcon: false,
+          peopleAdults18: widget.editingController3.peopleAdults18,
+          peopleUnder18: widget.editingController3.peopleUnder18,
+          totalNumberOfVecText: "إجمالي عدد الدراجات الإلكترونية(إسكوتر)",
+          totalNumberOfVec: widget.editingController3.totalNumber,
+          peopleAdults18Text: "عدد الدرجات للبالغين",
+          peopleUnder18Text: "عدد الدرجات للاطفال",
+          isHome: hasBycle,
+        )
       ],
     );
   }
 }
-
