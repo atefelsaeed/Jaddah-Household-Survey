@@ -38,7 +38,13 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
     List<UserSurveysModelData> list;
     if (userSurveysProvider.isSearching) {
       print('searchList');
-      list = userSurveysProvider.searchList;
+      if(hayController.text.isNotEmpty&&qtaController.text.isEmpty&&blocController.text.isEmpty) {
+        list = userSurveysProvider.hayList;
+      }else if(hayController.text.isNotEmpty&&qtaController.text.isNotEmpty&&blocController.text.isEmpty){
+        list = userSurveysProvider.qtaList;
+      }else{
+        list = userSurveysProvider.searchList;
+      }
     } else {
       print('userSurveys');
       list = userSurveysProvider.userSurveys;
@@ -107,6 +113,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 MyTextForm(
                                   controller: qtaController,
                                   onChanged: (value) {
+
                                     userSurveysProvider.searchQTA(value!);
                                   },
                                   label: "بحث",
@@ -133,7 +140,9 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 MyTextForm(
                                   controller: blocController,
                                   onChanged: (value) {
-                                    userSurveysProvider.searchBLOK(value!);
+
+  userSurveysProvider.searchBLOK(value!);
+
                                   },
                                   label: "بحث",
                                   widthForm: width(context) * .2,
