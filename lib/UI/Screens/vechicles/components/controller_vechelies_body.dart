@@ -7,6 +7,7 @@ import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../Widgets/show_dialog_error.dart';
 import '../../../Widgets/text.dart';
 import '../../../Widgets/text_form_field.dart';
 
@@ -18,6 +19,18 @@ class ControllerVehiclesBody extends StatefulWidget {
 }
 
 class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
+  void showError() => showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        var total=HhsStatic
+            .houseHold[0].totalNumberVehicles
+            .toString();
+        return  ShowErrorDialog(
+          title: 'يجب إدخال عدد صحيح',
+          content: 'عدد المركبات الذى أدخلته أكبر من عدد المركبات فى الأسرة ($total)!',
+        );
+      });
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -125,13 +138,16 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     if (x > total) {
                                       VehModel.vecCar.add(
                                         VehicleBodyDetails(
-                                          vehicleParking: TextEditingController(),
+                                          vehicleParking:
+                                              TextEditingController(),
                                           vehicleOwnership:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                           vehicleFuelType:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                         ),
                                       );
+                                    } else {
+                                      showError();
                                     }
                                   }
                                   break;
@@ -165,9 +181,10 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                               TextEditingController(),
                                         ),
                                       );
+                                    }else {
+                                      showError();
                                     }
                                   }
-                                  break;
                                   break;
                                 case "ونيت":
                                   VehModel.vecWanet = [];
@@ -194,6 +211,8 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                               TextEditingController(),
                                         ),
                                       );
+                                    }else {
+                                      showError();
                                     }
                                   }
                                   break;
@@ -214,13 +233,16 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     if (x > total) {
                                       VehModel.vecVan.add(
                                         VehicleBodyDetails(
-                                          vehicleParking: TextEditingController(),
+                                          vehicleParking:
+                                              TextEditingController(),
                                           vehicleOwnership:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                           vehicleFuelType:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                         ),
                                       );
+                                    }else {
+                                      showError();
                                     }
                                   }
                                   break;
@@ -241,13 +263,16 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     if (x > total) {
                                       VehModel.pickUp.add(
                                         VehicleBodyDetails(
-                                          vehicleParking: TextEditingController(),
+                                          vehicleParking:
+                                              TextEditingController(),
                                           vehicleOwnership:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                           vehicleFuelType:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                         ),
                                       );
+                                    }else {
+                                      showError();
                                     }
                                   }
                                   break;
@@ -268,13 +293,16 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     if (x > total) {
                                       VehModel.bicycle.add(
                                         VehicleBodyDetails(
-                                          vehicleParking: TextEditingController(),
+                                          vehicleParking:
+                                              TextEditingController(),
                                           vehicleOwnership:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                           vehicleFuelType:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                         ),
                                       );
+                                    }else {
+                                      showError();
                                     }
                                   }
                                   break;
@@ -295,13 +323,16 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     if (x > total) {
                                       VehModel.eScooter.add(
                                         VehicleBodyDetails(
-                                          vehicleParking: TextEditingController(),
+                                          vehicleParking:
+                                              TextEditingController(),
                                           vehicleOwnership:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                           vehicleFuelType:
-                                          TextEditingController(),
+                                              TextEditingController(),
                                         ),
                                       );
+                                    }else {
+                                      showError();
                                     }
                                   }
                                   break;

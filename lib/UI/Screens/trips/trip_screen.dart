@@ -141,8 +141,7 @@ class _TripScreenState extends State<TripScreen> {
                                                 .tripModeList[i].chosenPerson !=
                                             ''
                                         ? Text(TripModeList
-                                                .tripModeList[i].chosenPerson ??
-                                            '')
+                                            .tripModeList[i].chosenPerson)
                                         : const Text('إختار'),
                                     options:
                                         TripModeList.tripModeList[i].person,
@@ -390,7 +389,7 @@ class _TripScreenState extends State<TripScreen> {
                               travelAloneHouseHold: TravelWithOtherModel(
                                   adultsNumber: TextEditingController(),
                                   childrenNumber: TextEditingController(),
-                                  text:"اي من أفراد الأسرة ذهب معك؟"),
+                                  text: "اي من أفراد الأسرة ذهب معك؟"),
                               arrivalDepartTime: ArrivalDepartTime(
                                 arriveDestinationTime: TextEditingController(),
                                 departTime: TextEditingController(),

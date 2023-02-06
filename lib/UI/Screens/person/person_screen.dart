@@ -15,6 +15,7 @@ import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
+import '../../Widgets/show_dialog_error.dart';
 import '../../Widgets/text.dart';
 import '../../Widgets/text_form_field.dart';
 import '../Survey/widgets/editing_controler3.dart';
@@ -45,6 +46,18 @@ class _PersonScreenState extends State<PersonScreen> {
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
   var base = PersonModelList.personModelList;
+
+  void showError() => showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        int x = int.parse(HhsStatic.peopleAdults18.toString()) +
+            int.parse(HhsStatic.peopleUnder18.toString());
+        return ShowErrorDialog(
+          title: 'لا يمكنك إضافة المزيد',
+          content: 'عدد أفراد عائلتك الذين يعيشون فى هذا المنزل هو ($x)'
+              '',
+        );
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -532,6 +545,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                         gender: '',
                                         checkAge: false,
                                         hasPasTrip: false,
+                                        showText: false,
                                         refuseToTellAge: false,
                                         relationshipHeadHHS: '',
                                       ),
@@ -586,6 +600,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                       ["isChick"] = false;
                                   hasPasTrip = false;
                                 });
+                              } else {
+                                showError();
                               }
                             });
                           },

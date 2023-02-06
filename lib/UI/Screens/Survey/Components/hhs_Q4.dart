@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_tri
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/custom_buttton.dart';
+import '../../../Widgets/show_dialog_error.dart';
 import '../widgets/field_widget.dart';
 
 class HHSQ4 extends StatefulWidget {
@@ -29,6 +30,17 @@ class HHSQ4 extends StatefulWidget {
 }
 
 class _HHSQ4State extends State<HHSQ4> {
+  void showError() => showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        var total=HhsStatic.householdQuestions
+            .hhsNumberSeparateFamilies;
+        return  ShowErrorDialog(
+          title: 'لا يمكنك إضافة المزيد',
+          content: 'عدد العائلات المنفصلة التي تعيش في هذا العنوان هو ($total)'
+              '',
+        );
+      });
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -76,6 +88,8 @@ class _HHSQ4State extends State<HHSQ4> {
                     widget.q6peopleAdults18.add(TextEditingController());
                     widget.q6peopleUnder18.add(TextEditingController());
                     widget.q6totalNumberOfVec.add(TextEditingController());
+                  }else{
+                    showError();
                   }
                 });
               },

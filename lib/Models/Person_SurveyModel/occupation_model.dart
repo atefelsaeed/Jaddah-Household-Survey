@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OccupationModel {
   String? occupationSector;
-  String? isEmployee="";
+  String? isEmployee = "";
   String? occupationLevelSector;
   String? bestWorkspaceLocation;
   int? commuteWorkDays;
@@ -64,16 +64,16 @@ class OccupationModel {
     data['bestWorkspaceLocation'] = bestWorkspaceLocation ?? "";
     data['commuteWorkDays'] = commuteWorkDays ?? 0;
     data['bikeWorkDays'] = bikeWorkDays ?? 0;
-    data['address'] = address.text ?? '';
-    data['geoCodes'] = geoCodes.text ?? '';
+    data['address'] = address.text;
+    data['geoCodes'] = geoCodes.text;
     data['isWorkFromHome'] = isWorkFromHome ?? false;
     data['numberWorkFromHome'] = numberWorkFromHome ?? 0;
-    data['startingWoke'] = startingWoke.text ?? '';
-    data['endingWoke'] = endingWoke.text ?? '';
+    data['startingWoke'] = startingWoke.text;
+    data['endingWoke'] = endingWoke.text;
     data['flexibleWorkingHours'] = flexibleWorkingHours ?? '';
-    data['earliestTimeStartingWork'] = earliestTimeStartingWork.text ?? '';
-    data['earliestTimeFinishingWork'] = earliestTimeFinishingWork.text ?? '';
-    data['mainOccupationAddress'] = mainOccupationAddress.text ?? '';
+    data['earliestTimeStartingWork'] = earliestTimeStartingWork.text;
+    data['earliestTimeFinishingWork'] = earliestTimeFinishingWork.text;
+    data['mainOccupationAddress'] = mainOccupationAddress.text;
     return data;
   }
 }

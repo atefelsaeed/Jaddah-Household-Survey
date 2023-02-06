@@ -5,7 +5,7 @@ class EmptyPerson {
   static emptyPerson() {
     PersonModelList.personModelList.length = 1;
     HhsStatic.hasPasTrip = false;
-    PersonModelList.showText = false;
+
     for (var element in PersonModelList.personModelList) {
       element.personalHeadData!.checkAge = false;
       element.personalHeadData!.refuseToTellAge = false;
@@ -13,6 +13,7 @@ class EmptyPerson {
       element.personName.text = '';
       element.personalHeadData!.nationality.text = '';
       element.personalHeadData!.nationalityType = '';
+      element.personalHeadData!.showText = false;
       element.personalHeadData!.relationshipHeadHHS = '';
       element.personalHeadData!.gender = '';
       element.personalQuestion!.mainOccupationType = '';

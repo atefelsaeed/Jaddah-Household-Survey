@@ -45,11 +45,12 @@ class PersonalHeadData {
   String? nationalityType;
   TextEditingController nationality =
       TextEditingController(); //open if not سعودي
-
+  bool showText = false;
   PersonalHeadData({
     required this.age,
     this.nationalityType,
     required this.hasPasTrip,
+    required this.showText,
     required this.hhsHavePastTrip,
     required this.nationality,
     this.gender,
@@ -74,7 +75,7 @@ class PersonalHeadData {
     data['gender'] = gender ?? "";
     // data['checkAge'] = checkAge;
     data['refuseToTellAge'] = refuseToTellAge;
-    data['age'] = age.text ?? "";
+    data['age'] = age.text ;
     data['nationalityType'] = nationalityType ?? "";
     data['nationality'] = nationality.text;
     return data;

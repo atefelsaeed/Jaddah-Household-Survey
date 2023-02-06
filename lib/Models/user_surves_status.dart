@@ -8,7 +8,7 @@ class UserSurveyStatus {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -30,7 +30,7 @@ class UserSurveyStatusData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['form_filled'] = formFilled;
     data['form_not_filled'] = formNotFilled;
     data['all_forms'] = allForms;

@@ -63,7 +63,7 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
                 subTitle: widget.itemSurveyModel.haeno.toString()),
           ],
         ),
-        Row(
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ItemTextSpan(
                 title: 'رقم القطاع',

@@ -7,7 +7,6 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q10.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q2.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/house_hold_address.dart';
-
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_member.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
@@ -22,20 +21,16 @@ import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
-
 import 'Components/hhs_Q5.dart';
-
 import 'components/hhs_Q4.dart';
 import 'components/hhs_Q81.dart';
 import 'components/hhs_Q82.dart';
 import 'components/hhs_Q83.dart';
 
 class SurveyScreen extends StatefulWidget {
-  const SurveyScreen({
-    super.key,
-    required this.id,
-    required this.itemSurveyModel
-  });
+  const SurveyScreen(
+      {super.key, required this.id, required this.itemSurveyModel});
+
   final UserSurveysModelData itemSurveyModel;
   final String id;
 
@@ -135,7 +130,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                   child: Column(
                     children: [
                       // ===== HouseHoldAddress ===
-                       HouseHoldAddress(itemSurveyModel:widget.itemSurveyModel ,),
+                      HouseHoldAddress(
+                        itemSurveyModel: widget.itemSurveyModel,
+                      ),
                       AppSize.spaceHeight3(context),
                       const HouseHoldMember(),
                       // ====Question 1====
@@ -148,17 +145,16 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         onChange: (ChangeBoxResponse r) {
                           print(r);
                           if (r.check == true) {
-
                             HhsStatic.householdQuestions
                                 .hhsNumberSeparateFamilies = r.val;
-                          setState(() {
-                            while(int.parse(r.val)<q6totalNumberOfVec.length){
-                              q6peopleAdults18.removeLast();
-                              q6peopleUnder18.removeLast();
-                              q6totalNumberOfVec.removeLast();
-                            }
-                          });
-
+                            setState(() {
+                              while (int.parse(r.val) <
+                                  q6totalNumberOfVec.length) {
+                                q6peopleAdults18.removeLast();
+                                q6peopleUnder18.removeLast();
+                                q6totalNumberOfVec.removeLast();
+                              }
+                            });
                           } else {
                             setState(() {
                               q6peopleAdults18 = [TextEditingController()];
@@ -331,18 +327,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
                             surveyPt.hhsDwellingType = HhsStatic
                                 .householdQuestions.hhsDwellingType; //solve
                             surveyPt.hhsNumberApartments.text = HhsStatic
-                                    .householdQuestions
-                                    .hhsNumberApartments
-                                    .text ??
-                                '';
+                                .householdQuestions.hhsNumberApartments.text;
                             surveyPt.hhsNumberFloors.text = HhsStatic
-                                    .householdQuestions.hhsNumberFloors.text ??
-                                '';
+                                .householdQuestions.hhsNumberFloors.text;
                             surveyPt.hhsNumberBedRooms.text = HhsStatic
-                                    .householdQuestions
-                                    .hhsNumberBedRooms
-                                    .text ??
-                                '';
+                                .householdQuestions.hhsNumberBedRooms.text;
                             // ================ HHSQ10 ==============
                             // surveyPt.hhsSeparateFamilies = HhsStatic.houseHold[0].totalNumberVehicles;
                             surveyPt.vehiclesData.numberParcels =

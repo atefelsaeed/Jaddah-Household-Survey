@@ -14,6 +14,7 @@ class PersonModelList {
         nationality: TextEditingController(),
         hhsHavePastTrip: TextEditingController(),
         nationalityType: '',
+        showText :false,
         gender: '',
         checkAge: false,
         hasPasTrip: false,
@@ -55,5 +56,4 @@ class PersonModelList {
       ),
     ),
   ];
-  static bool showText = false;
 }

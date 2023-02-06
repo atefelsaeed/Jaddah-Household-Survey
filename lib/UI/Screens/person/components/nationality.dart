@@ -21,8 +21,6 @@ class Nationality extends StatefulWidget {
 }
 
 class _NationalityState extends State<Nationality> {
-
-
   @override
   Widget build(BuildContext context) {
     var base = PersonModelList.personModelList[widget.i];
@@ -36,13 +34,13 @@ class _NationalityState extends State<Nationality> {
             if (base.personalHeadData!.nationalityType != "سعودي" &&
                 r.check == true) {
               setState(() {
-                PersonModelList. showText = true;
+                base.personalHeadData!.showText = true;
                 PersonData.nationality["isChick"] = true;
                 base.personalHeadData!.nationality.text = "";
               });
             } else {
               setState(() {
-                PersonModelList.showText = false;
+                base.personalHeadData!.showText = false;
                 base.personalHeadData!.nationality.text = "سعودي";
               });
             }
@@ -55,7 +53,7 @@ class _NationalityState extends State<Nationality> {
               " في حالة ازدواج الجنسية ؛ يرجى تسجيل جواز السفر / الجنسية التي يحمل عليها الشخص تأشيرة الإقامة في المملكة العربية السعودية ",
         ),
         AppSize.spaceHeight2(context),
-        (PersonModelList.showText == true)
+        (base.personalHeadData!.showText == true)
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

@@ -10,7 +10,7 @@ import '../../../../Data/select_time.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../../Resources/style_manager.dart';
 import '../../../Widgets/dropdown_form_input.dart';
-import '../../../Widgets/time_selected_error.dart';
+import '../../../Widgets/show_dialog_error.dart';
 import 'headline_trip.dart';
 
 extension on DateTime {
