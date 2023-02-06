@@ -37,6 +37,7 @@ class UserSurveysProvider with ChangeNotifier {
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         hayList.add(element);
+
       }
     }
     print('searchHAY');

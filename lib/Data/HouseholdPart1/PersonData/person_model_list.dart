@@ -12,9 +12,11 @@ class PersonModelList {
       personalHeadData: PersonalHeadData(
         age: TextEditingController(),
         nationality: TextEditingController(),
+        hhsHavePastTrip: TextEditingController(),
         nationalityType: '',
         gender: '',
         checkAge: false,
+        hasPasTrip: false,
         refuseToTellAge: false,
         relationshipHeadHHS: '',
       ),

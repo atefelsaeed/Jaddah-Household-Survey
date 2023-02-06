@@ -52,577 +52,600 @@ class _PersonScreenState extends State<PersonScreen> {
       child: Scaffold(
         body: SingleChildScrollView(
             child: Directionality(
-              textDirection: TextDirection.rtl,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Form(
-                  key: _key,
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Column(
-                      children: [
-                        const HeadlinePerson(
-                          text: "المعلومات الاجتماعية والاقتصادية للأسر المعيشية",
-                        ),
-                        AppSize.spaceHeight2(context),
-                        for (int i = 0;
+          textDirection: TextDirection.rtl,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Form(
+              key: _key,
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Column(
+                  children: [
+                    const HeadlinePerson(
+                      text: "المعلومات الاجتماعية والاقتصادية للأسر المعيشية",
+                    ),
+                    AppSize.spaceHeight2(context),
+                    for (int i = 0;
                         i < PersonModelList.personModelList.length;
                         i++)
-                          Padding(
+                      Padding(
+                        padding: EdgeInsets.all(AppSize.padding1(context)),
+                        child: Container(
+                          padding: const EdgeInsets.all(3.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: ColorManager.gray2Color),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
                             padding: EdgeInsets.all(AppSize.padding1(context)),
-                            child: Container(
-                              padding: const EdgeInsets.all(3.0),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: ColorManager.gray2Color),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(AppSize.padding1(context)),
-                                child: Column(
+                            child: Column(
+                              children: [
+                                DefaultEntry(
+                                  i: i,
+                                  function: () {
+                                    setState(() {
+                                      PersonModelList.personModelList
+                                          .removeAt(i);
+                                    });
+                                  },
+                                ),
+                                AppSize.spaceHeight2(context),
+                                //=============Person-Age==================
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    DefaultEntry(
-                                      i: i,
-                                      function: () {
-                                        setState(() {
-                                          PersonModelList.personModelList
-                                              .removeAt(i);
-                                        });
-                                      },
+                                    TextGlobal(
+                                      text: "العمر",
+                                      fontSize: height(context) * .025,
+                                      color: ColorManager.black,
                                     ),
-                                    AppSize.spaceHeight2(context),
-                                    //=============Person-Age==================
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
+                                  ],
+                                ),
+                                Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Row(
+                                    children: [
+                                      Row(children: [
                                         TextGlobal(
                                           text: "العمر",
-                                          fontSize: height(context) * .025,
-                                          color: ColorManager.black,
+                                          //[index].title,
+                                          fontSize: height(context) * .02,
+                                          color: ColorManager.grayColor,
                                         ),
-                                      ],
-                                    ),
-                                    Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Row(
-                                        children: [
-                                          Row(children: [
-                                            TextGlobal(
-                                              text: "العمر",
-                                              //[index].title,
-                                              fontSize: height(context) * .02,
-                                              color: ColorManager.grayColor,
-                                            ),
-                                            Checkbox(
-                                                side: BorderSide(
-                                                  color:
+                                        Checkbox(
+                                            side: BorderSide(
+                                              color:
                                                   ColorManager.orangeTxtColor,
-                                                  width: 1.5,
-                                                ),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                                ),
-                                                checkColor: ColorManager.whiteColor,
-                                                focusColor:
-                                                ColorManager.orangeTxtColor,
-                                                activeColor:
-                                                ColorManager.orangeTxtColor,
-                                                value: base[i]
-                                                    .personalHeadData!
-                                                    .checkAge,
-                                                onChanged: (bool? value) {
-                                                  setState(() {
-                                                    base[i]
-                                                        .personalHeadData!
-                                                        .checkAge = value!;
-                                                    base[i]
-                                                        .personalHeadData!
-                                                        .age
-                                                        .text = '';
-                                                    base[i]
-                                                        .personalHeadData!
-                                                        .refuseToTellAge = false;
-                                                  });
-                                                }),
-                                            base[i].personalHeadData!.checkAge ==
-                                                true
-                                                ? MyTextForm(
-                                              isNumber: true,
-                                              onChanged: (d) {
-                                                setState(() {
-                                                  if (d!.isNotEmpty) {
-                                                    if (int.parse(
-                                                        d.toString()) >
-                                                        18) {
-                                                      base[i]
-                                                          .occupationModel!
-                                                          .isEmployee = "1";
-                                                    } else {
-                                                      base[i]
-                                                          .occupationModel!
-                                                          .isEmployee = "0";
-                                                    }
-                                                  } else {
-                                                    base[i]
-                                                        .occupationModel!
-                                                        .isEmployee = "";
-                                                  }
-                                                });
-                                              },
-                                              keyboardType:
-                                              TextInputType.number,
-                                              widthForm: width(context) * .15,
-                                              label: "age",
-                                              controller: base[i]
-                                                  .personalHeadData!
-                                                  .age,
-                                            )
-                                                : Container(),
-                                            AppSize.spaceWidth2(context),
-                                            TextGlobal(
-                                              text: "لا ",
-                                              //[index].title,
-                                              fontSize: height(context) * .02,
-                                              color: ColorManager.grayColor,
+                                              width: 1.5,
                                             ),
-                                            Checkbox(
-                                                side: BorderSide(
-                                                  color:
-                                                  ColorManager.orangeTxtColor,
-                                                  width: 1.5,
-                                                ),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
                                                   BorderRadius.circular(5.0),
-                                                ),
-                                                checkColor: ColorManager.whiteColor,
-                                                focusColor:
+                                            ),
+                                            checkColor: ColorManager.whiteColor,
+                                            focusColor:
                                                 ColorManager.orangeTxtColor,
-                                                activeColor:
+                                            activeColor:
                                                 ColorManager.orangeTxtColor,
-                                                value: base[i]
-                                                    .personalHeadData!
-                                                    .refuseToTellAge,
-                                                onChanged: (bool? value) {
-                                                  setState(() {
-                                                    base[i]
-                                                        .personalHeadData!
-                                                        .refuseToTellAge = value!;
-                                                    base[i]
-                                                        .personalHeadData!
-                                                        .checkAge = false;
-                                                  });
-                                                }),
-                                            base[i]
+                                            value: base[i]
                                                 .personalHeadData!
-                                                .refuseToTellAge ==
-                                                true
-                                                ? DropDownFormInput2(
-                                              label: base[i]
-                                                  .personalHeadData!
-                                                  .age
-                                                  .text !=
-                                                  ''
-                                                  ? Text(base[i]
-                                                  .personalHeadData!
-                                                  .age
-                                                  .text)
-                                                  : const Text('إختار'),
-                                              hint: "الفئة العمرية",
-                                              options: PersonData.groupAge[
-                                              PersonData.groupAge.keys
-                                                  .first]!
-                                                  .toList(),
-                                              onChange: (String? p) {
+                                                .checkAge,
+                                            onChanged: (bool? value) {
+                                              setState(() {
                                                 base[i]
                                                     .personalHeadData!
-                                                    .checkAge = false;
-
+                                                    .checkAge = value!;
                                                 base[i]
                                                     .personalHeadData!
                                                     .age
-                                                    .text = p.toString();
-
-                                                List value = PersonData
-                                                    .groupAge[PersonData
-                                                    .groupAge.keys.first]
-                                                    .toList();
-                                                setState(() {
-                                                  for (int inr = 0;
-                                                  inr < value.length;
-                                                  inr++) {
-                                                    if (p ==
-                                                        value[inr]["value"]) {
-                                                      setState(() {
+                                                    .text = '';
+                                                base[i]
+                                                    .personalHeadData!
+                                                    .refuseToTellAge = false;
+                                              });
+                                            }),
+                                        base[i].personalHeadData!.checkAge ==
+                                                true
+                                            ? MyTextForm(
+                                                isNumber: true,
+                                                onChanged: (d) {
+                                                  setState(() {
+                                                    if (d!.isNotEmpty) {
+                                                      if (int.parse(
+                                                              d.toString()) >
+                                                          18) {
                                                         base[i]
                                                             .occupationModel!
-                                                            .isEmployee =
-                                                        value[inr]
-                                                        ["type"];
-                                                      });
+                                                            .isEmployee = "1";
+                                                      } else {
+                                                        base[i]
+                                                            .occupationModel!
+                                                            .isEmployee = "0";
+                                                      }
+                                                    } else {
+                                                      base[i]
+                                                          .occupationModel!
+                                                          .isEmployee = "";
                                                     }
-                                                  }
-                                                });
-                                              },
-                                            )
-                                                : Container(),
-                                          ]),
-                                        ],
-                                      ),
-                                    ),
-                                    AppSize.spaceHeight1(context),
-                                    //=============HHS-HavePastTrip==================
-                                    ListViewCheckBoxOrange(
-                                      map: QuestionsData.hhsHavePastTrip,
-                                      onChange: (ChangeBoxResponse r) {
-                                        setState(() {
-                                          if (r.val == "لا" && r.check == true) {
-                                            HhsStatic.hasPasTrip  = true;
-                                            HhsStatic.householdAddress
-                                                .hhsHavePastTrip.text = '';
-                                          } else {
-                                            HhsStatic.hasPasTrip  = false;
-                                            HhsStatic.householdAddress
-                                                .hhsHavePastTrip.text = 'نعم';
-                                          }
-                                        });
-                                      },
-                                      isListView: true,
-                                      title: "هل قمت برحلة فى الأيام السابقة",
-                                      question: QuestionsData.hhsHavePastTrip[
-                                      QuestionsData
-                                          .hhsHavePastTrip.keys.first]!
-                                          .toList(),
-                                      subTitle: "",
-                                    ),
-                                    HhsStatic.hasPasTrip == true
-                                        ? TextForm(
-                                      label: 'إذكر السبب',
-                                      text: 'إذكر السبب',
-                                      controller: HhsStatic
-                                          .householdAddress.hhsHavePastTrip,
-                                    )
-                                        : Container(),
-                                    AppSize.spaceHeight1(context),
-                                    //=========Nationality======================
-                                    Nationality(i: i),
-                                    AppSize.spaceHeight3(context),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        base[i].occupationModel!.isEmployee == ""
-                                            ? Container()
-                                            : DropDownFormInput2(
-                                          label: PersonModelList
-                                              .personModelList[i]
-                                              .personalQuestion!
-                                              .mainOccupationType !=
-                                              ''
-                                              ? Text(PersonModelList
-                                              .personModelList[i]
-                                              .personalQuestion!
-                                              .mainOccupationType ??
-                                              '')
-                                              : const Text('إختار'),
-                                          hint: "الوظيفة الأساسية",
-                                          options: PersonData.mainOccupation[
-                                          mainOccupationKey]!
-                                              .toList(),
-                                          onChange: (String? p) {
-                                            List value = PersonData
-                                                .mainOccupation[
-                                            mainOccupationKey]
-                                                .toList();
-
-                                            for (int inr = 0;
-                                            inr < value.length;
-                                            inr++) {
-                                              if (p == value[inr]["value"]) {
-                                                PersonModelList
-                                                    .personModelList[i]
-                                                    .personalQuestion!
-                                                    .mainOccupationType =
-                                                value[inr]["value"];
-                                              }
-                                            }
-                                            setState(() {
-                                              PersonModelList
-                                                  .personModelList[i]
-                                                  .personalQuestion!
-                                                  .mainOccupationType ==
-                                                  p.toString();
-                                            });
-
-                                            print(p.toString());
-                                          },
+                                                  });
+                                                },
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                widthForm: width(context) * .15,
+                                                label: "age",
+                                                controller: base[i]
+                                                    .personalHeadData!
+                                                    .age,
+                                              )
+                                            : Container(),
+                                        AppSize.spaceWidth2(context),
+                                        TextGlobal(
+                                          text: "لا ",
+                                          //[index].title,
+                                          fontSize: height(context) * .02,
+                                          color: ColorManager.grayColor,
                                         ),
-                                        base[i].occupationModel!.isEmployee == ""
-                                            ? Container()
-                                            : base[i].occupationModel!.isEmployee ==
-                                            "1"
-                                            ? PersonModelList
-                                            .personModelList[i]
-                                            .personalQuestion!
-                                            .mainOccupationType ==
-                                            "عاطلين عن العمل" ||
-                                            PersonModelList
-                                                .personModelList[i]
-                                                .personalQuestion!
-                                                .mainOccupationType ==
-                                                "طالب - جامعي: دوام كامل (لا يعمل) " ||
-                                            PersonModelList
-                                                .personModelList[i]
-                                                .personalQuestion!
-                                                .mainOccupationType ==
-                                                "شخص البيت" ||
-                                            PersonModelList
-                                                .personModelList[i]
-                                                .personalQuestion!
-                                                .mainOccupationType ==
-                                                "طفل فى الحضانة" ||
-                                            PersonModelList
-                                                .personModelList[i]
-                                                .personalQuestion!
-                                                .mainOccupationType ==
-                                                "طفل ليس فى الحضانة" ||
-                                            PersonModelList
-                                                .personModelList[i]
-                                                .personalQuestion!
-                                                .mainOccupationType ==
-                                                "رفض" ||
-                                            PersonModelList
-                                                .personModelList[i]
-                                                .personalQuestion!
-                                                .mainOccupationType ==
-                                                "معاق / مريض"
-                                            ? Container()
-                                            : Column(
-                                          children: [
-                                            DropDownFormInput(
-                                              label: PersonModelList
-                                                  .personModelList[
-                                              i]
-                                                  .occupationModel!
-                                                  .occupationSector !=
-                                                  ''
-                                                  ? Text(PersonModelList
-                                                  .personModelList[
-                                              i]
-                                                  .occupationModel!
-                                                  .occupationSector ??
-                                                  '')
-                                                  : const Text(
-                                                  'إختار'),
-                                              hint:
-                                              "لو عمل ما هو قطا ع العمل",
-                                              options: PersonData
-                                                  .occupationSector[
-                                              occupationSectorKey]!
-                                                  .toList(),
-                                              onChange: (String? p) {
-                                                setState(() {
-                                                  PersonModelList
-                                                      .personModelList[
-                                                  i]
-                                                      .occupationModel!
-                                                      .occupationSector =
-                                                      p.toString();
-                                                });
-                                              },
+                                        Checkbox(
+                                            side: BorderSide(
+                                              color:
+                                                  ColorManager.orangeTxtColor,
+                                              width: 1.5,
                                             ),
-                                            PersonModelList
-                                                .personModelList[
-                                            i]
-                                                .occupationModel!
-                                                .occupationSector ==
-                                                " حدد أخرى"
-                                                ? MyTextForm(
-                                              controller:
-                                              occupationSectorController,
-                                              label:
-                                              " قطاع العمل",
-                                              onChanged: (val) {
-                                                PersonModelList
-                                                    .personModelList[
-                                                i]
-                                                    .occupationModel!
-                                                    .occupationSector = val;
-                                              },
-                                            )
-                                                : Container(),
-                                          ],
-                                        )
-                                            : Container()
-                                      ],
-                                    ),
-                                    base[i].occupationModel!.isEmployee == "1"
-                                        ? PersonModelList
-                                        .personModelList[i]
-                                        .personalQuestion!
-                                        .mainOccupationType ==
-                                        "طفل ليس فى الحضانة" ||
-                                        PersonModelList
-                                            .personModelList[i]
-                                            .personalQuestion!
-                                            .mainOccupationType ==
-                                            "طفل فى الحضانة" ||
-                                        PersonModelList
-                                            .personModelList[i]
-                                            .personalQuestion!
-                                            .mainOccupationType ==
-                                            "رفض"
-                                        ? Container()
-                                        : Employee(i: i)
-                                        : Container(),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            checkColor: ColorManager.whiteColor,
+                                            focusColor:
+                                                ColorManager.orangeTxtColor,
+                                            activeColor:
+                                                ColorManager.orangeTxtColor,
+                                            value: base[i]
+                                                .personalHeadData!
+                                                .refuseToTellAge,
+                                            onChanged: (bool? value) {
+                                              setState(() {
+                                                base[i]
+                                                    .personalHeadData!
+                                                    .refuseToTellAge = value!;
+                                                base[i]
+                                                    .personalHeadData!
+                                                    .checkAge = false;
+                                              });
+                                            }),
+                                        base[i]
+                                                    .personalHeadData!
+                                                    .refuseToTellAge ==
+                                                true
+                                            ? DropDownFormInput2(
+                                                label: base[i]
+                                                            .personalHeadData!
+                                                            .age
+                                                            .text !=
+                                                        ''
+                                                    ? Text(base[i]
+                                                        .personalHeadData!
+                                                        .age
+                                                        .text)
+                                                    : const Text('إختار'),
+                                                hint: "الفئة العمرية",
+                                                options: PersonData.groupAge[
+                                                        PersonData.groupAge.keys
+                                                            .first]!
+                                                    .toList(),
+                                                onChange: (String? p) {
+                                                  base[i]
+                                                      .personalHeadData!
+                                                      .checkAge = false;
+
+                                                  base[i]
+                                                      .personalHeadData!
+                                                      .age
+                                                      .text = p.toString();
+
+                                                  List value = PersonData
+                                                      .groupAge[PersonData
+                                                          .groupAge.keys.first]
+                                                      .toList();
+                                                  setState(() {
+                                                    for (int inr = 0;
+                                                        inr < value.length;
+                                                        inr++) {
+                                                      if (p ==
+                                                          value[inr]["value"]) {
+                                                        setState(() {
+                                                          base[i]
+                                                                  .occupationModel!
+                                                                  .isEmployee =
+                                                              value[inr]
+                                                                  ["type"];
+                                                        });
+                                                      }
+                                                    }
+                                                  });
+                                                },
+                                              )
+                                            : Container(),
+                                      ]),
+                                    ],
+                                  ),
+                                ),
+                                AppSize.spaceHeight1(context),
+                                //=============HHS-HavePastTrip==================
+                                ListViewCheckBoxOrange(
+                                  map: QuestionsData.hhsHavePastTrip,
+                                  onChange: (ChangeBoxResponse r) {
+                                    setState(() {
+                                      if (r.val == "لا" && r.check == true) {
+                                        base[i].personalHeadData!.hasPasTrip =
+                                            true;
+                                        base[i]
+                                            .personalHeadData!
+                                            .hhsHavePastTrip
+                                            .text = '';
+                                        HhsStatic.householdAddress
+                                                .hhsHavePastTrip.text =
+                                            base[i]
+                                                .personalHeadData!
+                                                .hhsHavePastTrip
+                                                .text;
+                                      } else {
+                                        base[i].personalHeadData!.hasPasTrip =
+                                            false;
+
+                                        base[i]
+                                            .personalHeadData!
+                                            .hhsHavePastTrip
+                                            .text = 'نعم';
+                                        HhsStatic.householdAddress
+                                                .hhsHavePastTrip.text =
+                                            base[i]
+                                                .personalHeadData!
+                                                .hhsHavePastTrip
+                                                .text;
+                                      }
+                                    });
+                                  },
+                                  isListView: true,
+                                  title: "هل قمت برحلة فى الأيام السابقة",
+                                  question: QuestionsData.hhsHavePastTrip[
+                                          QuestionsData
+                                              .hhsHavePastTrip.keys.first]!
+                                      .toList(),
+                                  subTitle: "",
+                                ),
+                                base[i].personalHeadData!.hasPasTrip == true
+                                    ? TextForm(
+                                        label: 'إذكر السبب',
+                                        text: 'إذكر السبب',
+                                        controller: base[i]
+                                            .personalHeadData!
+                                            .hhsHavePastTrip,
+                                      )
+                                    : Container(),
+                                AppSize.spaceHeight1(context),
+                                //=========Nationality======================
+                                Nationality(i: i),
+                                AppSize.spaceHeight3(context),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
                                     base[i].occupationModel!.isEmployee == ""
                                         ? Container()
-                                        : TransporterMobilty(index: i)
+                                        : DropDownFormInput2(
+                                            label: PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType !=
+                                                    ''
+                                                ? Text(PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType ??
+                                                    '')
+                                                : const Text('إختار'),
+                                            hint: "الوظيفة الأساسية",
+                                            options: PersonData.mainOccupation[
+                                                    mainOccupationKey]!
+                                                .toList(),
+                                            onChange: (String? p) {
+                                              List value = PersonData
+                                                  .mainOccupation[
+                                                      mainOccupationKey]
+                                                  .toList();
+
+                                              for (int inr = 0;
+                                                  inr < value.length;
+                                                  inr++) {
+                                                if (p == value[inr]["value"]) {
+                                                  PersonModelList
+                                                          .personModelList[i]
+                                                          .personalQuestion!
+                                                          .mainOccupationType =
+                                                      value[inr]["value"];
+                                                }
+                                              }
+                                              setState(() {
+                                                PersonModelList
+                                                        .personModelList[i]
+                                                        .personalQuestion!
+                                                        .mainOccupationType ==
+                                                    p.toString();
+                                              });
+
+                                              print(p.toString());
+                                            },
+                                          ),
+                                    base[i].occupationModel!.isEmployee == ""
+                                        ? Container()
+                                        : base[i].occupationModel!.isEmployee ==
+                                                "1"
+                                            ? PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "عاطلين عن العمل" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "طالب - جامعي: دوام كامل (لا يعمل) " ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "شخص البيت" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "طفل فى الحضانة" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "طفل ليس فى الحضانة" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "رفض" ||
+                                                    PersonModelList
+                                                            .personModelList[i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType ==
+                                                        "معاق / مريض"
+                                                ? Container()
+                                                : Column(
+                                                    children: [
+                                                      DropDownFormInput(
+                                                        label: PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector !=
+                                                                ''
+                                                            ? Text(PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector ??
+                                                                '')
+                                                            : const Text(
+                                                                'إختار'),
+                                                        hint:
+                                                            "لو عمل ما هو قطا ع العمل",
+                                                        options: PersonData
+                                                            .occupationSector[
+                                                                occupationSectorKey]!
+                                                            .toList(),
+                                                        onChange: (String? p) {
+                                                          setState(() {
+                                                            PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector =
+                                                                p.toString();
+                                                          });
+                                                        },
+                                                      ),
+                                                      PersonModelList
+                                                                  .personModelList[
+                                                                      i]
+                                                                  .occupationModel!
+                                                                  .occupationSector ==
+                                                              " حدد أخرى"
+                                                          ? MyTextForm(
+                                                              controller:
+                                                                  occupationSectorController,
+                                                              label:
+                                                                  " قطاع العمل",
+                                                              onChanged: (val) {
+                                                                PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector = val;
+                                                              },
+                                                            )
+                                                          : Container(),
+                                                    ],
+                                                  )
+                                            : Container()
                                   ],
                                 ),
-                              ),
+                                base[i].occupationModel!.isEmployee == "1"
+                                    ? PersonModelList
+                                                    .personModelList[i]
+                                                    .personalQuestion!
+                                                    .mainOccupationType ==
+                                                "طفل ليس فى الحضانة" ||
+                                            PersonModelList
+                                                    .personModelList[i]
+                                                    .personalQuestion!
+                                                    .mainOccupationType ==
+                                                "طفل فى الحضانة" ||
+                                            PersonModelList
+                                                    .personModelList[i]
+                                                    .personalQuestion!
+                                                    .mainOccupationType ==
+                                                "رفض"
+                                        ? Container()
+                                        : Employee(i: i)
+                                    : Container(),
+                                base[i].occupationModel!.isEmployee == ""
+                                    ? Container()
+                                    : TransporterMobilty(index: i)
+                              ],
                             ),
                           ),
-                        AppSize.spaceHeight2(context),
-                        //============Add-New-Person-Button=============
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            DefaultButton(
-                              function: () {
-                                setState(() {
-                                  int x = int.parse(
-                                      HhsStatic.peopleAdults18.toString()) +
-                                      int.parse(HhsStatic.peopleUnder18.toString());
-
-                                  print(PersonModelList.personModelList.length);
-                                  PersonModelList.personModelList.length;
-                                  if (x > PersonModelList.personModelList.length) {
-                                    setState(() {
-                                      PersonModelList.personModelList.add(
-                                        PersonModel(
-                                          //==personalHeadData==
-                                          personName: TextEditingController(),
-                                          personalHeadData: PersonalHeadData(
-                                            age: TextEditingController(),
-                                            nationality: TextEditingController(),
-                                            nationalityType: '',
-                                            gender: '',
-                                            checkAge: false,
-                                            refuseToTellAge: false,
-                                            relationshipHeadHHS: '',
-                                          ),
-                                          //==personalQuestion==
-                                          personalQuestion: PersonalQuestion(
-                                            mainOccupationType: '',
-                                            asPassenger: '',
-                                            availablePersonalCar: '',
-                                            drivingLicenceType: '',
-                                            haveBusPass: '',
-                                            haveDisabilityTransportMobility: '',
-                                            haveCarSharing: false,
-                                            educationAddress: EducationAddress(
-                                              fullAddress: TextEditingController(),
-                                              geocodes: TextEditingController(),
-                                            ),
-                                          ),
-                                          //==occupationModel==
-                                          occupationModel: OccupationModel(
-                                            earliestTimeFinishingWork:
-                                            TextEditingController(),
-                                            earliestTimeStartingWork:
-                                            TextEditingController(),
-                                            endingWoke: TextEditingController(),
-                                            startingWoke: TextEditingController(),
-                                            address: TextEditingController(),
-                                            geoCodes: TextEditingController(),
-                                            mainOccupationAddress:
-                                            TextEditingController(),
-                                            bestWorkspaceLocation: '',
-                                            bikeWorkDays: 0,
-                                            commuteWorkDays: 0,
-                                            flexibleWorkingHours: '',
-                                            isEmployee: '',
-                                            isWorkFromHome: false,
-                                            numberWorkFromHome: 0,
-                                            occupationLevelSector: '',
-                                            occupationSector: '',
-                                          ),
-                                        ),
-                                      );
-                                      PersonData.nationality[PersonData
-                                          .nationality.keys.first]!
-                                          .toList()[
-                                      PersonData.nationality["index"]]
-                                      ["isChick"] = false;
-                                      QuestionsData.hhsHavePastTrip[QuestionsData
-                                          .hhsHavePastTrip.keys.first]!
-                                          .toList()[
-                                      QuestionsData
-                                          .hhsHavePastTrip["index"]]
-                                      ["isChick"] = false;
-                                      hasPasTrip = false;
-                                    });
-                                  }
-                                });
-                              },
-                              isWidget: true,
-                              btnWidth: width(context) * .35,
-                              text: "أضافة شخص جديد",
-                              widget: const Icon(Icons.arrow_forward),
-                            )
-                          ],
                         ),
-                        AppSize.spaceHeight6(context),
-                        //======Navigation Buttons================
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            DefaultButton(
-                              function: () {
-                                if (_key.currentState!.validate()) {
-                                  _key.currentState!.save();
-                                  SavePersonData.saveData(context);
-                                  if (CheckPersonValidation.validatePerson(
-                                      context)) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                            const TripScreen()));
-                                  }
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text("يوجد خطأ بالبيانات"),
-                                      duration: Duration(seconds: 3),
-                                      elevation: 1,
+                      ),
+                    AppSize.spaceHeight2(context),
+                    //============Add-New-Person-Button=============
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        DefaultButton(
+                          function: () {
+                            setState(() {
+                              int x = int.parse(
+                                      HhsStatic.peopleAdults18.toString()) +
+                                  int.parse(HhsStatic.peopleUnder18.toString());
+
+                              print(PersonModelList.personModelList.length);
+                              PersonModelList.personModelList.length;
+                              if (x > PersonModelList.personModelList.length) {
+                                setState(() {
+                                  PersonModelList.personModelList.add(
+                                    PersonModel(
+                                      //==personalHeadData==
+                                      personName: TextEditingController(),
+                                      personalHeadData: PersonalHeadData(
+                                        age: TextEditingController(),
+                                        nationality: TextEditingController(),
+                                        hhsHavePastTrip:
+                                            TextEditingController(),
+                                        nationalityType: '',
+                                        gender: '',
+                                        checkAge: false,
+                                        hasPasTrip: false,
+                                        refuseToTellAge: false,
+                                        relationshipHeadHHS: '',
+                                      ),
+                                      //==personalQuestion==
+                                      personalQuestion: PersonalQuestion(
+                                        mainOccupationType: '',
+                                        asPassenger: '',
+                                        availablePersonalCar: '',
+                                        drivingLicenceType: '',
+                                        haveBusPass: '',
+                                        haveDisabilityTransportMobility: '',
+                                        haveCarSharing: false,
+                                        educationAddress: EducationAddress(
+                                          fullAddress: TextEditingController(),
+                                          geocodes: TextEditingController(),
+                                        ),
+                                      ),
+                                      //==occupationModel==
+                                      occupationModel: OccupationModel(
+                                        earliestTimeFinishingWork:
+                                            TextEditingController(),
+                                        earliestTimeStartingWork:
+                                            TextEditingController(),
+                                        endingWoke: TextEditingController(),
+                                        startingWoke: TextEditingController(),
+                                        address: TextEditingController(),
+                                        geoCodes: TextEditingController(),
+                                        mainOccupationAddress:
+                                            TextEditingController(),
+                                        bestWorkspaceLocation: '',
+                                        bikeWorkDays: 0,
+                                        commuteWorkDays: 0,
+                                        flexibleWorkingHours: '',
+                                        isEmployee: '',
+                                        isWorkFromHome: false,
+                                        numberWorkFromHome: 0,
+                                        occupationLevelSector: '',
+                                        occupationSector: '',
+                                      ),
                                     ),
                                   );
-                                }
-                              },
-                              isWidget: true,
-                              text: "التالي",
-                              widget: const Icon(Icons.arrow_forward),
-                            ),
-                            AppSize.spaceWidth3(context),
-                            DefaultButton(
-                              function: () {
-                                Navigator.pop(context);
-                              },
-                              isWidget: true,
-                              background: ColorManager.grayColor,
-                              text: "السابق",
-                              widget: const Icon(Icons.arrow_back_rounded),
-                            ),
-                          ],
+                                  PersonData.nationality[PersonData
+                                                  .nationality.keys.first]!
+                                              .toList()[
+                                          PersonData.nationality["index"]]
+                                      ["isChick"] = false;
+                                  QuestionsData.hhsHavePastTrip[QuestionsData
+                                                  .hhsHavePastTrip.keys.first]!
+                                              .toList()[
+                                          QuestionsData
+                                              .hhsHavePastTrip["index"]]
+                                      ["isChick"] = false;
+                                  hasPasTrip = false;
+                                });
+                              }
+                            });
+                          },
+                          isWidget: true,
+                          btnWidth: width(context) * .35,
+                          text: "أضافة شخص جديد",
+                          widget: const Icon(Icons.arrow_forward),
+                        )
+                      ],
+                    ),
+                    AppSize.spaceHeight6(context),
+                    //======Navigation Buttons================
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        DefaultButton(
+                          function: () {
+                            if (_key.currentState!.validate()) {
+                              _key.currentState!.save();
+                              SavePersonData.saveData(context);
+                              if (CheckPersonValidation.validatePerson(
+                                  context)) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const TripScreen()));
+                              }
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("يوجد خطأ بالبيانات"),
+                                  duration: Duration(seconds: 3),
+                                  elevation: 1,
+                                ),
+                              );
+                            }
+                          },
+                          isWidget: true,
+                          text: "التالي",
+                          widget: const Icon(Icons.arrow_forward),
+                        ),
+                        AppSize.spaceWidth3(context),
+                        DefaultButton(
+                          function: () {
+                            Navigator.pop(context);
+                          },
+                          isWidget: true,
+                          background: ColorManager.grayColor,
+                          text: "السابق",
+                          widget: const Icon(Icons.arrow_back_rounded),
                         ),
                       ],
                     ),
-                  ),
+                  ],
                 ),
               ),
-            )),
+            ),
+          ),
+        )),
       ),
     );
   }

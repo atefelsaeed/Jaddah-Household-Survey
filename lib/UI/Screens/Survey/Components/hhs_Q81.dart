@@ -6,10 +6,17 @@ import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
 import '../widgets/editing_controler3.dart';
 
-class Q81 extends StatelessWidget {
+class Q81 extends StatefulWidget {
   EditingController3 editingController3;
 
   Q81({super.key, required this.editingController3});
+
+  @override
+  State<Q81> createState() => _Q81State();
+}
+
+class _Q81State extends State<Q81> {
+  bool hasBycle = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +37,51 @@ class Q81 extends StatelessWidget {
           ],
         ),
         AppSize.spaceHeight2(context),
+        Row(children: [
+          TextGlobal(
+            text: "لا يوجد",
+            fontSize: height(context) * .02,
+            color: ColorManager.grayColor,
+          ),
+          Checkbox(
+              side: BorderSide(
+                color: ColorManager.orangeTxtColor,
+                width: 1.5,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              checkColor: ColorManager.whiteColor,
+              focusColor: ColorManager.orangeTxtColor,
+              activeColor: ColorManager.orangeTxtColor,
+              value: hasBycle,
+              onChanged: (bool? value) {
+                setState(() {
+                  hasBycle = value!;
+                  if (hasBycle == true) {
+                    widget.editingController3.peopleAdults18.text = '0';
+                    widget.editingController3.peopleUnder18.text = '0';
+                    widget.editingController3.totalNumber.text = '0';
+                  } else {
+                    widget.editingController3.peopleAdults18.text = '';
+                    widget.editingController3.peopleUnder18.text = '';
+                    widget.editingController3.totalNumber.text = '';
+                  }
+                });
+              })
+        ]),
+        AppSize.spaceHeight2(context),
         Field(
-            function: () {},
-            showDeleteIcon: false,
-            peopleAdults18: editingController3.peopleAdults18,
-            peopleUnder18: editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدراجات الهوائية",
-            totalNumberOfVec: editingController3.totalNumber,
-            peopleAdults18Text: "عدد الدرجات للبالغين",
-            peopleUnder18Text: "عدد الدرجات للاطفال")
+          function: () {},
+          showDeleteIcon: false,
+          peopleAdults18: widget.editingController3.peopleAdults18,
+          peopleUnder18: widget.editingController3.peopleUnder18,
+          totalNumberOfVecText: "إجمالي عدد الدراجات الهوائية",
+          totalNumberOfVec: widget.editingController3.totalNumber,
+          peopleAdults18Text: "عدد الدرجات للبالغين",
+          peopleUnder18Text: "عدد الدرجات للاطفال",
+          isHome: hasBycle,
+        )
       ],
     );
   }

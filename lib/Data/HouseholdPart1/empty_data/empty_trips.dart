@@ -4,7 +4,7 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dar
 class EmptyTrips {
   static emptyTrips() {
     personTrip = [];
-    TripModeList.tripModeList.length=1;
+    TripModeList.tripModeList.length = 1;
     for (var element in TripModeList.tripModeList) {
       //============Reset-Checkbox==============================
       element.travelWithOther[element.travelWithOther.keys.first]!
@@ -19,7 +19,8 @@ class EmptyTrips {
           .toList()[element.friendPerson["index"]]["isChick"] = false;
       //==============Reset-List=================
       element.hhsMembersTraveled = [];
-      element.isHome=false;
+      element.isHome = false;
+      element.isHomeEnding = false;
       element.person = [];
       element.chosenFriendPerson = [];
       element.departureTime.text = '';

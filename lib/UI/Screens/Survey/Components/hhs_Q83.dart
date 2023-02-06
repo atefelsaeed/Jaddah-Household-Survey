@@ -5,11 +5,18 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/field_widget.d
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
 import '../widgets/editing_controler3.dart';
-class Q83 extends StatelessWidget {
+
+class Q83 extends StatefulWidget {
   EditingController3 editingController3;
 
   Q83({super.key, required this.editingController3});
 
+  @override
+  State<Q83> createState() => _Q83State();
+}
+
+class _Q83State extends State<Q83> {
+  bool hasBycle=false;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,7 +28,7 @@ class Q83 extends StatelessWidget {
             Expanded(
               child: TextGlobal(
                 text:
-                "كم عدد الدراجات الإلكترونية(إسكوتر) التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                    "كم عدد الدراجات الإلكترونية(إسكوتر) التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -29,17 +36,52 @@ class Q83 extends StatelessWidget {
           ],
         ),
         AppSize.spaceHeight2(context),
+        Row(children: [
+          TextGlobal(
+            text: "لا يوجد",
+            fontSize: height(context) * .02,
+            color: ColorManager.grayColor,
+          ),
+          Checkbox(
+              side: BorderSide(
+                color: ColorManager.orangeTxtColor,
+                width: 1.5,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              checkColor: ColorManager.whiteColor,
+              focusColor: ColorManager.orangeTxtColor,
+              activeColor: ColorManager.orangeTxtColor,
+              value: hasBycle,
+              onChanged: (bool? value) {
+                setState(() {
+                  hasBycle = value!;
+                  if (hasBycle == true) {
+                    widget.editingController3.peopleAdults18.text = '0';
+                    widget.editingController3.peopleUnder18.text = '0';
+                    widget.editingController3.totalNumber.text = '0';
+                  }else{
+                    widget.editingController3.peopleAdults18.text = '';
+                    widget.editingController3.peopleUnder18.text = '';
+                    widget.editingController3.totalNumber.text = '';
+                  }
+                });
+              })
+        ]),
+        AppSize.spaceHeight2(context),
         Field(
-            function: () {},
-            showDeleteIcon: false,
-            peopleAdults18: editingController3.peopleAdults18,
-            peopleUnder18: editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدراجات الإلكترونية(إسكوتر)",
-            totalNumberOfVec: editingController3.totalNumber,
-            peopleAdults18Text: "عدد الدرجات للبالغين",
-            peopleUnder18Text: "عدد الدرجات للاطفال")
+          function: () {},
+          showDeleteIcon: false,
+          peopleAdults18: widget.editingController3.peopleAdults18,
+          peopleUnder18: widget.editingController3.peopleUnder18,
+          totalNumberOfVecText: "إجمالي عدد الدراجات الإلكترونية(إسكوتر)",
+          totalNumberOfVec: widget.editingController3.totalNumber,
+          peopleAdults18Text: "عدد الدرجات للبالغين",
+          peopleUnder18Text: "عدد الدرجات للاطفال",
+          isHome: hasBycle,
+        )
       ],
     );
   }
 }
-
