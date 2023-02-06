@@ -141,9 +141,19 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       ListViewCheckBoxOrange(
                         map: QuestionsData.qh4,
                         onChange: (ChangeBoxResponse r) {
+                          print(r);
                           if (r.check == true) {
+
                             HhsStatic.householdQuestions
                                 .hhsNumberSeparateFamilies = r.val;
+                          setState(() {
+                            while(int.parse(r.val)<q6totalNumberOfVec.length){
+                              q6peopleAdults18.removeLast();
+                              q6peopleUnder18.removeLast();
+                              q6totalNumberOfVec.removeLast();
+                            }
+                          });
+
                           } else {
                             setState(() {
                               q6peopleAdults18 = [TextEditingController()];

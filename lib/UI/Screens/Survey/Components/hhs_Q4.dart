@@ -41,6 +41,7 @@ class _HHSQ4State extends State<HHSQ4> {
           Column(
             children: [
               Field(
+                isHome: false,
                   peopleAdults18: widget.q6peopleAdults18[i],
                   function: () {
                     setState(() {

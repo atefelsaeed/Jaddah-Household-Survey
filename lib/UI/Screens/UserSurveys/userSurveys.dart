@@ -110,7 +110,9 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                     userSurveysProvider.searchQTA(value!);
                                   },
                                   label: "بحث",
-                                  onTap: () {},
+                                  onTap: () {
+
+                                  },
                                   widthForm: width(context) * .2,
                                   keyboardType: TextInputType.number,
                                   isNumber: true,
@@ -162,7 +164,34 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                       borderRadius: BorderRadius.circular(10)),
                                   child: IconButton(
                                       onPressed: () {
-                                        if (hayController.text.isNotEmpty) {
+                                       if(hayController.text.isNotEmpty&&qtaController.text.isEmpty&&blocController.text.isEmpty){
+                                         userSurveysProvider.changeIcon();
+                                       } else if(hayController.text.isNotEmpty&&qtaController.text.isNotEmpty&&blocController.text.isEmpty){
+                                         userSurveysProvider.changeIcon();
+                                       }
+                                       else if(hayController.text.isNotEmpty&&qtaController.text.isNotEmpty&&blocController.text.isNotEmpty){
+                                         userSurveysProvider.changeIcon();
+                                       }
+
+
+                                       else{
+                                     if(    hayController.text.isEmpty) {
+                                       Validator.showSnack(context,
+                                           'يجب إدخال رقم الحى أولاً!');
+                                     }
+                                     if(    qtaController.text.isEmpty) {
+                                       Validator.showSnack(context,
+                                           'يجب إدخال رقم الحى أولاً!');
+                                     }
+                                     if(    blocController.text.isEmpty) {
+                                       Validator.showSnack(context,
+                                           'يجب إدخال رقم الحى أولاً!');
+                                     }
+
+
+                                       }
+
+                                        /*if (hayController.text.isNotEmpty) {
                                           if (qtaController.text.isNotEmpty) {
                                             if (blocController
                                                 .text.isNotEmpty) {
@@ -178,7 +207,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                         } else {
                                           Validator.showSnack(context,
                                               'يجب إدخال رقم الحى أولاً!');
-                                        }
+                                        }*/
                                       },
                                       icon: Icon(
                                         Icons.filter_alt_outlined,
