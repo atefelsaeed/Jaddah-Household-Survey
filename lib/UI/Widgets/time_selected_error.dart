@@ -4,8 +4,8 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import '../../Resources/colors.dart';
 import 'custom_buttton.dart';
 
-class TimeSelectedError extends StatelessWidget {
-  const TimeSelectedError(
+class ShowErrorDialog extends StatelessWidget {
+  const ShowErrorDialog(
       {Key? key, required this.title, required this.content})
       : super(key: key);
   final String title, content;

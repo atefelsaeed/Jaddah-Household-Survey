@@ -68,6 +68,9 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
             ItemTextSpan(
                 title: 'رقم القطاع',
                 subTitle: widget.itemSurveyModel.qta.toString()),
+            ItemTextSpan(
+                title: 'رقم البلوك',
+                subTitle: widget.itemSurveyModel.blok.toString()),
           ],
         ),
         const Divider(

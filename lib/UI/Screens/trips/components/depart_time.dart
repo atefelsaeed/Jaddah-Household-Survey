@@ -65,7 +65,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                   showDialog<void>(
                       context: context,
                       builder: (BuildContext context) {
-                        return const TimeSelectedError(
+                        return const ShowErrorDialog(
                           title: 'يجب إدخال وقت المغادرة ',
                           content: 'يجب إدخال وقت المغادرة أولاً!',
                         );
@@ -111,7 +111,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                     showDialog<void>(
                         context: context,
                         builder: (BuildContext context) {
-                          return const TimeSelectedError(
+                          return const ShowErrorDialog(
                             title: 'يجب إختيار وقت آخر',
                             content: 'وقت المغادرة يجب أن يكون قبل وقت الوصول!',
                           );
