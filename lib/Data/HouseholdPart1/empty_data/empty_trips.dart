@@ -16,8 +16,8 @@ class EmptyTrips {
       element.purposeOfBeingThere[element.purposeOfBeingThere.keys.first]!
               .toList()[element.purposeOfBeingThere["chosenIndex"]]["isChick"] =
           false;
-      element.friendPerson[element.friendPerson.keys.first]!
-          .toList()[element.friendPerson["index"]]["isChick"] = false;
+      // element.friendPerson[element.friendPerson.keys.first]!
+      //     .toList()[element.friendPerson["index"]]["isChick"] = false;
       //==============Reset-List=================
       element.hhsMembersTraveled = [];
       element.isHome = false;
