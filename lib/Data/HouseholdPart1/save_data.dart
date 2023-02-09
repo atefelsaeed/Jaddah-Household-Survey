@@ -4,7 +4,6 @@ import 'package:jaddah_household_survey/Providers/survey.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:provider/provider.dart';
 
-import '../../Models/HHS_SurvyModels/hhs_models.dart';
 import 'TripsData/trip_mode_list.dart';
 import 'VechelisData/veh_model.dart';
 
@@ -60,7 +59,6 @@ class SavePersonData {
     SurveyPTProvider survey =
         Provider.of<SurveyPTProvider>(context, listen: false);
     survey.personData = PersonModelList.personModelList;
-    survey.hhsHavePastTrip = HhsStatic.householdAddress.hhsHavePastTrip;
   }
 }
 

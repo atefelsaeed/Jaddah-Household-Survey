@@ -15,7 +15,6 @@ class HeaderBase {
   late int empNumber;
   HouseholdAddress householdAddress = HouseholdAddress(
     hhsPhone: TextEditingController(),
-    hhsHavePastTrip: TextEditingController(),
   );
 
   HeaderBase();

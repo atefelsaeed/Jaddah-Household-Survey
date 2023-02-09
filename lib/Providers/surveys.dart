@@ -83,7 +83,7 @@ class SurveysProvider with ChangeNotifier {
       _surveys.add(s);
       notifyListeners();
       save();
-      // // await s.provider.sync();
+      // await s.provider.sync();
       // notifyListeners();
       return true;
     } catch (er) {

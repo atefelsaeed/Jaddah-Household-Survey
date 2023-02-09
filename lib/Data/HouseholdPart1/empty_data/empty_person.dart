@@ -13,6 +13,7 @@ class EmptyPerson {
       element.personName.text = '';
       element.personalHeadData!.nationality.text = '';
       element.personalHeadData!.nationalityType = '';
+      element.personalHeadData!.hhsHavePastTrip.text ='' ;
       element.personalHeadData!.showText = false;
       element.personalHeadData!.relationshipHeadHHS = '';
       element.personalHeadData!.gender = '';

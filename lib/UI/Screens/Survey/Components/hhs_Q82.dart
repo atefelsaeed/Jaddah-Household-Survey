@@ -29,7 +29,7 @@ class _Q82State extends State<Q82> {
             Expanded(
               child: TextGlobal(
                 text:
-                    "كم عدد الدراجات الكهربائية التي تمتلكها أو تستخدمها هذه الأسرة؟",
+                    "كم عدد الدراجات النارية التي تمتلكها أو تستخدمها هذه الأسرة؟",
                 fontSize: height(context) * .017,
                 color: ColorManager.black,
               ),
@@ -76,7 +76,7 @@ class _Q82State extends State<Q82> {
             showDeleteIcon: false,
             peopleAdults18: widget.editingController3.peopleAdults18,
             peopleUnder18: widget.editingController3.peopleUnder18,
-            totalNumberOfVecText: "إجمالي عدد الدراجات الكهربائية",
+            totalNumberOfVecText: "إجمالي عدد الدراجات النارية",
             totalNumberOfVec: widget.editingController3.totalNumber,
             peopleAdults18Text: "عدد الدرجات للبالغين",
             peopleUnder18Text: "عدد الدرجات للاطفال",

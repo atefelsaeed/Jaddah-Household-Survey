@@ -144,13 +144,6 @@ class SurveyPTProvider extends SurveyProvider {
   set hhsPhone(TextEditingController i) {
     _data.header.householdAddress.hhsPhone = i;
     // notifyListeners();
-  } @override
-  TextEditingController get hhsHavePastTrip => _data.header.householdAddress.hhsHavePastTrip;
-
-  @override
-  set hhsHavePastTrip(TextEditingController i) {
-    _data.header.householdAddress.hhsHavePastTrip = i;
-    // notifyListeners();
   }
 
   ///==========householdQuestions====================

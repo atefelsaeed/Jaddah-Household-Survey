@@ -131,6 +131,9 @@ class TripData {
       'سيارة',
       'تاكسي',
       'وسائل النقل العام',
+      'دراجة نارية',
+      'دراجة هوائية',
+      'المشي'
     ],
     "title": "?where did you park",
     "subTitle": "mainMade",

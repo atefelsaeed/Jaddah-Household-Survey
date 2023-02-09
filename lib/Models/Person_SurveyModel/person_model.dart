@@ -67,6 +67,7 @@ class PersonalHeadData {
     age.text = json['age'] ?? "";
     nationalityType = json['nationalityType'] ?? "";
     nationality.text = json['nationality'] ?? "";
+    hhsHavePastTrip.text = json['hhsHavePastTrip'] ?? "";
   }
 
   Map<String, dynamic> toJson() {
@@ -78,6 +79,7 @@ class PersonalHeadData {
     data['age'] = age.text ;
     data['nationalityType'] = nationalityType ?? "";
     data['nationality'] = nationality.text;
+    data['hhsHavePastTrip'] = hhsHavePastTrip.text;
     return data;
   }
 }

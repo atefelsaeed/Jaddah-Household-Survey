@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dart';
 
 class EmptyTrips {
   static emptyTrips() {
     personTrip = [];
-    TripModeList.tripModeList.length = 1;
+
     for (var element in TripModeList.tripModeList) {
       //============Reset-Checkbox==============================
       element.travelWithOther[element.travelWithOther.keys.first]!
@@ -23,6 +24,7 @@ class EmptyTrips {
       element.isHomeEnding = false;
       element.person = [];
       element.chosenFriendPerson = [];
+      element.chosenPerson ='';
       element.departureTime.text = '';
       element.isTravelAlone = false;
       element.otherWhereDidYouParkEditingControl!.text = '';
@@ -34,7 +36,7 @@ class EmptyTrips {
       element.purposeTravel = '';
       element.typeTravel = '';
       element.type = false;
-      //travelTypeModel
+      //============travelTypeModel=======================
       element.travelTypeModel?.travelType = '';
       element.travelTypeModel?.taxiTravelType = '';
       element.travelTypeModel?.taxiFare.text = '';
@@ -43,19 +45,30 @@ class EmptyTrips {
       element.travelTypeModel?.passTravelType = '';
       element.travelTypeModel?.otherWhereDidYouParking?.text = '';
       element.travelTypeModel?.taxiTravelTypeOther?.text = '';
-      //travelWay
+      //================travelWay===============
       element.travelWay?.mainMode = '';
       element.travelWay?.accessMode = '';
-      //travelWithOtherModel
+      //================travelWithOtherModel================
       element.travelWithOtherModel?.childrenNumber.text = '';
       element.travelWithOtherModel?.adultsNumber.text = '';
       element.travelWithOtherModel?.text = '';
-      //startBeginningModel
+      //===============startBeginningModel=============
       element.startBeginningModel?.tripAddressLat = '';
       element.startBeginningModel?.tripAddressLong = '';
-      //endingAddress
+      element.startBeginningModel?.area.text = '';
+      element.startBeginningModel?.block.text = '';
+      element.startBeginningModel?.nearestLandMark.text = '';
+      element.startBeginningModel?.streetName.text = '';
+      element.startBeginningModel?.streetNumber.text = '';
+      //===========endingAddress=================
       element.endingAddress?.tripAddressLat = '';
       element.endingAddress?.tripAddressLong = '';
+      element.endingAddress?.area.text = '';
+      element.endingAddress?.block.text = '';
+      element.endingAddress?.nearestLandMark.text = '';
+      element.endingAddress?.streetName.text = '';
+      element.endingAddress?.streetNumber.text = '';
     }
+    TripModeList.tripModeList.length = 1;
   }
 }

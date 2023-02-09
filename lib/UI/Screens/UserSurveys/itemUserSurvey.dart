@@ -56,6 +56,7 @@ class ItemUserSurvey extends StatelessWidget {
             itemSurveyModel.status == "not filled"
                 ? DefaultButton(
                     function: () async {
+                      HHSEmptyData.emptyData();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -66,7 +67,7 @@ class ItemUserSurvey extends StatelessWidget {
                         ),
                       );
                       itemSurveyModel.id;
-                      HHSEmptyData.emptyData();
+
                     },
                     isWidget: true,
                     text: 'بدأ استبيان',

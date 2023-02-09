@@ -9,10 +9,12 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_address.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
@@ -69,10 +71,21 @@ class _TripScreenState extends State<TripScreen> {
     return await location.getLocation();
   }
 
+  String status = '';
+
+  getSystemStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      status = (prefs.getString('SystemStatus') ?? '');
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getSystemStatus();
     TripModeList.tripModeList[0].person = [];
     for (int i = 0; i < PersonModelList.personModelList.length; i++) {
       TripModeList.tripModeList[0].person
@@ -88,6 +101,8 @@ class _TripScreenState extends State<TripScreen> {
 
     SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
+    print('status');
+    print(status);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -206,10 +221,16 @@ class _TripScreenState extends State<TripScreen> {
                                   )
                                 ],
                               ),
-                              TripStartingAddress(
-                                index: i,
-                                title: "1. من أین بدأت الیوم؟",
-                              ),
+                              //==========TripStartingAddress================
+                              status == 'Offline'
+                                  ? TripHoldAddress(
+                                      tripModel: TripModeList
+                                          .tripModeList[i].startBeginningModel!,
+                                      titel: "1. من أین بدأت الیوم؟")
+                                  : TripStartingAddress(
+                                      index: i,
+                                      title: "1. من أین بدأت الیوم؟",
+                                    ),
                               AppSize.spaceHeight3(context),
                               const HeadlineText(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
@@ -222,10 +243,17 @@ class _TripScreenState extends State<TripScreen> {
                                     TripModeList.tripModeList[i].departureTime,
                               ),
                               AppSize.spaceHeight3(context),
-                              TripEndingAddress(
-                                title: "4. الى أي عنوان ذھبت؟",
-                                index: i,
-                              ),
+                              //=============TripEndingAddress========================
+                              status == 'Offline'
+                                  ? TripHoldAddress(
+                                      tripModel: TripModeList
+                                          .tripModeList[i].endingAddress!,
+                                      titel: "4. الى أي عنوان ذھبت؟",
+                                    )
+                                  : TripEndingAddress(
+                                      title: "4. الى أي عنوان ذھبت؟",
+                                      index: i,
+                                    ),
                               AppSize.spaceHeight2(context),
                               const HeadlineText(
                                   text:
@@ -398,10 +426,20 @@ class _TripScreenState extends State<TripScreen> {
                               startBeginningModel: StartBeginningModel(
                                 tripAddressLat: "",
                                 tripAddressLong: "",
+                                area: TextEditingController(),
+                                block: TextEditingController(),
+                                nearestLandMark: TextEditingController(),
+                                streetName: TextEditingController(),
+                                streetNumber: TextEditingController(),
                               ),
                               endingAddress: StartBeginningModel(
                                 tripAddressLat: "",
                                 tripAddressLong: "",
+                                area: TextEditingController(),
+                                block: TextEditingController(),
+                                nearestLandMark: TextEditingController(),
+                                streetName: TextEditingController(),
+                                streetNumber: TextEditingController(),
                               ),
                               chosenFriendPerson: [],
                             ));
@@ -448,7 +486,7 @@ class _TripScreenState extends State<TripScreen> {
                           }
                         },
                         isWidget: true,
-                        text: "أنتهينا",
+                        text: "حفظ وانهاء",
                         widget: const Icon(Icons.arrow_forward),
                       ),
                       AppSize.spaceWidth3(context),

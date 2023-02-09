@@ -53,7 +53,6 @@ class SurveyPT extends Survey {
     data['hhsAddressLong'] = header.householdAddress.hhsAddressLong;
     data['hhsAddressLat'] = header.householdAddress.hhsAddressLat;
     data['hhsPhone'] = header.householdAddress.hhsPhone.text;
-    data['hhsHavePastTrip'] = header.householdAddress.hhsHavePastTrip.text;
     //========householdQuestions===============================
     data['hhsDwellingType'] = householdQuestions.hhsDwellingType;
     data['hhsIsDwelling'] = householdQuestions.hhsIsDwelling;
@@ -118,7 +117,6 @@ class SurveyPT extends Survey {
     header.householdAddress.hhsAddressLat = json['hhsAddressLat'];
     header.householdAddress.hhsAddressLong = json['hhsAddressLong'];
     header.householdAddress.hhsPhone.text = json['hhsPhone'];
-    header.householdAddress.hhsHavePastTrip.text = json['hhsHavePastTrip'];
     //================householdQuestions================
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];

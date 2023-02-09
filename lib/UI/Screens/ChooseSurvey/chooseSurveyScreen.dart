@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Screens/Settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/auth.dart';
@@ -43,6 +44,14 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
           IconButton(
             onPressed: Provider.of<Auth>(context).logout,
             icon: const Icon(Icons.logout),
+          ),
+          const SizedBox(width: 30),
+          IconButton(
+            onPressed: () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()));
+            },
+            icon: const Icon(Icons.settings_suggest_rounded),
           ),
         ],
         leading: Container(),

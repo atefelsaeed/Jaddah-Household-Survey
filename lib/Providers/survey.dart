@@ -29,7 +29,7 @@ abstract class SurveyProvider with ChangeNotifier {
   }
 
   Future<bool> sync({callback, bool force = false}) async {
-    // print('trying to ${data.header.date}');
+    // print('trying to ${data.header.id}');
     final prefs = await SharedPreferences.getInstance();
     while (prefs.getBool('dontsync')! && !force) {
       await Future.delayed(const Duration(seconds: 1));
@@ -131,11 +131,6 @@ abstract class SurveyProvider with ChangeNotifier {
   set hhsAddressLong(String? l);
 
   TextEditingController get hhsPhone;
-
-  set hhsPhone(TextEditingController l);
-TextEditingController get hhsHavePastTrip;
-
-  set hhsHavePastTrip(TextEditingController l);
 
   ///=========HouseholdQuestions=================
   String? get hhsDwellingType;

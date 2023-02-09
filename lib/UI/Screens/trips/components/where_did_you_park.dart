@@ -11,8 +11,11 @@ class WhereDidYouPark extends StatefulWidget {
   final TextEditingController costTaxi;
   final int index;
 
-  const WhereDidYouPark(
-      {super.key, required this.costTaxi, required this.index});
+  const WhereDidYouPark({
+    super.key,
+    required this.costTaxi,
+    required this.index,
+  });
 
   @override
   State<WhereDidYouPark> createState() => _WhereDidYouParkState();
@@ -21,6 +24,7 @@ class WhereDidYouPark extends StatefulWidget {
 class _WhereDidYouParkState extends State<WhereDidYouPark> {
   @override
   Widget build(BuildContext context) {
+    var bas = TripModeList.tripModeList[widget.index].travelTypeModel!;
     // TODO: implement build
     return Column(
       children: [
@@ -29,13 +33,8 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropDownFormInput(
-              label: TripModeList.tripModeList[widget.index].travelTypeModel!
-                  .travelType!=
-                  ''
-                  ? Text(
-                  TripModeList.tripModeList[widget.index].travelTypeModel!
-                      .travelType ??
-                      '')
+              label: bas.travelType != ''
+                  ? Text(bas.travelType ?? '')
                   : const Text('إختار'),
               hint: "بماذا ذهبت ؟",
               options: TripData
@@ -43,51 +42,34 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                   .toList(),
               onChange: (String? p) {
                 setState(() {
-                  TripModeList.tripModeList[widget.index].travelTypeModel!
-                      .travelType = p.toString();
+                  bas.travelType = p.toString();
                 });
               },
             ),
-            TripModeList.tripModeList[widget.index].travelTypeModel!
-                        .travelType ==
-                    "سيارة"
+            (bas.travelType == "سيارة") || (bas.travelType == "دراجة نارية")
                 ? DropDownFormInput(
-                    label: TripModeList.tripModeList[widget.index].travelTypeModel!
-                        .carParkingPlace!=
-                        ''
-                        ? Text(
-                        TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .carParkingPlace ??
-                            '')
+                    label: bas.carParkingPlace != ''
+                        ? Text(bas.carParkingPlace ?? '')
                         : const Text('إختار'),
-                    hint: "أین أوقفت سیارتك؟",
+                    hint: "أین أوقفت ${bas.travelType}؟",
                     options: TripData
                         .whereDidYouPark[TripData.whereDidYouPark.keys.first]!
                         .toList(),
                     onChange: (String? p) {
-                      TripModeList.tripModeList[widget.index].travelTypeModel!
-                          .carParkingPlace = p.toString();
+                      bas.carParkingPlace = p.toString();
 
                       List value = TripData
                           .whereDidYouPark[TripData.whereDidYouPark.keys.first]
                           .toList();
                       setState(() {
-                        TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .carParkingPlace = p.toString();
+                        bas.carParkingPlace = p.toString();
                       });
                     })
                 : Container(),
-            TripModeList.tripModeList[widget.index].travelTypeModel!
-                        .travelType ==
-                    "تاكسي"
+            bas.travelType == "تاكسي"
                 ? DropDownFormInput(
-                    label: TripModeList.tripModeList[widget.index].travelTypeModel!
-                        .taxiTravelType!=
-                        ''
-                        ? Text(
-                        TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .taxiTravelType ??
-                            '')
+                    label: bas.taxiTravelType != ''
+                        ? Text(bas.taxiTravelType ?? '')
                         : const Text('إختار'),
                     hint: "نوع التاكسي الذي استخدمتھ وكم الأجرة التي دفعتھا؟",
                     options: TripData
@@ -95,8 +77,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         .toList(),
                     onChange: (String? p) {
                       setState(() {
-                        TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .taxiTravelType = p.toString();
+                        bas.taxiTravelType = p.toString();
                       });
                     })
                 : Container(),
@@ -105,20 +86,16 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            (TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .carParkingPlace ==
-                        "أخر" &&
-                    TripModeList.tripModeList[widget.index].travelTypeModel!
-                            .travelType ==
-                        "سيارة")
+            ((bas.carParkingPlace == "أخر" && bas.travelType == "سيارة") ||
+                    (bas.carParkingPlace == "أخر" &&
+                        bas.travelType == "دراجة نارية"))
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       TextForm(
-                        controller: TripModeList.tripModeList[widget.index]
-                            .travelTypeModel!.otherWhereDidYouParking!,
-                        text: "أین أوقفت سیارتك؟",
-                        label: "أین أوقفت سیارتك؟",
+                        controller: bas.otherWhereDidYouParking!,
+                        text: "أین أوقفت ${bas.travelType}؟",
+                        label: "أین أوقفت ${bas.travelType}؟",
                       )
                     ],
                   )
@@ -131,9 +108,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TripModeList.tripModeList[widget.index].travelTypeModel!
-                          .travelType ==
-                      "تاكسي"
+              bas.travelType == "تاكسي"
                   ? TextForm(
                       controller: widget.costTaxi,
                       text: "كم أجرة التاكسي دفعتھ؟",
@@ -146,26 +121,24 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           ),
         ),
         AppSize.spaceHeight2(context),
-        TripModeList.tripModeList[widget.index].travelTypeModel!.travelType ==
-                "وسائل النقل العام"
+        bas.travelType == "وسائل النقل العام"
             ? Directionality(
                 textDirection: TextDirection.ltr,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextForm(
-                      controller: TripModeList
-                          .tripModeList[widget.index].travelTypeModel!.taxiFare,
+                      controller: bas.taxiFare,
                       text: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
                       label: "وسائل النقل العام ، ما مقدار الأجرة التي دفعتھا؟",
-                      keyboardType: TextInputType.number,isNumber: true,
+                      keyboardType: TextInputType.number,
+                      isNumber: true,
                     ),
                     Column(
                       children: [
                         AppSize.spaceHeight3(context),
                         TextForm(
-                          controller: TripModeList.tripModeList[widget.index]
-                              .travelTypeModel!.ticketSub,
+                          controller: bas.ticketSub,
                           text:
                               " في حالة استخدام تذكرة دائمة، ما نوعھا . فى حالة عدم وجود تذكرة يكتب (لا)",
                           label: "نوع التذكرة",

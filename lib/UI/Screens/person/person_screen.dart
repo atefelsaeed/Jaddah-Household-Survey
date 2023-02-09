@@ -296,12 +296,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                             .personalHeadData!
                                             .hhsHavePastTrip
                                             .text = '';
-                                        HhsStatic.householdAddress
-                                                .hhsHavePastTrip.text =
-                                            base[i]
-                                                .personalHeadData!
-                                                .hhsHavePastTrip
-                                                .text;
+
                                       } else {
                                         base[i].personalHeadData!.hasPasTrip =
                                             false;
@@ -310,12 +305,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                             .personalHeadData!
                                             .hhsHavePastTrip
                                             .text = 'نعم';
-                                        HhsStatic.householdAddress
-                                                .hhsHavePastTrip.text =
-                                            base[i]
-                                                .personalHeadData!
-                                                .hhsHavePastTrip
-                                                .text;
                                       }
                                     });
                                   },

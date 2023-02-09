@@ -1,6 +1,5 @@
 import 'package:jaddah_household_survey/Helper/validator.dart';
 
-import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../PersonData/person_model_list.dart';
 
 class CheckPersonValidation {
@@ -15,10 +14,12 @@ class CheckPersonValidation {
       } else if (element.personalHeadData!.relationshipHeadHHS == '') {
         return Validator.showSnack(
             context, " يجب إخيار ! القرابة برب الاسرة؟ ");
-      } else  if (HhsStatic.householdAddress.hhsHavePastTrip.text == "") {
-        return Validator.showSnack(
-            context, " يجب إخيار! هل قمت برحلة فى الأيام السابقة ");
-      } else{
+        // } else  if (element.personalHeadData!.hhsHavePastTrip.text == "") {
+        //   return Validator.showSnack(
+        //       context, " يجب إخيار! هل قمت برحلة فى الأيام السابقة ");
+        // }
+
+      }  else{
        return true;
       }
     }
