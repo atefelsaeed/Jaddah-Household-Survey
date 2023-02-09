@@ -441,7 +441,7 @@ class _TripScreenState extends State<TripScreen> {
                                 streetName: TextEditingController(),
                                 streetNumber: TextEditingController(),
                               ),
-                              chosenFriendPerson: [],
+                              chosenFriendPerson: [], otherWhereDidYouParkEditingControl:  TextEditingController(),
                             ));
                           });
                         },

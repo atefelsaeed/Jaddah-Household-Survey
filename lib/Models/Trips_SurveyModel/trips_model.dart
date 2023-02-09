@@ -11,8 +11,9 @@ class TripsModel {
   String? typeTravelCondition;
   String? typeTravel;
   StartBeginningModel? endingAddress;
-  TextEditingController? otherWhereDidYouParkEditingControl;
-  TextEditingController? taxiTravelTypeEditingControl;
+  TextEditingController otherWhereDidYouParkEditingControl =
+      TextEditingController();
+  TextEditingController taxiTravelTypeEditingControl = TextEditingController();
   List<String> person = ["asd"];
   List<String> chosenFriendPerson = [];
   String chosenPerson = "";
@@ -26,9 +27,9 @@ class TripsModel {
     "index": 0,
   };
 
-   Map<String, dynamic> travelWithOther = {
+  Map<String, dynamic> travelWithOther = {
     'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
-    [
+        [
       {"value": 'مع الأخرين', "isChick": false},
       {"value": 'بمفردك', "isChick": false},
     ],
@@ -49,7 +50,7 @@ class TripsModel {
     ],
     "title": "?What was the purpose of being there",
     "subTitle":
-    " A separate family is defined as who share the kitchen expenses and meals",
+        " A separate family is defined as who share the kitchen expenses and meals",
     "chosenIndex": 0,
   };
   Map<String, dynamic> purposeOfBeingThere2 = {
@@ -67,7 +68,7 @@ class TripsModel {
     ],
     "title": "?What was the purpose of being there",
     "subTitle":
-    " A separate family is defined as who share the kitchen expenses and meals",
+        " A separate family is defined as who share the kitchen expenses and meals",
     "chosenIndex": 0,
   };
   late bool showFriend = false;
@@ -82,10 +83,13 @@ class TripsModel {
   TravelWithOtherModel? travelWithOtherModel;
   TravelWithOtherModel? travelAloneHouseHold;
   List<String>? hhsMembersTraveled;
-  ArrivalDepartTime? arrivalDepartTime;
-  TravelTypeModel? travelTypeModel;
+  ArrivalDepartTime arrivalDepartTime = ArrivalDepartTime(
+      departTime: TextEditingController(),
+      arriveDestinationTime: TextEditingController());
+  TravelTypeModel travelTypeModel = TravelTypeModel(
+      taxiFare: TextEditingController(), ticketSub: TextEditingController());
   bool isHome = false;
-  bool isHomeEnding=false;
+  bool isHomeEnding = false;
 
   TripsModel({
     required this.person,
@@ -96,14 +100,14 @@ class TripsModel {
     required this.purposeOfBeingThere,
     required this.travelWithOther,
     this.hhsMembersTraveled,
-    this.travelTypeModel,
+    required this.travelTypeModel,
     this.typeTravel,
-    this.otherWhereDidYouParkEditingControl,
+    required this.otherWhereDidYouParkEditingControl,
     this.typeTravelCondition,
     this.travelWithOtherModel,
-    this.taxiTravelTypeEditingControl,
+    required this.taxiTravelTypeEditingControl,
     this.travelAloneHouseHold,
-    this.arrivalDepartTime,
+    required this.arrivalDepartTime,
     this.travelWay,
     required this.purposeOfBeingThere2,
     required this.departureTime,
@@ -129,7 +133,8 @@ class TripsModel {
     departureTime.text = json['departureTime'];
     tripReason = json['tripReason'];
     isTravelAlone = json['isTravelAlone'];
-    chosenFriendPerson =List<String>.from(json["hhsMembersTraveled"].map((x) => x));
+    chosenFriendPerson =
+        List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {

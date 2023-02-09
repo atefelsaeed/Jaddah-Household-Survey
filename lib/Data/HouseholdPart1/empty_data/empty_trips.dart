@@ -7,17 +7,7 @@ class EmptyTrips {
     personTrip = [];
 
     for (var element in TripModeList.tripModeList) {
-      //============Reset-Checkbox==============================
-      element.travelWithOther[element.travelWithOther.keys.first]!
-          .toList()[element.travelWithOther["index"]]["isChick"] = false;
-      element.purposeOfBeingThere2[element.purposeOfBeingThere2.keys.first]!
-              .toList()[element.purposeOfBeingThere2["chosenIndex"]]
-          ["isChick"] = false;
-      element.purposeOfBeingThere[element.purposeOfBeingThere.keys.first]!
-              .toList()[element.purposeOfBeingThere["chosenIndex"]]["isChick"] =
-          false;
-      // element.friendPerson[element.friendPerson.keys.first]!
-      //     .toList()[element.friendPerson["index"]]["isChick"] = false;
+
       //==============Reset-List=================
       element.hhsMembersTraveled = [];
       element.isHome = false;
@@ -27,24 +17,24 @@ class EmptyTrips {
       element.chosenPerson ='';
       element.departureTime.text = '';
       element.isTravelAlone = false;
-      element.otherWhereDidYouParkEditingControl!.text = '';
-      element.taxiTravelTypeEditingControl!.text = '';
-      element.arrivalDepartTime?.departTime.text = '';
-      element.arrivalDepartTime?.arriveDestinationTime.text = '';
-      element.arrivalDepartTime?.numberRepeatTrip = '';
+      element.otherWhereDidYouParkEditingControl.text = '';
+      element.taxiTravelTypeEditingControl.text = '';
+      element.arrivalDepartTime.departTime.text = '';
+      element.arrivalDepartTime.arriveDestinationTime.text = '';
+      element.arrivalDepartTime.numberRepeatTrip = '';
       element.tripReason = '';
       element.purposeTravel = '';
       element.typeTravel = '';
       element.type = false;
       //============travelTypeModel=======================
-      element.travelTypeModel?.travelType = '';
-      element.travelTypeModel?.taxiTravelType = '';
-      element.travelTypeModel?.taxiFare.text = '';
-      element.travelTypeModel?.carParkingPlace = '';
-      element.travelTypeModel?.publicTransportFare = '';
-      element.travelTypeModel?.passTravelType = '';
-      element.travelTypeModel?.otherWhereDidYouParking?.text = '';
-      element.travelTypeModel?.taxiTravelTypeOther?.text = '';
+      element.travelTypeModel.travelType = '';
+      element.travelTypeModel.taxiTravelType = '';
+      element.travelTypeModel.taxiFare.text = '';
+      element.travelTypeModel.carParkingPlace = '';
+      element.travelTypeModel.publicTransportFare = '';
+      element.travelTypeModel.passTravelType = '';
+      element.travelTypeModel.otherWhereDidYouParking?.text = '';
+      element.travelTypeModel.taxiTravelTypeOther?.text = '';
       //================travelWay===============
       element.travelWay?.mainMode = '';
       element.travelWay?.accessMode = '';
@@ -68,6 +58,17 @@ class EmptyTrips {
       element.endingAddress?.nearestLandMark.text = '';
       element.endingAddress?.streetName.text = '';
       element.endingAddress?.streetNumber.text = '';
+      //============Reset-Checkbox==============================
+      element.travelWithOther[element.travelWithOther.keys.first]!
+          .toList()[element.travelWithOther["index"]]["isChick"] = false;
+      element.purposeOfBeingThere2[element.purposeOfBeingThere2.keys.first]!
+          .toList()[element.purposeOfBeingThere2["chosenIndex"]]
+      ["isChick"] = false;
+      element.purposeOfBeingThere[element.purposeOfBeingThere.keys.first]!
+          .toList()[element.purposeOfBeingThere["chosenIndex"]]["isChick"] =
+      false;
+      // element.friendPerson[element.friendPerson.keys.first]!
+      //     .toList()[element.friendPerson["index"]]["isChick"] = false;
     }
     TripModeList.tripModeList.length = 1;
   }
