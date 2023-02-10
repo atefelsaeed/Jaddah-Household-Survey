@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:search_map_place_updated/search_map_place_updated.dart';
 
 import '../../main.dart';
 import 'custom_buttton.dart';
@@ -200,13 +204,13 @@ alertMap(Function callBack) {
   List<Placemark> placeMarks = [];
   LatLng? value;
 
+  late GoogleMapController controller;
   futureCall() async {
     var position = await _determinePosition();
     placeMarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
     Constants.location != LatLng(position.latitude, position.longitude);
-
-    final GoogleMapController controller = await completer.future;
+    controller = await completer.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: LatLng(position.latitude, position.longitude),
         zoom: initZoom)));
@@ -253,6 +257,25 @@ alertMap(Function callBack) {
                         trafficEnabled: false,
                       ),
                     ),
+                    Positioned(top: 2,
+                    bottom: 2,
+                    child: SearchMapPlaceWidget(
+                      strictBounds: true,
+                      hasClearButton: true,
+                      placeType: PlaceType.address,
+                      bgColor: ColorManager.grayLiner,
+                      textColor: ColorManager.primaryColor,
+                      iconColor: ColorManager.primaryColor,
+                      placeholder: 'بحث',
+                      apiKey: 'AIzaSyAMIcLjXga58HVN5RkLX5NGf1zh-Qkk4fg',
+                      onSelected: (Place place) async {
+                        Geolocation? geolocation = await place.geolocation;
+                        controller.animateCamera(
+                            CameraUpdate.newLatLng(geolocation!.coordinates));
+                        controller.animateCamera(
+                            CameraUpdate.newLatLngBounds(geolocation.bounds, 0));
+                      },
+                    ),),
                     Positioned(
                       left: 0,
                       bottom: 0,

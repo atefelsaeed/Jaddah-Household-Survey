@@ -6,6 +6,7 @@ import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
+import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
 import 'components/controller_vechelies_body.dart';
@@ -31,37 +32,48 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
             key: _key,
             child: Column(
               children: [
+                //============VehiclesHeader===============
                 const VehiclesHeader(),
                 AppSize.spaceHeight2(context),
-                Row(children: [
-                  TextGlobal(
-                    text: "لا يوجد سيارات",
-                    fontSize: width(context) * .03,
-                    color: ColorManager.grayColor,
-                  ),
-                  //================Has-Vehicles=================
-                  Checkbox(
-                      side: BorderSide(
-                        color: ColorManager.orangeTxtColor,
-                        width: 1.5,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      checkColor: ColorManager.whiteColor,
-                      focusColor: ColorManager.orangeTxtColor,
-                      activeColor: ColorManager.orangeTxtColor,
-                      value: VehModel.hasVehicles,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          VehModel.hasVehicles = value!;
-                        });
-                      })
-                ]),
-                VehModel.hasVehicles == true
-                    ? Container()
-                    : const ControllerVehiclesBody(),
+                //====Check if this family has not vehicles or not.=====
+                (HhsStatic.houseHold[0].totalNumberVehicles
+                            .toString()
+                            .isEmpty ||
+                        HhsStatic.houseHold[0].totalNumberVehicles
+                                .toString()
+                                .trim() ==
+                            '0')
+                    ?
+                    //================Has-Vehicles=================
+                    Row(children: [
+                        TextGlobal(
+                          text: "لا يوجد سيارات",
+                          fontSize: width(context) * .03,
+                          color: ColorManager.grayColor,
+                        ),
+                        Checkbox(
+                            side: BorderSide(
+                              color: ColorManager.orangeTxtColor,
+                              width: 1.5,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            checkColor: ColorManager.whiteColor,
+                            focusColor: ColorManager.orangeTxtColor,
+                            activeColor: ColorManager.orangeTxtColor,
+                            value: VehModel.hasVehicles,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                VehModel.hasVehicles = value!;
+                              });
+                            })
+                      ])
+                    :
+                    //================Vehicles-Body=================
+                    const ControllerVehiclesBody(),
                 AppSize.spaceHeight5(context),
+                //======================Footer-Saving-Data======================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -8,6 +8,7 @@ import '../../../Models/Trips_SurveyModel/trips_model.dart';
 class TripModeList {
   static List<TripsModel> tripModeList = [
     TripsModel(
+      chosenPerson: '',
       purposeOfBeingThere2: {
         "TripReason": [
           {"value": ' في المنزل', "isChick": false},

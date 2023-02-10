@@ -6,6 +6,7 @@ import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/GoogleMaps/home_search_map.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_address.dart';
@@ -116,6 +117,7 @@ class _TripScreenState extends State<TripScreen> {
                 children: [
                   const HeadlinePerson(text: "الرحلات"),
                   AppSize.spaceHeight5(context),
+                  // HomeSearchMap(),
                   for (int i = 0; i < TripModeList.tripModeList.length; i++)
                     Padding(
                       padding: EdgeInsets.all(AppSize.padding1(context)),
@@ -291,6 +293,7 @@ class _TripScreenState extends State<TripScreen> {
                         function: () {
                           setState(() {
                             TripModeList.tripModeList.add(TripsModel(
+                              chosenPerson: '',
                               purposeOfBeingThere2: {
                                 "TripReason": [
                                   {"value": ' في المنزل', "isChick": false},

@@ -24,7 +24,7 @@ class ItemUserSurvey extends StatelessWidget {
         "https://www.google.com/maps/search/?api=1&query=$long,$lat";
 
     final String encodedURl = Uri.encodeFull(googleMapslocationUrl);
-    print(encodedURl);
+
     if (await canLaunch(encodedURl)) {
       await launch(encodedURl);
     } else {

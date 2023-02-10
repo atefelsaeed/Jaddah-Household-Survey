@@ -128,25 +128,28 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                           print(d);
                           setState(() {
                             if (d!.isNotEmpty) {
+
                               switch (VehiclesData.vecModel[index].title) {
+                              //================vecCar==========================
                                 case "سيارة صغيرة":
                                   VehModel.vecCar = [];
+                                  if (HhsStatic
+                                      .houseHold[0].totalNumberVehicles
+                                      .toString()
+                                      .isEmpty ||
+                                      HhsStatic.houseHold[0]
+                                          .totalNumberVehicles
+                                          .toString()
+                                          .trim() ==
+                                          '0') {
+                                    showVechError();
+                                  } else {
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    if (HhsStatic
-                                            .houseHold[0].totalNumberVehicles
-                                            .toString()
-                                            .isEmpty ||
-                                        HhsStatic.houseHold[0]
-                                                .totalNumberVehicles
-                                                .toString()
-                                                .trim() ==
-                                            '0') {
-                                      showVechError();
-                                    } else {
+
                                       int x = int.parse(HhsStatic
                                           .houseHold[0].totalNumberVehicles
                                           .toString());
-
+print(x);
                                       int total = VehModel.fuelTypeCode.length +
                                           VehModel.vecCar.length +
                                           VehModel.largeCar.length +
@@ -171,6 +174,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     }
                                   }
                                   break;
+                                  //==============Large-Car====================
                                 case "سيارة كبيرة  ":
                                   VehModel.largeCar = [];
                                   print(HhsStatic

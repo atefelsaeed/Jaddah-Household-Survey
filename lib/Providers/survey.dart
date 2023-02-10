@@ -31,7 +31,7 @@ abstract class SurveyProvider with ChangeNotifier {
   Future<bool> sync({callback, bool force = false}) async {
     // print('trying to ${data.header.id}');
     final prefs = await SharedPreferences.getInstance();
-    while (prefs.getBool('dontsync')! && !force) {
+    while (prefs.getBool('dontsync')!&& !force) {
       await Future.delayed(const Duration(seconds: 1));
       print("dont sync effect");
     }
