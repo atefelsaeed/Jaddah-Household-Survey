@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
@@ -6,6 +8,7 @@ import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {
@@ -30,27 +33,36 @@ class CheckTripsValidation {
       } else if (element.travelWay!.mainMode == null ||
           element.travelWay!.mainMode == '') {
         return Validator.showSnack(context, " يجب إخيار ! وضع وصول؟");
-      } else if (element.travelTypeModel!.travelType == null ||
-          element.travelTypeModel!.travelType == '') {
+      } else if (element.travelTypeModel.travelType == null ||
+          element.travelTypeModel.travelType == '') {
         return Validator.showSnack(context, " يجب إخيار ! بماذا ذهبت ؟ ");
-      } else if (element.arrivalDepartTime!.numberRepeatTrip == null ||
-          element.arrivalDepartTime!.numberRepeatTrip == '') {
+      } else if (element.arrivalDepartTime.numberRepeatTrip == null ||
+          element.arrivalDepartTime.numberRepeatTrip == '') {
         return Validator.showSnack(
             context, " يجب إخيار ! كم مرة تقوم بهذە الرحلة؟ ");
-      } else if (element.arrivalDepartTime!.numberRepeatTrip == null ||
-          element.arrivalDepartTime!.numberRepeatTrip == "") {
+      } else if (element.arrivalDepartTime.numberRepeatTrip == null ||
+          element.arrivalDepartTime.numberRepeatTrip == "") {
         return Validator.showSnack(
             context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
-      }
-      else {
+      } else {
         print("after save");
         await surveys.addSurvey(surveyPt.data);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ChooseSurveysScreen(),
-          ),
+        userSurvey.userSurveys[userSurvey.index].status = 'filled';
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setStringList(
+          "userSurveys",
+          userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
         );
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (context) => const ChooseSurveysScreen()),
+            (Route<dynamic> route) => false);
+        // Navigator.pushAndRemoveUntil(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const ChooseSurveysScreen(),
+        //   ),
+        // );
       }
     }
   }

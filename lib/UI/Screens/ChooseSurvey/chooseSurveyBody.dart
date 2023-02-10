@@ -1,7 +1,4 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/strings.dart';
@@ -22,49 +19,51 @@ class ChooseSurveyBody extends StatefulWidget {
 }
 
 class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
-  late final subscription;
+  // late final subscription;
+  //
+  // @override
+  // initState() {
+  //   super.initState();
+  //   subscription = Connectivity().onConnectivityChanged.listen(
+  //     (ConnectivityResult result) {
+  //       if (result == ConnectivityResult.mobile ||
+  //           result == ConnectivityResult.wifi) setState(() {});
+  //       // Got a new connectivity status!
+  //     },
+  //   );
+  // }
 
-  @override
-  initState() {
-    super.initState();
-    subscription = Connectivity().onConnectivityChanged.listen(
-      (ConnectivityResult result) {
-        if (result == ConnectivityResult.mobile ||
-            result == ConnectivityResult.wifi) setState(() {});
-        // Got a new connectivity status!
-      },
-    );
-  }
-
-// Be sure to cancel subscription after you are done
-  @override
-  dispose() {
-    super.dispose();
-
-    subscription.cancel();
-  }
+// // Be sure to cancel subscription after you are done
+//   @override
+//   dispose() {
+//     super.dispose();
+//
+//     subscription.cancel();
+//   }
 
   @override
   Widget build(BuildContext context) {
+    // final survey = Provider.of<SurveyProvider>(context, listen: true);
     SurveysProvider p = Provider.of<SurveysProvider>(context);
     p.syncAll();
     Auth auth = Provider.of<Auth>(context, listen: false);
     List<Survey> surveyList = p.surveys;
     print("Survey List length: ${surveyList.length}");
 
-    FirebaseMessaging.onMessage.listen((e) async {
-      p.syncAll();
-      Fluttertoast.showToast(
-        msg: "Syncing",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
-      // _messageHandler(e);
-    });
+    // FirebaseMessaging.onMessage.listen((e) async {
+    //   p.syncAll();
+    //   print('sync message');
+    //   Fluttertoast.showToast(
+    //     msg: "Syncing",
+    //     toastLength: Toast.LENGTH_SHORT,
+    //     gravity: ToastGravity.BOTTOM,
+    //     timeInSecForIosWeb: 1,
+    //     backgroundColor: Colors.green,
+    //     textColor: Colors.white,
+    //     fontSize: 16.0,
+    //   );
+    //   // _messageHandler(e);
+    // });
 
     return Container(
         height: height(context),

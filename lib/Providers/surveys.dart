@@ -71,7 +71,9 @@ class SurveysProvider with ChangeNotifier {
   }
 
   Future<bool> syncAll() async {
+    print('syncAll');
     for (var element in _surveys) {
+      print("Survey ID :: ${element.id}");
       element.provider.sync(callback: save);
     }
     return true;

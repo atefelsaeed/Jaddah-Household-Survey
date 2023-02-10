@@ -22,13 +22,21 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
   void showError() => showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        var total=HhsStatic
-            .houseHold[0].totalNumberVehicles
-            .toString();
-        return  ShowErrorDialog(
+        var total = HhsStatic.houseHold[0].totalNumberVehicles.toString();
+        return ShowErrorDialog(
           title: 'يجب إدخال عدد صحيح',
-          content: 'عدد المركبات الذى أدخلته أكبر من عدد المركبات فى الأسرة ($total)!',
+          content:
+              'عدد المركبات الذى أدخلته أكبر من عدد المركبات فى الأسرة ($total)!',
         );
+      });
+
+  void showVechError() => showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        var total = HhsStatic.houseHold[0].totalNumberVehicles.toString();
+        return const ShowErrorDialog(
+            title: 'لا يوجد لديك مركبات',
+            content: "لا يوجد مركبات لدى الاسرة.");
       });
 
   @override
@@ -124,30 +132,42 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                 case "سيارة صغيرة":
                                   VehModel.vecCar = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
-
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-                                    if (x > total) {
-                                      VehModel.vecCar.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
                                     } else {
-                                      showError();
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString());
+
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
+                                      if (x > total) {
+                                        VehModel.vecCar.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;
@@ -158,181 +178,253 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                       .toString());
 
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
+                                    } else {
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString());
 
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-
-                                    if (x > total) {
-                                      VehModel.largeCar.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
-                                    }else {
-                                      showError();
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
+                                      if (x > total) {
+                                        VehModel.largeCar.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;
                                 case "ونيت":
                                   VehModel.vecWanet = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
+                                    } else {
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString());
 
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-                                    if (x > total) {
-                                      VehModel.vecWanet.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
-                                    }else {
-                                      showError();
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
+                                      if (x > total) {
+                                        VehModel.vecWanet.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;
                                 case "شاحنة":
                                   VehModel.vecVan = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
+                                    } else {
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString()
+                                          .trim());
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
 
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-                                    if (x > total) {
-                                      VehModel.vecVan.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
-                                    }else {
-                                      showError();
+                                      if (x > total) {
+                                        VehModel.vecVan.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;
                                 case "دراجة نارية":
                                   VehModel.pickUp = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
+                                    } else {
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString());
 
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-                                    if (x > total) {
-                                      VehModel.pickUp.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
-                                    }else {
-                                      showError();
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
+                                      if (x > total) {
+                                        VehModel.pickUp.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;
                                 case "دراجة هوائية":
                                   VehModel.bicycle = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
+                                    } else {
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString());
 
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-                                    if (x > total) {
-                                      VehModel.bicycle.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
-                                    }else {
-                                      showError();
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
+                                      if (x > total) {
+                                        VehModel.bicycle.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;
                                 case " اسكوتر":
                                   VehModel.eScooter = [];
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    int x = int.parse(HhsStatic
-                                        .houseHold[0].totalNumberVehicles
-                                        .toString());
+                                    if (HhsStatic
+                                            .houseHold[0].totalNumberVehicles
+                                            .toString()
+                                            .isEmpty ||
+                                        HhsStatic.houseHold[0]
+                                                .totalNumberVehicles
+                                                .toString()
+                                                .trim() ==
+                                            '0') {
+                                      showVechError();
+                                    } else {
+                                      int x = int.parse(HhsStatic
+                                          .houseHold[0].totalNumberVehicles
+                                          .toString());
 
-                                    int total = VehModel.fuelTypeCode.length +
-                                        VehModel.vecCar.length +
-                                        VehModel.largeCar.length +
-                                        VehModel.vecWanet.length +
-                                        VehModel.vecVan.length +
-                                        VehModel.pickUp.length +
-                                        VehModel.eScooter.length;
-                                    if (x > total) {
-                                      VehModel.eScooter.add(
-                                        VehicleBodyDetails(
-                                          vehicleParking:
-                                              TextEditingController(),
-                                          vehicleOwnership:
-                                              TextEditingController(),
-                                          vehicleFuelType:
-                                              TextEditingController(),
-                                        ),
-                                      );
-                                    }else {
-                                      showError();
+                                      int total = VehModel.fuelTypeCode.length +
+                                          VehModel.vecCar.length +
+                                          VehModel.largeCar.length +
+                                          VehModel.vecWanet.length +
+                                          VehModel.vecVan.length +
+                                          VehModel.pickUp.length +
+                                          VehModel.eScooter.length;
+                                      if (x > total) {
+                                        VehModel.eScooter.add(
+                                          VehicleBodyDetails(
+                                            vehicleParking:
+                                                TextEditingController(),
+                                            vehicleOwnership:
+                                                TextEditingController(),
+                                            vehicleFuelType:
+                                                TextEditingController(),
+                                          ),
+                                        );
+                                      } else {
+                                        showError();
+                                      }
                                     }
                                   }
                                   break;

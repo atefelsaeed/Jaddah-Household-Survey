@@ -295,7 +295,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
                           if (_key.currentState!.validate()) {
                             _key.currentState!.save();
 
+                            HhsStatic.houseHold.clear();
                             for (int i = 0; i < q6peopleUnder18.length; i++) {
+
                               HhsStatic.houseHold.add(
                                 SeparateFamilies(
                                   q6peopleAdults18[i].text,

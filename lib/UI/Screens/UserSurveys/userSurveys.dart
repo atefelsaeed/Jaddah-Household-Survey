@@ -38,11 +38,15 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
     List<UserSurveysModelData> list;
     if (userSurveysProvider.isSearching) {
       print('searchList');
-      if(hayController.text.isNotEmpty&&qtaController.text.isEmpty&&blocController.text.isEmpty) {
+      if (hayController.text.isNotEmpty &&
+          qtaController.text.isEmpty &&
+          blocController.text.isEmpty) {
         list = userSurveysProvider.hayList;
-      }else if(hayController.text.isNotEmpty&&qtaController.text.isNotEmpty&&blocController.text.isEmpty){
+      } else if (hayController.text.isNotEmpty &&
+          qtaController.text.isNotEmpty &&
+          blocController.text.isEmpty) {
         list = userSurveysProvider.qtaList;
-      }else{
+      } else {
         list = userSurveysProvider.searchList;
       }
     } else {
@@ -113,13 +117,10 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 MyTextForm(
                                   controller: qtaController,
                                   onChanged: (value) {
-
                                     userSurveysProvider.searchQTA(value!);
                                   },
                                   label: "بحث",
-                                  onTap: () {
-
-                                  },
+                                  onTap: () {},
                                   widthForm: width(context) * .2,
                                   keyboardType: TextInputType.number,
                                   isNumber: true,
@@ -140,9 +141,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 MyTextForm(
                                   controller: blocController,
                                   onChanged: (value) {
-
-  userSurveysProvider.searchBLOK(value!);
-
+                                    userSurveysProvider.searchBLOK(value!);
                                   },
                                   label: "بحث",
                                   widthForm: width(context) * .2,
@@ -173,32 +172,34 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                       borderRadius: BorderRadius.circular(10)),
                                   child: IconButton(
                                       onPressed: () {
-                                       if(hayController.text.isNotEmpty&&qtaController.text.isEmpty&&blocController.text.isEmpty){
-                                         userSurveysProvider.changeIcon();
-                                       } else if(hayController.text.isNotEmpty&&qtaController.text.isNotEmpty&&blocController.text.isEmpty){
-                                         userSurveysProvider.changeIcon();
-                                       }
-                                       else if(hayController.text.isNotEmpty&&qtaController.text.isNotEmpty&&blocController.text.isNotEmpty){
-                                         userSurveysProvider.changeIcon();
-                                       }
-
-
-                                       else{
-                                     if(    hayController.text.isEmpty) {
-                                       Validator.showSnack(context,
-                                           'يجب إدخال رقم الحى أولاً!');
-                                     }
-                                     if(    qtaController.text.isEmpty) {
-                                       Validator.showSnack(context,
-                                           'يجب إدخال رقم الحى أولاً!');
-                                     }
-                                     if(    blocController.text.isEmpty) {
-                                       Validator.showSnack(context,
-                                           'يجب إدخال رقم الحى أولاً!');
-                                     }
-
-
-                                       }
+                                        if (hayController.text.isNotEmpty &&
+                                            qtaController.text.isEmpty &&
+                                            blocController.text.isEmpty) {
+                                          userSurveysProvider.changeIcon();
+                                        } else if (hayController
+                                                .text.isNotEmpty &&
+                                            qtaController.text.isNotEmpty &&
+                                            blocController.text.isEmpty) {
+                                          userSurveysProvider.changeIcon();
+                                        } else if (hayController
+                                                .text.isNotEmpty &&
+                                            qtaController.text.isNotEmpty &&
+                                            blocController.text.isNotEmpty) {
+                                          userSurveysProvider.changeIcon();
+                                        } else {
+                                          if (hayController.text.isEmpty) {
+                                            Validator.showSnack(context,
+                                                'يجب إدخال رقم الحى أولاً!');
+                                          }
+                                          if (qtaController.text.isEmpty) {
+                                            Validator.showSnack(context,
+                                                'يجب إدخال رقم الحى أولاً!');
+                                          }
+                                          if (blocController.text.isEmpty) {
+                                            Validator.showSnack(context,
+                                                'يجب إدخال رقم الحى أولاً!');
+                                          }
+                                        }
 
                                         /*if (hayController.text.isNotEmpty) {
                                           if (qtaController.text.isNotEmpty) {
@@ -242,7 +243,9 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                               child: ListView.separated(
                                 itemBuilder: (context, index) {
                                   return ItemUserSurvey(
-                                      itemSurveyModel: list[index]);
+                                    itemSurveyModel: list[index],
+                                    index: index,
+                                  );
                                 },
                                 separatorBuilder: (context, index) {
                                   return Divider(

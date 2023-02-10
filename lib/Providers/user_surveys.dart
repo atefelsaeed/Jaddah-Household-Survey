@@ -37,7 +37,6 @@ class UserSurveysProvider with ChangeNotifier {
           .toLowerCase()
           .contains(value.toString().toLowerCase())) {
         hayList.add(element);
-
       }
     }
     print('searchHAY');
@@ -83,8 +82,10 @@ class UserSurveysProvider with ChangeNotifier {
   }
 
   bool loading = false;
-
+  int index=0;
+//============Fetch-All-User-Surveys-on-Search-Screen===============
   Future<bool> fetch(int id) async {
+
     try {
       loading = true;
       var response = await APIHelper.getData(
@@ -123,6 +124,7 @@ class UserSurveysProvider with ChangeNotifier {
     }
   }
 
+//==========Fetch-User-Survey-Status-on-Home-Screen=============
   Future<bool> fetchUserSurveysStatus(int id) async {
     try {
       loading = true;

@@ -144,8 +144,8 @@ class TripsModel {
     data['travelWay'] = travelWay!.toJson();
     data['travelWithOtherModel'] = travelWithOtherModel!.toJson();
     data['travelAloneHouseHold'] = travelAloneHouseHold!.toJson();
-    data['arrivalDepartTime'] = arrivalDepartTime!.toJson();
-    data['travelTypeModel'] = travelTypeModel!.toJson();
+    data['arrivalDepartTime'] = arrivalDepartTime.toJson();
+    data['travelTypeModel'] = travelTypeModel.toJson();
     data['purposeTravel'] = purposeTravel;
     data['departureTime'] = departureTime.text;
     data['tripReason'] = tripReason;

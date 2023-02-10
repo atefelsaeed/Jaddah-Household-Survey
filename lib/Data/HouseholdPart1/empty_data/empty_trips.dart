@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dart';
 

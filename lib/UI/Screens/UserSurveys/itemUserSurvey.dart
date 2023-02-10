@@ -5,15 +5,19 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../Models/user_serveys_model.dart';
+import '../../../Providers/user_surveys.dart';
 
 class ItemUserSurvey extends StatelessWidget {
-  const ItemUserSurvey({Key? key, required this.itemSurveyModel})
+  const ItemUserSurvey(
+      {Key? key, required this.itemSurveyModel, required this.index})
       : super(key: key);
   final UserSurveysModelData itemSurveyModel;
+  final int index;
 
   launchURL(String lat, long) async {
     final String googleMapslocationUrl =
@@ -31,6 +35,7 @@ class ItemUserSurvey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userSurveysProvider = Provider.of<UserSurveysProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -57,7 +62,8 @@ class ItemUserSurvey extends StatelessWidget {
                 ? DefaultButton(
                     function: () async {
                       HHSEmptyData.emptyData();
-                      Navigator.push(
+                      userSurveysProvider.index =index;
+                          Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => SurveyScreen(
@@ -67,7 +73,6 @@ class ItemUserSurvey extends StatelessWidget {
                         ),
                       );
                       itemSurveyModel.id;
-
                     },
                     isWidget: true,
                     text: 'بدأ استبيان',

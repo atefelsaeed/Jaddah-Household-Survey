@@ -270,7 +270,7 @@ class _TripScreenState extends State<TripScreen> {
                               AppSize.spaceHeight2(context),
                               WhereDidYouPark(
                                 costTaxi: TripModeList
-                                    .tripModeList[i].travelTypeModel!.taxiFare,
+                                    .tripModeList[i].travelTypeModel.taxiFare,
                                 index: i,
                               ),
                               AppSize.spaceHeight2(context),

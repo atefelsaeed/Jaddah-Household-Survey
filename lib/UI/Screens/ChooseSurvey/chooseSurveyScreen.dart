@@ -19,13 +19,11 @@ class ChooseSurveysScreen extends StatefulWidget {
 }
 
 class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
-  late bool clicked;
 
   @override
   void initState() {
     super.initState();
 
-    clicked = false;
   }
 
   @override

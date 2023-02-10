@@ -24,7 +24,7 @@ class WhereDidYouPark extends StatefulWidget {
 class _WhereDidYouParkState extends State<WhereDidYouPark> {
   @override
   Widget build(BuildContext context) {
-    var bas = TripModeList.tripModeList[widget.index].travelTypeModel!;
+    var bas = TripModeList.tripModeList[widget.index].travelTypeModel;
     // TODO: implement build
     return Column(
       children: [
