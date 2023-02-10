@@ -128,7 +128,9 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                           print(d);
                           setState(() {
                             if (d!.isNotEmpty) {
+
                               switch (VehiclesData.vecModel[index].title) {
+                              //================vecCar==========================
                                 case "سيارة صغيرة":
                                   VehModel.vecCar = [];
                                   for (int i = 0; i < int.parse(d); i++) {
@@ -171,6 +173,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                     }
                                   }
                                   break;
+                                  //==============Large-Car====================
                                 case "سيارة كبيرة  ":
                                   VehModel.largeCar = [];
                                   print(HhsStatic

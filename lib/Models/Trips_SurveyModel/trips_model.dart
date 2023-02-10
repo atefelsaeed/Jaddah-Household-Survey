@@ -96,6 +96,7 @@ class TripsModel {
     required this.isHome,
     required this.isHomeEnding,
     required this.chosenFriendPerson,
+    required this.chosenPerson,
     this.type,
     required this.purposeOfBeingThere,
     required this.travelWithOther,
@@ -130,6 +131,7 @@ class TripsModel {
     arrivalDepartTime = ArrivalDepartTime.fromJson(json['arrivalDepartTime']);
     travelTypeModel = TravelTypeModel.fromJson(json['travelTypeModel']);
     purposeTravel = json['purposeTravel'];
+    chosenPerson = json['ownerTripPerson'];
     departureTime.text = json['departureTime'];
     tripReason = json['tripReason'];
     isTravelAlone = json['isTravelAlone'];
@@ -147,6 +149,7 @@ class TripsModel {
     data['arrivalDepartTime'] = arrivalDepartTime.toJson();
     data['travelTypeModel'] = travelTypeModel.toJson();
     data['purposeTravel'] = purposeTravel;
+    data['ownerTripPerson'] = chosenPerson;
     data['departureTime'] = departureTime.text;
     data['tripReason'] = tripReason;
     data['isTravelAlone'] = isTravelAlone;
