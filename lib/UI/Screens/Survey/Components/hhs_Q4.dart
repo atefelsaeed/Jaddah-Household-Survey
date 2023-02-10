@@ -33,14 +33,14 @@ class _HHSQ4State extends State<HHSQ4> {
   void showError() => showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        var total=HhsStatic.householdQuestions
-            .hhsNumberSeparateFamilies;
-        return  ShowErrorDialog(
+        var total = HhsStatic.householdQuestions.hhsNumberSeparateFamilies;
+        return ShowErrorDialog(
           title: 'لا يمكنك إضافة المزيد',
           content: 'عدد العائلات المنفصلة التي تعيش في هذا العنوان هو ($total)'
               '',
         );
       });
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -48,7 +48,8 @@ class _HHSQ4State extends State<HHSQ4> {
     return Column(
       children: [
         const HeadlineText(
-            text: "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟ و كم عدد المركبات ؟"),
+            text:
+                "4.كم عدد الأشخاص في كل عائلة منفصلة تعيش في هذا العنوان؟ و كم عدد المركبات ؟"),
         for (int i = 0; i < widget.q6peopleAdults18.length; i++)
           Column(
             children: [
@@ -73,31 +74,35 @@ class _HHSQ4State extends State<HHSQ4> {
             ],
           ),
         AppSize.spaceHeight2(context),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            DefaultButton(
-              function: () {
-                setState(() {
-                  int x = int.parse(HhsStatic
-                      .householdQuestions.hhsNumberSeparateFamilies
-                      .toString());
-                  print(HhsStatic.householdQuestions.hhsNumberSeparateFamilies
-                      .toString());
-                  if (widget.q6peopleUnder18.length < x) {
-                    widget.q6peopleAdults18.add(TextEditingController());
-                    widget.q6peopleUnder18.add(TextEditingController());
-                    widget.q6totalNumberOfVec.add(TextEditingController());
-                  }else{
-                    showError();
-                  }
-                });
-              },
-              isWidget: true,
-              text: "أضافة المزيد",
-            ),
-          ],
-        )
+        HhsStatic.householdQuestions.hhsNumberSeparateFamilies.toString() == "1"
+            ? Container()
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DefaultButton(
+                    function: () {
+                      setState(() {
+                        int x = int.parse(HhsStatic
+                            .householdQuestions.hhsNumberSeparateFamilies
+                            .toString());
+                        print(HhsStatic
+                            .householdQuestions.hhsNumberSeparateFamilies
+                            .toString());
+                        if (widget.q6peopleUnder18.length < x) {
+                          widget.q6peopleAdults18.add(TextEditingController());
+                          widget.q6peopleUnder18.add(TextEditingController());
+                          widget.q6totalNumberOfVec
+                              .add(TextEditingController());
+                        } else {
+                          showError();
+                        }
+                      });
+                    },
+                    isWidget: true,
+                    text: "أضافة المزيد",
+                  ),
+                ],
+              )
       ],
     );
   }
