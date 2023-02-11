@@ -51,24 +51,14 @@ class CheckTripsValidation {
         print("after save");
         print(surveys.surveys.length);
         userSurvey.userSurveys[userSurvey.index].status = 'filled';
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setStringList(
-          "userSurveys",
-          userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
-        );
-        await userSurvey.multiSync(callback: surveys.save);
+
+        // await userSurvey.multiSync(callback: surveys.save);
         print("before save");
         print(surveys.surveys.length);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),
             (Route<dynamic> route) => false);
-        // Navigator.pushAndRemoveUntil(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => const ChooseSurveysScreen(),
-        //   ),
-        // );
       }
     }
   }

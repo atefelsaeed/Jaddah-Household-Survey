@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
+import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/Resources/strings.dart';
 import 'package:jaddah_household_survey/UI/Screens/UserSurveys/userSurveys.dart';
 import 'package:provider/provider.dart';
@@ -21,39 +22,28 @@ class ChooseSurveyBody extends StatefulWidget {
 }
 
 class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
-  // late final subscription;
-  //
-  // @override
-  // initState() {
-  //   super.initState();
-  //   subscription = Connectivity().onConnectivityChanged.listen(
-  //     (ConnectivityResult result) {
-  //       if (result == ConnectivityResult.mobile ||
-  //           result == ConnectivityResult.wifi) setState(() {});
-  //       // Got a new connectivity status!
-  //     },
-  //   );
-  // }
 
-// // Be sure to cancel subscription after you are done
-//   @override
-//   dispose() {
-//     super.dispose();
-//
-//     subscription.cancel();
-//   }
+  @override
+  initState() {
+    super.initState();
+    UserSurveysProvider userSurveysProvider =
+    Provider.of<UserSurveysProvider>(context, listen: false);
+    userSurveysProvider.multiSync();
+  }
 
   @override
   Widget build(BuildContext context) {
     // final survey = Provider.of<SurveyProvider>(context, listen: true);
     SurveysProvider p = Provider.of<SurveysProvider>(context);
-    p.syncAll();
+    // p.syncAll();
     Auth auth = Provider.of<Auth>(context, listen: false);
     List<Survey> surveyList = p.surveys;
     print("Survey List length: ${surveyList.length}");
 
     FirebaseMessaging.onMessage.listen((e) async {
-      p.syncAll();
+      UserSurveysProvider userSurveysProvider =
+      Provider.of<UserSurveysProvider>(context, listen: false);
+      userSurveysProvider.multiSync();
       print('sync message');
       Fluttertoast.showToast(
         msg: "Syncing",

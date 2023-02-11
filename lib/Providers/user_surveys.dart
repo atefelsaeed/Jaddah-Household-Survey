@@ -7,13 +7,31 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Helper/api_routing.dart';
+import '../Models/survey.dart';
 import '../Models/user_serveys_model.dart';
 import '../Models/user_surves_status.dart';
 
 class UserSurveysProvider with ChangeNotifier {
   List<Map<String, dynamic>> list = [];
   List<String> list2 = [''];
-
+  List<Survey> _surveys=[];
+  Future<bool> save() async {
+    try {
+      print("changing data");
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.reload();
+      print('prefs reload');
+      prefs.setStringList(
+        "surveys",
+        _surveys.map((v) => json.encode(v.toJson())).toList(),
+      );
+      print('save survey');
+      return true;
+    } catch (er) {
+      print(er.toString());
+      rethrow;
+    }
+  }
   Future<bool> multiSync({callback, bool force = false}) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.reload();

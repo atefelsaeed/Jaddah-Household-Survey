@@ -26,17 +26,18 @@ class _ItemHomeSurveyState extends State<ItemHomeSurvey> {
     super.initState();
 
     UserSurveysProvider userSurveysProvider =
-    Provider.of<UserSurveysProvider>(context, listen: false);
+        Provider.of<UserSurveysProvider>(context, listen: false);
     Auth auth = Provider.of<Auth>(context, listen: false);
+
     subscription = Connectivity().onConnectivityChanged.listen(
-          (ConnectivityResult result) {
+      (ConnectivityResult result) {
         if (result == ConnectivityResult.mobile ||
             result == ConnectivityResult.wifi) {
           setState(() {
             print('connectivity');
-            SurveysProvider p =
-            Provider.of<SurveysProvider>(context, listen: false);
-            p.syncAll();
+            // SurveysProvider p =
+            // Provider.of<SurveysProvider>(context, listen: false);
+            userSurveysProvider.multiSync();
             userSurveysProvider.fetchUserSurveysStatus(auth.user!.id);
           });
         }

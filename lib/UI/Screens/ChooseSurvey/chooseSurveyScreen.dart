@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/Settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +20,9 @@ class ChooseSurveysScreen extends StatefulWidget {
 }
 
 class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
-
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -34,7 +33,9 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
         actions: [
           IconButton(
             onPressed: () async {
-              Provider.of<SurveysProvider>(context, listen: false).syncAll();
+              // Provider.of<SurveysProvider>(context, listen: false).syncAll();
+              // Provider.of<UserSurveysProvider>(context,listen: false).multiSync();
+              setState(() {});
             },
             icon: const Icon(Icons.sync),
           ),
@@ -46,8 +47,10 @@ class _ChooseSurveysScreenState extends State<ChooseSurveysScreen> {
           const SizedBox(width: 30),
           IconButton(
             onPressed: () async {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SettingsScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()));
             },
             icon: const Icon(Icons.settings_suggest_rounded),
           ),
