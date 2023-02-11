@@ -1,4 +1,6 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/strings.dart';
@@ -50,20 +52,20 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
     List<Survey> surveyList = p.surveys;
     print("Survey List length: ${surveyList.length}");
 
-    // FirebaseMessaging.onMessage.listen((e) async {
-    //   p.syncAll();
-    //   print('sync message');
-    //   Fluttertoast.showToast(
-    //     msg: "Syncing",
-    //     toastLength: Toast.LENGTH_SHORT,
-    //     gravity: ToastGravity.BOTTOM,
-    //     timeInSecForIosWeb: 1,
-    //     backgroundColor: Colors.green,
-    //     textColor: Colors.white,
-    //     fontSize: 16.0,
-    //   );
-    //   // _messageHandler(e);
-    // });
+    FirebaseMessaging.onMessage.listen((e) async {
+      p.syncAll();
+      print('sync message');
+      Fluttertoast.showToast(
+        msg: "Syncing",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      // _messageHandler(e);
+    });
 
     return Container(
         height: height(context),

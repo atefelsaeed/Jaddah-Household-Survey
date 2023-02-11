@@ -24,35 +24,20 @@ class _ItemHomeSurveyState extends State<ItemHomeSurvey> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     UserSurveysProvider userSurveysProvider =
     Provider.of<UserSurveysProvider>(context, listen: false);
     Auth auth = Provider.of<Auth>(context, listen: false);
     subscription = Connectivity().onConnectivityChanged.listen(
-      (ConnectivityResult result) {
+          (ConnectivityResult result) {
         if (result == ConnectivityResult.mobile ||
             result == ConnectivityResult.wifi) {
           setState(() {
             print('connectivity');
-
             SurveysProvider p =
-                Provider.of<SurveysProvider>(context, listen: false);
+            Provider.of<SurveysProvider>(context, listen: false);
             p.syncAll();
             userSurveysProvider.fetchUserSurveysStatus(auth.user!.id);
-            // FirebaseMessaging.onMessage.listen((e) async {
-            //   p.syncAll();
-            //   print('sync message');
-            //   // ignore: curly_braces_in_flow_control_structures
-            //   Fluttertoast.showToast(
-            //     msg: "Syncing",
-            //     toastLength: Toast.LENGTH_SHORT,
-            //     gravity: ToastGravity.BOTTOM,
-            //     timeInSecForIosWeb: 1,
-            //     backgroundColor: Colors.green,
-            //     textColor: Colors.white,
-            //     fontSize: 16.0,
-            //   );
-            //   // _messageHandler(e);
-            // });
           });
         }
         // Got a new connectivity status!
