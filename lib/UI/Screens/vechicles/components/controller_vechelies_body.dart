@@ -144,12 +144,11 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                           '0') {
                                     showVechError();
                                   } else {
-                                  for (int i = 0; i < int.parse(d); i++) {
-
+                                    for (int i = 0; i < int.parse(d); i++) {
                                       int x = int.parse(HhsStatic
                                           .houseHold[0].totalNumberVehicles
                                           .toString());
-print(x);
+
                                       int total = VehModel.fuelTypeCode.length +
                                           VehModel.vecCar.length +
                                           VehModel.largeCar.length +
@@ -161,18 +160,22 @@ print(x);
                                         VehModel.vecCar.add(
                                           VehicleBodyDetails(
                                             vehicleParking:
-                                                TextEditingController(),
+                                            TextEditingController(),
                                             vehicleOwnership:
-                                                TextEditingController(),
+                                            TextEditingController(),
                                             vehicleFuelType:
-                                                TextEditingController(),
+                                            TextEditingController(),
                                           ),
                                         );
-                                      } else {
-                                        showError();
+
+                                      }else{
+                                        showVechError();
+                                        return;
                                       }
                                     }
                                   }
+
+
                                   break;
                                   //==============Large-Car====================
                                 case "سيارة كبيرة  ":
@@ -217,6 +220,7 @@ print(x);
                                         );
                                       } else {
                                         showError();
+                                        return;
                                       }
                                     }
                                   }
@@ -259,6 +263,7 @@ print(x);
                                         );
                                       } else {
                                         showError();
+                                        return;
                                       }
                                     }
                                   }
@@ -302,6 +307,7 @@ print(x);
                                         );
                                       } else {
                                         showError();
+                                        return;
                                       }
                                     }
                                   }
@@ -344,6 +350,7 @@ print(x);
                                         );
                                       } else {
                                         showError();
+                                        return;
                                       }
                                     }
                                   }
@@ -386,6 +393,7 @@ print(x);
                                         );
                                       } else {
                                         showError();
+                                        return;
                                       }
                                     }
                                   }
@@ -428,6 +436,7 @@ print(x);
                                         );
                                       } else {
                                         showError();
+                                        return;
                                       }
                                     }
                                   }
