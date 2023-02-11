@@ -46,13 +46,18 @@ class CheckTripsValidation {
             context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
       } else {
         print("after save");
+        print(surveys.surveys.length);
         await surveys.addSurvey(surveyPt.data);
+        print("after save");
+        print(surveys.surveys.length);
         userSurvey.userSurveys[userSurvey.index].status = 'filled';
         final prefs = await SharedPreferences.getInstance();
         prefs.setStringList(
           "userSurveys",
           userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
         );
+        print("before save");
+        print(surveys.surveys.length);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

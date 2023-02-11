@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,8 +43,8 @@ abstract class SurveyProvider with ChangeNotifier {
     syncing = true;
     notifyListeners();
     print('data send to server ...');
-    // log(json.encode(data));
-    final res;
+    log(json.encode(data));
+    final Response res;
     try {
       print('push_url.= $push_url');
       log("Body Data", error: json.encode(data.toJson()));
@@ -51,6 +52,7 @@ abstract class SurveyProvider with ChangeNotifier {
         url: push_url,
         body: json.encode(data.toJson()),
       );
+      log("res",error: res.body);
       print(res);
     } catch (e) {
       syncing = false;

@@ -257,25 +257,34 @@ alertMap(Function callBack) {
                         trafficEnabled: false,
                       ),
                     ),
-                    Positioned(top: 2,
-                    bottom: 2,
-                    child: SearchMapPlaceWidget(
-                      strictBounds: true,
-                      hasClearButton: true,
-                      placeType: PlaceType.address,
-                      bgColor: ColorManager.grayLiner,
-                      textColor: ColorManager.primaryColor,
-                      iconColor: ColorManager.primaryColor,
-                      placeholder: 'بحث',
-                      apiKey: 'AIzaSyAMIcLjXga58HVN5RkLX5NGf1zh-Qkk4fg',
-                      onSelected: (Place place) async {
-                        Geolocation? geolocation = await place.geolocation;
-                        controller.animateCamera(
-                            CameraUpdate.newLatLng(geolocation!.coordinates));
-                        controller.animateCamera(
-                            CameraUpdate.newLatLngBounds(geolocation.bounds, 0));
-                      },
-                    ),),
+                    Positioned(
+                      top: 40,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: width(context) * .7,
+                          child: SearchMapPlaceWidget(
+                            strictBounds: true,
+                            hasClearButton: true,
+                            placeType: PlaceType.address,
+                            bgColor: ColorManager.grayLiner,
+                            textColor: ColorManager.primaryColor,
+                            iconColor: ColorManager.primaryColor,
+                            placeholder: 'بحث',
+                            apiKey: 'AIzaSyAMIcLjXga58HVN5RkLX5NGf1zh-Qkk4fg',
+                            onSelected: (Place place) async {
+                              Geolocation? geolocation =
+                                  await place.geolocation;
+                              controller.animateCamera(CameraUpdate.newLatLng(
+                                  geolocation!.coordinates));
+                              controller.animateCamera(
+                                  CameraUpdate.newLatLngBounds(
+                                      geolocation.bounds, 0));
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
                     Positioned(
                       left: 0,
                       bottom: 0,
@@ -311,18 +320,25 @@ alertMap(Function callBack) {
                       ),
                     ),
                     Positioned(
-                      top: 30,
-                      left: 30,
+                      top: 5,
+                      left: 5,
                       child: Container(
-                        color: Colors.white,
+
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border:
+                                Border.all(color: ColorManager.primaryColor),
+                            borderRadius: BorderRadius.circular(10)),
                         child: IconButton(
                           onPressed: () async {
                             Navigator.of(context).pop();
                           },
+                          padding: EdgeInsets.all(3),
+                          constraints: BoxConstraints(),
                           icon: const Icon(Icons.arrow_forward_ios_outlined),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 );
               }));
