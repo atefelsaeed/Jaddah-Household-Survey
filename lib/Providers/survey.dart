@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
+import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
 import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
@@ -28,18 +30,21 @@ abstract class SurveyProvider with ChangeNotifier {
   ) {
     _authHeader = authHeader;
   }
-
   Future<bool> sync({callback, bool force = false}) async {
-    // print('trying to ${data.header.id}');
     final prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+    var surveysList = prefs.getStringList("surveys")!;
+
     while (prefs.getBool('dontsync')!&& !force) {
       await Future.delayed(const Duration(seconds: 1));
       print("dont sync effect");
     }
+
     if (synced || syncing) {
       print('already trying to  $synced $syncing');
       return true;
     }
+
     syncing = true;
     notifyListeners();
     print('data send to server ...');
@@ -50,7 +55,7 @@ abstract class SurveyProvider with ChangeNotifier {
       log("Body Data", error: json.encode(data.toJson()));
       res = await APIHelper.postData(
         url: push_url,
-        body: json.encode(data.toJson()),
+        body: json.encode(surveysList),
       );
       log("res",error: res.body);
       print(res);

@@ -34,7 +34,6 @@ class SurveysProvider with ChangeNotifier {
 
       if (!prefs.containsKey("surveys")) return false;
       var surveysList = prefs.getStringList("surveys")!;
-      print("Surveys List is  :: ${surveysList.toString()}");
       log('Survey Data :: ', error: surveysList.toString());
       _surveys = [];
       for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
@@ -72,10 +71,12 @@ class SurveysProvider with ChangeNotifier {
 
   Future<bool> syncAll() async {
     print('syncAll');
-    for (var element in _surveys) {
-      print("Survey ID :: ${element.id}");
-      element.provider.sync(callback: save);
-    }
+    // for (var element in _surveys) {
+    //   print("Survey ID :: ${element.id}");
+    //   element.provider.sync(callback: save);
+    // }
+    Survey ?survey;
+    survey?.provider.sync(callback: save);
     return true;
   }
 
