@@ -47,8 +47,8 @@ Future<bool> syncall() async {
     print('main');
     print(e.synced);
   }
-  Survey ?i;
-  await i!.provider.sync(force: true);
+  // Survey ?i;
+  // await i!.provider.multiSync(force: true);
   // for (Survey i in _surveys) {
   //   print(i.header.interviewNumber);
   //   await i.provider.sync(force: true);

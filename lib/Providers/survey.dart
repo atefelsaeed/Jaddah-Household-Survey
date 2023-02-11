@@ -30,6 +30,7 @@ abstract class SurveyProvider with ChangeNotifier {
   ) {
     _authHeader = authHeader;
   }
+
   Future<bool> sync({callback, bool force = false}) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.reload();
@@ -55,7 +56,7 @@ abstract class SurveyProvider with ChangeNotifier {
       log("Body Data", error: json.encode(data.toJson()));
       res = await APIHelper.postData(
         url: push_url,
-        body: json.encode(surveysList),
+        body: json.encode(data.toJson()),
       );
       log("res",error: res.body);
       print(res);
@@ -84,6 +85,43 @@ abstract class SurveyProvider with ChangeNotifier {
     notifyListeners();
     return true;
   }
+
+  // Future<bool> multiSync({callback, bool force = false}) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.reload();
+  //   var surveysList = prefs.getStringList("surveys")!;
+  //   while (prefs.getBool('dontsync')!&& !force) {
+  //     await Future.delayed(const Duration(seconds: 1));
+  //     print("dont sync effect");
+  //   }
+  //
+  //   final Response res;
+  //   try {
+  //     log("Body Data", error: json.encode(surveysList));
+  //     res = await APIHelper.postData(
+  //       url: "multi",
+  //       body: json.encode(surveysList),
+  //     );
+  //
+  //     log("res",error: res.body);
+  //   } catch (e) {
+  //     return Future.error("couldn't reach server");
+  //   }
+  //   print(res.body);
+  //   if (res.statusCode != 200) {
+  //     syncing = false;
+  //     notifyListeners();
+  //     print("server refused");
+  //     return Future.error("server refused");
+  //   }
+  //   // final resObj = json.decode(res.body);
+  //   // data.synced = resObj['status'];
+  //   if (callback != null) {
+  //     callback();
+  //   }
+  //   notifyListeners();
+  //   return true;
+  // }
 
   String get id;
 

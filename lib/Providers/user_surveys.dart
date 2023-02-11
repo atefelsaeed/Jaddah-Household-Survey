@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
@@ -9,6 +11,48 @@ import '../Models/user_serveys_model.dart';
 import '../Models/user_surves_status.dart';
 
 class UserSurveysProvider with ChangeNotifier {
+  List<Map<String, dynamic>> list = [];
+  List<String> list2 = [''];
+
+  Future<bool> multiSync({callback, bool force = false}) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+    final surveysList = prefs.getStringList("surveys")!;
+    for (var element in surveysList) {
+      list.add(json.decode(element));
+    }
+    while (prefs.getBool('dontsync')! && !force) {
+      await Future.delayed(const Duration(seconds: 1));
+      print("dont sync effect");
+    }
+
+    final Response res;
+    try {
+      log("Body Data", error: json.encode(list));
+      res = await APIHelper.postData(
+        url: "multi",
+        body: json.encode(list),
+      );
+
+      log("res", error: res.body);
+    } catch (e) {
+      return Future.error("couldn't reach server");
+    }
+    print(res.body);
+    if (res.statusCode != 200) {
+      notifyListeners();
+      print("server refused");
+      return Future.error("server refused");
+    }
+    // final resObj = json.decode(res.body);
+    // data.synced = resObj['status'];
+    if (callback != null) {
+      callback();
+    }
+    notifyListeners();
+    return true;
+  }
+
   List<UserSurveysModelData> _userSurveysSurveysList = [];
   UserSurveyStatusData? _userSurveyStatusData;
 
@@ -82,10 +126,10 @@ class UserSurveysProvider with ChangeNotifier {
   }
 
   bool loading = false;
-  int index=0;
+  int index = 0;
+
 //============Fetch-All-User-Surveys-on-Search-Screen===============
   Future<bool> fetch(int id) async {
-
     try {
       loading = true;
       var response = await APIHelper.getData(

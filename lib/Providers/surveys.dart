@@ -70,15 +70,17 @@ class SurveysProvider with ChangeNotifier {
   }
 
   Future<bool> syncAll() async {
+
     print('syncAll');
     // for (var element in _surveys) {
     //   print("Survey ID :: ${element.id}");
     //   element.provider.sync(callback: save);
     // }
-    Survey ?survey;
-    survey?.provider.sync(callback: save);
+    // Survey? survey;
+    // await survey?.provider.multiSync(callback: save);
     return true;
   }
+
   //ddvnl
 
   Future<bool> addSurvey(Survey s) async {
@@ -86,7 +88,12 @@ class SurveysProvider with ChangeNotifier {
       print('Add Survey :: ');
       _surveys.add(s);
       notifyListeners();
-      save();
+       await save();
+
+      // if (x == true) {
+      //   await s.provider.multiSync(callback: save);
+      // }
+
       // await s.provider.sync();
       // notifyListeners();
       return true;

@@ -56,6 +56,7 @@ class CheckTripsValidation {
           "userSurveys",
           userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
         );
+        await userSurvey.multiSync(callback: surveys.save);
         print("before save");
         print(surveys.surveys.length);
         Navigator.of(context).pushAndRemoveUntil(
