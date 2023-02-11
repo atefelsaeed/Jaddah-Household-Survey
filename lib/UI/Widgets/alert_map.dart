@@ -257,7 +257,8 @@ alertMap(Function callBack) {
                         trafficEnabled: false,
                       ),
                     ),
-                    Positioned(top: 0,
+                    Positioned(top: 2,
+                    bottom: 2,
                     child: SearchMapPlaceWidget(
                       strictBounds: true,
                       hasClearButton: true,

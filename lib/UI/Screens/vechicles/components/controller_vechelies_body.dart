@@ -133,22 +133,23 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                               //================vecCar==========================
                                 case "سيارة صغيرة":
                                   VehModel.vecCar = [];
+                                  if (HhsStatic
+                                      .houseHold[0].totalNumberVehicles
+                                      .toString()
+                                      .isEmpty ||
+                                      HhsStatic.houseHold[0]
+                                          .totalNumberVehicles
+                                          .toString()
+                                          .trim() ==
+                                          '0') {
+                                    showVechError();
+                                  } else {
                                   for (int i = 0; i < int.parse(d); i++) {
-                                    if (HhsStatic
-                                            .houseHold[0].totalNumberVehicles
-                                            .toString()
-                                            .isEmpty ||
-                                        HhsStatic.houseHold[0]
-                                                .totalNumberVehicles
-                                                .toString()
-                                                .trim() ==
-                                            '0') {
-                                      showVechError();
-                                    } else {
+
                                       int x = int.parse(HhsStatic
                                           .houseHold[0].totalNumberVehicles
                                           .toString());
-
+print(x);
                                       int total = VehModel.fuelTypeCode.length +
                                           VehModel.vecCar.length +
                                           VehModel.largeCar.length +

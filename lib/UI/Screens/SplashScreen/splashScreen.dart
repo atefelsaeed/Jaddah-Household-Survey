@@ -8,7 +8,7 @@ import '../../../Resources/colors.dart';
 import '../../../Resources/sizes.dart';
 
 class SplashView extends StatefulWidget {
-  const SplashView({Key? key}) : super(key: key);
+  const  SplashView({Key? key}) : super(key: key);
 
   @override
   _SplashViewState createState() => _SplashViewState();
