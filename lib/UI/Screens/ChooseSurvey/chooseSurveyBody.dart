@@ -40,6 +40,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                 Provider.of<SurveysProvider>(context, listen: false);
             Auth auth = Provider.of<Auth>(context, listen: false);
             userSurveysProvider.fetchUserSurveysStatus(auth.user!.id);
+
             userSurveysProvider.multiSync();
           });
         }

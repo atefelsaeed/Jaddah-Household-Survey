@@ -88,25 +88,34 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                       const Spacer(),
                       IconButton(
                           onPressed: () {
-                            alertMap(
-                              (LatLng latLong) {
-                                surveyPt.startAddressLatLng = latLong;
-                                setState(() {
-                                  surveyPt.startingAddressLatLng?.latitude !=
-                                      latLong.latitude;
-                                  surveyPt.startingAddressLatLng?.longitude !=
-                                      latLong.longitude;
-                                });
-                                setState(() {
-                                  startBeginningModel?.tripAddressLong =
-                                      surveyPt.startingAddressLatLng?.longitude
-                                          .toString();
-                                  startBeginningModel?.tripAddressLat = surveyPt
-                                      .startingAddressLatLng?.latitude
-                                      .toString();
-                                });
-                              },
-                            );
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MapSearchScreen(
+                                            callBack: (LatLng latLong) {
+                                          surveyPt.endAddressLatLng = latLong;
+                                          setState(() {
+                                            surveyPt.endingAddressLatLng
+                                                    ?.latitude !=
+                                                latLong.latitude;
+                                            surveyPt.endingAddressLatLng
+                                                    ?.longitude !=
+                                                latLong.longitude;
+                                          });
+                                          setState(() {
+                                            startBeginningModel
+                                                    ?.tripAddressLong =
+                                                surveyPt.endingAddressLatLng
+                                                    ?.longitude
+                                                    .toString();
+                                            startBeginningModel
+                                                    ?.tripAddressLat =
+                                                surveyPt.endingAddressLatLng
+                                                    ?.latitude
+                                                    .toString();
+                                          });
+                                        })));
+
                           },
                           icon: Icon(
                             Icons.pin_drop,

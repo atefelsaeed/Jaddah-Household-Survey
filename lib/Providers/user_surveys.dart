@@ -38,9 +38,18 @@ class UserSurveysProvider with ChangeNotifier {
 
   Future<bool> multiSync({callback, bool force = false}) async {
     iSSyncing = true;
-    notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.reload();
+
+    if (!prefs.containsKey("surveys")){
+
+      iSSyncing = false;
+      notifyListeners();
+      return false;
+    }else{
+
+    // final prefs = await SharedPreferences.getInstance();
+    // await prefs.reload();
     final surveysList = prefs.getStringList("surveys")!;
     for (var element in surveysList) {
       list.add(json.decode(element));
@@ -80,6 +89,7 @@ class UserSurveysProvider with ChangeNotifier {
     iSSyncing = false;
     notifyListeners();
     return true;
+    }
   }
 
   List<UserSurveysModelData> _userSurveysSurveysList = [];

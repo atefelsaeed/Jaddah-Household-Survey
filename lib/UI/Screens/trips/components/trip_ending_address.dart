@@ -27,7 +27,6 @@ class TripEndingAddress extends StatefulWidget {
 }
 
 class _TripEndingAddressState extends State<TripEndingAddress> {
-
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
@@ -56,12 +55,13 @@ class _TripEndingAddressState extends State<TripEndingAddress> {
               checkColor: ColorManager.whiteColor,
               focusColor: ColorManager.orangeTxtColor,
               activeColor: ColorManager.orangeTxtColor,
-              value:  TripModeList.tripModeList[widget.index].isHomeEnding ,
+              value: TripModeList.tripModeList[widget.index].isHomeEnding,
               onChanged: (bool? value) {
                 setState(() {
-                  TripModeList.tripModeList[widget.index].isHomeEnding  = value!;
-                  if ( TripModeList.tripModeList[widget.index].isHomeEnding  == true) {
-                    endingAddress?.tripAddressLong =surveyPt.hhsAddressLong;
+                  TripModeList.tripModeList[widget.index].isHomeEnding = value!;
+                  if (TripModeList.tripModeList[widget.index].isHomeEnding ==
+                      true) {
+                    endingAddress?.tripAddressLong = surveyPt.hhsAddressLong;
                     endingAddress?.tripAddressLat = surveyPt.hhsAddressLat;
                   } else {
                     endingAddress?.tripAddressLong =
@@ -74,7 +74,7 @@ class _TripEndingAddressState extends State<TripEndingAddress> {
         ]),
         Column(
           children: [
-        TripModeList.tripModeList[widget.index].isHomeEnding == true
+            TripModeList.tripModeList[widget.index].isHomeEnding == true
                 ? Container()
                 : Row(
                     children: [
@@ -84,24 +84,29 @@ class _TripEndingAddressState extends State<TripEndingAddress> {
                       const Spacer(),
                       IconButton(
                           onPressed: () {
-                            alertMap(
-                              (LatLng latLong) {
-                                surveyPt.endAddressLatLng = latLong;
-                                setState(() {
-                                  surveyPt.endingAddressLatLng?.latitude !=
-                                      latLong.latitude;
-                                  surveyPt.endingAddressLatLng?.longitude !=
-                                      latLong.longitude;
-                                });
-                                setState(() {
-                                  endingAddress?.tripAddressLong = surveyPt
-                                      .endingAddressLatLng?.longitude
-                                      .toString();
-                                  endingAddress?.tripAddressLat = surveyPt
-                                      .endingAddressLatLng?.latitude
-                                      .toString();
-                                });
-                              },
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapSearchScreen(
+                                  callBack: (LatLng latLong) {
+                                    surveyPt.endAddressLatLng = latLong;
+                                    setState(() {
+                                      surveyPt.endingAddressLatLng?.latitude !=
+                                          latLong.latitude;
+                                      surveyPt.endingAddressLatLng?.longitude !=
+                                          latLong.longitude;
+                                    });
+                                    setState(() {
+                                      endingAddress?.tripAddressLong = surveyPt
+                                          .endingAddressLatLng?.longitude
+                                          .toString();
+                                      endingAddress?.tripAddressLat = surveyPt
+                                          .endingAddressLatLng?.latitude
+                                          .toString();
+                                    });
+                                  },
+                                ),
+                              ),
                             );
                           },
                           icon: Icon(
