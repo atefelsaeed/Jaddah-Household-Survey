@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
 
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
@@ -10,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
-import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
 import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
@@ -48,25 +45,21 @@ abstract class SurveyProvider with ChangeNotifier {
 
     syncing = true;
     notifyListeners();
-    print('data send to server ...');
-    log(json.encode(data));
+
     final Response res;
     try {
-      print('push_url.= $push_url');
-      log("Body Data", error: json.encode(data.toJson()));
+
       res = await APIHelper.postData(
         url: push_url,
         body: json.encode(data.toJson()),
       );
-      log("res",error: res.body);
-      print(res);
+
     } catch (e) {
       syncing = false;
       // await Future.delayed(Duration(seconds: 1));
       notifyListeners();
       return Future.error("couldn't reach server");
     }
-    print(res.body);
     if (res.statusCode != 200) {
       syncing = false;
       notifyListeners();

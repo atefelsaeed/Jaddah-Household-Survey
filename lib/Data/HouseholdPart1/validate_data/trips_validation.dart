@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
@@ -8,7 +6,6 @@ import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {
@@ -45,16 +42,10 @@ class CheckTripsValidation {
         return Validator.showSnack(
             context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
       } else {
-        print("after save");
-        print(surveys.surveys.length);
         await surveys.addSurvey(surveyPt.data);
-        print("after save");
-        print(surveys.surveys.length);
+
         userSurvey.userSurveys[userSurvey.index].status = 'filled';
 
-        // await userSurvey.multiSync(callback: surveys.save);
-        print("before save");
-        print(surveys.surveys.length);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

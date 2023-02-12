@@ -14,7 +14,8 @@ import '../Models/user_surves_status.dart';
 class UserSurveysProvider with ChangeNotifier {
   List<Map<String, dynamic>> list = [];
   List<String> list2 = [''];
-  List<Survey> _surveys=[];
+  final List<Survey> _surveys = [];
+
   Future<bool> save() async {
     try {
       print("changing data");
@@ -32,17 +33,22 @@ class UserSurveysProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  bool iSSyncing = false;
+
   Future<bool> multiSync({callback, bool force = false}) async {
+    iSSyncing = true;
+    notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.reload();
     final surveysList = prefs.getStringList("surveys")!;
     for (var element in surveysList) {
       list.add(json.decode(element));
     }
-    while (prefs.getBool('dontsync')! && !force) {
-      await Future.delayed(const Duration(seconds: 1));
-      print("dont sync effect");
-    }
+    // while (prefs.getBool('dontsync')! && !force) {
+    //   await Future.delayed(const Duration(seconds: 1));
+    //   print("dont sync effect");
+    // }
 
     final Response res;
     try {
@@ -51,15 +57,19 @@ class UserSurveysProvider with ChangeNotifier {
         url: "multi",
         body: json.encode(list),
       );
-
+      iSSyncing = false;
+      notifyListeners();
       log("res", error: res.body);
     } catch (e) {
+      iSSyncing = false;
+      notifyListeners();
       return Future.error("couldn't reach server");
     }
-    print(res.body);
     if (res.statusCode != 200) {
       notifyListeners();
       print("server refused");
+      iSSyncing = false;
+      notifyListeners();
       return Future.error("server refused");
     }
     // final resObj = json.decode(res.body);
@@ -67,6 +77,7 @@ class UserSurveysProvider with ChangeNotifier {
     if (callback != null) {
       callback();
     }
+    iSSyncing = false;
     notifyListeners();
     return true;
   }
@@ -155,7 +166,6 @@ class UserSurveysProvider with ChangeNotifier {
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        print(data);
         if (!data['status']) return false;
         _userSurveysSurveysList = (data['data'] as List)
             .map((e) => UserSurveysModelData.fromJson(e))
@@ -195,7 +205,6 @@ class UserSurveysProvider with ChangeNotifier {
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        print(data);
         // if (!data['status']) return false;
         _userSurveyStatusData = UserSurveyStatusData.fromJson(data['data']);
         print("fffff");

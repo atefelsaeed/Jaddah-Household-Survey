@@ -5,8 +5,6 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
-import 'package:jaddah_household_survey/Resources/colors.dart';
-import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:search_map_place_updated/search_map_place_updated.dart';
 
@@ -333,8 +331,8 @@ alertMap(Function callBack) {
                           onPressed: () async {
                             Navigator.of(context).pop();
                           },
-                          padding: EdgeInsets.all(3),
-                          constraints: BoxConstraints(),
+                          padding: const EdgeInsets.all(3),
+                          constraints: const BoxConstraints(),
                           icon: const Icon(Icons.arrow_forward_ios_outlined),
                         ),
                       ),

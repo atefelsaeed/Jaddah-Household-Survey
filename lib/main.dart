@@ -9,13 +9,11 @@ import 'package:intl/intl.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/UI/Screens/SplashScreen/splashScreen.dart';
-import 'package:jaddah_household_survey/UI/Screens/trips/trip_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Data/Enums/hhs_enums.dart';
 import 'Helper/LifecycleEventHandlerClass.dart';
-import 'Models/survey.dart';
 import 'Providers/auth.dart';
 import 'Providers/surveys.dart';
 import 'Providers/user_surveys.dart';
