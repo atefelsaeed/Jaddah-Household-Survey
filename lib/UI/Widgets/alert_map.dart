@@ -8,7 +8,6 @@ import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:search_map_place_updated/search_map_place_updated.dart';
 
-import '../../main.dart';
 import 'custom_buttton.dart';
 
 class Constants {

@@ -23,7 +23,7 @@ class EmptyTrips {
       "chosenIndex": 0,
     };
     TripModeList.tripModeList[0].purposeOfBeingThere2= {
-      "QPurposeOfBeingThere": [
+      "TripReason": [
         {"value": 'كنت في المنزل', "isChick": false},
         {"value": 'كنت العطلات / الفندق', "isChick": false},
         {"value": ' كنت في العمل', "isChick": false},

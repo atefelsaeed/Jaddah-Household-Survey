@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';

@@ -54,7 +54,7 @@ class TripsModel {
     "chosenIndex": 0,
   };
   Map<String, dynamic> purposeOfBeingThere2 = {
-    "QPurposeOfBeingThere": [
+    "TripReason": [
       {"value": 'كنت في المنزل', "isChick": false},
       {"value": 'كنت العطلات / الفندق', "isChick": false},
       {"value": ' كنت في العمل', "isChick": false},
