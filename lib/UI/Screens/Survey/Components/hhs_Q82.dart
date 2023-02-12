@@ -78,8 +78,8 @@ class _Q82State extends State<Q82> {
             peopleUnder18: widget.editingController3.peopleUnder18,
             totalNumberOfVecText: "إجمالي عدد الدراجات النارية",
             totalNumberOfVec: widget.editingController3.totalNumber,
-            peopleAdults18Text: "عدد الدرجات للبالغين",
-            peopleUnder18Text: "عدد الدرجات للاطفال",
+            peopleAdults18Text: "عدد الدرجات للبالغين + 18 ",
+            peopleUnder18Text: "عدد الدرجات للأطفال اقل من 18",
           isHome: hasBycle,
         )
       ],

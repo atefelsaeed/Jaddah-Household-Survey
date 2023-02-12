@@ -32,7 +32,7 @@ class HHSQ5 extends StatelessWidget {
             Row(
               children: [
                 TextGlobal(
-                  text: "الاطفال",
+                  text: "الأطفال اقل من 18",
                   fontSize: height(context) * .015,
                   color: ColorManager.black,
                 ),
@@ -50,7 +50,7 @@ class HHSQ5 extends StatelessWidget {
             Row(
               children: [
                 TextGlobal(
-                  text: "البالغين",
+                  text: "البالغين + 18 ",
                   fontSize: height(context) * .017,
                   color: ColorManager.grayColor,
                 ),

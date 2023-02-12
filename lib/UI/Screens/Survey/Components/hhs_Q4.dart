@@ -63,8 +63,8 @@ class _HHSQ4State extends State<HHSQ4> {
                   });
                 },
                 showDeleteIcon: i >= 1 ? true : false,
-                peopleUnder18Text: "الاطفال",
-                peopleAdults18Text: "البالغين",
+                peopleUnder18Text: "الأطفال اقل من 18",
+                peopleAdults18Text: "البالغين + 18 ",
                 totalNumberOfVecText: "إجمالي عدد المركبات في كل عائلة",
                 peopleUnder18: widget.q6peopleUnder18[i],
                 totalNumberOfVec: widget.q6totalNumberOfVec[i],
