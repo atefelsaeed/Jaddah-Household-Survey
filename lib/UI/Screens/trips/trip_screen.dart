@@ -475,6 +475,7 @@ class _TripScreenState extends State<TripScreen> {
                               surveyPt.headerInterviewNumber = num;
                               print('kkkk');
                               SaveTripsData.saveData(context);
+
                               print("validate");
                               CheckTripsValidation.validatePerson(context);
                             } else {

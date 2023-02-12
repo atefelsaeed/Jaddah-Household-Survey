@@ -4,7 +4,42 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dar
 class EmptyTrips {
   static emptyTrips() {
     personTrip = [];
-
+    TripModeList.tripModeList[0].purposeOfBeingThere= {
+      "QPurposeOfBeingThere": [
+        {"value": 'كنت في المنزل', "isChick": false},
+        {"value": 'كنت العطلات / الفندق', "isChick": false},
+        {"value": ' كنت في العمل', "isChick": false},
+        {"value": 'مكان تعليمي', "isChick": false},
+        {"value": 'موظف لصاحب العمل', "isChick": false},
+        {"value": 'التسوق', "isChick": false},
+        {"value": 'عمل شخصي', "isChick": false},
+        {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+        {"value": 'استجمام / وقت الفراغ', "isChick": false},
+        {"value": 'توص الى المدرسة', "isChick": false},
+      ],
+      "title": "?What was the purpose of being there",
+      "subTitle":
+      " A separate family is defined as who share the kitchen expenses and meals",
+      "chosenIndex": 0,
+    };
+    TripModeList.tripModeList[0].purposeOfBeingThere2= {
+      "QPurposeOfBeingThere": [
+        {"value": 'كنت في المنزل', "isChick": false},
+        {"value": 'كنت العطلات / الفندق', "isChick": false},
+        {"value": ' كنت في العمل', "isChick": false},
+        {"value": 'مكان تعليمي', "isChick": false},
+        {"value": 'موظف لصاحب العمل', "isChick": false},
+        {"value": 'التسوق', "isChick": false},
+        {"value": 'عمل شخصي', "isChick": false},
+        {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+        {"value": 'استجمام / وقت الفراغ', "isChick": false},
+        {"value": 'توص الى المدرسة', "isChick": false},
+      ],
+      "title": "?What was the purpose of being there",
+      "subTitle":
+      " A separate family is defined as who share the kitchen expenses and meals",
+      "chosenIndex": 0,
+    };
     for (var element in TripModeList.tripModeList) {
 
       //==============Reset-List=================
