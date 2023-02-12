@@ -4,7 +4,7 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dar
 class EmptyTrips {
   static emptyTrips() {
     personTrip = [];
-    TripModeList.tripModeList[0].purposeOfBeingThere= {
+    TripModeList.tripModeList[0].purposeOfBeingThere = {
       "QPurposeOfBeingThere": [
         {"value": 'كنت في المنزل', "isChick": false},
         {"value": 'كنت العطلات / الفندق', "isChick": false},
@@ -19,10 +19,10 @@ class EmptyTrips {
       ],
       "title": "?What was the purpose of being there",
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "chosenIndex": 0,
     };
-    TripModeList.tripModeList[0].purposeOfBeingThere2= {
+    TripModeList.tripModeList[0].purposeOfBeingThere2 = {
       "TripReason": [
         {"value": 'كنت في المنزل', "isChick": false},
         {"value": 'كنت العطلات / الفندق', "isChick": false},
@@ -37,19 +37,18 @@ class EmptyTrips {
       ],
       "title": "?What was the purpose of being there",
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "chosenIndex": 0,
     };
     for (var element in TripModeList.tripModeList) {
-
       //==============Reset-List=================
       element.hhsMembersTraveled = [];
       element.isHome = false;
       element.isHomeEnding = false;
       element.person = [];
       element.chosenFriendPerson = [];
-      element.friendPerson={};
-      element.chosenPerson ='';
+      element.friendPerson = {};
+      element.chosenPerson = '';
       element.departureTime.text = '';
       element.isTravelAlone = false;
       element.otherWhereDidYouParkEditingControl.text = '';
@@ -73,6 +72,10 @@ class EmptyTrips {
       //================travelWay===============
       element.travelWay?.mainMode = '';
       element.travelWay?.accessMode = '';
+      //================travelAloneHouseHold================
+      element.travelAloneHouseHold?.childrenNumber.text = '';
+      element.travelAloneHouseHold?.adultsNumber.text = '';
+      element.travelAloneHouseHold?.text = '';
       //================travelWithOtherModel================
       element.travelWithOtherModel?.childrenNumber.text = '';
       element.travelWithOtherModel?.adultsNumber.text = '';
@@ -98,12 +101,12 @@ class EmptyTrips {
           .toList()[element.travelWithOther["index"]]["isChick"] = false;
 
       element.purposeOfBeingThere2[element.purposeOfBeingThere2.keys.first]!
-          .toList()[element.purposeOfBeingThere2["chosenIndex"]]
-      ["isChick"] = false;
+              .toList()[element.purposeOfBeingThere2["chosenIndex"]]
+          ["isChick"] = false;
 
       element.purposeOfBeingThere[element.purposeOfBeingThere.keys.first]!
-          .toList()[element.purposeOfBeingThere["chosenIndex"]]["isChick"] =
-      false;
+              .toList()[element.purposeOfBeingThere["chosenIndex"]]["isChick"] =
+          false;
 
       // element.friendPerson[element.friendPerson.keys.first]!
       //     .toList()[element.friendPerson["index"]]["isChick"] = false;
