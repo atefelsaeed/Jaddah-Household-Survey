@@ -13,6 +13,7 @@ class EmptyTrips {
       element.isHomeEnding = false;
       element.person = [];
       element.chosenFriendPerson = [];
+      element.friendPerson={};
       element.chosenPerson ='';
       element.departureTime.text = '';
       element.isTravelAlone = false;
@@ -60,12 +61,15 @@ class EmptyTrips {
       //============Reset-Checkbox==============================
       element.travelWithOther[element.travelWithOther.keys.first]!
           .toList()[element.travelWithOther["index"]]["isChick"] = false;
+
       element.purposeOfBeingThere2[element.purposeOfBeingThere2.keys.first]!
           .toList()[element.purposeOfBeingThere2["chosenIndex"]]
       ["isChick"] = false;
+
       element.purposeOfBeingThere[element.purposeOfBeingThere.keys.first]!
           .toList()[element.purposeOfBeingThere["chosenIndex"]]["isChick"] =
       false;
+
       // element.friendPerson[element.friendPerson.keys.first]!
       //     .toList()[element.friendPerson["index"]]["isChick"] = false;
     }

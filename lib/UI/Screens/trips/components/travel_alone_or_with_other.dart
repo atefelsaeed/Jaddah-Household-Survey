@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_chec
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../Widgets/show_dialog_error.dart';
 import 'adults_or_not.dart';
 
 class TravelAlone extends StatefulWidget {
@@ -18,6 +19,15 @@ class TravelAlone extends StatefulWidget {
 class _TravelAloneState extends State<TravelAlone> {
   bool isTravel = false;
 
+  void showError() => showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return const ShowErrorDialog(
+          title: 'لا يمكنك الإختيار',
+          content: 'يجب عليك إختيار إسم صاحب الرحلة أولا ثم المحاولة مرة أخرى!',
+        );
+      });
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -26,15 +36,21 @@ class _TravelAloneState extends State<TravelAlone> {
         ListViewCheckBoxOrange(
           map: TripModeList.tripModeList[widget.index].travelWithOther,
           onChange: (ChangeBoxResponse r) {
-            setState(() {
-              if (r.val == "بمفردك") {
-                TripModeList.tripModeList[widget.index].isTravelAlone = false;
-              } else if (r.val == "مع الأخرين" && r.check == true) {
-                TripModeList.tripModeList[widget.index].isTravelAlone = true;
-              } else {
-                TripModeList.tripModeList[widget.index].isTravelAlone = false;
-              }
-            });
+            if (TripModeList.tripModeList[widget.index].chosenPerson.isNotEmpty) {
+              setState(() {
+                if (r.val == "بمفردك") {
+                  TripModeList.tripModeList[widget.index].isTravelAlone = false;
+                } else if (r.val == "مع الأخرين" && r.check == true) {
+                  TripModeList.tripModeList[widget.index].isTravelAlone = true;
+                } else {
+                  TripModeList.tripModeList[widget.index].isTravelAlone = false;
+                }
+              });
+            } else {
+              showError();
+              print('no user');
+              return false;
+            }
           },
           isListView: true,
           title: "7. هل ذهبت بمفردك أم مع آخرین؟",

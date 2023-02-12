@@ -128,19 +128,16 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                           print(d);
                           setState(() {
                             if (d!.isNotEmpty) {
-
                               switch (VehiclesData.vecModel[index].title) {
-                              //================vecCar==========================
+                                //================vecCar==========================
                                 case "سيارة صغيرة":
                                   VehModel.vecCar = [];
-                                  if (HhsStatic
-                                      .houseHold[0].totalNumberVehicles
-                                      .toString()
-                                      .isEmpty ||
-                                      HhsStatic.houseHold[0]
-                                          .totalNumberVehicles
+                                  if (HhsStatic.houseHold[0].totalNumberVehicles
                                           .toString()
-                                          .trim() ==
+                                          .isEmpty ||
+                                      HhsStatic.houseHold[0].totalNumberVehicles
+                                              .toString()
+                                              .trim() ==
                                           '0') {
                                     showVechError();
                                   } else {
@@ -160,24 +157,22 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                         VehModel.vecCar.add(
                                           VehicleBodyDetails(
                                             vehicleParking:
-                                            TextEditingController(),
+                                                TextEditingController(),
                                             vehicleOwnership:
-                                            TextEditingController(),
+                                                TextEditingController(),
                                             vehicleFuelType:
-                                            TextEditingController(),
+                                                TextEditingController(),
                                           ),
                                         );
-
-                                      }else{
+                                      } else {
                                         showVechError();
                                         return;
                                       }
                                     }
                                   }
 
-
                                   break;
-                                  //==============Large-Car====================
+                                //==============Large-Car====================
                                 case "سيارة كبيرة  ":
                                   VehModel.largeCar = [];
                                   print(HhsStatic

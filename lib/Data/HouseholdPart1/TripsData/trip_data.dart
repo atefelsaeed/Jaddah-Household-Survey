@@ -1,24 +1,24 @@
 class TripData {
-  static Map<String, dynamic> purposeOfBeingThere = {
-    "QPurposeOfBeingThere": [
-      {"value": ' في المنزل', "isChick": false},
-      {"value": 'فى بيت العطلات / الفندق', "isChick": false},
-      {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
-      {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
-      {"value": 'مكان تعليمى', "isChick": false},
-      {"value": 'التسوق', "isChick": false},
-      {"value": 'عمل شخصي', "isChick": false},
-      {"value": 'طبى / مستشفى', "isChick": false},
-      {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
-      {"value": 'ترفيه / وقت الفراغ', "isChick": false},
-      {"value": 'توص الى المدرسة / التعليم', "isChick": false},
-      {"value": 'توص الى مكان آخر', "isChick": false},
-    ],
-    "title": "?What was the purpose of being there",
-    "subTitle":
-        " A separate family is defined as who share the kitchen expenses and meals",
-    "chosenIndex": 0,
-  };
+  // static Map<String, dynamic> purposeOfBeingThere = {
+  //   "QPurposeOfBeingThere": [
+  //     {"value": ' في المنزل', "isChick": false},
+  //     {"value": 'فى بيت العطلات / الفندق', "isChick": false},
+  //     {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
+  //     {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
+  //     {"value": 'مكان تعليمى', "isChick": false},
+  //     {"value": 'التسوق', "isChick": false},
+  //     {"value": 'عمل شخصي', "isChick": false},
+  //     {"value": 'طبى / مستشفى', "isChick": false},
+  //     {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+  //     {"value": 'ترفيه / وقت الفراغ', "isChick": false},
+  //     {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+  //     {"value": 'توص الى مكان آخر', "isChick": false},
+  //   ],
+  //   "title": "?What was the purpose of being there",
+  //   "subTitle":
+  //       " A separate family is defined as who share the kitchen expenses and meals",
+  //   "chosenIndex": 0,
+  // };
   static Map<String, dynamic> travelWithOther = {
     'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
     [
@@ -27,26 +27,26 @@ class TripData {
     ],
     "index": 0
   };
-  static Map<String, dynamic> tripReason = {
-    "TripReason": [
-      {"value": ' في المنزل', "isChick": false},
-      {"value": 'فى بيت العطلات / الفندق', "isChick": false},
-      {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
-      {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
-      {"value": 'مكان تعليمى', "isChick": false},
-      {"value": 'التسوق', "isChick": false},
-      {"value": 'عمل شخصي', "isChick": false},
-      {"value": 'طبى / مستشفى', "isChick": false},
-      {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
-      {"value": 'ترفيه / وقت الفراغ', "isChick": false},
-      {"value": 'توص الى المدرسة / التعليم', "isChick": false},
-      {"value": 'توص الى مكان آخر', "isChick": false},
-    ],
-    "title": "?What was the purpose of being there",
-    "subTitle":
-        " A separate family is defined as who share the kitchen expenses and meals",
-    "chosenIndex": 0,
-  };
+  // static Map<String, dynamic> tripReason = {
+  //   "TripReason": [
+  //     {"value": ' في المنزل', "isChick": false},
+  //     {"value": 'فى بيت العطلات / الفندق', "isChick": false},
+  //     {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
+  //     {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
+  //     {"value": 'مكان تعليمى', "isChick": false},
+  //     {"value": 'التسوق', "isChick": false},
+  //     {"value": 'عمل شخصي', "isChick": false},
+  //     {"value": 'طبى / مستشفى', "isChick": false},
+  //     {"value": 'زیارة الأصدقاء / الأقار', "isChick": false},
+  //     {"value": 'ترفيه / وقت الفراغ', "isChick": false},
+  //     {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+  //     {"value": 'توص الى مكان آخر', "isChick": false},
+  //   ],
+  //   "title": "?What was the purpose of being there",
+  //   "subTitle":
+  //       " A separate family is defined as who share the kitchen expenses and meals",
+  //   "chosenIndex": 0,
+  // };
 
   static Map<String, dynamic> mainMade = {
     "mainMade": [

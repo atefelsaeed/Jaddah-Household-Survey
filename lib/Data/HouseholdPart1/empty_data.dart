@@ -33,10 +33,10 @@ class HHSEmptyData {
         .toList()[PersonData.nationality["index"]]["isChick"] = false;
 
     //================Trip========================================
-    TripData.tripReason[TripData.tripReason.keys.first]!
-        .toList()[TripData.tripReason["chosenIndex"]]["isChick"] = false;
-    TripData.purposeOfBeingThere[TripData.purposeOfBeingThere.keys.first]!
-        .toList()[TripData.purposeOfBeingThere["chosenIndex"]]["isChick"] = false;
+    // TripData.tripReason[TripData.tripReason.keys.first]!
+    //     .toList()[TripData.tripReason["chosenIndex"]]["isChick"] = false;
+    // TripData.purposeOfBeingThere[TripData.purposeOfBeingThere.keys.first]!
+    //     .toList()[TripData.purposeOfBeingThere["chosenIndex"]]["isChick"] = false;
     TripData.travelWithOther[TripData.travelWithOther.keys.first]!
         .toList()[TripData.travelWithOther["index"]]["isChick"] = false;
   }

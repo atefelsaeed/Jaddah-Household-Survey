@@ -35,9 +35,7 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
       ),
       itemBuilder: (context, index) => SizedBox(
         width: width(context) / 2,
-        child: Row(
-
-            children: [
+        child: Row(children: [
           SizedBox(
             width: width(context) * .2,
             child: TextGlobal(
@@ -71,7 +69,9 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                           .purposeOfBeingThere2["TripReason"][chosenindex]
                       ["isChick"] = value;
                   TripModeList.tripModeList[widget.indexTripModel].tripReason =
-                      TripData.tripReason["TripReason"][chosenindex]["value"];
+                      TripModeList.tripModeList[widget.indexTripModel]
+                              .purposeOfBeingThere2["TripReason"][chosenindex]
+                          ["value"];
                 });
               }),
         ]),

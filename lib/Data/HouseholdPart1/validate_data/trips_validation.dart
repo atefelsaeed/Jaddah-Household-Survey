@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
@@ -6,6 +8,7 @@ import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {
@@ -16,7 +19,7 @@ class CheckTripsValidation {
 
     SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
-    //
+    //======Trip-Validations======================
     for (var element in TripModeList.tripModeList) {
       if (element.purposeTravel == null || element.purposeTravel == '') {
         return Validator.showSnack(
@@ -42,10 +45,16 @@ class CheckTripsValidation {
         return Validator.showSnack(
             context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
       } else {
+        //=======Add-survey-to-surveys-list================
         await surveys.addSurvey(surveyPt.data);
 
+        //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
         userSurvey.userSurveys[userSurvey.index].status = 'filled';
-
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setStringList(
+          "userSurveys",
+          userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
+        );
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),
