@@ -1,49 +1,40 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../Survey/widgets/text_form_row.dart';
+import '../provider/vechiels_provider.dart';
 
-class OwnerShipCode extends StatefulWidget {
+class OwnerShipCode extends StatelessWidget {
   const OwnerShipCode({super.key, required this.textEditingController});
 
   final TextEditingController textEditingController;
 
   @override
-  State<OwnerShipCode> createState() => _OwnerShipCodeState();
-}
-
-class _OwnerShipCodeState extends State<OwnerShipCode> {
-  @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    final validationService = Provider.of<VecProvider>(context,listen: false);
     return Column(
       children: [
         DropDownFormInput(
-          label:widget.textEditingController.text == ''
+          label:textEditingController.text == ''
               ? const Text('إختار')
-              : Text(widget.textEditingController.text),
+              : Text(textEditingController.text),
           hint: "من يملك السيارة",
           options: VehiclesData.ownership[VehiclesData.ownership.keys.first]!
               .toList(),
           onChange: (String? p) {
-            setState(() {
-              VehModel.ownerShipCode = p.toString();
-              if (VehModel.ownerShipCode != "أخر") {
-                widget.textEditingController.text = VehModel.ownerShipCode;
-              }else{
-                widget.textEditingController.text ='أخر';
-              }
-            });
+            validationService.ownerChipCar(p.toString(), textEditingController);
           },
         ),
-        widget.textEditingController.text == "أخر"
+        textEditingController.text == "أخر"
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextForm(
-                    controller: widget.textEditingController,
+                    controller: textEditingController,
                     text: "رموز الملكية",
                     label: "رموز الملكية",
                   )

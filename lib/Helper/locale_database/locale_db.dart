@@ -53,7 +53,7 @@ class DatabaseHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     // await db.execute(LocaleDBQueries.createSurveyPTTable);
-    // await db.execute(LocaleDBQueries.crateSurveysTable);
+    await db.execute(LocaleDBQueries.crateSurveysTable);
     await db.execute(LocaleDBQueries.crateUsersTable);
     log('CREATE DATABASE AND TABLE ====================================>');
   }

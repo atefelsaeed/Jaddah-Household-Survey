@@ -20,15 +20,16 @@ class _LoginFormState extends State<LoginForm> {
 
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final _auth = Provider.of<Auth>(context, listen: false);
     try {
+      print('featch auth');
       _auth.fetch();
     } catch (e) {
       rethrow;
     }
-
 
     return Form(
       key: _formKey,

@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/UI/Screens/SplashScreen/splashScreen.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/actions/action_survey_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,6 +21,7 @@ import 'Providers/user_surveys.dart';
 import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
+import 'UI/Screens/vechicles/provider/vechiels_provider.dart';
 Future<void> _messageHandler(RemoteMessage message) async {
   debugPrint('will sync');
   syncall();
@@ -115,6 +117,8 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SurveyPTProvider(SurveyPT())),
+        ChangeNotifierProvider(create: (_) => ActionSurveyProvider(),),
+        ChangeNotifierProvider(create: (_) => VecProvider(),),
         ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
         ChangeNotifierProvider<UserSurveysProvider>(
             create: (ctx) => UserSurveysProvider()),

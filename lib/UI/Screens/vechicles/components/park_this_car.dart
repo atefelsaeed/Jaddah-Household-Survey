@@ -1,43 +1,35 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../Survey/widgets/text_form_row.dart';
+import '../provider/vechiels_provider.dart';
 
-class ParkThisCar extends StatefulWidget {
+class ParkThisCar extends StatelessWidget {
   const ParkThisCar({super.key, required this.textEditingController});
 
   final TextEditingController textEditingController;
 
   @override
-  State<ParkThisCar> createState() => _ParkThisCarState();
-}
-
-class _ParkThisCarState extends State<ParkThisCar> {
-  @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    final validationService = Provider.of<VecProvider>(context,listen: false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         DropDownFormInput(
-          label: widget.textEditingController.text == ''
+          label: textEditingController.text == ''
               ? const Text('إختار')
-              : Text(widget.textEditingController.text),
+              : Text(textEditingController.text),
           hint: "أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات",
           options: VehiclesData
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),
           onChange: (String? p) {
-            setState(() {
-              VehModel.parkThisCar = p.toString();
-              if (VehModel.parkThisCar != "أخر") {
-                widget.textEditingController.text = VehModel.parkThisCar;
-              } else {
-                widget.textEditingController.text = "أخر";
-              }
-            });
+
+            validationService.parkThisCar(p.toString(), textEditingController);
           },
         ),
         VehModel.parkThisCar == "Other"
@@ -45,7 +37,7 @@ class _ParkThisCarState extends State<ParkThisCar> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextForm(
-                    controller: widget.textEditingController,
+                    controller: textEditingController,
                     text: "رموز نوع وقوف السيارات",
                     label: "رموز نوع وقوف السيارات",
                   )
