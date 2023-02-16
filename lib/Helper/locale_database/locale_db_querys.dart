@@ -46,17 +46,17 @@ class LocaleDBQueries {
   `updated_at` timestamp NULL DEFAULT NULL)''';
 
   static const String crateUsersTable = '''
-  CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `review` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`review`)),
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL)''';
+  CREATE TABLE users (
+  id INTEGER  UNSIGNED NOT NULL,
+  name varchar(255)  NOT NULL,
+  role varchar(255)  NOT NULL DEFAULT 'user',
+  email varchar(255)  NOT NULL,
+  review TEXT ,
+  email_verified_at timestamp NULL DEFAULT NULL,
+  password varchar(255)  NOT NULL,
+  remember_token varchar(100)  DEFAULT NULL,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL)''';
 
   static const String crateSurveysTable = '''
   CREATE TABLE `survies` (

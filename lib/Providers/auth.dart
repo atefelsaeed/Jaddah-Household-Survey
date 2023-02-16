@@ -4,12 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
+import '../Helper/locale_database/locale_db.dart';
 import '../Models/user.dart';
 
 class Auth with ChangeNotifier {
   bool _isAuth = false;
   List<User> _users = [];
   User? _user;
+  DatabaseHelper db = DatabaseHelper();
 
   //User-Logout
   bool logout() {
@@ -59,6 +61,9 @@ class Auth with ChangeNotifier {
         debugPrint(data);
         if (!data['status']) return false;
         _users = (data['data'] as List).map((e) => User.fromJson(e)).toList();
+        print('user');
+        debugPrint(_users.length.toString());
+        // _users.map((e) async => await db.addItemToDatabase(e)).toList();
 
         final prefs = await SharedPreferences.getInstance();
         prefs.setStringList(
@@ -75,6 +80,8 @@ class Auth with ChangeNotifier {
           .getStringList("users")!
           .map((e) => User.fromJson(json.decode(e)))
           .toList();
+      // await db.getAllItems();
+
       return true;
     }
   }
