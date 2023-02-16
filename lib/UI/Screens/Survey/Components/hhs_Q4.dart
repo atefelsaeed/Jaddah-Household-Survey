@@ -85,7 +85,7 @@ class _HHSQ4State extends State<HHSQ4> {
                         int x = int.parse(HhsStatic
                             .householdQuestions.hhsNumberSeparateFamilies
                             .toString());
-                        print(HhsStatic
+                        debugPrint(HhsStatic
                             .householdQuestions.hhsNumberSeparateFamilies
                             .toString());
                         if (widget.q6peopleUnder18.length < x) {

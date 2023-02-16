@@ -376,7 +376,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     p.toString();
                                               });
 
-                                              print(p.toString());
+                                              debugPrint(p.toString());
                                             },
                                           ),
                                     base[i].occupationModel!.isEmployee == ""
@@ -517,7 +517,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                       HhsStatic.peopleAdults18.toString()) +
                                   int.parse(HhsStatic.peopleUnder18.toString());
 
-                              print(PersonModelList.personModelList.length);
+                              debugPrint(PersonModelList.personModelList.length.toString());
                               PersonModelList.personModelList.length;
                               if (x > PersonModelList.personModelList.length) {
                                 setState(() {

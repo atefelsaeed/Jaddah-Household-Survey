@@ -180,7 +180,7 @@ class _LoginFormState extends State<LoginForm> {
                     //     .pushReplacementNamed(SurveysScreen.routeName);
                   }
                 } catch (e) {
-                  print(e);
+                  debugPrint(e.toString());
                   Navigator.of(context).pop();
                   showCustomDialog(
                     context,

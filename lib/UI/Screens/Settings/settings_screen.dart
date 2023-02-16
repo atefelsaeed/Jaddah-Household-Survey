@@ -63,7 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     final prefs = await SharedPreferences.getInstance();
                     setState(() {
                       _status = value!;
-                      print(value);
+                      debugPrint(value.toString());
                     });
                     await prefs.setString('SystemStatus', 'Online');
                   },
@@ -87,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     final prefs = await SharedPreferences.getInstance();
                     setState(() {
                       _status = value!;
-                      print(value);
+                      debugPrint(value.toString());
                     });
                     await prefs.setString('SystemStatus', 'Offline');
                   },

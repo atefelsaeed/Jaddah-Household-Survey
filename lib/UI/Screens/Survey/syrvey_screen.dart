@@ -143,7 +143,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       ListViewCheckBoxOrange(
                         map: QuestionsData.qh4,
                         onChange: (ChangeBoxResponse r) {
-                          print(r);
+                          debugPrint(r.toString());
                           if (r.check == true) {
                             HhsStatic.householdQuestions
                                 .hhsNumberSeparateFamilies = r.val;
@@ -401,7 +401,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                   value.longitude.toString();
                             }).onError(
                               (error, stackTrace) {
-                                print(error);
+                                debugPrint(error.toString());
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content:

@@ -35,11 +35,11 @@ abstract class SurveyProvider with ChangeNotifier {
 
     while (prefs.getBool('dontsync')!&& !force) {
       await Future.delayed(const Duration(seconds: 1));
-      print("dont sync effect");
+      debugPrint("dont sync effect");
     }
 
     if (synced || syncing) {
-      print('already trying to  $synced $syncing');
+      debugPrint('already trying to  $synced $syncing');
       return true;
     }
 
@@ -63,10 +63,10 @@ abstract class SurveyProvider with ChangeNotifier {
     if (res.statusCode != 200) {
       syncing = false;
       notifyListeners();
-      print("server refused");
+      debugPrint("server refused");
       return Future.error("server refused");
     }
-    // print('${data.header.date} sent request');
+    // debugPrint('${data.header.date} sent request');
     //
     final resObj = json.decode(res.body);
     data.synced = resObj['status'];
@@ -74,7 +74,7 @@ abstract class SurveyProvider with ChangeNotifier {
     if (callback != null) {
       callback();
     }
-    print('synced');
+    debugPrint('synced');
     notifyListeners();
     return true;
   }
@@ -85,7 +85,7 @@ abstract class SurveyProvider with ChangeNotifier {
   //   var surveysList = prefs.getStringList("surveys")!;
   //   while (prefs.getBool('dontsync')!&& !force) {
   //     await Future.delayed(const Duration(seconds: 1));
-  //     print("dont sync effect");
+  //     debugPrint("dont sync effect");
   //   }
   //
   //   final Response res;
@@ -100,11 +100,11 @@ abstract class SurveyProvider with ChangeNotifier {
   //   } catch (e) {
   //     return Future.error("couldn't reach server");
   //   }
-  //   print(res.body);
+  //   debugPrint(res.body);
   //   if (res.statusCode != 200) {
   //     syncing = false;
   //     notifyListeners();
-  //     print("server refused");
+  //     debugPrint("server refused");
   //     return Future.error("server refused");
   //   }
   //   // final resObj = json.decode(res.body);

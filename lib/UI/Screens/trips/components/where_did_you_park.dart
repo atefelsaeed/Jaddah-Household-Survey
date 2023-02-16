@@ -58,9 +58,6 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                     onChange: (String? p) {
                       bas.carParkingPlace = p.toString();
 
-                      List value = TripData
-                          .whereDidYouPark[TripData.whereDidYouPark.keys.first]
-                          .toList();
                       setState(() {
                         bas.carParkingPlace = p.toString();
                       });

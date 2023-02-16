@@ -28,7 +28,7 @@ class ItemUserSurvey extends StatelessWidget {
     if (await canLaunch(encodedURl)) {
       await launch(encodedURl);
     } else {
-      print('Could not launch $encodedURl');
+      debugPrint('Could not launch $encodedURl');
       throw 'Could not launch $encodedURl';
     }
   }

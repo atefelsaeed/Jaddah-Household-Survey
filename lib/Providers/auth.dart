@@ -6,11 +6,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Helper/api_helper.dart';
 import '../Models/user.dart';
 
-
 class Auth with ChangeNotifier {
   bool _isAuth = false;
   List<User> _users = [];
   User? _user;
+
+  //User-Logout
   bool logout() {
     if (_user != null) {
       SharedPreferences.getInstance().then((value) {
@@ -41,13 +42,13 @@ class Auth with ChangeNotifier {
 
   Map<String, String> get authHeader {
     if (_isAuth) {
-      // return {"Authorization": "Bearer ${_user!.token}"};
       return {"Authorization": "Bearer"};
     } else {
       return {};
     }
   }
 
+//Get-All-Users-Data
   Future<bool> fetch() async {
     try {
       var response = await APIHelper.getData(
@@ -55,9 +56,10 @@ class Auth with ChangeNotifier {
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        print(data);
+        debugPrint(data);
         if (!data['status']) return false;
         _users = (data['data'] as List).map((e) => User.fromJson(e)).toList();
+
         final prefs = await SharedPreferences.getInstance();
         prefs.setStringList(
           "users",
@@ -77,11 +79,12 @@ class Auth with ChangeNotifier {
     }
   }
 
+//User-Login-Locale
   Future<bool> login(String? email, String? password) async {
     _isAuth = false;
-    print("trying");
+    debugPrint("trying");
     for (var element in _users) {
-      print(element.toJson());
+      debugPrint(element.toJson().toString());
     }
     for (User u in _users) {
       if (u.email == email) {

@@ -33,7 +33,6 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
   void showVechError() => showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        var total = HhsStatic.houseHold[0].totalNumberVehicles.toString();
         return const ShowErrorDialog(
             title: 'لا يوجد لديك مركبات',
             content: "لا يوجد مركبات لدى الاسرة.");
@@ -113,7 +112,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                               break;
                           }
                         }
-                        print(value);
+                        debugPrint(value.toString());
                       });
                     }),
                 VehiclesData.vecModel[index].isChosen == true
@@ -125,7 +124,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                             VehiclesData.vecModel[index].textEditingController,
                         label: '',
                         onChanged: (d) {
-                          print(d);
+                          debugPrint(d.toString());
                           setState(() {
                             if (d!.isNotEmpty) {
                               switch (VehiclesData.vecModel[index].title) {
@@ -175,7 +174,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                                 //==============Large-Car====================
                                 case "سيارة كبيرة  ":
                                   VehModel.largeCar = [];
-                                  print(HhsStatic
+                                  debugPrint(HhsStatic
                                       .houseHold[0].totalNumberVehicles
                                       .toString());
 

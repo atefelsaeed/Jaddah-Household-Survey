@@ -9,8 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/UI/Screens/SplashScreen/splashScreen.dart';
-import 'package:jaddah_household_survey/UI/Screens/trips/trip_screen.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/vechicles_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,7 +21,7 @@ import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 Future<void> _messageHandler(RemoteMessage message) async {
-  print('will sync');
+  debugPrint('will sync');
   syncall();
 }
 
@@ -44,17 +42,17 @@ Future<bool> syncall() async {
     }
   }
   for (var e in _surveys) {
-    print('main');
-    print(e.synced);
+    debugPrint('main');
+    debugPrint(e.synced);
   }
   // Survey ?i;
   // await i!.provider.multiSync(force: true);
   // for (Survey i in _surveys) {
-  //   print(i.header.interviewNumber);
+  //   debugPrint(i.header.interviewNumber);
   //   await i.provider.sync(force: true);
   // }
   for (var e in _surveys) {
-    print(e.synced);
+    debugPrint(e.synced);
   }
 
   prefs
@@ -62,27 +60,27 @@ Future<bool> syncall() async {
     "surveys",
     _surveys.map((v) => json.encode(v.toJson())).toList(),
   )
-      .then((value) => print("done"))
+      .then((value) => debugPrint("done"))
       .onError(
         (error, stackTrace) {
-      print(error.toString());
+      debugPrint(error.toString());
       return false;
     },
   );
   prefs.setBool('dontsync', false);
-  print(_surveys.map((v) => json.encode(v.toJson())).toList());
+  debugPrint(_surveys.map((v) => json.encode(v.toJson())).toList().toString());
   return true;
 }
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  print("something");
+  debugPrint("something");
   Firebase.initializeApp().then((value) async {
     FirebaseMessaging.instance.subscribeToTopic('sync');
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('dontsync', false);
     FirebaseMessaging.onBackgroundMessage(_messageHandler);
   });
-  print("second thing");
+  debugPrint("second thing");
 
   Intl.defaultLocale = 'ar_EG';
   runApp(const MyApp());
@@ -105,7 +103,7 @@ class _MyAppState extends State<MyApp> {
       LifecycleEventHandler(
         resumeCallBack: () async => setState(
           () {
-            print("returned to app");
+            debugPrint("returned to app");
           },
         ),
       ),

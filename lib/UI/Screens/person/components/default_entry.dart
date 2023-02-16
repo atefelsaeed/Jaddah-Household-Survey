@@ -78,7 +78,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
                   PersonData.gender[PersonData.gender.keys.first]!.toList(),
               onChange: (String? p) {
                 setState(() {
-                  print(p);
+                  debugPrint(p);
                   PersonModelList.personModelList[widget.i].personalHeadData!
                       .gender = p.toString();
                   if (p == "ذكر") {

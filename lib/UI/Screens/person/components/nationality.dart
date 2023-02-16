@@ -62,8 +62,8 @@ class _NationalityState extends State<Nationality> {
                     isNumber: false,
                     controller: base.personalHeadData!.nationality,
                     onChanged: (String? val) {
-                      print('object');
-                      print(base.personalHeadData!.nationality.text);
+                      debugPrint('object');
+                      debugPrint(base.personalHeadData!.nationality.text);
                     },
                   ),
                   AppSize.spaceWidth2(context),

@@ -59,7 +59,7 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
                       .purposeOfBeingThere["QPurposeOfBeingThere"][index]
                   ["isChick"],
               onChanged: (bool? value) {
-                print(value);
+                debugPrint(value.toString());
                 setState(() {
                   TripModeList.tripModeList[widget.indexTripModel]
                           .purposeOfBeingThere["QPurposeOfBeingThere"]

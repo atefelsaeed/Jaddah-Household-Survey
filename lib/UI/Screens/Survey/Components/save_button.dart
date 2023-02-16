@@ -75,7 +75,7 @@ class _SaveButtonState extends State<SaveButton> {
                   },
                 ).onError(
                   (error, stackTrace) {
-                    print(error);
+                    debugPrint(error.toString());
                     log(stackTrace.toString());
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(

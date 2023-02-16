@@ -27,7 +27,7 @@ class SurveysProvider with ChangeNotifier {
 
   Future<bool> fetch() async {
     try {
-      print("fetching");
+      debugPrint("fetching");
       final prefs = await SharedPreferences.getInstance();
       await prefs.reload();
 
@@ -38,22 +38,22 @@ class SurveysProvider with ChangeNotifier {
         switch (EnumToString.fromString(SurveyType.values, s['type'],
             camelCase: true)!) {
           case SurveyType.pt:
-            print('add new');
+            debugPrint('add new');
             _surveys.add(SurveyPT.fromJson(s));
-            print('add new Done');
+            debugPrint('add new Done');
             break;
           default:
         }
       }
       _surveys = _surveys.where((s) => s.header.empNumber == _uid).toList();
       for (var e in _surveys) {
-        print(e.synced);
+        debugPrint(e.synced.toString());
       }
 
       notifyListeners();
       return true;
     } catch (r) {
-      print(r.toString());
+      debugPrint(r.toString());
       rethrow;
     }
   }
@@ -68,9 +68,9 @@ class SurveysProvider with ChangeNotifier {
   }
 
   Future<bool> syncAll() async {
-    print('syncAll');
+    debugPrint('syncAll');
     // for (var element in _surveys) {
-    //   print("Survey ID :: ${element.id}");
+    //   debugPrint("Survey ID :: ${element.id}");
     //   element.provider.sync(callback: save);
     // }
     // Survey? survey;
@@ -88,25 +88,25 @@ class SurveysProvider with ChangeNotifier {
       notifyListeners();
       return true;
     } catch (er) {
-      print(er.toString());
+      debugPrint(er.toString());
       rethrow;
     }
   }
 
   Future<bool> save() async {
     try {
-      print("changing data");
+      debugPrint("changing data");
       final prefs = await SharedPreferences.getInstance();
       await prefs.reload();
-      print('prefs reload');
+      debugPrint('prefs reload');
       prefs.setStringList(
         "surveys",
         _surveys.map((v) => json.encode(v.toJson())).toList(),
       );
-      print('save survey');
+      debugPrint('save survey');
       return true;
     } catch (er) {
-      print(er.toString());
+      debugPrint(er.toString());
       rethrow;
     }
   }

@@ -59,7 +59,7 @@ class _TravelAloneState extends State<TravelAlone> {
                     .travelWithOther['index']]["isChick"] = false;
               });
 
-              print('no user');
+              debugPrint('no user');
               return false;
             }
           },

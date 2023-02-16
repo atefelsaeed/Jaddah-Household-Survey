@@ -29,7 +29,7 @@ class _HHSQ1State extends State<HHSQ1> {
               options:
                   QuestionsData.qh1[QuestionsData.qh1.keys.first]!.toList(),
               onChange: (String? p) {
-                print(p);
+                debugPrint(p);
                 setState(() {
                   HhsStatic.householdQuestions.hhsDwellingType = p;
                 });

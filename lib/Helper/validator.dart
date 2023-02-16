@@ -72,9 +72,9 @@ class Validator {
       {required dynamic value,
       required List<dynamic> refused,
       required String message}) {
-    print(refused);
-    print(value);
-    print(refused.contains(value));
+    debugPrint(refused.toString());
+    debugPrint(value);
+    debugPrint(refused.contains(value).toString());
     if (refused.contains(value)) {
       return message;
     }
@@ -84,12 +84,12 @@ class Validator {
   static String? validateEmail(
       {required String value, required String message}) {
     if (value.trim().isEmpty) {
-      print("empty");
+      debugPrint("empty");
       return message;
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(value)) {
-      print('not valid');
+      debugPrint('not valid');
       return message;
     }
     return null;
@@ -103,7 +103,7 @@ class Validator {
     if (value.trim().isEmpty) {
       return message;
     } else if (rex.hasMatch(value)) {
-      print('validateName');
+      debugPrint('validateName');
       return message;
     }
     return null;
@@ -164,7 +164,7 @@ class Validator {
       {required DateTime? value,
       required DateTime? otherValue,
       required String? message}) {
-    print("vallllllllll$value $otherValue");
+    debugPrint("vallllllllll$value $otherValue");
     if (value != null && otherValue != null) {
       if (value.isBefore(otherValue) || value.compareTo(otherValue) == 0) {
         return message;

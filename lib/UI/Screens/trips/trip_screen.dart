@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
 import 'package:jaddah_household_survey/Providers/auth.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
-import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
@@ -99,10 +98,6 @@ class _TripScreenState extends State<TripScreen> {
         Provider.of<SurveyPTProvider>(context, listen: false);
     Auth auth = Provider.of<Auth>(context, listen: false);
 
-    SurveysProvider surveys =
-        Provider.of<SurveysProvider>(context, listen: false);
-    print('status');
-    print(status);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -162,7 +157,7 @@ class _TripScreenState extends State<TripScreen> {
                                       options:
                                           TripModeList.tripModeList[i].person,
                                       onChange: (String? p) {
-                                        print("p");
+                                        debugPrint("p");
                                         //personTrip.add(p!);
 
                                         TripModeList.tripModeList[i]
@@ -172,7 +167,6 @@ class _TripScreenState extends State<TripScreen> {
                                                 TripModeList.tripModeList[i]
                                                     .person.length;
                                             x++) {
-                                          print(x);
                                           setState(() {
                                             if (TripModeList
                                                     .tripModeList[i].person[x] !=
@@ -188,7 +182,7 @@ class _TripScreenState extends State<TripScreen> {
                                           });
                                           TripModeList
                                               .tripModeList[i].chosenPerson = p!;
-                                          print(personTrip);
+                                          debugPrint(personTrip.toString());
                                           setState(() {
                                             for (int x = 0;
                                                 x <
@@ -208,10 +202,10 @@ class _TripScreenState extends State<TripScreen> {
                                             }
                                           });
 
-                                          print(p);
+                                          debugPrint(p.toString());
 
-                                          print(TripModeList
-                                              .tripModeList[i].friendPerson);
+                                          debugPrint(TripModeList
+                                              .tripModeList[i].friendPerson.toString());
                                         }
                                         if (TripModeList.tripModeList[i]
                                             .friendPerson.isNotEmpty) {
@@ -460,23 +454,18 @@ class _TripScreenState extends State<TripScreen> {
                       children: [
                         DefaultButton(
                           function: () {
-                            print('save1');
                             if (_key.currentState!.validate()) {
-                              print('save2');
                               Random random = Random();
                               int randomNumber =
                                   (1000 + random.nextInt(10000 - 1000));
                               int num = int.parse('${auth.uid}001$randomNumber');
-                              print('save3');
                               surveyPt.headerLat = 0;
                               surveyPt.interViewDate = DateTime.now();
                               surveyPt.headerLong = 0;
                               surveyPt.headerEmpNumber = auth.uid;
                               surveyPt.headerInterviewNumber = num;
-                              print('kkkk');
                               SaveTripsData.saveData(context);
 
-                              print("validate");
                               CheckTripsValidation.validatePerson(context);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(

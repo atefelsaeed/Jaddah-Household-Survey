@@ -35,9 +35,8 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
         if (result == ConnectivityResult.mobile ||
             result == ConnectivityResult.wifi) {
           setState(() {
-            print('connectivity');
-            SurveysProvider p =
-                Provider.of<SurveysProvider>(context, listen: false);
+            debugPrint('connectivity');
+
             Auth auth = Provider.of<Auth>(context, listen: false);
             userSurveysProvider.fetchUserSurveysStatus(auth.user!.id);
 
@@ -63,13 +62,13 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
     SurveysProvider p = Provider.of<SurveysProvider>(context);
     Auth auth = Provider.of<Auth>(context, listen: false);
     List<Survey> surveyList = p.surveys;
-    print("Survey List length: ${surveyList.length}");
+    debugPrint("Survey List length: ${surveyList.length}");
 
     FirebaseMessaging.onMessage.listen((e) async {
       UserSurveysProvider userSurveysProvider =
           Provider.of<UserSurveysProvider>(context, listen: false);
       userSurveysProvider.multiSync();
-      print('sync message');
+      debugPrint('sync message');
       Fluttertoast.showToast(
         msg: "Syncing",
         toastLength: Toast.LENGTH_SHORT,

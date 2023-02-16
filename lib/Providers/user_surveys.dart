@@ -18,18 +18,18 @@ class UserSurveysProvider with ChangeNotifier {
 
   Future<bool> save() async {
     try {
-      print("changing data");
+      debugPrint("changing data");
       final prefs = await SharedPreferences.getInstance();
       await prefs.reload();
-      print('prefs reload');
+      debugPrint('prefs reload');
       prefs.setStringList(
         "surveys",
         _surveys.map((v) => json.encode(v.toJson())).toList(),
       );
-      print('save survey');
+      debugPrint('save survey');
       return true;
     } catch (er) {
-      print(er.toString());
+      debugPrint(er.toString());
       rethrow;
     }
   }
@@ -56,7 +56,7 @@ class UserSurveysProvider with ChangeNotifier {
     }
     // while (prefs.getBool('dontsync')! && !force) {
     //   await Future.delayed(const Duration(seconds: 1));
-    //   print("dont sync effect");
+    //   debugPrint("dont sync effect");
     // }
 
     final Response res;
@@ -76,7 +76,7 @@ class UserSurveysProvider with ChangeNotifier {
     }
     if (res.statusCode != 200) {
       notifyListeners();
-      print("server refused");
+      debugPrint("server refused");
       iSSyncing = false;
       notifyListeners();
       return Future.error("server refused");
@@ -122,8 +122,8 @@ class UserSurveysProvider with ChangeNotifier {
         hayList.add(element);
       }
     }
-    print('searchHAY');
-    print(hayList.length);
+    debugPrint('searchHAY');
+    debugPrint(hayList.length.toString());
     notifyListeners();
   }
 
@@ -138,8 +138,8 @@ class UserSurveysProvider with ChangeNotifier {
         qtaList.add(element);
       }
     }
-    print('searchQTA');
-    print(qtaList.length);
+    debugPrint('searchQTA');
+    debugPrint(qtaList.length.toString());
 
     notifyListeners();
   }
@@ -154,8 +154,8 @@ class UserSurveysProvider with ChangeNotifier {
         searchList.add(element);
       }
     }
-    print('searchBLOK');
-    print(searchList.length);
+    debugPrint('searchBLOK');
+    debugPrint(searchList.length.toString());
     notifyListeners();
   }
 
@@ -217,8 +217,8 @@ class UserSurveysProvider with ChangeNotifier {
         var data = json.decode(response.body);
         // if (!data['status']) return false;
         _userSurveyStatusData = UserSurveyStatusData.fromJson(data['data']);
-        print("fffff");
-        print(_userSurveyStatusData?.allForms.toString());
+        debugPrint("fffff");
+        debugPrint(_userSurveyStatusData?.allForms.toString());
         final prefs = await SharedPreferences.getInstance();
         prefs.setString(
           "userSurveysStatus",
@@ -237,8 +237,8 @@ class UserSurveysProvider with ChangeNotifier {
 
       _userSurveyStatusData = UserSurveyStatusData.fromJson(
           json.decode(prefs.getString("userSurveysStatus")!));
-      print("fffsssff");
-      print(_userSurveyStatusData?.allForms.toString());
+      debugPrint("fffsssff");
+      debugPrint(_userSurveyStatusData?.allForms.toString());
       loading = false;
       notifyListeners();
       return true;

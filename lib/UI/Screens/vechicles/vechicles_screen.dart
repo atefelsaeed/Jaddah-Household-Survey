@@ -82,7 +82,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                         if (_key.currentState!.validate()) {
                           _key.currentState!.save();
                           SaveVehiclesData.saveData(context);
-                          print('Saving Data :: ');
+                          debugPrint('Saving Data :: ');
                           CheckVehiclesValidation.validate(context);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(

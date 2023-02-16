@@ -37,7 +37,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
     final userSurveysProvider = Provider.of<UserSurveysProvider>(context);
     List<UserSurveysModelData> list;
     if (userSurveysProvider.isSearching) {
-      print('searchList');
+      debugPrint('searchList');
       if (hayController.text.isNotEmpty &&
           qtaController.text.isEmpty &&
           blocController.text.isEmpty) {
@@ -50,7 +50,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
         list = userSurveysProvider.searchList;
       }
     } else {
-      print('userSurveys');
+      debugPrint('userSurveys');
       list = userSurveysProvider.userSurveys;
     }
     return Scaffold(

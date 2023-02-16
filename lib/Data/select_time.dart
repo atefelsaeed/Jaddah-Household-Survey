@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 mixin SelectTimeData {
   String time12to24Format(String time) {
 // var time = "12:01 AM";
@@ -16,8 +18,8 @@ mixin SelectTimeData {
     }
     String newTime = "${h == 0 ? "00" : h}:${m == 0 ? "00" : m}";
     // String newTime = "${h == 0 ? "00" : h}";
-    print('new time is');
-    print(newTime);
+    debugPrint('new time is');
+    debugPrint(newTime);
 
     return newTime;
   }

@@ -81,8 +81,6 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                   );
                   String arrival =
                       TripModeList.tripModeList[widget.i].departureTime.text;
-                  String x = time12to24Format(arrival.toString());
-
                   int newFromTimeHour = int.parse(
                       time12to24Format(arrival.toString()).split(":").first);
                   int newFromTimeM = int.parse(
@@ -120,7 +118,7 @@ class _DepartTimeState extends State<DepartTime> with SelectTimeData {
                       widget.tripModel.arrivalDepartTime.arriveDestinationTime
                           .text = '';
                     });
-                    print("Time is not selected");
+                    debugPrint("Time is not selected");
                   }
                 }
                 FocusScope.of(context).requestFocus(FocusNode());
