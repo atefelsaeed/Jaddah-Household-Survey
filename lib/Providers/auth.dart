@@ -50,7 +50,7 @@ class Auth with ChangeNotifier {
     }
   }
 
-//Get-All-Users-Data
+  //Get-All-Users-Data
   Future<bool> fetch() async {
     try {
       var response = await APIHelper.getData(
@@ -58,35 +58,23 @@ class Auth with ChangeNotifier {
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        debugPrint(data);
+        debugPrint("data:: $data");
         if (!data['status']) return false;
         _users = (data['data'] as List).map((e) => User.fromJson(e)).toList();
-        print('user');
-        debugPrint(_users.length.toString());
-        // _users.map((e) async => await db.addItemToDatabase(e)).toList();
-
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setStringList(
-          "users",
-          _users.map((e) => json.encode(e.toJson())).toList(),
-        );
+        //Store response data in the local database.
+        for (var element in _users) {
+          await db.addItemToDatabase(element);
+        }
         return true;
       }
       return false;
     } catch (e) {
-      final prefs = await SharedPreferences.getInstance();
-      if (!prefs.containsKey("users")) return false;
-      _users = prefs
-          .getStringList("users")!
-          .map((e) => User.fromJson(json.decode(e)))
-          .toList();
-      // await db.getAllItems();
-
+      _users = await db.getAllItems();
       return true;
     }
   }
 
-//User-Login-Locale
+  //User-Login-Locale
   Future<bool> login(String? email, String? password) async {
     _isAuth = false;
     debugPrint("trying");
