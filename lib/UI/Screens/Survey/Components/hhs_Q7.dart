@@ -5,8 +5,11 @@ import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/text_form_row.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
+import 'package:provider/provider.dart';
 
-class ListQ7 extends StatefulWidget {
+import '../actions/action_survey_screen.dart';
+
+class ListQ7 extends StatelessWidget {
   final String title;
   final String subTitle;
   List<dynamic> question;
@@ -19,24 +22,21 @@ class ListQ7 extends StatefulWidget {
       required this.subTitle,
       required this.textEditingController});
 
-  @override
-  State<ListQ7> createState() => _ListQ7();
-}
-
-class _ListQ7 extends State<ListQ7> {
   int chosenIndex = 0;
+
   bool indexBool = false;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    final validationService = Provider.of<ActionSurveyProvider>(context);
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextGlobal(
-              text: widget.title,
+              text: title,
               fontSize: height(context) * .02,
               color: ColorManager.black,
             ),
@@ -49,7 +49,7 @@ class _ListQ7 extends State<ListQ7> {
             SizedBox(
               width: width(context) - 140,
               child: TextGlobal(
-                text: widget.subTitle,
+                text: subTitle,
                 fontSize: height(context) * .013,
                 color: ColorManager.grayColor,
               ),
@@ -64,11 +64,11 @@ class _ListQ7 extends State<ListQ7> {
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: widget.question.length,
+                itemCount: question.length,
                 itemBuilder: (BuildContext context, int index) =>
                     Row(children: [
                   TextGlobal(
-                    text: widget.question[index]["value"],
+                    text: question[index]["value"],
                     fontSize: height(context) * .02,
                     color: ColorManager.grayColor,
                   ),
@@ -83,22 +83,17 @@ class _ListQ7 extends State<ListQ7> {
                       checkColor: ColorManager.whiteColor,
                       focusColor: ColorManager.orangeTxtColor,
                       activeColor: ColorManager.orangeTxtColor,
-                      value: widget.question[index]["isChick"],
+                      value: question[index]["isChick"],
                       onChanged: (bool? value) {
-                        setState(() {
-                          widget.question[chosenIndex]["isChick"] = false;
-                          chosenIndex = index;
-                          widget.question[index]["isChick"] = value;
-                          //  w
-                        });
+                       validationService.listQ7(question, index, chosenIndex, value);
                       }),
                 ]),
               )),
         ),
-        widget.question[chosenIndex]["isChick"] =
-            true && widget.question[chosenIndex]["value"] == true
+        question[chosenIndex]["isChick"] =
+            true && question[chosenIndex]["value"] == true
                 ? TextForm(
-                    controller: widget.textEditingController,
+                    controller: textEditingController,
                     label: 'Name of the demolished area',
                     text: 'Name of the demolished area',
                   )
