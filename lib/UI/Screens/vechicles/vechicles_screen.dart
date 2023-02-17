@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/vehicles_validation.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/components/vechiels_header.dart';
+import 'package:jaddah_household_survey/UI/Screens/vechicles/provider/vechiels_provider.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
@@ -30,7 +32,10 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
           padding: const EdgeInsets.all(12.0),
           child: Form(
             key: _key,
-            child: Column(
+            child:  Consumer<VecProvider>(
+    builder: (context, provider, child) {
+
+        return   Column(
               children: [
                 //============VehiclesHeader===============
                 const VehiclesHeader(),
@@ -114,7 +119,8 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                 AppSize.spaceHeight2(context),
                 // HouseholdAddressSection()
               ],
-            ),
+            );
+    })
           ),
         )),
       ),

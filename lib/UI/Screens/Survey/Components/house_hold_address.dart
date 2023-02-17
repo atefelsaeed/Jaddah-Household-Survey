@@ -10,7 +10,7 @@ import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 
-class HouseHoldAddress extends StatefulWidget {
+class HouseHoldAddress extends StatelessWidget {
   const HouseHoldAddress({
     super.key,
     required this.itemSurveyModel,
@@ -18,11 +18,6 @@ class HouseHoldAddress extends StatefulWidget {
 
   final UserSurveysModelData itemSurveyModel;
 
-  @override
-  State<HouseHoldAddress> createState() => _HouseHoldAddressState();
-}
-
-class _HouseHoldAddressState extends State<HouseHoldAddress> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -57,20 +52,20 @@ class _HouseHoldAddressState extends State<HouseHoldAddress> {
           children: [
             ItemTextSpan(
                 title: 'رقم الاسرة',
-                subTitle: widget.itemSurveyModel.id.toString()),
+                subTitle: itemSurveyModel.id.toString()),
             ItemTextSpan(
                 title: 'رقم الحى',
-                subTitle: widget.itemSurveyModel.haeno.toString()),
+                subTitle: itemSurveyModel.haeno.toString()),
           ],
         ),
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ItemTextSpan(
                 title: 'رقم القطاع',
-                subTitle: widget.itemSurveyModel.qta.toString()),
+                subTitle: itemSurveyModel.qta.toString()),
             ItemTextSpan(
                 title: 'رقم البلوك',
-                subTitle: widget.itemSurveyModel.blok.toString()),
+                subTitle: itemSurveyModel.blok.toString()),
           ],
         ),
         const Divider(
