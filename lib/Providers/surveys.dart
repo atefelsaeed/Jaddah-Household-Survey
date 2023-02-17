@@ -67,19 +67,6 @@ class SurveysProvider with ChangeNotifier {
     return _surveys.isEmpty;
   }
 
-  Future<bool> syncAll() async {
-    debugPrint('syncAll');
-    // for (var element in _surveys) {
-    //   debugPrint("Survey ID :: ${element.id}");
-    //   element.provider.sync(callback: save);
-    // }
-    // Survey? survey;
-    // await survey?.provider.multiSync(callback: save);
-    return true;
-  }
-
-  //ddvnl
-
   Future<bool> addSurvey(Survey s) async {
     try {
       _surveys.removeWhere((e) => e.id == s.id);

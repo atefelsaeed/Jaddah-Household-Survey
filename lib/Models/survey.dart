@@ -32,4 +32,6 @@ abstract class Survey {
   set suggestionName(String suggestionName) {}
 
   Map<String, dynamic> toJson();
+
+  fromJson(Map<String, dynamic> json);
 }

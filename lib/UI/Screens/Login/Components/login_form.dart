@@ -25,7 +25,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     final _auth = Provider.of<Auth>(context, listen: false);
     try {
-      print('featch auth');
+      debugPrint('featch auth');
       _auth.fetch();
     } catch (e) {
       rethrow;

@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:jaddah_household_survey/Helper/api_routing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Helper/locale_database/locale_db.dart';
+import '../Helper/locale_database/operations/auth_operations.dart';
 import '../Models/user.dart';
 
 class Auth with ChangeNotifier {
@@ -54,7 +56,7 @@ class Auth with ChangeNotifier {
   Future<bool> fetch() async {
     try {
       var response = await APIHelper.getData(
-        url: "getUsers",
+        url: APIRouting.getUsers,
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
@@ -63,13 +65,13 @@ class Auth with ChangeNotifier {
         _users = (data['data'] as List).map((e) => User.fromJson(e)).toList();
         //Store response data in the local database.
         for (var element in _users) {
-          await db.addItemToDatabase(element);
+          await AuthOperations().addItemToDatabase(element);
         }
         return true;
       }
       return false;
     } catch (e) {
-      _users = await db.getAllItems();
+      _users = await AuthOperations().getAllItems();
       return true;
     }
   }

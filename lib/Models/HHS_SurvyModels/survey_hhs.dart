@@ -171,4 +171,75 @@ class SurveyPT extends Survey {
         .map<TripsModel>((e) => TripsModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    synced = json['synced'];
+    header = HeaderBase();
+    // header.locationLat = json['headerLat'];
+    // header.locationLong = json['headerLong'];
+    header.interviewDate = DateTime.parse(json['headerDate']);
+    header.empNumber = json['headerEmpNumber'];
+    header.interviewNumber = json['headerInterviewNumber'];
+    header.districtName = json['headerDistrictName'];
+    header.zoneNumber = json['headerZoneNumber'];
+    //====================HHS Header=========================
+    header.householdAddress.hhsAddressLat = json['hhsAddressLat'];
+    header.householdAddress.hhsAddressLong = json['hhsAddressLong'];
+    header.householdAddress.hhsPhone.text = json['hhsPhone'];
+    //================householdQuestions================
+    householdQuestions.hhsDwellingType = json['hhsDwellingType'];
+    householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
+    householdQuestions.hhsNumberBedRooms.text = json['hhsNumberBedRooms'];
+    householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments'];
+    householdQuestions.hhsNumberFloors.text = json['hhsNumberFloors'];
+    householdQuestions.hhsNumberSeparateFamilies =
+    json['hhsNumberSeparateFamilies'];
+    householdQuestions.hhsNumberAdults = json['hhsNumberAdults'];
+    householdQuestions.hhsNumberChildren = json['hhsNumberChildren'];
+    householdQuestions.hhsNumberYearsInAddress =
+    json['hhsNumberYearsInAddress'];
+    householdQuestions.hhsIsDemolishedAreas = json['hhsIsDemolishedAreas'];
+    householdQuestions.hhsDemolishedAreas = json['hhsDemolishedAreas'];
+    //==========hhsPedalCycles(PC)============
+    householdQuestions.hhsPedalCycles.totalBikesNumber =
+    json['hhsPCTotalBikesNumber'];
+    householdQuestions.hhsPedalCycles.adultsBikesNumber =
+    json['hhsPCAdultsBikesNumber'];
+    householdQuestions.hhsPedalCycles.childrenBikesNumber =
+    json['hhsPCChildrenBikesNumber'];
+    //======hhsElectricCycles(EC)============
+    householdQuestions.hhsElectricCycles.totalBikesNumber =
+    json['hhsECTotalBikesNumber'];
+    householdQuestions.hhsElectricCycles.adultsBikesNumber =
+    json['hhsECAdultsBikesNumber'];
+    householdQuestions.hhsElectricCycles.childrenBikesNumber =
+    json['hhsECChildrenBikesNumber'];
+    //======hhsElectricScooter(ES)============
+    householdQuestions.hhsElectricScooter.totalBikesNumber =
+    json['hhsESTotalBikesNumber'];
+    householdQuestions.hhsElectricScooter.adultsBikesNumber =
+    json['hhsESAdultsBikesNumber'];
+    householdQuestions.hhsElectricScooter.childrenBikesNumber =
+    json['hhsESChildrenBikesNumber'];
+    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
+    vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
+
+    hhsSeparateFamilies = json['hhsSeparateFamilies']
+        .map<SeparateFamilies>(
+            (e) => SeparateFamilies.fromJson(e as Map<String, dynamic>))
+        .toList();
+    vehiclesBodyType = json['vehiclesBodyType']
+        .map<VehiclesBodyType>(
+            (e) => VehiclesBodyType.fromJson(e as Map<String, dynamic>))
+        .toList();
+    personData = json['personData']
+        .map<PersonModel>(
+            (e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+    tripsList = json['tripsList']
+        .map<TripsModel>((e) => TripsModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
 }

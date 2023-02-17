@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Helper/api_routing.dart';
+import '../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
 import '../Models/survey.dart';
 import '../Models/user_serveys_model.dart';
 import '../Models/user_surves_status.dart';
@@ -41,54 +42,52 @@ class UserSurveysProvider with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.reload();
 
-    if (!prefs.containsKey("surveys")){
-
+    if (!prefs.containsKey("surveys")) {
       iSSyncing = false;
       notifyListeners();
       return false;
-    }else{
+    } else {
+      // final prefs = await SharedPreferences.getInstance();
+      // await prefs.reload();
+      final surveysList = prefs.getStringList("surveys")!;
+      for (var element in surveysList) {
+        list.add(json.decode(element));
+      }
+      // while (prefs.getBool('dontsync')! && !force) {
+      //   await Future.delayed(const Duration(seconds: 1));
+      //   debugPrint("dont sync effect");
+      // }
 
-    // final prefs = await SharedPreferences.getInstance();
-    // await prefs.reload();
-    final surveysList = prefs.getStringList("surveys")!;
-    for (var element in surveysList) {
-      list.add(json.decode(element));
-    }
-    // while (prefs.getBool('dontsync')! && !force) {
-    //   await Future.delayed(const Duration(seconds: 1));
-    //   debugPrint("dont sync effect");
-    // }
-
-    final Response res;
-    try {
-      log("Body Data", error: json.encode(list));
-      res = await APIHelper.postData(
-        url: "multi",
-        body: json.encode(list),
-      );
+      final Response res;
+      try {
+        log("Body Data", error: json.encode(list));
+        res = await APIHelper.postData(
+          url: "multi",
+          body: json.encode(list),
+        );
+        iSSyncing = false;
+        notifyListeners();
+        log("res", error: res.body);
+      } catch (e) {
+        iSSyncing = false;
+        notifyListeners();
+        return Future.error("couldn't reach server");
+      }
+      if (res.statusCode != 200) {
+        notifyListeners();
+        debugPrint("server refused");
+        iSSyncing = false;
+        notifyListeners();
+        return Future.error("server refused");
+      }
+      // final resObj = json.decode(res.body);
+      // data.synced = resObj['status'];
+      if (callback != null) {
+        callback();
+      }
       iSSyncing = false;
       notifyListeners();
-      log("res", error: res.body);
-    } catch (e) {
-      iSSyncing = false;
-      notifyListeners();
-      return Future.error("couldn't reach server");
-    }
-    if (res.statusCode != 200) {
-      notifyListeners();
-      debugPrint("server refused");
-      iSSyncing = false;
-      notifyListeners();
-      return Future.error("server refused");
-    }
-    // final resObj = json.decode(res.body);
-    // data.synced = resObj['status'];
-    if (callback != null) {
-      callback();
-    }
-    iSSyncing = false;
-    notifyListeners();
-    return true;
+      return true;
     }
   }
 
@@ -180,12 +179,10 @@ class UserSurveysProvider with ChangeNotifier {
         _userSurveysSurveysList = (data['data'] as List)
             .map((e) => UserSurveysModelData.fromJson(e))
             .toList();
+        for (var element in _userSurveysSurveysList) {
+          await HHSUserSurveysOperations().addItemToDatabase(element);
+        }
 
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setStringList(
-          "userSurveys",
-          _userSurveysSurveysList.map((e) => json.encode(e.toJson())).toList(),
-        );
         loading = false;
         notifyListeners();
         return true;
@@ -194,12 +191,7 @@ class UserSurveysProvider with ChangeNotifier {
       notifyListeners();
       return false;
     } catch (e) {
-      final prefs = await SharedPreferences.getInstance();
-      if (!prefs.containsKey("userSurveys")) return false;
-      _userSurveysSurveysList = prefs
-          .getStringList("userSurveys")!
-          .map((e) => UserSurveysModelData.fromJson(json.decode(e)))
-          .toList();
+      _userSurveysSurveysList = await HHSUserSurveysOperations().getAllItems();
       loading = false;
       notifyListeners();
       return true;

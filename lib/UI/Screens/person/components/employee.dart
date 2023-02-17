@@ -21,9 +21,7 @@ class _EmployeeState extends State<Employee> {
 
   @override
   Widget build(BuildContext context) {
-    var base = PersonModelList.personModelList[widget.i];
-    var mainOccupationKey = PersonData.mainOccupation.keys.first;
-    var occupationSectorKey = PersonData.occupationSector.keys.first;
+
     return Column(
       children: [
         AppSize.spaceHeight3(context),
