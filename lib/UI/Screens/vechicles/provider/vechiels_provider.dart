@@ -151,6 +151,7 @@ class VecProvider extends ChangeNotifier {
             VehModel.vecVan.length +
             VehModel.pickUp.length +
             VehModel.eScooter.length;
+        print(total);
         if (x > total) {
           VehModel.largeCar.add(
             VehicleBodyDetails(
