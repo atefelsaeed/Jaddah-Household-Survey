@@ -1,12 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Helper/api_helper.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
@@ -28,93 +23,6 @@ abstract class SurveyProvider with ChangeNotifier {
     _authHeader = authHeader;
   }
 
-  Future<bool> sync({callback, bool force = false}) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.reload();
-    var surveysList = prefs.getStringList("surveys")!;
-
-    while (prefs.getBool('dontsync')!&& !force) {
-      await Future.delayed(const Duration(seconds: 1));
-      debugPrint("dont sync effect");
-    }
-
-    if (synced || syncing) {
-      debugPrint('already trying to  $synced $syncing');
-      return true;
-    }
-
-    syncing = true;
-    notifyListeners();
-
-    final Response res;
-    try {
-
-      res = await APIHelper.postData(
-        url: push_url,
-        body: json.encode(data.toJson()),
-      );
-
-    } catch (e) {
-      syncing = false;
-      // await Future.delayed(Duration(seconds: 1));
-      notifyListeners();
-      return Future.error("couldn't reach server");
-    }
-    if (res.statusCode != 200) {
-      syncing = false;
-      notifyListeners();
-      debugPrint("server refused");
-      return Future.error("server refused");
-    }
-    // debugPrint('${data.header.date} sent request');
-    //
-    final resObj = json.decode(res.body);
-    data.synced = resObj['status'];
-    syncing = false;
-    if (callback != null) {
-      callback();
-    }
-    debugPrint('synced');
-    notifyListeners();
-    return true;
-  }
-
-  // Future<bool> multiSync({callback, bool force = false}) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.reload();
-  //   var surveysList = prefs.getStringList("surveys")!;
-  //   while (prefs.getBool('dontsync')!&& !force) {
-  //     await Future.delayed(const Duration(seconds: 1));
-  //     debugPrint("dont sync effect");
-  //   }
-  //
-  //   final Response res;
-  //   try {
-  //     log("Body Data", error: json.encode(surveysList));
-  //     res = await APIHelper.postData(
-  //       url: "multi",
-  //       body: json.encode(surveysList),
-  //     );
-  //
-  //     log("res",error: res.body);
-  //   } catch (e) {
-  //     return Future.error("couldn't reach server");
-  //   }
-  //   debugPrint(res.body);
-  //   if (res.statusCode != 200) {
-  //     syncing = false;
-  //     notifyListeners();
-  //     debugPrint("server refused");
-  //     return Future.error("server refused");
-  //   }
-  //   // final resObj = json.decode(res.body);
-  //   // data.synced = resObj['status'];
-  //   if (callback != null) {
-  //     callback();
-  //   }
-  //   notifyListeners();
-  //   return true;
-  // }
 
   String get id;
 

@@ -1,16 +1,14 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/locale_database/locale_db_querys.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
-import '../../Models/user.dart';
 
 class DatabaseHelper {
   static Database? _db;
   static String databaseName = 'JaddahSurvey.db';
   static String surveyPTTableName = 'servey_p_t_s';
+  static String surveyPTTableOfflineName = 'surveyPtOffline';
   static String usersTableName = 'users';
   static String surveysTableName = 'survies';
 
@@ -21,24 +19,6 @@ class DatabaseHelper {
     } else {
       return _db;
     }
-  }
-  addItemToDatabase(User user) async {
-    Database? mydb = await db;
-    var raw = await mydb!.insert(
-      usersTableName,
-      user.toJson(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-    return raw;
-  }
-  Future<List<User>> getAllItems() async {
-    Database? mydb = await db;
-    var response = await mydb!.query(usersTableName);
-    List<User> list =
-    response.map((c) => User.fromJson(c)).toList();
-    print('local data base');
-    debugPrint(list.toString());
-    return list;
   }
 
   Future<Database> initializedDB() async {
@@ -52,9 +32,10 @@ class DatabaseHelper {
   _onUpgrade(Database db, int oldVersion, int newVersion) async {}
 
   Future<void> _onCreate(Database db, int version) async {
-    // await db.execute(LocaleDBQueries.createSurveyPTTable);
+    await db.execute(LocaleDBQueries.createSurveyPTTable);
     await db.execute(LocaleDBQueries.crateSurveysTable);
     await db.execute(LocaleDBQueries.crateUsersTable);
+    await db.execute(LocaleDBQueries.createSurveyPTOfflineTable);
     log('CREATE DATABASE AND TABLE ====================================>');
   }
 
