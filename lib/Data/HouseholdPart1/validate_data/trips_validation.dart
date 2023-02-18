@@ -51,6 +51,7 @@ class CheckTripsValidation {
         for (var element in  userSurvey.userSurveys) {
           await HHSUserSurveysOperations().addItemToDatabase(element);
         }
+
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

@@ -16,7 +16,7 @@ class SurveyPTProvider extends SurveyProvider {
   late final SurveyPT _data;
 
   SurveyPTProvider(data) : super(data) {
-    _data = super.data as SurveyPT;
+    _data = super.data;
   }
 
   @override
