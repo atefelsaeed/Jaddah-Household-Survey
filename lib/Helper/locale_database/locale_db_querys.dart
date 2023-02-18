@@ -1,10 +1,11 @@
 class LocaleDBQueries {
+  ///createSurveyPTTable
   static const String createSurveyPTTable = '''
   CREATE TABLE servey_p_t_s (
   id INTEGER UNSIGNED NOT NULL,
   form_id INTEGER DEFAULT NULL,
   type varchar(255)  DEFAULT NULL,
-  synced varchar(255)  DEFAULT NULL,
+  synced BOOLEAN  DEFAULT false,
   headerLat varchar(255)  DEFAULT NULL,
   headerLong varchar(255)  DEFAULT NULL,
   headerDate varchar(255)  DEFAULT NULL,
@@ -36,20 +37,22 @@ class LocaleDBQueries {
   hhsESAdultsBikesNumber varchar(255)  DEFAULT NULL,
   hhsESChildrenBikesNumber varchar(255)  DEFAULT NULL,
   hhsTotalIncome varchar(255)  DEFAULT NULL,
-  vehiclesData BLOB  DEFAULT NULL CHECK (json_valid(vehiclesData)),
-  hhsSeparateFamilies BLOB DEFAULT NULL CHECK (json_valid(hhsSeparateFamilies)),
-  vehiclesBodyType BLOB DEFAULT NULL CHECK (json_valid(vehiclesBodyType)),
-  personData BLOB DEFAULT NULL CHECK (json_valid(personData)),
-  tripsList BLOB DEFAULT NULL CHECK (json_valid(tripsList)),
+  vehiclesData BLOB ,
+  hhsSeparateFamilies BLOB ,
+  vehiclesBodyType BLOB ,
+  personData BLOB ,
+  tripsList BLOB,
   status tinyint(4) DEFAULT 1,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL)''';
+
+  ///createSurveyPTOfflineTable
   static const String createSurveyPTOfflineTable = '''
   CREATE TABLE surveyPtOffline (
   id INTEGER UNSIGNED NOT NULL,
   form_id INTEGER DEFAULT NULL,
   type varchar(255)  DEFAULT NULL,
-  synced varchar(255)  DEFAULT NULL,
+  synced BOOLEAN  DEFAULT false,
   headerLat varchar(255)  DEFAULT NULL,
   headerLong varchar(255)  DEFAULT NULL,
   headerDate varchar(255)  DEFAULT NULL,
@@ -81,28 +84,30 @@ class LocaleDBQueries {
   hhsESAdultsBikesNumber varchar(255)  DEFAULT NULL,
   hhsESChildrenBikesNumber varchar(255)  DEFAULT NULL,
   hhsTotalIncome varchar(255)  DEFAULT NULL,
-  vehiclesData BLOB  DEFAULT NULL CHECK (json_valid(vehiclesData)),
-  hhsSeparateFamilies BLOB DEFAULT NULL CHECK (json_valid(hhsSeparateFamilies)),
-  vehiclesBodyType BLOB DEFAULT NULL CHECK (json_valid(vehiclesBodyType)),
-  personData BLOB DEFAULT NULL CHECK (json_valid(personData)),
-  tripsList BLOB DEFAULT NULL CHECK (json_valid(tripsList)),
+  vehiclesData BLOB ,
+  hhsSeparateFamilies BLOB ,
+  vehiclesBodyType BLOB ,
+  personData BLOB ,
+  tripsList BLOB ,
   status tinyint(4) DEFAULT 1,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL)''';
 
+  ///crateUsersTable
   static const String crateUsersTable = '''
   CREATE TABLE users (
   id INTEGER  UNSIGNED NOT NULL,
   name varchar(255)  NOT NULL,
   role varchar(255)  NOT NULL DEFAULT 'user',
   email varchar(255)  NOT NULL,
-  review TEXT ,
+  review TEXT,
   email_verified_at timestamp NULL DEFAULT NULL,
   password varchar(255)  NOT NULL,
   remember_token varchar(100)  DEFAULT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL)''';
 
+  ///crateSurveysTable
   static const String crateSurveysTable = '''
   CREATE TABLE survies (
   id INTEGER UNSIGNED NOT NULL,

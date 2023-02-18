@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Helper/api_helper.dart';
 import '../Helper/api_routing.dart';
 import '../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
+import '../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../Models/survey.dart';
 import '../Models/user_serveys_model.dart';
 import '../Models/user_surves_status.dart';
@@ -17,23 +18,23 @@ class UserSurveysProvider with ChangeNotifier {
   List<String> list2 = [''];
   final List<Survey> _surveys = [];
 
-  Future<bool> save() async {
-    try {
-      debugPrint("changing data");
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.reload();
-      debugPrint('prefs reload');
-      prefs.setStringList(
-        "surveys",
-        _surveys.map((v) => json.encode(v.toJson())).toList(),
-      );
-      debugPrint('save survey');
-      return true;
-    } catch (er) {
-      debugPrint(er.toString());
-      rethrow;
-    }
-  }
+  // Future<bool> save() async {
+  //   try {
+  //     debugPrint("changing data");
+  //     final prefs = await SharedPreferences.getInstance();
+  //     await prefs.reload();
+  //     debugPrint('prefs reload');
+  //     prefs.setStringList(
+  //       "surveys",
+  //       _surveys.map((v) => json.encode(v.toJson())).toList(),
+  //     );
+  //     debugPrint('save survey');
+  //     return true;
+  //   } catch (er) {
+  //     debugPrint(er.toString());
+  //     rethrow;
+  //   }
+  // }
 
   bool iSSyncing = false;
 
@@ -53,11 +54,8 @@ class UserSurveysProvider with ChangeNotifier {
       for (var element in surveysList) {
         list.add(json.decode(element));
       }
-      // while (prefs.getBool('dontsync')! && !force) {
-      //   await Future.delayed(const Duration(seconds: 1));
-      //   debugPrint("dont sync effect");
-      // }
-
+      debugPrint('Locale Offline DB Survey');
+     // await SurveyPtOperations().getSurveyPtOfflineAllItems();
       final Response res;
       try {
         log("Body Data", error: json.encode(list));
@@ -173,7 +171,10 @@ class UserSurveysProvider with ChangeNotifier {
       var response = await APIHelper.getData(
         url: "${APIRouting.getSurveis}$id",
       );
+      print('res');
+      debugPrint(response.toString());
       if (response.statusCode == 200) {
+
         var data = json.decode(response.body);
         if (!data['status']) return false;
         _userSurveysSurveysList = (data['data'] as List)

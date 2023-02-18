@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../../Models/HHS_SurvyModels/survey_hhs.dart';
@@ -23,19 +24,20 @@ class SurveyPtOperations {
   Future<List<SurveyPT>> getSurveyPtAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableName);
-    List<SurveyPT>? list =List.from(response).map((e)=>SurveyPT.fromJson(e)).toList();
+    List<SurveyPT>? list =
+        List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
     debugPrint('local data base');
     debugPrint(list.toString());
     return list;
   }
 
   //Add survey PT Table Offline to database
-  Future<int> addItemToSurveyPtOfflineDatabase(
-      Survey survey) async {
+  Future<int> addItemToSurveyPtOfflineDatabase(Survey survey) async {
     Database? myDB = await db.db;
+    debugPrint('Add Survey PT to local database');
     var raw = await myDB!.insert(
       DatabaseHelper.surveyPTTableOfflineName,
-      survey.toJson(),
+         survey.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return raw;
@@ -45,9 +47,10 @@ class SurveyPtOperations {
   Future<List<SurveyPT>> getSurveyPtOfflineAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableOfflineName);
-    List<SurveyPT>? list =List.from(response).map((e)=>SurveyPT.fromJson(e)).toList();
-    debugPrint('local data base');
-    debugPrint(list.toString());
+    List<SurveyPT>? list =
+        List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
+    debugPrint('Get Survey PT to local database');
+    debugPrint(list.first.toString());
     return list;
   }
 }

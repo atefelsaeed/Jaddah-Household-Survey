@@ -8,6 +8,7 @@ import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScre
 import 'package:provider/provider.dart';
 
 import '../../../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
+import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
 
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {
@@ -46,7 +47,6 @@ class CheckTripsValidation {
       } else {
         //=======Add-survey-to-surveys-list================
         await surveys.addSurvey(surveyPt.data);
-
         //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
         userSurvey.userSurveys[userSurvey.index].status = 'filled';
         for (var element in  userSurvey.userSurveys) {

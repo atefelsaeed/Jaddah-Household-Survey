@@ -11,8 +11,9 @@ class HHSUserSurveysOperations {
   Future<int> addItemToDatabase(
       UserSurveysModelData userSurveysModelData) async {
     Database? myDB = await db.db;
+    debugPrint('Add User Surveys to local database');
     var raw = await myDB!.insert(
-      DatabaseHelper.usersTableName,
+      DatabaseHelper.surveysTableName,
       userSurveysModelData.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -22,11 +23,11 @@ class HHSUserSurveysOperations {
   //Get all UserSurveys from the database
   Future<List<UserSurveysModelData>> getAllItems() async {
     Database? myDB = await db.db;
-    var response = await myDB!.query(DatabaseHelper.usersTableName);
+    var response = await myDB!.query(DatabaseHelper.surveysTableName);
     List<UserSurveysModelData> list =
         response.map((c) => UserSurveysModelData.fromJson(c)).toList();
-    debugPrint('local data base');
-    debugPrint(list.toString());
+    debugPrint('Get User Surveys local database');
+    debugPrint(list.length.toString());
     return list;
   }
 }
