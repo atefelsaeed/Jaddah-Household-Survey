@@ -23,12 +23,15 @@ class UserSurveysProvider with ChangeNotifier {
     final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
     debugPrint('Locale Offline DB Survey');
     debugPrint(surveysList.toString());
+    for(var s in surveysList){
+      list.add(s.toJsonAPI());
+    }
     final Response res;
     try {
       log("Body Data", error: json.encode(list));
       res = await APIHelper.postData(
         url: "multi",
-        body:surveysList,
+        body:json.encode(list),
       );
       if (res.statusCode == 200) {
         await SurveyPtOperations().deleteAuthTable();

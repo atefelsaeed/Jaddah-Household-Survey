@@ -40,11 +40,11 @@ class SurveyPtOperations {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    await myDB.insert(
-      DatabaseHelper.surveyPTTableName,
-      survey.toJson(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    // await myDB.insert(
+    //   DatabaseHelper.surveyPTTableName,
+    //   survey.toJson(),
+    //   conflictAlgorithm: ConflictAlgorithm.replace,
+    // );
     return raw;
   }
 
