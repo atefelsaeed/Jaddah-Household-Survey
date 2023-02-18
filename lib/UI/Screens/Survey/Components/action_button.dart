@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../../Data/HouseholdPart1/validate_data/hhs_validation.dart';
-import '../../../../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../../../../Helper/validator.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Providers/auth.dart';

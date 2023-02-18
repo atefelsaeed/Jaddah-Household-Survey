@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../../Models/HHS_SurvyModels/survey_hhs.dart';
@@ -44,10 +43,10 @@ class SurveyPtOperations {
   }
 
   //Get all survey PT Table Offline from the database
-  Future<List<SurveyPT>> getSurveyPtOfflineAllItems() async {
+  Future<List<Survey>> getSurveyPtOfflineAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableOfflineName);
-    List<SurveyPT>? list =
+    List<Survey>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
     debugPrint('Get Survey PT to local database');
     debugPrint(list.first.toString());

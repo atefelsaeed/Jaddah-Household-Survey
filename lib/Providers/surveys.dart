@@ -29,18 +29,31 @@ class SurveysProvider with ChangeNotifier {
   Future<bool> fetch() async {
     try {
       debugPrint("fetching");
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.reload();
-
-      if (!prefs.containsKey("surveys")) return false;
-      var surveysList = prefs.getStringList("surveys")!;
+      // final prefs = await SharedPreferences.getInstance();
+      // await prefs.reload();
+      //
+      // if (!prefs.containsKey("surveys")) return false;
+      // var surveysList = prefs.getStringList("surveys")!;
+      final surveysList2 =
+          await SurveyPtOperations().getSurveyPtOfflineAllItems();
       _surveys = [];
-      for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
-        switch (EnumToString.fromString(SurveyType.values, s['type'],
-            camelCase: true)!) {
+
+      // for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
+      //   switch (EnumToString.fromString(SurveyType.values, s['type'],
+      //       camelCase: true)!) {
+      //     case SurveyType.pt:
+      //       debugPrint('add new');
+      //       _surveys.add(SurveyPT.fromJson(s));
+      //       debugPrint('add new Done');
+      //       break;
+      //     default:
+      //   }
+      // }
+      for (var s in surveysList2) {
+        switch (s.type) {
           case SurveyType.pt:
             debugPrint('add new');
-            _surveys.add(SurveyPT.fromJson(s));
+            _surveys.add(s);
             debugPrint('add new Done');
             break;
           default:
@@ -72,8 +85,8 @@ class SurveysProvider with ChangeNotifier {
     try {
       _surveys.removeWhere((e) => e.id == s.id);
       _surveys.add(s);
-      // await SurveyPtOperations().addItemToSurveyPtOfflineDatabase(s);
-      await save();
+      await SurveyPtOperations().addItemToSurveyPtOfflineDatabase(s);
+      // await save();
       notifyListeners();
       return true;
     } catch (er) {

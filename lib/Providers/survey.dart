@@ -3,6 +3,7 @@ import 'package:jaddah_household_survey/Data/Enums/hhs_enums.dart';
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 
 import '../Models/HHS_SurvyModels/hhs_models.dart';
+import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
 import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
@@ -10,7 +11,7 @@ import '../Models/survey.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
   late Map _authHeader;
-  final Survey data;
+  final SurveyPT data;
   bool syncing = false;
 
   SurveyProvider(this.data);

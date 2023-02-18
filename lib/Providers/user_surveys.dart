@@ -16,52 +16,33 @@ import '../Models/user_surves_status.dart';
 class UserSurveysProvider with ChangeNotifier {
   List<Map<String, dynamic>> list = [];
   List<String> list2 = [''];
-  final List<Survey> _surveys = [];
-
-  // Future<bool> save() async {
-  //   try {
-  //     debugPrint("changing data");
-  //     final prefs = await SharedPreferences.getInstance();
-  //     await prefs.reload();
-  //     debugPrint('prefs reload');
-  //     prefs.setStringList(
-  //       "surveys",
-  //       _surveys.map((v) => json.encode(v.toJson())).toList(),
-  //     );
-  //     debugPrint('save survey');
-  //     return true;
-  //   } catch (er) {
-  //     debugPrint(er.toString());
-  //     rethrow;
-  //   }
-  // }
 
   bool iSSyncing = false;
 
   Future<bool> multiSync({callback, bool force = false}) async {
     iSSyncing = true;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.reload();
+    // final prefs = await SharedPreferences.getInstance();
+    // await prefs.reload();
 
-    if (!prefs.containsKey("surveys")) {
-      iSSyncing = false;
-      notifyListeners();
-      return false;
-    } else {
-      // final prefs = await SharedPreferences.getInstance();
-      // await prefs.reload();
-      final surveysList = prefs.getStringList("surveys")!;
-      for (var element in surveysList) {
-        list.add(json.decode(element));
-      }
+    // if (!prefs.containsKey("surveys")) {
+    //   iSSyncing = false;
+    //   notifyListeners();
+    //   return false;
+    // } else {
+
+      final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
+
+      // for (var element in surveysList) {
+      //   list.add(element.fromJson(json));
+      // }
       debugPrint('Locale Offline DB Survey');
-     // await SurveyPtOperations().getSurveyPtOfflineAllItems();
+      debugPrint(surveysList.toString());
       final Response res;
       try {
         log("Body Data", error: json.encode(list));
         res = await APIHelper.postData(
           url: "multi",
-          body: json.encode(list),
+          body: json.encode(surveysList),
         );
         iSSyncing = false;
         notifyListeners();
@@ -78,15 +59,13 @@ class UserSurveysProvider with ChangeNotifier {
         notifyListeners();
         return Future.error("server refused");
       }
-      // final resObj = json.decode(res.body);
-      // data.synced = resObj['status'];
       if (callback != null) {
         callback();
       }
       iSSyncing = false;
       notifyListeners();
       return true;
-    }
+    // }
   }
 
   List<UserSurveysModelData> _userSurveysSurveysList = [];

@@ -31,97 +31,94 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
             child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Form(
-            key: _key,
-            child:  Consumer<VecProvider>(
-    builder: (context, provider, child) {
-
-        return   Column(
-              children: [
-                //============VehiclesHeader===============
-                const VehiclesHeader(),
-                AppSize.spaceHeight2(context),
-                //====Check if this family has not vehicles or not.=====
-                (HhsStatic.houseHold[0].totalNumberVehicles
-                            .toString()
-                            .isEmpty ||
-                        HhsStatic.houseHold[0].totalNumberVehicles
-                                .toString()
-                                .trim() ==
-                            '0')
-                    ?
-                    //================Has-Vehicles=================
-                    Row(children: [
-                        TextGlobal(
-                          text: "لا يوجد سيارات",
-                          fontSize: width(context) * .03,
-                          color: ColorManager.grayColor,
-                        ),
-                        Checkbox(
-                            side: BorderSide(
-                              color: ColorManager.orangeTxtColor,
-                              width: 1.5,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            checkColor: ColorManager.whiteColor,
-                            focusColor: ColorManager.orangeTxtColor,
-                            activeColor: ColorManager.orangeTxtColor,
-                            value: VehModel.hasVehicles,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                VehModel.hasVehicles = value!;
-                              });
-                            })
-                      ])
-                    :
-                    //================Vehicles-Body=================
-                    const ControllerVehiclesBody(),
-                AppSize.spaceHeight5(context),
-                //======================Footer-Saving-Data======================
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              key: _key,
+              child: Consumer<VecProvider>(builder: (context, provider, child) {
+                return Column(
                   children: [
-                    DefaultButton(
-                      function: () {
-                        if (_key.currentState!.validate()) {
-                          _key.currentState!.save();
-                          SaveVehiclesData.saveData(context);
-                          debugPrint('Saving Data :: ');
-                          CheckVehiclesValidation.validate(context);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text("يوجد خطأ بالبيانات"),
-                              duration: Duration(seconds: 3),
-                              elevation: 1,
+                    //============VehiclesHeader===============
+                    const VehiclesHeader(),
+                    AppSize.spaceHeight2(context),
+                    //====Check if this family has not vehicles or not.=====
+                    (HhsStatic.houseHold[0].totalNumberVehicles
+                                .toString()
+                                .isEmpty ||
+                            HhsStatic.houseHold[0].totalNumberVehicles
+                                    .toString()
+                                    .trim() ==
+                                '0')
+                        ?
+                        //================Has-Vehicles=================
+                        Row(children: [
+                            TextGlobal(
+                              text: "لا يوجد سيارات",
+                              fontSize: width(context) * .03,
+                              color: ColorManager.grayColor,
                             ),
-                          );
-                        }
-                      },
-                      isWidget: true,
-                      text: "التالي",
-                      widget: const Icon(Icons.arrow_forward),
+                            Checkbox(
+                                side: BorderSide(
+                                  color: ColorManager.orangeTxtColor,
+                                  width: 1.5,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                checkColor: ColorManager.whiteColor,
+                                focusColor: ColorManager.orangeTxtColor,
+                                activeColor: ColorManager.orangeTxtColor,
+                                value: VehModel.hasVehicles,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    VehModel.hasVehicles = value!;
+                                  });
+                                })
+                          ])
+                        :
+                        //================Vehicles-Body=================
+                        const ControllerVehiclesBody(),
+                    AppSize.spaceHeight5(context),
+                    //======================Footer-Saving-Data======================
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        DefaultButton(
+                          function: () {
+                            if (_key.currentState!.validate()) {
+                              _key.currentState!.save();
+                              SaveVehiclesData.saveData(context);
+                              debugPrint('Saving Data :: ');
+                              CheckVehiclesValidation.validate(context);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("يوجد خطأ بالبيانات"),
+                                  duration: Duration(seconds: 3),
+                                  elevation: 1,
+                                ),
+                              );
+                            }
+                          },
+                          isWidget: true,
+                          text: "التالي",
+                          widget: const Icon(Icons.arrow_forward),
+                        ),
+                        AppSize.spaceWidth3(context),
+                        DefaultButton(
+                          function: () {
+                            _key.currentState!.save();
+                            Navigator.pop(context);
+                          },
+                          isWidget: true,
+                          background: ColorManager.grayColor,
+                          text: "السابق",
+                          widget: const Icon(Icons.arrow_back_rounded),
+                        ),
+                      ],
                     ),
-                    AppSize.spaceWidth3(context),
-                    DefaultButton(
-                      function: () {
-                        _key.currentState!.save();
-                        Navigator.pop(context);
-                      },
-                      isWidget: true,
-                      background: ColorManager.grayColor,
-                      text: "السابق",
-                      widget: const Icon(Icons.arrow_back_rounded),
-                    ),
+                    AppSize.spaceHeight2(context),
+                    // HouseholdAddressSection()
                   ],
-                ),
-                AppSize.spaceHeight2(context),
-                // HouseholdAddressSection()
-              ],
-            );
-    })
-          ),
+                );
+              })),
         )),
       ),
     );

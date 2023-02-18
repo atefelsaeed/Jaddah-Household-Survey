@@ -52,14 +52,6 @@ class CheckTripsValidation {
         for (var element in  userSurvey.userSurveys) {
           await HHSUserSurveysOperations().addItemToDatabase(element);
         }
-        // final prefs = await SharedPreferences.getInstance();
-        // prefs.setStringList(
-        //   "userSurveys",
-        //   userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
-        // );
-
-        await SurveyPtOperations()
-            .addItemToSurveyPtOfflineDatabase(surveyPt.data);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

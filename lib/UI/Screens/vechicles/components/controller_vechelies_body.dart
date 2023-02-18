@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/components/vec_body_type.dart';
 import 'package:jaddah_household_survey/UI/Screens/vechicles/provider/vechiels_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
-import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/show_dialog_error.dart';

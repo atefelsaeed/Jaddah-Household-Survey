@@ -113,12 +113,12 @@ class SurveyPT extends Survey {
       : super(EnumToString.fromString(SurveyType.values, json['type'],
             camelCase: true)!) {
     provider = SurveyPTProvider(this);
-    id = json['id'];
+    id = json['id'].toString();
     synced = json['synced'] == false ? false : true;
     header = HeaderBase();
     header.interviewDate = DateTime.parse(json['headerDate']);
-    header.empNumber = json['headerEmpNumber'];
-    header.interviewNumber = json['headerInterviewNumber'];
+    header.empNumber =int.parse(json['headerEmpNumber']);
+    header.interviewNumber =json['headerInterviewNumber'];
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
     //====================HHS Header=========================
@@ -183,14 +183,12 @@ class SurveyPT extends Survey {
 
   @override
   fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'].toString();
     synced = json['synced'];
     header = HeaderBase();
-    // header.locationLat = json['headerLat'];
-    // header.locationLong = json['headerLong'];
     header.interviewDate = DateTime.parse(json['headerDate']);
-    header.empNumber = json['headerEmpNumber'];
-    header.interviewNumber = json['headerInterviewNumber'];
+    header.empNumber =int.parse(json['headerEmpNumber']);
+    header.interviewNumber =int.parse( json['headerInterviewNumber']);
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
     //====================HHS Header=========================

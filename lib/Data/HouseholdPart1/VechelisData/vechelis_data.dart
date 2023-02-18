@@ -8,7 +8,7 @@ class VehiclesData {
         number: 0,
         textEditingController: TextEditingController()),
     VecModel(
-        title: "سيارة كبيرة  ",
+        title: "سيارة كبيرة",
         isChosen: false,
         number: 0,
         textEditingController: TextEditingController()),
