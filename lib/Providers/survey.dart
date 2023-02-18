@@ -7,7 +7,6 @@ import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
 import '../Models/Trips_SurveyModel/trips_model.dart';
 import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
-import '../Models/survey.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
   late Map _authHeader;

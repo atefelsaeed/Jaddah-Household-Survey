@@ -55,14 +55,14 @@ class UserSurveysModelData {
 
   UserSurveysModelData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    userId = json['user_id'];
-    haeno = json['HAE_NO'];
-    hAEName = json['HAE_name'];
-    qta = json['QTA'];
-    blok = json['BLOK'];
-    blokname = json['BLOK_NAME'];
-    y = json['Y'];
-    x = json['X'];
+    userId = json['user_id'].toString();
+    haeno = json['HAE_NO'].toString();
+    hAEName = json['HAE_name'].toString();
+    qta = json['QTA'].toString();
+    blok = json['BLOK'].toString();
+    blokname = json['BLOK_NAME'].toString();
+    y = json['Y'].toString();
+    x = json['X'].toString();
     status = json['status'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

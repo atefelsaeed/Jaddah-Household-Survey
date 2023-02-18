@@ -124,7 +124,7 @@ class _ControllerVehiclesBodyState extends State<ControllerVehiclesBody> {
                               validationService.vecBicycle(showVechError, d,showError);
                               break;
                             case " اسكوتر":
-                              validationService.vecEscooter(showVechError, d,showError);
+                              validationService.vecEScooter(showVechError, d,showError);
                               break;
                           }
                         } else {

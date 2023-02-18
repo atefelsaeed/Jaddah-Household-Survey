@@ -118,7 +118,7 @@ class SurveyPT extends Survey {
     header = HeaderBase();
     header.interviewDate = DateTime.parse(json['headerDate']);
     header.empNumber =int.parse(json['headerEmpNumber']);
-    header.interviewNumber =json['headerInterviewNumber'];
+    header.interviewNumber =int.parse(json['headerInterviewNumber']);
     header.districtName = json['headerDistrictName'];
     header.zoneNumber = json['headerZoneNumber'];
     //====================HHS Header=========================

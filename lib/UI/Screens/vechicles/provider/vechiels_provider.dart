@@ -246,6 +246,7 @@ class VecProvider extends ChangeNotifier {
             VehModel.vecVan.length +
             VehModel.pickUp.length +
             VehModel.eScooter.length;
+
         if (x > total) {
           VehModel.bicycle.add(
             VehicleBodyDetails(
@@ -263,7 +264,7 @@ class VecProvider extends ChangeNotifier {
     }
   }
 
-  vecEscooter(Function showVechError, String d, Function showError) {
+  vecEScooter(Function showVechError, String d, Function showError) {
     VehModel.eScooter = [];
     if (HhsStatic.houseHold[0].totalNumberVehicles.toString().isEmpty ||
         HhsStatic.houseHold[0].totalNumberVehicles.toString().trim() == '0') {
@@ -306,7 +307,6 @@ class VecProvider extends ChangeNotifier {
       for (int i = 0; i < int.parse(d); i++) {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
-
         int total = VehModel.fuelTypeCode.length +
             VehModel.vecCar.length +
             VehModel.largeCar.length +

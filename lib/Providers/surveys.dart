@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
-import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,26 +27,9 @@ class SurveysProvider with ChangeNotifier {
   Future<bool> fetch() async {
     try {
       debugPrint("fetching");
-      // final prefs = await SharedPreferences.getInstance();
-      // await prefs.reload();
-      //
-      // if (!prefs.containsKey("surveys")) return false;
-      // var surveysList = prefs.getStringList("surveys")!;
       final surveysList2 =
           await SurveyPtOperations().getSurveyPtOfflineAllItems();
       _surveys = [];
-
-      // for (Map<String, dynamic> s in surveysList.map(json.decode).toList()) {
-      //   switch (EnumToString.fromString(SurveyType.values, s['type'],
-      //       camelCase: true)!) {
-      //     case SurveyType.pt:
-      //       debugPrint('add new');
-      //       _surveys.add(SurveyPT.fromJson(s));
-      //       debugPrint('add new Done');
-      //       break;
-      //     default:
-      //   }
-      // }
       for (var s in surveysList2) {
         switch (s.type) {
           case SurveyType.pt:

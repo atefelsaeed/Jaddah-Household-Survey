@@ -63,7 +63,7 @@ class Auth with ChangeNotifier {
         debugPrint("data:: $data");
         if (!data['status']) return false;
         _users = (data['data'] as List).map((e) => User.fromJson(e)).toList();
-        //Store response data in the local database.
+        await AuthOperations().deleteAuthTable();
         for (var element in _users) {
           await AuthOperations().addItemToDatabase(element);
         }

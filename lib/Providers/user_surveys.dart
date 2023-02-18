@@ -9,7 +9,6 @@ import '../Helper/api_helper.dart';
 import '../Helper/api_routing.dart';
 import '../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
 import '../Helper/locale_database/operations/survey_pt_operations.dart';
-import '../Models/survey.dart';
 import '../Models/user_serveys_model.dart';
 import '../Models/user_surves_status.dart';
 
@@ -21,51 +20,41 @@ class UserSurveysProvider with ChangeNotifier {
 
   Future<bool> multiSync({callback, bool force = false}) async {
     iSSyncing = true;
-    // final prefs = await SharedPreferences.getInstance();
-    // await prefs.reload();
-
-    // if (!prefs.containsKey("surveys")) {
-    //   iSSyncing = false;
-    //   notifyListeners();
-    //   return false;
-    // } else {
-
-      final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
-
-      // for (var element in surveysList) {
-      //   list.add(element.fromJson(json));
-      // }
-      debugPrint('Locale Offline DB Survey');
-      debugPrint(surveysList.toString());
-      final Response res;
-      try {
-        log("Body Data", error: json.encode(list));
-        res = await APIHelper.postData(
-          url: "multi",
-          body: json.encode(surveysList),
-        );
-        iSSyncing = false;
-        notifyListeners();
-        log("res", error: res.body);
-      } catch (e) {
-        iSSyncing = false;
-        notifyListeners();
-        return Future.error("couldn't reach server");
-      }
-      if (res.statusCode != 200) {
-        notifyListeners();
-        debugPrint("server refused");
-        iSSyncing = false;
-        notifyListeners();
-        return Future.error("server refused");
-      }
-      if (callback != null) {
-        callback();
+    final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
+    debugPrint('Locale Offline DB Survey');
+    debugPrint(surveysList.toString());
+    final Response res;
+    try {
+      log("Body Data", error: json.encode(list));
+      res = await APIHelper.postData(
+        url: "multi",
+        body:surveysList,
+      );
+      if (res.statusCode == 200) {
+        await SurveyPtOperations().deleteAuthTable();
+        debugPrint('Delete Survey Pt Offline All Items Done!');
       }
       iSSyncing = false;
       notifyListeners();
-      return true;
-    // }
+      log("res", error: res.body);
+    } catch (e) {
+      iSSyncing = false;
+      notifyListeners();
+      return Future.error("couldn't reach server");
+    }
+    if (res.statusCode != 200) {
+      notifyListeners();
+      debugPrint("server refused");
+      iSSyncing = false;
+      notifyListeners();
+      return Future.error("server refused");
+    }
+    if (callback != null) {
+      callback();
+    }
+    iSSyncing = false;
+    notifyListeners();
+    return true;
   }
 
   List<UserSurveysModelData> _userSurveysSurveysList = [];
@@ -153,12 +142,12 @@ class UserSurveysProvider with ChangeNotifier {
       print('res');
       debugPrint(response.toString());
       if (response.statusCode == 200) {
-
         var data = json.decode(response.body);
         if (!data['status']) return false;
         _userSurveysSurveysList = (data['data'] as List)
             .map((e) => UserSurveysModelData.fromJson(e))
             .toList();
+        await HHSUserSurveysOperations().deleteAuthTable();
         for (var element in _userSurveysSurveysList) {
           await HHSUserSurveysOperations().addItemToDatabase(element);
         }

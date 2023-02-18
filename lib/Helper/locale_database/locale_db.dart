@@ -32,7 +32,7 @@ class DatabaseHelper {
   _onUpgrade(Database db, int oldVersion, int newVersion) async {}
 
   Future<void> _onCreate(Database db, int version) async {
-    // await db.execute(LocaleDBQueries.createSurveyPTTable);
+    await db.execute(LocaleDBQueries.createSurveyPTTable);
     await db.execute(LocaleDBQueries.crateSurveysTable);
     await db.execute(LocaleDBQueries.crateUsersTable);
     await db.execute(LocaleDBQueries.createSurveyPTOfflineTable);

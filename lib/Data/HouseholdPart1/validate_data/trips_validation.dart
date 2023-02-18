@@ -8,7 +8,6 @@ import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScre
 import 'package:provider/provider.dart';
 
 import '../../../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
-import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
 
 class CheckTripsValidation {
   static validatePerson(BuildContext context) async {

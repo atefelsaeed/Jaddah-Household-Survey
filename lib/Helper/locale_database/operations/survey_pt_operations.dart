@@ -39,6 +39,18 @@ class SurveyPtOperations {
       survey.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+
+    await myDB.insert(
+      DatabaseHelper.surveyPTTableName,
+      survey.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    return raw;
+  }
+
+  Future<int> deleteAuthTable() async {
+    Database? myDB = await db.db;
+    var raw = await myDB!.delete(DatabaseHelper.surveyPTTableOfflineName);
     return raw;
   }
 
@@ -49,15 +61,7 @@ class SurveyPtOperations {
     List<Survey>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
     debugPrint('Get Survey PT to local database');
-    debugPrint(list.first.toString());
     return list;
-  } //Get all survey PT Table Offline from the database
-
-  Future deleteSurveyPtOfflineAllItems() async {
-    Database? myDB = await db.db;
-      await db.myDeleteDataBase();
-    // var response = await myDB!.delete(DatabaseHelper.surveyPTTableOfflineName);
-    debugPrint('Delete Survey PT to local database');
-    // return response;
   }
+
 }
