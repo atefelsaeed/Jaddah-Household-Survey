@@ -57,6 +57,9 @@ class CheckTripsValidation {
         //   "userSurveys",
         //   userSurvey.userSurveys.map((e) => json.encode(e.toJson())).toList(),
         // );
+
+        await SurveyPtOperations()
+            .addItemToSurveyPtOfflineDatabase(surveyPt.data);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

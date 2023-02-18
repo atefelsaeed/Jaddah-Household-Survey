@@ -10,6 +10,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/qh9.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
@@ -70,6 +71,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         builder: (context, provider, child) {
                       return Column(
                         children: [
+                          TextButton(
+                              onPressed: ()async {
+                               await SurveyPtOperations()
+                                    .deleteSurveyPtOfflineAllItems();
+                              },
+                              child: Text('delete Table')),
                           // ===== HouseHoldAddress ===
                           HouseHoldAddress(
                             itemSurveyModel: widget.itemSurveyModel,

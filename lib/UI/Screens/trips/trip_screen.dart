@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
@@ -96,7 +95,6 @@ class _TripScreenState extends State<TripScreen> {
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
-    Auth auth = Provider.of<Auth>(context, listen: false);
 
     return SafeArea(
       child: Scaffold(
@@ -455,15 +453,7 @@ class _TripScreenState extends State<TripScreen> {
                         DefaultButton(
                           function: () {
                             if (_key.currentState!.validate()) {
-                              Random random = Random();
-                              int randomNumber =
-                                  (1000 + random.nextInt(10000 - 1000));
-                              int num = int.parse('${auth.uid}001$randomNumber');
-                              surveyPt.headerLat = 0;
-                              surveyPt.interViewDate = DateTime.now();
-                              surveyPt.headerLong = 0;
-                              surveyPt.headerEmpNumber = auth.uid;
-                              surveyPt.headerInterviewNumber = num;
+
                               SaveTripsData.saveData(context);
 
                               CheckTripsValidation.validatePerson(context);

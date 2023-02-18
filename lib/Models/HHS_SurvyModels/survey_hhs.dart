@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
@@ -41,11 +43,9 @@ class SurveyPT extends Survey {
     Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['type'] = EnumToString.convertToString(type, camelCase: true);
-    data['synced'] = synced;
-    // data['headerLat'] = header.locationLat;
-    // data['headerLong'] = header.locationLong;
+    data['synced'] = synced.toString();
     data['headerDate'] = header.interviewDate.toString();
-    data['vehiclesData'] = vehiclesData.toJson();
+    data['vehiclesData'] = jsonEncode(vehiclesData.toJson());
     data['headerEmpNumber'] = header.empNumber;
     data['headerInterviewNumber'] = header.interviewNumber;
     data['headerDistrictName'] = header.districtName;
@@ -65,7 +65,7 @@ class SurveyPT extends Survey {
     data['hhsNumberChildren'] = householdQuestions.hhsNumberChildren;
     data['hhsNumberYearsInAddress'] =
         householdQuestions.hhsNumberYearsInAddress;
-    data['hhsIsDemolishedAreas'] = householdQuestions.hhsIsDemolishedAreas;
+    // data['hhsIsDemolishedAreas'] = householdQuestions.hhsIsDemolishedAreas;
     data['hhsDemolishedAreas'] = householdQuestions.hhsDemolishedAreas;
     //==========hhsPedalCycles(PC)============
     data['hhsPCTotalBikesNumber'] =
@@ -89,13 +89,23 @@ class SurveyPT extends Survey {
     data['hhsESChildrenBikesNumber'] =
         householdQuestions.hhsElectricScooter.childrenBikesNumber;
     data['hhsTotalIncome'] = householdQuestions.hhsTotalIncome ?? '';
-
-    data['hhsSeparateFamilies'] =
-        hhsSeparateFamilies!.map((e) => e.toJson()).toList();
-    data['vehiclesBodyType'] =
-        vehiclesBodyType!.map((e) => e.toJson()).toList();
-    data['personData'] = personData!.map((e) => e.toJson()).toList();
-    data['tripsList'] = tripsList!.map((e) => e.toJson()).toList();
+    //
+    data['hhsSeparateFamilies'] = hhsSeparateFamilies
+            ?.map((e) => jsonEncode(e.toJson()))
+            .toList()
+            .toString() ??
+        [].toString();
+    data['vehiclesBodyType'] = vehiclesBodyType
+            ?.map((e) => jsonEncode(e.toJson()))
+            .toList()
+            .toString() ??
+        [].toString();
+    data['personData'] =
+        personData?.map((e) => jsonEncode(e.toJson())).toList().toString() ??
+            [].toString();
+    data['tripsList'] =
+        tripsList?.map((e) => jsonEncode(e.toJson())).toList().toString() ??
+            [].toString();
     return data;
   }
 
@@ -103,6 +113,76 @@ class SurveyPT extends Survey {
       : super(EnumToString.fromString(SurveyType.values, json['type'],
             camelCase: true)!) {
     provider = SurveyPTProvider(this);
+    id = json['id'];
+    synced = json['synced'] == false ? false : true;
+    header = HeaderBase();
+    header.interviewDate = DateTime.parse(json['headerDate']);
+    header.empNumber = json['headerEmpNumber'];
+    header.interviewNumber = json['headerInterviewNumber'];
+    header.districtName = json['headerDistrictName'];
+    header.zoneNumber = json['headerZoneNumber'];
+    //====================HHS Header=========================
+    header.householdAddress.hhsAddressLat = json['hhsAddressLat'];
+    header.householdAddress.hhsAddressLong = json['hhsAddressLong'];
+    header.householdAddress.hhsPhone.text = json['hhsPhone'];
+    //================householdQuestions================
+    householdQuestions.hhsDwellingType = json['hhsDwellingType'];
+    householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
+    householdQuestions.hhsNumberBedRooms.text = json['hhsNumberBedRooms'];
+    householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments'];
+    householdQuestions.hhsNumberFloors.text = json['hhsNumberFloors'];
+    householdQuestions.hhsNumberSeparateFamilies =
+        json['hhsNumberSeparateFamilies'];
+    householdQuestions.hhsNumberAdults = json['hhsNumberAdults'];
+    householdQuestions.hhsNumberChildren = json['hhsNumberChildren'];
+    householdQuestions.hhsNumberYearsInAddress =
+        json['hhsNumberYearsInAddress'];
+    householdQuestions.hhsIsDemolishedAreas = json['hhsIsDemolishedAreas'];
+    householdQuestions.hhsDemolishedAreas = json['hhsDemolishedAreas'];
+    //==========hhsPedalCycles(PC)============
+    householdQuestions.hhsPedalCycles.totalBikesNumber =
+        json['hhsPCTotalBikesNumber'];
+    householdQuestions.hhsPedalCycles.adultsBikesNumber =
+        json['hhsPCAdultsBikesNumber'];
+    householdQuestions.hhsPedalCycles.childrenBikesNumber =
+        json['hhsPCChildrenBikesNumber'];
+    //======hhsElectricCycles(EC)============
+    householdQuestions.hhsElectricCycles.totalBikesNumber =
+        json['hhsECTotalBikesNumber'];
+    householdQuestions.hhsElectricCycles.adultsBikesNumber =
+        json['hhsECAdultsBikesNumber'];
+    householdQuestions.hhsElectricCycles.childrenBikesNumber =
+        json['hhsECChildrenBikesNumber'];
+    //======hhsElectricScooter(ES)============
+    householdQuestions.hhsElectricScooter.totalBikesNumber =
+        json['hhsESTotalBikesNumber'];
+    householdQuestions.hhsElectricScooter.adultsBikesNumber =
+        json['hhsESAdultsBikesNumber'];
+    householdQuestions.hhsElectricScooter.childrenBikesNumber =
+        json['hhsESChildrenBikesNumber'];
+    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
+
+    vehiclesData = VehiclesModel.fromJson(jsonDecode(json['vehiclesData']));
+
+    hhsSeparateFamilies = jsonDecode(json['hhsSeparateFamilies'])
+        .map<SeparateFamilies>(
+            (e) => SeparateFamilies.fromJson(e as Map<String, dynamic>))
+        .toList();
+    vehiclesBodyType = jsonDecode(json['vehiclesBodyType'])
+        .map<VehiclesBodyType>(
+            (e) => VehiclesBodyType.fromJson(e as Map<String, dynamic>))
+        .toList();
+    personData = jsonDecode(json['personData'])
+        .map<PersonModel>(
+            (e) => PersonModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+    tripsList = jsonDecode(json['tripsList'])
+        .map<TripsModel>((e) => TripsModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  fromJson(Map<String, dynamic> json) {
     id = json['id'];
     synced = json['synced'];
     header = HeaderBase();
@@ -152,77 +232,6 @@ class SurveyPT extends Survey {
         json['hhsESAdultsBikesNumber'];
     householdQuestions.hhsElectricScooter.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
-    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
-    vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
-
-    hhsSeparateFamilies = json['hhsSeparateFamilies']
-        .map<SeparateFamilies>(
-            (e) => SeparateFamilies.fromJson(e as Map<String, dynamic>))
-        .toList();
-    vehiclesBodyType = json['vehiclesBodyType']
-        .map<VehiclesBodyType>(
-            (e) => VehiclesBodyType.fromJson(e as Map<String, dynamic>))
-        .toList();
-    personData = json['personData']
-        .map<PersonModel>(
-            (e) => PersonModel.fromJson(e as Map<String, dynamic>))
-        .toList();
-    tripsList = json['tripsList']
-        .map<TripsModel>((e) => TripsModel.fromJson(e as Map<String, dynamic>))
-        .toList();
-  }
-
-  @override
-  fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    synced = json['synced'];
-    header = HeaderBase();
-    // header.locationLat = json['headerLat'];
-    // header.locationLong = json['headerLong'];
-    header.interviewDate = DateTime.parse(json['headerDate']);
-    header.empNumber = json['headerEmpNumber'];
-    header.interviewNumber = json['headerInterviewNumber'];
-    header.districtName = json['headerDistrictName'];
-    header.zoneNumber = json['headerZoneNumber'];
-    //====================HHS Header=========================
-    header.householdAddress.hhsAddressLat = json['hhsAddressLat'];
-    header.householdAddress.hhsAddressLong = json['hhsAddressLong'];
-    header.householdAddress.hhsPhone.text = json['hhsPhone'];
-    //================householdQuestions================
-    householdQuestions.hhsDwellingType = json['hhsDwellingType'];
-    householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
-    householdQuestions.hhsNumberBedRooms.text = json['hhsNumberBedRooms'];
-    householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments'];
-    householdQuestions.hhsNumberFloors.text = json['hhsNumberFloors'];
-    householdQuestions.hhsNumberSeparateFamilies =
-    json['hhsNumberSeparateFamilies'];
-    householdQuestions.hhsNumberAdults = json['hhsNumberAdults'];
-    householdQuestions.hhsNumberChildren = json['hhsNumberChildren'];
-    householdQuestions.hhsNumberYearsInAddress =
-    json['hhsNumberYearsInAddress'];
-    householdQuestions.hhsIsDemolishedAreas = json['hhsIsDemolishedAreas'];
-    householdQuestions.hhsDemolishedAreas = json['hhsDemolishedAreas'];
-    //==========hhsPedalCycles(PC)============
-    householdQuestions.hhsPedalCycles.totalBikesNumber =
-    json['hhsPCTotalBikesNumber'];
-    householdQuestions.hhsPedalCycles.adultsBikesNumber =
-    json['hhsPCAdultsBikesNumber'];
-    householdQuestions.hhsPedalCycles.childrenBikesNumber =
-    json['hhsPCChildrenBikesNumber'];
-    //======hhsElectricCycles(EC)============
-    householdQuestions.hhsElectricCycles.totalBikesNumber =
-    json['hhsECTotalBikesNumber'];
-    householdQuestions.hhsElectricCycles.adultsBikesNumber =
-    json['hhsECAdultsBikesNumber'];
-    householdQuestions.hhsElectricCycles.childrenBikesNumber =
-    json['hhsECChildrenBikesNumber'];
-    //======hhsElectricScooter(ES)============
-    householdQuestions.hhsElectricScooter.totalBikesNumber =
-    json['hhsESTotalBikesNumber'];
-    householdQuestions.hhsElectricScooter.adultsBikesNumber =
-    json['hhsESAdultsBikesNumber'];
-    householdQuestions.hhsElectricScooter.childrenBikesNumber =
-    json['hhsESChildrenBikesNumber'];
     householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
     vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
 

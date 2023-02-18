@@ -37,7 +37,7 @@ class SurveyPtOperations {
     debugPrint('Add Survey PT to local database');
     var raw = await myDB!.insert(
       DatabaseHelper.surveyPTTableOfflineName,
-         survey.toJson(),
+      survey.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return raw;
@@ -52,5 +52,13 @@ class SurveyPtOperations {
     debugPrint('Get Survey PT to local database');
     debugPrint(list.first.toString());
     return list;
+  } //Get all survey PT Table Offline from the database
+
+  Future deleteSurveyPtOfflineAllItems() async {
+    Database? myDB = await db.db;
+      await db.myDeleteDataBase();
+    // var response = await myDB!.delete(DatabaseHelper.surveyPTTableOfflineName);
+    debugPrint('Delete Survey PT to local database');
+    // return response;
   }
 }

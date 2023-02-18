@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
@@ -8,6 +10,7 @@ import '../../../../Data/HouseholdPart1/validate_data/hhs_validation.dart';
 import '../../../../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../../../../Helper/validator.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../../Providers/auth.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../Widgets/custom_buttton.dart';
 import '../actions/action_survey_screen.dart';
@@ -31,6 +34,8 @@ class ActionButton extends StatelessWidget {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
     final validationService = Provider.of<ActionSurveyProvider>(context);
+    Auth auth = Provider.of<Auth>(context, listen: false);
+
     return DefaultButton(
       function: () async {
         if (keyVal.currentState!.validate()) {
@@ -59,6 +64,14 @@ class ActionButton extends StatelessWidget {
           surveyPt.id = id;
 
           //==========HHS-Header============
+          Random random = Random();
+          int randomNumber = (1000 + random.nextInt(10000 - 1000));
+          int num = int.parse('${auth.uid}001$randomNumber');
+          surveyPt.headerLat = 0;
+          surveyPt.interViewDate = DateTime.now();
+          surveyPt.headerLong = 0;
+          surveyPt.headerEmpNumber = auth.uid;
+          surveyPt.headerInterviewNumber = num;
           surveyPt.hhsPhone = HhsStatic.householdAddress.hhsPhone;
           // ===>> Q1=====
           surveyPt.hhsDwellingType =
@@ -123,9 +136,6 @@ class ActionButton extends StatelessWidget {
               .hasMatch(HhsStatic.householdAddress.hhsPhone.text.trim())) {
             return Validator.showSnack(context, 'رقم الهاتف غير صحيح..!');
           }
-
-          await SurveyPtOperations()
-              .addItemToSurveyPtOfflineDatabase(surveyPt.data);
 
           await validationService.determinePosition().then((value) {
             surveyPt.hhsAddressLat = value.latitude.toString();
