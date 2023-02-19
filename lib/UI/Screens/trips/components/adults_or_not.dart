@@ -41,7 +41,7 @@ class AdultsOrNot extends StatelessWidget {
                 ),
                 AppSize.spaceWidth1(context),
                 TextGlobal(
-                  text: "البالغين + 18 ",
+                  text: "الأطفال اقل من 18",
                   fontSize: height(context) * .015,
                   color: ColorManager.black,
                 ),
