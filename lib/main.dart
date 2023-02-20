@@ -24,6 +24,7 @@ import 'Resources/colors.dart';
 import 'UI/Screens/Login/login_screen.dart';
 import 'UI/Screens/Splash/splash_screen.dart';
 import 'UI/Screens/vechicles/provider/vechiels_provider.dart';
+
 Future<void> _messageHandler(RemoteMessage message) async {
   debugPrint('will sync');
   syncall();
@@ -61,12 +62,12 @@ Future<bool> syncall() async {
 
   prefs
       .setStringList(
-    "surveys",
-    _surveys.map((v) => json.encode(v.toJson())).toList(),
-  )
+        "surveys",
+        _surveys.map((v) => json.encode(v.toJson())).toList(),
+      )
       .then((value) => debugPrint("done"))
       .onError(
-        (error, stackTrace) {
+    (error, stackTrace) {
       debugPrint(error.toString());
       return false;
     },
@@ -75,12 +76,14 @@ Future<bool> syncall() async {
   debugPrint(_surveys.map((v) => json.encode(v.toJson())).toList().toString());
   return true;
 }
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   debugPrint("something");
   Firebase.initializeApp().then((value) async {
     FirebaseMessaging.instance.subscribeToTopic('sync');
     final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('SystemStatus', 'Online');
     prefs.setBool('dontsync', false);
     FirebaseMessaging.onBackgroundMessage(_messageHandler);
   });
@@ -119,8 +122,12 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SurveyPTProvider(SurveyPT())),
-        ChangeNotifierProvider(create: (_) => ActionSurveyProvider(),),
-        ChangeNotifierProvider(create: (_) => VecProvider(),),
+        ChangeNotifierProvider(
+          create: (_) => ActionSurveyProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => VecProvider(),
+        ),
         ChangeNotifierProvider<Auth>(create: (ctx) => Auth()),
         ChangeNotifierProvider<UserSurveysProvider>(
             create: (ctx) => UserSurveysProvider()),
@@ -149,7 +156,7 @@ class _MyAppState extends State<MyApp> {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home:  const SplashView(),
+        home: const SplashView(),
       ),
     );
   }
