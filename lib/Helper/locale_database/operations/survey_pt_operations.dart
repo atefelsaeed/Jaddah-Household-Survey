@@ -9,13 +9,25 @@ class SurveyPtOperations {
   DatabaseHelper db = DatabaseHelper();
 
   //Add survey PT Table to database
-  Future<int> addItemToSurveyPtDatabase(Survey survey) async {
+  Future<int?> addItemToSurveyPtDatabase(Survey survey) async {
     Database? myDB = await db.db;
-    var raw = await myDB!.insert(
-      DatabaseHelper.surveyPTTableName,
-      survey.toJson(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    List<SurveyPT> list = await getSurveyPtAllItems();
+    int? raw;
+    if (list.isNotEmpty) {
+      list.removeWhere((element) => element.id == survey.id);
+      raw = await myDB!.insert(
+        DatabaseHelper.surveyPTTableName,
+        survey.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    } else {
+      raw = await myDB!.insert(
+        DatabaseHelper.surveyPTTableName,
+        survey.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+    debugPrint('addItemToSurveyPtDatabase');
     return raw;
   }
 
@@ -39,12 +51,7 @@ class SurveyPtOperations {
       survey.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-
-    // await myDB.insert(
-    //   DatabaseHelper.surveyPTTableName,
-    //   survey.toJson(),
-    //   conflictAlgorithm: ConflictAlgorithm.replace,
-    // );
+    // await addItemToSurveyPtDatabase(survey);
     return raw;
   }
 
@@ -63,5 +70,4 @@ class SurveyPtOperations {
     debugPrint('Get Survey PT to local database');
     return list;
   }
-
 }

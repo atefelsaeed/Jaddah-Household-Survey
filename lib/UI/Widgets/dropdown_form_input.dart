@@ -6,7 +6,7 @@ import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 class DropDownFormInput2<T> extends StatelessWidget {
   final List<Map> options;
   final String? hint;
-   Widget? label;
+  Widget? label;
   final Function? onChange;
 
   final T? initial;
@@ -14,7 +14,7 @@ class DropDownFormInput2<T> extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final Function(T?)? onSaved;
 
-   DropDownFormInput2({
+  DropDownFormInput2({
     Key? key,
     required this.options,
     this.hint,
@@ -30,7 +30,10 @@ class DropDownFormInput2<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormField(
       initialValue: initial,
-      validator: validator,
+      validator: (val) {
+        if (val == null) return 'يجب يجب إعطاء إجابة!';
+        return null;
+      },
       autovalidateMode: autovalidateMode,
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
@@ -62,7 +65,6 @@ class DropDownFormInput2<T> extends StatelessWidget {
                       value: field.value,
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       onChanged: (T? newValue) {
-
                         field.didChange(newValue);
                         field.save();
                         if (onChange != null) {
@@ -125,7 +127,10 @@ class DropDownFormInput<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormField(
       initialValue: initial,
-      validator: validator,
+      validator: (val) {
+        if (val == null) return 'يجب يجب إعطاء إجابة!';
+        return null;
+      },
       autovalidateMode: autovalidateMode,
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(

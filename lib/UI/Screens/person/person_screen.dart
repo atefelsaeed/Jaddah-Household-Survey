@@ -296,7 +296,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                             .personalHeadData!
                                             .hhsHavePastTrip
                                             .text = '';
-
                                       } else {
                                         base[i].personalHeadData!.hasPasTrip =
                                             false;
@@ -517,7 +516,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                       HhsStatic.peopleAdults18.toString()) +
                                   int.parse(HhsStatic.peopleUnder18.toString());
 
-                              debugPrint(PersonModelList.personModelList.length.toString());
+                              debugPrint(PersonModelList.personModelList.length
+                                  .toString());
                               PersonModelList.personModelList.length;
                               if (x > PersonModelList.personModelList.length) {
                                 setState(() {
