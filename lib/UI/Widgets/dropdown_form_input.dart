@@ -30,10 +30,11 @@ class DropDownFormInput2<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormField(
       initialValue: initial,
-      validator: (val) {
+      validator:validator,
+      /* (val) {
         if (val == null) return 'يجب يجب إعطاء إجابة!';
         return null;
-      },
+      }*/
       autovalidateMode: autovalidateMode,
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
@@ -127,10 +128,7 @@ class DropDownFormInput<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormField(
       initialValue: initial,
-      validator: (val) {
-        if (val == null) return 'يجب يجب إعطاء إجابة!';
-        return null;
-      },
+      validator:validator,
       autovalidateMode: autovalidateMode,
       onSaved: onSaved,
       builder: (FormFieldState<T> field) => Column(
