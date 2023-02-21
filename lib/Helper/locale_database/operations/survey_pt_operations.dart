@@ -51,11 +51,13 @@ class SurveyPtOperations {
       survey.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-    // await addItemToSurveyPtDatabase(survey);
+    //Add Item To Survey PT to Local Database.
+    await addItemToSurveyPtDatabase(survey);
     return raw;
   }
 
-  Future<int> deleteAuthTable() async {
+  //Delete deleteSurveyPTTableOffline
+  Future<int> deleteSurveyPTTableOffline() async {
     Database? myDB = await db.db;
     var raw = await myDB!.delete(DatabaseHelper.surveyPTTableOfflineName);
     return raw;

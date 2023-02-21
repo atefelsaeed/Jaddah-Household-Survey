@@ -28,44 +28,81 @@ class CheckTripsValidation {
     for (var element in TripModeList.tripModeList) {
       if (element.chosenPerson.isEmpty) {
         return Validator.showSnack(context, " يجب إخيار ! صاحب الرحلة؟");
-      } else if (status == 'Online' &&
+      }
+
+      ///startBeginningModel!.tripAddressLat && tripAddressLong
+      else if (status == 'Online' &&
           (element.startBeginningModel!.tripAddressLat == null ||
               element.startBeginningModel!.tripAddressLat!.isEmpty ||
               element.startBeginningModel!.tripAddressLong == null ||
               element.startBeginningModel!.tripAddressLong!.isEmpty)) {
         return Validator.showSnack(
             context, " يجب إخيار ! 1. من أین بدأت الیوم؟");
-      } else if (element.purposeTravel == null || element.purposeTravel == '') {
+      }
+
+      ///purposeTravel
+      else if (element.purposeTravel == null || element.purposeTravel == '') {
         return Validator.showSnack(
             context, " يجب إخيار ! ما ھو الغرض من التواجد ھناك؟");
-      } else if (status == 'Online' &&
+      }
+
+      ///endingAddress!.tripAddressLat && tripAddressLong
+      else if (status == 'Online' &&
           (element.endingAddress!.tripAddressLat == null ||
               element.endingAddress!.tripAddressLong == null ||
               element.endingAddress!.tripAddressLat!.isEmpty ||
               element.endingAddress!.tripAddressLong!.isEmpty)) {
         return Validator.showSnack(
             context, " يجب إخيار ! 4. الى أي عنوان ذھبت؟");
-      } else if (element.tripReason == null || element.tripReason == "") {
+      }
+
+      ///tripReason
+      else if (element.tripReason == null || element.tripReason == "") {
         return Validator.showSnack(
             context, " يجب إخيار !  ما ھو الغرض من الذھاب إلى ھذا  المكان؟");
-      } else if (element.travelWay!.accessMode == null ||
+      }
+
+      ///travelWay!.accessMode
+      else if (element.travelWay!.accessMode == null ||
           element.travelWay!.accessMode == "") {
         return Validator.showSnack(context, " يجب إخيار ! الوضع الرئیسي ");
-      } else if (element.travelWay!.mainMode == null ||
+      }
+
+      ///travelWay!.mainMode
+      else if (element.travelWay!.mainMode == null ||
           element.travelWay!.mainMode == '') {
         return Validator.showSnack(context, " يجب إخيار ! وضع وصول؟");
-      } else if (element.travelTypeModel.travelType == null ||
+      }
+
+      ///isTravelAlone
+      else if (element.isTravelAlone == null) {
+        return Validator.showSnack(
+            context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
+      }
+
+      ///travelTypeModel.travelType
+      else if (element.travelTypeModel.travelType == null ||
           element.travelTypeModel.travelType == '') {
         return Validator.showSnack(context, " يجب إخيار ! بماذا ذهبت ؟ ");
-      } else if (element.arrivalDepartTime.numberRepeatTrip == null ||
+      }
+
+      ///travelTypeModel.carParkingPlace
+      else if ((element.travelTypeModel.travelType == "سيارة" ||
+              element.travelTypeModel.travelType == "دراجة نارية") &&
+          (element.travelTypeModel.carParkingPlace == null ||
+              element.travelTypeModel.carParkingPlace!.isEmpty)) {
+        return Validator.showSnack(context, " يجب إخيار ! أین أوقفت؟ ");
+      }
+
+      ///arrivalDepartTime.numberRepeatTrip
+      else if (element.arrivalDepartTime.numberRepeatTrip == null ||
           element.arrivalDepartTime.numberRepeatTrip == '') {
         return Validator.showSnack(
             context, " يجب إخيار ! كم مرة تقوم بهذە الرحلة؟ ");
-      } else if (element.arrivalDepartTime.numberRepeatTrip == null ||
-          element.arrivalDepartTime.numberRepeatTrip == "") {
-        return Validator.showSnack(
-            context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
-      } else {
+      }
+
+      ///Validation Done
+      else {
         //=======Add-survey-to-surveys-list================
         await surveys.addSurvey(surveyPt.data);
         //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list

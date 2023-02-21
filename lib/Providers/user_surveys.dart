@@ -34,7 +34,7 @@ class UserSurveysProvider with ChangeNotifier {
         body:json.encode(list),
       );
       if (res.statusCode == 200) {
-        await SurveyPtOperations().deleteAuthTable();
+        await SurveyPtOperations().deleteSurveyPTTableOffline();
         debugPrint('Delete Survey Pt Offline All Items Done!');
       }
       iSSyncing = false;
