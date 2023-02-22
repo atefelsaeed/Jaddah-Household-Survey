@@ -52,7 +52,7 @@ class SurveyPtOperations {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
     //Add Item To Survey PT to Local Database.
-    await addItemToSurveyPtDatabase(survey);
+    // await addItemToSurveyPtDatabase(survey);
     return raw;
   }
 

@@ -5,7 +5,6 @@ import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
-import '../../Survey/widgets/text_form_row.dart';
 
 class WhyDidYouGo extends StatefulWidget {
   final int indexTripModel;

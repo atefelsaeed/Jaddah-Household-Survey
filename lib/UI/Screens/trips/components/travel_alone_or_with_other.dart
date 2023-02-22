@@ -44,7 +44,7 @@ class _TravelAloneState extends State<TravelAlone> {
                 } else if (r.val == "مع الأخرين" && r.check == true) {
                   TripModeList.tripModeList[widget.index].isTravelAlone = true;
                 } else {
-                  TripModeList.tripModeList[widget.index].isTravelAlone = false;
+                  TripModeList.tripModeList[widget.index].isTravelAlone = null;
                 }
               });
             } else {
