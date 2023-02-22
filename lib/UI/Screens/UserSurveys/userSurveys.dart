@@ -24,7 +24,6 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
         Provider.of<UserSurveysProvider>(context, listen: false);
     userSurveysProvider.fetch(widget.id);
     userSurveysProvider.isSearching = false;
-
     super.initState();
   }
 

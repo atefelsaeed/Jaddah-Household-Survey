@@ -25,80 +25,101 @@ class CheckTripsValidation {
 
     String status = (prefs.getString('SystemStatus') ?? 'Online');
     //======Trip-Validations======================
-    for (var element in TripModeList.tripModeList) {
-      if (element.chosenPerson.isEmpty) {
-        return Validator.showSnack(context, " يجب إخيار ! صاحب الرحلة؟");
-      }
+    for (int e = 0; e <= TripModeList.tripModeList.length; e++) {
+      if (e < TripModeList.tripModeList.length) {
+        if (TripModeList.tripModeList[e].chosenPerson.isEmpty) {
+          return Validator.showSnack(context, " يجب إخيار ! صاحب الرحلة؟");
+        }
 
-      ///startBeginningModel!.tripAddressLat && tripAddressLong
-      else if (status == 'Online' &&
-          (element.startBeginningModel!.tripAddressLat == null ||
-              element.startBeginningModel!.tripAddressLat!.isEmpty ||
-              element.startBeginningModel!.tripAddressLong == null ||
-              element.startBeginningModel!.tripAddressLong!.isEmpty)) {
-        return Validator.showSnack(
-            context, " يجب إخيار ! 1. من أین بدأت الیوم؟");
-      }
+        ///startBeginningModel!.tripAddressLat && tripAddressLong
+        else if (status == 'Online' &&
+            (TripModeList.tripModeList[e].startBeginningModel!.tripAddressLat ==
+                    null ||
+                TripModeList.tripModeList[e].startBeginningModel!
+                    .tripAddressLat!.isEmpty ||
+                TripModeList
+                        .tripModeList[e].startBeginningModel!.tripAddressLong ==
+                    null ||
+                TripModeList.tripModeList[e].startBeginningModel!
+                    .tripAddressLong!.isEmpty)) {
+          return Validator.showSnack(
+              context, " يجب إخيار ! 1. من أین بدأت الیوم؟");
+        }
 
-      ///purposeTravel
-      else if (element.purposeTravel == null || element.purposeTravel == '') {
-        return Validator.showSnack(
-            context, " يجب إخيار ! ما ھو الغرض من التواجد ھناك؟");
-      }
+        ///purposeTravel
+        else if (TripModeList.tripModeList[e].purposeTravel == null ||
+            TripModeList.tripModeList[e].purposeTravel == '') {
+          return Validator.showSnack(
+              context, " يجب إخيار ! ما ھو الغرض من التواجد ھناك؟");
+        }
 
-      ///endingAddress!.tripAddressLat && tripAddressLong
-      else if (status == 'Online' &&
-          (element.endingAddress!.tripAddressLat == null ||
-              element.endingAddress!.tripAddressLong == null ||
-              element.endingAddress!.tripAddressLat!.isEmpty ||
-              element.endingAddress!.tripAddressLong!.isEmpty)) {
-        return Validator.showSnack(
-            context, " يجب إخيار ! 4. الى أي عنوان ذھبت؟");
-      }
+        ///endingAddress!.tripAddressLat && tripAddressLong
+        else if (status == 'Online' &&
+            (TripModeList.tripModeList[e].endingAddress!.tripAddressLat ==
+                    null ||
+                TripModeList.tripModeList[e].endingAddress!.tripAddressLong ==
+                    null ||
+                TripModeList
+                    .tripModeList[e].endingAddress!.tripAddressLat!.isEmpty ||
+                TripModeList
+                    .tripModeList[e].endingAddress!.tripAddressLong!.isEmpty)) {
+          return Validator.showSnack(
+              context, " يجب إخيار ! 4. الى أي عنوان ذھبت؟");
+        }
 
-      ///tripReason
-      else if (element.tripReason == null || element.tripReason == "") {
-        return Validator.showSnack(
-            context, " يجب إخيار !  ما ھو الغرض من الذھاب إلى ھذا  المكان؟");
-      }
+        ///tripReason
+        else if (TripModeList.tripModeList[e].tripReason == null ||
+            TripModeList.tripModeList[e].tripReason == "") {
+          return Validator.showSnack(
+              context, " يجب إخيار !  ما ھو الغرض من الذھاب إلى ھذا  المكان؟");
+        }
 
-      ///travelWay!.accessMode
-      else if (element.travelWay!.accessMode == null ||
-          element.travelWay!.accessMode == "") {
-        return Validator.showSnack(context, " يجب إخيار ! الوضع الرئیسي ");
-      }
+        ///travelWay!.accessMode
+        else if (TripModeList.tripModeList[e].travelWay!.accessMode == null ||
+            TripModeList.tripModeList[e].travelWay!.accessMode == "") {
+          return Validator.showSnack(context, " يجب إخيار ! الوضع الرئیسي ");
+        }
 
-      ///travelWay!.mainMode
-      else if (element.travelWay!.mainMode == null ||
-          element.travelWay!.mainMode == '') {
-        return Validator.showSnack(context, " يجب إخيار ! وضع وصول؟");
-      }
+        ///travelWay!.mainMode
+        else if (TripModeList.tripModeList[e].travelWay!.mainMode == null ||
+            TripModeList.tripModeList[e].travelWay!.mainMode == '') {
+          return Validator.showSnack(context, " يجب إخيار ! وضع وصول؟");
+        }
 
-      ///isTravelAlone
-      else if (element.isTravelAlone == null) {
-        return Validator.showSnack(
-            context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
-      }
+        ///isTravelAlone
+        else if (TripModeList.tripModeList[e].isTravelAlone == null) {
+          return Validator.showSnack(
+              context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
+        }
 
-      ///travelTypeModel.travelType
-      else if (element.travelTypeModel.travelType == null ||
-          element.travelTypeModel.travelType == '') {
-        return Validator.showSnack(context, " يجب إخيار ! بماذا ذهبت ؟ ");
-      }
+        ///travelTypeModel.travelType
+        else if (TripModeList.tripModeList[e].travelTypeModel.travelType ==
+                null ||
+            TripModeList.tripModeList[e].travelTypeModel.travelType == '') {
+          return Validator.showSnack(context, " يجب إخيار ! بماذا ذهبت ؟ ");
+        }
 
-      ///travelTypeModel.carParkingPlace
-      else if ((element.travelTypeModel.travelType == "سيارة" ||
-              element.travelTypeModel.travelType == "دراجة نارية") &&
-          (element.travelTypeModel.carParkingPlace == null ||
-              element.travelTypeModel.carParkingPlace!.isEmpty)) {
-        return Validator.showSnack(context, " يجب إخيار ! أین أوقفت؟ ");
-      }
+        ///travelTypeModel.carParkingPlace
+        else if ((TripModeList.tripModeList[e].travelTypeModel.travelType ==
+                    "سيارة" ||
+                TripModeList.tripModeList[e].travelTypeModel.travelType ==
+                    "دراجة نارية") &&
+            (TripModeList.tripModeList[e].travelTypeModel.carParkingPlace ==
+                    null ||
+                TripModeList.tripModeList[e].travelTypeModel.carParkingPlace!
+                    .isEmpty)) {
+          return Validator.showSnack(context, " يجب إخيار ! أین أوقفت؟ ");
+        }
 
-      ///arrivalDepartTime.numberRepeatTrip
-      else if (element.arrivalDepartTime.numberRepeatTrip == null ||
-          element.arrivalDepartTime.numberRepeatTrip == '') {
-        return Validator.showSnack(
-            context, " يجب إخيار ! كم مرة تقوم بهذە الرحلة؟ ");
+        ///arrivalDepartTime.numberRepeatTrip
+        else if (TripModeList
+                    .tripModeList[e].arrivalDepartTime.numberRepeatTrip ==
+                null ||
+            TripModeList.tripModeList[e].arrivalDepartTime.numberRepeatTrip ==
+                '') {
+          return Validator.showSnack(
+              context, " يجب إخيار ! كم مرة تقوم بهذە الرحلة؟ ");
+        }
       }
 
       ///Validation Done
@@ -110,7 +131,6 @@ class CheckTripsValidation {
         for (var element in userSurvey.userSurveys) {
           await HHSUserSurveysOperations().addItemToDatabase(element);
         }
-
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

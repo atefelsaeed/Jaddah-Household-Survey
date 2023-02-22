@@ -30,6 +30,8 @@ class _TravelAloneState extends State<TravelAlone> {
 
   @override
   Widget build(BuildContext context) {
+    print('is travel a lone');
+    print(TripModeList.tripModeList[widget.index].isTravelAlone);
     // TODO: implement build
     return Column(
       children: [
@@ -39,7 +41,7 @@ class _TravelAloneState extends State<TravelAlone> {
             if (TripModeList
                 .tripModeList[widget.index].chosenPerson.isNotEmpty) {
               setState(() {
-                if (r.val == "بمفردك") {
+                if (r.val == "بمفردك" ) {
                   TripModeList.tripModeList[widget.index].isTravelAlone = false;
                 } else if (r.val == "مع الأخرين" && r.check == true) {
                   TripModeList.tripModeList[widget.index].isTravelAlone = true;
@@ -51,12 +53,12 @@ class _TravelAloneState extends State<TravelAlone> {
               showError();
               setState(() {
                 TripModeList
-                    .tripModeList[widget.index]
-                    .travelWithOther[TripModeList.tripModeList[widget.index]
-                    .travelWithOther.keys.first]!
-                    .toList()[
-                TripModeList.tripModeList[widget.index]
-                    .travelWithOther['index']]["isChick"] = false;
+                        .tripModeList[widget.index]
+                        .travelWithOther[TripModeList.tripModeList[widget.index]
+                            .travelWithOther.keys.first]!
+                        .toList()[
+                    TripModeList.tripModeList[widget.index]
+                        .travelWithOther['index']]["isChick"] = false;
               });
 
               debugPrint('no user');

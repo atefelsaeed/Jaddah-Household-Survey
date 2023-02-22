@@ -9,6 +9,7 @@ class TripModeList {
   static List<TripsModel> tripModeList = [
     TripsModel(
       chosenPerson: '',
+      isTravelAlone: null,
       purposeOfBeingThere2: {
         "TripReason": [
           {"value": ' في المنزل', "isChick": false},

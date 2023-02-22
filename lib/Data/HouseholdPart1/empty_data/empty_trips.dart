@@ -56,7 +56,7 @@ class EmptyTrips {
       element.friendPerson = {};
       element.chosenPerson = '';
       element.departureTime.text = '';
-      element.isTravelAlone = false;
+      element.isTravelAlone = null;
       element.otherWhereDidYouParkEditingControl.text = '';
       element.taxiTravelTypeEditingControl.text = '';
       element.arrivalDepartTime.departTime.text = '';

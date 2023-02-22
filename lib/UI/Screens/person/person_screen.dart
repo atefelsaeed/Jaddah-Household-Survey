@@ -37,14 +37,6 @@ class _PersonScreenState extends State<PersonScreen> {
   bool type = false;
   bool typeAlone = true;
   bool hasPasTrip = false;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    PersonModelList.personModelList[0]
-        .personalHeadData!
-        .age.text=25.toString();
-  }
   var mainOccupationKey = PersonData.mainOccupation.keys.first;
   TextEditingController occupationSectorController = TextEditingController();
   var occupationSectorKey = PersonData.occupationSector.keys.first;
