@@ -42,9 +42,7 @@ class SurveyPTProvider extends SurveyProvider {
     try {
       surveyAllData = await SurveyPtOperations()
           .getSurveyPtAllItems();
-
-      data!=surveyAllData!.first;
- 
+      print(surveyAllData!.length);
       notifyListeners();
     }catch(ex){
       rethrow;

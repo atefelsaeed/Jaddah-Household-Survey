@@ -27,6 +27,10 @@ class ActionSurveyProvider extends ChangeNotifier {
       HhsStatic.householdQuestions.hhsNumberSeparateFamilies = "1";
     }
   }
+  cc(){
+
+    notifyListeners();
+  }
 
   q7(ChangeBoxResponse r) {
     HhsStatic.householdQuestions.hhsNumberYearsInAddress = r.val;
