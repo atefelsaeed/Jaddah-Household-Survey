@@ -1,3 +1,7 @@
+
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -35,6 +39,7 @@ class SurveyPtOperations {
   Future<List<SurveyPT>> getSurveyPtAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableName);
+log(response.toString());
     List<SurveyPT>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
     debugPrint('local data base');
