@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Data/HouseholdPart1/empty_data.dart';
+import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
+import '../../../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 
@@ -78,13 +80,28 @@ class ItemUserSurvey extends StatelessWidget {
                     text: 'بدأ استبيان',
                     btnWidth: width(context) * .35,
                   )
-                : DefaultButton(
-                    function: () {},
+                :           itemSurveyModel.status == "not filled"? DefaultButton(
+                    function: () async {
+
+
+
+                    },
                     isWidget: true,
                     background: ColorManager.grayColor,
                     text: 'تم الاستبيان',
                     btnWidth: width(context) * .35,
-                  ),
+                  ):DefaultButton(
+              function: () async {
+            await    userSurveysProvider.getAllLocalData();
+
+           print( userSurveysProvider.surveyAllData?.first.hhsSeparateFamilies?.first.numberAdults);
+
+              },
+              isWidget: true,
+              background: ColorManager.grayColor,
+              text: 'تم الاستبيان',
+              btnWidth: width(context) * .35,
+            ),
           ],
         ),
         AppSize.spaceHeight2(context),

@@ -35,6 +35,7 @@ class SurveyPtOperations {
   Future<List<SurveyPT>> getSurveyPtAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableName);
+    print(response.toString());
     List<SurveyPT>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
     debugPrint('local data base');

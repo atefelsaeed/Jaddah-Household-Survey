@@ -3,19 +3,22 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
+import 'package:jaddah_household_survey/Models/survey.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
 import '../Helper/api_routing.dart';
 import '../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
 import '../Helper/locale_database/operations/survey_pt_operations.dart';
+import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/user_serveys_model.dart';
 import '../Models/user_surves_status.dart';
 
 class UserSurveysProvider with ChangeNotifier {
   List<Map<String, dynamic>> list = [];
   List<String> list2 = [''];
-
+  late SurveyPT surveyPT;
+  List<SurveyPT>? surveyAllData=[];
   bool iSSyncing = false;
 
   Future<bool> multiSync({callback, bool force = false}) async {
@@ -73,6 +76,7 @@ class UserSurveysProvider with ChangeNotifier {
         .toList();
   }
 
+
   bool isSearching = false;
   List<UserSurveysModelData> searchList = [];
   List<UserSurveysModelData> hayList = [];
@@ -111,7 +115,16 @@ class UserSurveysProvider with ChangeNotifier {
 
     notifyListeners();
   }
-
+  Future getAllLocalData() async {
+    try {
+      surveyAllData = await SurveyPtOperations()
+          .getSurveyPtAllItems();
+surveyPT=surveyAllData!.first;
+     notifyListeners();
+    }catch(ex){
+      rethrow;
+    }
+  }
   void searchBLOK(String value) {
     searchList.clear();
     for (var element in qtaList) {
@@ -126,6 +139,8 @@ class UserSurveysProvider with ChangeNotifier {
     debugPrint(searchList.length.toString());
     notifyListeners();
   }
+
+
 
   void changeIcon() {
     isSearching = !isSearching;

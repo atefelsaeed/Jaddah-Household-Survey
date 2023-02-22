@@ -10,7 +10,7 @@ import '../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 
 abstract class SurveyProvider with ChangeNotifier {
   late Map _authHeader;
-  final SurveyPT data;
+   final SurveyPT data;
   bool syncing = false;
 
   SurveyProvider(this.data);

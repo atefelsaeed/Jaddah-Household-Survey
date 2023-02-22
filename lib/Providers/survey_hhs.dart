@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_bod
 import 'package:jaddah_household_survey/Models/Vehicles_SurveyModel/vehicles_model.dart';
 
 import '../Data/Enums/hhs_enums.dart';
+import '../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../Models/HHS_SurvyModels/hhs_models.dart';
 import '../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../Models/Person_SurveyModel/person_model.dart';
@@ -35,6 +36,19 @@ class SurveyPTProvider extends SurveyProvider {
   set vehiclesData(VehiclesModel vehiclesData) {
     _data.vehiclesData = vehiclesData;
     // notifyListeners();
+  }
+  List<SurveyPT>? surveyAllData=[];
+  Future getAllLocalData() async {
+    try {
+      surveyAllData = await SurveyPtOperations()
+          .getSurveyPtAllItems();
+
+      data!=surveyAllData!.first;
+ 
+      notifyListeners();
+    }catch(ex){
+      rethrow;
+    }
   }
 
   LatLng? startingAddressLatLng;

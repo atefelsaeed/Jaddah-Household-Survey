@@ -10,7 +10,7 @@ class PersonModelList {
       personName: TextEditingController(),
       //==personalHeadData==
       personalHeadData: PersonalHeadData(
-        age: TextEditingController(),
+        age: TextEditingController(text: 25.toString()),
         nationality: TextEditingController(),
         hhsHavePastTrip: TextEditingController(),
         nationalityType: '',
