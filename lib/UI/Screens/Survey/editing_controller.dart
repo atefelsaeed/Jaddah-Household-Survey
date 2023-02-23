@@ -56,7 +56,7 @@ c(EditingController editingController, BuildContext context) async {
       .surveyAllData!.first.householdQuestions.hhsDwellingType
       .toString(); //solve
 
-  surveyPt.hhsNumberApartments.text =
+  HhsStatic.householdQuestions.hhsNumberApartments.text =
       surveyPt.surveyAllData!.first.householdQuestions.hhsNumberApartments.text;
 
   HhsStatic.householdQuestions.hhsNumberFloors.text =
