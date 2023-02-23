@@ -3,15 +3,12 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_contro
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
-import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
+import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
-import '../../../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../../../Providers/survey_hhs.dart';
 import 'actions/action_survey_screen.dart';
 
 class EditingController {
-
-
   final TextEditingController yes = TextEditingController();
 
   final TextEditingController peopleAdults18 = TextEditingController();
@@ -42,154 +39,188 @@ class EditingController {
       peopleUnder18: TextEditingController(),
       totalNumber: TextEditingController(),
       peopleAdults18: TextEditingController());
-
-
-
 }
- c(EditingController editingController,BuildContext context) async {
-   print('surveyPT.householdQuestions.hhsElectricCycles.adultsBikesNumber');
-   SurveyPTProvider surveyPt =
-   Provider.of<SurveyPTProvider>(context, listen: false);
-   final validationService = Provider.of<ActionSurveyProvider>(
-       context, listen: false);
-   await surveyPt.getAllLocalData();
-   print(surveyPt.surveyAllData!.first.householdQuestions.hhsNumberBedRooms.text
-       .toString());
-   print(HhsStatic.householdQuestions.hhsNumberBedRooms.text);
-   /* HhsStatic.householdAddress.hhsPhone.text=surveyPt.surveyAllData!.first.householdQuestions.hhsDemolishedAreas.toString();
-   HhsStatic.householdQuestions.hhsNumberBedRooms.text=surveyPt.surveyAllData!.first.householdQuestions.hhsNumberBedRooms.text.toString();
-   HhsStatic.householdQuestions.hhsNumberFloors.text=surveyPt.surveyAllData!.first.householdQuestions.hhsNumberFloors.text.toString();
-   HhsStatic.householdQuestions.hhsDwellingType=surveyPt.surveyAllData!.first.householdQuestions.hhsDwellingType.toString();
-   HhsStatic.householdQuestions.hhsDemolishedAreas=surveyPt.surveyAllData!.first.householdQuestions.hhsDemolishedAreas.toString();
-   HhsStatic.householdQuestions.hhsIsDwelling=surveyPt.surveyAllData!.first.householdQuestions.hhsIsDwelling.toString();
-   HhsStatic.householdQuestions.hhsIsDwellingOther!.text=surveyPt.surveyAllData!.first.householdQuestions.hhsIsDwellingOther!.text.toString();
-validationService.cc();*/
 
+c(EditingController editingController, BuildContext context) async {
+  SurveyPTProvider surveyPt =
+      Provider.of<SurveyPTProvider>(context, listen: false);
+  final validationService =
+      Provider.of<ActionSurveyProvider>(context, listen: false);
+  await surveyPt.getAllLocalData();
 
-   HhsStatic.householdQuestions.hhsDwellingType =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsIsDwelling
-           .toString(); //solve
-   surveyPt.hhsNumberApartments.text =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsNumberApartments
-           .toString();
+  ///header phone
+  HhsStatic.householdAddress.hhsPhone.text = surveyPt.hhsPhone.text;
 
-   HhsStatic.householdQuestions.hhsNumberFloors.text =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsNumberFloors.text;
+  ///Q1 hhsDwellingType
+  HhsStatic.householdQuestions.hhsDwellingType = surveyPt
+      .surveyAllData!.first.householdQuestions.hhsDwellingType
+      .toString(); //solve
 
-   HhsStatic.householdQuestions.hhsNumberBedRooms.text =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsNumberBedRooms.text;
-   // ================ HHSQ10 ==============
-   // surveyPt.hhsSeparateFamilies = HhsStatic.houseHold[0].totalNumberVehicles;
+  surveyPt.hhsNumberApartments.text =
+      surveyPt.surveyAllData!.first.householdQuestions.hhsNumberApartments.text;
 
+  HhsStatic.householdQuestions.hhsNumberFloors.text =
+      surveyPt.surveyAllData!.first.householdQuestions.hhsNumberFloors.text;
 
-   HhsStatic.householdAddress.hhsPhone.text = surveyPt.hhsPhone.text;
-   HhsStatic.householdQuestions.hhsIsDwelling =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsIsDwelling; //solve
+  HhsStatic.householdQuestions.hhsNumberBedRooms.text =
+      surveyPt.surveyAllData!.first.householdQuestions.hhsNumberBedRooms.text;
 
+  ///
+  HhsStatic.householdQuestions.hhsIsDwelling =
+      surveyPt.surveyAllData!.first.householdQuestions.hhsIsDwelling; //solve
 
-   HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
-       surveyPt.surveyAllData!.first.householdQuestions
-           .hhsNumberSeparateFamilies;
-   //solve
+  HhsStatic.householdQuestions.hhsNumberSeparateFamilies = surveyPt
+      .surveyAllData!.first.householdQuestions.hhsNumberSeparateFamilies;
 
-   HhsStatic.householdQuestions.hhsNumberYearsInAddress =
-       surveyPt.surveyAllData!.first.householdQuestions
-           .hhsNumberYearsInAddress; //solve
-   HhsStatic.householdAddress.hhsPhone =
-       surveyPt.surveyAllData!.first.header.householdAddress.hhsPhone;
-   print(surveyPt.surveyAllData!.first.householdQuestions
-       .hhsNumberSeparateFamilies);
-   for (int i = 1; i < QuestionsData
-       .qh4[QuestionsData.qh4.keys.first]!
-       .toList().length; i++) {
-     if (int.parse(surveyPt.surveyAllData!.first.householdQuestions
-         .hhsNumberSeparateFamilies.toString()) == i) {
-       print(i);
-       QuestionsData.qh4[QuestionsData.qh4.keys.first][i - 1]["isChick"] = true;
-     }
-   }
-   HhsStatic.houseHold = [];
-   editingController.q6peopleUnder18 = [];
-   editingController.q6peopleAdults18 = [];
-   editingController.q6totalNumberOfVec = [];
-   for (int i = 0; i <
-       surveyPt.surveyAllData!.first.hhsSeparateFamilies!.length; i++) {
-     editingController.q6peopleUnder18.add(TextEditingController(
-         text: surveyPt.surveyAllData!.first.hhsSeparateFamilies![i]
-             .numberChildren.toString()));
-     editingController.q6peopleAdults18.add(TextEditingController(
-         text: surveyPt.surveyAllData!.first.hhsSeparateFamilies![i]
-             .numberAdults.toString()));
-     editingController.q6totalNumberOfVec.add(TextEditingController(
-         text: surveyPt.surveyAllData!.first.hhsSeparateFamilies![i]
-             .totalNumberVehicles.toString()));
-     //  HhsStatic.houseHold.add(SeparateFamilies(TextEditingController(text:surveyPt.surveyAllData!.first.hhsSeparateFamilies[i].numberAdults ), TextEditingController(text: TextEditingController(text:surveyPt.surveyAllData!.first.hhsSeparateFamilies[i].numberChildren ), TextEditingController(text: surveyPt.surveyAllData!.first.hhsSeparateFamilies[i].numberChildren)))
-   }
-   editingController.peopleAdults18.text =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsNumberAdults
-           .toString();
-   editingController.peopleUnder18.text =
-       surveyPt.surveyAllData!.first.householdQuestions.hhsNumberChildren
-           .toString();
-   for (int i = 1; i < QuestionsData
-       .qh4[QuestionsData.qh4.keys.first]!
-       .toList().length; i++) {
-     if (int.parse(surveyPt.surveyAllData!.first.householdQuestions
-         .hhsNumberSeparateFamilies.toString()) == i) {
-       print(i);
-       QuestionsData.qh4[QuestionsData.qh4.keys.first][i - 1]["isChick"] = true;
-     }
-   }
+  HhsStatic.householdQuestions.hhsNumberYearsInAddress = surveyPt
+      .surveyAllData!.first.householdQuestions.hhsNumberYearsInAddress; //solve
+  HhsStatic.householdAddress.hhsPhone =
+      surveyPt.surveyAllData!.first.header.householdAddress.hhsPhone;
 
-   for (int i = 1; i < QuestionsData
-       .qh7[QuestionsData.qh7.keys.first]!
-       .toList().length; i++) {
-     if (surveyPt.surveyAllData!.first.householdQuestions
-         .hhsNumberYearsInAddress.toString() ==
-         QuestionsData.qh7[QuestionsData.qh7.keys.first][i]["value"]) {
-       QuestionsData.qh7[QuestionsData.qh7.keys.first][i - 1]["isChick"] = true;
-     }
-   }
-print("123");
-   print(surveyPt.surveyAllData!.first.vehiclesData.nearestBusStop);
-   for (int i = 1; i < VehiclesData.q3VecData
-       [VehiclesData.q3VecData.keys.first]!
-       .toList().length; i++) {
-     if (surveyPt.surveyAllData!.first.vehiclesData.nearestBusStop
-          ==
-         VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]["value"]) {
-       print(VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]);
-       print(i);
-       VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i-1]["isChick"] = true;
-       print("112355");
-       print(  VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i-1]["isChick"]);
-       VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i-1]["value"];
-     }
-   }
+  ///Q4 hhsNumberSeparateFamilies
+  for (int i = 1;
+      i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
+      i++) {
+    if (int.parse(surveyPt
+            .surveyAllData!.first.householdQuestions.hhsNumberSeparateFamilies
+            .toString()) ==
+        i) {
+      QuestionsData.qh4[QuestionsData.qh4.keys.first][i - 1]["isChick"] = true;
+    }
+  }
+  HhsStatic.houseHold = [];
+  editingController.q6peopleUnder18 = [];
+  editingController.q6peopleAdults18 = [];
+  editingController.q6totalNumberOfVec = [];
+  for (int i = 0;
+      i < surveyPt.surveyAllData!.first.hhsSeparateFamilies!.length;
+      i++) {
+    editingController.q6peopleUnder18.add(TextEditingController(
+        text: surveyPt
+            .surveyAllData!.first.hhsSeparateFamilies![i].numberChildren
+            .toString()));
+    editingController.q6peopleAdults18.add(TextEditingController(
+        text: surveyPt.surveyAllData!.first.hhsSeparateFamilies![i].numberAdults
+            .toString()));
+    editingController.q6totalNumberOfVec.add(TextEditingController(
+        text: surveyPt
+            .surveyAllData!.first.hhsSeparateFamilies![i].totalNumberVehicles
+            .toString()));
+  }
+  editingController.peopleAdults18.text = surveyPt
+      .surveyAllData!.first.householdQuestions.hhsNumberAdults
+      .toString();
+  editingController.peopleUnder18.text = surveyPt
+      .surveyAllData!.first.householdQuestions.hhsNumberChildren
+      .toString();
 
-   print("object");
-   print(surveyPt.surveyAllData!.first.householdQuestions.hhsDemolishedAreas);
-   print(surveyPt.surveyAllData!.first.householdQuestions.hhsIsDemolishedAreas);
+  ///hhsNumberSeparateFamilies
+  for (int i = 1;
+      i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
+      i++) {
+    if (int.parse(surveyPt
+            .surveyAllData!.first.householdQuestions.hhsNumberSeparateFamilies
+            .toString()) ==
+        i) {
+      QuestionsData.qh4[QuestionsData.qh4.keys.first][i - 1]["isChick"] = true;
+    }
+  }
 
-   if (surveyPt.surveyAllData!
-       .first.householdQuestions.hhsDemolishedAreas
-       .toString()
-       .isNotEmpty) { //  ==QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][i]["value"]){
-     QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][0]["isChick"] = true;
-     HhsStatic.householdQuestions.hhsIsDemolishedAreas=true;
-     HhsStatic.householdQuestions.hhsDemolishedAreas=surveyPt.surveyAllData!.first.householdQuestions.hhsDemolishedAreas
-         .toString();
-   }
+  ///hhsNumberYearsInAddress
+  for (int i = 1;
+      i < QuestionsData.qh7[QuestionsData.qh7.keys.first]!.toList().length;
+      i++) {
+    if (surveyPt.surveyAllData!.first.householdQuestions.hhsNumberYearsInAddress
+            .toString() ==
+        QuestionsData.qh7[QuestionsData.qh7.keys.first][i]["value"]) {
+      QuestionsData.qh7[QuestionsData.qh7.keys.first][i - 1]["isChick"] = true;
+    }
+  }
 
-   editingController.editingController3Q81=EditingController3(peopleUnder18:TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsPedalCycles.childrenBikesNumber), totalNumber: TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsPedalCycles.totalBikesNumber), peopleAdults18: TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsPedalCycles.adultsBikesNumber));
-   editingController.editingController3Q82=EditingController3(peopleUnder18:TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsElectricScooter.childrenBikesNumber), totalNumber: TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsElectricScooter.totalBikesNumber), peopleAdults18: TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsElectricScooter.adultsBikesNumber));
-   editingController.editingController3Q83=EditingController3(peopleUnder18:TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsElectricCycles.childrenBikesNumber), totalNumber: TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsElectricCycles.totalBikesNumber), peopleAdults18: TextEditingController(text: surveyPt.surveyAllData!.first.householdQuestions.hhsElectricCycles.adultsBikesNumber));
+  ///hhsDemolishedAreas
 
-HhsStatic.householdQuestions.hhsTotalIncome=surveyPt.surveyAllData!.first.householdQuestions.hhsTotalIncome;
+  if (surveyPt.surveyAllData!.first.householdQuestions.hhsDemolishedAreas
+      .toString()
+      .isNotEmpty) {
+    QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][0]["isChick"] = true;
+    HhsStatic.householdQuestions.hhsIsDemolishedAreas = true;
+    HhsStatic.householdQuestions.hhsDemolishedAreas = surveyPt
+        .surveyAllData!.first.householdQuestions.hhsDemolishedAreas
+        .toString();
+  }
+
+  ///Q7_1 hhsPedalCycles
+  editingController.editingController3Q81 = EditingController3(
+      peopleUnder18: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions.hhsPedalCycles
+              .childrenBikesNumber),
+      totalNumber: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions.hhsPedalCycles
+              .totalBikesNumber),
+      peopleAdults18: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions.hhsPedalCycles
+              .adultsBikesNumber));
+
+  ///Q7_2 hhsPedalCycles
+  editingController.editingController3Q82 = EditingController3(
+      peopleUnder18: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions
+              .hhsElectricScooter.childrenBikesNumber),
+      totalNumber: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions
+              .hhsElectricScooter.totalBikesNumber),
+      peopleAdults18: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions
+              .hhsElectricScooter.adultsBikesNumber));
+
+  ///Q7_3 hhsPedalCycles
+  editingController.editingController3Q83 = EditingController3(
+      peopleUnder18: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions
+              .hhsElectricCycles.childrenBikesNumber),
+      totalNumber: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions
+              .hhsElectricCycles.totalBikesNumber),
+      peopleAdults18: TextEditingController(
+          text: surveyPt.surveyAllData!.first.householdQuestions
+              .hhsElectricCycles.adultsBikesNumber));
+
+  ///Q8 hhsTotalIncome
+  HhsStatic.householdQuestions.hhsTotalIncome =
+      surveyPt.surveyAllData!.first.householdQuestions.hhsTotalIncome;
+
+  ///Q9 nearestBusStop
+  await validationService.resetValueQ9(surveyPt.surveyAllData!);
+  // for (int i = 0;
+  //     i <
+  //         VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
+  //             .toList()
+  //             .length;
+  //     i++) {
+  //   if (surveyPt.surveyAllData!.first.vehiclesData.nearestBusStop ==
+  //       VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]["value"]) {
+  //     VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]["isChick"] =
+  //         true;
+  //     validationService.cc();
+  //   }
+  // }
+  ///Q10
+  VehModel.vehiclesModel.numberParcelsDeliveries.text =
+      surveyPt.surveyAllData!.first.vehiclesData.numberParcelsDeliveries.text;
+  VehModel.vehiclesModel.numberParcels.text =
+      surveyPt.surveyAllData!.first.vehiclesData.numberParcels.text;
+  VehModel.vehiclesModel.numberOtherParcels.text =
+      surveyPt.surveyAllData!.first.vehiclesData.numberOtherParcels.text;
+  VehModel.vehiclesModel.numberGrocery.text =
+      surveyPt.surveyAllData!.first.vehiclesData.numberGrocery.text;
+  VehModel.vehiclesModel.numberFood.text =
+      surveyPt.surveyAllData!.first.vehiclesData.numberFood.text;
+
+  ///
   validationService.cc();
-   // HhsStatic.houseHold.first.numberAdults=surveyPt.surveyAllData!.first.hhsSeparateFamilies!.first.numberAdults.toString();
-   //HhsStatic.householdQuestions.hhsNumberSeparateFamilies=surveyPt.surveyAllData!.first.hhsSeparateFamilies!.length.toString();
- ///editingController.peopleAdults18.text =surveyPt.surveyAllData!.;
+  // HhsStatic.houseHold.first.numberAdults=surveyPt.surveyAllData!.first.hhsSeparateFamilies!.first.numberAdults.toString();
+  //HhsStatic.householdQuestions.hhsNumberSeparateFamilies=surveyPt.surveyAllData!.first.hhsSeparateFamilies!.length.toString();
+  ///editingController.peopleAdults18.text =surveyPt.surveyAllData!.;
   /* surveyPt.hhsNumberChildren =
        editingController.peopleUnder18.text; //solve
    surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;

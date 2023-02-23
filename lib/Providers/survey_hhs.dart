@@ -37,14 +37,15 @@ class SurveyPTProvider extends SurveyProvider {
     _data.vehiclesData = vehiclesData;
     // notifyListeners();
   }
-  List<SurveyPT>? surveyAllData=[];
+
+  List<SurveyPT>? surveyAllData = [];
+
   Future getAllLocalData() async {
     try {
-      surveyAllData = await SurveyPtOperations()
-          .getSurveyPtAllItems();
+      surveyAllData = await SurveyPtOperations().getSurveyPtAllItems();
       print(surveyAllData!.length);
       notifyListeners();
-    }catch(ex){
+    } catch (ex) {
       rethrow;
     }
   }

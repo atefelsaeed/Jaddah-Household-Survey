@@ -11,7 +11,6 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dar
 import 'package:provider/provider.dart';
 
 import '../../../Models/user_serveys_model.dart';
-import '../../../Providers/survey_hhs.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
 import 'Components/hhs_Q5.dart';
@@ -46,14 +45,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
     // TODO: implement initState
     super.initState();
 
-
-
-editingController.editingController3Q81.peopleUnder18.text=
-    editingController.editingController3Q83.totalNumber.text = '';
+    editingController.editingController3Q81.peopleUnder18.text =
+        editingController.editingController3Q83.totalNumber.text = '';
     editingController.editingController3Q83.peopleUnder18.text = '';
     editingController.editingController3Q83.peopleAdults18.text = '';
-    c(editingController,context);
-
+    final validationService =
+        Provider.of<ActionSurveyProvider>(context, listen: false);
+    validationService.resetHHSValues(editingController, context);
   }
 
   @override

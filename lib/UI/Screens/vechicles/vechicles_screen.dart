@@ -24,6 +24,14 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final validationService = Provider.of<VecProvider>(context, listen: false);
+    validationService.resetVechValues(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
