@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/reset_values.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
@@ -23,7 +22,7 @@ class VecProvider extends ChangeNotifier {
         case "شاحنة":
           VehModel.vecVan.clear();
           break;
-        case "اسكوتر":
+        case " اسكوتر":
           VehModel.eScooter.clear();
           break;
         case "ونيت":
@@ -66,9 +65,6 @@ class VecProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-
-
 
   vecCar(Function showVechError, String d, Function showError) {
     VehModel.vecCar = [];
@@ -227,7 +223,7 @@ class VecProvider extends ChangeNotifier {
       case "دراجة هوائية":
         VehModel.bicycle.clear();
         break;
-      case "اسكوتر":
+      case " اسكوتر":
         VehModel.eScooter.clear();
         break;
     }
@@ -269,7 +265,7 @@ class VecProvider extends ChangeNotifier {
     }
   }
 
-  /*vecEScooter(Function showVechError, String d, Function showError) {
+  vecEScooter(Function showVechError, String d, Function showError) {
     VehModel.eScooter = [];
     if (HhsStatic.houseHold[0].totalNumberVehicles.toString().isEmpty ||
         HhsStatic.houseHold[0].totalNumberVehicles.toString().trim() == '0') {
@@ -301,9 +297,7 @@ class VecProvider extends ChangeNotifier {
       }
       notifyListeners();
     }
-  }*/
-
-
+  }
 
   vecPickUp(Function showVechError, String d, Function showError) {
     VehModel.pickUp = [];
@@ -323,46 +317,6 @@ class VecProvider extends ChangeNotifier {
             VehModel.eScooter.length;
         if (x > total) {
           VehModel.pickUp.add(
-            VehicleBodyDetails(
-              vehicleParking: TextEditingController(),
-              vehicleOwnership: TextEditingController(),
-              vehicleFuelType: TextEditingController(),
-            ),
-          );
-        } else {
-          showError();
-          return;
-        }
-      }
-      notifyListeners();
-    }
-  }
-
-  ///resetVechValues
-  resetVechValues(context) async {
-    await ResetVechilesValues.resetVechValues(context);
-    notifyListeners();
-  }
-
-  vecEScooter(Function showVechError, String d, Function showError) {
-    VehModel.eScooter = [];
-    if (HhsStatic.houseHold[0].totalNumberVehicles.toString().isEmpty ||
-        HhsStatic.houseHold[0].totalNumberVehicles.toString().trim() == '0') {
-      showVechError();
-    } else {
-      for (int i = 0; i < int.parse(d); i++) {
-        int x =
-        int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
-
-        int total = VehModel.fuelTypeCode.length +
-            VehModel.vecCar.length +
-            VehModel.largeCar.length +
-            VehModel.vecWanet.length +
-            VehModel.vecVan.length +
-            VehModel.pickUp.length +
-            VehModel.eScooter.length;
-        if (x > total) {
-          VehModel.eScooter.add(
             VehicleBodyDetails(
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),

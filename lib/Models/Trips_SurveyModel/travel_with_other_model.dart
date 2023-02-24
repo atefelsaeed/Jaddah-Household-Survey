@@ -47,7 +47,7 @@ class TravelWay {
 
   TravelWay.fromJson(Map<String, dynamic> json) {
     mainMode = json['mainMode'];
-    mainMode = json['accessMode'];
+    accessMode = json['accessMode'];
   }
 
   Map<String, dynamic> toJson() {

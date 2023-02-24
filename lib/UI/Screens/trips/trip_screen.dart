@@ -164,6 +164,11 @@ class _TripScreenState extends State<TripScreen> {
                                                   .person.length;
                                           x++) {
                                         setState(() {
+                                          debugPrint('Add friendPerson!!!');
+                                          debugPrint(TripModeList
+                                              .tripModeList[i].person[x]
+                                              .toString());
+                                          debugPrint(p.toString());
                                           if (TripModeList
                                                   .tripModeList[i].person[x] !=
                                               p) {

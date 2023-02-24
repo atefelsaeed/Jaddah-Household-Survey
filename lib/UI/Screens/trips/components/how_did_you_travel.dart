@@ -28,6 +28,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
             DropDownFormInput(
               label:
                   TripModeList.tripModeList[widget.i].travelWay!.accessMode !=
@@ -36,29 +37,33 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                               .tripModeList[widget.i].travelWay!.accessMode ??
                           '')
                       : const Text('إختار'),
-              hint: "الوضع الرئیسي",
+              hint: "وضع وصول",
               options: TripData.AcMode[TripData.AcMode.keys.first]!.toList(),
               onChange: (String? p) {
                 setState(() {
                   TripModeList.tripModeList[widget.i].travelWay!.accessMode =
                       p.toString();
+                  debugPrint("accessMode");
+                  debugPrint( p.toString());
                 });
               },
             ),
             DropDownFormInput(
               label: TripModeList.tripModeList[widget.i].travelWay!.mainMode !=
-                      ''
+                  ''
                   ? Text(
-                      TripModeList.tripModeList[widget.i].travelWay!.mainMode ??
-                          '')
+                  TripModeList.tripModeList[widget.i].travelWay!.mainMode ??
+                      '')
                   : const Text('إختار'),
-              hint: "وضع وصول",
+              hint: "الوضع الرئیسي",
               options:
-                  TripData.mainMade[TripData.mainMade.keys.first]!.toList(),
+              TripData.mainMade[TripData.mainMade.keys.first]!.toList(),
               onChange: (String? p) {
                 setState(() {
                   TripModeList.tripModeList[widget.i].travelWay!.mainMode =
                       p.toString();
+                  debugPrint( "mainMade");
+                  debugPrint( p.toString());
                 });
               },
             ),
@@ -68,6 +73,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
             TripModeList.tripModeList[widget.i].travelWay!.accessMode == "أخر"
                 ? MyTextForm(
                     controller: acModeController,
@@ -76,20 +82,20 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                       TripModeList
                           .tripModeList[widget.i].travelWay!.accessMode = value;
                     },
-                    label: 'الوضع الرئیسي',
+                    label: 'وضع وصول',
                   )
                 : Container(),
             TripModeList.tripModeList[widget.i].travelWay!.mainMode == "أخر"
                 ? MyTextForm(
-                    controller: mainModeController,
-                    isNumber: false,
-                    onChanged: (value) {
-                      TripModeList.tripModeList[widget.i].travelWay!.mainMode =
-                          value;
-                    },
-                    label: 'وضع وصول',
-                  )
-                : Container()
+              controller: mainModeController,
+              isNumber: false,
+              onChanged: (value) {
+                TripModeList.tripModeList[widget.i].travelWay!.mainMode =
+                    value;
+              },
+              label: 'الوضع الرئیسي',
+            )
+                : Container(),
           ],
         )
       ],

@@ -38,7 +38,6 @@ class DemolishedArea extends StatelessWidget{
         ],
       );
     }else{
-
       return Container();
 
     }

@@ -38,10 +38,12 @@ class _TravelAloneState extends State<TravelAlone> {
         ListViewCheckBoxOrange(
           map: TripModeList.tripModeList[widget.index].travelWithOther,
           onChange: (ChangeBoxResponse r) {
+            debugPrint('chosenPerson');
+            debugPrint(TripModeList.tripModeList[widget.index].chosenPerson);
             if (TripModeList
                 .tripModeList[widget.index].chosenPerson.isNotEmpty) {
               setState(() {
-                if (r.val == "بمفردك" ) {
+                if (r.val == "بمفردك") {
                   TripModeList.tripModeList[widget.index].isTravelAlone = false;
                 } else if (r.val == "مع الأخرين" && r.check == true) {
                   TripModeList.tripModeList[widget.index].isTravelAlone = true;

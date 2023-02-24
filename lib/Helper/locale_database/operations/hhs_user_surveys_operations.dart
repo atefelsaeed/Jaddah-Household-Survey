@@ -11,7 +11,7 @@ class HHSUserSurveysOperations {
   Future<int> addItemToDatabase(
       UserSurveysModelData userSurveysModelData) async {
     Database? myDB = await db.db;
-    debugPrint('Add User Surveys to local database');
+
     var raw = await myDB!.insert(
       DatabaseHelper.surveysTableName,
       userSurveysModelData.toJson(),

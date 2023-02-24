@@ -25,40 +25,39 @@ class CheckTripsValidation {
 
     String status = (prefs.getString('SystemStatus') ?? 'Online');
     //======Trip-Validations======================
-    for (int e = 0; e <= TripModeList.tripModeList.length; e++) {
-      if (e < TripModeList.tripModeList.length) {
-        if (TripModeList.tripModeList[e].chosenPerson.isEmpty) {
+    var length = TripModeList.tripModeList.length;
+    for (int e = 0; e <= length; e++) {
+      //set TripModeList base
+
+      if (e < length) {
+        var base = TripModeList.tripModeList[e];
+
+        if (base.chosenPerson.isEmpty) {
           return Validator.showSnack(context, " يجب إخيار ! صاحب الرحلة؟");
         }
 
         ///startBeginningModel!.tripAddressLat && tripAddressLong
         else if (status == 'Online' &&
-            (TripModeList.tripModeList[e].startBeginningModel!.tripAddressLat ==
-                    null ||
-                TripModeList.tripModeList[e].startBeginningModel!
-                    .tripAddressLat!.isEmpty ||
+            (base.startBeginningModel!.tripAddressLat == null ||
+                base.startBeginningModel!.tripAddressLat!.isEmpty ||
                 TripModeList
                         .tripModeList[e].startBeginningModel!.tripAddressLong ==
                     null ||
-                TripModeList.tripModeList[e].startBeginningModel!
-                    .tripAddressLong!.isEmpty)) {
+                base.startBeginningModel!.tripAddressLong!.isEmpty)) {
           return Validator.showSnack(
               context, " يجب إخيار ! 1. من أین بدأت الیوم؟");
         }
 
         ///purposeTravel
-        else if (TripModeList.tripModeList[e].purposeTravel == null ||
-            TripModeList.tripModeList[e].purposeTravel == '') {
+        else if (base.purposeTravel == null || base.purposeTravel == '') {
           return Validator.showSnack(
               context, " يجب إخيار ! ما ھو الغرض من التواجد ھناك؟");
         }
 
         ///endingAddress!.tripAddressLat && tripAddressLong
         else if (status == 'Online' &&
-            (TripModeList.tripModeList[e].endingAddress!.tripAddressLat ==
-                    null ||
-                TripModeList.tripModeList[e].endingAddress!.tripAddressLong ==
-                    null ||
+            (base.endingAddress!.tripAddressLat == null ||
+                base.endingAddress!.tripAddressLong == null ||
                 TripModeList
                     .tripModeList[e].endingAddress!.tripAddressLat!.isEmpty ||
                 TripModeList
@@ -68,46 +67,47 @@ class CheckTripsValidation {
         }
 
         ///tripReason
-        else if (TripModeList.tripModeList[e].tripReason == null ||
-            TripModeList.tripModeList[e].tripReason == "") {
+        else if (base.tripReason == null || base.tripReason == "") {
           return Validator.showSnack(
               context, " يجب إخيار !  ما ھو الغرض من الذھاب إلى ھذا  المكان؟");
         }
 
         ///travelWay!.accessMode
-        else if (TripModeList.tripModeList[e].travelWay!.accessMode == null ||
-            TripModeList.tripModeList[e].travelWay!.accessMode == "") {
+        else if (base.travelWay!.accessMode == null ||
+            base.travelWay!.accessMode == "") {
           return Validator.showSnack(context, " يجب إخيار ! الوضع الرئیسي ");
         }
 
         ///travelWay!.mainMode
-        else if (TripModeList.tripModeList[e].travelWay!.mainMode == null ||
-            TripModeList.tripModeList[e].travelWay!.mainMode == '') {
+        else if (base.travelWay!.mainMode == null ||
+            base.travelWay!.mainMode == '') {
           return Validator.showSnack(context, " يجب إخيار ! وضع وصول؟");
         }
 
         ///isTravelAlone
-        else if (TripModeList.tripModeList[e].isTravelAlone == null) {
+        else if (base.isTravelAlone == null) {
           return Validator.showSnack(
               context, " يجب إخيار ! هل ذهبت بمفردك أم مع آخرین؟ ");
         }
 
         ///travelTypeModel.travelType
-        else if (TripModeList.tripModeList[e].travelTypeModel.travelType ==
-                null ||
-            TripModeList.tripModeList[e].travelTypeModel.travelType == '') {
+        else if (base.travelTypeModel.travelType == null ||
+            base.travelTypeModel.travelType == '') {
           return Validator.showSnack(context, " يجب إخيار ! بماذا ذهبت ؟ ");
         }
 
         ///travelTypeModel.carParkingPlace
-        else if ((TripModeList.tripModeList[e].travelTypeModel.travelType ==
-                    "سيارة" ||
-                TripModeList.tripModeList[e].travelTypeModel.travelType ==
-                    "دراجة نارية") &&
-            (TripModeList.tripModeList[e].travelTypeModel.carParkingPlace ==
-                    null ||
-                TripModeList.tripModeList[e].travelTypeModel.carParkingPlace!
-                    .isEmpty)) {
+        else if ((base.travelTypeModel.travelType == "سيارة" ||
+                base.travelTypeModel.travelType == "دراجة نارية") &&
+            (base.travelTypeModel.carParkingPlace == null ||
+                base.travelTypeModel.carParkingPlace!.isEmpty)) {
+          return Validator.showSnack(context, " يجب إخيار ! أین أوقفت؟ ");
+        }
+
+        ///travelTypeModel.carParkingPlace
+        else if ((base.travelTypeModel.travelType == "تاكسي") &&
+            (base.travelTypeModel.taxiTravelType == null ||
+                base.travelTypeModel.taxiTravelType!.isEmpty)) {
           return Validator.showSnack(context, " يجب إخيار ! أین أوقفت؟ ");
         }
 
@@ -115,8 +115,7 @@ class CheckTripsValidation {
         else if (TripModeList
                     .tripModeList[e].arrivalDepartTime.numberRepeatTrip ==
                 null ||
-            TripModeList.tripModeList[e].arrivalDepartTime.numberRepeatTrip ==
-                '') {
+            base.arrivalDepartTime.numberRepeatTrip == '') {
           return Validator.showSnack(
               context, " يجب إخيار ! كم مرة تقوم بهذە الرحلة؟ ");
         }
@@ -131,6 +130,7 @@ class CheckTripsValidation {
         for (var element in userSurvey.userSurveys) {
           await HHSUserSurveysOperations().addItemToDatabase(element);
         }
+        debugPrint('Add User Surveys to local database');
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => const ChooseSurveysScreen()),

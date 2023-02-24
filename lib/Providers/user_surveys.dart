@@ -154,7 +154,7 @@ class UserSurveysProvider with ChangeNotifier {
         for (var element in _userSurveysSurveysList) {
           await HHSUserSurveysOperations().addItemToDatabase(element);
         }
-
+        debugPrint('Add User Surveys to local database');
         loading = false;
         notifyListeners();
         return true;
