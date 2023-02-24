@@ -29,19 +29,19 @@ class _NationalityState extends State<Nationality> {
         ListViewCheckBoxOrange(
           map: PersonData.nationality,
           onChange: (ChangeBoxResponse r) {
-            base.personalHeadData!.nationalityType = r.val;
+            PersonModelList.personModelList[widget.i].personalHeadData!.nationalityType = r.val;
 
-            if (base.personalHeadData!.nationalityType != "سعودي" &&
+            if (PersonModelList.personModelList[widget.i].personalHeadData!.nationalityType != "سعودي" &&
                 r.check == true) {
               setState(() {
-                base.personalHeadData!.showText = true;
+                PersonModelList.personModelList[widget.i].personalHeadData!.showText = true;
                 PersonData.nationality["isChick"] = true;
-                base.personalHeadData!.nationality.text = "";
+                PersonModelList.personModelList[widget.i].personalHeadData!.nationality.text = "";
               });
             } else {
               setState(() {
-                base.personalHeadData!.showText = false;
-                base.personalHeadData!.nationality.text = "سعودي";
+                PersonModelList.personModelList[widget.i].personalHeadData!.showText = false;
+                PersonModelList.personModelList[widget.i].personalHeadData!.nationality.text = "سعودي";
               });
             }
           },
