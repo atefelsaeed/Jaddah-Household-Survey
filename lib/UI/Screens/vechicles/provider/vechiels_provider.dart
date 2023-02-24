@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/UI/Screens/vechicles/reset_values.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
@@ -331,11 +330,5 @@ class VecProvider extends ChangeNotifier {
       }
       notifyListeners();
     }
-  }
-
-  ///resetVechValues
-  resetVechValues(context) async {
-    await ResetVechilesValues.resetVechValues(context);
-    notifyListeners();
   }
 }

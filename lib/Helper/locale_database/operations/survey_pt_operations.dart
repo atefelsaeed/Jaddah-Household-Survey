@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -14,32 +12,29 @@ class SurveyPtOperations {
   Future<int?> addItemToSurveyPtDatabase(Survey survey) async {
     Database? myDB = await db.db;
     List<SurveyPT> list = await getSurveyPtAllItems();
-
+    int? raw;
     if (list.isNotEmpty) {
       list.removeWhere((element) => element.id == survey.id);
-      int raw = await myDB!.insert(
+      raw = await myDB!.insert(
         DatabaseHelper.surveyPTTableName,
         survey.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
-      debugPrint('addItemToSurveyPtDatabase');
-      return raw;
     } else {
-      int raw = await myDB!.insert(
+      raw = await myDB!.insert(
         DatabaseHelper.surveyPTTableName,
         survey.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
-      debugPrint('addItemToSurveyPtDatabase');
-      return raw;
     }
+    debugPrint('addItemToSurveyPtDatabase');
+    return raw;
   }
 
   //Get all survey PT Table from the database
   Future<List<SurveyPT>> getSurveyPtAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableName);
-    log('getSurveyPtAllItems',error:response.toString() );
     List<SurveyPT>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
     debugPrint('local data base');
@@ -57,7 +52,7 @@ class SurveyPtOperations {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
     //Add Item To Survey PT to Local Database.
-    await addItemToSurveyPtDatabase(survey);
+    // await addItemToSurveyPtDatabase(survey);
     return raw;
   }
 

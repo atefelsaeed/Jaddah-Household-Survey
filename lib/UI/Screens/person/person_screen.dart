@@ -611,14 +611,7 @@ class _PersonScreenState extends State<PersonScreen> {
                             if (_key.currentState!.validate()) {
                               _key.currentState!.save();
                               SavePersonData.saveData(context);
-                              if (CheckPersonValidation.validatePerson(
-                                  context)) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const TripScreen()));
-                              }
+                              CheckPersonValidation.validatePerson(context);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

@@ -44,14 +44,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    editingController.editingController3Q81.peopleUnder18.text =
-        editingController.editingController3Q83.totalNumber.text = '';
+    editingController.editingController3Q83.totalNumber.text = '';
     editingController.editingController3Q83.peopleUnder18.text = '';
     editingController.editingController3Q83.peopleAdults18.text = '';
-    final validationService =
-        Provider.of<ActionSurveyProvider>(context, listen: false);
-    validationService.resetHHSValues(editingController, context);
   }
 
   @override
