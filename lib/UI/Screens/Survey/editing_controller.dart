@@ -3,6 +3,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_contro
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
+import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Providers/survey_hhs.dart';
@@ -172,7 +173,23 @@ c(EditingController editingController, BuildContext context) async {
       peopleAdults18: TextEditingController(
           text: surveyPt.surveyAllData!.first.householdQuestions
               .hhsElectricScooter.adultsBikesNumber));
+  for (int i = 0;
+  i <
+      VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
+          .toList()
+          .length;
+  i++) {
+    if (surveyPt
+        .surveyAllData!.first.vehiclesData.nearestBusStop ==
+        VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]
+        ["value"]) {
+      VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]
+      ["isChick"] = true;
+      VehModel.nearestPublicTransporter= VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]
+      ["value"];
 
+    }
+  }
   ///Q7_3 hhsPedalCycles
   editingController.editingController3Q83 = EditingController3(
       peopleUnder18: TextEditingController(
@@ -191,6 +208,9 @@ c(EditingController editingController, BuildContext context) async {
 
   ///Q9 nearestBusStop
   await validationService.resetValueQ9(surveyPt.surveyAllData!);
+
+
+
   // for (int i = 0;
   //     i <
   //         VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
