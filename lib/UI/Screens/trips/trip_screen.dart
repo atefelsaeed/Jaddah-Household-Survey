@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/delete_trip.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
@@ -25,12 +25,13 @@ import '../../Widgets/dropdown_form_input.dart';
 import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
+import 'components/owner_trip.dart';
 import 'components/purpose_of)being.dart';
 import 'components/time_leave.dart';
 import 'components/trip_starting_address.dart';
 import 'components/where_did_you_go.dart';
 
-List personTripList = [""];
+
 
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
@@ -82,12 +83,10 @@ class _TripScreenState extends State<TripScreen> {
     // TODO: implement initState
     super.initState();
     getSystemStatus();
-    TripModeList.tripModeList[0].person = [];
-    for (int i = 0; i < PersonModelList.personModelList.length; i++) {
-      TripModeList.tripModeList[0].person
-          .add(PersonModelList.personModelList[i].personName.text);
-    }
+    final validationService = Provider.of<TripProvider>(context, listen: false);
+    validationService.initTrip();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +96,9 @@ class _TripScreenState extends State<TripScreen> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-            child: Padding(
+            child: Consumer<TripProvider>(builder: (context, provider, child) {
+
+          return  Padding(
           padding: const EdgeInsets.all(12.0),
           child: Form(
             key: _key,
@@ -118,28 +119,11 @@ class _TripScreenState extends State<TripScreen> {
                           padding: EdgeInsets.all(AppSize.padding2(context)),
                           child: Column(
                             children: [
-                              Row(
-                                children: [
-                                  const Spacer(),
-                                  TextTrip(index: i),
-                                  const Spacer(),
-                                  i >= 1
-                                      ? IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              TripModeList.tripModeList
-                                                  .removeAt(i);
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.delete,
-                                            color: ColorManager.primaryColor,
-                                          ))
-                                      : Container()
-                                ],
-                              ),
+                          DeleteTripComponent(i: i),
                               AppSize.spaceHeight2(context),
-                              Row(
+
+                               OwnerTrip(index:i),
+                         /*     Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   DropDownFormInput(
@@ -183,8 +167,8 @@ class _TripScreenState extends State<TripScreen> {
                                         });
                                         TripModeList
                                             .tripModeList[i].chosenPerson = p!;
-                                        debugPrint(personTrip.toString());
-                                        setState(() {
+                                   //     debugPrint(personTrip.toString());
+                                     /*   setState(() {
                                           for (int x = 0;
                                               x <
                                                   TripModeList
@@ -201,7 +185,7 @@ class _TripScreenState extends State<TripScreen> {
                                               break;
                                             }
                                           }
-                                        });
+                                        });*/
 
                                         debugPrint(p.toString());
 
@@ -217,7 +201,8 @@ class _TripScreenState extends State<TripScreen> {
                                     },
                                   )
                                 ],
-                              ),
+                              ),*/
+
                               //==========TripStartingAddress================
                               status == 'Offline'
                                   ? TripHoldAddress(
@@ -494,9 +479,10 @@ class _TripScreenState extends State<TripScreen> {
               ),
             ),
           ),
-        )),
+        );
+            })
       ),
-    );
+    ));
   }
 }
 

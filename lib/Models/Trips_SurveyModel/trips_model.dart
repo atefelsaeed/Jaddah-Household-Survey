@@ -1,9 +1,19 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/start_beginning_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_other_model.dart';
 
-List<String> personTrip = [];
+
+
+class PersonModelFirends{
+  String value;
+  int id;
+
+  PersonModelFirends(this.value,this.id);
+
+}
+
 
 class TripsModel {
   bool? type;
@@ -14,7 +24,7 @@ class TripsModel {
   TextEditingController otherWhereDidYouParkEditingControl =
       TextEditingController();
   TextEditingController taxiTravelTypeEditingControl = TextEditingController();
-  List<String> person = ["asd"];
+  List<String> person = [];
   List<String> chosenFriendPerson = [];
   String chosenPerson = "";
   Map friendPerson = {

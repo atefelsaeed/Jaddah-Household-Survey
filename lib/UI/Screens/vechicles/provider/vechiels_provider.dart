@@ -76,13 +76,18 @@ class VecProvider extends ChangeNotifier {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
 
-        int total = VehModel.fuelTypeCode.length +
+        int total =VehModel.bicycle.length +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +
             VehModel.vecVan.length +
             VehModel.pickUp.length +
             VehModel.eScooter.length;
+
+        print("object total");
+        print("object vecCar");
+        print("object total3");
+        print(total);
         if (x > total) {
           VehModel.vecCar.add(
             VehicleBodyDetails(
@@ -110,13 +115,17 @@ class VecProvider extends ChangeNotifier {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
 
-        int total = VehModel.fuelTypeCode.length +
+        int total = VehModel.bicycle.length +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +
             VehModel.vecVan.length +
             VehModel.pickUp.length +
             VehModel.eScooter.length;
+        print("object total");
+        print("object vecWent");
+        print("object total3");
+        print(total);
         if (x > total) {
           VehModel.vecWanet.add(
             VehicleBodyDetails(
@@ -144,13 +153,17 @@ class VecProvider extends ChangeNotifier {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
 
-        int total = VehModel.fuelTypeCode.length +
+        int total = VehModel.bicycle.length +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +
             VehModel.vecVan.length +
             VehModel.pickUp.length +
             VehModel.eScooter.length;
+        print("object total");
+        print("object vecWent");
+        print("object total3");
+        print(total);
         print(total);
         if (x > total) {
           VehModel.largeCar.add(
@@ -179,7 +192,7 @@ class VecProvider extends ChangeNotifier {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
 
-        int total = VehModel.fuelTypeCode.length +
+        int total = VehModel.bicycle.length  +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +
@@ -240,7 +253,7 @@ class VecProvider extends ChangeNotifier {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
 
-        int total = VehModel.fuelTypeCode.length +
+        int total =VehModel.bicycle.length  +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +
@@ -275,7 +288,7 @@ class VecProvider extends ChangeNotifier {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
 
-        int total = VehModel.fuelTypeCode.length +
+        int total = VehModel.bicycle.length  +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +
@@ -308,7 +321,7 @@ class VecProvider extends ChangeNotifier {
       for (int i = 0; i < int.parse(d); i++) {
         int x =
             int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
-        int total = VehModel.fuelTypeCode.length +
+        int total = VehModel.bicycle.length +
             VehModel.vecCar.length +
             VehModel.largeCar.length +
             VehModel.vecWanet.length +

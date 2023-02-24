@@ -3,7 +3,7 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dar
 
 class EmptyTrips {
   static emptyTrips() {
-    personTrip = [];
+  //  personTrip = [];
     TripModeList.tripModeList[0].purposeOfBeingThere = {
       "QPurposeOfBeingThere": [
         {"value": ' في المنزل', "isChick": false},
