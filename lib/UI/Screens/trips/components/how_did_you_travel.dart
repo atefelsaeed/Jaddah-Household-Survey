@@ -17,18 +17,34 @@ class HowDidYouTravel extends StatefulWidget {
 }
 
 class _HowDidYouTravelState extends State<HowDidYouTravel> {
+  TextEditingController acModeController = TextEditingController();
+  TextEditingController mainModeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    TextEditingController acModeController = TextEditingController();
-    TextEditingController mainModeController = TextEditingController();
     return Column(
       children: [
         const HeadlineText(text: "6. كیف ذهبت ؟"),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
+            DropDownFormInput(
+              label: TripModeList.tripModeList[widget.i].travelWay!.mainMode !=
+                      ''
+                  ? Text(
+                      TripModeList.tripModeList[widget.i].travelWay!.mainMode ??
+                          '')
+                  : const Text('إختار'),
+              hint: "وضع الوصول",
+              options:
+                  TripData.mainMade[TripData.mainMade.keys.first]!.toList(),
+              onChange: (String? p) {
+                setState(() {
+                  TripModeList.tripModeList[widget.i].travelWay!.mainMode =
+                      p.toString();
+                });
+              },
+            ),
             DropDownFormInput(
               label:
                   TripModeList.tripModeList[widget.i].travelWay!.accessMode !=
@@ -37,33 +53,12 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                               .tripModeList[widget.i].travelWay!.accessMode ??
                           '')
                       : const Text('إختار'),
-              hint: "وضع وصول",
+              hint: "الوضع الرئیسي",
               options: TripData.AcMode[TripData.AcMode.keys.first]!.toList(),
               onChange: (String? p) {
                 setState(() {
                   TripModeList.tripModeList[widget.i].travelWay!.accessMode =
                       p.toString();
-                  debugPrint("accessMode");
-                  debugPrint( p.toString());
-                });
-              },
-            ),
-            DropDownFormInput(
-              label: TripModeList.tripModeList[widget.i].travelWay!.mainMode !=
-                  ''
-                  ? Text(
-                  TripModeList.tripModeList[widget.i].travelWay!.mainMode ??
-                      '')
-                  : const Text('إختار'),
-              hint: "الوضع الرئیسي",
-              options:
-              TripData.mainMade[TripData.mainMade.keys.first]!.toList(),
-              onChange: (String? p) {
-                setState(() {
-                  TripModeList.tripModeList[widget.i].travelWay!.mainMode =
-                      p.toString();
-                  debugPrint( "mainMade");
-                  debugPrint( p.toString());
                 });
               },
             ),
@@ -73,7 +68,17 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
+            TripModeList.tripModeList[widget.i].travelWay!.mainMode == "أخر"
+                ? MyTextForm(
+                    controller: mainModeController,
+                    isNumber: false,
+                    onChanged: (value) {
+                      TripModeList.tripModeList[widget.i].travelWay!.mainMode =
+                          value;
+                    },
+                    label: 'وضع الوصول',
+                  )
+                : Container(),
             TripModeList.tripModeList[widget.i].travelWay!.accessMode == "أخر"
                 ? MyTextForm(
                     controller: acModeController,
@@ -82,19 +87,8 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                       TripModeList
                           .tripModeList[widget.i].travelWay!.accessMode = value;
                     },
-                    label: 'وضع وصول',
+                    label: 'الوضع الرئیسي',
                   )
-                : Container(),
-            TripModeList.tripModeList[widget.i].travelWay!.mainMode == "أخر"
-                ? MyTextForm(
-              controller: mainModeController,
-              isNumber: false,
-              onChanged: (value) {
-                TripModeList.tripModeList[widget.i].travelWay!.mainMode =
-                    value;
-              },
-              label: 'الوضع الرئیسي',
-            )
                 : Container(),
           ],
         )

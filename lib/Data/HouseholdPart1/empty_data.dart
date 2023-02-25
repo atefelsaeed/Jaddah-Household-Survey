@@ -1,9 +1,7 @@
-import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_data.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_person.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_trips.dart';
 
 import 'HHSData/questions_data.dart';
-import 'PersonData/person_data.dart';
 import 'VechelisData/vechelis_data.dart';
 import 'empty_data/empty_hhs.dart';
 import 'empty_data/empty_vechels.dart';
@@ -29,15 +27,15 @@ class HHSEmptyData {
     VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
         .toList()[VehiclesData.q3VecData["index"]]["isChick"] = false;
     //================Personal========================================
-    PersonData.nationality[PersonData.nationality.keys.first]!
-        .toList()[PersonData.nationality["index"]]["isChick"] = false;
+    // PersonData.nationality[PersonData.nationality.keys.first]!
+    //     .toList()[PersonData.nationality["index"]]["isChick"] = false;
 
     //================Trip========================================
     // TripData.tripReason[TripData.tripReason.keys.first]!
     //     .toList()[TripData.tripReason["chosenIndex"]]["isChick"] = false;
     // TripData.purposeOfBeingThere[TripData.purposeOfBeingThere.keys.first]!
     //     .toList()[TripData.purposeOfBeingThere["chosenIndex"]]["isChick"] = false;
-    TripData.travelWithOther[TripData.travelWithOther.keys.first]!
-        .toList()[TripData.travelWithOther["index"]]["isChick"] = false;
+    // TripData.travelWithOther[TripData.travelWithOther.keys.first]!
+    //     .toList()[TripData.travelWithOther["index"]]["isChick"] = false;
   }
 }

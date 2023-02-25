@@ -8,13 +8,32 @@ class PersonModelList {
   static List<PersonModel> personModelList = [
     PersonModel(
       personName: TextEditingController(),
+      travelWithOther:  {
+        'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+        [
+          {"value": 'نعم', "isChick": false},
+          {"value": 'لا', "isChick": false},
+        ],
+        "index": 0
+      },
+      nationality: {
+        "QPurposeOfBeingThere": [
+          {"value": 'سعودي', "isChick": false},
+          {"value": 'وافد عربي', "isChick": false},
+          {"value": 'وافد اجنبي', "isChick": false},
+        ],
+        "title": "nationality",
+        "subTitle":
+            " A separate family is defined as who share the kitchen expenses and meals",
+        "index": 0,
+      },
       //==personalHeadData==
       personalHeadData: PersonalHeadData(
         age: TextEditingController(),
         nationality: TextEditingController(),
         hhsHavePastTrip: TextEditingController(),
         nationalityType: '',
-        showText :false,
+        showText: false,
         gender: '',
         checkAge: false,
         hasPasTrip: false,

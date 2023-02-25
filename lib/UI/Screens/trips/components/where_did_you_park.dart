@@ -3,7 +3,10 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import '../../../../Resources/colors.dart';
 import '../../../Widgets/dropdown_form_input.dart';
+import '../../../Widgets/text.dart';
+import '../../../Widgets/text_form_field.dart';
 import '../../Survey/widgets/text_form_row.dart';
 import 'headline_trip.dart';
 
@@ -134,11 +137,23 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                     Column(
                       children: [
                         AppSize.spaceHeight3(context),
-                        TextForm(
-                          controller: bas.ticketSub,
-                          text:
-                              " في حالة استخدام تذكرة دائمة، ما نوعھا . فى حالة عدم وجود تذكرة يكتب (لا)",
+                        SizedBox(
+                            width: width(context) * .45,
+                            child: TextGlobal(
+                              text:
+                                  " في حالة استخدام تذكرة دائمة، ما نوعھا . فى حالة عدم وجود تذكرة يكتب (لا)",
+                              fontSize: height(context) * .02,
+                              color: ColorManager.black,
+                            )),
+                        AppSize.spaceHeight1(context),
+                        MyTextForm(
                           label: "نوع التذكرة",
+                          controller: bas.ticketSub,
+                          onChanged: (val) {
+                            bas.taxiTravelType = val;
+                          },
+                          keyboardType: TextInputType.text,
+                          // isNumber: true,
                         ),
                       ],
                     )

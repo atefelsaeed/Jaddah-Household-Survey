@@ -8,10 +8,31 @@ class PersonModel {
   OccupationModel? occupationModel;
   PersonalQuestion? personalQuestion;
   TextEditingController personName = TextEditingController();
+  Map<String, dynamic> travelWithOther =  {
+    'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+    [
+      {"value": 'نعم', "isChick": false},
+      {"value": 'لا', "isChick": false},
+    ],
+    "index": 0
+  };
+  Map<String, dynamic> nationality = {
+    "QPurposeOfBeingThere": [
+      {"value": 'سعودي', "isChick": false},
+      {"value": 'وافد عربي', "isChick": false},
+      {"value": 'وافد اجنبي', "isChick": false},
+    ],
+    "title": "nationality",
+    "subTitle":
+        " A separate family is defined as who share the kitchen expenses and meals",
+    "index": 0,
+  };
 
   PersonModel({
     this.personalQuestion,
     this.occupationModel,
+    required this.nationality,
+    required this.travelWithOther,
     this.personalHeadData,
     required this.personName,
   });
@@ -46,6 +67,7 @@ class PersonalHeadData {
   TextEditingController nationality =
       TextEditingController(); //open if not سعودي
   bool showText = false;
+
   PersonalHeadData({
     required this.age,
     this.nationalityType,
@@ -66,7 +88,7 @@ class PersonalHeadData {
     refuseToTellAge = json['refuseToTellAge'];
     age.text = json['age'] ?? "";
     nationalityType = json['nationalityType'] ?? "";
-    nationality.text = json['nationality'] ?? "";
+    nationality.text = json['nationality'] ;
     hhsHavePastTrip.text = json['hhsHavePastTrip'] ?? "";
   }
 
@@ -76,7 +98,7 @@ class PersonalHeadData {
     data['gender'] = gender ?? "";
     // data['checkAge'] = checkAge;
     data['refuseToTellAge'] = refuseToTellAge;
-    data['age'] = age.text ;
+    data['age'] = age.text;
     data['nationalityType'] = nationalityType ?? "";
     data['nationality'] = nationality.text;
     data['hhsHavePastTrip'] = hhsHavePastTrip.text;

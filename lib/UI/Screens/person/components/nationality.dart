@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
 
-import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
@@ -27,27 +26,38 @@ class _NationalityState extends State<Nationality> {
     return Column(
       children: [
         ListViewCheckBoxOrange(
-          map: PersonData.nationality,
+          map: PersonModelList.personModelList[widget.i].nationality,
           onChange: (ChangeBoxResponse r) {
-            PersonModelList.personModelList[widget.i].personalHeadData!.nationalityType = r.val;
+            PersonModelList.personModelList[widget.i].personalHeadData!
+                .nationalityType = r.val;
 
-            if (PersonModelList.personModelList[widget.i].personalHeadData!.nationalityType != "سعودي" &&
+            if (PersonModelList.personModelList[widget.i].personalHeadData!
+                        .nationalityType !=
+                    "سعودي" &&
                 r.check == true) {
               setState(() {
-                PersonModelList.personModelList[widget.i].personalHeadData!.showText = true;
-                PersonData.nationality["isChick"] = true;
-                PersonModelList.personModelList[widget.i].personalHeadData!.nationality.text = "";
+                PersonModelList.personModelList[widget.i].personalHeadData!
+                    .showText = true;
+                PersonModelList
+                    .personModelList[widget.i].nationality["isChick"] = true;
+                PersonModelList.personModelList[widget.i].personalHeadData!
+                    .nationality.text = "";
               });
             } else {
               setState(() {
-                PersonModelList.personModelList[widget.i].personalHeadData!.showText = false;
-                PersonModelList.personModelList[widget.i].personalHeadData!.nationality.text = "سعودي";
+                PersonModelList.personModelList[widget.i].personalHeadData!
+                    .showText = false;
+                PersonModelList.personModelList[widget.i].personalHeadData!
+                    .nationality.text = "سعودي";
               });
             }
           },
           isListView: true,
           title: "الجنسية ",
-          question: PersonData.nationality[PersonData.nationality.keys.first]!
+          question: PersonModelList
+              .personModelList[widget.i]
+              .nationality[PersonModelList
+                  .personModelList[widget.i].nationality.keys.first]!
               .toList(),
           subTitle:
               " في حالة ازدواج الجنسية ؛ يرجى تسجيل جواز السفر / الجنسية التي يحمل عليها الشخص تأشيرة الإقامة في المملكة العربية السعودية ",
@@ -62,8 +72,7 @@ class _NationalityState extends State<Nationality> {
                     isNumber: false,
                     controller: base.personalHeadData!.nationality,
                     onChanged: (String? val) {
-                      debugPrint('object');
-                      debugPrint(base.personalHeadData!.nationality.text);
+                      // base.personalHeadData!.nationality.text = val!;
                     },
                   ),
                   AppSize.spaceWidth2(context),

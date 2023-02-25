@@ -81,7 +81,6 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
           ),
         ),
         AppSize.spaceHeight1(context),
-
         (TripModeList.tripModeList[widget.indexTripModel].tripReason ==
                     "آخرى" &&
                 TripModeList.tripModeList[widget.indexTripModel]

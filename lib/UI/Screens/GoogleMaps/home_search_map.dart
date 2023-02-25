@@ -19,8 +19,8 @@ class _HomeSearchMapState extends State<HomeSearchMap> {
   @override
   void initState() {
     super.initState();
-    getCurrentLocation();
     determinePosition();
+    getCurrentLocation();
   }
 
   void getCurrentLocation() async {

@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/components/delete_trip.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/travel_alone_or_with_other.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
@@ -21,16 +22,13 @@ import '../../../Models/Trips_SurveyModel/travel_with_other_model.dart';
 import '../../../Models/Trips_SurveyModel/trips_model.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
-import '../../Widgets/dropdown_form_input.dart';
-import '../../Widgets/text.dart';
 import 'components/headline_trip.dart';
 import 'components/how_did_you_travel.dart';
+import 'components/owner_trip.dart';
 import 'components/purpose_of)being.dart';
 import 'components/time_leave.dart';
 import 'components/trip_starting_address.dart';
 import 'components/where_did_you_go.dart';
-
-List personTripList = [""];
 
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
@@ -82,11 +80,8 @@ class _TripScreenState extends State<TripScreen> {
     // TODO: implement initState
     super.initState();
     getSystemStatus();
-    TripModeList.tripModeList[0].person = [];
-    for (int i = 0; i < PersonModelList.personModelList.length; i++) {
-      TripModeList.tripModeList[0].person
-          .add(PersonModelList.personModelList[i].personName.text);
-    }
+    final validationService = Provider.of<TripProvider>(context, listen: false);
+    validationService.initTrip();
   }
 
   @override
@@ -94,10 +89,10 @@ class _TripScreenState extends State<TripScreen> {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
 
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-            child: Padding(
+    return SafeArea(child: Scaffold(
+      body: SingleChildScrollView(
+          child: Consumer<TripProvider>(builder: (context, provider, child) {
+        return Padding(
           padding: const EdgeInsets.all(12.0),
           child: Form(
             key: _key,
@@ -118,106 +113,10 @@ class _TripScreenState extends State<TripScreen> {
                           padding: EdgeInsets.all(AppSize.padding2(context)),
                           child: Column(
                             children: [
-                              Row(
-                                children: [
-                                  const Spacer(),
-                                  TextTrip(index: i),
-                                  const Spacer(),
-                                  i >= 1
-                                      ? IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              TripModeList.tripModeList
-                                                  .removeAt(i);
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.delete,
-                                            color: ColorManager.primaryColor,
-                                          ))
-                                      : Container()
-                                ],
-                              ),
+                              DeleteTripComponent(i: i),
                               AppSize.spaceHeight2(context),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  DropDownFormInput(
-                                    hint: "صاحب الرحلة",
-                                    label: TripModeList
-                                                .tripModeList[i].chosenPerson !=
-                                            ''
-                                        ? Text(TripModeList
-                                            .tripModeList[i].chosenPerson)
-                                        : const Text('إختار'),
-                                    options:
-                                        TripModeList.tripModeList[i].person,
-                                    onChange: (String? p) {
-                                      debugPrint("p");
-                                      //personTrip.add(p!);
 
-                                      TripModeList.tripModeList[i]
-                                          .friendPerson["friendPerson"] = [];
-                                      for (int x = 0;
-                                          x <
-                                              TripModeList.tripModeList[i]
-                                                  .person.length;
-                                          x++) {
-                                        setState(() {
-                                          debugPrint('Add friendPerson!!!');
-                                          debugPrint(TripModeList
-                                              .tripModeList[i].person[x]
-                                              .toString());
-                                          debugPrint(p.toString());
-                                          if (TripModeList
-                                                  .tripModeList[i].person[x] !=
-                                              p) {
-                                            TripModeList.tripModeList[i]
-                                                .friendPerson["friendPerson"]
-                                                .add({
-                                              "value": TripModeList
-                                                  .tripModeList[i].person[x],
-                                              "isChick": false
-                                            });
-                                          }
-                                        });
-                                        TripModeList
-                                            .tripModeList[i].chosenPerson = p!;
-                                        debugPrint(personTrip.toString());
-                                        setState(() {
-                                          for (int x = 0;
-                                              x <
-                                                  TripModeList
-                                                      .tripModeList.length;
-                                              x++) {
-                                            if (TripModeList.tripModeList[x]
-                                                    .chosenFriendPerson
-                                                    .contains(p) &&
-                                                personTrip.contains(p) ==
-                                                    false) {
-                                              personTrip.add(p);
-                                              TripModeList.tripModeList[i] =
-                                                  TripModeList.tripModeList[x];
-                                              break;
-                                            }
-                                          }
-                                        });
-
-                                        debugPrint(p.toString());
-
-                                        debugPrint(TripModeList
-                                            .tripModeList[i].friendPerson
-                                            .toString());
-                                      }
-                                      if (TripModeList.tripModeList[i]
-                                          .friendPerson.isNotEmpty) {
-                                        TripModeList
-                                            .tripModeList[i].showFriend = true;
-                                      }
-                                    },
-                                  )
-                                ],
-                              ),
+                              OwnerTrip(index: i),
                               //==========TripStartingAddress================
                               status == 'Offline'
                                   ? TripHoldAddress(
@@ -231,7 +130,7 @@ class _TripScreenState extends State<TripScreen> {
                               AppSize.spaceHeight3(context),
                               const HeadlineText(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
-                              PurposeOfTheBeing(
+                              WhyDidYouGo(
                                 indexTripModel: i,
                               ),
                               AppSize.spaceHeight3(context),
@@ -255,7 +154,7 @@ class _TripScreenState extends State<TripScreen> {
                               const HeadlineText(
                                   text:
                                       "5. ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
-                              WhyDidYouGo(
+                            PurposeOfTheBeing(
                                 indexTripModel: i,
                               ),
                               AppSize.spaceHeight2(context),
@@ -494,25 +393,10 @@ class _TripScreenState extends State<TripScreen> {
               ),
             ),
           ),
-        )),
-      ),
-    );
+        );
+      })),
+    ));
   }
 }
 
-class TextTrip extends StatelessWidget {
-  final int index;
 
-  const TextTrip({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    int indexc = index + 1;
-    return TextGlobal(
-      text: "رحلة  ${indexc.toString()}",
-      fontSize: height(context) * .023,
-      color: ColorManager.orangeTxtColor,
-    );
-  }
-}

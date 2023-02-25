@@ -1,18 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
-import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
-import '../../../Models/Person_SurveyModel/occupation_model.dart';
-import '../../../Models/Person_SurveyModel/personal_question.dart';
-import '../../../Providers/survey_hhs.dart';
-import '../Survey/actions/action_survey_screen.dart';
 
 class PersonProvider extends ChangeNotifier {
-  getAllPeronUpdated(BuildContext context) async {
+ /* getAllPeronUpdated(BuildContext context) async {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
     final validationService =
@@ -144,7 +137,7 @@ class PersonProvider extends ChangeNotifier {
     }
 
     notifyListeners();
-  }
+  }*/
 
   nationality(ChangeBoxResponse r,int i){
 
@@ -171,7 +164,7 @@ class PersonProvider extends ChangeNotifier {
   }
 
   isEmployee(String d, int i) {
-    if (d!.isNotEmpty) {
+    if (d.isNotEmpty) {
       if (int.parse(d.toString()) > 18) {
         PersonModelList.personModelList[i].occupationModel!.isEmployee = "1";
       } else {
@@ -201,11 +194,26 @@ class PersonProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  checkAge(int i, value) {
+  /*checkAge(int i, value) {
     print(value);
     PersonModelList.personModelList[i].personalHeadData!.refuseToTellAge =
         value!;
     PersonModelList.personModelList[i].personalHeadData!.checkAge = false;
+
+
+    notifyListeners();
+  }*/
+  checkAge(int i,value){
+    PersonModelList.personModelList[i]
+        .personalHeadData!
+        .checkAge = value!;
+    PersonModelList.personModelList[i]
+        .personalHeadData!
+        .age
+        .text = '';
+    PersonModelList.personModelList[i]
+        .personalHeadData!
+        .refuseToTellAge = false;
     notifyListeners();
   }
 

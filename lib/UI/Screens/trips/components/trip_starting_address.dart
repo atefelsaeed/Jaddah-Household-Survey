@@ -89,33 +89,30 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                       IconButton(
                           onPressed: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MapSearchScreen(
-                                            callBack: (LatLng latLong) {
-                                          surveyPt.endAddressLatLng = latLong;
-                                          setState(() {
-                                            surveyPt.endingAddressLatLng
-                                                    ?.latitude !=
-                                                latLong.latitude;
-                                            surveyPt.endingAddressLatLng
-                                                    ?.longitude !=
-                                                latLong.longitude;
-                                          });
-                                          setState(() {
-                                            startBeginningModel
-                                                    ?.tripAddressLong =
-                                                surveyPt.endingAddressLatLng
-                                                    ?.longitude
-                                                    .toString();
-                                            startBeginningModel
-                                                    ?.tripAddressLat =
-                                                surveyPt.endingAddressLatLng
-                                                    ?.latitude
-                                                    .toString();
-                                          });
-                                        })));
-
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapSearchScreen(
+                                  callBack: (LatLng latLong) {
+                                    surveyPt.endAddressLatLng = latLong;
+                                    setState(() {
+                                      surveyPt.endingAddressLatLng?.latitude !=
+                                          latLong.latitude;
+                                      surveyPt.endingAddressLatLng?.longitude !=
+                                          latLong.longitude;
+                                    });
+                                    setState(() {
+                                      startBeginningModel?.tripAddressLong =
+                                          surveyPt
+                                              .endingAddressLatLng?.longitude
+                                              .toString();
+                                      startBeginningModel?.tripAddressLat =
+                                          surveyPt.endingAddressLatLng?.latitude
+                                              .toString();
+                                    });
+                                  },
+                                ),
+                              ),
+                            );
                           },
                           icon: Icon(
                             Icons.pin_drop,

@@ -1,9 +1,8 @@
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
-import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dart';
 
 class EmptyTrips {
   static emptyTrips() {
-    personTrip = [];
+  //  personTrip = [];
     TripModeList.tripModeList[0].purposeOfBeingThere = {
       "QPurposeOfBeingThere": [
         {"value": ' في المنزل', "isChick": false},

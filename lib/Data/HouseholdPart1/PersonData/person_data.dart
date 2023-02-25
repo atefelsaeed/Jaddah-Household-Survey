@@ -152,17 +152,17 @@ class PersonData {
     "chosenIndex": 0,
   };
 
-  static Map<String, dynamic> nationality = {
-    "QPurposeOfBeingThere": [
-      {"value": 'سعودي', "isChick": false},
-      {"value": 'وافد عربي', "isChick": false},
-      {"value": 'وافد اجنبي', "isChick": false},
-    ],
-    "title": "nationality",
-    "subTitle":
-        " A separate family is defined as who share the kitchen expenses and meals",
-    "index": 0,
-  };
+  // static Map<String, dynamic> nationality = {
+  //   "QPurposeOfBeingThere": [
+  //     {"value": 'سعودي', "isChick": false},
+  //     {"value": 'وافد عربي', "isChick": false},
+  //     {"value": 'وافد اجنبي', "isChick": false},
+  //   ],
+  //   "title": "nationality",
+  //   "subTitle":
+  //       " A separate family is defined as who share the kitchen expenses and meals",
+  //   "index": 0,
+  // };
 
   static Map<String, dynamic> mainOccupation = {
     "MainOccupation": [
