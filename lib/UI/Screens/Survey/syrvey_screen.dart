@@ -47,6 +47,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
     editingController.editingController3Q83.totalNumber.text = '';
     editingController.editingController3Q83.peopleUnder18.text = '';
     editingController.editingController3Q83.peopleAdults18.text = '';
+    final validationService =
+    Provider.of<ActionSurveyProvider>(context, listen: false);
+    validationService.resetHHSValues(editingController, context);
   }
 
   @override

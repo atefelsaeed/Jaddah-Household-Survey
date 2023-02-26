@@ -9,8 +9,8 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:provider/provider.dart';
 import 'package:search_map_place_updated/search_map_place_updated.dart';
 
-import '../Screens/trips/provider/trip_provider.dart';
-import 'custom_buttton.dart';
+import '../trips/provider/trip_provider.dart';
+import '../../Widgets/custom_buttton.dart';
 
 class Constants {
   static LatLng location = const LatLng(21.492500, 39.177570);
@@ -46,19 +46,14 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
     var position = await validationService.determinePosition();
     placeMarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    // initCoordinates=LatLng(position.latitude, position.longitude);
     Constants.location != LatLng(position.latitude, position.longitude);
-
-    // controller!.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-    //     target: LatLng(position.latitude, position.longitude),
-    //     zoom: initZoom)));
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    controller!.dispose();
+    if (controller != null) controller!.dispose();
   }
 
   @override

@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/sizes.dart';
-import '../../../Widgets/alert_map.dart';
+import '../../GoogleMaps/auto_search_map.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 

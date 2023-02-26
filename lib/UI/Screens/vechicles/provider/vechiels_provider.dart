@@ -4,6 +4,7 @@ import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
+import '../reset_values.dart';
 
 class VecProvider extends ChangeNotifier {
   changeVec(index, bool value) {
@@ -337,5 +338,10 @@ class VecProvider extends ChangeNotifier {
       }
       notifyListeners();
     }
+  }
+  ///resetVechValues
+  resetVechValues(context) async {
+    await ResetVechilesValues.resetVechValues(context);
+    notifyListeners();
   }
 }
