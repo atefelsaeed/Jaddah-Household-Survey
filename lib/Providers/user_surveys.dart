@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
+import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
@@ -22,7 +23,7 @@ class UserSurveysProvider with ChangeNotifier {
     final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
     debugPrint('Locale Offline DB Survey');
     debugPrint(surveysList.toString());
-    for(var s in surveysList){
+    for (var s in surveysList) {
       list.add(s.toJsonAPI());
     }
     final Response res;
@@ -30,7 +31,7 @@ class UserSurveysProvider with ChangeNotifier {
       // log("Body Data", error: json.encode(list));
       res = await APIHelper.postData(
         url: "multi",
-        body:json.encode(list),
+        body: json.encode(list),
       );
       if (res.statusCode == 200) {
         await SurveyPtOperations().deleteSurveyPTTableOffline();
@@ -64,6 +65,12 @@ class UserSurveysProvider with ChangeNotifier {
 
   UserSurveyStatusData? get userSurveyStatusData {
     return _userSurveyStatusData;
+  }
+
+  SurveyPT? _surveyPT;
+
+  SurveyPT? get surveyPT {
+    return _surveyPT;
   }
 
   List<UserSurveysModelData> get userSurveys {
@@ -134,7 +141,7 @@ class UserSurveysProvider with ChangeNotifier {
   bool loading = false;
   int index = 0;
 
-//============Fetch-All-User-Surveys-on-Search-Screen===============
+  //============Fetch-All-User-Surveys-on-Search-Screen===============
   Future<bool> fetch(int id) async {
     try {
       loading = true;
@@ -169,7 +176,7 @@ class UserSurveysProvider with ChangeNotifier {
     }
   }
 
-//==========Fetch-User-Survey-Status-on-Home-Screen=============
+  //==========Fetch-User-Survey-Status-on-Home-Screen=============
   Future<bool> fetchUserSurveysStatus(int id) async {
     try {
       loading = true;
@@ -207,4 +214,76 @@ class UserSurveysProvider with ChangeNotifier {
       return true;
     }
   }
+
+  //============Get-Survey-By-ID================================
+  Future<bool> getSurveyByID(int id) async {
+    try {
+      loading = true;
+      Response response = await APIHelper.getData(
+        url: "${APIRouting.getSingleSurvay}$id",
+      );
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        _surveyPT = SurveyPT.fromJson(data['data']);
+        debugPrint("fffff");
+        debugPrint(_userSurveyStatusData?.allForms.toString());
+        loading = false;
+        notifyListeners();
+        return true;
+      } else {
+        debugPrint('error');
+      }
+      loading = false;
+      notifyListeners();
+      return false;
+    } catch (e) {
+      debugPrint(e.toString());
+      loading = false;
+      notifyListeners();
+      return true;
+    }
+  }
+
+  //============Update-Survey===================================
+  Future<bool> updateSurvey({callback, bool force = false}) async {
+    iSSyncing = true;
+    final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
+    debugPrint('Locale Offline DB Survey');
+    debugPrint(surveysList.toString());
+    for (var s in surveysList) {
+      list.add(s.toJsonAPI());
+    }
+    final Response res;
+    try {
+      res = await APIHelper.postData(
+        url: "multi",
+        body: json.encode(list),
+      );
+      if (res.statusCode == 200) {
+        await SurveyPtOperations().deleteSurveyPTTableOffline();
+        debugPrint('Delete Survey Pt Offline All Items Done!');
+      }
+      iSSyncing = false;
+      notifyListeners();
+      // log("res", error: res.body);
+    } catch (e) {
+      iSSyncing = false;
+      notifyListeners();
+      return Future.error("couldn't reach server");
+    }
+    if (res.statusCode != 200) {
+      notifyListeners();
+      debugPrint("server refused");
+      iSSyncing = false;
+      notifyListeners();
+      return Future.error("server refused");
+    }
+    if (callback != null) {
+      callback();
+    }
+    iSSyncing = false;
+    notifyListeners();
+    return true;
+  }
+
 }
