@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/headline_trip.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../Models/Trips_SurveyModel/start_beginning_model.dart';
-import '../../../../Providers/survey_hhs.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
@@ -28,9 +26,7 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
 
   @override
   Widget build(BuildContext context) {
-    SurveyPTProvider surveyPt =
-        Provider.of<SurveyPTProvider>(context, listen: false);
-    // TODO: implement build
+     // TODO: implement build
     return Column(
       children: [
         AppSize.spaceHeight2(context),

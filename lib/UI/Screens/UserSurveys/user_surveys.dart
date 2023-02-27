@@ -7,7 +7,7 @@ import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Models/user_serveys_model.dart';
-import 'itemUserSurvey.dart';
+import 'item_user_survey.dart';
 
 class UserSurveysScreen extends StatefulWidget {
   const UserSurveysScreen({Key? key, required this.id}) : super(key: key);

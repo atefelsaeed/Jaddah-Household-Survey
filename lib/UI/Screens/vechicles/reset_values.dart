@@ -1,31 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Providers/survey_hhs.dart';
-import '../Survey/actions/action_survey_screen.dart';
 
 class ResetVechilesValues {
   static resetVechValues(context) async {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
-    final validationService =
-        Provider.of<ActionSurveyProvider>(context, listen: false);
-     await surveyPt.getAllLocalData();
-
-    // for (int i = 1; i <= VehiclesData.vecModel.length; i++) {
-    //   VehiclesData.vecModel[i].number = surveyPt
-    //       .surveyAllData!.first.vehiclesBodyType![i].vehicleTypeQuantity!;
-    //   if (surveyPt
-    //           .surveyAllData!.first.vehiclesBodyType![i].vehicleTypeQuantity! >
-    //       0) {
-    //     VehiclesData.vecModel[i].isChosen = true;
-    //     VehiclesData.vecModel[i].textEditingController.text = surveyPt
-    //         .surveyAllData!.first.vehiclesBodyType![i].vehicleTypeQuantity
-    //         .toString();
-    //   }
-    // }
+    await surveyPt.getAllLocalData();
 
     ///vecCar
     VehModel.vecCar =

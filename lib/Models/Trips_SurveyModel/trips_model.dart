@@ -3,16 +3,12 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/start_beginning
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_with_other_model.dart';
 
-
-
-class PersonModelFirends{
+class PersonModelFirends {
   String value;
   int id;
 
-  PersonModelFirends(this.value,this.id);
-
+  PersonModelFirends(this.value, this.id);
 }
-
 
 class TripsModel {
   bool? type;
@@ -145,11 +141,11 @@ class TripsModel {
         TravelWithOtherModel.fromJson(json['travelAloneHouseHold']);
     arrivalDepartTime = ArrivalDepartTime.fromJson(json['arrivalDepartTime']);
     travelTypeModel = TravelTypeModel.fromJson(json['travelTypeModel']);
-    purposeTravel = json['purposeTravel'];
-    chosenPerson = json['ownerTripPerson'];
-    departureTime.text = json['departureTime'];
-    tripReason = json['tripReason'];
-    isTravelAlone = json['isTravelAlone'];
+    purposeTravel = json['purposeTravel']??'';
+    chosenPerson = json['ownerTripPerson']??'';
+    departureTime.text = json['departureTime']??'';
+    tripReason = json['tripReason']??'';
+    isTravelAlone = json['isTravelAlone'] ?? false;
     chosenFriendPerson =
         List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }

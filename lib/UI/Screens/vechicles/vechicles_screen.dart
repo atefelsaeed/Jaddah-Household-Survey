@@ -22,27 +22,11 @@ class VehiclesScreen extends StatefulWidget {
 
 class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     final validationService = Provider.of<VecProvider>(context, listen: false);
-
-    print('vecCar');
-    debugPrint(VehModel.vecCar.length.toString());
-    print('vecCar');
-    debugPrint(VehModel.largeCar.length.toString());
-    print('vecCar');
-    debugPrint(VehModel.bicycle.length.toString());
-    print('vecCar');
-    debugPrint(VehModel.eScooter.length.toString());
-    print('vecCar');
-    debugPrint(VehModel.vecWanet.length.toString());
-    print('vecCar');
-
-    debugPrint(VehModel.pickUp.length.toString());
-    print('vecCar');
-
-    debugPrint(VehModel.vecVan.length.toString());
     validationService.resetVechValues(context);
   }
 

@@ -224,11 +224,11 @@ class UserSurveysProvider with ChangeNotifier {
       Response response = await APIHelper.getData(
         url: "${APIRouting.getSingleSurvay}$id",
       );
+      debugPrint(response.body.toString());
       if (response.statusCode == 200) {
-        var data = json.decode(response.body);
-        _surveyPT = SurveyPT.fromJson(data['data']);
-        debugPrint("fffff");
-        debugPrint(_userSurveyStatusData?.allForms.toString());
+        Map<String, dynamic> data = json.decode(response.body);
+        _surveyPT = SurveyPT.fromJsonAPI(data);
+        debugPrint("Success");
         loading = false;
         notifyListeners();
         return true;
@@ -247,45 +247,27 @@ class UserSurveysProvider with ChangeNotifier {
   }
 
   //============Update-Survey===================================
-  Future<bool> updateSurvey({callback, bool force = false}) async {
-    iSSyncing = true;
-    final surveysList = await SurveyPtOperations().getSurveyPtOfflineAllItems();
-    debugPrint('Locale Offline DB Survey');
-    debugPrint(surveysList.toString());
-    for (var s in surveysList) {
-      list.add(s.toJsonAPI());
-    }
+  Future<bool> updateSurvey(SurveyPT surveyPT) async {
+    loading = true;
     final Response res;
     try {
       res = await APIHelper.postData(
-        url: "multi",
-        body: json.encode(list),
+        url: APIRouting.editSurvey,
+        body: json.encode(surveyPT.toJsonAPI()),
       );
       if (res.statusCode == 200) {
-        await SurveyPtOperations().deleteSurveyPTTableOffline();
-        debugPrint('Delete Survey Pt Offline All Items Done!');
+        loading = false;
+        notifyListeners();
+        return true;
+      } else {
+        loading = false;
+        notifyListeners();
+        return false;
       }
-      iSSyncing = false;
-      notifyListeners();
-      // log("res", error: res.body);
     } catch (e) {
-      iSSyncing = false;
+      loading = false;
       notifyListeners();
       return Future.error("couldn't reach server");
     }
-    if (res.statusCode != 200) {
-      notifyListeners();
-      debugPrint("server refused");
-      iSSyncing = false;
-      notifyListeners();
-      return Future.error("server refused");
-    }
-    if (callback != null) {
-      callback();
-    }
-    iSSyncing = false;
-    notifyListeners();
-    return true;
   }
-
 }

@@ -21,16 +21,15 @@ class TravelTypeModel {
     required this.taxiFare,
     required this.ticketSub,
     this.taxiTravelType,
-
   });
 
   TravelTypeModel.fromJson(Map<String, dynamic> json) {
-    carParkingPlace = json['carParkingPlace'];
-    taxiTravelType = json['taxiTravelType'];
-    travelType = json['travelType '];
-    passTravelType = json['passTravelType'];
-    taxiFare.text = json['taxiFare'];
-    publicTransportFare = json['publicTransportFare'];
+    carParkingPlace = json['carParkingPlace'] ?? '';
+    taxiTravelType = json['taxiTravelType'] ?? '';
+    travelType = json['travelType '] ?? '';
+    passTravelType = json['passTravelType'] ?? '';
+    taxiFare.text = json['taxiFare'] ?? '';
+    publicTransportFare = json['publicTransportFare'] ?? '';
   }
 
   Map<String, dynamic> toJson() {
@@ -59,9 +58,9 @@ class ArrivalDepartTime {
   });
 
   ArrivalDepartTime.fromJson(Map<String, dynamic> json) {
-    departTime.text = json['departTime'];
-    arriveDestinationTime.text = json['arriveDestinationTime'];
-    numberRepeatTrip = json['numberRepeatTrip'];
+    departTime.text = json['departTime'] ?? '';
+    arriveDestinationTime.text = json['arriveDestinationTime'] ?? '';
+    numberRepeatTrip = json['numberRepeatTrip'] ?? '';
   }
 
   Map<String, dynamic> toJson() {

@@ -30,8 +30,6 @@ class _TravelAloneState extends State<TravelAlone> {
 
   @override
   Widget build(BuildContext context) {
-    print('is travel a lone');
-    print(TripModeList.tripModeList[widget.index].isTravelAlone);
     // TODO: implement build
     return Column(
       children: [

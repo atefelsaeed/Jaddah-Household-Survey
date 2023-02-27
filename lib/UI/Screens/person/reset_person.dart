@@ -9,23 +9,15 @@ import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Models/Person_SurveyModel/personal_question.dart';
 import '../../../Providers/survey_hhs.dart';
-import '../Survey/actions/action_survey_screen.dart';
 
 class PersonProvider extends ChangeNotifier {
   getAllPeronUpdated(BuildContext context) async {
     SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
-    final validationService =
-        Provider.of<ActionSurveyProvider>(context, listen: false);
+
     await surveyPt.getAllLocalData();
     PersonModelList.personModelList = [];
-    print(surveyPt.surveyAllData!.first.personData!.length);
     for (int i = 0; i < surveyPt.surveyAllData!.first.personData!.length; i++) {
-      print(
-          "surveyPt.surveyAllData!.first.personData![i].personalHeadData!.hasPasTrip");
-
-      print(surveyPt
-          .surveyAllData!.first.personData![i].personalHeadData!.hasPasTrip);
       //for (int ii = 1; ii < QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]!.toList().length; ii++) {
       if (surveyPt.surveyAllData!.first.personData![i].personalHeadData!
               .hasPasTrip ==
@@ -36,11 +28,7 @@ class PersonProvider extends ChangeNotifier {
         QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]
             [0]["isChick"] = true;
       }
-      // }
-      print(
-          " surveyPt.surveyAllData!.first.personData![i].personalHeadData!.nationalityType");
-      print(surveyPt.surveyAllData!.first.personData![i].personalHeadData!
-          .nationalityType);
+
 
       /*for (int ii = 0;
           ii <

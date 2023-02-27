@@ -23,7 +23,6 @@ import '../Survey/widgets/editing_controler3.dart';
 import '../Survey/widgets/list_view_check_box_orange.dart';
 import '../Survey/widgets/text_form_row.dart';
 import 'components/employee.dart';
-import 'components/nationality.dart';
 import 'components/transporter_moblity.dart';
 
 class PersonScreen extends StatefulWidget {
@@ -51,8 +50,9 @@ class _PersonScreenState extends State<PersonScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-      final validationService = Provider.of<PersonProvider>(context, listen: false);
-     validationService.getAllPeronUpdated(context);
+    final validationService =
+        Provider.of<PersonProvider>(context, listen: false);
+    validationService.getAllPeronUpdated(context);
   }
 
   void showError() => showDialog<void>(
@@ -69,8 +69,6 @@ class _PersonScreenState extends State<PersonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final validationService =
-        Provider.of<PersonProvider>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(child:

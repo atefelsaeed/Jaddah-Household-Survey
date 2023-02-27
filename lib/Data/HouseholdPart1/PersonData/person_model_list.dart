@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_data.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
 

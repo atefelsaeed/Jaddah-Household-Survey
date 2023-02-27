@@ -10,11 +10,11 @@ class TextForm extends StatelessWidget {
   final String label;
   final double? fontSize;
   final String text;
-  bool? isNumber;
-  bool? readOnly;
-  TextInputType? keyboardType;
+  final bool? isNumber;
+  final bool? readOnly;
+  final TextInputType? keyboardType;
 
-  TextForm({
+  const TextForm({
     super.key,
     required this.controller,
     required this.label,
@@ -57,9 +57,9 @@ class TextFormer extends StatelessWidget {
   final String label;
   final String headLabel;
   final String text;
-  TextInputType? type;
+  final TextInputType? type;
 
-  TextFormer(
+  const TextFormer(
       {super.key,
       this.type,
       required this.controller,

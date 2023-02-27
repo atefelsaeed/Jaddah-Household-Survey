@@ -9,8 +9,8 @@ import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:provider/provider.dart';
 import 'package:search_map_place_updated/search_map_place_updated.dart';
 
-import '../trips/provider/trip_provider.dart';
 import '../../Widgets/custom_buttton.dart';
+import '../trips/provider/trip_provider.dart';
 
 class Constants {
   static LatLng location = const LatLng(21.492500, 39.177570);
