@@ -42,7 +42,7 @@ class PersonProvider extends ChangeNotifier {
       print(surveyPt.surveyAllData!.first.personData![i].personalHeadData!
           .nationalityType);
 
-      for (int ii = 0;
+      /*for (int ii = 0;
           ii <
               PersonModelList
                   .personModelList[ii]
@@ -64,7 +64,7 @@ class PersonProvider extends ChangeNotifier {
               .keys
               .first][ii]["isChick"] = true;
         }
-      }
+      }*/
 
       PersonModelList.personModelList.add(PersonModel(
         personName: TextEditingController(

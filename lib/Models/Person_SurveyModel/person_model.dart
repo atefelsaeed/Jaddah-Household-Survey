@@ -24,7 +24,7 @@ class PersonModel {
     ],
     "title": "nationality",
     "subTitle":
-        " A separate family is defined as who share the kitchen expenses and meals",
+    " A separate family is defined as who share the kitchen expenses and meals",
     "index": 0,
   };
 
@@ -65,7 +65,7 @@ class PersonalHeadData {
   TextEditingController age = TextEditingController();
   String? nationalityType;
   TextEditingController nationality =
-      TextEditingController(); //open if not سعودي
+  TextEditingController(); //open if not سعودي
   bool showText = false;
 
   PersonalHeadData({

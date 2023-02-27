@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_data.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/personal_question.dart';
 
@@ -7,6 +8,17 @@ import '../../../Models/Person_SurveyModel/person_model.dart';
 class PersonModelList {
   static List<PersonModel> personModelList = [
     PersonModel(
+nationality: {
+  "QPurposeOfBeingThere": [
+    {"value": 'سعودي', "isChick": false},
+    {"value": 'وافد عربي', "isChick": false},
+    {"value": 'وافد اجنبي', "isChick": false},
+  ],
+  "title": "nationality",
+  "subTitle":
+  " A separate family is defined as who share the kitchen expenses and meals",
+  "index": 0,
+},
       personName: TextEditingController(),
       travelWithOther:  {
         'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
@@ -16,17 +28,7 @@ class PersonModelList {
         ],
         "index": 0
       },
-      nationality: {
-        "QPurposeOfBeingThere": [
-          {"value": 'سعودي', "isChick": false},
-          {"value": 'وافد عربي', "isChick": false},
-          {"value": 'وافد اجنبي', "isChick": false},
-        ],
-        "title": "nationality",
-        "subTitle":
-            " A separate family is defined as who share the kitchen expenses and meals",
-        "index": 0,
-      },
+
       //==personalHeadData==
       personalHeadData: PersonalHeadData(
         age: TextEditingController(),

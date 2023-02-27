@@ -2,12 +2,45 @@ import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import '../../../../Providers/survey_hhs.dart';
+import '../../Survey/actions/action_survey_screen.dart';
 
 class TripProvider extends ChangeNotifier {
   List<String> personTrip = [];
+
+
+  getAllTripUpdated(BuildContext context) async {
+    SurveyPTProvider surveyPt =
+    Provider.of<SurveyPTProvider>(context, listen: false);
+    final validationService =
+    Provider.of<ActionSurveyProvider>(context, listen: false);
+    await surveyPt.getAllLocalData();
+    TripModeList.tripModeList = [];
+
+    for (int i = 0; i < surveyPt.surveyAllData!.first.tripsList!.length; i++) {
+      TripModeList.tripModeList.add(
+          TripsModel(person:  surveyPt.surveyAllData!.first.tripsList![i].person,
+              isHome: surveyPt.surveyAllData!.first.tripsList![i].isHome, isHomeEnding:surveyPt.surveyAllData!.first.tripsList![i].isHomeEnding,
+              chosenFriendPerson: surveyPt.surveyAllData!.first.tripsList![i].chosenFriendPerson,
+              chosenPerson: surveyPt.surveyAllData!.first.tripsList![i].chosenPerson,
+              purposeOfBeingThere: surveyPt.surveyAllData!.first.tripsList![i].purposeOfBeingThere,
+              travelWithOther: surveyPt.surveyAllData!.first.tripsList![i].travelWithOther,
+              travelTypeModel: surveyPt.surveyAllData!.first.tripsList![i].travelTypeModel,
+              otherWhereDidYouParkEditingControl: surveyPt.surveyAllData!.first.tripsList![i].otherWhereDidYouParkEditingControl,
+              taxiTravelTypeEditingControl: surveyPt.surveyAllData!.first.tripsList![i].taxiTravelTypeEditingControl,
+              arrivalDepartTime: surveyPt.surveyAllData!.first.tripsList![i].arrivalDepartTime,
+              purposeOfBeingThere2: surveyPt.surveyAllData!.first.tripsList![i].purposeOfBeingThere2,
+              departureTime:surveyPt.surveyAllData!.first.tripsList![i].departureTime ));
+    }
+
+    notifyListeners();
+  }
 
   removeTrip(int i) {
     TripModeList.tripModeList.removeAt(i);

@@ -51,8 +51,8 @@ class _PersonScreenState extends State<PersonScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    //   final validationService = Provider.of<PersonProvider>(context, listen: false);
-    // validationService.getAllPeronUpdated(context);
+      final validationService = Provider.of<PersonProvider>(context, listen: false);
+     validationService.getAllPeronUpdated(context);
   }
 
   void showError() => showDialog<void>(
@@ -294,7 +294,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                       : Container(),
                                   AppSize.spaceHeight1(context),
                                   //=========Nationality======================
-                                  Nationality(i: i),
+                                  //Nationality(i: i),
                                   AppSize.spaceHeight3(context),
 
                                   Row(

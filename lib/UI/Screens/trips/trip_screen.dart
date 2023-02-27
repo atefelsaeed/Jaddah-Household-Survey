@@ -81,7 +81,8 @@ class _TripScreenState extends State<TripScreen> {
     super.initState();
     getSystemStatus();
     final validationService = Provider.of<TripProvider>(context, listen: false);
-    validationService.initTrip();
+validationService.getAllTripUpdated(context);
+    //validationService.initTrip();
   }
 
   @override
@@ -158,9 +159,9 @@ class _TripScreenState extends State<TripScreen> {
                                 indexTripModel: i,
                               ),
                               AppSize.spaceHeight2(context),
-                              HowDidYouTravel(
+                             /* HowDidYouTravel(
                                 i: i,
-                              ),
+                              ),*/
                               AppSize.spaceHeight3(context),
                               TravelAlone(index: i),
                               AppSize.spaceHeight2(context),
