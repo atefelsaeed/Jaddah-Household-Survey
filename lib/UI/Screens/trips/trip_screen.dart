@@ -118,7 +118,7 @@ validationService.initTrip();
 
                               OwnerTrip(index: i),
                               //==========TripStartingAddress================
-                              status == 'Offline'
+                             /* status == 'Offline'
                                   ? TripHoldAddress(
                                       tripModel: TripModeList
                                           .tripModeList[i].startBeginningModel!,
@@ -127,13 +127,13 @@ validationService.initTrip();
                                       index: i,
                                       title: "1. من أین بدأت الیوم؟",
                                     ),
-                              AppSize.spaceHeight3(context),
+                              AppSize.spaceHeight3(context),*/
                               const HeadlineText(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
                               WhyDidYouGo(
                                 indexTripModel: i,
                               ),
-                              AppSize.spaceHeight3(context),
+                     /*         AppSize.spaceHeight3(context),
                               TimeLeave(
                                 expectedDeparture:
                                     TripModeList.tripModeList[i].departureTime,
@@ -173,7 +173,7 @@ validationService.initTrip();
                               DepartTime(
                                 tripModel: TripModeList.tripModeList[i],
                                 i: i,
-                              ),
+                              ),*/
                             ],
                           ),
                         ),

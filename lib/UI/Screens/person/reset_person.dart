@@ -22,14 +22,16 @@ class PersonProvider extends ChangeNotifier {
     PersonModelList.personModelList = [];
     for (int i = 0; i < surveyPt.surveyPT!.personData!.length; i++) {
       //for (int ii = 1; ii < QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]!.toList().length; ii++) {
-      if (surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip ==
-          false) {
-        QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]
-            [1]["isChick"] = true;
-      } else {
+    /*  if (surveyPt.surveyPT!.personData![i].personalHeadData!.hhsHavePastTrip.text =="نعم"
+          ) {
         QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]
             [0]["isChick"] = true;
-      }
+        surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip=false;
+      } else {
+        QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]
+            [1]["isChick"] = true;
+        surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip=true;
+      }*/
 
       Map<String, dynamic>    nationality={
         "QPurposeOfBeingThere": [
@@ -95,31 +97,38 @@ print(surveyPt.surveyPT!.personData![i].personalHeadData!
       print(surveyPt.surveyPT!.personData![i].personalHeadData!
           .hasPasTrip );
       List value = travelWithOther[travelWithOther.keys.first].toList();
-
-
-          if (surveyPt.surveyPT!.personData![i].personalHeadData!
-              .hasPasTrip ==false) {
+print("12222222222222");
+      print(surveyPt.surveyPT!.personData![i].personalHeadData!.hhsHavePastTrip.text );
+          if (surveyPt.surveyPT!.personData![i].personalHeadData!.hhsHavePastTrip.text =="نعم") {
+            print(surveyPt.surveyPT!.personData![i].personalHeadData!.hhsHavePastTrip.text );
      travelWithOther={
        'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
        [
-         {"value": 'نعم', "isChick": false},
-         {"value": 'لا', "isChick": true},
+         {"value": 'نعم', "isChick": true},
+         {"value": 'لا', "isChick": false},
        ],
        "index": 0
      };
+     surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip=false;
+
+
           }else{
             travelWithOther={
               'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
               [
-                {"value": 'نعم', "isChick": true},
-                {"value": 'لا', "isChick": false},
+                {"value": 'نعم', "isChick": false},
+                {"value": 'لا', "isChick": true},
               ],
               "index": 0
             };
 
+            surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip=true;
 
+            //PersonModelList.personModelList[i].personalHeadData!.hhsHavePastTrip=surveyPt.surveyPT.personData![i].personalHeadData!.hhsHavePastTrip;
 
       }
+          print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+          print(surveyPt.surveyPT.personData![i].personalHeadData!.hhsHavePastTrip);
 
       PersonModelList.personModelList.add(PersonModel(
         personName: TextEditingController(
@@ -160,6 +169,7 @@ print(surveyPt.surveyPT!.personData![i].personalHeadData!
               .personalQuestion!.drivingLicenceType,
           haveBusPass:surveyPt.surveyPT!.personData![i]
               .personalQuestion!.haveBusPass,
+
           haveDisabilityTransportMobility: surveyPt.surveyPT!.personData![i]
              .personalQuestion!.haveDisabilityTransportMobility,
           haveCarSharing: surveyPt.surveyPT!.personData![i]
@@ -216,7 +226,7 @@ print(surveyPt.surveyPT!.personData![i].personalHeadData!
 
       if( surveyPt.surveyPT!.personData![i].personalHeadData!.refuseToTellAge==true){
 
-      groupAgeKey(i, surveyPt.surveyPT!.personData![i].personalHeadData!.age.text);
+      groupAgeKey2(i, surveyPt.surveyPT!.personData![i].personalHeadData!.age.text);
     //List value = PersonData.groupAge[PersonData.groupAge.keys.first].toList();
         print("2222222");
 
@@ -265,6 +275,23 @@ print(surveyPt.surveyPT!.personData![i].personalHeadData!
       PersonModelList.personModelList[i].occupationModel!.isEmployee = "";
     }
     notifyListeners();
+  }
+  groupAgeKey2(int i, String p) {
+    PersonModelList.personModelList[i].personalHeadData!.checkAge = false;
+
+    PersonModelList.personModelList[i].personalHeadData!.age.text =
+        p.toString();
+
+    List value = PersonData.groupAge[PersonData.groupAge.keys.first].toList();
+
+    for (int inr = 0; inr < value.length; inr++) {
+      if (p == value[inr]["value"]) {
+        PersonModelList.personModelList[i].occupationModel!.isEmployee =
+        value[inr]["type"];
+      }
+     // notifyListeners();
+    }
+    //notifyListeners();
   }
 
   groupAgeKey(int i, String p) {

@@ -74,7 +74,7 @@ c(EditingController editingController, BuildContext context, int id) async {
 
   HhsStatic.householdQuestions.hhsIsDwelling =
       surveyPt.surveyPT!.householdQuestions.hhsIsDwelling; //solve
-
+//HhsStatic.householdQuestions.hhsNumberApartments=surveyPt.surveyPT!.householdQuestions.hhsNumberApartments.text;
   HhsStatic.householdQuestions.hhsNumberSeparateFamilies =
       surveyPt.surveyPT!.householdQuestions.hhsNumberSeparateFamilies;
 
@@ -82,6 +82,7 @@ c(EditingController editingController, BuildContext context, int id) async {
       surveyPt.surveyPT!.householdQuestions.hhsNumberYearsInAddress; //solve
   HhsStatic.householdAddress.hhsPhone =
       surveyPt.surveyPT!.header.householdAddress.hhsPhone;
+  VehModel.nearestPublicTransporter=surveyPt.surveyPT!.vehiclesData.nearestBusStop!;
 
   print("hhsNumberSeparateFamilies");
   print(surveyPt

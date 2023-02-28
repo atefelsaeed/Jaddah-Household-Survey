@@ -269,7 +269,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                       ? TextForm(
                                           label: 'إذكر السبب',
                                           text: 'إذكر السبب',
-                                          controller: base[i]
+                                          controller: PersonModelList.personModelList[i]
                                               .personalHeadData!
                                               .hhsHavePastTrip,
                                         )
