@@ -25,10 +25,7 @@ class HouseHoldAddress extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        AppSize.spaceHeight2(context),
-        const HeadlinePerson(text: 'HHS-'),
-        AppSize.spaceHeight1(context),
-         Divider(thickness: 1,color: ColorManager.primaryColor,),
+
         AppSize.spaceHeight1(context),
         Row(
           children: [

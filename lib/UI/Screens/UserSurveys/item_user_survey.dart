@@ -62,24 +62,33 @@ class ItemUserSurvey extends StatelessWidget {
                 ? DefaultButton(
                     function: () async {
                       HHSEmptyData.emptyData();
-                      userSurveysProvider.index =index;
-                          Navigator.push(
+                      userSurveysProvider.index = index;
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => SurveyScreen(
-                            id: itemSurveyModel.id.toString(),
                             itemSurveyModel: itemSurveyModel,
                           ),
                         ),
                       );
-                      itemSurveyModel.id;
                     },
                     isWidget: true,
                     text: 'بدأ استبيان',
                     btnWidth: width(context) * .35,
                   )
                 : DefaultButton(
-                    function: () {},
+                    function: () async {
+                      HHSEmptyData.emptyData();
+                      userSurveysProvider.index = index;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SurveyScreen(
+                            itemSurveyModel: itemSurveyModel,
+                          ),
+                        ),
+                      );
+                    },
                     isWidget: true,
                     background: ColorManager.grayColor,
                     text: 'تم الاستبيان',
@@ -88,6 +97,26 @@ class ItemUserSurvey extends StatelessWidget {
           ],
         ),
         AppSize.spaceHeight2(context),
+        Row(
+          children: [
+            const Image(image: AssetImage(ImageAssets.lampIcon)),
+            AppSize.spaceWidth1(context),
+            Text(
+              'الحالة',
+              style: TextStyle(
+                color: ColorManager.grayColor,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const Spacer(),
+            if (itemSurveyModel.status == 'filled') const Text('معبئة'),
+            if (itemSurveyModel.status == 'not filled') const Text('غير معبئة'),
+            if (itemSurveyModel.status == 'edit') const Text('تعديل'),
+            if (itemSurveyModel.status == 'edited') const Text('اتعدلت'),
+            AppSize.spaceWidth15(context),
+          ],
+        ),
+        Divider(color: ColorManager.primaryColor),
         Row(
           children: [
             const Image(image: AssetImage(ImageAssets.locationIcon)),

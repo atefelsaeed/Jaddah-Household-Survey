@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q10.dart';
@@ -15,6 +16,7 @@ import '../../../Providers/user_surveys.dart';
 import '../../Widgets/exit_screen.dart';
 import '../vechicles/components/nearest_transporter.dart';
 import 'Components/hhs_Q5.dart';
+import 'Components/hhs_header.dart';
 import 'actions/action_survey_screen.dart';
 import 'components/demolished_area.dart';
 import 'components/hhs_Q4.dart';
@@ -26,11 +28,12 @@ import 'components/hhs_qh4.dart';
 import 'components/hhs_qh62.dart';
 
 class SurveyScreen extends StatefulWidget {
-  const SurveyScreen(
-      {super.key, required this.id, required this.itemSurveyModel});
+  const SurveyScreen({
+    super.key,
+    required this.itemSurveyModel,
+  });
 
   final UserSurveysModelData itemSurveyModel;
-  final String id;
 
   @override
   State<SurveyScreen> createState() => _SurveyScreenState();
@@ -49,15 +52,22 @@ class _SurveyScreenState extends State<SurveyScreen> {
     editingController.editingController3Q83.peopleUnder18.text = '';
     editingController.editingController3Q83.peopleAdults18.text = '';
     final validationService =
-    Provider.of<ActionSurveyProvider>(context, listen: false);
+        Provider.of<ActionSurveyProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
-    Provider.of<UserSurveysProvider>(context, listen: false);
-    userSurveysProvider.getSurveyByID(15001);
-    validationService.resetHHSValues(editingController, context);
+        Provider.of<UserSurveysProvider>(context, listen: false);
+
+    if (widget.itemSurveyModel.status == 'filled') {
+      int id = widget.itemSurveyModel.id!;
+      // userSurveysProvider.getSurveyByID(id);
+      validationService.resetHHSValues(editingController, context);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+
     return WillPopScope(
       onWillPop: () {
         return OnExitScreen.onWillPop(context);
@@ -77,65 +87,80 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         builder: (context, provider, child) {
                       return Column(
                         children: [
-                          // ===== HouseHoldAddress ===
-                          HouseHoldAddress(
-                            itemSurveyModel: widget.itemSurveyModel,
-                          ),
-                          AppSize.spaceHeight3(context),
-                          const HouseHoldMember(),
-                          // ====Question 1====
-                          const HHSQ1(),
-                          // ====Question 2====
-                          const HHSQ2(),
-                          // ====Question 3====
-                          AppSize.spaceHeight3(context),
-                          HHsQh4(
-                            editingController: editingController,
-                          ),
-                          // ====Question 4====
-                          HHSQ4(
-                            q6peopleAdults18:
-                                editingController.q6peopleAdults18,
-                            q6peopleUnder18: editingController.q6peopleUnder18,
-                            q6totalNumberOfVec:
-                                editingController.q6totalNumberOfVec,
-                          ),
-                          AppSize.spaceHeight2(context),
+                          const HHSHeader(),
+                          userSurveysProvider.loading
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                    color: ColorManager.primaryColor,
+                                  ),
+                                )
+                              : Column(
+                                  children: [
+                                    // ===== HouseHoldAddress ===
+                                    HouseHoldAddress(
+                                      itemSurveyModel: widget.itemSurveyModel,
+                                    ),
+                                    AppSize.spaceHeight3(context),
+                                    const HouseHoldMember(),
+                                    // ====Question 1====
+                                    const HHSQ1(),
+                                    // ====Question 2====
+                                    const HHSQ2(),
+                                    // ====Question 3====
+                                    AppSize.spaceHeight3(context),
+                                    HHsQh4(
+                                      editingController: editingController,
+                                    ),
+                                    // ====Question 4====
+                                    HHSQ4(
+                                      q6peopleAdults18:
+                                          editingController.q6peopleAdults18,
+                                      q6peopleUnder18:
+                                          editingController.q6peopleUnder18,
+                                      q6totalNumberOfVec:
+                                          editingController.q6totalNumberOfVec,
+                                    ),
+                                    AppSize.spaceHeight2(context),
 
-                          // ====Question 5====
-                          HHSQ5(
-                            peopleAdults18: editingController.peopleAdults18,
-                            peopleUnder18: editingController.peopleUnder18,
-                          ),
-                          AppSize.spaceHeight3(context),
-                          // ====Question 6====
-                          const HHsQ6(),
-                          // ====Question 7====
-                          HHSQH62(editingController),
-                          DemolishedArea(editingController),
-                          AppSize.spaceHeight5(context),
-                          Q81(
-                              editingController3:
-                                  editingController.editingController3Q81),
-                          AppSize.spaceHeight3(context),
-                          Q82(
-                              editingController3:
-                                  editingController.editingController3Q82),
-                          AppSize.spaceHeight3(context),
-                          Q83(
-                              editingController3:
-                                  editingController.editingController3Q83),
-                          AppSize.spaceHeight2(context),
-                          QH9(),
-                          AppSize.spaceHeight3(context),
-                          //========HHSQ9=================
-                          const NearestTransporter(),
-                          //========HHSQ10=================
-                          const HHSQ10(),
-                          ActionButton(
-                              editingController: editingController,
-                              keyVal: _key,
-                              id: widget.id),
+                                    // ====Question 5====
+                                    HHSQ5(
+                                      peopleAdults18:
+                                          editingController.peopleAdults18,
+                                      peopleUnder18:
+                                          editingController.peopleUnder18,
+                                    ),
+                                    AppSize.spaceHeight3(context),
+                                    // ====Question 6====
+                                    const HHsQ6(),
+                                    // ====Question 7====
+                                    HHSQH62(editingController),
+                                    DemolishedArea(editingController),
+                                    AppSize.spaceHeight5(context),
+                                    Q81(
+                                        editingController3: editingController
+                                            .editingController3Q81),
+                                    AppSize.spaceHeight3(context),
+                                    Q82(
+                                        editingController3: editingController
+                                            .editingController3Q82),
+                                    AppSize.spaceHeight3(context),
+                                    Q83(
+                                        editingController3: editingController
+                                            .editingController3Q83),
+                                    AppSize.spaceHeight2(context),
+                                    QH9(),
+                                    AppSize.spaceHeight3(context),
+                                    //========HHSQ9=================
+                                    const NearestTransporter(),
+                                    //========HHSQ10=================
+                                    const HHSQ10(),
+                                    ActionButton(
+                                      editingController: editingController,
+                                      keyVal: _key,
+                                      id: widget.itemSurveyModel.id!.toString(),
+                                    ),
+                                  ],
+                                )
                         ],
                       );
                     })),
