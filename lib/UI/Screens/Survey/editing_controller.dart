@@ -43,7 +43,7 @@ class EditingController {
       peopleAdults18: TextEditingController());
 }
 
-c(EditingController editingController, BuildContext context) async {
+c(EditingController editingController, BuildContext context,int id) async {
   UserSurveysProvider surveyPt =
       Provider.of<UserSurveysProvider>(context, listen: false);
   final validationService =
@@ -54,10 +54,11 @@ c(EditingController editingController, BuildContext context) async {
   // HhsStatic.householdAddress.hhsPhone.text = surveyPt.surveyPT.;
 
   ///Q1 hhsDwellingType
-  HhsStatic.householdQuestions.hhsDwellingType =
-      surveyPt.surveyPT!.householdQuestions.hhsDwellingType.toString(); //solve
+ // print(       surveyPt.surveyPT!.householdQuestions.hhsDwellingType.toString());
+  /*HhsStatic.householdQuestions.hhsDwellingType =
+      surveyPt.surveyPT!.householdQuestions.hhsDwellingType.toString();*/ //solve
 
-  HhsStatic.householdQuestions.hhsNumberApartments.text =
+ HhsStatic.householdQuestions.hhsNumberApartments.text =
       surveyPt.surveyPT!.householdQuestions.hhsNumberApartments.text;
 
   HhsStatic.householdQuestions.hhsNumberFloors.text =
@@ -67,6 +68,9 @@ c(EditingController editingController, BuildContext context) async {
       surveyPt.surveyPT!.householdQuestions.hhsNumberBedRooms.text;
 
   ///
+  print("122222");
+  print(surveyPt.surveyPT!.householdQuestions.hhsIsDwelling);
+
   HhsStatic.householdQuestions.hhsIsDwelling =
       surveyPt.surveyPT!.householdQuestions.hhsIsDwelling; //solve
 

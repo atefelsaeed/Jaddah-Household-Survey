@@ -31,8 +31,11 @@ class ActionSurveyProvider extends ChangeNotifier {
     }
   }
 
-  resetHHSValues(editingController, context) async {
-    await c(editingController, context);
+  resetHHSValues(editingController, context,int id) async {
+    print(id);
+    print(id);
+    print(id);
+    await c(editingController, context,id);
     notifyListeners();
   }
 
