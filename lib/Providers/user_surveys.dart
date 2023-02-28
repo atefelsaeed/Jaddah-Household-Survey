@@ -67,6 +67,8 @@ class UserSurveysProvider with ChangeNotifier {
     return _userSurveyStatusData;
   }
 
+  String? userSurveyStatus;
+
   SurveyPT? _surveyPT;
 
   SurveyPT? get surveyPT {

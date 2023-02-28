@@ -61,6 +61,8 @@ class ItemUserSurvey extends StatelessWidget {
             itemSurveyModel.status == "not filled"
                 ? DefaultButton(
                     function: () async {
+                      userSurveysProvider.userSurveyStatus =
+                          itemSurveyModel.status;
                       HHSEmptyData.emptyData();
                       userSurveysProvider.index = index;
                       Navigator.push(
@@ -78,6 +80,8 @@ class ItemUserSurvey extends StatelessWidget {
                   )
                 : DefaultButton(
                     function: () async {
+                      userSurveysProvider.userSurveyStatus =
+                          itemSurveyModel.status;
                       HHSEmptyData.emptyData();
                       userSurveysProvider.index = index;
                       Navigator.push(

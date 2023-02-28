@@ -39,14 +39,17 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
 
             Auth auth = Provider.of<Auth>(context, listen: false);
             userSurveysProvider.fetchUserSurveysStatus(auth.user!.id);
-
-            userSurveysProvider.multiSync();
+            if (userSurveysProvider.userSurveyStatus == "not filled") {
+              userSurveysProvider.multiSync();
+            }
           });
         }
         // Got a new connectivity status!
       },
     );
-    userSurveysProvider.multiSync();
+    if (userSurveysProvider.userSurveyStatus == "not filled") {
+      userSurveysProvider.multiSync();
+    }
   }
 
 // Be sure to cancel subscription after you are done
@@ -67,7 +70,9 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
     FirebaseMessaging.onMessage.listen((e) async {
       UserSurveysProvider userSurveysProvider =
           Provider.of<UserSurveysProvider>(context, listen: false);
-      userSurveysProvider.multiSync();
+      if (userSurveysProvider.userSurveyStatus == "not filled") {
+        userSurveysProvider.multiSync();
+      }
       debugPrint('sync message');
       Fluttertoast.showToast(
         msg: "Syncing",

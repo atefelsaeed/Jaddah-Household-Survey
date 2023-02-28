@@ -124,11 +124,15 @@ class CheckTripsValidation {
       ///Validation Done
       else {
         //=======Add-survey-to-surveys-list================
-        await surveys.addSurvey(surveyPt.data);
-        //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
-        userSurvey.userSurveys[userSurvey.index].status = 'filled';
-        for (var element in userSurvey.userSurveys) {
-          await HHSUserSurveysOperations().addItemToDatabase(element);
+        if (userSurvey.userSurveyStatus == "not filled") {
+          await surveys.addSurvey(surveyPt.data);
+          //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
+          userSurvey.userSurveys[userSurvey.index].status = 'filled';
+          for (var element in userSurvey.userSurveys) {
+            await HHSUserSurveysOperations().addItemToDatabase(element);
+          }
+        } else if (userSurvey.userSurveyStatus == "filled") {
+          userSurvey.updateSurvey(surveyPt.data);
         }
         debugPrint('Add User Surveys to local database');
         Navigator.of(context).pushAndRemoveUntil(
