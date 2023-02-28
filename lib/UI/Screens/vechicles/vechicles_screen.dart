@@ -27,6 +27,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     // TODO: implement initState
     super.initState();
     final validationService = Provider.of<VecProvider>(context, listen: false);
+
     validationService.resetVechValues(context);
   }
 

@@ -23,6 +23,7 @@ import '../Survey/widgets/editing_controler3.dart';
 import '../Survey/widgets/list_view_check_box_orange.dart';
 import '../Survey/widgets/text_form_row.dart';
 import 'components/employee.dart';
+import 'components/nationality.dart';
 import 'components/transporter_moblity.dart';
 
 class PersonScreen extends StatefulWidget {
@@ -248,34 +249,17 @@ class _PersonScreenState extends State<PersonScreen> {
 
                                   AppSize.spaceHeight1(context),
                                   //=============HHS-HavePastTrip==================
-                                  ListViewCheckBoxOrange(
-                                    map: base[i].travelWithOther,
+                                 ListViewCheckBoxOrange(
+                                    map: PersonModelList.personModelList[i].travelWithOther,
                                     onChange: (ChangeBoxResponse r) {
-                                      setState(() {
-                                        if (r.val == "لا" && r.check == true) {
-                                          base[i].personalHeadData!.hasPasTrip =
-                                              true;
-                                          base[i]
-                                              .personalHeadData!
-                                              .hhsHavePastTrip
-                                              .text = '';
-                                        } else {
-                                          base[i].personalHeadData!.hasPasTrip =
-                                              false;
-
-                                          base[i]
-                                              .personalHeadData!
-                                              .hhsHavePastTrip
-                                              .text = 'نعم';
-                                        }
-                                      });
+                                   provider.travelWithOther(i, r);
                                       //provider.nationality(r, i);
                                     },
                                     isListView: true,
                                     title: "هل قمت برحلة فى الأيام السابقة",
-                                    question: base[i]
+                                    question: PersonModelList.personModelList[i]
                                         .travelWithOther[
-                                            base[i].travelWithOther.keys.first]!
+                                    PersonModelList.personModelList[i].travelWithOther.keys.first]!
                                         .toList(),
                                     subTitle: "",
                                   ),
@@ -292,7 +276,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                       : Container(),
                                   AppSize.spaceHeight1(context),
                                   //=========Nationality======================
-                                  //Nationality(i: i),
+                                  Nationality(i: i),
                                   AppSize.spaceHeight3(context),
 
                                   Row(

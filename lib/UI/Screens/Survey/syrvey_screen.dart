@@ -53,7 +53,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
     UserSurveysProvider userSurveysProvider =
     Provider.of<UserSurveysProvider>(context, listen: false);
     userSurveysProvider.getSurveyByID(15001);
-    // validationService.resetHHSValues(editingController, context);
+    validationService.resetHHSValues(editingController, context);
   }
 
   @override

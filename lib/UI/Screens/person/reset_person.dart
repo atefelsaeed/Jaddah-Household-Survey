@@ -9,18 +9,20 @@ import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Models/Person_SurveyModel/personal_question.dart';
 import '../../../Providers/survey_hhs.dart';
+import '../../../Providers/user_surveys.dart';
 
 class PersonProvider extends ChangeNotifier {
   getAllPeronUpdated(BuildContext context) async {
-    SurveyPTProvider surveyPt =
-        Provider.of<SurveyPTProvider>(context, listen: false);
+    UserSurveysProvider surveyPt =
+        Provider.of<UserSurveysProvider>(context, listen: false);
 
-    await surveyPt.getAllLocalData();
+   // await surveyPt.getAllLocalData();
+    UserSurveysProvider userSurveysProvider =
+    Provider.of<UserSurveysProvider>(context, listen: false);
     PersonModelList.personModelList = [];
-    for (int i = 0; i < surveyPt.surveyAllData!.first.personData!.length; i++) {
+    for (int i = 0; i < surveyPt.surveyPT!.personData!.length; i++) {
       //for (int ii = 1; ii < QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]!.toList().length; ii++) {
-      if (surveyPt.surveyAllData!.first.personData![i].personalHeadData!
-              .hasPasTrip ==
+      if (surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip ==
           false) {
         QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]
             [1]["isChick"] = true;
@@ -28,6 +30,31 @@ class PersonProvider extends ChangeNotifier {
         QuestionsData.hhsHavePastTrip[QuestionsData.hhsHavePastTrip.keys.first]
             [0]["isChick"] = true;
       }
+
+      Map<String, dynamic>    nationality={
+        "QPurposeOfBeingThere": [
+    {"value": 'سعودي', "isChick": false},
+    {"value": 'وافد عربي', "isChick": false},
+    {"value": 'وافد اجنبي', "isChick": false},
+    ],
+    "title": "nationality",
+    "subTitle":
+    " A separate family is defined as who share the kitchen expenses and meals",
+    "index": 0,
+    };
+      //Map<String, dynamic>    nationalityu={};
+      List value2 = nationality[nationality.keys.first].toList();
+      print(value2);
+      for (int inr = 0; inr < value2.length; inr++) {
+        if (surveyPt.surveyPT!.personData![i].personalHeadData!.nationality.text== value2[inr]["value"]) {
+          nationality[nationality.keys.first].toList()[inr]["isChick"]=true;
+          //  nationalityu.addAll(  {"value":  value2[inr]["value"], "isChick": true});
+        }else{
+          nationality[nationality.keys.first].toList()[inr]["isChick"]=false;
+        }
+        //  notifyListeners();
+      }
+
 
 
       /*for (int ii = 0;
@@ -54,50 +81,88 @@ class PersonProvider extends ChangeNotifier {
         }
       }*/
 
+      Map<String, dynamic> travelWithOther =  {
+        'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+        [
+          {"value": 'نعم', "isChick": false},
+          {"value": 'لا', "isChick": false},
+        ],
+        "index": 0
+      };
+print("Rrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+print(surveyPt.surveyPT!.personData![i].personalHeadData!
+    .hhsHavePastTrip.text );
+      print(surveyPt.surveyPT!.personData![i].personalHeadData!
+          .hasPasTrip );
+      List value = travelWithOther[travelWithOther.keys.first].toList();
+
+
+          if (surveyPt.surveyPT!.personData![i].personalHeadData!
+              .hasPasTrip ==false) {
+     travelWithOther={
+       'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+       [
+         {"value": 'نعم', "isChick": false},
+         {"value": 'لا', "isChick": true},
+       ],
+       "index": 0
+     };
+          }else{
+            travelWithOther={
+              'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+              [
+                {"value": 'نعم', "isChick": true},
+                {"value": 'لا', "isChick": false},
+              ],
+              "index": 0
+            };
+
+
+
+      }
+
       PersonModelList.personModelList.add(PersonModel(
         personName: TextEditingController(
-            text: surveyPt.surveyAllData!.first.personData![i].personName.text),
+            text: surveyPt.surveyPT!.personData![i].personName.text),
         //==personalHeadData==
 
         personalHeadData: PersonalHeadData(
-          age: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
-                  .personalHeadData!.age.text),
+          age:surveyPt.surveyPT!.personData![i].personalHeadData!.refuseToTellAge==true? TextEditingController(
+              text: surveyPt.surveyPT!.personData![i]
+                  .personalHeadData!.age.text):TextEditingController(),
           nationality: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .personalHeadData!.nationality.text),
           hhsHavePastTrip: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .personalHeadData!.hhsHavePastTrip.text),
-          nationalityType: surveyPt.surveyAllData!.first.personData![i]
+          nationalityType: surveyPt.surveyPT!.personData![i]
               .personalHeadData!.nationalityType,
           showText: false,
-          gender: surveyPt
-              .surveyAllData!.first.personData![i].personalHeadData!.gender,
+          gender: surveyPt.surveyPT!.personData![i].personalHeadData!.gender,
           checkAge: true,
           //surveyPt.surveyAllData!.first.personData![i].personalHeadData!.checkAge,
-          hasPasTrip: surveyPt
-              .surveyAllData!.first.personData![i].personalHeadData!.hasPasTrip,
-          refuseToTellAge: surveyPt.surveyAllData!.first.personData![i]
+          hasPasTrip: surveyPt.surveyPT!.personData![i].personalHeadData!.hasPasTrip,
+          refuseToTellAge: surveyPt.surveyPT!.personData![i]
               .personalHeadData!.refuseToTellAge,
-          relationshipHeadHHS: surveyPt.surveyAllData!.first.personData![i]
+          relationshipHeadHHS:surveyPt.surveyPT!.personData![i]
               .personalHeadData!.relationshipHeadHHS,
         ),
         //==personalQuestion==
         personalQuestion: PersonalQuestion(
-          mainOccupationType: surveyPt.surveyAllData!.first.personData![i]
+          mainOccupationType: surveyPt.surveyPT!.personData![i]
               .personalQuestion!.mainOccupationType,
-          asPassenger: surveyPt.surveyAllData!.first.personData![i]
+          asPassenger: surveyPt.surveyPT!.personData![i]
               .personalQuestion!.asPassenger,
-          availablePersonalCar: surveyPt.surveyAllData!.first.personData![i]
+          availablePersonalCar: surveyPt.surveyPT!.personData![i]
               .personalQuestion!.availablePersonalCar,
-          drivingLicenceType: surveyPt.surveyAllData!.first.personData![i]
+          drivingLicenceType: surveyPt.surveyPT!.personData![i]
               .personalQuestion!.drivingLicenceType,
-          haveBusPass: surveyPt.surveyAllData!.first.personData![i]
+          haveBusPass:surveyPt.surveyPT!.personData![i]
               .personalQuestion!.haveBusPass,
-          haveDisabilityTransportMobility: surveyPt.surveyAllData!.first
-              .personData![i].personalQuestion!.haveDisabilityTransportMobility,
-          haveCarSharing: surveyPt.surveyAllData!.first.personData![i]
+          haveDisabilityTransportMobility: surveyPt.surveyPT!.personData![i]
+             .personalQuestion!.haveDisabilityTransportMobility,
+          haveCarSharing: surveyPt.surveyPT!.personData![i]
               .personalQuestion!.haveCarSharing,
           educationAddress: EducationAddress(
             fullAddress: TextEditingController(),
@@ -107,54 +172,70 @@ class PersonProvider extends ChangeNotifier {
         //==occupationModel==
         occupationModel: OccupationModel(
           earliestTimeFinishingWork: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .occupationModel!.earliestTimeFinishingWork.text),
           earliestTimeStartingWork: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text:surveyPt.surveyPT!.personData![i]
                   .occupationModel!.earliestTimeStartingWork.text),
           endingWoke: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .occupationModel!.endingWoke.text),
           startingWoke: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .occupationModel!.startingWoke.text),
           address: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .occupationModel!.address.text),
           geoCodes: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text:surveyPt.surveyPT!.personData![i]
                   .occupationModel!.geoCodes.text),
           mainOccupationAddress: TextEditingController(
-              text: surveyPt.surveyAllData!.first.personData![i]
+              text: surveyPt.surveyPT!.personData![i]
                   .occupationModel!.mainOccupationAddress.text),
-          bestWorkspaceLocation: surveyPt.surveyAllData!.first.personData![i]
+          bestWorkspaceLocation: surveyPt.surveyPT!.personData![i]
               .occupationModel!.bestWorkspaceLocation,
-          bikeWorkDays: surveyPt.surveyAllData!.first.personData![i]
+          bikeWorkDays: surveyPt.surveyPT!.personData![i]
               .occupationModel!.bikeWorkDays,
-          commuteWorkDays: surveyPt.surveyAllData!.first.personData![i]
+          commuteWorkDays: surveyPt.surveyPT!.personData![i]
               .occupationModel!.commuteWorkDays,
-          flexibleWorkingHours: surveyPt.surveyAllData!.first.personData![i]
+          flexibleWorkingHours: surveyPt.surveyPT!.personData![i]
               .occupationModel!.flexibleWorkingHours,
-          isEmployee: surveyPt
-              .surveyAllData!.first.personData![i].occupationModel!.isEmployee,
+          isEmployee: surveyPt.surveyPT!.personData![i].occupationModel!.isEmployee,
           isWorkFromHome: false,
-          numberWorkFromHome: surveyPt.surveyAllData!.first.personData![i]
+          numberWorkFromHome:surveyPt.surveyPT!.personData![i]
               .occupationModel!.numberWorkFromHome,
-          occupationLevelSector: surveyPt.surveyAllData!.first.personData![i]
+          occupationLevelSector: surveyPt.surveyPT!.personData![i]
               .occupationModel!.occupationLevelSector,
-          occupationSector: surveyPt.surveyAllData!.first.personData![i]
+          occupationSector: surveyPt.surveyPT!.personData![i]
               .occupationModel!.occupationSector,
         ),
-        nationality: {},
-        travelWithOther: {},
+        nationality: nationality,
+        travelWithOther: travelWithOther,
       ));
-      isEmployee(
-          surveyPt
-              .surveyAllData!.first.personData![i].personalHeadData!.age.text,
-          i);
+
+
+      if( surveyPt.surveyPT!.personData![i].personalHeadData!.refuseToTellAge==true){
+
+      groupAgeKey(i, surveyPt.surveyPT!.personData![i].personalHeadData!.age.text);
+    //List value = PersonData.groupAge[PersonData.groupAge.keys.first].toList();
+        print("2222222");
+
+      //  PersonModelList.personModelList[i].occupationModel!.isEmployee =1.toString();
+      /* for (int inr = 0; inr < value.length; inr++) {
+          if (surveyPt.surveyPT!.personData![i].personalHeadData!.age.text == value[inr]["value"]) {
+            print("Fffff");
+            PersonModelList.personModelList[i].occupationModel!.isEmployee =
+            value[inr]["type"];
+          }
+        }*/
+      }else {
+        isEmployee(
+            surveyPt.surveyPT!.personData![i].personalHeadData!.age.text,
+            i);
+      }
     }
 
-    notifyListeners();
+    //notifyListeners();
   }
 
   nationality(ChangeBoxResponse r, int i) {
@@ -172,6 +253,8 @@ class PersonProvider extends ChangeNotifier {
   }
 
   isEmployee(String d, int i) {
+    print("Ddddd");
+    print(d);
     if (d.isNotEmpty) {
       if (int.parse(d.toString()) > 18) {
         PersonModelList.personModelList[i].occupationModel!.isEmployee = "1";
@@ -199,7 +282,7 @@ class PersonProvider extends ChangeNotifier {
       }
       notifyListeners();
     }
-    notifyListeners();
+    //notifyListeners();
   }
 
   /*checkAge(int i, value) {
@@ -211,6 +294,25 @@ class PersonProvider extends ChangeNotifier {
 
     notifyListeners();
   }*/
+  travelWithOther(int i,ChangeBoxResponse r){
+    if (r.val == "لا" && r.check == true) {
+      PersonModelList.personModelList[i].personalHeadData!.hasPasTrip =
+      true;
+      PersonModelList.personModelList[i]
+          .personalHeadData!
+          .hhsHavePastTrip
+          .text = '';
+    } else {
+      PersonModelList.personModelList[i].personalHeadData!.hasPasTrip =
+      false;
+
+      PersonModelList.personModelList[i]
+          .personalHeadData!
+          .hhsHavePastTrip
+          .text = 'نعم';
+    }
+    notifyListeners();
+  }
   checkAge(int i, value) {
     PersonModelList.personModelList[i].personalHeadData!.checkAge = value!;
     PersonModelList.personModelList[i].personalHeadData!.age.text = '';
