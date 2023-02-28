@@ -69,9 +69,9 @@ class UserSurveysProvider with ChangeNotifier {
 
   String? userSurveyStatus;
 
-  SurveyPT? _surveyPT;
+  SurveyPT _surveyPT = SurveyPT();
 
-  SurveyPT? get surveyPT {
+  SurveyPT get surveyPT {
     return _surveyPT;
   }
 
@@ -229,6 +229,7 @@ class UserSurveysProvider with ChangeNotifier {
       debugPrint(response.body.toString());
       if (response.statusCode == 200) {
         Map<String, dynamic> data = json.decode(response.body);
+        debugPrint("Success");
         _surveyPT = SurveyPT.fromJsonAPI(data);
         debugPrint("Success");
         loading = false;
