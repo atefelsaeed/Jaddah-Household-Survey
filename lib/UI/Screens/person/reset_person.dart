@@ -44,7 +44,7 @@ class PersonProvider extends ChangeNotifier {
     };
       //Map<String, dynamic>    nationalityu={};
       List value2 = nationality[nationality.keys.first].toList();
-      print(value2);
+
       for (int inr = 0; inr < value2.length; inr++) {
         if (surveyPt.surveyPT!.personData![i].personalHeadData!.nationality.text== value2[inr]["value"]) {
           nationality[nationality.keys.first].toList()[inr]["isChick"]=true;
