@@ -231,6 +231,8 @@ class UserSurveysProvider with ChangeNotifier {
         Map<String, dynamic> data = json.decode(response.body);
         debugPrint("Success");
         _surveyPT = SurveyPT.fromJsonAPI(data);
+        print("_surveyPT.hhsSeparateFamilies!.length");
+        print(_surveyPT.hhsSeparateFamilies!.length);
         debugPrint("Success");
         loading = false;
         notifyListeners();

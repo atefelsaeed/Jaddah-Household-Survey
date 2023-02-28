@@ -83,12 +83,14 @@ c(EditingController editingController, BuildContext context, int id) async {
   HhsStatic.householdAddress.hhsPhone =
       surveyPt.surveyPT!.header.householdAddress.hhsPhone;
 
-  ///Q4 hhsNumberSeparateFamilies
+  print("hhsNumberSeparateFamilies");
+  print(surveyPt
+      .surveyPT.householdQuestions.hhsNumberSeparateFamilies);
   for (int i = 1;
       i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
       i++) {
     if (int.parse(surveyPt
-            .surveyPT!.householdQuestions.hhsNumberSeparateFamilies
+            .surveyPT.householdQuestions.hhsNumberSeparateFamilies
             .toString()) ==
         i) {
       QuestionsData.qh4[QuestionsData.qh4.keys.first][i - 1]["isChick"] = true;

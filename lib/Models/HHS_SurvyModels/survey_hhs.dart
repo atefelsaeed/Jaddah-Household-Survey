@@ -270,7 +270,7 @@ class SurveyPT extends Survey {
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
     householdQuestions.hhsNumberBedRooms.text = json['hhsNumberBedRooms'];
-    householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments'];
+   // householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments'];
     householdQuestions.hhsNumberFloors.text = json['hhsNumberFloors'];
     householdQuestions.hhsNumberSeparateFamilies =
         json['hhsNumberSeparateFamilies'];
