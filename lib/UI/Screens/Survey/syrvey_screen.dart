@@ -87,7 +87,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         builder: (context, provider, child) {
                       return Column(
                         children: [
+
+
                           const HHSHeader(),
+                          InkWell(onTap: (){
+                            Navigator.of(context).pop();
+                          },child: Icon(Icons.backpack)),
                           userSurveysProvider.loading
                               ? Center(
                                   child: CircularProgressIndicator(

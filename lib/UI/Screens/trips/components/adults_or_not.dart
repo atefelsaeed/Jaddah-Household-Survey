@@ -17,7 +17,7 @@ class AdultsOrNot extends StatelessWidget {
 
     return Column(
       children: [
-        Row(
+      /*  Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextGlobal(
@@ -26,7 +26,7 @@ class AdultsOrNot extends StatelessWidget {
               color: ColorManager.black,
             ),
           ],
-        ),
+        ),*/
         AppSize.spaceHeight2(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

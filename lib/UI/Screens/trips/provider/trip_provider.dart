@@ -32,7 +32,7 @@ class TripProvider extends ChangeNotifier {
       };
       Map<String, dynamic> purposeOfBeingThere2 = {
         "TripReason": [
-          {"value": ' في المنزل', "isChick": false},
+          {"value": 'في المنزل', "isChick": false},
           {"value": 'فى بيت العطلات / الفندق', "isChick": false},
           {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
           {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
@@ -43,8 +43,9 @@ class TripProvider extends ChangeNotifier {
           {"value": 'زیارة الأصدقاء / الأقارب', "isChick": false},
           {"value": 'ترفيه / وقت الفراغ', "isChick": false},
           {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
+          {"value": 'توص الى المدرسة / التعليم', "isChick": false},
           {"value": 'توصيل الى مكان آخر', "isChick": false},
-          {"value": '2', "isChick": false},
+          {"value": 'توص الى مكان آخر', "isChick": false},
           {"value": 'آخرى', "isChick": false},
         ],
         "title": "?What was the purpose of being there",
@@ -54,7 +55,7 @@ class TripProvider extends ChangeNotifier {
       };
       Map<String, dynamic> purposeOfBeingThere = {
         "QPurposeOfBeingThere": [
-          {"value": ' في المنزل', "isChick": false},
+          {"value": 'في المنزل', "isChick": false},
           {"value": 'فى بيت العطلات / الفندق', "isChick": false},
           {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
           {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
@@ -66,7 +67,8 @@ class TripProvider extends ChangeNotifier {
           {"value": 'ترفيه / وقت الفراغ', "isChick": false},
           {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
           {"value": 'توصيل الى مكان آخر', "isChick": false},
-
+          {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+          {"value": 'توص الى مكان آخر', "isChick": false},
           {"value": 'آخرى', "isChick": false},
         ],
         "title": "?What was the purpose of being there",
@@ -74,7 +76,8 @@ class TripProvider extends ChangeNotifier {
             " A separate family is defined as who share the kitchen expenses and meals",
         "chosenIndex": 0,
       };
-     /* print("1222222222");
+      print("1222222222");
+
       print(surveyPt.surveyPT!.tripsList![i].tripReason);
       List value2 =
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList();
@@ -90,18 +93,19 @@ class TripProvider extends ChangeNotifier {
               ["isChick"] = false;
         }
         //  notifyListeners();
-      }*/
+      }
 
       List value3 =
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList();
 
       print("rrrrr");
-      print("rrrrr");
+
+
       print("rrrrr");
       surveyPt.surveyPT!.tripsList![i].purposeTravel;
 
       print(surveyPt.surveyPT!.tripsList![i].purposeTravel);
-      for (int ir = 0; ir < 1; ir++) {
+      for (int ir = 0; ir < value3.length; ir++) {
         if (surveyPt.surveyPT!.tripsList![i].purposeTravel ==
             value3[ir]["value"]) {
           print(value3[ir]["value"]);
@@ -139,15 +143,17 @@ class TripProvider extends ChangeNotifier {
           travelWithOtherModel:
               surveyPt.surveyPT!.tripsList![i].travelWithOtherModel,
           typeTravel: surveyPt.surveyPT!.tripsList![i].typeTravel,
+
           typeTravelCondition:
               surveyPt.surveyPT!.tripsList![i].typeTravelCondition,
+          isTravelAlone: surveyPt.surveyPT!.tripsList![i].isTravelAlone ,
           travelWithOther:
               surveyPt.surveyPT!.tripsList![i].isTravelAlone == true
                   ? {
                       'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
                           [
-                        {"value": 'مع الأخرين', "isChick": false},
-                        {"value": 'بمفردك', "isChick": true},
+                        {"value": 'مع الأخرين', "isChick": true},
+                        {"value": 'بمفردك', "isChick": false},
                       ],
                       "index": 0
                     }

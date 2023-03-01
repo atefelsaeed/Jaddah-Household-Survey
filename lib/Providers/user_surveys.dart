@@ -221,7 +221,7 @@ class UserSurveysProvider with ChangeNotifier {
 
   //============Get-Survey-By-ID================================
   Future<bool> getSurveyByID(int id) async {
-    try {
+
       loading = true;
       Response response = await APIHelper.getData(
         url: "${APIRouting.getSingleSurvay}$id",
@@ -243,12 +243,7 @@ class UserSurveysProvider with ChangeNotifier {
       loading = false;
       notifyListeners();
       return false;
-    } catch (e) {
-      debugPrint(e.toString());
-      loading = false;
-      notifyListeners();
-      return true;
-    }
+
   }
 
   //============Update-Survey===================================

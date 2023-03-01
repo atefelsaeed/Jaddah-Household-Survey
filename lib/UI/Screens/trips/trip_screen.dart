@@ -118,7 +118,7 @@ validationService.initTrip();
 
                               OwnerTrip(index: i),
                               //==========TripStartingAddress================
-                             /* status == 'Offline'
+                              status == 'Offline'
                                   ? TripHoldAddress(
                                       tripModel: TripModeList
                                           .tripModeList[i].startBeginningModel!,
@@ -127,13 +127,13 @@ validationService.initTrip();
                                       index: i,
                                       title: "1. من أین بدأت الیوم؟",
                                     ),
-                              AppSize.spaceHeight3(context),*/
+                              AppSize.spaceHeight3(context),
                               const HeadlineText(
                                   text: "2. ما ھو الغرض من التواجد ھناك؟"),
                               WhyDidYouGo(
                                 indexTripModel: i,
                               ),
-                     /*         AppSize.spaceHeight3(context),
+                            AppSize.spaceHeight3(context),
                               TimeLeave(
                                 expectedDeparture:
                                     TripModeList.tripModeList[i].departureTime,
@@ -173,7 +173,7 @@ validationService.initTrip();
                               DepartTime(
                                 tripModel: TripModeList.tripModeList[i],
                                 i: i,
-                              ),*/
+                              ),
                             ],
                           ),
                         ),
@@ -189,45 +189,28 @@ validationService.initTrip();
                             TripModeList.tripModeList.add(TripsModel(
                               chosenPerson: '',
                               isTravelAlone: null,
-                              purposeOfBeingThere2: {
+                              purposeOfBeingThere2:{
                                 "TripReason": [
-                                  {"value": ' في المنزل', "isChick": false},
-                                  {
-                                    "value": 'فى بيت العطلات / الفندق',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'العمل - فى مكتب / مقر العمل',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'العمل - خارج مكتب / مقر العمل',
-                                    "isChick": false
-                                  },
+                                  {"value": 'في المنزل', "isChick": false},
+                                  {"value": 'فى بيت العطلات / الفندق', "isChick": false},
+                                  {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
+                                  {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
                                   {"value": 'مكان تعليمى', "isChick": false},
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
                                   {"value": 'طبى / مستشفى', "isChick": false},
-                                  {
-                                    "value": 'زیارة الأصدقاء / الأقار',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'ترفيه / وقت الفراغ',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'توص الى المدرسة / التعليم',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'توص الى مكان آخر',
-                                    "isChick": false
-                                  },
+                                  {"value": 'زیارة الأصدقاء / الأقارب', "isChick": false},
+                                  {"value": 'ترفيه / وقت الفراغ', "isChick": false},
+                                  {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
+                                  {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+                                  {"value": 'توص الى مكان آخر', "isChick": false},
+                                  {"value": 'توصيل الى مكان آخر', "isChick": false},
+
+                                  {"value": 'آخرى', "isChick": false},
                                 ],
                                 "title": "?What was the purpose of being there",
                                 "subTitle":
-                                    " A separate family is defined as who share the kitchen expenses and meals",
+                                " A separate family is defined as who share the kitchen expenses and meals",
                                 "chosenIndex": 0,
                               },
                               purposeOfBeingThere: {
@@ -249,6 +232,8 @@ validationService.initTrip();
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
                                   {"value": 'طبى / مستشفى', "isChick": false},
+                                  {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+                                  {"value": 'توص الى مكان آخر', "isChick": false},
                                   {
                                     "value": 'زیارة الأصدقاء / الأقار',
                                     "isChick": false

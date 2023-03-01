@@ -13,8 +13,8 @@ class TravelWithOtherModel {
   });
 
   TravelWithOtherModel.fromJson(Map<String, dynamic> json) {
-    adultsNumber.text = json['adultsNumber']??"";
-    childrenNumber.text = json['childrenNumber']??"";
+    adultsNumber.text =""; //json['adultsNumber'];
+    childrenNumber.text = "";//json['childrenNumber'];
   }
 
   Map<String, dynamic> toJson() {
