@@ -109,6 +109,7 @@ class HhsStatic {
     hhsIsDwellingOther: TextEditingController(),
     hhsElectricCycles: BikesType("", "", ""),
     hhsTotalIncome: '',
+    hhsNumberSeparateFamilies: '',
     hhsElectricScooter: BikesType("", "", ""),
   );
   static List<SeparateFamilies> houseHold = [];
