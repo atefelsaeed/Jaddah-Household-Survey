@@ -240,6 +240,11 @@ class PersonData {
         "type": "retired",
       },
       {
+        "value": 'متقاعد',
+        "isChick": false,
+        "type": "retired",
+      },
+      {
         "value": 'رفض',
         "isChick": false,
         "type": "retired",

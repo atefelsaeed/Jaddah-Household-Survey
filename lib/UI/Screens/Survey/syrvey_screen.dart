@@ -56,10 +56,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
 
-    if (widget.itemSurveyModel.status == 'filled') {
+    if ((widget.itemSurveyModel.status == 'filled') ||
+        (widget.itemSurveyModel.status == 'edit')) {
       int id = widget.itemSurveyModel.id!;
-     // userSurveysProvider.getSurveyByID(id);
-      validationService.resetHHSValues(editingController, context,id);
+      // userSurveysProvider.getSurveyByID(id);
+      validationService.resetHHSValues(editingController, context, id);
     }
   }
 
@@ -87,18 +88,16 @@ class _SurveyScreenState extends State<SurveyScreen> {
                         builder: (context, provider, child) {
                       return Column(
                         children: [
-
-
                           const HHSHeader(),
-                          InkWell(onTap: (){
-                            Navigator.of(context).pop();
-                          },child: Icon(Icons.backpack)),
                           userSurveysProvider.loading
-                              ? Center(
-                                  child: CircularProgressIndicator(
-                                    color: ColorManager.primaryColor,
+                              ? SizedBox(
+                            height: height(context)*.5,
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: ColorManager.primaryColor,
+                                    ),
                                   ),
-                                )
+                              )
                               : Column(
                                   children: [
                                     // ===== HouseHoldAddress ===

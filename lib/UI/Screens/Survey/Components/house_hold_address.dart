@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/hhs_models.dart';
-import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Data/HouseholdPart1/TripsData/trip_data.dart';
+
 class TravelWithOtherModel {
   TextEditingController adultsNumber = TextEditingController();
   TextEditingController childrenNumber = TextEditingController();
@@ -13,8 +15,8 @@ class TravelWithOtherModel {
   });
 
   TravelWithOtherModel.fromJson(Map<String, dynamic> json) {
-    adultsNumber.text =""; //json['adultsNumber'];
-    childrenNumber.text = "";//json['childrenNumber'];
+    adultsNumber.text = ""; //json['adultsNumber'];
+    childrenNumber.text = ""; //json['childrenNumber'];
   }
 
   Map<String, dynamic> toJson() {
@@ -47,7 +49,9 @@ class TravelWay {
 
   TravelWay.fromJson(Map<String, dynamic> json) {
     mainMode = json['mainMode'];
-    accessMode = json['accessMode'];
+    print('accccciiii');
+    print(TripData.AcMode['AcMode'][0]);
+    accessMode = json['accessMode']??TripData.AcMode['AcMode'][0];
   }
 
   Map<String, dynamic> toJson() {

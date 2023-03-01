@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Providers/user_surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/text.dart';
 import 'components/controller_vechelies_body.dart';
@@ -22,13 +23,18 @@ class VehiclesScreen extends StatefulWidget {
 
 class _VehiclesScreenState extends State<VehiclesScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     final validationService = Provider.of<VecProvider>(context, listen: false);
-
-    validationService.resetVechValues(context);
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'filled') ||
+        (userSurveysProvider.userSurveyStatus == 'edit')) {
+      validationService.resetVechValues(context);
+    }
   }
 
   @override

@@ -91,12 +91,12 @@ class TripsModel {
 
   bool? isTravelAlone;
 
-  TravelWithOtherModel? travelWithOtherModel=TravelWithOtherModel(
-      adultsNumber: TextEditingController(text: "4"),
-      childrenNumber: TextEditingController(text: "4"));
-  TravelWithOtherModel? travelAloneHouseHold=TravelWithOtherModel(
-  adultsNumber: TextEditingController(text: "4"),
-      childrenNumber: TextEditingController(text: "4"));
+  TravelWithOtherModel? travelWithOtherModel = TravelWithOtherModel(
+      adultsNumber: TextEditingController(text: ""),
+      childrenNumber: TextEditingController(text: ""));
+  TravelWithOtherModel? travelAloneHouseHold = TravelWithOtherModel(
+      adultsNumber: TextEditingController(text: ""),
+      childrenNumber: TextEditingController(text: ""));
   List<String>? hhsMembersTraveled;
   ArrivalDepartTime arrivalDepartTime = ArrivalDepartTime(
       departTime: TextEditingController(),
@@ -145,10 +145,10 @@ class TripsModel {
         TravelWithOtherModel.fromJson(json['travelAloneHouseHold']);
     arrivalDepartTime = ArrivalDepartTime.fromJson(json['arrivalDepartTime']);
     travelTypeModel = TravelTypeModel.fromJson(json['travelTypeModel']);
-    purposeTravel = json['purposeTravel']??'';
-    chosenPerson = json['ownerTripPerson']??'';
-    departureTime.text = json['departureTime']??'';
-    tripReason = json['tripReason']??'';
+    purposeTravel = json['purposeTravel'] ?? '';
+    chosenPerson = json['ownerTripPerson'] ?? '';
+    departureTime.text = json['departureTime'] ?? '';
+    tripReason = json['tripReason'] ?? '';
     isTravelAlone = json['isTravelAlone'];
     print("a7a");
     print(isTravelAlone);

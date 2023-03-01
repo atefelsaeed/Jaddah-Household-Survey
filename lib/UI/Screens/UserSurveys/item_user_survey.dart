@@ -58,7 +58,8 @@ class ItemUserSurvey extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            itemSurveyModel.status == "not filled"
+            ((itemSurveyModel.status == "not filled") ||
+                    (itemSurveyModel.status == "edit"))
                 ? DefaultButton(
                     function: () async {
                       userSurveysProvider.userSurveyStatus =
@@ -75,8 +76,13 @@ class ItemUserSurvey extends StatelessWidget {
                       );
                     },
                     isWidget: true,
-                    text: 'بدأ استبيان',
+                    text: itemSurveyModel.status == "edit"
+                        ? 'تعديل الاستبيان'
+                        : 'بدأ استبيان',
                     btnWidth: width(context) * .35,
+                    background: itemSurveyModel.status == "edit"
+                        ? ColorManager.yellowLiner
+                        : ColorManager.primaryColor,
                   )
                 : DefaultButton(
                     function: () async {
@@ -93,9 +99,14 @@ class ItemUserSurvey extends StatelessWidget {
                         ),
                       );
                     },
+                    //edited
                     isWidget: true,
-                    background: ColorManager.grayColor,
-                    text: 'تم الاستبيان',
+                    background: itemSurveyModel.status == "edited"
+                        ? Colors.green
+                        : ColorManager.grayColor,
+                    text: itemSurveyModel.status == "edited"
+                        ? 'تم التعديل'
+                        : 'تم الاستبيان',
                     btnWidth: width(context) * .35,
                   ),
           ],

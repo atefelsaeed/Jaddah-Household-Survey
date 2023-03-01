@@ -71,7 +71,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                     label: bas.taxiTravelType != ''
                         ? Text(bas.taxiTravelType ?? '')
                         : const Text('إختار'),
-                    hint: "نوع التاكسي الذي استخدمتھ وكم الأجرة التي دفعتھا؟",
+                    hint: "نوع التاكسي الذي استخدمته.و كم الأجرة التي دفعتھا؟",
                     options: TripData
                         .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
                         .toList(),
@@ -108,11 +108,12 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              bas.travelType == "تاكسي"
+              ((bas.travelType == "تاكسي") ||
+                      (bas.carParkingPlace == 'موقف سيارات عام - مدفوع'))
                   ? TextForm(
                       controller: widget.costTaxi,
-                      text: "كم أجرة التاكسي دفعتھ؟",
-                      label: "كم أجرة التاكسي دفعتھ؟",
+                      text: "ما مقدار الأجرة التي دفعتھا؟",
+                      label: "ما مقدار الأجرة التي دفعتھا؟",
                       keyboardType: TextInputType.number,
                       isNumber: true,
                     )

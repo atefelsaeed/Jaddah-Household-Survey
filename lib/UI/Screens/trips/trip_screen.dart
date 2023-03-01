@@ -20,9 +20,11 @@ import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_type_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_with_other_model.dart';
 import '../../../Models/Trips_SurveyModel/trips_model.dart';
+import '../../../Providers/user_surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import 'components/headline_trip.dart';
+import 'components/how_did_you_travel.dart';
 import 'components/owner_trip.dart';
 import 'components/purpose_of_being.dart';
 import 'components/time_leave.dart';
@@ -80,8 +82,14 @@ class _TripScreenState extends State<TripScreen> {
     super.initState();
     getSystemStatus();
     final validationService = Provider.of<TripProvider>(context, listen: false);
-validationService.getAllTripUpdated(context);
-validationService.initTrip();
+
+    validationService.initTrip();
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'filled') ||
+        (userSurveysProvider.userSurveyStatus == 'edit')) {
+      validationService.getAllTripUpdated(context);
+    }
   }
 
   @override
@@ -133,7 +141,7 @@ validationService.initTrip();
                               WhyDidYouGo(
                                 indexTripModel: i,
                               ),
-                            AppSize.spaceHeight3(context),
+                              AppSize.spaceHeight3(context),
                               TimeLeave(
                                 expectedDeparture:
                                     TripModeList.tripModeList[i].departureTime,
@@ -154,13 +162,11 @@ validationService.initTrip();
                               const HeadlineText(
                                   text:
                                       "5. ما ھو الغرض من الذھاب إلى ھذا  المكان؟"),
-                            PurposeOfTheBeing(
+                              PurposeOfTheBeing(
                                 indexTripModel: i,
                               ),
                               AppSize.spaceHeight2(context),
-                             /* HowDidYouTravel(
-                                i: i,
-                              ),*/
+                              HowDidYouTravel(i: i),
                               AppSize.spaceHeight3(context),
                               TravelAlone(index: i),
                               AppSize.spaceHeight2(context),
@@ -189,28 +195,54 @@ validationService.initTrip();
                             TripModeList.tripModeList.add(TripsModel(
                               chosenPerson: '',
                               isTravelAlone: null,
-                              purposeOfBeingThere2:{
+                              purposeOfBeingThere2: {
                                 "TripReason": [
                                   {"value": 'في المنزل', "isChick": false},
-                                  {"value": 'فى بيت العطلات / الفندق', "isChick": false},
-                                  {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
-                                  {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
+                                  {
+                                    "value": 'فى بيت العطلات / الفندق',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'العمل - فى مكتب / مقر العمل',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'العمل - خارج مكتب / مقر العمل',
+                                    "isChick": false
+                                  },
                                   {"value": 'مكان تعليمى', "isChick": false},
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
                                   {"value": 'طبى / مستشفى', "isChick": false},
-                                  {"value": 'زیارة الأصدقاء / الأقارب', "isChick": false},
-                                  {"value": 'ترفيه / وقت الفراغ', "isChick": false},
-                                  {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
-                                  {"value": 'توص الى المدرسة / التعليم', "isChick": false},
-                                  {"value": 'توص الى مكان آخر', "isChick": false},
-                                  {"value": 'توصيل الى مكان آخر', "isChick": false},
-
+                                  {
+                                    "value": 'زیارة الأصدقاء / الأقارب',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'ترفيه / وقت الفراغ',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توصيل الى المدرسة / التعليم',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى المدرسة / التعليم',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى مكان آخر',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توصيل الى مكان آخر',
+                                    "isChick": false
+                                  },
                                   {"value": 'آخرى', "isChick": false},
                                 ],
                                 "title": "?What was the purpose of being there",
                                 "subTitle":
-                                " A separate family is defined as who share the kitchen expenses and meals",
+                                    " A separate family is defined as who share the kitchen expenses and meals",
                                 "chosenIndex": 0,
                               },
                               purposeOfBeingThere: {
@@ -232,8 +264,14 @@ validationService.initTrip();
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
                                   {"value": 'طبى / مستشفى', "isChick": false},
-                                  {"value": 'توص الى المدرسة / التعليم', "isChick": false},
-                                  {"value": 'توص الى مكان آخر', "isChick": false},
+                                  {
+                                    "value": 'توص الى المدرسة / التعليم',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توص الى مكان آخر',
+                                    "isChick": false
+                                  },
                                   {
                                     "value": 'زیارة الأصدقاء / الأقار',
                                     "isChick": false
@@ -383,5 +421,3 @@ validationService.initTrip();
     ));
   }
 }
-
-

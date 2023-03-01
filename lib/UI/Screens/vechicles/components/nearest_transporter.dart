@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
-import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../Survey/actions/action_survey_screen.dart';
 import '../../Survey/widgets/list_view_check_box_orange.dart';
 

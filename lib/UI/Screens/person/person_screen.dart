@@ -13,6 +13,7 @@ import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Providers/user_surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
 import '../../Widgets/dropdown_form_input.dart';
@@ -53,7 +54,13 @@ class _PersonScreenState extends State<PersonScreen> {
     super.initState();
     final validationService =
         Provider.of<PersonProvider>(context, listen: false);
-    validationService.getAllPeronUpdated(context);
+    UserSurveysProvider userSurveysProvider =
+    Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'filled') ||
+        (userSurveysProvider.userSurveyStatus == 'edit')) {
+      validationService.getAllPeronUpdated(context);
+    }
+
   }
 
   void showError() => showDialog<void>(

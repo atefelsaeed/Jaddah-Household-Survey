@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -21,7 +20,7 @@ class TripProvider extends ChangeNotifier {
 
     TripModeList.tripModeList = [];
 
-    for (int i = 0; i < surveyPt.surveyPT!.tripsList!.length; i++) {
+    for (int i = 0; i < surveyPt.surveyPT.tripsList!.length; i++) {
       Map<String, dynamic> travelWithOther = {
         'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
             [
@@ -76,14 +75,12 @@ class TripProvider extends ChangeNotifier {
             " A separate family is defined as who share the kitchen expenses and meals",
         "chosenIndex": 0,
       };
-      print("1222222222");
 
-      print(surveyPt.surveyPT!.tripsList![i].tripReason);
       List value2 =
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList();
 
       for (int inr = 0; inr < value2.length; inr++) {
-        if (surveyPt.surveyPT!.tripsList![i].tripReason ==
+        if (surveyPt.surveyPT.tripsList![i].tripReason ==
             value2[inr]["value"]) {
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList()[inr]
               ["isChick"] = true;
@@ -98,81 +95,70 @@ class TripProvider extends ChangeNotifier {
       List value3 =
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList();
 
-      print("rrrrr");
+      surveyPt.surveyPT.tripsList![i].purposeTravel;
 
-
-      print("rrrrr");
-      surveyPt.surveyPT!.tripsList![i].purposeTravel;
-
-      print(surveyPt.surveyPT!.tripsList![i].purposeTravel);
       for (int ir = 0; ir < value3.length; ir++) {
-        if (surveyPt.surveyPT!.tripsList![i].purposeTravel ==
+        if (surveyPt.surveyPT.tripsList![i].purposeTravel ==
             value3[ir]["value"]) {
-          print(value3[ir]["value"]);
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList()[ir]
               ["isChick"] = true;
-          print(purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList()[ir]);
+
           //  nationalityu.addAll(  {"value":  value2[inr]["value"], "isChick": true});
         } else {
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList()[ir]
               ["isChick"] = false;
         }
       }
-      print("22");
-      print(purposeOfBeingThere2);
-      print(surveyPt.surveyPT!.tripsList![i].chosenPerson);
       TripModeList.tripModeList.add(TripsModel(
-          person: surveyPt.surveyPT!.tripsList![i].person,
-          isHome: surveyPt.surveyPT!.tripsList![i].isHome,
-          isHomeEnding: surveyPt.surveyPT!.tripsList![i].isHomeEnding,
+          person: surveyPt.surveyPT.tripsList![i].person,
+          isHome: surveyPt.surveyPT.tripsList![i].isHome,
+          isHomeEnding: surveyPt.surveyPT.tripsList![i].isHomeEnding,
           chosenFriendPerson:
-              surveyPt.surveyPT!.tripsList![i].chosenFriendPerson,
-          chosenPerson: surveyPt.surveyPT!.tripsList![i].chosenPerson,
+              surveyPt.surveyPT.tripsList![i].chosenFriendPerson,
+          chosenPerson: surveyPt.surveyPT.tripsList![i].chosenPerson,
           purposeOfBeingThere: purposeOfBeingThere,
-          purposeTravel: surveyPt.surveyPT!.tripsList![i].purposeTravel,
-          tripReason: surveyPt.surveyPT!.tripsList![i].tripReason,
+          purposeTravel: surveyPt.surveyPT.tripsList![i].purposeTravel,
+          tripReason: surveyPt.surveyPT.tripsList![i].tripReason,
           startBeginningModel:
-              surveyPt.surveyPT!.tripsList![i].startBeginningModel,
+              surveyPt.surveyPT.tripsList![i].startBeginningModel,
           hhsMembersTraveled:
-              surveyPt.surveyPT!.tripsList![i].hhsMembersTraveled,
+              surveyPt.surveyPT.tripsList![i].hhsMembersTraveled,
           travelAloneHouseHold:
-              surveyPt.surveyPT!.tripsList![i].travelAloneHouseHold,
-          travelWay: surveyPt.surveyPT!.tripsList![i].travelWay,
-          type: surveyPt.surveyPT!.tripsList![i].type,
-          endingAddress: surveyPt.surveyPT!.tripsList![i].endingAddress,
+              surveyPt.surveyPT.tripsList![i].travelAloneHouseHold,
+          travelWay: surveyPt.surveyPT.tripsList![i].travelWay,
+          type: surveyPt.surveyPT.tripsList![i].type,
+          endingAddress: surveyPt.surveyPT.tripsList![i].endingAddress,
           travelWithOtherModel:
-              surveyPt.surveyPT!.tripsList![i].travelWithOtherModel,
-          typeTravel: surveyPt.surveyPT!.tripsList![i].typeTravel,
-
+              surveyPt.surveyPT.tripsList![i].travelWithOtherModel,
+          typeTravel: surveyPt.surveyPT.tripsList![i].typeTravel,
           typeTravelCondition:
-              surveyPt.surveyPT!.tripsList![i].typeTravelCondition,
-          isTravelAlone: surveyPt.surveyPT!.tripsList![i].isTravelAlone ,
-          travelWithOther:
-              surveyPt.surveyPT!.tripsList![i].isTravelAlone == true
-                  ? {
-                      'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
-                          [
-                        {"value": 'مع الأخرين', "isChick": true},
-                        {"value": 'بمفردك', "isChick": false},
-                      ],
-                      "index": 0
-                    }
-                  : {
-                      'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
-                          [
-                        {"value": 'مع الأخرين', "isChick": false},
-                        {"value": 'بمفردك', "isChick": true},
-                      ],
-                      "index": 0
-                    },
-          travelTypeModel: surveyPt.surveyPT!.tripsList![i].travelTypeModel,
+              surveyPt.surveyPT.tripsList![i].typeTravelCondition,
+          isTravelAlone: surveyPt.surveyPT.tripsList![i].isTravelAlone,
+          travelWithOther: surveyPt.surveyPT.tripsList![i].isTravelAlone == true
+              ? {
+                  'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+                      [
+                    {"value": 'مع الأخرين', "isChick": true},
+                    {"value": 'بمفردك', "isChick": false},
+                  ],
+                  "index": 0
+                }
+              : {
+                  'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+                      [
+                    {"value": 'مع الأخرين', "isChick": false},
+                    {"value": 'بمفردك', "isChick": true},
+                  ],
+                  "index": 0
+                },
+          travelTypeModel: surveyPt.surveyPT.tripsList![i].travelTypeModel,
           otherWhereDidYouParkEditingControl: surveyPt
-              .surveyPT!.tripsList![i].otherWhereDidYouParkEditingControl,
+              .surveyPT.tripsList![i].otherWhereDidYouParkEditingControl,
           taxiTravelTypeEditingControl:
-              surveyPt.surveyPT!.tripsList![i].taxiTravelTypeEditingControl,
-          arrivalDepartTime: surveyPt.surveyPT!.tripsList![i].arrivalDepartTime,
+              surveyPt.surveyPT.tripsList![i].taxiTravelTypeEditingControl,
+          arrivalDepartTime: surveyPt.surveyPT.tripsList![i].arrivalDepartTime,
           purposeOfBeingThere2: purposeOfBeingThere2,
-          departureTime: surveyPt.surveyPT!.tripsList![i].departureTime));
+          departureTime: surveyPt.surveyPT.tripsList![i].departureTime));
     }
 
     // notifyListeners();

@@ -131,7 +131,8 @@ class CheckTripsValidation {
           for (var element in userSurvey.userSurveys) {
             await HHSUserSurveysOperations().addItemToDatabase(element);
           }
-        } else if (userSurvey.userSurveyStatus == "filled") {
+        } else if ((userSurvey.userSurveyStatus == "filled") ||
+            (userSurvey.userSurveyStatus == "edit")) {
           userSurvey.updateSurvey(surveyPt.data);
         }
         debugPrint('Add User Surveys to local database');
