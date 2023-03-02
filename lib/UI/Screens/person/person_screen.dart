@@ -55,12 +55,10 @@ class _PersonScreenState extends State<PersonScreen> {
     final validationService =
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
-    Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'filled') ||
-        (userSurveysProvider.userSurveyStatus == 'edit')) {
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'edit')) {
       validationService.getAllPeronUpdated(context);
     }
-
   }
 
   void showError() => showDialog<void>(
@@ -256,17 +254,22 @@ class _PersonScreenState extends State<PersonScreen> {
 
                                   AppSize.spaceHeight1(context),
                                   //=============HHS-HavePastTrip==================
-                                 ListViewCheckBoxOrange(
-                                    map: PersonModelList.personModelList[i].travelWithOther,
+                                  ListViewCheckBoxOrange(
+                                    map: PersonModelList
+                                        .personModelList[i].travelWithOther,
                                     onChange: (ChangeBoxResponse r) {
-                                   provider.travelWithOther(i, r);
+                                      provider.travelWithOther(i, r);
                                       //provider.nationality(r, i);
                                     },
                                     isListView: true,
                                     title: "هل قمت برحلة فى الأيام السابقة",
-                                    question: PersonModelList.personModelList[i]
-                                        .travelWithOther[
-                                    PersonModelList.personModelList[i].travelWithOther.keys.first]!
+                                    question: PersonModelList
+                                        .personModelList[i]
+                                        .travelWithOther[PersonModelList
+                                            .personModelList[i]
+                                            .travelWithOther
+                                            .keys
+                                            .first]!
                                         .toList(),
                                     subTitle: "",
                                   ),
@@ -276,7 +279,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                       ? TextForm(
                                           label: 'إذكر السبب',
                                           text: 'إذكر السبب',
-                                          controller: PersonModelList.personModelList[i]
+                                          controller: PersonModelList
+                                              .personModelList[i]
                                               .personalHeadData!
                                               .hhsHavePastTrip,
                                         )
@@ -288,7 +292,7 @@ class _PersonScreenState extends State<PersonScreen> {
 
                                   Row(
                                     mainAxisAlignment:
-                                         MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       PersonModelList
                                                   .personModelList[i]

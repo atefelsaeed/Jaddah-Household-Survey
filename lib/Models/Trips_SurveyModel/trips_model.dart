@@ -92,11 +92,11 @@ class TripsModel {
   bool? isTravelAlone;
 
   TravelWithOtherModel? travelWithOtherModel = TravelWithOtherModel(
-      adultsNumber: TextEditingController(text: ""),
-      childrenNumber: TextEditingController(text: ""));
+      adultsNumber: TextEditingController(),
+      childrenNumber: TextEditingController());
   TravelWithOtherModel? travelAloneHouseHold = TravelWithOtherModel(
-      adultsNumber: TextEditingController(text: ""),
-      childrenNumber: TextEditingController(text: ""));
+      adultsNumber: TextEditingController(),
+      childrenNumber: TextEditingController());
   List<String>? hhsMembersTraveled;
   ArrivalDepartTime arrivalDepartTime = ArrivalDepartTime(
       departTime: TextEditingController(),
