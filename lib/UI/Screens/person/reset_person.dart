@@ -130,7 +130,7 @@ class PersonProvider extends ChangeNotifier {
         personalHeadData: PersonalHeadData(
           age: surveyPt.surveyPT.personData![i].personalHeadData!
                       .refuseToTellAge ==
-                  true
+                  false
               ? TextEditingController(
                   text: surveyPt
                       .surveyPT.personData![i].personalHeadData!.age.text)
@@ -236,7 +236,7 @@ class PersonProvider extends ChangeNotifier {
           }
         }*/
       } else {
-        isEmployee(
+        isEmployeeEdit(
             surveyPt.surveyPT.personData![i].personalHeadData!.age.text, i);
       }
     }
@@ -257,7 +257,20 @@ class PersonProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
-
+  isEmployeeEdit(String d, int i) {
+    print("Ddddd");
+    print(d);
+    if (d.isNotEmpty) {
+      if (int.parse(d.toString()) > 18) {
+        PersonModelList.personModelList[i].occupationModel!.isEmployee = "1";
+      } else {
+        PersonModelList.personModelList[i].occupationModel!.isEmployee = "0";
+      }
+    } else {
+      PersonModelList.personModelList[i].occupationModel!.isEmployee = "";
+    }
+  //  notifyListeners();
+  }
   isEmployee(String d, int i) {
     print("Ddddd");
     print(d);
@@ -306,7 +319,7 @@ class PersonProvider extends ChangeNotifier {
       }
       notifyListeners();
     }
-    //notifyListeners();
+    notifyListeners();
   }
 
   /*checkAge(int i, value) {
