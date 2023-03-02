@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_data.dart';
 
 class TravelTypeModel {
   String? carParkingPlace;
@@ -25,7 +26,9 @@ class TravelTypeModel {
 
   TravelTypeModel.fromJson(Map<String, dynamic> json) {
     carParkingPlace = json['carParkingPlace'] ?? '';
-    taxiTravelType = json['taxiTravelType'] ?? '';
+    taxiTravelType = json['taxiTravelType'] ??
+        TripData.whatTypeOfTaxi[
+            '?what type of taxi did you use and how much fare did you pay'][0];
     travelType = json['travelType '] ?? '';
     passTravelType = json['passTravelType'] ?? '';
     taxiFare.text = json['taxiFare'] ?? '';

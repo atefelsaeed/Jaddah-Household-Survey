@@ -10,6 +10,7 @@ class PersonData {
       'زميل فى العمل',
       'خادمة',
       'غير ذى صلة',
+      'أخرى'
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -27,6 +28,7 @@ class PersonData {
       'زميل فى العمل',
       'سائق',
       'غير ذى صلة',
+      'أخرى'
     ],
     "title": "mainMade",
     "subTitle": "mainMade",
@@ -87,13 +89,21 @@ class PersonData {
 
   static Map<String, dynamic> workplace = {
     "what best describe your workplace location(s)?": [
-      'سيارة',
-      'سيارة كبيرة',
-      'ونيت',
-      'شاحنة',
+      'سيارة كسائق',
+      'سيارة كراكب',
+      'أجرة',
+      'نقل عام',
+      'باص العمل',
+      'باص المدرسة',
+      'اجرة من المدرسة',
       'دراجة نارية',
-      ' دراجة هوائية',
-      'سكوتر الكترونى',
+      'المشي <5 دقائق',
+      'المشي 6-10 دقائق',
+      'المشي 11-15 دقيقة',
+      'المشي 16-20 دقيقة',
+      'مشى +20 دقيقة',
+      'دراجة هوائية',
+      'أخرى'
     ],
     "title": "mainMade",
     "subTitle": "mainMade",

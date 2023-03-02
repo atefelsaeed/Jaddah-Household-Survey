@@ -84,6 +84,9 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           ],
         ),
         Row(
+          children: [],
+        ),
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ((bas.carParkingPlace == "أخر" && bas.travelType == "سيارة") ||
@@ -116,6 +119,28 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       label: "ما مقدار الأجرة التي دفعتھا؟",
                       keyboardType: TextInputType.number,
                       isNumber: true,
+                    )
+                  : Container(),
+              bas.taxiTravelType == "أخر"
+                  ? Column(
+                      children: [
+                        AppSize.spaceHeight3(context),
+                        SizedBox(
+                            width: width(context) * .45,
+                            child: TextGlobal(
+                              text: "نوع التاكسي الذي استخدمته",
+                              fontSize: height(context) * .02,
+                              color: ColorManager.black,
+                            )),
+                        AppSize.spaceHeight1(context),
+                        MyTextForm(
+                          label: "نوع التاكسي الذي استخدمته",
+                          onChanged: (val) {
+                            bas.taxiTravelType = val;
+                          },
+                          keyboardType: TextInputType.text,
+                        ),
+                      ],
                     )
                   : Container(),
             ],
@@ -154,7 +179,6 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                             bas.taxiTravelType = val;
                           },
                           keyboardType: TextInputType.text,
-                          // isNumber: true,
                         ),
                       ],
                     )

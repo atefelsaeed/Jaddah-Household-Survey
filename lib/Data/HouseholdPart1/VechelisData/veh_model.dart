@@ -31,6 +31,7 @@ class VehModel {
   static String fuelTypeCode = "";
   static String ownerShipCode = "";
   static String parkThisCar = "";
+  static String largeItemCar = "";
   static String nearestPublicTransporter = "";
 
 }

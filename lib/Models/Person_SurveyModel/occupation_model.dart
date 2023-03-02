@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_data.dart';
 
 class OccupationModel {
   String? occupationSector;
@@ -41,7 +42,9 @@ class OccupationModel {
     occupationSector = json['occupationSector'] ?? "";
     isEmployee = json['isEmployee'] ?? "";
     occupationLevelSector = json['occupationLevelSector'] ?? "";
-    bestWorkspaceLocation = json['bestWorkspaceLocation'] ?? "";
+    bestWorkspaceLocation = json['bestWorkspaceLocation'] ??
+        PersonData.workplace["what best describe your workplace location(s)?"]
+            [0];
     commuteWorkDays = json['commuteWorkDays'] ?? 0;
     bikeWorkDays = json['bikeWorkDays'] ?? 0;
     address.text = json['address'] ?? '';

@@ -144,7 +144,8 @@ class TripData {
       'تاكسي',
       'اوبر',
       'كريم',
-      // "أخر"
+      'جينى',
+      "أخر"
     ],
     "title": "?where did you park",
     "subTitle": "mainMade",

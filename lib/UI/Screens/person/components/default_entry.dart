@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -118,12 +119,13 @@ class _DefaultEntryState extends State<DefaultEntry> {
                 : Container(),
             x == false
                 ? DropDownFormInput(
-                    label: Text(PersonData
-                        .relationshipToTheHeadOfHouseholdWoman[PersonData
-                            .relationshipToTheHeadOfHouseholdWoman.keys.first]!
-                        .toList()
-                        .first
-                        .toString()),
+                    label: PersonModelList.personModelList[widget.i]
+                                .personalHeadData!.relationshipHeadHHS !=
+                            ''
+                        ? Text(PersonModelList.personModelList[widget.i]
+                                .personalHeadData?.relationshipHeadHHS ??
+                            '')
+                        : const Text('إختار'),
                     hint: "القرابة برب الأسرة ",
                     options: PersonData.relationshipToTheHeadOfHouseholdWoman[
                             PersonData.relationshipToTheHeadOfHouseholdWoman
@@ -137,6 +139,22 @@ class _DefaultEntryState extends State<DefaultEntry> {
                 : Container(),
           ],
         ),
+        AppSize.spaceHeight2(context),
+        Row(
+          children: [
+            PersonModelList.personModelList[widget.i].personalHeadData!
+                        .relationshipHeadHHS ==
+                    'أخرى'
+                ? MyTextForm(
+                    label: 'القرابة برب الأسرة ',
+                    onChanged: (val) {
+                      PersonModelList.personModelList[widget.i]
+                          .personalHeadData!.relationshipHeadHHS = val!;
+                    },
+                  )
+                : Container()
+          ],
+        )
       ],
     );
   }

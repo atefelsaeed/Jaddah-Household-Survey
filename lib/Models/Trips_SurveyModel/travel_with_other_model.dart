@@ -48,10 +48,8 @@ class TravelWay {
   });
 
   TravelWay.fromJson(Map<String, dynamic> json) {
-    mainMode = json['mainMode'];
-    print('accccciiii');
-    print(TripData.AcMode['AcMode'][0]);
-    accessMode = json['accessMode']??TripData.AcMode['AcMode'][0];
+    mainMode = json['mainMode']?? TripData.mainMade['mainMade'][0];
+    accessMode = json['accessMode'] ?? TripData.AcMode['AcMode'][0];
   }
 
   Map<String, dynamic> toJson() {

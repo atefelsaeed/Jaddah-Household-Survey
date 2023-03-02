@@ -4,6 +4,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 
+import '../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '/providers/survey_hhs.dart';
 import '../../Data/Enums/hhs_enums.dart';
 import '../Trips_SurveyModel/trips_model.dart';
@@ -229,7 +230,9 @@ class SurveyPT extends Survey {
         json['hhsESAdultsBikesNumber'];
     householdQuestions.hhsElectricScooter.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
-    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
+    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'] ??
+        QuestionsData.qh9[
+            'Please indicate in which of the following bands your total monthly household income inclusive of benefits falls?'][0];
     vehiclesData = VehiclesModel.fromJson(jsonDecode(json['vehiclesData']));
     hhsSeparateFamilies = jsonDecode(json['hhsSeparateFamilies'])
         .map<SeparateFamilies>(
@@ -270,7 +273,8 @@ class SurveyPT extends Survey {
     householdQuestions.hhsDwellingType = json['hhsDwellingType'];
     householdQuestions.hhsIsDwelling = json['hhsIsDwelling'];
     householdQuestions.hhsNumberBedRooms.text = json['hhsNumberBedRooms'];
-   householdQuestions.hhsNumberApartments.text = json['hhsNumberApartments']??"";
+    householdQuestions.hhsNumberApartments.text =
+        json['hhsNumberApartments'] ?? "";
     householdQuestions.hhsNumberFloors.text = json['hhsNumberFloors'];
     householdQuestions.hhsNumberSeparateFamilies =
         json['hhsNumberSeparateFamilies'];
@@ -301,7 +305,9 @@ class SurveyPT extends Survey {
         json['hhsESAdultsBikesNumber'];
     householdQuestions.hhsElectricScooter.childrenBikesNumber =
         json['hhsESChildrenBikesNumber'];
-    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'];
+    householdQuestions.hhsTotalIncome = json['hhsTotalIncome'] ??
+        QuestionsData.qh9[
+            'Please indicate in which of the following bands your total monthly household income inclusive of benefits falls?'][0];
     vehiclesData = VehiclesModel.fromJson(json['vehiclesData']);
     hhsSeparateFamilies = json['hhsSeparateFamilies']
         .map<SeparateFamilies>(

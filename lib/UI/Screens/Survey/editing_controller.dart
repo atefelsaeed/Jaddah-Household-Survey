@@ -134,6 +134,8 @@ c(EditingController editingController, BuildContext context, int id) async {
             .toString() ==
         QuestionsData.qh7[QuestionsData.qh7.keys.first][i]["value"]) {
       QuestionsData.qh7[QuestionsData.qh7.keys.first][i]["isChick"] = true;
+    } else {
+      QuestionsData.qh7[QuestionsData.qh7.keys.first][0]["isChick"] = true;
     }
   }
 

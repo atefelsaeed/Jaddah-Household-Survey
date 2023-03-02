@@ -57,6 +57,16 @@ class VecProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  largeItemCar(String p, TextEditingController textEditingController) {
+    VehModel.largeItemCar = p.toString();
+    if (VehModel.largeItemCar != "أخر") {
+      textEditingController.text = VehModel.largeItemCar;
+    } else {
+      textEditingController.text = "أخر";
+    }
+    notifyListeners();
+  }
+
   ownerChipCar(String p, TextEditingController textEditingController) {
     VehModel.ownerShipCode = p.toString();
     if (VehModel.ownerShipCode != "أخر") {
@@ -91,6 +101,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -126,6 +137,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -161,6 +173,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -196,6 +209,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -258,6 +272,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -295,6 +310,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -329,6 +345,7 @@ class VecProvider extends ChangeNotifier {
               vehicleParking: TextEditingController(),
               vehicleOwnership: TextEditingController(),
               vehicleFuelType: TextEditingController(),
+              largeItemCar: TextEditingController(),
             ),
           );
         } else {
@@ -339,6 +356,7 @@ class VecProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
   ///resetVechValues
   resetVechValues(context) async {
     await ResetVechilesValues.resetVechValues(context);

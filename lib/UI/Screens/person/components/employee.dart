@@ -21,7 +21,6 @@ class _EmployeeState extends State<Employee> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         AppSize.spaceHeight3(context),
@@ -59,6 +58,17 @@ class _EmployeeState extends State<Employee> {
                           .bestWorkspaceLocation = p.toString();
                     },
                   ),
+            PersonModelList.personModelList[widget.i].occupationModel!
+                        .bestWorkspaceLocation ==
+                    'أخرى'
+                ? MyTextForm(
+                    label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
+                    onChanged: (val) {
+                      PersonModelList.personModelList[widget.i].occupationModel!
+                          .bestWorkspaceLocation = val!;
+                    },
+                  )
+                : Container(),
             PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
                         "طالب - مدرسة ابتدائية" ||
@@ -112,9 +122,7 @@ class _EmployeeState extends State<Employee> {
                   ),
           ],
         ),
-
         AppSize.spaceHeight3(context),
-
         AppSize.spaceHeight3(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
