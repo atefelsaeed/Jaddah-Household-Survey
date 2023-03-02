@@ -52,6 +52,7 @@ class ActionSurveyProvider extends ChangeNotifier {
 
   q7(ChangeBoxResponse r) {
     HhsStatic.householdQuestions.hhsNumberYearsInAddress = r.val;
+    notifyListeners();
   }
 
   q72(ChangeBoxResponse r, TextEditingController yes) {

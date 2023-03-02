@@ -288,7 +288,7 @@ class _PersonScreenState extends State<PersonScreen> {
 
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       PersonModelList
                                                   .personModelList[i]

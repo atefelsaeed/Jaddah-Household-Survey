@@ -48,7 +48,23 @@ c(EditingController editingController, BuildContext context, int id) async {
   final validationService =
       Provider.of<ActionSurveyProvider>(context, listen: false);
   await surveyPt.getSurveyByID(id);
-
+QuestionsData.qh4={
+  "? How many separate families live at this address": [
+    {"value": '1', "isChick": false},
+    {"value": '2', "isChick": false},
+    {"value": '3', "isChick": false},
+    {"value": '4', "isChick": false},
+    {"value": '5', "isChick": false},
+    {"value": '6', "isChick": false},
+    {"value": '7', "isChick": false},
+    {"value": '8', "isChick": false},
+    {"value": '9', "isChick": false},
+    {"value": '10', "isChick": false},
+  ],
+  "subTitle":
+  " A separate family is defined as who share the kitchen expenses and meals",
+  "index": 0
+};
   ///header phone
   HhsStatic.householdAddress.hhsPhone.text =
       surveyPt.surveyPT.header.householdAddress.hhsPhone.text;
@@ -114,15 +130,16 @@ c(EditingController editingController, BuildContext context, int id) async {
       surveyPt.surveyPT.householdQuestions.hhsNumberAdults.toString();
   editingController.peopleUnder18.text =
       surveyPt.surveyPT.householdQuestions.hhsNumberChildren.toString();
-
+  print("object");
+print(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies);
   ///hhsNumberSeparateFamilies
-  for (int i = 1;
+  for (int i = 0;
       i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
       i++) {
     if (int.parse(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies
             .toString()) ==
-        i) {
-      QuestionsData.qh4[QuestionsData.qh4.keys.first][i - 1]["isChick"] = true;
+        QuestionsData.qh4[QuestionsData.qh4.keys.first][i]["value"]) {
+      QuestionsData.qh4[QuestionsData.qh4.keys.first][i]["isChick"] = true;
     }
   }
 

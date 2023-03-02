@@ -41,8 +41,8 @@ class VehicleBodyDetails {
   });
 
   VehicleBodyDetails.fromJson(Map<String, dynamic> json) {
-    vehicleFuelType.text = json['vehicleFuelType'];
-    vehicleParking.text = json['vehicleParking'];
+    vehicleFuelType.text = json['vehicleFuelType']??"";
+    vehicleParking.text = json['vehicleParking']??"";
     vehicleOwnership.text = json['vehicleOwnership'] ?? '';
   }
 
