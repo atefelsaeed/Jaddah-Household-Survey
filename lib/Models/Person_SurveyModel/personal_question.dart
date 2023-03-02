@@ -23,14 +23,17 @@ class PersonalQuestion {
   });
 
   PersonalQuestion.fromJson(Map<String, dynamic> json) {
-    drivingLicenceType = json['drivingLicenceType'] ?? "";
+    drivingLicenceType = json['drivingLicenceType'] ??
+        PersonData.licence[" ? What type of driving licence do you have"][0];
     haveDisabilityTransportMobility = json['haveDisabilityTransportMobility'] ??
         PersonData.transporterMoblity[
             "?Do you have any disability/Special Needs for Transport Mobility"][0];
     haveBusPass = json['haveBusPass'] ?? "";
     mainOccupationType = json['mainOccupationType'] ??
         PersonData.mainOccupation["MainOccupation"][0];
-    availablePersonalCar = json['availablePersonalCar'] ?? "";
+    availablePersonalCar = json['availablePersonalCar'] ??
+        PersonData.drivingLiences["?What type of driving licence do you have"]
+            [0];
     haveCarSharing = json['haveCarSharing'] ?? "";
     educationAddress = (EducationAddress.fromJson(json['educationAddress']));
   }

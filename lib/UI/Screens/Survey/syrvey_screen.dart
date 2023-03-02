@@ -57,21 +57,21 @@ class _SurveyScreenState extends State<SurveyScreen> {
         Provider.of<ActionSurveyProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    VehiclesData.  q3VecData = {
+    VehiclesData.q3VecData = {
       " How far is the nearest public transport bus stop from your home by walk (in minutes) ?":
-      [
+          [
         {"value": '<5 دقائق سيرا على الأقدام', "isChick": false},
         {"value": '6-10 دقائق سيرا على الأقدام', "isChick": false},
         {"value": '11 - 15 دقيقة مشي', "isChick": false},
         {"value": ' أكثر من 15 دقيقة', "isChick": false},
-        {"value": ' لا اعرف', "isChick": false},
-        {"value": ' لا يوجد محطة', "isChick": false}, 
+        {"value": 'لا اعرف', "isChick": false},
+        {"value": 'لا يوجد محطة', "isChick": false},
       ],
-      "index":0
+      "index": 0
     };
-    QuestionsData. qh7 = {
+    QuestionsData.qh7 = {
       "?How many years have you/your family lived at this particular address": [
-        {"value": 'أقل من 1 سنة', "isChick": false},
+        {"value": 'أقل من 1 سنة', "isChick": false}, //
         {"value": '- 3 سنوات', "isChick": false},
         {"value": '- 5 سنوات', "isChick": false},
         {"value": '- 10 سنوات', "isChick": false},
@@ -79,7 +79,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
       ],
       "index": 0
     };
-    QuestionsData.qh4={
+    QuestionsData.qh4 = {
       "? How many separate families live at this address": [
         {"value": '1', "isChick": false},
         {"value": '2', "isChick": false},
@@ -93,10 +93,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
         {"value": '10', "isChick": false},
       ],
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
-    QuestionsData.qh3= {
+    QuestionsData.qh3 = {
       "?How many bedrooms are there in the accommodation you live in": [
         {"value": '1', "isChick": false},
         {"value": '2', "isChick": false},
@@ -112,14 +112,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
         {"value": '>12', "isChick": false},
       ],
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
 
-    if ((widget.itemSurveyModel.status == 'filled') ||
-        (widget.itemSurveyModel.status == 'edit')) {
+    if ((widget.itemSurveyModel.status == 'edit')) {
       int id = widget.itemSurveyModel.id!;
-      // userSurveysProvider.getSurveyByID(id);
       validationService.resetHHSValues(editingController, context, id);
     }
   }
@@ -149,18 +147,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       return Column(
                         children: [
                           const HHSHeader(),
-                          InkWell(onTap: (){
-                          Navigator.of(context).pop();
-                          },child: Icon(Icons.add)),
                           userSurveysProvider.loading
                               ? SizedBox(
-                            height: height(context)*.5,
-                                child: Center(
+                                  height: height(context) * .5,
+                                  child: Center(
                                     child: CircularProgressIndicator(
                                       color: ColorManager.primaryColor,
                                     ),
                                   ),
-                              )
+                                )
                               : Column(
                                   children: [
                                     // ===== HouseHoldAddress ===

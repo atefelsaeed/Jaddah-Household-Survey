@@ -102,8 +102,8 @@ class VehiclesData {
       {"value": '6-10 دقائق سيرا على الأقدام', "isChick": false},
       {"value": '11 - 15 دقيقة مشي', "isChick": false},
       {"value": ' أكثر من 15 دقيقة', "isChick": false},
-      {"value": ' لا اعرف', "isChick": false},
-      {"value": ' لا يوجد محطة', "isChick": false},
+      {"value": 'لا اعرف', "isChick": false},
+      {"value": 'لا يوجد محطة', "isChick": false},
     ],
     "index":0
   };

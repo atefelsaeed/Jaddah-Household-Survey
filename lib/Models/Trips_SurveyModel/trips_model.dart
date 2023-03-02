@@ -42,7 +42,7 @@ class TripsModel {
   };
   Map<String, dynamic> purposeOfBeingThere = {
     "QPurposeOfBeingThere": [
-      {"value": ' في المنزل', "isChick": false},
+      {"value": 'في المنزل', "isChick": false},
       {"value": 'فى بيت العطلات / الفندق', "isChick": false},
       {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
       {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
@@ -145,13 +145,14 @@ class TripsModel {
         TravelWithOtherModel.fromJson(json['travelAloneHouseHold']);
     arrivalDepartTime = ArrivalDepartTime.fromJson(json['arrivalDepartTime']);
     travelTypeModel = TravelTypeModel.fromJson(json['travelTypeModel']);
-    purposeTravel = json['purposeTravel'] ?? '';
+    purposeTravel = json['purposeTravel'] ??
+        purposeOfBeingThere["QPurposeOfBeingThere"][0]["value"];
     chosenPerson = json['ownerTripPerson'] ?? '';
     departureTime.text = json['departureTime'] ?? '';
-    tripReason = json['tripReason'] ?? '';
+    tripReason =
+        json['tripReason'] ?? purposeOfBeingThere2["TripReason"][0]["value"];
     isTravelAlone = json['isTravelAlone'];
-    print("a7a");
-    print(isTravelAlone);
+
     chosenFriendPerson =
         List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }

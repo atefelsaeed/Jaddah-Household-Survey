@@ -42,9 +42,9 @@ class TripProvider extends ChangeNotifier {
           {"value": 'زیارة الأصدقاء / الأقارب', "isChick": false},
           {"value": 'ترفيه / وقت الفراغ', "isChick": false},
           {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
-          {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+          // {"value": 'توص الى المدرسة / التعليم', "isChick": false},
           {"value": 'توصيل الى مكان آخر', "isChick": false},
-          {"value": 'توص الى مكان آخر', "isChick": false},
+          // {"value": 'توص الى مكان آخر', "isChick": false},
           {"value": 'آخرى', "isChick": false},
         ],
         "title": "?What was the purpose of being there",
@@ -66,8 +66,8 @@ class TripProvider extends ChangeNotifier {
           {"value": 'ترفيه / وقت الفراغ', "isChick": false},
           {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
           {"value": 'توصيل الى مكان آخر', "isChick": false},
-          {"value": 'توص الى المدرسة / التعليم', "isChick": false},
-          {"value": 'توص الى مكان آخر', "isChick": false},
+          // {"value": 'توص الى المدرسة / التعليم', "isChick": false},
+          // {"value": 'توص الى مكان آخر', "isChick": false},
           {"value": 'آخرى', "isChick": false},
         ],
         "title": "?What was the purpose of being there",
@@ -79,12 +79,13 @@ class TripProvider extends ChangeNotifier {
       List value2 =
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList();
 
+      surveyPt.surveyPT.tripsList![i].tripReason;
+
       for (int inr = 0; inr < value2.length; inr++) {
         if (surveyPt.surveyPT.tripsList![i].tripReason ==
             value2[inr]["value"]) {
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList()[inr]
               ["isChick"] = true;
-          //  nationalityu.addAll(  {"value":  value2[inr]["value"], "isChick": true});
         } else {
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList()[inr]
               ["isChick"] = false;
@@ -102,27 +103,28 @@ class TripProvider extends ChangeNotifier {
             value3[ir]["value"]) {
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList()[ir]
               ["isChick"] = true;
-
-          //  nationalityu.addAll(  {"value":  value2[inr]["value"], "isChick": true});
         } else {
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList()[ir]
               ["isChick"] = false;
         }
       }
+      print('chossen');
+      var chosenPerson=surveyPt.surveyPT.tripsList![i].chosenPerson;
+      print( surveyPt.surveyPT.tripsList![i].chosenFriendPerson);
       TripModeList.tripModeList.add(TripsModel(
-          person: surveyPt.surveyPT.tripsList![i].person,
+          person:list,
           isHome: surveyPt.surveyPT.tripsList![i].isHome,
           isHomeEnding: surveyPt.surveyPT.tripsList![i].isHomeEnding,
           chosenFriendPerson:
               surveyPt.surveyPT.tripsList![i].chosenFriendPerson,
-          chosenPerson: surveyPt.surveyPT.tripsList![i].chosenPerson,
+          chosenPerson: chosenPerson,
           purposeOfBeingThere: purposeOfBeingThere,
           purposeTravel: surveyPt.surveyPT.tripsList![i].purposeTravel,
           tripReason: surveyPt.surveyPT.tripsList![i].tripReason,
           startBeginningModel:
               surveyPt.surveyPT.tripsList![i].startBeginningModel,
           hhsMembersTraveled:
-              surveyPt.surveyPT.tripsList![i].hhsMembersTraveled,
+              surveyPt.surveyPT.tripsList![i].chosenFriendPerson,
           travelAloneHouseHold:
               surveyPt.surveyPT.tripsList![i].travelAloneHouseHold,
           travelWay: surveyPt.surveyPT.tripsList![i].travelWay,
@@ -168,13 +170,16 @@ class TripProvider extends ChangeNotifier {
     TripModeList.tripModeList.removeAt(i);
     notifyListeners();
   }
-
+List<String> list=[];
   initTrip() {
-    TripModeList.tripModeList[0].person = [];
+    TripModeList.tripModeList[0].person.clear();
+    list.clear();
     for (int i = 0; i < PersonModelList.personModelList.length; i++) {
       TripModeList.tripModeList[0].person
           .add(PersonModelList.personModelList[i].personName.text);
     }
+    list=TripModeList.tripModeList[0].person;
+    print(TripModeList.tripModeList[0].person);
     // notifyListeners();
   }
 

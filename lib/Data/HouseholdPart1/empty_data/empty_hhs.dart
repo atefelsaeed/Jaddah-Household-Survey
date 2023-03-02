@@ -25,6 +25,16 @@ class EmptyHHS {
       " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
+    QuestionsData.qh7 = {
+      "?How many years have you/your family lived at this particular address": [
+        {"value": 'أقل من 1 سنة', "isChick": false}, //
+        {"value": '- 3 سنوات', "isChick": false},
+        {"value": '- 5 سنوات', "isChick": false},
+        {"value": '- 10 سنوات', "isChick": false},
+        {"value": '+ 10 سنوات', "isChick": false},
+      ],
+      "index": 0
+    };
     QuestionsData.qh3= {
       "?How many bedrooms are there in the accommodation you live in": [
     {"value": '1', "isChick": false},

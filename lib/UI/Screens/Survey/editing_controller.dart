@@ -48,23 +48,24 @@ c(EditingController editingController, BuildContext context, int id) async {
   final validationService =
       Provider.of<ActionSurveyProvider>(context, listen: false);
   await surveyPt.getSurveyByID(id);
-QuestionsData.qh4={
-  "? How many separate families live at this address": [
-    {"value": '1', "isChick": false},
-    {"value": '2', "isChick": false},
-    {"value": '3', "isChick": false},
-    {"value": '4', "isChick": false},
-    {"value": '5', "isChick": false},
-    {"value": '6', "isChick": false},
-    {"value": '7', "isChick": false},
-    {"value": '8', "isChick": false},
-    {"value": '9', "isChick": false},
-    {"value": '10', "isChick": false},
-  ],
-  "subTitle":
-  " A separate family is defined as who share the kitchen expenses and meals",
-  "index": 0
-};
+  QuestionsData.qh4 = {
+    "? How many separate families live at this address": [
+      {"value": '1', "isChick": false},
+      {"value": '2', "isChick": false},
+      {"value": '3', "isChick": false},
+      {"value": '4', "isChick": false},
+      {"value": '5', "isChick": false},
+      {"value": '6', "isChick": false},
+      {"value": '7', "isChick": false},
+      {"value": '8', "isChick": false},
+      {"value": '9', "isChick": false},
+      {"value": '10', "isChick": false},
+    ],
+    "subTitle":
+        " A separate family is defined as who share the kitchen expenses and meals",
+    "index": 0
+  };
+
   ///header phone
   HhsStatic.householdAddress.hhsPhone.text =
       surveyPt.surveyPT.header.householdAddress.hhsPhone.text;
@@ -131,28 +132,27 @@ QuestionsData.qh4={
   editingController.peopleUnder18.text =
       surveyPt.surveyPT.householdQuestions.hhsNumberChildren.toString();
   print("object");
-print(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies);
+  print(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies);
+
   ///hhsNumberSeparateFamilies
-  for (int i = 0;
-      i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
-      i++) {
-    if (int.parse(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies
-            .toString()) ==
-        QuestionsData.qh4[QuestionsData.qh4.keys.first][i]["value"]) {
-      QuestionsData.qh4[QuestionsData.qh4.keys.first][i]["isChick"] = true;
-    }
-  }
+  // for (int i = 0;
+  //     i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
+  //     i++) {
+  //   if (int.parse(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies
+  //           .toString()) ==
+  //       QuestionsData.qh4[QuestionsData.qh4.keys.first][i]["value"]) {
+  //     QuestionsData.qh4[QuestionsData.qh4.keys.first][i]["isChick"] = true;
+  //   }
+  // }
 
   ///hhsNumberYearsInAddress
-  for (int i = 1;
+  for (int i = 0;
       i < QuestionsData.qh7[QuestionsData.qh7.keys.first]!.toList().length;
       i++) {
     if (surveyPt.surveyPT.householdQuestions.hhsNumberYearsInAddress
             .toString() ==
         QuestionsData.qh7[QuestionsData.qh7.keys.first][i]["value"]) {
       QuestionsData.qh7[QuestionsData.qh7.keys.first][i]["isChick"] = true;
-    } else {
-      QuestionsData.qh7[QuestionsData.qh7.keys.first][0]["isChick"] = true;
     }
   }
 

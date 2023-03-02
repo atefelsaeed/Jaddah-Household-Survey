@@ -39,7 +39,8 @@ class OccupationModel {
   });
 
   OccupationModel.fromJson(Map<String, dynamic> json) {
-    occupationSector = json['occupationSector'] ?? "";
+    occupationSector = json['occupationSector'] ??
+        PersonData.occupationSector["what is the Occupation Sector"][0];
     isEmployee = json['isEmployee'] ?? "";
     occupationLevelSector = json['occupationLevelSector'] ?? "";
     bestWorkspaceLocation = json['bestWorkspaceLocation'] ??

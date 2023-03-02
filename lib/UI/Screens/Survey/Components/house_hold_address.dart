@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/hhs_models.dart';
+import 'package:jaddah_household_survey/UI/Screens/notes_screen.dart';
+import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
@@ -24,7 +26,44 @@ class HouseHoldAddress extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        itemSurveyModel.status == 'edit'
+            ? Column(
+                children: [
+                  Row(
 
+                    children: [
+                      const Image(image: AssetImage(ImageAssets.lampIcon)),
+                      AppSize.spaceWidth2(context),
+                      Text(
+                        "عرض ملاحظات التعديل ",
+                        style: TextStyle(
+                          color: ColorManager.grayColor,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const Spacer(),
+                      DefaultButton(
+                        function: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotesScreen(
+                                  notes: itemSurveyModel.note ??
+                                      'لا توجد ملاحظات'),
+                            ),
+                          );
+                        },
+                        isWidget: true,
+                        btnWidth: width(context) * .4,
+                        text: 'عرض الملاحظات',
+                      ),
+                    ],
+                  ),
+                  AppSize.spaceHeight1(context),
+                  const Divider(thickness: 1),
+                ],
+              )
+            : Container(),
         AppSize.spaceHeight1(context),
         Row(
           children: [
@@ -47,21 +86,18 @@ class HouseHoldAddress extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ItemTextSpan(
-                title: 'رقم الاسرة',
-                subTitle: itemSurveyModel.id.toString()),
+                title: 'رقم الاسرة', subTitle: itemSurveyModel.id.toString()),
             ItemTextSpan(
-                title: 'رقم الحى',
-                subTitle: itemSurveyModel.haeno.toString()),
+                title: 'رقم الحى', subTitle: itemSurveyModel.haeno.toString()),
           ],
         ),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ItemTextSpan(
-                title: 'رقم القطاع',
-                subTitle: itemSurveyModel.qta.toString()),
+                title: 'رقم القطاع', subTitle: itemSurveyModel.qta.toString()),
             ItemTextSpan(
-                title: 'رقم البلوك',
-                subTitle: itemSurveyModel.blok.toString()),
+                title: 'رقم البلوك', subTitle: itemSurveyModel.blok.toString()),
           ],
         ),
         const Divider(

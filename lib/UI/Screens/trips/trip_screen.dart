@@ -86,8 +86,7 @@ class _TripScreenState extends State<TripScreen> {
     validationService.initTrip();
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'filled') ||
-        (userSurveysProvider.userSurveyStatus == 'edit')) {
+    if ((userSurveysProvider.userSurveyStatus == 'edit')) {
       validationService.getAllTripUpdated(context);
     }
   }
@@ -226,14 +225,14 @@ class _TripScreenState extends State<TripScreen> {
                                     "value": 'توصيل الى المدرسة / التعليم',
                                     "isChick": false
                                   },
-                                  {
-                                    "value": 'توص الى المدرسة / التعليم',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'توص الى مكان آخر',
-                                    "isChick": false
-                                  },
+                                  // {
+                                  //   "value": 'توص الى المدرسة / التعليم',
+                                  //   "isChick": false
+                                  // },
+                                  // {
+                                  //   "value": 'توص الى مكان آخر',
+                                  //   "isChick": false
+                                  // },
                                   {
                                     "value": 'توصيل الى مكان آخر',
                                     "isChick": false
@@ -264,14 +263,14 @@ class _TripScreenState extends State<TripScreen> {
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
                                   {"value": 'طبى / مستشفى', "isChick": false},
-                                  {
-                                    "value": 'توص الى المدرسة / التعليم',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'توص الى مكان آخر',
-                                    "isChick": false
-                                  },
+                                  // {
+                                  //   "value": 'توص الى المدرسة / التعليم',
+                                  //   "isChick": false
+                                  // },
+                                  // {
+                                  //   "value": 'توص الى مكان آخر',
+                                  //   "isChick": false
+                                  // },
                                   {
                                     "value": 'زیارة الأصدقاء / الأقار',
                                     "isChick": false
@@ -280,14 +279,14 @@ class _TripScreenState extends State<TripScreen> {
                                     "value": 'ترفيه / وقت الفراغ',
                                     "isChick": false
                                   },
-                                  {
-                                    "value": 'توص الى المدرسة / التعليم',
-                                    "isChick": false
-                                  },
-                                  {
-                                    "value": 'توص الى مكان آخر',
-                                    "isChick": false
-                                  },
+                                  // {
+                                  //   "value": 'توص الى المدرسة / التعليم',
+                                  //   "isChick": false
+                                  // },
+                                  // {
+                                  //   "value": 'توص الى مكان آخر',
+                                  //   "isChick": false
+                                  // },
                                 ],
                                 "title": "?What was the purpose of being there",
                                 "subTitle":
