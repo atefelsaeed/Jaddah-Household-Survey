@@ -17,11 +17,12 @@ class HowDidYouTravel extends StatefulWidget {
 }
 
 class _HowDidYouTravelState extends State<HowDidYouTravel> {
-  TextEditingController acModeController = TextEditingController();
-  TextEditingController mainModeController = TextEditingController();
-  @override
+   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+     TextEditingController acModeController = TextEditingController();
+     TextEditingController mainModeController = TextEditingController();
+
+     // TODO: implement build
     return Column(
       children: [
         const HeadlineText(text: "6. كیف ذهبت ؟"),
@@ -79,6 +80,7 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                     label: 'وضع الوصول',
                   )
                 : Container(),
+
             TripModeList.tripModeList[widget.i].travelWay!.accessMode == "أخر"
                 ? MyTextForm(
                     controller: acModeController,
@@ -91,7 +93,9 @@ class _HowDidYouTravelState extends State<HowDidYouTravel> {
                   )
                 : Container(),
           ],
-        )
+        ),
+        Text(  TripModeList.tripModeList[widget.i].travelWay!.mainMode.toString() ),
+
       ],
     );
   }
