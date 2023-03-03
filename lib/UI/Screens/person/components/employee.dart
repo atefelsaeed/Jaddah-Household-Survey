@@ -41,8 +41,8 @@ class _EmployeeState extends State<Employee> {
                         "معاق / مريض"
                 ? Container()
                 : Column(
-                  children: [
-                    DropDownFormInput(
+                    children: [
+                      DropDownFormInput(
                         label: PersonModelList.personModelList[widget.i]
                                     .occupationModel!.bestWorkspaceLocation !=
                                 ''
@@ -57,39 +57,41 @@ class _EmployeeState extends State<Employee> {
                             .toList(),
                         onChange: (String? p) {
                           setState(() {
-                            PersonModelList.personModelList[widget.i].occupationModel!
+                            PersonModelList
+                                .personModelList[widget.i]
+                                .occupationModel!
                                 .bestWorkspaceLocation = p.toString();
                           });
-
                         },
                       ),
-                    AppSize.spaceHeight1(context),
-                    PersonModelList.personModelList[widget.i].occupationModel!
-                        .bestWorkspaceLocation ==
-                        'أخرى'
-                        ? MyTextForm(
-                      label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
-                      onChanged: (val) {
-                        PersonModelList.personModelList[widget.i].occupationModel!
-                            .bestWorkspaceLocation = val!;
-                      },
-                    )
-                        : Container(),
-                  ],
-                ),
-
-            PersonModelList.personModelList[widget.i].personalQuestion!
+                      AppSize.spaceHeight1(context),
+                      PersonModelList.personModelList[widget.i].occupationModel!
+                                  .bestWorkspaceLocation ==
+                              'أخرى'
+                          ? MyTextForm(
+                              label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
+                              onChanged: (val) {
+                                PersonModelList
+                                    .personModelList[widget.i]
+                                    .occupationModel!
+                                    .bestWorkspaceLocation = val!;
+                              },
+                            )
+                          : Container(),
+                    ],
+                  ),
+            ((PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        "طالب - مدرسة ابتدائية" ||
-                    PersonModelList.personModelList[widget.i].personalQuestion!
+                        "طالب - مدرسة ابتدائية") ||
+                    (PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        "طالب - مدرسة متوسطة" ||
-                    PersonModelList.personModelList[widget.i].personalQuestion!
+                        "طالب - مدرسة متوسطة") ||
+                    (PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        "طالب - مدرسة ثانوية" ||
-                    PersonModelList.personModelList[widget.i].personalQuestion!
+                        "طالب - مدرسة ثانوية") ||
+                    (PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"
+                        " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"))
                 ? Container()
                 : Column(
                     children: [
