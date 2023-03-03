@@ -85,19 +85,19 @@ class ItemUserSurvey extends StatelessWidget {
                         : ColorManager.primaryColor,
                   )
                 : DefaultButton(
-                    function: () async {
-                      userSurveysProvider.userSurveyStatus =
-                          itemSurveyModel.status;
-                      HHSEmptyData.emptyData();
-                      userSurveysProvider.index = index;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SurveyScreen(
-                            itemSurveyModel: itemSurveyModel,
-                          ),
-                        ),
-                      );
+                    function: () {
+                      // userSurveysProvider.userSurveyStatus =
+                      //     itemSurveyModel.status;
+                      // HHSEmptyData.emptyData();
+                      // userSurveysProvider.index = index;
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => SurveyScreen(
+                      //       itemSurveyModel: itemSurveyModel,
+                      //     ),
+                      //   ),
+                      // );
                     },
                     //edited
                     isWidget: true,

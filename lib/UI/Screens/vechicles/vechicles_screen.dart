@@ -31,8 +31,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     final validationService = Provider.of<VecProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'filled') ||
-        (userSurveysProvider.userSurveyStatus == 'edit')) {
+    if ((userSurveysProvider.userSurveyStatus == 'edit')) {
       validationService.resetVechValues(context);
     }
   }

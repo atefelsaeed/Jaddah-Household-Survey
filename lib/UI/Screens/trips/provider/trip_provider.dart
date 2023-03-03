@@ -14,6 +14,7 @@ import '../../../Widgets/show_dialog_error.dart';
 class TripProvider extends ChangeNotifier {
   List<String> personTrip = [];
 
+  ///
   getAllTripUpdated(BuildContext context) async {
     UserSurveysProvider surveyPt =
         Provider.of<UserSurveysProvider>(context, listen: false);
@@ -79,10 +80,11 @@ class TripProvider extends ChangeNotifier {
       List value2 =
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList();
 
-      surveyPt.surveyPT.tripsList![i].tripReason;
+      surveyPt.surveyPT.tripsList![i].tripReason!.replaceAll('توص', 'توصيل');
 
       for (int inr = 0; inr < value2.length; inr++) {
-        if (surveyPt.surveyPT.tripsList![i].tripReason ==
+        if (surveyPt.surveyPT.tripsList![i].tripReason!
+                .replaceAll('توص', 'توصيل') ==
             value2[inr]["value"]) {
           purposeOfBeingThere[purposeOfBeingThere.keys.first].toList()[inr]
               ["isChick"] = true;
@@ -96,10 +98,11 @@ class TripProvider extends ChangeNotifier {
       List value3 =
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList();
 
-      surveyPt.surveyPT.tripsList![i].purposeTravel;
+      surveyPt.surveyPT.tripsList![i].purposeTravel!.replaceAll('توص', 'توصيل');
 
       for (int ir = 0; ir < value3.length; ir++) {
-        if (surveyPt.surveyPT.tripsList![i].purposeTravel ==
+        if (surveyPt.surveyPT.tripsList![i].purposeTravel!
+                .replaceAll('توص', 'توصيل') ==
             value3[ir]["value"]) {
           purposeOfBeingThere2[purposeOfBeingThere2.keys.first].toList()[ir]
               ["isChick"] = true;
@@ -109,18 +112,22 @@ class TripProvider extends ChangeNotifier {
         }
       }
       print('chossen');
-      var chosenPerson=surveyPt.surveyPT.tripsList![i].chosenPerson;
-      print( surveyPt.surveyPT.tripsList![i].chosenFriendPerson);
+      surveyPt.surveyPT.tripsList![i].chosenPerson;
+      var chosenPerson = surveyPt.surveyPT.tripsList![i].chosenPerson;
+      var reason = surveyPt.surveyPT.tripsList![i].tripReason!
+          .replaceAll('توص', 'توصيل');
+
       TripModeList.tripModeList.add(TripsModel(
-          person:list,
+          person: list,
           isHome: surveyPt.surveyPT.tripsList![i].isHome,
           isHomeEnding: surveyPt.surveyPT.tripsList![i].isHomeEnding,
           chosenFriendPerson:
               surveyPt.surveyPT.tripsList![i].chosenFriendPerson,
           chosenPerson: chosenPerson,
           purposeOfBeingThere: purposeOfBeingThere,
-          purposeTravel: surveyPt.surveyPT.tripsList![i].purposeTravel,
-          tripReason: surveyPt.surveyPT.tripsList![i].tripReason,
+          purposeTravel: surveyPt.surveyPT.tripsList![i].purposeTravel!
+              .replaceAll('توص', 'توصيل'),
+          tripReason: reason,
           startBeginningModel:
               surveyPt.surveyPT.tripsList![i].startBeginningModel,
           hhsMembersTraveled:
@@ -170,7 +177,9 @@ class TripProvider extends ChangeNotifier {
     TripModeList.tripModeList.removeAt(i);
     notifyListeners();
   }
-List<String> list=[];
+
+  List<String> list = [];
+
   initTrip() {
     TripModeList.tripModeList[0].person.clear();
     list.clear();
@@ -178,11 +187,12 @@ List<String> list=[];
       TripModeList.tripModeList[0].person
           .add(PersonModelList.personModelList[i].personName.text);
     }
-    list=TripModeList.tripModeList[0].person;
+    list = TripModeList.tripModeList[0].person;
     print(TripModeList.tripModeList[0].person);
     // notifyListeners();
   }
 
+  ///
   addOwnerTrip(int i, String p) {
     TripModeList.tripModeList[i].friendPerson["friendPerson"] = [];
     for (int x = 0; x < TripModeList.tripModeList[i].person.length; x++) {
@@ -236,6 +246,7 @@ List<String> list=[];
     });
   }
 
+  ///isTravelAlone
   isTravelAlone(int index, ChangeBoxResponse r, BuildContext context) {
     debugPrint('chosenPerson');
     debugPrint(TripModeList.tripModeList[index].chosenPerson);
@@ -268,6 +279,32 @@ List<String> list=[];
 
       debugPrint('no user');
       return false;
+    }
+    notifyListeners();
+  }
+
+  ///Set-MainMode
+  TextEditingController mainModeController = TextEditingController();
+
+  setMainMode(String? p, int index) {
+    TripModeList.tripModeList[index].travelWay!.mainMode = p.toString();
+    if (TripModeList.tripModeList[index].travelWay!.mainMode == "أخر") {
+      mainModeController.text= "أخر";
+      TripModeList.tripModeList[index].travelWay!.mainMode =
+          mainModeController.text;
+    }
+    notifyListeners();
+  }
+
+  ///Set-AccessMode
+  TextEditingController acModeController = TextEditingController();
+
+  setAccessMode(String? p, int index) {
+    TripModeList.tripModeList[index].travelWay!.accessMode = p.toString();
+    if (TripModeList.tripModeList[index].travelWay!.accessMode == "أخر") {
+      acModeController.text= "أخر";
+      TripModeList.tripModeList[index].travelWay!.accessMode =
+          acModeController.text;
     }
     notifyListeners();
   }
