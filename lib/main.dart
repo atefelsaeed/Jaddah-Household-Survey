@@ -10,6 +10,7 @@ import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/UI/Screens/SplashScreen/splashScreen.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/actions/action_survey_screen.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/person_screen.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/reset_person.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/trip_screen.dart';
@@ -163,7 +164,7 @@ class _MyAppState extends State<MyApp> {
           SplashScreen.routeName: (ctx) => const SplashScreen(),
           LoginScreen.routeName: (ctx) => const LoginScreen(),
         },
-        home: const TripScreen(),
+        home: const SplashView(),
       ),
     );
   }

@@ -27,11 +27,11 @@ class EmptyHHS {
     };
     QuestionsData.qh7 = {
       "?How many years have you/your family lived at this particular address": [
-        {"value": 'أقل من 1 سنة', "isChick": false}, //
-        {"value": '- 3 سنوات', "isChick": false},
-        {"value": '- 5 سنوات', "isChick": false},
-        {"value": '- 10 سنوات', "isChick": false},
-        {"value": '+ 10 سنوات', "isChick": false},
+        {"value": 'أقل من 1.5 سنة', "isChick": false}, //
+        {"value": '1.5 - 3 سنوات', "isChick": false},
+        {"value": '3 - 5 سنوات', "isChick": false},
+        {"value": '5 - 10 سنوات', "isChick": false},
+        {"value": '+10 سنوات', "isChick": false},
       ],
       "index": 0
     };

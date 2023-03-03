@@ -40,47 +40,58 @@ class _EmployeeState extends State<Employee> {
                             .mainOccupationType ==
                         "معاق / مريض"
                 ? Container()
-                : DropDownFormInput(
-                    label: PersonModelList.personModelList[widget.i]
-                                .occupationModel!.bestWorkspaceLocation !=
-                            ''
-                        ? Text(PersonModelList.personModelList[widget.i]
-                                .occupationModel!.bestWorkspaceLocation ??
-                            '')
-                        : const Text('إختار'),
-                    hint:
-                        "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للذهاب إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
-                    options: PersonData
-                        .workplace[PersonData.workplace.keys.first]!
-                        .toList(),
-                    onChange: (String? p) {
+                : Column(
+                    children: [
+                      DropDownFormInput(
+                        label: PersonModelList.personModelList[widget.i]
+                                    .occupationModel!.bestWorkspaceLocation !=
+                                ''
+                            ? Text(PersonModelList.personModelList[widget.i]
+                                    .occupationModel!.bestWorkspaceLocation ??
+                                '')
+                            : const Text('إختار'),
+                        hint:
+                            "إذا كنت موظفًا أو طالبًا ، ما هو وضعك المعتاد للذهاب إلى العمل / المدرسة؟ سؤال موجه - قائمة منسدلة للأنماط",
+                        options: PersonData
+                            .workplace[PersonData.workplace.keys.first]!
+                            .toList(),
+                        onChange: (String? p) {
+                          setState(() {
+                            PersonModelList
+                                .personModelList[widget.i]
+                                .occupationModel!
+                                .bestWorkspaceLocation = p.toString();
+                          });
+                        },
+                      ),
+                      AppSize.spaceHeight1(context),
                       PersonModelList.personModelList[widget.i].occupationModel!
-                          .bestWorkspaceLocation = p.toString();
-                    },
+                                  .bestWorkspaceLocation ==
+                              'أخرى'
+                          ? MyTextForm(
+                              label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
+                              onChanged: (val) {
+                                PersonModelList
+                                    .personModelList[widget.i]
+                                    .occupationModel!
+                                    .bestWorkspaceLocation = val!;
+                              },
+                            )
+                          : Container(),
+                    ],
                   ),
-            PersonModelList.personModelList[widget.i].occupationModel!
-                        .bestWorkspaceLocation ==
-                    'أخرى'
-                ? MyTextForm(
-                    label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
-                    onChanged: (val) {
-                      PersonModelList.personModelList[widget.i].occupationModel!
-                          .bestWorkspaceLocation = val!;
-                    },
-                  )
-                : Container(),
-            PersonModelList.personModelList[widget.i].personalQuestion!
+            ((PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        "طالب - مدرسة ابتدائية" ||
-                    PersonModelList.personModelList[widget.i].personalQuestion!
+                        "طالب - مدرسة ابتدائية") ||
+                    (PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        "طالب - مدرسة متوسطة" ||
-                    PersonModelList.personModelList[widget.i].personalQuestion!
+                        "طالب - مدرسة متوسطة") ||
+                    (PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        "طالب - مدرسة ثانوية" ||
-                    PersonModelList.personModelList[widget.i].personalQuestion!
+                        "طالب - مدرسة ثانوية") ||
+                    (PersonModelList.personModelList[widget.i].personalQuestion!
                             .mainOccupationType ==
-                        " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"
+                        " الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"))
                 ? Container()
                 : Column(
                     children: [
@@ -106,6 +117,7 @@ class _EmployeeState extends State<Employee> {
                           });
                         },
                       ),
+                      AppSize.spaceHeight1(context),
                       PersonModelList.personModelList[widget.i]
                                   .personalQuestion!.drivingLicenceType ==
                               "آخر"

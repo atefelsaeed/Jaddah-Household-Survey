@@ -131,15 +131,20 @@ class CheckTripsValidation {
           for (var element in userSurvey.userSurveys) {
             await HHSUserSurveysOperations().addItemToDatabase(element);
           }
+          debugPrint('Add User Surveys to local database');
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => const ChooseSurveysScreen()),
+              (Route<dynamic> route) => false);
         } else if ((userSurvey.userSurveyStatus == "filled") ||
             (userSurvey.userSurveyStatus == "edit")) {
           userSurvey.updateSurvey(surveyPt.data);
+          debugPrint('Add User Surveys to local database');
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => const ChooseSurveysScreen()),
+              (Route<dynamic> route) => false);
         }
-        debugPrint('Add User Surveys to local database');
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (context) => const ChooseSurveysScreen()),
-            (Route<dynamic> route) => false);
       }
     }
   }
