@@ -14,6 +14,7 @@ import '../../../Widgets/show_dialog_error.dart';
 class TripProvider extends ChangeNotifier {
   List<String> personTrip = [];
 
+  ///
   getAllTripUpdated(BuildContext context) async {
     UserSurveysProvider surveyPt =
         Provider.of<UserSurveysProvider>(context, listen: false);
@@ -191,6 +192,7 @@ class TripProvider extends ChangeNotifier {
     // notifyListeners();
   }
 
+  ///
   addOwnerTrip(int i, String p) {
     TripModeList.tripModeList[i].friendPerson["friendPerson"] = [];
     for (int x = 0; x < TripModeList.tripModeList[i].person.length; x++) {
@@ -244,6 +246,7 @@ class TripProvider extends ChangeNotifier {
     });
   }
 
+  ///isTravelAlone
   isTravelAlone(int index, ChangeBoxResponse r, BuildContext context) {
     debugPrint('chosenPerson');
     debugPrint(TripModeList.tripModeList[index].chosenPerson);
@@ -276,6 +279,32 @@ class TripProvider extends ChangeNotifier {
 
       debugPrint('no user');
       return false;
+    }
+    notifyListeners();
+  }
+
+  ///Set-MainMode
+  TextEditingController mainModeController = TextEditingController();
+
+  setMainMode(String? p, int index) {
+    TripModeList.tripModeList[index].travelWay!.mainMode = p.toString();
+    if (TripModeList.tripModeList[index].travelWay!.mainMode == "أخر") {
+      mainModeController.text= "أخر";
+      TripModeList.tripModeList[index].travelWay!.mainMode =
+          mainModeController.text;
+    }
+    notifyListeners();
+  }
+
+  ///Set-AccessMode
+  TextEditingController acModeController = TextEditingController();
+
+  setAccessMode(String? p, int index) {
+    TripModeList.tripModeList[index].travelWay!.accessMode = p.toString();
+    if (TripModeList.tripModeList[index].travelWay!.accessMode == "أخر") {
+      acModeController.text= "أخر";
+      TripModeList.tripModeList[index].travelWay!.accessMode =
+          acModeController.text;
     }
     notifyListeners();
   }
