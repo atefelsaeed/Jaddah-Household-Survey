@@ -86,18 +86,18 @@ class ItemUserSurvey extends StatelessWidget {
                   )
                 : DefaultButton(
                     function: () {
-                      // userSurveysProvider.userSurveyStatus =
-                      //     itemSurveyModel.status;
-                      // HHSEmptyData.emptyData();
-                      // userSurveysProvider.index = index;
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => SurveyScreen(
-                      //       itemSurveyModel: itemSurveyModel,
-                      //     ),
-                      //   ),
-                      // );
+                      userSurveysProvider.userSurveyStatus =
+                          itemSurveyModel.status;
+                      HHSEmptyData.emptyData();
+                      userSurveysProvider.index = index;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SurveyScreen(
+                            itemSurveyModel: itemSurveyModel,
+                          ),
+                        ),
+                      );
                     },
                     //edited
                     isWidget: true,
