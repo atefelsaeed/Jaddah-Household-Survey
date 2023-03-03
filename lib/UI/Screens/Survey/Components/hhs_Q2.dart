@@ -35,7 +35,8 @@ class HHSQ2 extends StatelessWidget {
             ),
           ],
         ),
-        HhsStatic.householdQuestions.hhsIsDwelling == "أخر"
+
+        HhsStatic.householdQuestions.hhsDwellingFlag == true
             ? Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

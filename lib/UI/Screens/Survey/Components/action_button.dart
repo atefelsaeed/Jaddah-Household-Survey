@@ -50,14 +50,8 @@ class ActionButton extends StatelessWidget {
             );
           }
 
-          if (HhsStatic.householdQuestions.hhsDwellingType == "أخر") {
-            HhsStatic.householdQuestions.hhsDwellingType =
-                HhsStatic.householdQuestions.hhsDwellingTypeOther!.text;
-          }
-          if (HhsStatic.householdQuestions.hhsIsDwelling == "أخر") {
-            HhsStatic.householdQuestions.hhsIsDwelling =
-                HhsStatic.householdQuestions.hhsIsDwellingOther!.text;
-          }
+
+
 
           surveyPt.id = id;
 

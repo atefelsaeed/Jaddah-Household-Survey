@@ -28,7 +28,9 @@ class OwnerShipCode extends StatelessWidget {
             validationService.ownerChipCar(p.toString(), textEditingController);
           },
         ),
-        textEditingController.text == "أخر"
+        ((textEditingController.text == "أخر") ||
+            !(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
+                .any((element) => element ==textEditingController.text)))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

@@ -14,7 +14,9 @@ class HouseholdAddress {
 
 class HouseholdQuestions {
   String? hhsDwellingType;
+  bool ? hhsDwellingFlag;
   String? hhsIsDwelling;
+  bool ? hhsIsDwellingTypeFlag;
   TextEditingController? hhsDwellingTypeOther = TextEditingController();
   TextEditingController? hhsIsDwellingOther = TextEditingController();
   TextEditingController hhsNumberBedRooms = TextEditingController();
@@ -95,6 +97,7 @@ class SeparateFamilies {
 }
 
 class HhsStatic {
+
   static HouseholdAddress householdAddress = HouseholdAddress(
     hhsAddressLat: "",
     hhsAddressLong: "",

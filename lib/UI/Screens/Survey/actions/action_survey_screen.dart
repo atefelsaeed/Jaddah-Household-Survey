@@ -105,12 +105,28 @@ class ActionSurveyProvider extends ChangeNotifier {
   }
 
   HHSQ1(String p) {
-    HhsStatic.householdQuestions.hhsDwellingType = p;
+    if(p== "أخر"){
+
+      HhsStatic.householdQuestions.hhsDwellingType =
+          HhsStatic.householdQuestions.hhsDwellingTypeOther!.text;
+      HhsStatic.householdQuestions.hhsIsDwellingTypeFlag = true;
+    }else{
+      HhsStatic.householdQuestions.hhsDwellingType=p;
+      HhsStatic.householdQuestions.hhsIsDwellingTypeFlag = false;
+    }
+
     notifyListeners();
   }
 
   HHSQ2(String p) {
-    HhsStatic.householdQuestions.hhsIsDwelling = p;
+    if(p== "أخر"){
+      HhsStatic.householdQuestions.hhsIsDwelling =
+          HhsStatic.householdQuestions.hhsIsDwellingOther!.text;
+    HhsStatic.householdQuestions.hhsDwellingFlag = true;
+    }else{
+      HhsStatic.householdQuestions.hhsIsDwelling=p;
+      HhsStatic.householdQuestions.hhsDwellingFlag = false;
+    }
     notifyListeners();
   }
 

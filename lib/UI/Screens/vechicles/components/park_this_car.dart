@@ -14,6 +14,7 @@ class ParkThisCar extends StatelessWidget {
 
   final TextEditingController textEditingController;
 
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -30,10 +31,12 @@ class ParkThisCar extends StatelessWidget {
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),
           onChange: (String? p) {
-            validationService.parkThisCar(p.toString(), textEditingController);
+            validationService.parkThisCar(p.toString(), textEditingController,);
           },
         ),
-        textEditingController.text == "أخرى"
+        ((textEditingController.text == "أخرى") ||
+            !(VehiclesData.parkThisCar[VehiclesData.parkThisCar.keys.first]!
+                .any((element) => element ==textEditingController.text)))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

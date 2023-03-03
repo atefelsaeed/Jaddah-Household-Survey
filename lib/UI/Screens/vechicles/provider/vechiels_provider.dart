@@ -62,6 +62,7 @@ class VecProvider extends ChangeNotifier {
     if (VehModel.largeItemCar != "أخر") {
       textEditingController.text = VehModel.largeItemCar;
     } else {
+
       textEditingController.text = "أخر";
     }
     notifyListeners();
