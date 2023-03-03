@@ -26,6 +26,7 @@ import '../Survey/widgets/text_form_row.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
 import 'components/transporter_moblity.dart';
+import 'person_conditions.dart';
 
 class PersonScreen extends StatefulWidget {
   const PersonScreen({super.key});
@@ -56,7 +57,8 @@ class _PersonScreenState extends State<PersonScreen> {
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit')||(userSurveysProvider.userSurveyStatus == 'filled')) {
+    if ((userSurveysProvider.userSurveyStatus == 'edit') ||
+        (userSurveysProvider.userSurveyStatus == 'filled')) {
       validationService.getAllPeronUpdated(context);
     }
   }
@@ -425,18 +427,19 @@ class _PersonScreenState extends State<PersonScreen> {
                                                                       .occupationModel!
                                                                       .occupationSector =
                                                                   p.toString();
+                                                              PersonConditions()
+                                                                  .checkOccupationSectorOther(
+                                                                      i);
                                                             });
                                                           },
                                                         ),
-                                                        PersonModelList
-                                                                    .personModelList[
-                                                                        i]
-                                                                    .occupationModel!
-                                                                    .occupationSector ==
-                                                                " حدد أخرى"
+                                                        PersonConditions()
+                                                                    .checkOccupationSectorOther(
+                                                                        i) ==
+                                                                true
                                                             ? MyTextForm(
-                                                                controller:
-                                                                    occupationSectorController,
+                                                                // controller:
+                                                                //     occupationSectorController,
                                                                 label:
                                                                     " قطاع العمل",
                                                                 onChanged:
