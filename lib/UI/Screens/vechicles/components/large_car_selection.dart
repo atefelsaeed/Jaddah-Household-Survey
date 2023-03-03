@@ -33,7 +33,9 @@ class LargeItemCar extends StatelessWidget {
             validationService.largeItemCar(p.toString(), textEditingController);
           },
         ),
-        textEditingController.text == "أخرى"
+        ((textEditingController.text == "أخرى") ||
+            !(VehiclesData.largeCar[VehiclesData.largeCar.keys.first]!
+                .any((element) => element ==textEditingController.text)))
             ? Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

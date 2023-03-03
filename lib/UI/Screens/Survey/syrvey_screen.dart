@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
+import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../Widgets/exit_screen.dart';
@@ -169,6 +170,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                     const HHSQ1(),
                                     // ====Question 2====
                                     const HHSQ2(),
+                                    Text(HhsStatic.householdQuestions.hhsIsDwelling.toString() ),
                                     // ====Question 3====
                                     AppSize.spaceHeight3(context),
                                     HHsQh4(

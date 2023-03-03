@@ -44,7 +44,7 @@ class HHSQ1 extends StatelessWidget {
                     isNumber: true,
                   )
                 : Container(),
-            HhsStatic.householdQuestions.hhsDwellingType == "أخر"
+            HhsStatic.householdQuestions.hhsIsDwellingTypeFlag == true
                 ? TextForm(
                     controller:
                         HhsStatic.householdQuestions.hhsDwellingTypeOther!,
