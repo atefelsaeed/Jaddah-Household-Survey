@@ -71,10 +71,12 @@ class VecProvider extends ChangeNotifier {
     VehModel.ownerShipCode = p.toString();
     if (VehModel.ownerShipCode != "أخر") {
       textEditingController.text = VehModel.ownerShipCode;
+      notifyListeners();
     } else {
       textEditingController.text = 'أخر';
+      notifyListeners();
     }
-    notifyListeners();
+
   }
 
   vecCar(Function showVechError, String d, Function showError) {

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
+import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../Survey/widgets/text_form_row.dart';
 import '../provider/vechiels_provider.dart';
@@ -14,11 +15,11 @@ class OwnerShipCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final validationService = Provider.of<VecProvider>(context,listen: false);
+    final validationService = Provider.of<VecProvider>(context, listen: false);
     return Column(
       children: [
         DropDownFormInput(
-          label:textEditingController.text == ''
+          label: textEditingController.text == ''
               ? const Text('إختار')
               : Text(textEditingController.text),
           hint: "من يملك السيارة",
@@ -26,9 +27,14 @@ class OwnerShipCode extends StatelessWidget {
               .toList(),
           onChange: (String? p) {
             validationService.ownerChipCar(p.toString(), textEditingController);
+            print(VehModel.ownerShipCode.toString());
+            print((VehiclesData.ownership[VehiclesData.ownership.keys.first]!
+                .any((element) => element == VehModel.ownerShipCode)));
           },
         ),
-        textEditingController.text == "أخر"
+        ((textEditingController.text == "أخر") ||
+                !(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
+                    .any((element) => element ==textEditingController.text)))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
