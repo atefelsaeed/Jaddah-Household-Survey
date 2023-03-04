@@ -83,14 +83,15 @@ class _TripScreenState extends State<TripScreen> {
     getSystemStatus();
     final validationService = Provider.of<TripProvider>(context, listen: false);
 
-    validationService.initTrip();
     UserSurveysProvider userSurveysProvider =
-        Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit')||(userSurveysProvider.userSurveyStatus == 'filled')) {
+    Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'edit') ||
+        (userSurveysProvider.userSurveyStatus == 'filled')) {
       validationService.getAllTripUpdated(context);
+    } else {
+      validationService.initTrip();
     }
   }
-
   @override
   Widget build(BuildContext context) {
     SurveyPTProvider surveyPt =
