@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/person_conditions.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
@@ -61,13 +62,15 @@ class _EmployeeState extends State<Employee> {
                                 .personModelList[widget.i]
                                 .occupationModel!
                                 .bestWorkspaceLocation = p.toString();
+                            PersonConditions()
+                                .checkBestWorkspaceLocationOther(widget.i);
                           });
                         },
                       ),
                       AppSize.spaceHeight1(context),
-                      PersonModelList.personModelList[widget.i].occupationModel!
-                                  .bestWorkspaceLocation ==
-                              'أخرى'
+                      PersonConditions()
+                                  .checkBestWorkspaceLocationOther(widget.i) ==
+                              true
                           ? MyTextForm(
                               label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
                               onChanged: (val) {
@@ -114,13 +117,15 @@ class _EmployeeState extends State<Employee> {
                                 .personModelList[widget.i]
                                 .personalQuestion!
                                 .drivingLicenceType = p.toString();
+                            PersonConditions()
+                                .checkDrivingLicenceTypeOther(widget.i);
                           });
                         },
                       ),
                       AppSize.spaceHeight1(context),
-                      PersonModelList.personModelList[widget.i]
-                                  .personalQuestion!.drivingLicenceType ==
-                              "آخر"
+                      PersonConditions()
+                                  .checkDrivingLicenceTypeOther(widget.i) ==
+                              true
                           ? MyTextForm(
                               controller: drivingLicenceType,
                               label: " نوع الرخصة",

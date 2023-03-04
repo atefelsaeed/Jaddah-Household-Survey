@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_model_list.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/person_conditions.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
@@ -45,12 +46,14 @@ class _TransporterMobiltyState extends State<TransporterMobilty> {
                       .personModelList[widget.index]
                       .personalQuestion!
                       .haveDisabilityTransportMobility = p.toString();
+                  PersonConditions()
+                      .checkHaveDisabilityTransportMobilityOther(widget.index);
                 });
               },
             ),
-            PersonModelList.personModelList[widget.index].personalQuestion!
-                        .haveDisabilityTransportMobility ==
-                    'أخرى .. حدد'
+            PersonConditions().checkHaveDisabilityTransportMobilityOther(
+                        widget.index) ==
+                    true
                 ? MyTextForm(
                     label: 'إذكر الإعاقة / احتياجات خاصة',
                     controller: textEditingController,
