@@ -102,7 +102,11 @@ class TripsModel {
       departTime: TextEditingController(),
       arriveDestinationTime: TextEditingController());
   TravelTypeModel travelTypeModel = TravelTypeModel(
-      taxiFare: TextEditingController(), ticketSub: TextEditingController());
+    taxiFare: TextEditingController(),
+    ticketSub: TextEditingController(),
+    taxiTravelTypeOther: TextEditingController(),
+    otherWhereDidYouParking: TextEditingController(),
+  );
   bool isHome = false;
   bool isHomeEnding = false;
 
@@ -152,10 +156,10 @@ class TripsModel {
     tripReason =
         json['tripReason'] ?? purposeOfBeingThere2["TripReason"][0]["value"];
     isTravelAlone = json['isTravelAlone'];
-print(json["hhsMembersTraveled"]);
+    print(json["hhsMembersTraveled"]);
 
-    chosenFriendPerson =List.from( json["hhsMembersTraveled"]);
-      //  List<String>.from(json["hhsMembersTraveled"].map((x) => x));
+    chosenFriendPerson = List.from(json["hhsMembersTraveled"]);
+    //  List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {

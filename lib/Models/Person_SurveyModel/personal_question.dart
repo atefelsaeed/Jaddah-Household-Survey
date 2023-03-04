@@ -5,6 +5,9 @@ class PersonalQuestion {
   String? haveBusPass;
   String? haveDisabilityTransportMobility;
   String? drivingLicenceType; //if age>17
+  TextEditingController drivingLicenceTypeController = TextEditingController();
+  TextEditingController haveDisabilityTransportMobilityController =
+      TextEditingController();
   String? mainOccupationType; //if age>15
   String? availablePersonalCar; //if user have driving licence
   String? asPassenger; //if user do not have driving licence
@@ -13,6 +16,8 @@ class PersonalQuestion {
 
   PersonalQuestion({
     this.mainOccupationType,
+    required this.drivingLicenceTypeController,
+    required this.haveDisabilityTransportMobilityController,
     this.educationAddress,
     this.asPassenger,
     this.availablePersonalCar,

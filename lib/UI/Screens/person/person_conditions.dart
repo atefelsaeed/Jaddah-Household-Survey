@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_data.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 
 class PersonConditions {
   ///check-Occupation-Sector-Other
-   TextEditingController occupationSectorController = TextEditingController();
   bool checkOccupationSectorOther(int i) {
-
     var occupationSectorKey = PersonData.occupationSector.keys.first;
     var occupationSector =
         PersonModelList.personModelList[i].occupationModel!.occupationSector;
-    occupationSectorController.text=occupationSector!;
+    PersonModelList.personModelList[i].occupationModel!
+        .occupationSectorController.text = occupationSector!;
     if (((occupationSector == " حدد أخرى") ||
         (occupationSector.isNotEmpty &&
             !(PersonData.occupationSector[occupationSectorKey]!

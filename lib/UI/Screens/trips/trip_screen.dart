@@ -85,8 +85,7 @@ class _TripScreenState extends State<TripScreen> {
 
     UserSurveysProvider userSurveysProvider =
     Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit') ||
-        (userSurveysProvider.userSurveyStatus == 'filled')) {
+    if ((userSurveysProvider.userSurveyStatus == 'edit') ) {
       validationService.getAllTripUpdated(context);
     } else {
       validationService.initTrip();

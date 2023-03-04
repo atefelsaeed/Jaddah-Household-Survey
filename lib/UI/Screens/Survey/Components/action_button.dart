@@ -129,7 +129,8 @@ class ActionButton extends StatelessWidget {
             return Validator.showSnack(context, 'رقم الهاتف غير صحيح..!');
           }
 
-          await validationService.determinePosition().then((value) {
+          await validationService.determinePosition(context).then((value) {
+
             surveyPt.hhsAddressLat = value.latitude.toString();
             surveyPt.hhsAddressLong = value.longitude.toString();
           }).onError(

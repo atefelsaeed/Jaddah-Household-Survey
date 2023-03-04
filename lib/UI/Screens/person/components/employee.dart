@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/person_conditions.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/reset_person.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -22,6 +24,7 @@ class _EmployeeState extends State<Employee> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PersonProvider>(context, listen: false);
     return Column(
       children: [
         AppSize.spaceHeight3(context),
@@ -57,14 +60,7 @@ class _EmployeeState extends State<Employee> {
                             .workplace[PersonData.workplace.keys.first]!
                             .toList(),
                         onChange: (String? p) {
-                          setState(() {
-                            PersonModelList
-                                .personModelList[widget.i]
-                                .occupationModel!
-                                .bestWorkspaceLocation = p.toString();
-                            PersonConditions()
-                                .checkBestWorkspaceLocationOther(widget.i);
-                          });
+                          provider.bestWorkspaceLocation(widget.i, p);
                         },
                       ),
                       AppSize.spaceHeight1(context),
@@ -72,6 +68,10 @@ class _EmployeeState extends State<Employee> {
                                   .checkBestWorkspaceLocationOther(widget.i) ==
                               true
                           ? MyTextForm(
+                              controller: PersonModelList
+                                  .personModelList[widget.i]
+                                  .occupationModel!
+                                  .bestWorkspaceLocationController,
                               label: 'وضعك المعتاد للذهاب إلى العمل / المدرسة',
                               onChanged: (val) {
                                 PersonModelList
@@ -112,14 +112,7 @@ class _EmployeeState extends State<Employee> {
                             .licence[PersonData.licence.keys.first]!
                             .toList(),
                         onChange: (String? p) {
-                          setState(() {
-                            PersonModelList
-                                .personModelList[widget.i]
-                                .personalQuestion!
-                                .drivingLicenceType = p.toString();
-                            PersonConditions()
-                                .checkDrivingLicenceTypeOther(widget.i);
-                          });
+                          provider.drivingLicenceType(widget.i, p);
                         },
                       ),
                       AppSize.spaceHeight1(context),
@@ -127,7 +120,10 @@ class _EmployeeState extends State<Employee> {
                                   .checkDrivingLicenceTypeOther(widget.i) ==
                               true
                           ? MyTextForm(
-                              controller: drivingLicenceType,
+                              controller: PersonModelList
+                                  .personModelList[widget.i]
+                                  .personalQuestion!
+                                  .drivingLicenceTypeController,
                               label: " نوع الرخصة",
                               onChanged: (val) {
                                 PersonModelList.personModelList[widget.i]
@@ -139,7 +135,6 @@ class _EmployeeState extends State<Employee> {
                   ),
           ],
         ),
-        AppSize.spaceHeight3(context),
         AppSize.spaceHeight3(context),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

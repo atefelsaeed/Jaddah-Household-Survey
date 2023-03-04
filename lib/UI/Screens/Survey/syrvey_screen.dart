@@ -13,7 +13,6 @@ import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
-import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../Widgets/exit_screen.dart';
@@ -117,8 +116,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
       "index": 0
     };
 
-    if ((widget.itemSurveyModel.status == 'edit') ||
-        (widget.itemSurveyModel.status == 'filled')) {
+    if ((widget.itemSurveyModel.status == 'edit') ) {
       int id = widget.itemSurveyModel.id!;
       validationService.resetHHSValues(editingController, context, id);
     }
@@ -212,7 +210,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                         editingController3: editingController
                                             .editingController3Q83),
                                     AppSize.spaceHeight2(context),
-                                    QH9(),
+                                    const QH9(),
                                     AppSize.spaceHeight3(context),
                                     //========HHSQ9=================
                                     const NearestTransporter(),

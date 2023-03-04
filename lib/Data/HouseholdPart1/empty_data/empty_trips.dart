@@ -72,8 +72,8 @@ class EmptyTrips {
       element.travelTypeModel.carParkingPlace = '';
       element.travelTypeModel.publicTransportFare = '';
       element.travelTypeModel.passTravelType = '';
-      element.travelTypeModel.otherWhereDidYouParking?.text = '';
-      element.travelTypeModel.taxiTravelTypeOther?.text = '';
+      element.travelTypeModel.otherWhereDidYouParking.text = '';
+      element.travelTypeModel.taxiTravelTypeOther.text = '';
       //================travelWay===============
       element.travelWay?.mainMode = '';
       element.travelWay?.accessMode = '';

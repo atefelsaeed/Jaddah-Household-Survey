@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
@@ -28,6 +30,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
   @override
   Widget build(BuildContext context) {
     var bas = TripModeList.tripModeList[widget.index].travelTypeModel;
+    final provider = Provider.of<TripProvider>(context, listen: false);
     // TODO: implement build
     return Column(
       children: [
@@ -64,7 +67,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         bas.carParkingPlace = p.toString();
                         if (bas.carParkingPlace == "أخر") {
                           bas.carParkingPlace !=
-                              bas.otherWhereDidYouParking!.text;
+                              bas.otherWhereDidYouParking.text;
                         } else {
                           bas.carParkingPlace = p.toString();
                         }
@@ -81,9 +84,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
                         .toList(),
                     onChange: (String? p) {
-                      setState(() {
-                        bas.taxiTravelType = p.toString();
-                      });
+                      provider.taxiTravelType(widget.index, p);
                     })
                 : Container(),
           ],
@@ -102,7 +103,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       TextForm(
-                        controller: bas.otherWhereDidYouParking!,
+                        controller: bas.otherWhereDidYouParking,
                         text: "أین أوقفت ${bas.travelType}؟",
                         label: "أین أوقفت ${bas.travelType}؟",
                       )
@@ -143,6 +144,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                             )),
                         AppSize.spaceHeight1(context),
                         MyTextForm(
+                          controller: bas.taxiTravelTypeOther,
                           label: "نوع التاكسي الذي استخدمته",
                           onChanged: (val) {
                             bas.taxiTravelType = val;

@@ -54,6 +54,7 @@ class MyTextForm extends StatelessWidget {
             controller: controller,
             readOnly: readOnly ?? false,
             onTap: onTap,
+            textAlign: TextAlign.right,
             textInputAction: TextInputAction.next,
             onEditingComplete: () => FocusScope.of(context).nextFocus(),
             style: TextStyle(
@@ -71,6 +72,7 @@ class MyTextForm extends StatelessWidget {
                   ),
             decoration: InputDecoration(
               labelText: label,
+
               suffixIcon: suffix != null
                   ? IconButton(
                       onPressed: () {

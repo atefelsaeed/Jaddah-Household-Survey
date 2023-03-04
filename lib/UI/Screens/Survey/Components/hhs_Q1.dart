@@ -21,14 +21,15 @@ class HHSQ1 extends StatelessWidget {
           children: [
             DropDownFormInput(
               label: HhsStatic.householdQuestions.hhsDwellingType != null
-                  ? Text(HhsStatic.householdQuestions.hhsDwellingType??'')
+                  ? Text(HhsStatic.householdQuestions.hhsDwellingType ?? '')
                   : const Text('إختار'),
               hint: "1. وصف المسكن؟",
               options:
                   QuestionsData.qh1[QuestionsData.qh1.keys.first]!.toList(),
               onChange: (String? p) {
+                debugPrint('selected');
                 debugPrint(p);
-               validationService.HHSQ1(p.toString());
+                validationService.HHSQ1(p.toString());
               },
             ),
             (HhsStatic.householdQuestions.hhsDwellingType ==
@@ -44,7 +45,13 @@ class HHSQ1 extends StatelessWidget {
                     isNumber: true,
                   )
                 : Container(),
-            HhsStatic.householdQuestions.hhsIsDwellingTypeFlag == true
+            ((HhsStatic.householdQuestions.hhsDwellingType == "أخر") ||
+                    ((HhsStatic.householdQuestions.hhsDwellingType != null &&
+                        !(QuestionsData.qh1[QuestionsData.qh1.keys.first]!.any(
+                            (element) =>
+                                element ==
+                                HhsStatic
+                                    .householdQuestions.hhsDwellingType)))))
                 ? TextForm(
                     controller:
                         HhsStatic.householdQuestions.hhsDwellingTypeOther!,

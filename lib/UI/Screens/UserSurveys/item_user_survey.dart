@@ -89,15 +89,15 @@ class ItemUserSurvey extends StatelessWidget {
                       userSurveysProvider.userSurveyStatus =
                           itemSurveyModel.status;
                       HHSEmptyData.emptyData();
-                      userSurveysProvider.index = index;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SurveyScreen(
-                            itemSurveyModel: itemSurveyModel,
-                          ),
-                        ),
-                      );
+                      // userSurveysProvider.index = index;
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => SurveyScreen(
+                      //       itemSurveyModel: itemSurveyModel,
+                      //     ),
+                      //   ),
+                      // );
                     },
                     //edited
                     isWidget: true,

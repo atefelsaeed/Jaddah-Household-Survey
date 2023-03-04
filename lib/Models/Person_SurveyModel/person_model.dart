@@ -63,6 +63,7 @@ class PersonalHeadData {
   bool? refuseToTellAge;
   bool hasPasTrip = false;
   TextEditingController hhsHavePastTrip = TextEditingController();
+  TextEditingController relationshipHeadHHSController = TextEditingController();
   TextEditingController age = TextEditingController();
   String? nationalityType;
   TextEditingController nationality =
@@ -71,6 +72,7 @@ class PersonalHeadData {
 
   PersonalHeadData({
     required this.age,
+    required this.relationshipHeadHHSController,
     this.nationalityType,
     required this.hasPasTrip,
     required this.showText,

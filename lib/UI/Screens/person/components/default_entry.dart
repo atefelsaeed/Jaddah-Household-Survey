@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -8,6 +9,7 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../../Widgets/text.dart';
 import '../../Survey/widgets/text_form_row.dart';
+import '../reset_person.dart';
 
 class DefaultEntry extends StatefulWidget {
   final int i;
@@ -28,6 +30,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PersonProvider>(context, listen: false);
     int index = widget.i + 1;
     // TODO: implement build
     return Column(
@@ -111,12 +114,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                     .keys.first]!
                             .toList(),
                         onChange: (var p) {
-                          setState(() {
-                            PersonModelList
-                                .personModelList[widget.i]
-                                .personalHeadData!
-                                .relationshipHeadHHS = p.toString();
-                          });
+                          provider.relationshipHeadHHS(widget.i, p);
                         },
                       ),
                       AppSize.spaceHeight2(context),
@@ -126,6 +124,10 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                       .personalHeadData!.relationshipHeadHHS ==
                                   'أخرى')
                               ? MyTextForm(
+                                  controller: PersonModelList
+                                      .personModelList[widget.i]
+                                      .personalHeadData!
+                                      .relationshipHeadHHSController,
                                   label: 'القرابة برب الأسرة ',
                                   onChanged: (val) {
                                     PersonModelList

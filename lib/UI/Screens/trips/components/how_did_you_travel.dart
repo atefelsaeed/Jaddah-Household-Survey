@@ -10,7 +10,7 @@ import '../provider/trip_provider.dart';
 import 'headline_trip.dart';
 
 class HowDidYouTravel extends StatelessWidget {
-  HowDidYouTravel({super.key, required this.i});
+  const HowDidYouTravel({super.key, required this.i});
 
   final int i;
 

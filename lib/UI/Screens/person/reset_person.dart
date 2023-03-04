@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/occupation_model.dart';
 import 'package:jaddah_household_survey/Models/Person_SurveyModel/person_model.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
+import 'package:jaddah_household_survey/UI/Screens/person/person_conditions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
@@ -138,6 +139,9 @@ class PersonProvider extends ChangeNotifier {
           nationality: TextEditingController(
               text: surveyPt
                   .surveyPT.personData![i].personalHeadData!.nationality.text),
+          relationshipHeadHHSController: TextEditingController(
+              text: surveyPt.surveyPT.personData![i].personalHeadData!
+                  .relationshipHeadHHS),
           hhsHavePastTrip: TextEditingController(
               text: surveyPt.surveyPT.personData![i].personalHeadData!
                   .hhsHavePastTrip.text),
@@ -174,12 +178,21 @@ class PersonProvider extends ChangeNotifier {
             fullAddress: TextEditingController(),
             geocodes: TextEditingController(),
           ),
+          drivingLicenceTypeController: TextEditingController(
+              text: surveyPt.surveyPT.personData![i].personalQuestion!
+                  .drivingLicenceType),
+          haveDisabilityTransportMobilityController: TextEditingController(
+              text: surveyPt.surveyPT.personData![i].personalQuestion!
+                  .haveDisabilityTransportMobility),
         ),
-        //==occupationModel==
+        //==occupationModel==================
         occupationModel: OccupationModel(
           earliestTimeFinishingWork: TextEditingController(
               text: surveyPt.surveyPT.personData![i].occupationModel!
                   .earliestTimeFinishingWork.text),
+          occupationSectorController: TextEditingController(
+              text: surveyPt
+                  .surveyPT.personData![i].occupationModel!.occupationSector),
           earliestTimeStartingWork: TextEditingController(
               text: surveyPt.surveyPT.personData![i].occupationModel!
                   .earliestTimeStartingWork.text),
@@ -215,6 +228,9 @@ class PersonProvider extends ChangeNotifier {
               .surveyPT.personData![i].occupationModel!.occupationLevelSector,
           occupationSector: surveyPt
               .surveyPT.personData![i].occupationModel!.occupationSector,
+          bestWorkspaceLocationController: TextEditingController(
+              text: surveyPt.surveyPT.personData![i].occupationModel!
+                  .bestWorkspaceLocation),
         ),
         nationality: nationality,
         travelWithOther: travelWithOther,
@@ -257,6 +273,7 @@ class PersonProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
   isEmployeeEdit(String d, int i) {
     print("Ddddd");
     print(d);
@@ -269,8 +286,9 @@ class PersonProvider extends ChangeNotifier {
     } else {
       PersonModelList.personModelList[i].occupationModel!.isEmployee = "";
     }
-  //  notifyListeners();
+    //  notifyListeners();
   }
+
   isEmployee(String d, int i) {
     print("Ddddd");
     print(d);
@@ -357,6 +375,94 @@ class PersonProvider extends ChangeNotifier {
     PersonModelList.personModelList[i].personalHeadData!.refuseToTellAge =
         value!;
     PersonModelList.personModelList[i].personalHeadData!.checkAge = false;
+    notifyListeners();
+  }
+
+  ///occupationSector
+  occupationSector(int i, p) {
+    var base = PersonModelList.personModelList[i].occupationModel!;
+    base.occupationSector = p.toString();
+
+    if (base.occupationSector != " حدد أخرى") {
+      base.occupationSector = p.toString();
+      base.occupationSectorController.text = base.occupationSector!;
+    } else {
+      base.occupationSectorController.text = " حدد أخرى";
+      base.occupationSector != base.occupationSectorController.text;
+    }
+
+    PersonConditions().checkOccupationSectorOther(i);
+    notifyListeners();
+  }
+
+  ///bestWorkspaceLocation
+  bestWorkspaceLocation(int i, p) {
+    var base = PersonModelList.personModelList[i].occupationModel!;
+    base.bestWorkspaceLocation = p.toString();
+
+    if (base.bestWorkspaceLocation != "'أخرى'") {
+      base.bestWorkspaceLocation = p.toString();
+      base.bestWorkspaceLocationController.text = base.bestWorkspaceLocation!;
+    } else {
+      base.bestWorkspaceLocationController.text = "'أخرى'";
+      base.bestWorkspaceLocation != base.bestWorkspaceLocationController.text;
+    }
+
+    PersonConditions().checkBestWorkspaceLocationOther(i);
+    notifyListeners();
+  }
+
+  ///drivingLicenceType
+  drivingLicenceType(int i, p) {
+    var base = PersonModelList.personModelList[i].personalQuestion!;
+    base.drivingLicenceType = p.toString();
+
+    if (base.drivingLicenceType != "آخر") {
+      base.drivingLicenceType = p.toString();
+      base.drivingLicenceTypeController.text = base.drivingLicenceType!;
+    } else {
+      base.drivingLicenceTypeController.text = "آخر";
+      base.drivingLicenceType != base.drivingLicenceTypeController.text;
+    }
+
+    PersonConditions().checkDrivingLicenceTypeOther(i);
+    notifyListeners();
+  }
+
+  ///haveDisabilityTransportMobility
+  haveDisabilityTransportMobility(int i, p) {
+    var base = PersonModelList.personModelList[i].personalQuestion!;
+    base.haveDisabilityTransportMobility = p.toString();
+
+    if (base.haveDisabilityTransportMobility != "أخرى .. حدد") {
+      base.haveDisabilityTransportMobility = p.toString();
+      base.haveDisabilityTransportMobilityController.text =
+          base.haveDisabilityTransportMobility!;
+    } else {
+      base.haveDisabilityTransportMobilityController.text = "أخرى .. حدد";
+      base.haveDisabilityTransportMobility !=
+          base.haveDisabilityTransportMobilityController.text;
+    }
+
+    PersonConditions().checkDrivingLicenceTypeOther(i);
+    notifyListeners();
+  }
+  ///haveDisabilityTransportMobility
+  relationshipHeadHHS(int i, p) {
+    var base = PersonModelList.personModelList[i].personalHeadData!;
+    base.relationshipHeadHHS = p.toString();
+
+    if (base.relationshipHeadHHS != "'أخرى'") {
+      base.relationshipHeadHHS = p.toString();
+      base.relationshipHeadHHSController.text =
+          base.relationshipHeadHHS!;
+    } else {
+      base.relationshipHeadHHSController.text = "'أخرى'";
+      base.relationshipHeadHHS !=
+          base.relationshipHeadHHSController.text;
+    }
+
+    // PersonConditions().checkDrivingLicenceTypeOther(i);
     notifyListeners();
   }
 }

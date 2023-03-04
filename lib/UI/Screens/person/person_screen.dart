@@ -57,11 +57,9 @@ class _PersonScreenState extends State<PersonScreen> {
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit') ||
-        (userSurveysProvider.userSurveyStatus == 'filled')) {
+    if ((userSurveysProvider.userSurveyStatus == 'edit')) {
       validationService.getAllPeronUpdated(context);
     }
-
   }
 
   void showError() => showDialog<void>(
@@ -421,26 +419,22 @@ class _PersonScreenState extends State<PersonScreen> {
                                                               .toList(),
                                                           onChange:
                                                               (String? p) {
-                                                            setState(() {
-                                                              PersonModelList
-                                                                      .personModelList[
-                                                                          i]
-                                                                      .occupationModel!
-                                                                      .occupationSector =
-                                                                  p.toString();
-                                                              PersonConditions()
-                                                                  .checkOccupationSectorOther(
-                                                                      i);
-                                                            });
+                                                            provider
+                                                                .occupationSector(
+                                                                    i, p);
                                                           },
                                                         ),
+                                                        AppSize.spaceHeight2(
+                                                            context),
                                                         PersonConditions()
                                                                     .checkOccupationSectorOther(
                                                                         i) ==
                                                                 true
                                                             ? MyTextForm(
-                                                                controller:
-                                                                PersonConditions()
+                                                                controller: PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
                                                                     .occupationSectorController,
                                                                 label:
                                                                     " قطاع العمل",
@@ -546,6 +540,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                         personName: TextEditingController(),
                                         personalHeadData: PersonalHeadData(
                                           age: TextEditingController(),
+                                          relationshipHeadHHSController: TextEditingController(),
                                           nationality: TextEditingController(),
                                           hhsHavePastTrip:
                                               TextEditingController(),
@@ -571,10 +566,16 @@ class _PersonScreenState extends State<PersonScreen> {
                                                 TextEditingController(),
                                             geocodes: TextEditingController(),
                                           ),
+                                          drivingLicenceTypeController:
+                                              TextEditingController(),
+                                          haveDisabilityTransportMobilityController:
+                                              TextEditingController(),
                                         ),
                                         //==occupationModel==
                                         occupationModel: OccupationModel(
                                           earliestTimeFinishingWork:
+                                              TextEditingController(),
+                                          occupationSectorController:
                                               TextEditingController(),
                                           earliestTimeStartingWork:
                                               TextEditingController(),
@@ -593,6 +594,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                           numberWorkFromHome: 0,
                                           occupationLevelSector: '',
                                           occupationSector: '',
+                                          bestWorkspaceLocationController:
+                                              TextEditingController(),
                                         ),
                                       ),
                                     );

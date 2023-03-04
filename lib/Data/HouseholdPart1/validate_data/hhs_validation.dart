@@ -13,6 +13,7 @@ class CheckHHSValidation {
     // }
     if (HhsStatic.householdQuestions.hhsDwellingType == null ||
         HhsStatic.householdQuestions.hhsDwellingType == "") {
+      print("hhsDwellingType ${ HhsStatic.householdQuestions.hhsDwellingType}");
       return Validator.showSnack(context, " يجب إخيار! 1.وصف المسكن؟ ");
     } else if (HhsStatic.householdQuestions.hhsIsDwelling == null ||
         HhsStatic.householdQuestions.hhsIsDwelling == "") {

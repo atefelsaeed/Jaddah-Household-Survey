@@ -3,6 +3,8 @@ import 'package:jaddah_household_survey/Data/HouseholdPart1/PersonData/person_da
 
 class OccupationModel {
   String? occupationSector;
+  TextEditingController occupationSectorController = TextEditingController();
+  TextEditingController bestWorkspaceLocationController = TextEditingController();
   String? isEmployee = "";
   String? occupationLevelSector;
   String? bestWorkspaceLocation;
@@ -22,6 +24,8 @@ class OccupationModel {
   OccupationModel({
     required this.earliestTimeFinishingWork,
     required this.endingWoke,
+    required this.occupationSectorController,
+    required this.bestWorkspaceLocationController,
     required this.startingWoke,
     required this.address,
     required this.geoCodes,

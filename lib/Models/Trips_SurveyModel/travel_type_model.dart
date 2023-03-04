@@ -5,8 +5,8 @@ class TravelTypeModel {
   String? carParkingPlace;
   String? travelType;
   String? taxiTravelType;
-  TextEditingController? taxiTravelTypeOther;
-  TextEditingController? otherWhereDidYouParking;
+  TextEditingController taxiTravelTypeOther = TextEditingController();
+  TextEditingController otherWhereDidYouParking = TextEditingController();
   String? passTravelType;
   TextEditingController taxiFare = TextEditingController();
   TextEditingController ticketSub = TextEditingController();
@@ -16,8 +16,8 @@ class TravelTypeModel {
     this.carParkingPlace,
     this.passTravelType,
     this.travelType,
-    this.taxiTravelTypeOther,
-    this.otherWhereDidYouParking,
+    required this.taxiTravelTypeOther,
+    required this.otherWhereDidYouParking,
     this.publicTransportFare,
     required this.taxiFare,
     required this.ticketSub,
@@ -38,7 +38,7 @@ class TravelTypeModel {
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
     data['carParkingPlace'] = carParkingPlace == "Other"
-        ? otherWhereDidYouParking!.text
+        ? otherWhereDidYouParking.text
         : carParkingPlace;
     data['taxiTravelType'] = taxiTravelType;
     data['travelType '] = travelType;

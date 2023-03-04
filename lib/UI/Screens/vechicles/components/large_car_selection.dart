@@ -18,8 +18,7 @@ class LargeItemCar extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     final validationService = Provider.of<VecProvider>(context, listen: false);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
         DropDownFormInput(
           label: textEditingController.text == ''
@@ -32,6 +31,7 @@ class LargeItemCar extends StatelessWidget {
             validationService.largeItemCar(p.toString(), textEditingController);
           },
         ),
+        AppSize.spaceHeight1(context),
         ((textEditingController.text == "أخرى") ||
                 (textEditingController.text.isNotEmpty &&
                     !(VehiclesData.largeCar[VehiclesData.largeCar.keys.first]!

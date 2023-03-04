@@ -4,6 +4,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dar
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
+import '../../../../Helper/validator.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/HHS_SurvyModels/survey_hhs.dart';
 import '../widgets/list_view_check_box_orange.dart';
@@ -31,9 +32,8 @@ class ActionSurveyProvider extends ChangeNotifier {
     }
   }
 
-  resetHHSValues(editingController, context,int id) async {
-
-    await c(editingController, context,id);
+  resetHHSValues(editingController, context, int id) async {
+    await c(editingController, context, id);
     notifyListeners();
   }
 
@@ -73,14 +73,14 @@ class ActionSurveyProvider extends ChangeNotifier {
     p == "أخر"
         ? editingController.yes.text = ""
         : editingController.yes.text =
-    HhsStatic.householdQuestions.hhsDemolishedAreas!;
+            HhsStatic.householdQuestions.hhsDemolishedAreas!;
     notifyListeners();
   }
 
-  Future<Position> determinePosition() async {
+  Future<Position> determinePosition(context) async {
     bool serviceEnabled;
     LocationPermission permission;
-
+    Validator.showSnack(context, 'جارى التحقق ...');
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -105,29 +105,34 @@ class ActionSurveyProvider extends ChangeNotifier {
   }
 
   HHSQ1(String p) {
-    if(p== "أخر"){
-
+    HhsStatic.householdQuestions.hhsDwellingType = p;
+    if (p == "أخر") {
+      HhsStatic.householdQuestions.hhsDwellingTypeOther!.text = "أخر";
       HhsStatic.householdQuestions.hhsDwellingType =
           HhsStatic.householdQuestions.hhsDwellingTypeOther!.text;
-      HhsStatic.householdQuestions.hhsIsDwellingTypeFlag = true;
-    }else{
-      HhsStatic.householdQuestions.hhsDwellingType=p;
-      HhsStatic.householdQuestions.hhsIsDwellingTypeFlag = false;
-    }
 
-    notifyListeners();
+      notifyListeners();
+    } else {
+      HhsStatic.householdQuestions.hhsDwellingType = p;
+      HhsStatic.householdQuestions.hhsDwellingTypeOther!.text =
+          HhsStatic.householdQuestions.hhsDwellingType!;
+      notifyListeners();
+    }
   }
 
   HHSQ2(String p) {
-    if(p== "أخر"){
+    HhsStatic.householdQuestions.hhsIsDwelling = p;
+    if (p == "أخر") {
+      HhsStatic.householdQuestions.hhsIsDwellingOther!.text = "أخر";
       HhsStatic.householdQuestions.hhsIsDwelling =
           HhsStatic.householdQuestions.hhsIsDwellingOther!.text;
-    HhsStatic.householdQuestions.hhsDwellingFlag = true;
-    }else{
-      HhsStatic.householdQuestions.hhsIsDwelling=p;
-      HhsStatic.householdQuestions.hhsDwellingFlag = false;
+      notifyListeners();
+    } else {
+      HhsStatic.householdQuestions.hhsIsDwelling = p;
+      HhsStatic.householdQuestions.hhsIsDwellingOther!.text =
+          HhsStatic.householdQuestions.hhsIsDwelling!;
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   listQ7(List<dynamic> question, index, chosenIndex, value) {
@@ -139,16 +144,16 @@ class ActionSurveyProvider extends ChangeNotifier {
 
   resetValueQ9(List<SurveyPT> list) async {
     for (int i = 0;
-    i <
-        VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
-            .toList()
-            .length;
-    i++) {
+        i <
+            VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
+                .toList()
+                .length;
+        i++) {
       if (list.first.vehiclesData.nearestBusStop ==
           VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]
-          ["value"]) {
+              ["value"]) {
         VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]
-        ["isChick"] = true;
+            ["isChick"] = true;
       }
     }
     notifyListeners();
