@@ -49,6 +49,7 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
                 children: [
                   TextForm(
                     controller: widget.textEditingController,
+                    onChanged: (value){},
                     text: " نوع الوقود",
                     label: " نوع الوقود",
                   )

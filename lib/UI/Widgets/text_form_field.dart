@@ -61,7 +61,7 @@ class MyTextForm extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: ColorManager.black,
                 fontSize: height(context) * .015),
-          validator: (String? val) => isNumber ?? false
+            validator: (String? val) => isNumber ?? false
                 ? Validator.validateEmpty(
                     value: val,
                     message: 'يجب يجب إعطاء إجابة!',
@@ -72,7 +72,6 @@ class MyTextForm extends StatelessWidget {
                   ),
             decoration: InputDecoration(
               labelText: label,
-
               suffixIcon: suffix != null
                   ? IconButton(
                       onPressed: () {

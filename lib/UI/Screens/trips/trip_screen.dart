@@ -82,12 +82,12 @@ class _TripScreenState extends State<TripScreen> {
     super.initState();
     getSystemStatus();
     final validationService = Provider.of<TripProvider>(context, listen: false);
-
+    validationService.initTrip();
     UserSurveysProvider userSurveysProvider =
     Provider.of<UserSurveysProvider>(context, listen: false);
     if ((userSurveysProvider.userSurveyStatus == 'edit') ) {
       validationService.getAllTripUpdated(context);
-      validationService.initTrip();
+      // validationService.initTrip();
     }
   }
   @override

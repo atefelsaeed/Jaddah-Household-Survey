@@ -13,6 +13,7 @@ class TextForm extends StatelessWidget {
   final bool? isNumber;
   final bool? readOnly;
   final TextInputType? keyboardType;
+  final Function(String?) onChanged;
 
   const TextForm({
     super.key,
@@ -21,6 +22,7 @@ class TextForm extends StatelessWidget {
     required this.text,
     this.keyboardType,
     this.readOnly,
+  required this.onChanged,
     this.isNumber,
     this.fontSize,
   });
@@ -44,6 +46,9 @@ class TextForm extends StatelessWidget {
           controller: controller,
           readOnly: readOnly,
           isNumber: isNumber,
+          onChanged: (val) {
+            onChanged(val);
+          },
           keyboardType: keyboardType ?? TextInputType.text,
           // isNumber: true,
         ),

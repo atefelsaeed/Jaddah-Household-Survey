@@ -81,11 +81,13 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextForm(
+              onChanged: (value){},
               controller: widget.tripModel.area,
               text: "الحى",
               label: "الحى",
             ),
             TextForm(
+              onChanged: (value){},
               controller: widget.tripModel.streetNumber,
               text: "رقم الشارع",
               label: "رقم الشارع",
@@ -98,12 +100,12 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextForm(
+            TextForm( onChanged: (value){},
               controller: widget.tripModel.streetName,
               label: "إسم الشارع",
               text: "إسم الشارع",
             ),
-            TextForm(
+            TextForm( onChanged: (value){},
               controller: widget.tripModel.nearestLandMark,
               label: "اقرب معلم",
               text: "اقرب معلم",
@@ -114,7 +116,7 @@ class _TripHoldAddressState extends State<TripHoldAddress> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextForm(
+            TextForm( onChanged: (value){},
               controller: widget.tripModel.block,
               text: "أقرب تقاطع",
               label: "أقرب تقاطع",

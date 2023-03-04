@@ -280,6 +280,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                       ? TextForm(
                                           label: 'إذكر السبب',
                                           text: 'إذكر السبب',
+                                    onChanged: (value){},
                                           controller: PersonModelList
                                               .personModelList[i]
                                               .personalHeadData!

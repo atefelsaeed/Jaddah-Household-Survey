@@ -61,6 +61,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
           children: [
             TextForm(
               controller: PersonModelList.personModelList[widget.i].personName,
+              onChanged: (value){},
               text: "اسم الشخص",
               label: "اسم الشخص",
             )

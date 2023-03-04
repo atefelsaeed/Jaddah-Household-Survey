@@ -80,6 +80,7 @@ Future<bool> syncall() async {
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   debugPrint("something");
+
   Firebase.initializeApp().then((value) async {
     FirebaseMessaging.instance.subscribeToTopic('sync');
     final prefs = await SharedPreferences.getInstance();

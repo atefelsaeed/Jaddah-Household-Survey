@@ -38,6 +38,7 @@ class OwnerShipCode extends StatelessWidget {
                 children: [
                   TextForm(
                     controller: textEditingController,
+                    onChanged: (value){},
                     text: "رموز الملكية",
                     label: "رموز الملكية",
                   )
