@@ -43,10 +43,10 @@ class HowDidYouTravel extends StatelessWidget {
                     ? MyTextForm(
                         controller: provider.mainModeController,
                         isNumber: false,
-                        // onChanged: (value) {
-                        //   TripModeList.tripModeList[i].travelWay!.mainMode =
-                        //       value;
-                        // },
+                        onChanged: (value) {
+                          TripModeList.tripModeList[i].travelWay!.mainMode =
+                              value;
+                        },
                         label: 'وضع الوصول',
                       )
                     : Container(),
@@ -73,10 +73,10 @@ class HowDidYouTravel extends StatelessWidget {
                     ? MyTextForm(
                         controller: provider.acModeController,
                         isNumber: false,
-                        // onChanged: (value) {
-                        //   TripModeList.tripModeList[i].travelWay!.accessMode =
-                        //       value;
-                        // },
+                        onChanged: (value) {
+                          TripModeList.tripModeList[i].travelWay!.accessMode =
+                              value;
+                        },
                         label: 'الوضع الرئیسي',
                       )
                     : Container(),

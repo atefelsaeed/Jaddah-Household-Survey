@@ -36,7 +36,7 @@ class AdultsOrNot extends StatelessWidget {
                 MyTextForm(
                   label: "",
                   controller: adultsModel.childrenNumber,
-                  widthForm: width(context) * .07,
+                  widthForm: width(context) * .1,
                   keyboardType: TextInputType.number,isNumber: true,
                 ),
                 AppSize.spaceWidth1(context),
@@ -53,7 +53,7 @@ class AdultsOrNot extends StatelessWidget {
                 MyTextForm(
                   label: "",
                   controller: adultsModel.adultsNumber,
-                  widthForm: width(context) * .07,
+                  widthForm: width(context) * .1,
                   keyboardType: TextInputType.number,
                   isNumber: true,
                 ),
