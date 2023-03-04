@@ -20,7 +20,7 @@ class TripsModel {
       TextEditingController();
   TextEditingController taxiTravelTypeEditingControl = TextEditingController();
   List<String> person = [];
-  List<String> chosenFriendPerson = [];
+  List<dynamic> chosenFriendPerson = [];
   String chosenPerson = "";
   Map friendPerson = {
     "friendPerson": [
@@ -97,7 +97,7 @@ class TripsModel {
   TravelWithOtherModel? travelAloneHouseHold = TravelWithOtherModel(
       adultsNumber: TextEditingController(),
       childrenNumber: TextEditingController());
-  List<String>? hhsMembersTraveled;
+  List<dynamic>? hhsMembersTraveled;
   ArrivalDepartTime arrivalDepartTime = ArrivalDepartTime(
       departTime: TextEditingController(),
       arriveDestinationTime: TextEditingController());
@@ -152,9 +152,10 @@ class TripsModel {
     tripReason =
         json['tripReason'] ?? purposeOfBeingThere2["TripReason"][0]["value"];
     isTravelAlone = json['isTravelAlone'];
+print(json["hhsMembersTraveled"]);
 
-    chosenFriendPerson =
-        List<String>.from(json["hhsMembersTraveled"].map((x) => x));
+    chosenFriendPerson =List.from( json["hhsMembersTraveled"]);
+      //  List<String>.from(json["hhsMembersTraveled"].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {

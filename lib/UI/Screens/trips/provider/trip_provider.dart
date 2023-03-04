@@ -30,6 +30,9 @@ class TripProvider extends ChangeNotifier {
         ],
         "index": 0
       };
+      print("12344444");
+      print(surveyPt.surveyPT.tripsList![i].isTravelAlone );
+
       Map<String, dynamic> purposeOfBeingThere2 = {
         "TripReason": [
           {"value": 'في المنزل', "isChick": false},
@@ -117,6 +120,9 @@ class TripProvider extends ChangeNotifier {
       var reason = surveyPt.surveyPT.tripsList![i].tripReason!
           .replaceAll('توص', 'توصيل');
 
+
+
+
       TripModeList.tripModeList.add(TripsModel(
           person: list,
           isHome: surveyPt.surveyPT.tripsList![i].isHome,
@@ -168,6 +174,37 @@ class TripProvider extends ChangeNotifier {
           arrivalDepartTime: surveyPt.surveyPT.tripsList![i].arrivalDepartTime,
           purposeOfBeingThere2: purposeOfBeingThere2,
           departureTime: surveyPt.surveyPT.tripsList![i].departureTime));
+      print("12222222f3333");
+      print(i);
+      TripModeList.tripModeList[0].person.clear();
+      print("2222222222222");
+      print( PersonModelList.personModelList);
+     /* for (int i = 0; i < PersonModelList.personModelList.length; i++) {
+        TripModeList.tripModeList[0].person
+            .add(PersonModelList.personModelList[i].personName.text);
+      }*/
+print(surveyPt.surveyPT.tripsList![i].person);
+print("jjjjj");
+      TripModeList.tripModeList[i].friendPerson={
+        "friendPerson": [],
+        "title": "friendPerson",
+        "subTitle":
+        " A separate family is defined as who share the kitchen expenses and meals",
+        "index": 0,
+      };
+print(surveyPt.surveyPT.tripsList![i].chosenFriendPerson.length);
+      if( surveyPt.surveyPT.tripsList![i].isTravelAlone = true){
+        for (int x = 0; x < surveyPt.surveyPT.tripsList![i].chosenFriendPerson!.length; x++) {
+          if (   surveyPt.surveyPT.tripsList![i].chosenFriendPerson![x] !=
+              surveyPt.surveyPT.tripsList![i].chosenPerson) {
+            print("jjjjjiiii");
+            TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
+              "value": surveyPt.surveyPT.tripsList![i].chosenFriendPerson![x].toString(),
+              "isChick": true
+            });
+          }
+        }
+      }
     }
 
     // notifyListeners();
@@ -183,6 +220,8 @@ class TripProvider extends ChangeNotifier {
   initTrip() {
     TripModeList.tripModeList[0].person.clear();
     list.clear();
+    print("2222222222222");
+    print( PersonModelList.personModelList);
     for (int i = 0; i < PersonModelList.personModelList.length; i++) {
       TripModeList.tripModeList[0].person
           .add(PersonModelList.personModelList[i].personName.text);
@@ -255,6 +294,16 @@ class TripProvider extends ChangeNotifier {
         TripModeList.tripModeList[index].isTravelAlone = false;
       } else if (r.val == "مع الأخرين" && r.check == true) {
         TripModeList.tripModeList[index].isTravelAlone = true;
+        TripModeList.tripModeList[index].friendPerson["friendPerson"] = [];
+        for (int x = 0; x < TripModeList.tripModeList[index].person.length; x++) {
+          if (TripModeList.tripModeList[index].person[x].toString() !=
+              TripModeList.tripModeList[index].chosenPerson) {
+            TripModeList.tripModeList[index].friendPerson["friendPerson"].add({
+              "value": TripModeList.tripModeList[index].person[x],
+              "isChick": false
+            });
+          }
+        }
       } else {
         TripModeList.tripModeList[index].isTravelAlone = null;
       }
