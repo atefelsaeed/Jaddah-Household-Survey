@@ -7,6 +7,7 @@ import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
 import '../../../Widgets/dropdown_form_input.dart';
 import '../../../Widgets/text.dart';
+import '../../Survey/widgets/text_form_row.dart';
 import '../provider/vechiels_provider.dart';
 
 class ParkThisCar extends StatelessWidget {
@@ -43,26 +44,29 @@ class ParkThisCar extends StatelessWidget {
                             element == textEditingController.text))))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                            width: width(context) * .45,
-                            child: TextGlobal(
-                              text: "رموز نوع وقوف السيارات",
-                              fontSize: height(context) * .02,
-                              color: ColorManager.black,
-                            )),
-                        AppSize.spaceHeight1(context),
-                        MyTextForm(
-                          controller: textEditingController,
-                          label: "رموز نوع وقوف السيارات",
-                          onChanged: (val) {
-                            textEditingController.text = val!;
-                          },
-                        ),
-                      ])
+                children: [ TextForm(
+                  controller: textEditingController,
+                  text: "رموز نوع وقوف السيارات",
+                  label: "رموز نوع وقوف السيارات",
+                )
+                  // Column(
+                  //     children: [
+                  //       SizedBox(
+                  //           width: width(context) * .45,
+                  //           child: TextGlobal(
+                  //             text: "رموز نوع وقوف السيارات",
+                  //             fontSize: height(context) * .02,
+                  //             color: ColorManager.black,
+                  //           )),
+                  //       AppSize.spaceHeight1(context),
+                  //       MyTextForm(
+                  //         controller: textEditingController,
+                  //         label: "رموز نوع وقوف السيارات",
+                  //         onChanged: (val) {
+                  //           textEditingController.text = val!;
+                  //         },
+                  //       ),
+                  //     ])
                 ],
               )
             : Container(),

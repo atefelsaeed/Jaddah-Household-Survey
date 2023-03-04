@@ -128,31 +128,32 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       isNumber: true,
                     )
                   : Container(),
+              ((bas.taxiTravelType == "تاكسي")&&
               ((bas.taxiTravelType == "أخر") ||
-                      !(TripData
-                          .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
-                          .any((element) => element == bas.taxiTravelType)))
+                  !(TripData
+                      .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
+                      .any((element) => element == bas.taxiTravelType))))
                   ? Column(
-                      children: [
-                        AppSize.spaceHeight3(context),
-                        SizedBox(
-                            width: width(context) * .45,
-                            child: TextGlobal(
-                              text: "نوع التاكسي الذي استخدمته",
-                              fontSize: height(context) * .02,
-                              color: ColorManager.black,
-                            )),
-                        AppSize.spaceHeight1(context),
-                        MyTextForm(
-                          controller: bas.taxiTravelTypeOther,
-                          label: "نوع التاكسي الذي استخدمته",
-                          onChanged: (val) {
-                            bas.taxiTravelType = val;
-                          },
-                          keyboardType: TextInputType.text,
-                        ),
-                      ],
-                    )
+                children: [
+                  AppSize.spaceHeight3(context),
+                  SizedBox(
+                      width: width(context) * .45,
+                      child: TextGlobal(
+                        text: "نوع التاكسي الذي استخدمته",
+                        fontSize: height(context) * .02,
+                        color: ColorManager.black,
+                      )),
+                  AppSize.spaceHeight1(context),
+                  MyTextForm(
+                    controller: bas.taxiTravelTypeOther,
+                    label: "نوع التاكسي الذي استخدمته",
+                    onChanged: (val) {
+                      bas.taxiTravelType = val;
+                    },
+                    keyboardType: TextInputType.text,
+                  ),
+                ],
+              )
                   : Container(),
             ],
           ),

@@ -93,20 +93,20 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                               MaterialPageRoute(
                                 builder: (context) => MapSearchScreen(
                                   callBack: (LatLng latLong) {
-                                    surveyPt.endAddressLatLng = latLong;
+                                    surveyPt.startingAddressLatLng = latLong;
                                     setState(() {
-                                      surveyPt.endingAddressLatLng?.latitude !=
+                                      surveyPt.startingAddressLatLng?.latitude !=
                                           latLong.latitude;
-                                      surveyPt.endingAddressLatLng?.longitude !=
+                                      surveyPt.startingAddressLatLng?.longitude !=
                                           latLong.longitude;
                                     });
                                     setState(() {
                                       startBeginningModel?.tripAddressLong =
                                           surveyPt
-                                              .endingAddressLatLng?.longitude
+                                              .startingAddressLatLng?.longitude
                                               .toString();
                                       startBeginningModel?.tripAddressLat =
-                                          surveyPt.endingAddressLatLng?.latitude
+                                          surveyPt.startingAddressLatLng?.latitude
                                               .toString();
                                     });
                                   },
