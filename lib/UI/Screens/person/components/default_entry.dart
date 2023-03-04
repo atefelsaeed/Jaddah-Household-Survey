@@ -25,15 +25,9 @@ class DefaultEntry extends StatefulWidget {
 
 class _DefaultEntryState extends State<DefaultEntry> {
   bool x = true;
-  var womanList = PersonData.relationshipToTheHeadOfHouseholdWoman[
-      PersonData.relationshipToTheHeadOfHouseholdWoman.keys.first]!;
-  var manList = PersonData.relationshipToTheHeadOfHouseholdMan[
-      PersonData.relationshipToTheHeadOfHouseholdMan.keys.first]!;
 
   @override
   Widget build(BuildContext context) {
-    var relationship = PersonModelList
-        .personModelList[widget.i].personalHeadData!.relationshipHeadHHS;
     int index = widget.i + 1;
     // TODO: implement build
     return Column(
@@ -104,25 +98,40 @@ class _DefaultEntryState extends State<DefaultEntry> {
                 ? Column(
                     children: [
                       DropDownFormInput(
-                        label: relationship != ''
-                            ? Text(relationship ?? '')
+                        label: PersonModelList.personModelList[widget.i]
+                                    .personalHeadData!.relationshipHeadHHS !=
+                                ''
+                            ? Text(PersonModelList.personModelList[widget.i]
+                                    .personalHeadData!.relationshipHeadHHS ??
+                                '')
                             : const Text('إختار'),
                         hint: "القرابة برب الأسرة ",
-                        options: manList.toList(),
+                        options: PersonData.relationshipToTheHeadOfHouseholdMan[
+                                PersonData.relationshipToTheHeadOfHouseholdMan
+                                    .keys.first]!
+                            .toList(),
                         onChange: (var p) {
                           setState(() {
-                            relationship = p.toString();
+                            PersonModelList
+                                .personModelList[widget.i]
+                                .personalHeadData!
+                                .relationshipHeadHHS = p.toString();
                           });
                         },
                       ),
                       AppSize.spaceHeight2(context),
                       Row(
                         children: [
-                           (relationship == 'أخرى')
+                          (PersonModelList.personModelList[widget.i]
+                                      .personalHeadData!.relationshipHeadHHS ==
+                                  'أخرى')
                               ? MyTextForm(
                                   label: 'القرابة برب الأسرة ',
                                   onChanged: (val) {
-                                    relationship = val!;
+                                    PersonModelList
+                                        .personModelList[widget.i]
+                                        .personalHeadData!
+                                        .relationshipHeadHHS = val!;
                                   },
                                 )
                               : Container()
@@ -135,25 +144,42 @@ class _DefaultEntryState extends State<DefaultEntry> {
                 ? Column(
                     children: [
                       DropDownFormInput(
-                        label: relationship != ''
-                            ? Text(relationship ?? '')
+                        label: PersonModelList.personModelList[widget.i]
+                                    .personalHeadData!.relationshipHeadHHS !=
+                                ''
+                            ? Text(PersonModelList.personModelList[widget.i]
+                                    .personalHeadData!.relationshipHeadHHS ??
+                                '')
                             : const Text('إختار'),
                         hint: "القرابة برب الأسرة ",
-                        options: womanList.toList(),
+                        options: PersonData
+                            .relationshipToTheHeadOfHouseholdWoman[PersonData
+                                .relationshipToTheHeadOfHouseholdWoman
+                                .keys
+                                .first]!
+                            .toList(),
                         onChange: (var p) {
                           setState(() {
-                            relationship = p.toString();
+                            PersonModelList
+                                .personModelList[widget.i]
+                                .personalHeadData!
+                                .relationshipHeadHHS = p.toString();
                           });
                         },
                       ),
                       AppSize.spaceHeight2(context),
                       Row(
                         children: [
-                      (relationship == 'أخرى')
+                          (PersonModelList.personModelList[widget.i]
+                                      .personalHeadData!.relationshipHeadHHS ==
+                                  'أخرى')
                               ? MyTextForm(
                                   label: 'القرابة برب الأسرة ',
                                   onChanged: (val) {
-                                    relationship = val!;
+                                    PersonModelList
+                                        .personModelList[widget.i]
+                                        .personalHeadData!
+                                        .relationshipHeadHHS = val!;
                                   },
                                 )
                               : Container()

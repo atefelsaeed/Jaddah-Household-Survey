@@ -170,7 +170,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                     const HHSQ1(),
                                     // ====Question 2====
                                     const HHSQ2(),
-                                    Text(HhsStatic.householdQuestions.hhsIsDwelling.toString() ),
                                     // ====Question 3====
                                     AppSize.spaceHeight3(context),
                                     HHsQh4(

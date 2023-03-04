@@ -26,40 +26,41 @@ class LargeItemCar extends StatelessWidget {
               ? const Text('إختار')
               : Text(textEditingController.text),
           hint: "نوع الشاحنة",
-          options: VehiclesData
-              .largeCar[VehiclesData.largeCar.keys.first]!
-              .toList(),
+          options:
+              VehiclesData.largeCar[VehiclesData.largeCar.keys.first]!.toList(),
           onChange: (String? p) {
             validationService.largeItemCar(p.toString(), textEditingController);
           },
         ),
         ((textEditingController.text == "أخرى") ||
-            !(VehiclesData.largeCar[VehiclesData.largeCar.keys.first]!
-                .any((element) => element ==textEditingController.text)))
+                (textEditingController.text.isNotEmpty &&
+                    !(VehiclesData.largeCar[VehiclesData.largeCar.keys.first]!
+                        .any((element) =>
+                            element == textEditingController.text))))
             ? Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                      width: width(context) * .45,
-                      child: TextGlobal(
-                        text: "نوع الشاحنة",
-                        fontSize: height(context) * .02,
-                        color: ColorManager.black,
-                      )),
-                  AppSize.spaceHeight1(context),
-                  MyTextForm(
-                    controller: textEditingController,
-                    label: "نوع الشاحنة",
-                    onChanged: (val) {
-                      textEditingController.text = val!;
-                    },
-                  ),
-                ])
-          ],
-        )
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                            width: width(context) * .45,
+                            child: TextGlobal(
+                              text: "نوع الشاحنة",
+                              fontSize: height(context) * .02,
+                              color: ColorManager.black,
+                            )),
+                        AppSize.spaceHeight1(context),
+                        MyTextForm(
+                          controller: textEditingController,
+                          label: "نوع الشاحنة",
+                          onChanged: (val) {
+                            textEditingController.text = val!;
+                          },
+                        ),
+                      ])
+                ],
+              )
             : Container(),
       ],
     );

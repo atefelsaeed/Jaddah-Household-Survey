@@ -40,8 +40,10 @@ class _FuelTypeCodeState extends State<FuelTypeCode> {
           },
         ),
         ((widget.textEditingController.text == "أخر") ||
-            !(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
-                .any((element) => element ==widget.textEditingController.text)))
+                (widget.textEditingController.text.isNotEmpty &&
+                    !(VehiclesData.fuelTypeCodes[VehiclesData.fuelTypeCodes.keys.first]!
+                        .any((element) =>
+                            element == widget.textEditingController.text))))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

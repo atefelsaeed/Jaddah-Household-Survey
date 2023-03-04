@@ -40,7 +40,7 @@ class _PersonScreenState extends State<PersonScreen> {
   bool typeAlone = true;
   bool hasPasTrip = false;
   var mainOccupationKey = PersonData.mainOccupation.keys.first;
-  TextEditingController occupationSectorController = TextEditingController();
+
   var occupationSectorKey = PersonData.occupationSector.keys.first;
   final GlobalKey<FormState> _key = GlobalKey();
   late EditingController3 editingController3 = EditingController3(
@@ -61,6 +61,7 @@ class _PersonScreenState extends State<PersonScreen> {
         (userSurveysProvider.userSurveyStatus == 'filled')) {
       validationService.getAllPeronUpdated(context);
     }
+
   }
 
   void showError() => showDialog<void>(
@@ -438,8 +439,9 @@ class _PersonScreenState extends State<PersonScreen> {
                                                                         i) ==
                                                                 true
                                                             ? MyTextForm(
-                                                                // controller:
-                                                                //     occupationSectorController,
+                                                                controller:
+                                                                PersonConditions()
+                                                                    .occupationSectorController,
                                                                 label:
                                                                     " قطاع العمل",
                                                                 onChanged:

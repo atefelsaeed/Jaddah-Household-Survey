@@ -194,12 +194,12 @@ print("jjjjj");
       };
 print(surveyPt.surveyPT.tripsList![i].chosenFriendPerson.length);
       if( surveyPt.surveyPT.tripsList![i].isTravelAlone = true){
-        for (int x = 0; x < surveyPt.surveyPT.tripsList![i].chosenFriendPerson!.length; x++) {
-          if (   surveyPt.surveyPT.tripsList![i].chosenFriendPerson![x] !=
+        for (int x = 0; x < surveyPt.surveyPT.tripsList![i].chosenFriendPerson.length; x++) {
+          if (   surveyPt.surveyPT.tripsList![i].chosenFriendPerson[x] !=
               surveyPt.surveyPT.tripsList![i].chosenPerson) {
             print("jjjjjiiii");
             TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
-              "value": surveyPt.surveyPT.tripsList![i].chosenFriendPerson![x].toString(),
+              "value": surveyPt.surveyPT.tripsList![i].chosenFriendPerson[x].toString(),
               "isChick": true
             });
           }

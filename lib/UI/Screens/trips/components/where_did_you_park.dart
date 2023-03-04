@@ -60,9 +60,14 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                         .toList(),
                     onChange: (String? p) {
                       bas.carParkingPlace = p.toString();
-
                       setState(() {
                         bas.carParkingPlace = p.toString();
+                        if (bas.carParkingPlace == "أخر") {
+                          bas.carParkingPlace !=
+                              bas.otherWhereDidYouParking!.text;
+                        } else {
+                          bas.carParkingPlace = p.toString();
+                        }
                       });
                     })
                 : Container(),
@@ -84,14 +89,15 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
           ],
         ),
         Row(
-          children: [],
-        ),
-        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ((bas.carParkingPlace == "أخر" && bas.travelType == "سيارة") ||
                     (bas.carParkingPlace == "أخر" &&
-                        bas.travelType == "دراجة نارية"))
+                        bas.travelType == "دراجة نارية") ||
+                    (bas.carParkingPlace!.isNotEmpty &&
+                        !(TripData.whereDidYouPark[
+                                TripData.whereDidYouPark.keys.first]!
+                            .any((element) => element == bas.travelType))))
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -121,7 +127,10 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                       isNumber: true,
                     )
                   : Container(),
-              bas.taxiTravelType == "أخر"
+              ((bas.taxiTravelType == "أخر") ||
+                      !(TripData
+                          .whatTypeOfTaxi[TripData.whatTypeOfTaxi.keys.first]!
+                          .any((element) => element == bas.taxiTravelType)))
                   ? Column(
                       children: [
                         AppSize.spaceHeight3(context),

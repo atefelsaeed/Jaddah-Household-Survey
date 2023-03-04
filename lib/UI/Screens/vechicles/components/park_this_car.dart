@@ -14,13 +14,11 @@ class ParkThisCar extends StatelessWidget {
 
   final TextEditingController textEditingController;
 
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     final validationService = Provider.of<VecProvider>(context, listen: false);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
         DropDownFormInput(
           label: textEditingController.text == ''
@@ -31,12 +29,18 @@ class ParkThisCar extends StatelessWidget {
               .parkThisCar[VehiclesData.parkThisCar.keys.first]!
               .toList(),
           onChange: (String? p) {
-            validationService.parkThisCar(p.toString(), textEditingController,);
+            validationService.parkThisCar(
+              p.toString(),
+              textEditingController,
+            );
           },
         ),
         ((textEditingController.text == "أخرى") ||
-            !(VehiclesData.parkThisCar[VehiclesData.parkThisCar.keys.first]!
-                .any((element) => element ==textEditingController.text)))
+                (textEditingController.text.isNotEmpty &&
+                    !(VehiclesData
+                        .parkThisCar[VehiclesData.parkThisCar.keys.first]!
+                        .any((element) =>
+                            element == textEditingController.text))))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

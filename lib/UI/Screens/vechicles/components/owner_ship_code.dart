@@ -14,11 +14,11 @@ class OwnerShipCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final validationService = Provider.of<VecProvider>(context,listen: false);
+    final validationService = Provider.of<VecProvider>(context, listen: false);
     return Column(
       children: [
         DropDownFormInput(
-          label:textEditingController.text == ''
+          label: textEditingController.text == ''
               ? const Text('إختار')
               : Text(textEditingController.text),
           hint: "من يملك السيارة",
@@ -29,8 +29,10 @@ class OwnerShipCode extends StatelessWidget {
           },
         ),
         ((textEditingController.text == "أخر") ||
-            !(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
-                .any((element) => element ==textEditingController.text)))
+                (textEditingController.text.isNotEmpty &&
+                    !(VehiclesData.ownership[VehiclesData.ownership.keys.first]!
+                        .any((element) =>
+                            element == textEditingController.text))))
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
