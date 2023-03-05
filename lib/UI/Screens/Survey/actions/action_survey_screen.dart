@@ -70,17 +70,15 @@ class ActionSurveyProvider extends ChangeNotifier {
 
   qDArea(EditingController editingController, String p) {
     HhsStatic.householdQuestions.hhsDemolishedAreas = p;
-    p == "أخر"
-        ? editingController.yes.text = ""
-        : editingController.yes.text =
-            HhsStatic.householdQuestions.hhsDemolishedAreas!;
+    editingController.yes.text =
+        HhsStatic.householdQuestions.hhsDemolishedAreas!;
     notifyListeners();
   }
 
   Future<Position> determinePosition(context) async {
     bool serviceEnabled;
     LocationPermission permission;
-    Validator.showSnack(context, 'جارى التحقق ...');
+    Validator.showSnack(context, 'جارى التحقق من البيانات...');
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {

@@ -29,7 +29,7 @@ class UserSurveysProvider with ChangeNotifier {
     }
     final Response res;
     try {
-      log("Body Data", error: json.encode(list));
+      // log("Body Data", error: json.encode(list));
       res = await APIHelper.postData(
         url: "multi",
         body: json.encode(list),
@@ -40,7 +40,7 @@ class UserSurveysProvider with ChangeNotifier {
       }
       iSSyncing = false;
       notifyListeners();
-      log("res", error: res.body);
+      // log("res", error: res.body);
     } catch (e) {
       iSSyncing = false;
       notifyListeners();

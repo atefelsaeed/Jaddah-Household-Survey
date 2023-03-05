@@ -161,8 +161,16 @@ c(EditingController editingController, BuildContext context, int id) async {
   if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas
       .toString()
       .isNotEmpty) {
-    QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][0]["isChick"] = true;
-    HhsStatic.householdQuestions.hhsIsDemolishedAreas = true;
+    if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas.toString() ==
+        "نعم") {
+      QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][0]["isChick"] = true;
+      HhsStatic.householdQuestions.hhsIsDemolishedAreas = true;
+    } else if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas
+            .toString() ==
+        'لا') {
+      QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][1]["isChick"] = true;
+      HhsStatic.householdQuestions.hhsIsDemolishedAreas = false;
+    }
     HhsStatic.householdQuestions.hhsDemolishedAreas =
         surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas.toString();
   }

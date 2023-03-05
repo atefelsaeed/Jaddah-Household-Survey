@@ -48,9 +48,14 @@ class PersonProvider extends ChangeNotifier {
 
       for (int inr = 0; inr < value2.length; inr++) {
         if (surveyPt
-                .surveyPT.personData![i].personalHeadData!.nationality.text ==
+                .surveyPT.personData![i].personalHeadData!.nationalityType ==
             value2[inr]["value"]) {
           nationality[nationality.keys.first].toList()[inr]["isChick"] = true;
+          if (surveyPt
+                  .surveyPT.personData![i].personalHeadData!.nationalityType !=
+              "سعودي") {
+            surveyPt.surveyPT.personData![i].personalHeadData!.showText = true;
+          }
           //  nationalityu.addAll(  {"value":  value2[inr]["value"], "isChick": true});
         } else {
           nationality[nationality.keys.first].toList()[inr]["isChick"] = false;
@@ -139,6 +144,7 @@ class PersonProvider extends ChangeNotifier {
           nationality: TextEditingController(
               text: surveyPt
                   .surveyPT.personData![i].personalHeadData!.nationality.text),
+
           relationshipHeadHHSController: TextEditingController(
               text: surveyPt.surveyPT.personData![i].personalHeadData!
                   .relationshipHeadHHS),
@@ -147,7 +153,7 @@ class PersonProvider extends ChangeNotifier {
                   .hhsHavePastTrip.text),
           nationalityType: surveyPt
               .surveyPT.personData![i].personalHeadData!.nationalityType,
-          showText: false,
+          showText: surveyPt.surveyPT.personData![i].personalHeadData!.showText,
           gender: surveyPt.surveyPT.personData![i].personalHeadData!.gender,
           checkAge: true,
           //surveyPt.surveyAllData!.first.personData![i].personalHeadData!.checkAge,
@@ -447,6 +453,7 @@ class PersonProvider extends ChangeNotifier {
     PersonConditions().checkDrivingLicenceTypeOther(i);
     notifyListeners();
   }
+
   ///haveDisabilityTransportMobility
   relationshipHeadHHS(int i, p) {
     var base = PersonModelList.personModelList[i].personalHeadData!;
@@ -454,12 +461,10 @@ class PersonProvider extends ChangeNotifier {
 
     if (base.relationshipHeadHHS != "'أخرى'") {
       base.relationshipHeadHHS = p.toString();
-      base.relationshipHeadHHSController.text =
-          base.relationshipHeadHHS!;
+      base.relationshipHeadHHSController.text = base.relationshipHeadHHS!;
     } else {
       base.relationshipHeadHHSController.text = "'أخرى'";
-      base.relationshipHeadHHS !=
-          base.relationshipHeadHHSController.text;
+      base.relationshipHeadHHS != base.relationshipHeadHHSController.text;
     }
 
     // PersonConditions().checkDrivingLicenceTypeOther(i);

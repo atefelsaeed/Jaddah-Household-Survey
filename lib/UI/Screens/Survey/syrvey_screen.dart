@@ -69,7 +69,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
       ],
       "index": 0
     };
-    QuestionsData.qh7 ={
+    QuestionsData.qh7 = {
       "?How many years have you/your family lived at this particular address": [
         {"value": 'أقل من 1.5 سنة', "isChick": false}, //
         {"value": '1.5 - 3 سنوات', "isChick": false},
@@ -115,8 +115,16 @@ class _SurveyScreenState extends State<SurveyScreen> {
           " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
+    QuestionsData.qh7_2 = {
+      'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
+          [
+        {"value": 'نعم', "isChick": false},
+        {"value": 'لا', "isChick": false},
+      ],
+      "index": 0
+    };
 
-    if ((widget.itemSurveyModel.status == 'edit') ) {
+    if ((widget.itemSurveyModel.status == 'edit')) {
       int id = widget.itemSurveyModel.id!;
       validationService.resetHHSValues(editingController, context, id);
     }
