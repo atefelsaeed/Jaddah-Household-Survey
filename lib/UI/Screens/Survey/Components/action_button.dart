@@ -12,6 +12,7 @@ import '../../../../Providers/auth.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../Widgets/custom_buttton.dart';
 import '../actions/action_survey_screen.dart';
+import '../survey_conditions.dart';
 
 class ActionButton extends StatelessWidget {
   EditingController editingController;
@@ -49,9 +50,6 @@ class ActionButton extends StatelessWidget {
               ),
             );
           }
-
-
-
 
           surveyPt.id = id;
 
@@ -122,6 +120,7 @@ class ActionButton extends StatelessWidget {
           surveyPt.hhsDemolishedAreas = editingController.yes.text;
           surveyPt.headerDistrictName = '';
           surveyPt.headerZoneNumber = '';
+
           RegExp regex = RegExp(
               r'^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$');
           if (!regex
@@ -129,23 +128,24 @@ class ActionButton extends StatelessWidget {
             return Validator.showSnack(context, 'رقم الهاتف غير صحيح..!');
           }
 
-          await validationService.determinePosition(context).then((value) {
-
-            surveyPt.hhsAddressLat = value.latitude.toString();
-            surveyPt.hhsAddressLong = value.longitude.toString();
-          }).onError(
-            (error, stackTrace) {
-              debugPrint(error.toString());
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("يجب تشغيل خدمة تحديد الموقع"),
-                  duration: Duration(seconds: 3),
-                  elevation: 1,
-                ),
-              );
-            },
-          );
-          CheckHHSValidation.validate(context);
+          if (SurveyCondition().numberParcelsDeliveries(context)) {
+            await validationService.determinePosition(context).then((value) {
+              surveyPt.hhsAddressLat = value.latitude.toString();
+              surveyPt.hhsAddressLong = value.longitude.toString();
+            }).onError(
+              (error, stackTrace) {
+                debugPrint(error.toString());
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("يجب تشغيل خدمة تحديد الموقع"),
+                    duration: Duration(seconds: 3),
+                    elevation: 1,
+                  ),
+                );
+              },
+            );
+            CheckHHSValidation.validate(context);
+          }
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

@@ -14,9 +14,11 @@ class EditingController {
 
   final TextEditingController peopleAdults18 = TextEditingController();
   final TextEditingController peopleUnder18 = TextEditingController();
+
   List<TextEditingController> q6peopleAdults18 = <TextEditingController>[
     TextEditingController()
   ];
+
 
   List<TextEditingController> q6peopleUnder18 = <TextEditingController>[
     TextEditingController()

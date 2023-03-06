@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/survey_conditions.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
@@ -18,8 +19,8 @@ class InputNumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: height(context)*.02),
-      width: width(context)*.25,
+      margin: EdgeInsets.only(bottom: height(context) * .02),
+      width: width(context) * .25,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,11 +34,13 @@ class InputNumberTitle extends StatelessWidget {
             label: "",
             controller: controller,
             widthForm: width(context) * .15,
+            onChanged: (value) {
 
+            },
             keyboardType: TextInputType.number,
-            isNumber: true, onTap: () {  },
+            isNumber: true,
+            onTap: () {},
           ),
-
         ],
       ),
     );

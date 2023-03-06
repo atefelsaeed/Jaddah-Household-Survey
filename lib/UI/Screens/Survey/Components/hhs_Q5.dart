@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Screens/Survey/survey_conditions.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../Widgets/text.dart';
@@ -41,6 +42,10 @@ class HHSQ5 extends StatelessWidget {
                   label: "",
                   controller: peopleUnder18,
                   onTap: () {  },
+                  onChanged: (val){
+                    // int newVal=int.parse(val!);
+                    // SurveyCondition().conditionHHSQ5NumAdults(newVal);
+                  },
                   widthForm: width(context) * .1,
                   keyboardType: TextInputType.number,
                   isNumber: true,
