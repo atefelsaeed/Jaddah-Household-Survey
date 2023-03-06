@@ -55,6 +55,7 @@ class HHSQ2 extends StatelessWidget {
                   AppSize.spaceHeight1(context),
                   MyTextForm(
                     label: "2.ملكية المسكن؟",
+                    onTap: () {  },
                     controller:
                         HhsStatic.householdQuestions.hhsIsDwellingOther!,
                     onChanged: (value) {

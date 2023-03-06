@@ -82,20 +82,20 @@ class _BodyTypeVehiclesState extends State<BodyTypeVehicles> {
               ParkThisCar(
                 textEditingController: widget.vecBodyType.vehicleParking,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  widget.title == "شاحنة"
-                      ? LargeItemCar(
-                    textEditingController: widget.vecBodyType.largeItemCar,
-                  )
-                      : Container()
-                ],
-              ),
+              AppSize.spaceWidth2(context),
+              widget.title == "شاحنة"
+                  ?
+
+              /*LargeItemCar(
+                      textEditingController: widget.vecBodyType.largeItemCar,
+                    )*/
+              Largexx(
+                textEditingController: widget.vecBodyType.largeItemCar,
+              )
+                  : Container()
             ],
           ),
           AppSize.spaceHeight1(context),
-
           AppSize.spaceHeight1(context),
         ],
       ),

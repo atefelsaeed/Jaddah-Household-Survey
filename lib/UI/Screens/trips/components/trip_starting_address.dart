@@ -88,6 +88,7 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                       const Spacer(),
                       IconButton(
                           onPressed: () {
+                            print('google maps navigation');
                             Navigator.push(
                               context,
                               MaterialPageRoute(

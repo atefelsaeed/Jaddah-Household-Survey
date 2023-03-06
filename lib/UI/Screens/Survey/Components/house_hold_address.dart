@@ -121,6 +121,7 @@ class HouseHoldAddress extends StatelessWidget {
                   label: "رقم الهاتف",
                   controller: HhsStatic.householdAddress.hhsPhone,
                   isNumber: true,
+                  onTap: () {  },
                   keyboardType: TextInputType.phone,
                 ),
               ],

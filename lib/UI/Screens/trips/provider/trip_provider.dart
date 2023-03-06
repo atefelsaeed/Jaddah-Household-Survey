@@ -369,6 +369,10 @@ class TripProvider extends ChangeNotifier {
       mainModeController.text = "أخر";
       TripModeList.tripModeList[index].travelWay!.mainMode =
           mainModeController.text;
+    } else {
+      TripModeList.tripModeList[index].travelWay!.mainMode = p;
+      mainModeController.text =
+          TripModeList.tripModeList[index].travelWay!.mainMode!;
     }
     notifyListeners();
   }
@@ -382,6 +386,10 @@ class TripProvider extends ChangeNotifier {
       acModeController.text = "أخر";
       TripModeList.tripModeList[index].travelWay!.accessMode =
           acModeController.text;
+    } else {
+      TripModeList.tripModeList[index].travelWay!.accessMode = p;
+      acModeController.text =
+          TripModeList.tripModeList[index].travelWay!.accessMode!;
     }
     notifyListeners();
   }

@@ -45,6 +45,7 @@ class TransporterMobilty extends StatelessWidget {
                     true
                 ? MyTextForm(
                     label: 'إذكر الإعاقة / احتياجات خاصة',
+              onTap: () {  },
                     controller: PersonModelList
                         .personModelList[index]
                         .personalQuestion!

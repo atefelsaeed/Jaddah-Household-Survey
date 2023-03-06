@@ -96,6 +96,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 AppSize.spaceHeight1(context),
                                 MyTextForm(
                                   controller: hayController,
+                                  onTap: () {  },
                                   onChanged: (value) {
                                     userSurveysProvider.searchHAY(value!);
                                   },
@@ -141,6 +142,7 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 AppSize.spaceHeight1(context),
                                 MyTextForm(
                                   controller: blocController,
+                                  onTap: () {  },
                                   onChanged: (value) {
                                     userSurveysProvider.searchBLOK(value!);
                                   },

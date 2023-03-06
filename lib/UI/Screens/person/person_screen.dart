@@ -57,9 +57,9 @@ class _PersonScreenState extends State<PersonScreen> {
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit')) {
-      validationService.getAllPeronUpdated(context);
-    }
+    // if ((userSurveysProvider.userSurveyStatus == 'edit')) {
+    //   validationService.getAllPeronUpdated(context);
+    // }
   }
 
   void showError() => showDialog<void>(
@@ -173,6 +173,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                   true
                                               ? MyTextForm(
                                                   isNumber: true,
+                                            onTap: () {  },
                                                   onChanged: (d) {
                                                     provider.isEmployee(
                                                         d.toString(), i);
@@ -432,6 +433,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                                         i) ==
                                                                 true
                                                             ? MyTextForm(
+                                                          onTap: () {  },
                                                                 controller: PersonModelList
                                                                     .personModelList[
                                                                         i]

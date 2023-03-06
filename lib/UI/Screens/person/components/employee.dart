@@ -68,6 +68,7 @@ class _EmployeeState extends State<Employee> {
                                   .checkBestWorkspaceLocationOther(widget.i) ==
                               true
                           ? MyTextForm(
+                        onTap: () {  },
                               controller: PersonModelList
                                   .personModelList[widget.i]
                                   .occupationModel!
@@ -125,6 +126,7 @@ class _EmployeeState extends State<Employee> {
                                   .personalQuestion!
                                   .drivingLicenceTypeController,
                               label: " نوع الرخصة",
+                        onTap: () {  },
                               onChanged: (val) {
                                 PersonModelList.personModelList[widget.i]
                                     .personalQuestion!.drivingLicenceType = val;

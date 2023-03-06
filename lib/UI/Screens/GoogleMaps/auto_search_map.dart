@@ -80,15 +80,15 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
                         value = newPosition.target;
                       },
                       mapType: MapType.normal,
-                      myLocationButtonEnabled: true,
-                      myLocationEnabled: true,
+                      myLocationButtonEnabled: false,//
+                      myLocationEnabled: false,//
                       zoomGesturesEnabled: true,
                       padding: const EdgeInsets.all(0),
                       buildingsEnabled: true,
                       cameraTargetBounds: CameraTargetBounds.unbounded,
-                      compassEnabled: true,
+                      compassEnabled: false,//
                       indoorViewEnabled: false,
-                      mapToolbarEnabled: true,
+                      mapToolbarEnabled: false,
                       minMaxZoomPreference: MinMaxZoomPreference.unbounded,
                       rotateGesturesEnabled: true,
                       scrollGesturesEnabled: true,
@@ -112,13 +112,28 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
                           placeholder: 'بحث',
                           apiKey: 'AIzaSyAMIcLjXga58HVN5RkLX5NGf1zh-Qkk4fg',
                           onSelected: (Place place) async {
+                            print('selected');
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //     builder: (_) => SizedBox(
+                            //         width: 20,
+                            //         height: 20,
+                            //         child:
+                            //         const CircularProgressIndicator())));
+                            // await Future.delayed(
+                            //     const Duration(milliseconds: 500));
+                            // Navigator.of(context).pop();
                             if (mounted) {
+
                               Geolocation? geolocation =
                                   await place.geolocation;
+
                               controller = await completer.future;
+                              await Future.delayed(
+                                  const Duration(milliseconds: 500));
                               controller!.animateCamera(CameraUpdate.newLatLng(
                                   geolocation!.coordinates));
-
+                              await Future.delayed(
+                                  const Duration(milliseconds: 500));
                               controller!.animateCamera(
                                   CameraUpdate.newLatLngBounds(
                                       geolocation.bounds, 0));

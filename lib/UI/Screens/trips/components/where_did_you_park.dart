@@ -157,6 +157,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                           onChanged: (val) {
                             bas.taxiTravelType = val;
                           },
+                          onTap: () {  },
                           keyboardType: TextInputType.text,
                         ),
                       ],
@@ -198,6 +199,7 @@ class _WhereDidYouParkState extends State<WhereDidYouPark> {
                           onChanged: (val) {
                             bas.taxiTravelType = val;
                           },
+                          onTap: () {  },
                           keyboardType: TextInputType.text,
                         ),
                       ],

@@ -61,11 +61,11 @@ class VecProvider extends ChangeNotifier {
     VehModel.largeItemCar = p.toString();
     if (VehModel.largeItemCar != "أخر") {
       textEditingController.text = VehModel.largeItemCar;
+      notifyListeners();
     } else {
-
       textEditingController.text = "أخر";
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   ownerChipCar(String p, TextEditingController textEditingController) {
@@ -77,7 +77,6 @@ class VecProvider extends ChangeNotifier {
       textEditingController.text = 'أخر';
       notifyListeners();
     }
-
   }
 
   vecCar(Function showVechError, String d, Function showError) {

@@ -125,6 +125,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                       .personalHeadData!.relationshipHeadHHS ==
                                   'أخرى')
                               ? MyTextForm(
+                            onTap: () {  },
                                   controller: PersonModelList
                                       .personModelList[widget.i]
                                       .personalHeadData!
@@ -178,6 +179,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                   'أخرى')
                               ? MyTextForm(
                                   label: 'القرابة برب الأسرة ',
+                            onTap: () {  },
                                   onChanged: (val) {
                                     PersonModelList
                                         .personModelList[widget.i]

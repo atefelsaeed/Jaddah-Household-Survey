@@ -30,6 +30,7 @@ class ActionSurveyProvider extends ChangeNotifier {
 
       HhsStatic.householdQuestions.hhsNumberSeparateFamilies = "1";
     }
+    notifyListeners();
   }
 
   resetHHSValues(editingController, context, int id) async {

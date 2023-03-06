@@ -39,10 +39,18 @@ class HowDidYouTravel extends StatelessWidget {
                   },
                 ),
                 AppSize.spaceHeight2(context),
-                TripModeList.tripModeList[i].travelWay!.mainMode == "أخر"
+                ((TripModeList.tripModeList[i].travelWay!.mainMode == "أخر") ||
+                        (TripModeList.tripModeList[i].travelWay!.mainMode!
+                                .isNotEmpty &&
+                            !(TripData.mainMade[TripData.mainMade.keys.first]!.any(
+                                (element) =>
+                                    element ==
+                                    TripModeList.tripModeList[i].travelWay!
+                                        .mainMode))))
                     ? MyTextForm(
                         controller: provider.mainModeController,
                         isNumber: false,
+                  onTap: () {  },
                         onChanged: (value) {
                           TripModeList.tripModeList[i].travelWay!.mainMode =
                               value;
@@ -69,7 +77,15 @@ class HowDidYouTravel extends StatelessWidget {
                   },
                 ),
                 AppSize.spaceHeight2(context),
-                TripModeList.tripModeList[i].travelWay!.accessMode == "أخر"
+                ((TripModeList.tripModeList[i].travelWay!.accessMode ==
+                            "أخر") ||
+                        (TripModeList.tripModeList[i].travelWay!.accessMode!
+                                .isNotEmpty &&
+                            !(TripData.AcMode[TripData.AcMode.keys.first]!.any(
+                                (element) =>
+                                    element ==
+                                    TripModeList.tripModeList[i].travelWay!
+                                        .accessMode))))
                     ? MyTextForm(
                         controller: provider.acModeController,
                         isNumber: false,
@@ -77,6 +93,7 @@ class HowDidYouTravel extends StatelessWidget {
                           TripModeList.tripModeList[i].travelWay!.accessMode =
                               value;
                         },
+                  onTap: () {  },
                         label: 'الوضع الرئیسي',
                       )
                     : Container(),

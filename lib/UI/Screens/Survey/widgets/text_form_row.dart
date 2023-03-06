@@ -46,6 +46,7 @@ class TextForm extends StatelessWidget {
           controller: controller,
           readOnly: readOnly,
           isNumber: isNumber,
+          onTap: () {  },
           onChanged: (val) {
             onChanged(val);
           },
@@ -93,6 +94,7 @@ class TextFormer extends StatelessWidget {
         MyTextForm(
           label: "",
           controller: controller,
+          onTap: () {  },
           keyboardType: type,
         ),
       ],

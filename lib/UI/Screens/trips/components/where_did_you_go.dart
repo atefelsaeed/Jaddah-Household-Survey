@@ -95,6 +95,7 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                   TripModeList.tripModeList[widget.indexTripModel].tripReason =
                       val;
                 },
+          onTap: () {  },
                 title: "أدخل الغرض",
                 label: "أدخل الغرض",
                 isNumber: false,

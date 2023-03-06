@@ -72,6 +72,8 @@ c(EditingController editingController, BuildContext context, int id) async {
 
   ///Q1 hhsDwellingType
   // print(       surveyPt.surveyPT!.householdQuestions.hhsDwellingType.toString());
+  HhsStatic.householdQuestions.hhsDwellingTypeOther!.text =
+      surveyPt.surveyPT.householdQuestions.hhsDwellingType.toString();
   HhsStatic.householdQuestions.hhsDwellingType =
       surveyPt.surveyPT.householdQuestions.hhsDwellingType.toString(); //solve
 
@@ -84,10 +86,9 @@ c(EditingController editingController, BuildContext context, int id) async {
   HhsStatic.householdQuestions.hhsNumberBedRooms.text =
       surveyPt.surveyPT.householdQuestions.hhsNumberBedRooms.text;
 
-  ///
-  print("122222");
-  print(surveyPt.surveyPT.householdQuestions.hhsIsDwelling);
-
+  ///HHSQ2
+  HhsStatic.householdQuestions.hhsIsDwellingOther!.text =
+      surveyPt.surveyPT.householdQuestions.hhsIsDwelling!;
   HhsStatic.householdQuestions.hhsIsDwelling =
       surveyPt.surveyPT.householdQuestions.hhsIsDwelling; //solve
 //HhsStatic.householdQuestions.hhsNumberApartments=surveyPt.surveyPT!.householdQuestions.hhsNumberApartments.text;
@@ -188,7 +189,7 @@ c(EditingController editingController, BuildContext context, int id) async {
               .surveyPT.householdQuestions.hhsPedalCycles.adultsBikesNumber));
 
   ///Q7_2 hhsPedalCycles
-  editingController.editingController3Q82 = EditingController3(
+  editingController.editingController3Q83 = EditingController3(
       peopleUnder18: TextEditingController(
           text: surveyPt.surveyPT.householdQuestions.hhsElectricScooter
               .childrenBikesNumber),
@@ -198,6 +199,19 @@ c(EditingController editingController, BuildContext context, int id) async {
       peopleAdults18: TextEditingController(
           text: surveyPt.surveyPT.householdQuestions.hhsElectricScooter
               .adultsBikesNumber));
+
+  ///Q7_3 hhsPedalCycles
+  editingController.editingController3Q82 = EditingController3(
+      peopleUnder18: TextEditingController(
+          text: surveyPt.surveyPT.householdQuestions.hhsElectricCycles
+              .childrenBikesNumber),
+      totalNumber: TextEditingController(
+          text: surveyPt
+              .surveyPT.householdQuestions.hhsElectricCycles.totalBikesNumber),
+      peopleAdults18: TextEditingController(
+          text: surveyPt.surveyPT.householdQuestions.hhsElectricCycles
+              .adultsBikesNumber));
+
   for (int i = 0;
       i <
           VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first]!
@@ -210,18 +224,6 @@ c(EditingController editingController, BuildContext context, int id) async {
           true;
     }
   }
-
-  ///Q7_3 hhsPedalCycles
-  editingController.editingController3Q83 = EditingController3(
-      peopleUnder18: TextEditingController(
-          text: surveyPt.surveyPT.householdQuestions.hhsElectricCycles
-              .childrenBikesNumber),
-      totalNumber: TextEditingController(
-          text: surveyPt
-              .surveyPT.householdQuestions.hhsElectricCycles.totalBikesNumber),
-      peopleAdults18: TextEditingController(
-          text: surveyPt.surveyPT.householdQuestions.hhsElectricCycles
-              .adultsBikesNumber));
 
   ///Q8 hhsTotalIncome
   HhsStatic.householdQuestions.hhsTotalIncome =

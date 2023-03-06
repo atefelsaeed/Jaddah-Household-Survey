@@ -16,7 +16,10 @@ import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../Widgets/exit_screen.dart';
+import '../person/reset_person.dart';
+import '../trips/provider/trip_provider.dart';
 import '../vechicles/components/nearest_transporter.dart';
+import '../vechicles/provider/vechiels_provider.dart';
 import 'Components/hhs_Q5.dart';
 import 'Components/hhs_header.dart';
 import 'actions/action_survey_screen.dart';
@@ -53,8 +56,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
     editingController.editingController3Q83.totalNumber.text = '';
     editingController.editingController3Q83.peopleUnder18.text = '';
     editingController.editingController3Q83.peopleAdults18.text = '';
-    final validationService =
-        Provider.of<ActionSurveyProvider>(context, listen: false);
+
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
     VehiclesData.q3VecData = {
@@ -124,9 +126,23 @@ class _SurveyScreenState extends State<SurveyScreen> {
       "index": 0
     };
 
+    ///reset-values-for-editing
+    final validationService =
+        Provider.of<ActionSurveyProvider>(context, listen: false);
+    final vecValidationService =
+        Provider.of<VecProvider>(context, listen: false);
+    final tripValidationService =
+        Provider.of<TripProvider>(context, listen: false);
+    final personValidationService =
+        Provider.of<PersonProvider>(context, listen: false);
+    //check-if-edit-or-new-survey
     if ((widget.itemSurveyModel.status == 'edit')) {
+      print('first edit');
       int id = widget.itemSurveyModel.id!;
       validationService.resetHHSValues(editingController, context, id);
+      vecValidationService.resetVechValues(context);
+      personValidationService.getAllPeronUpdated(context);
+      tripValidationService.getAllTripUpdated(context);
     }
   }
 
