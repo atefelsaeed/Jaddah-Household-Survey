@@ -57,9 +57,9 @@ class _PersonScreenState extends State<PersonScreen> {
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    // if ((userSurveysProvider.userSurveyStatus == 'edit')) {
-    //   validationService.getAllPeronUpdated(context);
-    // }
+     if ((userSurveysProvider.userSurveyStatus == 'edit')) {
+      validationService.getAllPeronUpdated(context);
+    }
   }
 
   void showError() => showDialog<void>(

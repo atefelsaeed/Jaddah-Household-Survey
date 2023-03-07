@@ -7,27 +7,53 @@ import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Providers/survey_hhs.dart';
 
 class SurveyCondition {
-  EditingController editingController = EditingController();
 
-  bool conditionHHSQ5NumAdults(int value) {
-    int houseHoldLength = editingController.q6peopleAdults18.length;
+
+  bool conditionHHSQ5NumAdults(EditingController editingController,context) {
+    int houseHoldLength = editingController.peopleAdults18.text.isEmpty
+        ? 0
+        : int.parse(editingController.peopleAdults18.text);
     print('houseHoldLength');
     print(houseHoldLength);
     int numAdults = 0;
-    for (int i = 0; i < houseHoldLength; i++) {
-      print(editingController.q6peopleAdults18[i].text);
+    for (int i = 0; i < editingController.q6peopleAdults18.length; i++) {
+      print("!222");
+print(editingController.q6peopleAdults18[i].text);
       numAdults =
           int.parse(editingController.q6peopleAdults18[i].text) + numAdults;
     }
     print(numAdults);
-    print(value);
-    if (value > numAdults) {
+    print(editingController.peopleAdults18.text);
+    if (houseHoldLength> numAdults) {
+      Validator.showSnack(context,
+          'لا يزيد العدد عن حقل البالغين في سؤال 5');
       return false;
     } else {
       return true;
     }
   }
+  bool conditionHHSQ5NumUnder18(EditingController editingController,context) {
+    int houseHoldLength = editingController.peopleUnder18.text.isEmpty
+        ? 0
+        : int.parse(editingController.peopleUnder18.text);
+    print('houseHoldLength');
+    print(houseHoldLength);
+    int numAdults = 0;
+    for (int i = 0; i < editingController.q6peopleUnder18.length; i++) {
 
+      numAdults =
+          int.parse(editingController.q6peopleUnder18[i].text) + numAdults;
+    }
+    print(numAdults);
+    print(editingController.peopleUnder18.text);
+    if (houseHoldLength> numAdults) {
+      Validator.showSnack(context,
+          'بجب ان لا يزيد عدد الأطفال عن عدد الأطفال في سؤال 4..!');
+      return false;
+    } else {
+      return true;
+    }
+  }
   bool numberParcelsDeliveries(context) {
     int numberParcels = VehModel.vehiclesModel.numberParcels.text.isEmpty
         ? 0

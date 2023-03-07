@@ -69,9 +69,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
       print('first edit');
       int id = widget.itemSurveyModel.id!;
       validationService.resetHHSValues(editingController, context, id);
-      vecValidationService.resetVechValues(context);
-      personValidationService.getAllPeronUpdated(context);
-      tripValidationService.getAllTripUpdated(context);
+
+     // personValidationService.getAllPeronUpdated(context);
+     // tripValidationService.getAllTripUpdated(context);
     }
   }
 
@@ -139,6 +139,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
                                     // ====Question 5====
                                     HHSQ5(
+                                      editingController: editingController,
                                       peopleAdults18:
                                           editingController.peopleAdults18,
                                       peopleUnder18:

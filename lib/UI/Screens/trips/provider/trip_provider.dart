@@ -259,13 +259,25 @@ class TripProvider extends ChangeNotifier {
 
   ///
   addOwnerTrip(int i, String p) {
-    TripModeList.tripModeList[i].friendPerson["friendPerson"] = [];
+   List xc =TripModeList.tripModeList[i].friendPerson["friendPerson"];
+   TripModeList.tripModeList[i].friendPerson["friendPerson"]=[];
+   print("atef");
+   print(xc);
     for (int x = 0; x < TripModeList.tripModeList[i].person.length; x++) {
       if (TripModeList.tripModeList[i].person[x].toString() != p) {
-        TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
+      for(int f=0;f<xc.length;f++){
+        if(xc[f]==TripModeList.tripModeList[i].person[x]) {
+          TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
+            "value": TripModeList.tripModeList[i].person[x],
+            "isChick": true
+          });
+      }else{ TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
           "value": TripModeList.tripModeList[i].person[x],
           "isChick": false
         });
+        }
+
+        }
       }
     }
 

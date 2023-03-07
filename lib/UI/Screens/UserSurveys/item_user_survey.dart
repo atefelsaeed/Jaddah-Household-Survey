@@ -88,7 +88,7 @@ class ItemUserSurvey extends StatelessWidget {
                     function: () {
                       userSurveysProvider.userSurveyStatus =
                           itemSurveyModel.status;
-                      HHSEmptyData.emptyData();
+                    //  HHSEmptyData.emptyData();
                       // userSurveysProvider.index = index;
                       // Navigator.push(
                       //   context,

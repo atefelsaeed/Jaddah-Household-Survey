@@ -46,7 +46,7 @@ class PersonData {
 
   static Map<String, dynamic> groupAge = {
     "group Age": [
-      {"value": '< 6', "isChick": false, "type": "2"},
+      {"value": '< 6', "isChick": false, "type": "0"},
       {"value": ' 6 - 11', "isChick": false, "type": "2"},
       {"value": '12 - 15', "isChick": false, "type": "2"},
       {"value": '16 - 18', "isChick": false, "type": "1"},
