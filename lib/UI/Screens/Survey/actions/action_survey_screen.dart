@@ -7,6 +7,7 @@ import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../../Helper/validator.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/HHS_SurvyModels/survey_hhs.dart';
+import '../widgets/editing_controler3.dart';
 import '../widgets/list_view_check_box_orange.dart';
 
 class ActionSurveyProvider extends ChangeNotifier {
@@ -132,6 +133,57 @@ class ActionSurveyProvider extends ChangeNotifier {
           HhsStatic.householdQuestions.hhsIsDwelling!;
       notifyListeners();
     }
+  }
+
+  ///HHSQ81
+  bool hasBicycle = false;
+
+  hhsQ81(EditingController3 editingController3, bool val) {
+    hasBicycle = val;
+    if (hasBicycle == true) {
+      editingController3.peopleAdults18.text = '0';
+      editingController3.peopleUnder18.text = '0';
+      editingController3.totalNumber.text = '0';
+    } else {
+      editingController3.peopleAdults18.text = '';
+      editingController3.peopleUnder18.text = '';
+      editingController3.totalNumber.text = '';
+    }
+    notifyListeners();
+  }
+
+  ///HHSQ82
+  bool hasBicycleQ82 = false;
+
+  hhsQ82(EditingController3 editingController3, bool val) {
+    hasBicycleQ82 = val;
+    if (hasBicycleQ82 == true) {
+      editingController3.peopleAdults18.text = '0';
+      editingController3.peopleUnder18.text = '0';
+      editingController3.totalNumber.text = '0';
+    } else {
+      editingController3.peopleAdults18.text = '';
+      editingController3.peopleUnder18.text = '';
+      editingController3.totalNumber.text = '';
+    }
+    notifyListeners();
+  }
+
+  ///HHSQ83
+  bool hasBicycleQ83 = false;
+
+  hhsQ83(EditingController3 editingController3, bool val) {
+    hasBicycleQ83 = val;
+    if (hasBicycleQ83 == true) {
+      editingController3.peopleAdults18.text = '0';
+      editingController3.peopleUnder18.text = '0';
+      editingController3.totalNumber.text = '0';
+    } else {
+      editingController3.peopleAdults18.text = '';
+      editingController3.peopleUnder18.text = '';
+      editingController3.totalNumber.text = '';
+    }
+    notifyListeners();
   }
 
   listQ7(List<dynamic> question, index, chosenIndex, value) {

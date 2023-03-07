@@ -97,26 +97,36 @@ class ActionButton extends StatelessWidget {
               editingController.peopleUnder18.text; //solve
           surveyPt.hhsSeparateFamilies = HhsStatic.houseHold;
           surveyPt.hhsTotalIncome = HhsStatic.householdQuestions.hhsTotalIncome;
+
+          ///
           surveyPt.hhsPCChildrenBikesNumber =
               editingController.editingController3Q81.peopleUnder18.text;
           surveyPt.hhsPCTotalBikesNumber =
               editingController.editingController3Q81.totalNumber.text;
           surveyPt.hhsPCAdultsBikesNumber =
               editingController.editingController3Q81.peopleAdults18.text;
+
+          ///
           HhsStatic.peopleUnder18 = editingController.peopleUnder18.text;
           HhsStatic.peopleAdults18 = editingController.peopleAdults18.text;
+
+          ///
           surveyPt.hhsECChildrenBikesNumber =
               editingController.editingController3Q82.peopleUnder18.text;
           surveyPt.hhsECTotalBikesNumber =
               editingController.editingController3Q82.totalNumber.text;
           surveyPt.hhsECAdultsBikesNumber =
               editingController.editingController3Q82.peopleAdults18.text;
+
+          ///
           surveyPt.hhsESChildrenBikesNumber =
               editingController.editingController3Q83.peopleUnder18.text;
           surveyPt.hhsESTotalBikesNumber =
               editingController.editingController3Q83.totalNumber.text;
           surveyPt.hhsESAdultsBikesNumber =
               editingController.editingController3Q83.peopleAdults18.text;
+
+          ///
           surveyPt.hhsDemolishedAreas = editingController.yes.text;
           surveyPt.headerDistrictName = '';
           surveyPt.headerZoneNumber = '';
@@ -128,7 +138,12 @@ class ActionButton extends StatelessWidget {
             return Validator.showSnack(context, 'رقم الهاتف غير صحيح..!');
           }
 
-          if (SurveyCondition().numberParcelsDeliveries(context)) {
+          ///
+          if (!SurveyCondition().validateHHSQ81(context)) {
+          } else if (!SurveyCondition().validateHHSQ82(context)) {
+          } else if (!SurveyCondition().validateHHSQ83(context)) {
+          } else if (!SurveyCondition().numberParcelsDeliveries(context)) {
+          } else {
             await validationService.determinePosition(context).then((value) {
               surveyPt.hhsAddressLat = value.latitude.toString();
               surveyPt.hhsAddressLong = value.longitude.toString();

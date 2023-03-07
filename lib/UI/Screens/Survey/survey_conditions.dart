@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
+import '../../../Providers/survey_hhs.dart';
 
 class SurveyCondition {
   EditingController editingController = EditingController();
@@ -49,9 +52,88 @@ class SurveyCondition {
 
     int total = numberParcels + numberGrocery + numberFood + numberOtherParcels;
 
-    if (numberParcelsDeliveries > total) {
+    if (numberParcelsDeliveries != total) {
       Validator.showSnack(context,
           'عدد الطلبات في الحقول التفصيلية يجب أن يساوي عدد الطلبات المنزلية..!');
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///validateHHSQ81
+  bool validateHHSQ81(context) {
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+    int peopleAdults18 = surveyPt.hhsPCAdultsBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsPCAdultsBikesNumber);
+    int peopleUnder18 = surveyPt.hhsPCChildrenBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsPCChildrenBikesNumber);
+    int totalNumber = surveyPt.hhsPCTotalBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsPCTotalBikesNumber);
+    int total = peopleUnder18 + peopleAdults18;
+    debugPrint('validateHHSQ81');
+    debugPrint(totalNumber.toString());
+    debugPrint(total.toString());
+    if (totalNumber != total) {
+      Validator.showSnack(context,
+          'عدد الدراجات الهوائية !! عدد الدرجات للاطفال + عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!');
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///validateHHSQ82
+  bool validateHHSQ82(context) {
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+
+    int peopleAdults18 = surveyPt.hhsECAdultsBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsECAdultsBikesNumber);
+    int peopleUnder18 = surveyPt.hhsECChildrenBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsECChildrenBikesNumber);
+    int totalNumber = surveyPt.hhsECTotalBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsECTotalBikesNumber);
+    int total = peopleUnder18 + peopleAdults18;
+    debugPrint('validateHHSQ82');
+    debugPrint(totalNumber.toString());
+    debugPrint(total.toString());
+    if (totalNumber != total) {
+      Validator.showSnack(context,
+          'عدد الدراجات النارية !! عدد الدرجات للاطفال + عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!');
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///validateHHSQ83
+  bool validateHHSQ83(context) {
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+    int peopleAdults18 = surveyPt.hhsESAdultsBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsESAdultsBikesNumber);
+    int peopleUnder18 = surveyPt.hhsESChildrenBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsESChildrenBikesNumber);
+    int totalNumber = surveyPt.hhsESTotalBikesNumber.isEmpty
+        ? 0
+        : int.parse(surveyPt.hhsESTotalBikesNumber);
+    int total = peopleUnder18 + peopleAdults18;
+    debugPrint('validateHHSQ83');
+    debugPrint(totalNumber.toString());
+    debugPrint(total.toString());
+    if (totalNumber != total) {
+      Validator.showSnack(context,
+          'عدد الدراجات الإلكترونية(إسكوتر) !! عدد الدرجات للاطفال + عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!');
       return false;
     } else {
       return true;
