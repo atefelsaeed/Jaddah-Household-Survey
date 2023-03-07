@@ -256,7 +256,7 @@ class _PersonScreenState extends State<PersonScreen> {
 
                                   AppSize.spaceHeight1(context),
                                   //=============HHS-HavePastTrip==================
-                                  ListViewCheckBoxOrange(
+                     PersonModelList.personModelList[i].occupationModel!.isEmployee!="0"?             ListViewCheckBoxOrange(
                                     map: PersonModelList
                                         .personModelList[i].travelWithOther,
                                     onChange: (ChangeBoxResponse r) {
@@ -274,7 +274,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                             .first]!
                                         .toList(),
                                     subTitle: "",
-                                  ),
+                                  ):Container(),
                                   PersonModelList.personModelList[i]
                                               .personalHeadData!.hasPasTrip ==
                                           true

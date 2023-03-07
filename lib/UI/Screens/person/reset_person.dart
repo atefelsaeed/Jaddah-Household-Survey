@@ -299,10 +299,14 @@ class PersonProvider extends ChangeNotifier {
     print("Ddddd");
     print(d);
     if (d.isNotEmpty) {
-      if (int.parse(d.toString()) > 18) {
+      if (int.parse(d.toString()) > 18 ) {
         PersonModelList.personModelList[i].occupationModel!.isEmployee = "1";
-      } else {
+      }else if(int.parse(d.toString())>0&&int.parse(d.toString())<5){
         PersonModelList.personModelList[i].occupationModel!.isEmployee = "0";
+      }
+
+      else {
+        PersonModelList.personModelList[i].occupationModel!.isEmployee = "2";
       }
     } else {
       PersonModelList.personModelList[i].occupationModel!.isEmployee = "";

@@ -248,9 +248,14 @@ class TripProvider extends ChangeNotifier {
     print(PersonModelList.personModelList);
     for (int i = 0; i < personlist; i++) {
       print('person');
-      print(PersonModelList.personModelList[i].personName.text);
       TripModeList.tripModeList[0].person
           .add(PersonModelList.personModelList[i].personName.text);
+      print(PersonModelList.personModelList[i].personName.text);
+    /*  if(  PersonModelList.personModelList[i]
+          .personalHeadData!.hasPasTrip ==false) {
+        TripModeList.tripModeList[0].person
+            .add(PersonModelList.personModelList[i].personName.text);
+      }*/
     }
     list = TripModeList.tripModeList[0].person;
     print(TripModeList.tripModeList[0].person);
@@ -259,7 +264,7 @@ class TripProvider extends ChangeNotifier {
 
   ///
   addOwnerTrip(int i, String p) {
-   List xc =TripModeList.tripModeList[i].friendPerson["friendPerson"];
+   List xc =TripModeList.tripModeList[i].friendPerson["friendPerson"]??[];
    TripModeList.tripModeList[i].friendPerson["friendPerson"]=[];
    print("atef");
    print(xc);
