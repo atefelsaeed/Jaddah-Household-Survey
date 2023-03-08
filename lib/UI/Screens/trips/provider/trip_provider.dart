@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Widgets/show_dialog_error.dart';
+import '../trip_conditions.dart';
 
 class TripProvider extends ChangeNotifier {
   List<String> personTrip = [];
@@ -251,7 +252,7 @@ class TripProvider extends ChangeNotifier {
       TripModeList.tripModeList[0].person
           .add(PersonModelList.personModelList[i].personName.text);
       print(PersonModelList.personModelList[i].personName.text);
-    /*  if(  PersonModelList.personModelList[i]
+      /*  if(  PersonModelList.personModelList[i]
           .personalHeadData!.hasPasTrip ==false) {
         TripModeList.tripModeList[0].person
             .add(PersonModelList.personModelList[i].personName.text);
@@ -264,24 +265,24 @@ class TripProvider extends ChangeNotifier {
 
   ///
   addOwnerTrip(int i, String p) {
-   List xc =TripModeList.tripModeList[i].friendPerson["friendPerson"]??[];
-   TripModeList.tripModeList[i].friendPerson["friendPerson"]=[];
-   print("atef");
-   print(xc);
+    List xc = TripModeList.tripModeList[i].friendPerson["friendPerson"] ?? [];
+    TripModeList.tripModeList[i].friendPerson["friendPerson"] = [];
+    print("atef");
+    print(xc);
     for (int x = 0; x < TripModeList.tripModeList[i].person.length; x++) {
       if (TripModeList.tripModeList[i].person[x].toString() != p) {
-      for(int f=0;f<xc.length;f++){
-        if(xc[f]==TripModeList.tripModeList[i].person[x]) {
-          TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
-            "value": TripModeList.tripModeList[i].person[x],
-            "isChick": true
-          });
-      }else{ TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
-          "value": TripModeList.tripModeList[i].person[x],
-          "isChick": false
-        });
-        }
-
+        for (int f = 0; f < xc.length; f++) {
+          if (xc[f] == TripModeList.tripModeList[i].person[x]) {
+            TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
+              "value": TripModeList.tripModeList[i].person[x],
+              "isChick": true
+            });
+          } else {
+            TripModeList.tripModeList[i].friendPerson["friendPerson"].add({
+              "value": TripModeList.tripModeList[i].person[x],
+              "isChick": false
+            });
+          }
         }
       }
     }
@@ -391,8 +392,11 @@ class TripProvider extends ChangeNotifier {
       mainModeController.text =
           TripModeList.tripModeList[index].travelWay!.mainMode!;
     }
+    TripConditions().setIsCarDriver(index);
     notifyListeners();
   }
+
+  bool checkIsCarDriver = false;
 
   ///Set-AccessMode
   TextEditingController acModeController = TextEditingController();
@@ -408,6 +412,8 @@ class TripProvider extends ChangeNotifier {
       acModeController.text =
           TripModeList.tripModeList[index].travelWay!.accessMode!;
     }
+    TripConditions().setIsCarDriver(index);
+
     notifyListeners();
   }
 

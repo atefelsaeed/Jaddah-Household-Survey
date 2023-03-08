@@ -9,6 +9,7 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/trip_conditions.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
@@ -92,8 +93,6 @@ class _TripScreenState extends State<TripScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    SurveyPTProvider surveyPt =
-        Provider.of<SurveyPTProvider>(context, listen: false);
 
     return SafeArea(child: Scaffold(
       body: SingleChildScrollView(
@@ -381,7 +380,7 @@ class _TripScreenState extends State<TripScreen> {
                         function: () {
                           if (_key.currentState!.validate()) {
                             SaveTripsData.saveData(context);
-
+                            // TripConditions().checkIsCarDriver();
                             CheckTripsValidation.validatePerson(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
