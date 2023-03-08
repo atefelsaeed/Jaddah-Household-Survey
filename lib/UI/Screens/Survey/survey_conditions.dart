@@ -1,59 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
+import 'package:jaddah_household_survey/UI/Widgets/show_dialog_error.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Providers/survey_hhs.dart';
 
 class SurveyCondition {
-
-
-  bool conditionHHSQ5NumAdults(EditingController editingController,context) {
+  bool conditionHHSQ5NumAdults(EditingController editingController, context) {
     int houseHoldLength = editingController.peopleAdults18.text.isEmpty
         ? 0
         : int.parse(editingController.peopleAdults18.text);
-    print('houseHoldLength');
-    print(houseHoldLength);
+
     int numAdults = 0;
     for (int i = 0; i < editingController.q6peopleAdults18.length; i++) {
-      print("!222");
-print(editingController.q6peopleAdults18[i].text);
       numAdults =
           int.parse(editingController.q6peopleAdults18[i].text) + numAdults;
     }
-    print(numAdults);
-    print(editingController.peopleAdults18.text);
-    if (houseHoldLength> numAdults) {
-      Validator.showSnack(context,
-          'لا يزيد العدد عن حقل البالغين في سؤال 5');
+    if (houseHoldLength > numAdults) {
+      showError(
+        context,
+        const ShowErrorDialog(
+          title: 'عدد البالغن سؤال 5 !!',
+          content:
+              'بجب ان لا يزيد عدد البالغين سؤال 5 عن إجمالى عدد البالغين في سؤال 4..!',
+        ),
+      );
       return false;
     } else {
       return true;
     }
   }
-  bool conditionHHSQ5NumUnder18(EditingController editingController,context) {
+
+  bool conditionHHSQ5NumUnder18(EditingController editingController, context) {
+
     int houseHoldLength = editingController.peopleUnder18.text.isEmpty
         ? 0
         : int.parse(editingController.peopleUnder18.text);
-    print('houseHoldLength');
-    print(houseHoldLength);
+
     int numAdults = 0;
     for (int i = 0; i < editingController.q6peopleUnder18.length; i++) {
-
       numAdults =
           int.parse(editingController.q6peopleUnder18[i].text) + numAdults;
     }
-    print(numAdults);
-    print(editingController.peopleUnder18.text);
-    if (houseHoldLength> numAdults) {
-      Validator.showSnack(context,
-          'بجب ان لا يزيد عدد الأطفال عن عدد الأطفال في سؤال 4..!');
+    if (houseHoldLength > numAdults) {
+      showError(
+        context,
+        const ShowErrorDialog(
+          title: 'عدد الأطفال سؤال 5 !!',
+          content:
+              'بجب ان لا يزيد عدد الأطفال سؤال 5 عن إجمالى عدد الأطفال في سؤال 4..!',
+        ),
+      );
       return false;
     } else {
       return true;
     }
   }
+
   bool numberParcelsDeliveries(context) {
     int numberParcels = VehModel.vehiclesModel.numberParcels.text.isEmpty
         ? 0
@@ -79,13 +84,26 @@ print(editingController.q6peopleAdults18[i].text);
     int total = numberParcels + numberGrocery + numberFood + numberOtherParcels;
 
     if (numberParcelsDeliveries != total) {
-      Validator.showSnack(context,
-          'عدد الطلبات في الحقول التفصيلية يجب أن يساوي عدد الطلبات المنزلية..!');
+      showError(
+        context,
+        const ShowErrorDialog(
+          title: 'عدد الطلبات المنزلية !!',
+          content:
+              'عدد الطلبات في الحقول التفصيلية يجب أن يساوي عدد الطلبات المنزلية..!',
+        ),
+      );
       return false;
     } else {
       return true;
     }
   }
+
+  void showError(context, Widget widget) => showDialog<void>(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return widget;
+      });
 
   ///validateHHSQ81
   bool validateHHSQ81(context) {
@@ -105,8 +123,14 @@ print(editingController.q6peopleAdults18[i].text);
     debugPrint(totalNumber.toString());
     debugPrint(total.toString());
     if (totalNumber != total) {
-      Validator.showSnack(context,
-          'عدد الدراجات الهوائية !! عدد الدرجات للاطفال + عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!');
+      showError(
+        context,
+        const ShowErrorDialog(
+          title: 'عدد الدراجات الهوائية !!',
+          content:
+              ' عدد الدرجات للاطفال+ عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!',
+        ),
+      );
       return false;
     } else {
       return true;
@@ -132,8 +156,14 @@ print(editingController.q6peopleAdults18[i].text);
     debugPrint(totalNumber.toString());
     debugPrint(total.toString());
     if (totalNumber != total) {
-      Validator.showSnack(context,
-          'عدد الدراجات النارية !! عدد الدرجات للاطفال + عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!');
+      showError(
+        context,
+        const ShowErrorDialog(
+          title: 'عدد الدراجات النارية !!',
+          content:
+              ' عدد الدرجات للاطفال+ عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!',
+        ),
+      );
       return false;
     } else {
       return true;
@@ -158,8 +188,14 @@ print(editingController.q6peopleAdults18[i].text);
     debugPrint(totalNumber.toString());
     debugPrint(total.toString());
     if (totalNumber != total) {
-      Validator.showSnack(context,
-          'عدد الدراجات الإلكترونية(إسكوتر) !! عدد الدرجات للاطفال + عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!');
+      showError(
+        context,
+        const ShowErrorDialog(
+          title: 'عدد الدراجات الإلكترونية(إسكوتر) !!',
+          content:
+              ' عدد الدرجات للاطفال+ عدد الدراجات للبالغين يجب ان يساوى اجمالي عدد الدراجات لجميع انواع الدراجات..!',
+        ),
+      );
       return false;
     } else {
       return true;

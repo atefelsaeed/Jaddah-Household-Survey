@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
+import 'package:jaddah_household_survey/UI/Screens/UserSurveys/components/editd_button.dart';
 import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:provider/provider.dart';
@@ -58,57 +60,34 @@ class ItemUserSurvey extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            ((itemSurveyModel.status == "not filled") ||
-                    (itemSurveyModel.status == "edit"))
-                ? DefaultButton(
-                    function: () async {
-                      userSurveysProvider.userSurveyStatus =
-                          itemSurveyModel.status;
-                      HHSEmptyData.emptyData();
-                      userSurveysProvider.index = index;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SurveyScreen(
-                            itemSurveyModel: itemSurveyModel,
-                          ),
-                        ),
-                      );
-                    },
-                    isWidget: true,
-                    text: itemSurveyModel.status == "edit"
-                        ? 'تعديل الاستبيان'
-                        : 'بدأ استبيان',
-                    btnWidth: width(context) * .35,
-                    background: itemSurveyModel.status == "edit"
-                        ? ColorManager.yellowLiner
-                        : ColorManager.primaryColor,
-                  )
-                : DefaultButton(
-                    function: () {
-                      userSurveysProvider.userSurveyStatus =
-                          itemSurveyModel.status;
-                    //  HHSEmptyData.emptyData();
-                      // userSurveysProvider.index = index;
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => SurveyScreen(
-                      //       itemSurveyModel: itemSurveyModel,
-                      //     ),
-                      //   ),
-                      // );
-                    },
-                    //edited
-                    isWidget: true,
-                    background: itemSurveyModel.status == "edited"
-                        ? Colors.green
-                        : ColorManager.grayColor,
-                    text: itemSurveyModel.status == "edited"
-                        ? 'تم التعديل'
-                        : 'تم الاستبيان',
-                    btnWidth: width(context) * .35,
-                  ),
+            if (itemSurveyModel.status == "not filled")
+              NotFilledButton(
+                  function: () {
+                    userSurveysProvider.userSurveyStatus =
+                        itemSurveyModel.status;
+                    debugPrint(userSurveysProvider.userSurveyStatus.toString());
+                    userSurveysProvider.index = index;
+                  },
+                  itemSurveyModel: itemSurveyModel),
+            if (itemSurveyModel.status == "edit")
+              EditButton(
+                  function: () {
+                    userSurveysProvider.userSurveyStatus =
+                        itemSurveyModel.status;
+                    debugPrint(userSurveysProvider.userSurveyStatus.toString());
+                    userSurveysProvider.index = index;
+                  },
+                  itemSurveyModel: itemSurveyModel),
+            if (itemSurveyModel.status == "edited")
+              EditedButton(function: () {
+                userSurveysProvider.userSurveyStatus = itemSurveyModel.status;
+                debugPrint(userSurveysProvider.userSurveyStatus.toString());
+              }),
+            if (itemSurveyModel.status == "filled")
+              FilledButton(function: () {
+                userSurveysProvider.userSurveyStatus = itemSurveyModel.status;
+                debugPrint(userSurveysProvider.userSurveyStatus.toString());
+              }),
           ],
         ),
         AppSize.spaceHeight2(context),

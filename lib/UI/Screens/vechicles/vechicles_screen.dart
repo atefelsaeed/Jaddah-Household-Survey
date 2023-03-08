@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
+import '../../../Data/app_constants.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../../Resources/colors.dart';
@@ -31,7 +32,8 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     final validationService = Provider.of<VecProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-     if ((userSurveysProvider.userSurveyStatus == 'edit') ) {
+     if ((userSurveysProvider.userSurveyStatus == 'edit'&&
+         AppConstants.isResetVec == true) ) {
       validationService.resetVechValues(context);
      }
   }

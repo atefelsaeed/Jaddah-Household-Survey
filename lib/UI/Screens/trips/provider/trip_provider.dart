@@ -48,9 +48,7 @@ class TripProvider extends ChangeNotifier {
           {"value": 'زیارة الأصدقاء / الأقارب', "isChick": false},
           {"value": 'ترفيه / وقت الفراغ', "isChick": false},
           {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
-          // {"value": 'توص الى المدرسة / التعليم', "isChick": false},
           {"value": 'توصيل الى مكان آخر', "isChick": false},
-          // {"value": 'توص الى مكان آخر', "isChick": false},
           {"value": 'آخرى', "isChick": false},
         ],
         "title": "?What was the purpose of being there",
@@ -72,8 +70,6 @@ class TripProvider extends ChangeNotifier {
           {"value": 'ترفيه / وقت الفراغ', "isChick": false},
           {"value": 'توصيل الى المدرسة / التعليم', "isChick": false},
           {"value": 'توصيل الى مكان آخر', "isChick": false},
-          // {"value": 'توص الى المدرسة / التعليم', "isChick": false},
-          // {"value": 'توص الى مكان آخر', "isChick": false},
           {"value": 'آخرى', "isChick": false},
         ],
         "title": "?What was the purpose of being there",
@@ -242,33 +238,31 @@ class TripProvider extends ChangeNotifier {
   initTrip() {
     TripModeList.tripModeList[0].person.clear();
     list.clear();
-    print("2222222rrrr222222");
 
     var personlist = PersonModelList.personModelList.length;
-    print(personlist);
-    print(PersonModelList.personModelList);
+
     for (int i = 0; i < personlist; i++) {
-      print('person');
-      TripModeList.tripModeList[0].person
-          .add(PersonModelList.personModelList[i].personName.text);
-      print(PersonModelList.personModelList[i].personName.text);
-      /*  if(  PersonModelList.personModelList[i]
-          .personalHeadData!.hasPasTrip ==false) {
+      // TripModeList.tripModeList[0].person
+      //     .add(PersonModelList.personModelList[i].personName.text);
+      if (PersonModelList.personModelList[i].personalHeadData!.hasPasTrip ==
+          false) {
         TripModeList.tripModeList[0].person
             .add(PersonModelList.personModelList[i].personName.text);
-      }*/
+        notifyListeners();
+      }
     }
+
     list = TripModeList.tripModeList[0].person;
-    print(TripModeList.tripModeList[0].person);
-    // notifyListeners();
+    print('init');
+    print(list.toString());
+    notifyListeners();
   }
 
   ///
   addOwnerTrip(int i, String p) {
     List xc = TripModeList.tripModeList[i].friendPerson["friendPerson"] ?? [];
     TripModeList.tripModeList[i].friendPerson["friendPerson"] = [];
-    print("atef");
-    print(xc);
+
     for (int x = 0; x < TripModeList.tripModeList[i].person.length; x++) {
       if (TripModeList.tripModeList[i].person[x].toString() != p) {
         for (int f = 0; f < xc.length; f++) {
@@ -392,7 +386,7 @@ class TripProvider extends ChangeNotifier {
       mainModeController.text =
           TripModeList.tripModeList[index].travelWay!.mainMode!;
     }
-    TripConditions().setIsCarDriver(index);
+    // TripConditions().setIsCarDriver(index);
     notifyListeners();
   }
 
@@ -412,7 +406,7 @@ class TripProvider extends ChangeNotifier {
       acModeController.text =
           TripModeList.tripModeList[index].travelWay!.accessMode!;
     }
-    TripConditions().setIsCarDriver(index);
+    // TripConditions().setIsCarDriver(index);
 
     notifyListeners();
   }

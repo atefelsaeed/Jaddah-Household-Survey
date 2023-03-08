@@ -17,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
+import '../../../Data/app_constants.dart';
 import '../../../Models/Trips_SurveyModel/start_beginning_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_type_model.dart';
 import '../../../Models/Trips_SurveyModel/travel_with_other_model.dart';
@@ -85,15 +86,16 @@ class _TripScreenState extends State<TripScreen> {
     final validationService = Provider.of<TripProvider>(context, listen: false);
     validationService.initTrip();
     UserSurveysProvider userSurveysProvider =
-    Provider.of<UserSurveysProvider>(context, listen: false);
-     if ((userSurveysProvider.userSurveyStatus == 'edit') ) {
-       validationService.getAllTripUpdated(context);
-       validationService.initTrip();
-     }
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+        AppConstants.isResetTrip == true)) {
+      validationService.getAllTripUpdated(context);
+      AppConstants.isResetTrip = false;
+    }
   }
+
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(child: Scaffold(
       body: SingleChildScrollView(
           child: Consumer<TripProvider>(builder: (context, provider, child) {
@@ -223,14 +225,6 @@ class _TripScreenState extends State<TripScreen> {
                                     "value": 'توصيل الى المدرسة / التعليم',
                                     "isChick": false
                                   },
-                                  // {
-                                  //   "value": 'توص الى المدرسة / التعليم',
-                                  //   "isChick": false
-                                  // },
-                                  // {
-                                  //   "value": 'توص الى مكان آخر',
-                                  //   "isChick": false
-                                  // },
                                   {
                                     "value": 'توصيل الى مكان آخر',
                                     "isChick": false
@@ -244,7 +238,7 @@ class _TripScreenState extends State<TripScreen> {
                               },
                               purposeOfBeingThere: {
                                 "QPurposeOfBeingThere": [
-                                  {"value": ' في المنزل', "isChick": false},
+                                  {"value": 'في المنزل', "isChick": false},
                                   {
                                     "value": 'فى بيت العطلات / الفندق',
                                     "isChick": false
@@ -261,30 +255,23 @@ class _TripScreenState extends State<TripScreen> {
                                   {"value": 'التسوق', "isChick": false},
                                   {"value": 'عمل شخصي', "isChick": false},
                                   {"value": 'طبى / مستشفى', "isChick": false},
-                                  // {
-                                  //   "value": 'توص الى المدرسة / التعليم',
-                                  //   "isChick": false
-                                  // },
-                                  // {
-                                  //   "value": 'توص الى مكان آخر',
-                                  //   "isChick": false
-                                  // },
                                   {
-                                    "value": 'زیارة الأصدقاء / الأقار',
+                                    "value": 'زیارة الأصدقاء / الأقارب',
                                     "isChick": false
                                   },
                                   {
                                     "value": 'ترفيه / وقت الفراغ',
                                     "isChick": false
                                   },
-                                  // {
-                                  //   "value": 'توص الى المدرسة / التعليم',
-                                  //   "isChick": false
-                                  // },
-                                  // {
-                                  //   "value": 'توص الى مكان آخر',
-                                  //   "isChick": false
-                                  // },
+                                  {
+                                    "value": 'توصيل الى المدرسة / التعليم',
+                                    "isChick": false
+                                  },
+                                  {
+                                    "value": 'توصيل الى مكان آخر',
+                                    "isChick": false
+                                  },
+                                  {"value": 'آخرى', "isChick": false},
                                 ],
                                 "title": "?What was the purpose of being there",
                                 "subTitle":
@@ -381,6 +368,7 @@ class _TripScreenState extends State<TripScreen> {
                           if (_key.currentState!.validate()) {
                             SaveTripsData.saveData(context);
                             // TripConditions().checkIsCarDriver();
+
                             CheckTripsValidation.validatePerson(context);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(

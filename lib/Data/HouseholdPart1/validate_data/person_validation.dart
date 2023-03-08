@@ -11,7 +11,8 @@ class CheckPersonValidation {
     for (int e = 0; e <= length; e++) {
       if (e < length) {
         var base = PersonModelList.personModelList[e];
-
+        // if (PersonModelList.personModelList[e].occupationModel!.isEmployee !=
+        //     "0") {}
         if (base.personalHeadData!.gender == '' ||
             base.personalHeadData!.gender == null) {
           return Validator.showSnack(context, " يجب إخيار !نوع الجنس ");
@@ -21,8 +22,11 @@ class CheckPersonValidation {
               context, " يجب إخيار ! القرابة برب الاسرة؟ ");
         } else if (base.personalHeadData!.age.text == '') {
           return Validator.showSnack(context, " يجب إخيار ! الفئة العمرية؟ ");
-        } else if (base.personalHeadData!.hhsHavePastTrip.text.isEmpty ||
-            base.personalHeadData!.hhsHavePastTrip.text == "") {
+        } else if (PersonModelList
+                    .personModelList[e].occupationModel!.isEmployee !=
+                "0" &&
+            (base.personalHeadData!.hhsHavePastTrip.text.isEmpty ||
+                base.personalHeadData!.hhsHavePastTrip.text == "")) {
           return Validator.showSnack(
               context, " يجب إخيار! هل قمت برحلة فى الأيام السابقة ");
         } else if (base.personalHeadData!.nationalityType == '') {

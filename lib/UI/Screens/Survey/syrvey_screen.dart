@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_hhs.dart';
+import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/Components/hhs_Q1.dart';
@@ -53,25 +54,17 @@ class _SurveyScreenState extends State<SurveyScreen> {
     // TODO: implement initState
     super.initState();
     //Reset-to-empty-data
-    EmptyHHS.resetHHS();
+    EmptyHHS.resetHHS(context);
 
     ///reset-values-for-editing
     final validationService =
         Provider.of<ActionSurveyProvider>(context, listen: false);
-    final vecValidationService =
-        Provider.of<VecProvider>(context, listen: false);
-    final tripValidationService =
-        Provider.of<TripProvider>(context, listen: false);
-    final personValidationService =
-        Provider.of<PersonProvider>(context, listen: false);
     //check-if-edit-or-new-survey
-    if ((widget.itemSurveyModel.status == 'edit')) {
+    if ((widget.itemSurveyModel.status == 'edit' &&
+        AppConstants.isResetHHS == true)) {
       print('first edit');
       int id = widget.itemSurveyModel.id!;
       validationService.resetHHSValues(editingController, context, id);
-
-     // personValidationService.getAllPeronUpdated(context);
-     // tripValidationService.getAllTripUpdated(context);
     }
   }
 

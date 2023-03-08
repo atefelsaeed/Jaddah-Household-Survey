@@ -17,7 +17,7 @@ class HHSQ5 extends StatelessWidget {
   });
 
   final TextEditingController peopleAdults18;
-final EditingController editingController;
+  final EditingController editingController;
   final TextEditingController peopleUnder18;
 
   @override
@@ -43,11 +43,11 @@ final EditingController editingController;
                 MyTextForm(
                   label: "",
                   controller: peopleUnder18,
-                  onTap: () {  },
-                  onChanged: (val){
-                    SurveyCondition().conditionHHSQ5NumUnder18(editingController,context);
+                  onTap: () {},
+                  onChanged: (val) {
+                    // SurveyCondition()
+                    //     .conditionHHSQ5NumUnder18(editingController, context);
                     // int newVal=int.parse(val!);
-
                   },
                   widthForm: width(context) * .1,
                   keyboardType: TextInputType.number,
@@ -65,14 +65,15 @@ final EditingController editingController;
                 ),
                 AppSize.spaceWidth1(context),
                 MyTextForm(
-                  onChanged: (d){
+                  onChanged: (d) {
                     print(d);
-                    SurveyCondition().conditionHHSQ5NumAdults(editingController,context);
+                    // SurveyCondition()
+                    //     .conditionHHSQ5NumAdults(editingController, context);
                   },
                   label: "",
                   controller: peopleAdults18,
                   widthForm: width(context) * .1,
-                  onTap: () {  },
+                  onTap: () {},
                   keyboardType: TextInputType.number,
                   isNumber: true,
                 ),

@@ -2,7 +2,7 @@ import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_
 
 class EmptyTrips {
   static emptyTrips() {
-    //  personTrip = [];
+    // personTrip = [];
     if (TripModeList.tripModeList.isNotEmpty) {
       TripModeList.tripModeList[0].purposeOfBeingThere = {
         "QPurposeOfBeingThere": [
@@ -54,6 +54,7 @@ class EmptyTrips {
         ],
         "index": 0
       };
+
       for (var element in TripModeList.tripModeList) {
         //==============Reset-List=================
         element.hhsMembersTraveled = [];

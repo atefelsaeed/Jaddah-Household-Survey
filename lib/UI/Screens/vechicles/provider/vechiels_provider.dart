@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
+import '../../../../Data/app_constants.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
 import '../reset_values.dart';
@@ -362,6 +363,7 @@ class VecProvider extends ChangeNotifier {
   ///resetVechValues
   resetVechValues(context) async {
     await ResetVechilesValues.resetVechValues(context);
+    AppConstants.isResetVec = false;
     notifyListeners();
   }
 }

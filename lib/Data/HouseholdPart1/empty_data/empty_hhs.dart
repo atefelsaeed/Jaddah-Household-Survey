@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/hhs_models.dart';
+import 'package:provider/provider.dart';
 
+import '../../../UI/Screens/Survey/actions/action_survey_screen.dart';
 import '../../../UI/Screens/Survey/editing_controller.dart';
 import '../HHSData/questions_data.dart';
 import '../VechelisData/vechelis_data.dart';
@@ -10,7 +12,7 @@ class EmptyHHS {
   //==========HHS===================
   static emptyHSS() {
     HhsStatic.houseHold = [];
-    QuestionsData.qh4={
+    QuestionsData.qh4 = {
       "? How many separate families live at this address": [
         {"value": '1', "isChick": false},
         {"value": '2', "isChick": false},
@@ -24,7 +26,7 @@ class EmptyHHS {
         {"value": '10', "isChick": false},
       ],
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
     QuestionsData.qh7 = {
@@ -37,24 +39,24 @@ class EmptyHHS {
       ],
       "index": 0
     };
-    QuestionsData.qh3= {
+    QuestionsData.qh3 = {
       "?How many bedrooms are there in the accommodation you live in": [
-    {"value": '1', "isChick": false},
-    {"value": '2', "isChick": false},
-    {"value": '3', "isChick": false},
-    {"value": '4', "isChick": false},
-    {"value": '5', "isChick": false},
-    {"value": '6', "isChick": false},
-    {"value": '7', "isChick": false},
-    {"value": '8', "isChick": false},
-    {"value": '9', "isChick": false},
-    {"value": '10', "isChick": false},
-    {"value": '11', "isChick": false},
-    {"value": '>12', "isChick": false},
-    ],
-    "subTitle":
-    " A separate family is defined as who share the kitchen expenses and meals",
-    "index": 0
+        {"value": '1', "isChick": false},
+        {"value": '2', "isChick": false},
+        {"value": '3', "isChick": false},
+        {"value": '4', "isChick": false},
+        {"value": '5', "isChick": false},
+        {"value": '6', "isChick": false},
+        {"value": '7', "isChick": false},
+        {"value": '8', "isChick": false},
+        {"value": '9', "isChick": false},
+        {"value": '10', "isChick": false},
+        {"value": '11', "isChick": false},
+        {"value": '>12', "isChick": false},
+      ],
+      "subTitle":
+          " A separate family is defined as who share the kitchen expenses and meals",
+      "index": 0
     };
     HhsStatic.hhsElectricScooter = BikesType('', '', '');
     HhsStatic.hhsElectricCycles == BikesType('', '', '');
@@ -84,7 +86,13 @@ class EmptyHHS {
     VehModel.editingController3.totalNumber.text = "";
     VehModel.nearestPublicTransporter = '';
   }
-  static resetHHS(){
+
+  static resetHHS(context) {
+    final provider = Provider.of<ActionSurveyProvider>(context, listen: false);
+    provider.hasBicycle = false;
+    provider.hasBicycleQ82 = false;
+    provider.hasBicycleQ83 = false;
+
     EditingController editingController = EditingController();
 
     editingController.editingController3Q83.totalNumber.text = '';
@@ -93,7 +101,7 @@ class EmptyHHS {
 
     VehiclesData.q3VecData = {
       " How far is the nearest public transport bus stop from your home by walk (in minutes) ?":
-      [
+          [
         {"value": '<5 دقائق سيرا على الأقدام', "isChick": false},
         {"value": '6-10 دقائق سيرا على الأقدام', "isChick": false},
         {"value": '11 - 15 دقيقة مشي', "isChick": false},
@@ -127,7 +135,7 @@ class EmptyHHS {
         {"value": '10', "isChick": false},
       ],
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
     QuestionsData.qh3 = {
@@ -146,12 +154,12 @@ class EmptyHHS {
         {"value": '>12', "isChick": false},
       ],
       "subTitle":
-      " A separate family is defined as who share the kitchen expenses and meals",
+          " A separate family is defined as who share the kitchen expenses and meals",
       "index": 0
     };
     QuestionsData.qh7_2 = {
       'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
-      [
+          [
         {"value": 'نعم', "isChick": false},
         {"value": 'لا', "isChick": false},
       ],

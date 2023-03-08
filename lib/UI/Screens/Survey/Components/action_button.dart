@@ -139,7 +139,11 @@ class ActionButton extends StatelessWidget {
           }
 
           ///
-          if (!SurveyCondition().validateHHSQ81(context)) {
+          if (!SurveyCondition()
+              .conditionHHSQ5NumUnder18(editingController, context)) {
+          } else if (!SurveyCondition()
+              .conditionHHSQ5NumAdults(editingController, context)) {
+          } else if (!SurveyCondition().validateHHSQ81(context)) {
           } else if (!SurveyCondition().validateHHSQ82(context)) {
           } else if (!SurveyCondition().validateHHSQ83(context)) {
           } else if (!SurveyCondition().numberParcelsDeliveries(context)) {

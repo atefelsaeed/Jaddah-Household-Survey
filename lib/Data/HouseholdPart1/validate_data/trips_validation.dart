@@ -7,6 +7,7 @@ import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/ChooseSurvey/chooseSurveyScreen.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/trip_conditions.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,6 +35,8 @@ class CheckTripsValidation {
 
         if (base.chosenPerson.isEmpty) {
           return Validator.showSnack(context, " يجب إخيار ! صاحب الرحلة؟");
+        } else if (!TripConditions().checkIsCarDriver(e, context)) {
+          print('val');
         }
 
         ///startBeginningModel!.tripAddressLat && tripAddressLong
@@ -125,6 +128,7 @@ class CheckTripsValidation {
       else {
         //=======Add-survey-to-surveys-list================
         if (userSurvey.userSurveyStatus == "not filled") {
+          debugPrint(userSurvey.userSurveyStatus.toString());
           await surveys.addSurvey(surveyPt.data);
           //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
           userSurvey.userSurveys[userSurvey.index].status = 'filled';
@@ -136,10 +140,10 @@ class CheckTripsValidation {
               MaterialPageRoute(
                   builder: (context) => const ChooseSurveysScreen()),
               (Route<dynamic> route) => false);
-        } else if ((userSurvey.userSurveyStatus == "filled") ||
-            (userSurvey.userSurveyStatus == "edit")) {
+        } else if ((userSurvey.userSurveyStatus == "edit")) {
+          debugPrint(userSurvey.userSurveyStatus.toString());
           userSurvey.updateSurvey(surveyPt.data);
-          debugPrint('Add User Surveys to local database');
+          debugPrint('updateSurvey');
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
                   builder: (context) => const ChooseSurveysScreen()),
