@@ -303,7 +303,59 @@ class _PersonScreenState extends State<PersonScreen> {
                                                   .isEmployee ==
                                               ""
                                           ? Container()
-                                          : DropDownFormInput2(
+                                          :  PersonModelList
+                                          .personModelList[i]
+                                          .occupationModel!
+                                          .isEmployee ==
+                                          "0"? DropDownFormInput2(
+                                        label: PersonModelList
+                                            .personModelList[i]
+                                            .personalQuestion!
+                                            .mainOccupationType !=
+                                            ''
+                                            ? Text(PersonModelList
+                                            .personModelList[i]
+                                            .personalQuestion!
+                                            .mainOccupationType ??
+                                            '')
+                                            : const Text('إختار'),
+                                        hint: "الوظيفة الأساسية",
+                                        options: PersonData
+                                            .mainOccupationUnder5[
+                                        mainOccupationKey]!
+                                            .toList(),
+                                        onChange: (String? p) {
+                                          List value = PersonData
+                                              .mainOccupationUnder5[
+                                          mainOccupationKey]
+                                              .toList();
+
+                                          for (int inr = 0;
+                                          inr < value.length;
+                                          inr++) {
+                                            if (p ==
+                                                value[inr]["value"]) {
+                                              PersonModelList
+                                                  .personModelList[i]
+                                                  .personalQuestion!
+                                                  .mainOccupationType =
+                                              value[inr]["value"];
+                                            }
+                                          }
+                                          setState(() {
+                                            PersonModelList
+                                                .personModelList[i]
+                                                .personalQuestion!
+                                                .mainOccupationType ==
+                                                p.toString();
+                                          });
+
+                                          debugPrint(p.toString());
+                                        },
+                                      ):
+
+
+                                      DropDownFormInput2(
                                               label: PersonModelList
                                                           .personModelList[i]
                                                           .personalQuestion!
@@ -349,6 +401,8 @@ class _PersonScreenState extends State<PersonScreen> {
                                                 debugPrint(p.toString());
                                               },
                                             ),
+
+
                                       PersonModelList.personModelList[i]
                                                   .occupationModel!.isEmployee ==
                                               ""
@@ -398,6 +452,15 @@ class _PersonScreenState extends State<PersonScreen> {
                                                   ? Container()
                                                   : Column(
                                                       children: [
+                                                        PersonModelList
+                                                            .personModelList[
+                                                        i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType =="طالب - مدرسة ابتدائية"|| PersonModelList
+                                                            .personModelList[
+                                                        i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType=="طالب - مدرسة متوسطة"||PersonModelList.personModelList[i].personalQuestion!.mainOccupationType=="طالب - مدرسة ثانوية"?
                                                         DropDownFormInput(
                                                           label: PersonModelList
                                                                       .personModelList[
@@ -416,7 +479,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                           hint:
                                                               "لو عمل ما هو قطا ع العمل",
                                                           options: PersonData
-                                                              .occupationSector[
+                                                              .occupationSectorSchool[
                                                                   occupationSectorKey]!
                                                               .toList(),
                                                           onChange:
@@ -424,6 +487,74 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             provider
                                                                 .occupationSector(
                                                                     i, p);
+                                                          },
+                                                        ):PersonModelList
+                                                            .personModelList[
+                                                        i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType=="الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي"||PersonModelList
+                                                            .personModelList[
+                                                        i]
+                                                            .personalQuestion!
+                                                            .mainOccupationType=="طالب - كلية: دوام جزئي - يعمل بدوام جزئي"||PersonModelList
+                                                            .personModelList[
+                                                        i].personalQuestion!
+                                                            .mainOccupationType=="طالب - جامعي: دوام كامل - يعمل بدوام جزئي"||PersonModelList
+                                                            .personModelList[
+                                                        i].personalQuestion!
+                                                            .mainOccupationType=="طالب - جامعي: دوام جزئي - يعمل بدوام جزئي"? DropDownFormInput(
+                                                          label: PersonModelList
+                                                              .personModelList[
+                                                          i]
+                                                              .occupationModel!
+                                                              .occupationSector !=
+                                                              ''
+                                                              ? Text(PersonModelList
+                                                              .personModelList[
+                                                          i]
+                                                              .occupationModel!
+                                                              .occupationSector ??
+                                                              '')
+                                                              : const Text(
+                                                              'إختار'),
+                                                          hint:
+                                                          "لو عمل ما هو قطا ع العمل",
+                                                          options: PersonData
+                                                              .occupationSectorUnveristy[
+                                                          occupationSectorKey]!
+                                                              .toList(),
+                                                          onChange:
+                                                              (String? p) {
+                                                            provider
+                                                                .occupationSector(
+                                                                i, p);
+                                                          },
+                                                        ): DropDownFormInput(
+                                                          label: PersonModelList
+                                                              .personModelList[
+                                                          i]
+                                                              .occupationModel!
+                                                              .occupationSector !=
+                                                              ''
+                                                              ? Text(PersonModelList
+                                                              .personModelList[
+                                                          i]
+                                                              .occupationModel!
+                                                              .occupationSector ??
+                                                              '')
+                                                              : const Text(
+                                                              'إختار'),
+                                                          hint:
+                                                          "لو عمل ما هو قطا ع العمل",
+                                                          options: PersonData
+                                                              .occupationSector[
+                                                          occupationSectorKey]!
+                                                              .toList(),
+                                                          onChange:
+                                                              (String? p) {
+                                                            provider
+                                                                .occupationSector(
+                                                                i, p);
                                                           },
                                                         ),
                                                         AppSize.spaceHeight2(
