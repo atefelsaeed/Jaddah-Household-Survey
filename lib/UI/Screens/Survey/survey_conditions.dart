@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
 import 'package:jaddah_household_survey/UI/Widgets/show_dialog_error.dart';
 import 'package:provider/provider.dart';

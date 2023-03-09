@@ -11,7 +11,6 @@ import 'package:provider/provider.dart';
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
 import '../../../Widgets/show_dialog_error.dart';
-import '../trip_conditions.dart';
 
 class TripProvider extends ChangeNotifier {
   List<String> personTrip = [];

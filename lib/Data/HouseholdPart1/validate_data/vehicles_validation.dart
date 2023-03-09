@@ -15,7 +15,12 @@ class CheckVehiclesValidation {
         VehModel.vecWanet.length +
         VehModel.vecVan.length +
         VehModel.pickUp.length +
-        VehModel.eScooter.length;
+        VehModel.eScooter.length +
+        VehModel.vecLightCargo.length +
+        VehModel.vecHeavyCargo.length +
+        VehModel.vecCoaster.length +
+        VehModel.vecMinibus.length +
+        VehModel.vecBus.length;
 
     ///vecCar
     for (int i = 0; i <= VehModel.vecCar.length; i++) {

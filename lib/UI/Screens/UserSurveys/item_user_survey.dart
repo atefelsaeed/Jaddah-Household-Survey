@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/Resources/assets_manager.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
 import 'package:jaddah_household_survey/UI/Screens/UserSurveys/components/editd_button.dart';
-import 'package:jaddah_household_survey/UI/Widgets/custom_buttton.dart';
 import 'package:jaddah_household_survey/UI/Widgets/item_text_span.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 

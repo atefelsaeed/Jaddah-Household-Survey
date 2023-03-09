@@ -48,7 +48,32 @@ class SaveVehiclesData {
         vehicleTypeName: 'ونيت',
         vehicleTypeQuantity: VehModel.vecWanet.length,
         vehicleTypeDetails: VehModel.vecWanet,
-      )
+      ),
+      VehiclesBodyType(
+        vehicleTypeName: "عربية بضائع خفيفة",
+        vehicleTypeQuantity: VehModel.vecLightCargo.length,
+        vehicleTypeDetails: VehModel.vecLightCargo,
+      ),
+      VehiclesBodyType(
+        vehicleTypeName: "عربية بضائع ثقيلة",
+        vehicleTypeQuantity: VehModel.vecHeavyCargo.length,
+        vehicleTypeDetails: VehModel.vecHeavyCargo,
+      ),
+      VehiclesBodyType(
+        vehicleTypeName: "مينى باص",
+        vehicleTypeQuantity: VehModel.vecMinibus.length,
+        vehicleTypeDetails: VehModel.vecMinibus,
+      ),
+      VehiclesBodyType(
+        vehicleTypeName: "كوستر",
+        vehicleTypeQuantity: VehModel.vecCoaster.length,
+        vehicleTypeDetails: VehModel.vecCoaster,
+      ),
+      VehiclesBodyType(
+        vehicleTypeName: "اوتوبيس",
+        vehicleTypeQuantity: VehModel.vecBus.length,
+        vehicleTypeDetails: VehModel.vecBus,
+      ),
     ];
     survey.vehiclesBodyType = vehicles;
   }

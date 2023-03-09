@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
-import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/delete_trip.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
@@ -9,7 +8,6 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
-import 'package:jaddah_household_survey/UI/Screens/trips/trip_conditions.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
-import 'package:jaddah_household_survey/UI/Screens/trips/trip_conditions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Data/HouseholdPart1/TripsData/trip_data.dart';

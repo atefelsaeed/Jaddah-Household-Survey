@@ -63,7 +63,7 @@ class TripsModel {
   };
   Map<String, dynamic> purposeOfBeingThere2 = {
     "TripReason": [
-      {"value": ' في المنزل', "isChick": false},
+      {"value": 'في المنزل', "isChick": false},
       {"value": 'فى بيت العطلات / الفندق', "isChick": false},
       {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
       {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},

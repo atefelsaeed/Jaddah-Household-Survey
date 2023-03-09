@@ -6,7 +6,7 @@ class EmptyTrips {
     if (TripModeList.tripModeList.isNotEmpty) {
       TripModeList.tripModeList[0].purposeOfBeingThere = {
         "QPurposeOfBeingThere": [
-          {"value": ' في المنزل', "isChick": false},
+          {"value": 'في المنزل', "isChick": false},
           {"value": 'فى بيت العطلات / الفندق', "isChick": false},
           {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
           {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},
@@ -27,7 +27,7 @@ class EmptyTrips {
       };
       TripModeList.tripModeList[0].purposeOfBeingThere2 = {
         "TripReason": [
-          {"value": ' في المنزل', "isChick": false},
+          {"value": 'في المنزل', "isChick": false},
           {"value": 'فى بيت العطلات / الفندق', "isChick": false},
           {"value": 'العمل - فى مكتب / مقر العمل', "isChick": false},
           {"value": 'العمل - خارج مكتب / مقر العمل', "isChick": false},

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
-import 'package:jaddah_household_survey/UI/Screens/Survey/survey_conditions.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../Widgets/text.dart';

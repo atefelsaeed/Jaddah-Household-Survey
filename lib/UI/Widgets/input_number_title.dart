@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/UI/Screens/Survey/survey_conditions.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text_form_field.dart';
 
