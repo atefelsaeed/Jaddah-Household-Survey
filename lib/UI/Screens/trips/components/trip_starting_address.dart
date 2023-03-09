@@ -65,6 +65,7 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                   if (TripModeList.tripModeList[widget.index].isHome == true) {
                     startBeginningModel?.tripAddressLong =
                         surveyPt.hhsAddressLong;
+
                     startBeginningModel?.tripAddressLat =
                         surveyPt.hhsAddressLat;
                   } else {
