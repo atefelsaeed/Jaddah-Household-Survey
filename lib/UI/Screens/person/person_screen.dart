@@ -425,12 +425,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                       .isEmployee ==
                                                   "1"
                                               ? PersonModelList.personModelList[i].personalQuestion!.mainOccupationType == "عاطلين عن العمل" ||
-                                                      PersonModelList
-                                                              .personModelList[
-                                                                  i]
-                                                              .personalQuestion!
-                                                              .mainOccupationType ==
-                                                          "طالب - جامعي: دوام كامل (لا يعمل) " ||
+
                                                       PersonModelList
                                                               .personModelList[
                                                                   i]
@@ -516,25 +511,14 @@ class _PersonScreenState extends State<PersonScreen> {
                                                                                 i]
                                                                             .personalQuestion!
                                                                             .mainOccupationType ==
-                                                                        "الطالب - الكلية: بدوام كامل - يعمل بدوام جزئي" ||
-                                                                    PersonModelList
-                                                                            .personModelList[
-                                                                                i]
-                                                                            .personalQuestion!
-                                                                            .mainOccupationType ==
-                                                                        "طالب - كلية: دوام جزئي - يعمل بدوام جزئي" ||
-                                                                    PersonModelList
-                                                                            .personModelList[
-                                                                                i]
-                                                                            .personalQuestion!
-                                                                            .mainOccupationType ==
-                                                                        "طالب - جامعي: دوام كامل - يعمل بدوام جزئي" ||
-                                                                    PersonModelList
-                                                                            .personModelList[i]
-                                                                            .personalQuestion!
-                                                                            .mainOccupationType ==
-                                                                        "طالب - جامعي: دوام جزئي - يعمل بدوام جزئي"
-                                                                ? DropDownFormInput(
+                                                                        " طالب - الكلية: بدوام كامل (لا يعمل)"||PersonModelList
+                  .personModelList[
+              i]
+                  .personalQuestion!
+                  .mainOccupationType ==
+              "طالب - جامعي: دوام كامل (لا يعمل) "
+
+              ? DropDownFormInput(
                                                                     label: PersonModelList.personModelList[i].occupationModel!.occupationSector !=
                                                                             ''
                                                                         ? Text(PersonModelList.personModelList[i].occupationModel!.occupationSector ??
