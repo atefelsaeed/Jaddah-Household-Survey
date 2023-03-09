@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/person_screen.dart';
+import 'package:jaddah_household_survey/UI/Widgets/show_dialog_error.dart';
 
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../VechelisData/veh_model.dart';
@@ -119,9 +120,85 @@ class CheckVehiclesValidation {
         }
       }
     }
+
+    ///vecLightCargo
+    for (int i = 0; i <= VehModel.vecLightCargo.length; i++) {
+      if (i < VehModel.vecLightCargo.length) {
+        if (VehModel.vecLightCargo[i].vehicleOwnership.text.isEmpty) {
+          return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
+        } else if (VehModel.vecLightCargo[i].vehicleParking.text.isEmpty) {
+          return Validator.showSnack(context,
+              " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
+        }
+      }
+    }
+
+    ///vecHeavyCargo
+    for (int i = 0; i <= VehModel.vecHeavyCargo.length; i++) {
+      if (i < VehModel.vecHeavyCargo.length) {
+        if (VehModel.vecHeavyCargo[i].vehicleOwnership.text.isEmpty) {
+          return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
+        } else if (VehModel.vecHeavyCargo[i].vehicleParking.text.isEmpty) {
+          return Validator.showSnack(context,
+              " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
+        }
+      }
+    }
+
+    ///vecMinibus
+    for (int i = 0; i <= VehModel.vecMinibus.length; i++) {
+      if (i < VehModel.vecMinibus.length) {
+        if (VehModel.vecMinibus[i].vehicleOwnership.text.isEmpty) {
+          return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
+        } else if (VehModel.vecMinibus[i].vehicleParking.text.isEmpty) {
+          return Validator.showSnack(context,
+              " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
+        }
+      }
+    }
+
+    ///vecCoaster
+    for (int i = 0; i <= VehModel.vecCoaster.length; i++) {
+      if (i < VehModel.vecCoaster.length) {
+        if (VehModel.vecCoaster[i].vehicleOwnership.text.isEmpty) {
+          return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
+        } else if (VehModel.vecCoaster[i].vehicleParking.text.isEmpty) {
+          return Validator.showSnack(context,
+              " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
+        }
+      }
+    }
+
+    ///vecBus
+    for (int i = 0; i <= VehModel.vecBus.length; i++) {
+      if (i < VehModel.vecBus.length) {
+        if (VehModel.vecBus[i].vehicleOwnership.text.isEmpty) {
+          return Validator.showSnack(context, " يجب إخيار ! رموز الملكية؟");
+        } else if (VehModel.vecBus[i].vehicleParking.text.isEmpty) {
+          return Validator.showSnack(context,
+              " يجب إخيار ! عندما تكون في المنزل ، أين تركن هذه السيارة عادة؟ رموز نوع وقوف السيارات .");
+        }
+      }
+    }
+    void showError(context, Widget widget) => showDialog<void>(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return widget;
+        });
     if (x > total) {
       return Validator.showSnack(
           context, " يجب إدخال كل عدد المركبات فى الأسرة");
+    } else if ((HhsStatic.houseHold[0].totalNumberVehicles.toString().isEmpty ||
+            HhsStatic.houseHold[0].totalNumberVehicles.toString().trim() ==
+                '0') &&
+        VehModel.hasVehicles != true) {
+      showError(
+          context,
+          const ShowErrorDialog(
+              title: 'هل أنت متأكد !!',
+              content:
+                  'ليس لديك أى مركبات . لذلك يجب إختيار "لا يوجد سيارات !!!!"'));
     } else {
       Navigator.push(
         context,

@@ -32,10 +32,10 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     final validationService = Provider.of<VecProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-     if ((userSurveysProvider.userSurveyStatus == 'edit'&&
-         AppConstants.isResetVec == true) ) {
+    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+        AppConstants.isResetVec == true)) {
       validationService.resetVechValues(context);
-     }
+    }
   }
 
   @override

@@ -16,7 +16,6 @@ class TripConditions {
             (TripModeList.tripModeList[i].travelWay!.accessMode ==
                 'سائق سيارة')) &&
         (bas.travelType != 'سيارة')) {
-      print('false');
       showError(context,
        ShowErrorDialog(
           title: ' بماذا ذهبت ؟ رحلة ${i+1}',
@@ -24,7 +23,6 @@ class TripConditions {
               'في سؤال 6 "الوضع الرئيسي" او "وضع الوصول" اذا كان الاختيار سائق سيارة يجب أن يكون الجواب في سؤال 8 بماذا ذهبت ؟ الجواب "سيارة"'));
       return false;
     } else {
-      print('true');
       return true;
     }
   }
