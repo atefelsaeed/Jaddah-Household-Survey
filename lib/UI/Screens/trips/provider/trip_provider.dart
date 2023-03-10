@@ -120,6 +120,7 @@ class TripProvider extends ChangeNotifier {
       print(list);
       TripModeList.tripModeList.add(TripsModel(
           person: list,
+          mainPerson: list,
           isHome: surveyPt.surveyPT.tripsList![i].isHome,
           isHomeEnding: surveyPt.surveyPT.tripsList![i].isHomeEnding,
           chosenFriendPerson:
@@ -249,6 +250,9 @@ class TripProvider extends ChangeNotifier {
             .add(PersonModelList.personModelList[i].personName.text);
         // notifyListeners();
       }
+      TripModeList.tripModeList[0].mainPerson
+          .add(PersonModelList.personModelList[i].personName.text);
+
     }
 
     list = TripModeList.tripModeList[0].person;
@@ -332,12 +336,12 @@ class TripProvider extends ChangeNotifier {
         TripModeList.tripModeList[index].isTravelAlone = true;
         TripModeList.tripModeList[index].friendPerson["friendPerson"] = [];
         for (int x = 0;
-            x < TripModeList.tripModeList[index].person.length;
+            x < TripModeList.tripModeList[index].mainPerson.length;
             x++) {
           if (TripModeList.tripModeList[index].person[x].toString() !=
               TripModeList.tripModeList[index].chosenPerson) {
             TripModeList.tripModeList[index].friendPerson["friendPerson"].add({
-              "value": TripModeList.tripModeList[index].person[x],
+              "value": TripModeList.tripModeList[index].mainPerson[x],
               "isChick": false
             });
           }
