@@ -415,16 +415,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     debugPrint(p.toString());
                                                   },
                                                 ),
-                                      PersonModelList.personModelList[i]
-                                                  .occupationModel!.isEmployee ==
-                                              ""
-                                          ? Container()
-                                          : PersonModelList
-                                                      .personModelList[i]
-                                                      .occupationModel!
-                                                      .isEmployee ==
-                                                  "1"
-                                              ? PersonModelList.personModelList[i].personalQuestion!.mainOccupationType == "عاطلين عن العمل" ||
+                                      PersonModelList.personModelList[i].personalQuestion!.mainOccupationType == "عاطلين عن العمل" ||
 
                                                       PersonModelList
                                                               .personModelList[
@@ -589,9 +580,15 @@ class _PersonScreenState extends State<PersonScreen> {
                                                             : Container(),
                                                       ],
                                                     )
-                                              : Container()
+
                                     ],
                                   ),
+
+
+
+
+
+
                                   PersonModelList.personModelList[i]
                                               .occupationModel!.isEmployee ==
                                           "1"
