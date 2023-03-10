@@ -3,4 +3,5 @@ class AppConstants {
   static bool isResetVec = false;
   static bool isResetPerson = false;
   static bool isResetTrip = false;
+  static String isFilled = 'isFilled';
 }
