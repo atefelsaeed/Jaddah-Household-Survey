@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import 'package:jaddah_household_survey/Helper/locale_database/operations/survey_pt_operations.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
@@ -13,6 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Helper/locale_database/operations/hhs_user_surveys_operations.dart';
+import '../../app_constants.dart';
 
 class CheckTripsValidation {
   static void showError(context, Widget widget) => showDialog<void>(
@@ -189,6 +191,17 @@ class CheckTripsValidation {
 
         ///Validation Done
         else {
+          UserSurveysProvider userSurveysProvider =
+          Provider.of<UserSurveysProvider>(context, listen: false);
+          SurveyPTProvider surveyPt =
+          Provider.of<SurveyPTProvider>(context, listen: false);
+          SurveysProvider surveys =
+          Provider.of<SurveysProvider>(context, listen: false);
+
+          if (userSurveysProvider.userSurveyStatus == 'not filled') {
+            surveys.addNotFilledSurvey(surveyPt.data);
+            debugPrint('addNotFilledSurvey');
+          }
           if (!TripConditions().personWithoutTrip(
             i: e,
             context: context,
@@ -202,11 +215,17 @@ class CheckTripsValidation {
                 for (var element in userSurvey.userSurveys) {
                   await HHSUserSurveysOperations().addItemToDatabase(element);
                 }
+
                 debugPrint('Add User Surveys to local database');
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                         builder: (context) => const ChooseSurveysScreen()),
                     (Route<dynamic> route) => false);
+                //Delete values in table Survey PT
+                await SurveyPtOperations().deleteSurveyPTTable();
+                //Reset isFilled value
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setBool(AppConstants.isFilled, false);
               } else if ((userSurvey.userSurveyStatus == "edit")) {
                 debugPrint(userSurvey.userSurveyStatus.toString());
                 userSurvey.updateSurvey(surveyPt.data);
@@ -215,11 +234,45 @@ class CheckTripsValidation {
                     MaterialPageRoute(
                         builder: (context) => const ChooseSurveysScreen()),
                     (Route<dynamic> route) => false);
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setBool(AppConstants.isFilled, false);
               }
             },
           )) {
             return null;
-          } else {}
+          } else {
+            //=======Add-survey-to-surveys-list================
+            if (userSurvey.userSurveyStatus == "not filled") {
+              debugPrint(userSurvey.userSurveyStatus.toString());
+              await surveys.addSurvey(surveyPt.data);
+              //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
+              userSurvey.userSurveys[userSurvey.index].status = 'filled';
+              for (var element in userSurvey.userSurveys) {
+                await HHSUserSurveysOperations().addItemToDatabase(element);
+              }
+
+              debugPrint('Add User Surveys to local database');
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => const ChooseSurveysScreen()),
+                      (Route<dynamic> route) => false);
+              //Delete values in table Survey PT
+              await SurveyPtOperations().deleteSurveyPTTable();
+              //Reset isFilled value
+              final prefs = await SharedPreferences.getInstance();
+              prefs.setBool(AppConstants.isFilled, false);
+            } else if ((userSurvey.userSurveyStatus == "edit")) {
+              debugPrint(userSurvey.userSurveyStatus.toString());
+              userSurvey.updateSurvey(surveyPt.data);
+              debugPrint('updateSurvey');
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => const ChooseSurveysScreen()),
+                      (Route<dynamic> route) => false);
+              final prefs = await SharedPreferences.getInstance();
+              prefs.setBool(AppConstants.isFilled, false);
+            }
+          }
         }
       }
     }

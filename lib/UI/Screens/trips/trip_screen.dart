@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/validate_data/trips_validation.dart';
+import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
+import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/delete_trip.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/depart_time.dart';
@@ -349,6 +351,21 @@ class _TripScreenState extends State<TripScreen> {
                                   TextEditingController(),
                             ));
                           });
+                          UserSurveysProvider userSurveysProvider =
+                              Provider.of<UserSurveysProvider>(context,
+                                  listen: false);
+                          SurveyPTProvider surveyPt =
+                              Provider.of<SurveyPTProvider>(context,
+                                  listen: false);
+                          SurveysProvider surveys =
+                              Provider.of<SurveysProvider>(context,
+                                  listen: false);
+
+                          if (userSurveysProvider.userSurveyStatus ==
+                              'not filled') {
+                            surveys.addNotFilledSurvey(surveyPt.data);
+                            debugPrint('addNotFilledSurvey');
+                          }
                         },
                         isWidget: true,
                         btnWidth: width(context) * .24,

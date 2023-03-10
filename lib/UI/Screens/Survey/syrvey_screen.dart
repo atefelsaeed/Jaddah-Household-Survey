@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_hhs.dart';
 import 'package:jaddah_household_survey/Data/app_constants.dart';
@@ -13,6 +15,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/qh9.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../Widgets/exit_screen.dart';
@@ -52,6 +55,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
     super.initState();
     //Reset-to-empty-data
     EmptyHHS.resetHHS(context);
+    SurveyPtOperations().getSurveyPtAllItems();
 
     ///reset-values-for-editing
     final validationService =

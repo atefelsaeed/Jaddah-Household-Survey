@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
+import 'package:provider/provider.dart';
 
+import '../../../Providers/survey_hhs.dart';
+import '../../../Providers/surveys.dart';
+import '../../../Providers/user_surveys.dart';
 import '../../../UI/Screens/trips/trip_screen.dart';
 import '../PersonData/person_model_list.dart';
 
@@ -41,6 +45,17 @@ class CheckPersonValidation {
               " يجب إخيار! هل لديك أي إعاقة / احتياجات خاصة لحركة النقل؟");
         }
       } else {
+        UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+        SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+        SurveysProvider surveys =
+        Provider.of<SurveysProvider>(context, listen: false);
+
+        if (userSurveysProvider.userSurveyStatus == 'not filled') {
+          surveys.addNotFilledSurvey(surveyPt.data);
+          debugPrint('addNotFilledSurvey');
+        }
         print('navigate');
         Navigator.push(
           context,

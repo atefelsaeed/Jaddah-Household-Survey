@@ -247,13 +247,12 @@ class TripProvider extends ChangeNotifier {
           false) {
         TripModeList.tripModeList[0].person
             .add(PersonModelList.personModelList[i].personName.text);
-        notifyListeners();
+        // notifyListeners();
       }
     }
 
     list = TripModeList.tripModeList[0].person;
-    print('init');
-    print(list.toString());
+
     notifyListeners();
   }
 

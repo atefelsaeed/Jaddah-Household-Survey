@@ -76,6 +76,31 @@ class SurveysProvider with ChangeNotifier {
     }
   }
 
+  Future<bool> addNotFilledSurvey(Survey s) async {
+    try {
+      // _surveys.removeWhere((e) => e.id == s.id);
+      // _surveys.add(s);
+      await SurveyPtOperations().addItemToSurveyPtDatabase(s);
+      // await save();
+      notifyListeners();
+      return true;
+    } catch (er) {
+      debugPrint(er.toString());
+      rethrow;
+    }
+  }
+
+  Future<bool> updateNotFilledSurvey(Survey s) async {
+    try {
+      await SurveyPtOperations().update(s);
+      notifyListeners();
+      return true;
+    } catch (er) {
+      debugPrint(er.toString());
+      rethrow;
+    }
+  }
+
   Future<bool> save() async {
     try {
       debugPrint("changing data");

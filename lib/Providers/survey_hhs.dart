@@ -48,6 +48,7 @@ class SurveyPTProvider extends SurveyProvider {
       rethrow;
     }
   }
+
   LatLng? startingAddressLatLng;
   LatLng? endingAddressLatLng;
 

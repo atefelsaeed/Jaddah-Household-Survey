@@ -12,23 +12,33 @@ class SurveyPtOperations {
   Future<int?> addItemToSurveyPtDatabase(Survey survey) async {
     Database? myDB = await db.db;
     List<SurveyPT> list = await getSurveyPtAllItems();
+
     int? raw;
-    if (list.isNotEmpty) {
-      list.removeWhere((element) => element.id == survey.id);
+    if (list.isEmpty) {
       raw = await myDB!.insert(
         DatabaseHelper.surveyPTTableName,
         survey.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } else {
-      raw = await myDB!.insert(
-        DatabaseHelper.surveyPTTableName,
-        survey.toJson(),
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
+      raw = await update(survey);
     }
-    debugPrint('addItemToSurveyPtDatabase');
+
+    debugPrint('Add Item To Survey PT Database');
     return raw;
+  }
+
+  //Update Survey PT Items
+  Future<int> update(Survey survey) async {
+    Database? myDB = await db.db;
+    debugPrint('Update Item');
+    return await myDB!.update(
+      DatabaseHelper.surveyPTTableName,
+      survey.toJson(),
+      where: 'id = ?',
+      whereArgs: [survey.id],
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   //Get all survey PT Table from the database
@@ -37,22 +47,30 @@ class SurveyPtOperations {
     var response = await myDB!.query(DatabaseHelper.surveyPTTableName);
     List<SurveyPT>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
-    debugPrint('local data base');
+
+    debugPrint('Get Survey PT DB');
     debugPrint(list.toString());
+    debugPrint(list.length.toString());
     return list;
+  }
+
+  //Delete deleteSurveyPTTable
+  Future<int> deleteSurveyPTTable() async {
+    Database? myDB = await db.db;
+    var raw = await myDB!.delete(DatabaseHelper.surveyPTTableName);
+    debugPrint('Delete Survey PT Table');
+    return raw;
   }
 
   //Add survey PT Table Offline to database
   Future<int> addItemToSurveyPtOfflineDatabase(Survey survey) async {
     Database? myDB = await db.db;
-    debugPrint('Add Survey PT to local database');
+    debugPrint('Add Offline Survey PT to local database');
     var raw = await myDB!.insert(
       DatabaseHelper.surveyPTTableOfflineName,
       survey.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-    //Add Item To Survey PT to Local Database.
-    // await addItemToSurveyPtDatabase(survey);
     return raw;
   }
 
@@ -60,6 +78,7 @@ class SurveyPtOperations {
   Future<int> deleteSurveyPTTableOffline() async {
     Database? myDB = await db.db;
     var raw = await myDB!.delete(DatabaseHelper.surveyPTTableOfflineName);
+    debugPrint('Delete Survey PT Table Offline');
     return raw;
   }
 
@@ -69,7 +88,7 @@ class SurveyPtOperations {
     var response = await myDB!.query(DatabaseHelper.surveyPTTableOfflineName);
     List<Survey>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
-    debugPrint('Get Survey PT to local database');
+    debugPrint('Get Offline Survey PT to local database');
     return list;
   }
 }

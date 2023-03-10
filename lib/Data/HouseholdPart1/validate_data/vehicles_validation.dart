@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
+import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/person_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/show_dialog_error.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Providers/surveys.dart';
+import '../../../Providers/user_surveys.dart';
 import '../VechelisData/veh_model.dart';
 
 class CheckVehiclesValidation {
   static validate(context) {
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+    SurveysProvider surveys =
+        Provider.of<SurveysProvider>(context, listen: false);
+
     int x = int.parse(HhsStatic.houseHold[0].totalNumberVehicles.toString());
     int total = VehModel.bicycle.length +
         VehModel.vecCar.length +
@@ -205,6 +216,10 @@ class CheckVehiclesValidation {
               content:
                   'ليس لديك أى مركبات . لذلك يجب إختيار "لا يوجد سيارات !!!!"'));
     } else {
+      if (userSurveysProvider.userSurveyStatus == 'not filled') {
+        surveys.addNotFilledSurvey(surveyPt.data);
+        debugPrint('addNotFilledSurvey');
+      }
       Navigator.push(
         context,
         MaterialPageRoute(

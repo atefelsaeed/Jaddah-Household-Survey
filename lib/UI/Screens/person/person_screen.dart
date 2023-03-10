@@ -14,6 +14,8 @@ import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Providers/survey_hhs.dart';
+import '../../../Providers/surveys.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
@@ -745,6 +747,17 @@ class _PersonScreenState extends State<PersonScreen> {
                                   showError();
                                 }
                               });
+                              UserSurveysProvider userSurveysProvider =
+                              Provider.of<UserSurveysProvider>(context, listen: false);
+                              SurveyPTProvider surveyPt =
+                              Provider.of<SurveyPTProvider>(context, listen: false);
+                              SurveysProvider surveys =
+                              Provider.of<SurveysProvider>(context, listen: false);
+
+                              if (userSurveysProvider.userSurveyStatus == 'not filled') {
+                                surveys.addNotFilledSurvey(surveyPt.data);
+                                debugPrint('addNotFilledSurvey');
+                              }
                             },
                             isWidget: true,
                             btnWidth: width(context) * .35,

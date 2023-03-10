@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/app_constants.dart';
+import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
+import 'package:jaddah_household_survey/Providers/surveys.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Helper/validator.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
+import '../../../Providers/user_surveys.dart';
 import '../../../UI/Screens/vechicles/vechicles_screen.dart';
 import '../VechelisData/veh_model.dart';
 
 class CheckHHSValidation {
   static validate(context) {
-    // if (HhsStatic.householdAddress.hhsAddressLat == null ||
-    //     HhsStatic.householdAddress.hhsAddressLat == "") {
-    //   return Validator.showSnack(context, " يجب إخيار! الاحداثيات أولا !");
-    // }
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    SurveyPTProvider surveyPt =
+        Provider.of<SurveyPTProvider>(context, listen: false);
+    SurveysProvider surveys =
+        Provider.of<SurveysProvider>(context, listen: false);
+
     if (HhsStatic.householdQuestions.hhsDwellingType == null ||
         HhsStatic.householdQuestions.hhsDwellingType == "") {
       return Validator.showSnack(context, " يجب إخيار! 1.وصف المسكن؟ ");
@@ -36,8 +44,12 @@ class CheckHHSValidation {
       return Validator.showSnack(context,
           ".يجب إخيار ! 9.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟");
     } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const VehiclesScreen()));
+      if (userSurveysProvider.userSurveyStatus == 'not filled') {
+        surveys.addNotFilledSurvey(surveyPt.data);
+        debugPrint('addNotFilledSurvey');
+      }
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const VehiclesScreen()));
     }
   }
 }
