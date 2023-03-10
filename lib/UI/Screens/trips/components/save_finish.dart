@@ -5,7 +5,7 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/custom_buttton.dart';
 
 class SaveAndFinish {
-  static saveAndFinish(context, List<String> list) {
+  static saveAndFinish(context, List<String> list,Function function) {
     return showDialog(
       context: context,
       barrierDismissible: false,
@@ -15,8 +15,8 @@ class SaveAndFinish {
         title: const Center(child: Text('هل أنت متأكد !!!')),
         content: Text("''"
             "هؤلاء الافراد ليس لديهم رحلات\n"
-            "${list.toString()}"
-            "هل توافق على حفظ الاستمارة من غير رحلات هؤلاء الافراد"
+            "${list.toString()}\n\n"
+            "هل توافق على حفظ الاستمارة من غير رحلات هؤلاء الافراد !!"
             ""
             "''"),
         actions: <Widget>[
@@ -24,17 +24,19 @@ class SaveAndFinish {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               DefaultButton(
-                function: () { Navigator.of(context).pop(false);},
+                function: () {
+                  Navigator.of(context).pop(false);
+                },
                 isWidget: true,
-                text: 'أوافق',
+                text: 'لا أوافق',
                 background: ColorManager.primaryColor,
               ),
               AppSize.spaceWidth3(context),
               DefaultButton(
-                function: () => Navigator.of(context).pop(false),
+                function: () => function(),
                 // textColor: ColorManager.yellowLiner,
                 isWidget: true,
-                text: 'لا أوافق',
+                text: 'أوافق',
                 background: ColorManager.grayColor,
               ),
             ],

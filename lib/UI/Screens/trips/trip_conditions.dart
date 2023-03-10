@@ -162,7 +162,11 @@ class TripConditions {
   }
 
   ///
-  bool personWithoutTrip(int i, context) {
+  bool personWithoutTrip({
+    required int i,
+  required BuildContext context,
+    required Function function,
+  }) {
     var bas = TripModeList.tripModeList[i];
     List tripPersons = bas.person;
     List tripOwner = [];
@@ -175,7 +179,7 @@ class TripConditions {
       }
     }
     if (personsWithoutTrip.isNotEmpty) {
-      SaveAndFinish.saveAndFinish(context, personsWithoutTrip);
+      SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
       return false;
     } else {
       return true;
