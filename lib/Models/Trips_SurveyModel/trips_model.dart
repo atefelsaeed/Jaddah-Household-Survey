@@ -20,6 +20,7 @@ class TripsModel {
       TextEditingController();
   TextEditingController taxiTravelTypeEditingControl = TextEditingController();
   List<String> person = [];
+  List<String> mainPerson = [];
   List<dynamic> chosenFriendPerson = [];
   String chosenPerson = "";
   Map friendPerson = {
@@ -112,6 +113,7 @@ class TripsModel {
 
   TripsModel({
     required this.person,
+    required this.mainPerson,
     required this.isHome,
     required this.isHomeEnding,
     required this.chosenFriendPerson,

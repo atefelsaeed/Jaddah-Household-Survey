@@ -190,6 +190,7 @@ class _TripScreenState extends State<TripScreen> {
                         function: () {
                           setState(() {
                             TripModeList.tripModeList.add(TripsModel(
+                              mainPerson: [],
                               chosenPerson: '',
                               isTravelAlone: null,
                               purposeOfBeingThere2: {
