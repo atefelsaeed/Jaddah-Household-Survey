@@ -41,7 +41,7 @@ class SurveyPTProvider extends SurveyProvider {
 
   Future getAllLocalData() async {
     try {
-      surveyAllData = await SurveyPtOperations().getSurveyPtAllItems();
+      // surveyAllData = await SurveyPtOperations().getSurveyPtAllItems();
       print(surveyAllData!.length);
       notifyListeners();
     } catch (ex) {

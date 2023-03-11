@@ -7,13 +7,34 @@ import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dar
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/list_view_check_box_orange.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
+import '../../../../Data/app_constants.dart';
 import '../../../Widgets/show_dialog_error.dart';
 
 class TripProvider extends ChangeNotifier {
   List<String> personTrip = [];
+
+  getTripsDataUpdated(context) async {
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+
+    final prefs = await SharedPreferences.getInstance();
+    bool? isFilled = prefs.getBool(AppConstants.isFilled);
+
+    if (isFilled != null && isFilled == true) {
+      debugPrint('Not Filled Survey');
+    } else if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+        AppConstants.isResetTrip == true)) {
+      getAllTripUpdated(context);
+      AppConstants.isResetTrip = false;
+      debugPrint('Edit Survey');
+    } else {
+      debugPrint('New Survey');
+    }
+  }
 
   ///
   getAllTripUpdated(BuildContext context) async {
@@ -252,7 +273,6 @@ class TripProvider extends ChangeNotifier {
       }
       TripModeList.tripModeList[0].mainPerson
           .add(PersonModelList.personModelList[i].personName.text);
-
     }
 
     list = TripModeList.tripModeList[0].person;

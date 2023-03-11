@@ -87,11 +87,12 @@ class _TripScreenState extends State<TripScreen> {
     validationService.initTrip();
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
-        AppConstants.isResetTrip == true)) {
-      validationService.getAllTripUpdated(context);
-      AppConstants.isResetTrip = false;
-    }
+    validationService.getTripsDataUpdated(context);
+    // if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+    //     AppConstants.isResetTrip == true)) {
+    //   validationService.getAllTripUpdated(context);
+    //   AppConstants.isResetTrip = false;
+    // }
   }
 
   @override
@@ -189,7 +190,7 @@ class _TripScreenState extends State<TripScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       DefaultButton(
-                        function: () {
+                        function: () async {
                           setState(() {
                             TripModeList.tripModeList.add(TripsModel(
                               mainPerson: [],
@@ -362,10 +363,12 @@ class _TripScreenState extends State<TripScreen> {
                               Provider.of<SurveysProvider>(context,
                                   listen: false);
 
-                          if (userSurveysProvider.userSurveyStatus ==
-                              'not filled') {
+                          final prefs = await SharedPreferences.getInstance();
+                          bool? isFilled = prefs.getBool(AppConstants.isFilled);
+
+                          if (isFilled != null && isFilled == true) {
                             surveys.addNotFilledSurvey(surveyPt.data);
-                            debugPrint('addNotFilledSurvey');
+                            debugPrint('addNotFilledSurvey Trip');
                           }
                         },
                         isWidget: true,

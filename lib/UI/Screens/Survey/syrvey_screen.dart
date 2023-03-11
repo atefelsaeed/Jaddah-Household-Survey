@@ -55,18 +55,19 @@ class _SurveyScreenState extends State<SurveyScreen> {
     super.initState();
     //Reset-to-empty-data
     EmptyHHS.resetHHS(context);
-    SurveyPtOperations().getSurveyPtAllItems();
 
     ///reset-values-for-editing
     final validationService =
         Provider.of<ActionSurveyProvider>(context, listen: false);
+
+    int id = widget.itemSurveyModel.id!;
+    validationService.resetHHSValues(editingController, context, id);
     //check-if-edit-or-new-survey
-    if ((widget.itemSurveyModel.status == 'edit' &&
-        AppConstants.isResetHHS == true)) {
-      print('first edit');
-      int id = widget.itemSurveyModel.id!;
-      validationService.resetHHSValues(editingController, context, id);
-    }
+    // if ((widget.itemSurveyModel.status == 'edit' &&
+    //     AppConstants.isResetHHS == true)) {
+    //   print('first edit');
+    //
+    // }
   }
 
   @override
@@ -167,7 +168,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                                     ActionButton(
                                       editingController: editingController,
                                       keyVal: _key,
-                                      id: widget.itemSurveyModel.id!.toString(),
+                                      id: widget.itemSurveyModel.id?.toString()??'1',
                                     ),
                                   ],
                                 )

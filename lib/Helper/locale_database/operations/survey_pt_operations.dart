@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,10 +13,11 @@ class SurveyPtOperations {
   //Add survey PT Table to database
   Future<int?> addItemToSurveyPtDatabase(Survey survey) async {
     Database? myDB = await db.db;
-    List<SurveyPT> list = await getSurveyPtAllItems();
+    SurveyPT list = await getSurveyPtAllItems();
 
     int? raw;
-    if (list.isEmpty) {
+    print("${list.id} && ${survey.id}");
+    if (list.id != survey.id) {
       raw = await myDB!.insert(
         DatabaseHelper.surveyPTTableName,
         survey.toJson(),
@@ -22,6 +25,7 @@ class SurveyPtOperations {
       );
     } else {
       raw = await update(survey);
+      log(survey.toJson().toString());
     }
 
     debugPrint('Add Item To Survey PT Database');
@@ -42,16 +46,19 @@ class SurveyPtOperations {
   }
 
   //Get all survey PT Table from the database
-  Future<List<SurveyPT>> getSurveyPtAllItems() async {
+  Future<SurveyPT> getSurveyPtAllItems() async {
     Database? myDB = await db.db;
     var response = await myDB!.query(DatabaseHelper.surveyPTTableName);
     List<SurveyPT>? list =
         List.from(response).map((e) => SurveyPT.fromJson(e)).toList();
-
-    debugPrint('Get Survey PT DB');
-    debugPrint(list.toString());
-    debugPrint(list.length.toString());
-    return list;
+    if (list.isNotEmpty) {
+      debugPrint('Get Survey PT DB');
+      log(list.first.toJson().toString());
+      debugPrint(list.length.toString());
+      return list.first;
+    } else {
+      return SurveyPT();
+    }
   }
 
   //Delete deleteSurveyPTTable

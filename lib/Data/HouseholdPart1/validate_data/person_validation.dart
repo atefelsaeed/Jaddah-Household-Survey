@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Helper/validator.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Providers/survey_hhs.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../../UI/Screens/trips/trip_screen.dart';
+import '../../app_constants.dart';
 import '../PersonData/person_model_list.dart';
 
 class CheckPersonValidation {
-  static validatePerson(context) {
+  static validatePerson(context) async {
     var length = PersonModelList.personModelList.length;
 
     for (int e = 0; e <= length; e++) {
@@ -45,18 +47,20 @@ class CheckPersonValidation {
               " يجب إخيار! هل لديك أي إعاقة / احتياجات خاصة لحركة النقل؟");
         }
       } else {
-        UserSurveysProvider userSurveysProvider =
-        Provider.of<UserSurveysProvider>(context, listen: false);
         SurveyPTProvider surveyPt =
         Provider.of<SurveyPTProvider>(context, listen: false);
         SurveysProvider surveys =
         Provider.of<SurveysProvider>(context, listen: false);
 
-        if (userSurveysProvider.userSurveyStatus == 'not filled') {
+
+        final prefs = await SharedPreferences.getInstance();
+        bool? isFilled = prefs.getBool(AppConstants.isFilled);
+
+        if (isFilled != null && isFilled == true) {
           surveys.addNotFilledSurvey(surveyPt.data);
-          debugPrint('addNotFilledSurvey');
+          debugPrint('addNotFilledSurvey Person');
         }
-        print('navigate');
+          print('navigate');
         Navigator.push(
           context,
           MaterialPageRoute(

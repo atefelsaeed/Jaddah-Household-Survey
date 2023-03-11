@@ -220,31 +220,37 @@ class UserSurveysProvider with ChangeNotifier {
     }
   }
 
+  Future<bool> getNotFilledSurvey() async {
+    _surveyPT  = await SurveyPtOperations().getSurveyPtAllItems();
+    log(_surveyPT.toJson().toString());
+
+    debugPrint('set value');
+    return true;
+  }
+
   //============Get-Survey-By-ID================================
   Future<bool> getSurveyByID(int id) async {
-
-      loading = true;
-      Response response = await APIHelper.getData(
-        url: "${APIRouting.getSingleSurvay}$id",
-      );
-      debugPrint(response.body.toString());
-      if (response.statusCode == 200) {
-        Map<String, dynamic> data = json.decode(response.body);
-        debugPrint("Success");
-        _surveyPT = SurveyPT.fromJsonAPI(data);
-        print("_surveyPT.hhsSeparateFamilies!.length");
-        print(_surveyPT.hhsSeparateFamilies!.length);
-        debugPrint("Success");
-        loading = false;
-        notifyListeners();
-        return true;
-      } else {
-        debugPrint('error');
-      }
+    loading = true;
+    Response response = await APIHelper.getData(
+      url: "${APIRouting.getSingleSurvay}$id",
+    );
+    debugPrint(response.body.toString());
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = json.decode(response.body);
+      debugPrint("Success");
+      _surveyPT = SurveyPT.fromJsonAPI(data);
+      print("_surveyPT.hhsSeparateFamilies!.length");
+      print(_surveyPT.hhsSeparateFamilies!.length);
+      debugPrint("Success");
       loading = false;
       notifyListeners();
-      return false;
-
+      return true;
+    } else {
+      debugPrint('error');
+    }
+    loading = false;
+    notifyListeners();
+    return false;
   }
 
   //============Update-Survey===================================

@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../../Data/app_constants.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/Vehicles_SurveyModel/vehicles_body_type.dart';
+import '../../../../Providers/user_surveys.dart';
 import '../reset_values.dart';
 
 class VecProvider extends ChangeNotifier {
@@ -48,7 +51,7 @@ class VecProvider extends ChangeNotifier {
         case "كوستر":
           VehModel.vecCoaster.clear();
           break;
-        case  "اوتوبيس":
+        case "اوتوبيس":
           VehModel.vecBus.clear();
           break;
       }
@@ -639,8 +642,24 @@ class VecProvider extends ChangeNotifier {
 
   ///resetVechValues
   resetVechValues(context) async {
-    await ResetVechilesValues.resetVechValues(context);
-    AppConstants.isResetVec = false;
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+
+    final prefs = await SharedPreferences.getInstance();
+    bool? isFilled = prefs.getBool(AppConstants.isFilled);
+
+    if (isFilled != null && isFilled == true) {
+      debugPrint('Not Filled Survey');
+      await ResetVechilesValues.resetVechValues(context);
+    } else if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+        AppConstants.isResetVec == true)) {
+      debugPrint('Edit Survey');
+      await ResetVechilesValues.resetVechValues(context);
+      AppConstants.isResetVec = false;
+    } else {
+      debugPrint('New Survey');
+    }
+
     notifyListeners();
   }
 }

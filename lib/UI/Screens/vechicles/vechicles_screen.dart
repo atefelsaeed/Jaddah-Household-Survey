@@ -30,12 +30,12 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     // TODO: implement initState
     super.initState();
     final validationService = Provider.of<VecProvider>(context, listen: false);
-    UserSurveysProvider userSurveysProvider =
-        Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
-        AppConstants.isResetVec == true)) {
-      validationService.resetVechValues(context);
-    }
+
+    validationService.resetVechValues(context);
+
+    // if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+    //     AppConstants.isResetVec == true)) {
+    // }
   }
 
   @override

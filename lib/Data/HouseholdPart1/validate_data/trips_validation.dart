@@ -198,9 +198,12 @@ class CheckTripsValidation {
           SurveysProvider surveys =
           Provider.of<SurveysProvider>(context, listen: false);
 
-          if (userSurveysProvider.userSurveyStatus == 'not filled') {
+          final prefs = await SharedPreferences.getInstance();
+          bool? isFilled = prefs.getBool(AppConstants.isFilled);
+
+          if (isFilled != null && isFilled == true) {
             surveys.addNotFilledSurvey(surveyPt.data);
-            debugPrint('addNotFilledSurvey');
+            debugPrint('addNotFilledSurvey Trip');
           }
           if (!TripConditions().personWithoutTrip(
             i: e,

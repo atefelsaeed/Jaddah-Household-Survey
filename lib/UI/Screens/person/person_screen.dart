@@ -9,6 +9,7 @@ import 'package:jaddah_household_survey/UI/Screens/person/components/default_ent
 import 'package:jaddah_household_survey/UI/Screens/person/reset_person.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
@@ -60,11 +61,12 @@ class _PersonScreenState extends State<PersonScreen> {
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
-        AppConstants.isResetPerson == true)) {
-      validationService.getAllPeronUpdated(context);
-      AppConstants.isResetPerson = false;
-    }
+    validationService.getAllPeronUpdated(context);
+    // if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+    //     AppConstants.isResetPerson == true)) {
+    //   validationService.getAllPeronUpdated(context);
+    //   AppConstants.isResetPerson = false;
+    // }
   }
 
   void showError() => showDialog<void>(
@@ -417,179 +419,177 @@ class _PersonScreenState extends State<PersonScreen> {
                                                     debugPrint(p.toString());
                                                   },
                                                 ),
-                                      PersonModelList.personModelList[i].personalQuestion!.mainOccupationType == "عاطلين عن العمل" ||
-
-                                                      PersonModelList
-                                                              .personModelList[
-                                                                  i]
-                                                              .personalQuestion!
-                                                              .mainOccupationType ==
-                                                          "شخص البيت" ||
-                                                      PersonModelList
-                                                              .personModelList[
-                                                                  i]
-                                                              .personalQuestion!
-                                                              .mainOccupationType ==
-                                                          "طفل فى الحضانة" ||
-                                                      PersonModelList
-                                                              .personModelList[
-                                                                  i]
-                                                              .personalQuestion!
-                                                              .mainOccupationType ==
-                                                          "طفل ليس فى الحضانة" ||
-                                                      PersonModelList
-                                                              .personModelList[
-                                                                  i]
-                                                              .personalQuestion!
-                                                              .mainOccupationType ==
-                                                          "رفض" ||
-                                                      PersonModelList
-                                                              .personModelList[
-                                                                  i]
-                                                              .personalQuestion!
-                                                              .mainOccupationType ==
-                                                          "معاق / مريض"
-                                                  ? Container()
-                                                  : Column(
-                                                      children: [
+                                      PersonModelList
+                                                      .personModelList[i]
+                                                      .personalQuestion!
+                                                      .mainOccupationType ==
+                                                  "عاطلين عن العمل" ||
+                                              PersonModelList
+                                                      .personModelList[i]
+                                                      .personalQuestion!
+                                                      .mainOccupationType ==
+                                                  "شخص البيت" ||
+                                              PersonModelList
+                                                      .personModelList[i]
+                                                      .personalQuestion!
+                                                      .mainOccupationType ==
+                                                  "طفل فى الحضانة" ||
+                                              PersonModelList
+                                                      .personModelList[i]
+                                                      .personalQuestion!
+                                                      .mainOccupationType ==
+                                                  "طفل ليس فى الحضانة" ||
+                                              PersonModelList
+                                                      .personModelList[i]
+                                                      .personalQuestion!
+                                                      .mainOccupationType ==
+                                                  "رفض" ||
+                                              PersonModelList
+                                                      .personModelList[i]
+                                                      .personalQuestion!
+                                                      .mainOccupationType ==
+                                                  "معاق / مريض"
+                                          ? Container()
+                                          : Column(
+                                              children: [
+                                                PersonModelList
+                                                                .personModelList[
+                                                                    i]
+                                                                .personalQuestion!
+                                                                .mainOccupationType ==
+                                                            "طالب - مدرسة ابتدائية" ||
                                                         PersonModelList
-                                                                        .personModelList[
-                                                                            i]
-                                                                        .personalQuestion!
-                                                                        .mainOccupationType ==
-                                                                    "طالب - مدرسة ابتدائية" ||
-                                                                PersonModelList
-                                                                        .personModelList[
-                                                                            i]
-                                                                        .personalQuestion!
-                                                                        .mainOccupationType ==
-                                                                    "طالب - مدرسة متوسطة" ||
-                                                                PersonModelList
-                                                                        .personModelList[
-                                                                            i]
-                                                                        .personalQuestion!
-                                                                        .mainOccupationType ==
-                                                                    "طالب - مدرسة ثانوية"
-                                                            ? DropDownFormInput(
-                                                                label: PersonModelList
-                                                                            .personModelList[
-                                                                                i]
-                                                                            .occupationModel!
-                                                                            .occupationSector !=
-                                                                        ''
-                                                                    ? Text(PersonModelList
-                                                                            .personModelList[
-                                                                                i]
-                                                                            .occupationModel!
-                                                                            .occupationSector ??
-                                                                        '')
-                                                                    : const Text(
-                                                                        'إختار'),
-                                                                hint:
-                                                                    "لو عمل ما هو قطا ع العمل",
-                                                                options: PersonData
-                                                                    .occupationSectorSchool[
-                                                                        occupationSectorKey]!
-                                                                    .toList(),
-                                                                onChange:
-                                                                    (String?
-                                                                        p) {
-                                                                  provider
-                                                                      .occupationSector(
-                                                                          i, p);
-                                                                },
-                                                              )
-                                                            : PersonModelList
-                                                                            .personModelList[
-                                                                                i]
-                                                                            .personalQuestion!
-                                                                            .mainOccupationType ==
-                                                                        " طالب - الكلية: بدوام كامل (لا يعمل)"||PersonModelList
-                  .personModelList[
-              i]
-                  .personalQuestion!
-                  .mainOccupationType ==
-              "طالب - جامعي: دوام كامل (لا يعمل) "
-
-              ? DropDownFormInput(
-                                                                    label: PersonModelList.personModelList[i].occupationModel!.occupationSector !=
-                                                                            ''
-                                                                        ? Text(PersonModelList.personModelList[i].occupationModel!.occupationSector ??
-                                                                            '')
-                                                                        : const Text(
-                                                                            'إختار'),
-                                                                    hint:
-                                                                        "لو عمل ما هو قطا ع العمل",
-                                                                    options: PersonData
-                                                                        .occupationSectorUnveristy[
-                                                                            occupationSectorKey]!
-                                                                        .toList(),
-                                                                    onChange:
-                                                                        (String?
-                                                                            p) {
-                                                                      provider
-                                                                          .occupationSector(
-                                                                              i,
-                                                                              p);
-                                                                    },
-                                                                  )
-                                                                : DropDownFormInput(
-                                                                    label: PersonModelList.personModelList[i].occupationModel!.occupationSector !=
-                                                                            ''
-                                                                        ? Text(PersonModelList.personModelList[i].occupationModel!.occupationSector ??
-                                                                            '')
-                                                                        : const Text(
-                                                                            'إختار'),
-                                                                    hint:
-                                                                        "لو عمل ما هو قطا ع العمل",
-                                                                    options: PersonData
-                                                                        .occupationSector[
-                                                                            occupationSectorKey]!
-                                                                        .toList(),
-                                                                    onChange:
-                                                                        (String?
-                                                                            p) {
-                                                                      provider
-                                                                          .occupationSector(
-                                                                              i,
-                                                                              p);
-                                                                    },
-                                                                  ),
-                                                        AppSize.spaceHeight2(
-                                                            context),
-                                                        PersonConditions()
-                                                                    .checkOccupationSectorOther(
-                                                                        i) ==
-                                                                true
-                                                            ? MyTextForm(
-                                                                onTap: () {},
-                                                                controller: PersonModelList
+                                                                .personModelList[
+                                                                    i]
+                                                                .personalQuestion!
+                                                                .mainOccupationType ==
+                                                            "طالب - مدرسة متوسطة" ||
+                                                        PersonModelList
+                                                                .personModelList[
+                                                                    i]
+                                                                .personalQuestion!
+                                                                .mainOccupationType ==
+                                                            "طالب - مدرسة ثانوية"
+                                                    ? DropDownFormInput(
+                                                        label: PersonModelList
                                                                     .personModelList[
                                                                         i]
                                                                     .occupationModel!
-                                                                    .occupationSectorController,
-                                                                label:
-                                                                    " قطاع العمل",
-                                                                onChanged:
-                                                                    (val) {
-                                                                  PersonModelList
-                                                                      .personModelList[
-                                                                          i]
-                                                                      .occupationModel!
-                                                                      .occupationSector = val;
-                                                                },
-                                                              )
-                                                            : Container(),
-                                                      ],
-                                                    )
-
+                                                                    .occupationSector !=
+                                                                ''
+                                                            ? Text(PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .occupationModel!
+                                                                    .occupationSector ??
+                                                                '')
+                                                            : const Text(
+                                                                'إختار'),
+                                                        hint:
+                                                            "لو عمل ما هو قطا ع العمل",
+                                                        options: PersonData
+                                                            .occupationSectorSchool[
+                                                                occupationSectorKey]!
+                                                            .toList(),
+                                                        onChange: (String? p) {
+                                                          provider
+                                                              .occupationSector(
+                                                                  i, p);
+                                                        },
+                                                      )
+                                                    : PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .personalQuestion!
+                                                                    .mainOccupationType ==
+                                                                " طالب - الكلية: بدوام كامل (لا يعمل)" ||
+                                                            PersonModelList
+                                                                    .personModelList[
+                                                                        i]
+                                                                    .personalQuestion!
+                                                                    .mainOccupationType ==
+                                                                "طالب - جامعي: دوام كامل (لا يعمل) "
+                                                        ? DropDownFormInput(
+                                                            label: PersonModelList
+                                                                        .personModelList[
+                                                                            i]
+                                                                        .occupationModel!
+                                                                        .occupationSector !=
+                                                                    ''
+                                                                ? Text(PersonModelList
+                                                                        .personModelList[
+                                                                            i]
+                                                                        .occupationModel!
+                                                                        .occupationSector ??
+                                                                    '')
+                                                                : const Text(
+                                                                    'إختار'),
+                                                            hint:
+                                                                "لو عمل ما هو قطا ع العمل",
+                                                            options: PersonData
+                                                                .occupationSectorUnveristy[
+                                                                    occupationSectorKey]!
+                                                                .toList(),
+                                                            onChange:
+                                                                (String? p) {
+                                                              provider
+                                                                  .occupationSector(
+                                                                      i, p);
+                                                            },
+                                                          )
+                                                        : DropDownFormInput(
+                                                            label: PersonModelList
+                                                                        .personModelList[
+                                                                            i]
+                                                                        .occupationModel!
+                                                                        .occupationSector !=
+                                                                    ''
+                                                                ? Text(PersonModelList
+                                                                        .personModelList[
+                                                                            i]
+                                                                        .occupationModel!
+                                                                        .occupationSector ??
+                                                                    '')
+                                                                : const Text(
+                                                                    'إختار'),
+                                                            hint:
+                                                                "لو عمل ما هو قطا ع العمل",
+                                                            options: PersonData
+                                                                .occupationSector[
+                                                                    occupationSectorKey]!
+                                                                .toList(),
+                                                            onChange:
+                                                                (String? p) {
+                                                              provider
+                                                                  .occupationSector(
+                                                                      i, p);
+                                                            },
+                                                          ),
+                                                AppSize.spaceHeight2(context),
+                                                PersonConditions()
+                                                            .checkOccupationSectorOther(
+                                                                i) ==
+                                                        true
+                                                    ? MyTextForm(
+                                                        onTap: () {},
+                                                        controller: PersonModelList
+                                                            .personModelList[i]
+                                                            .occupationModel!
+                                                            .occupationSectorController,
+                                                        label: " قطاع العمل",
+                                                        onChanged: (val) {
+                                                          PersonModelList
+                                                              .personModelList[
+                                                                  i]
+                                                              .occupationModel!
+                                                              .occupationSector = val;
+                                                        },
+                                                      )
+                                                    : Container(),
+                                              ],
+                                            )
                                     ],
                                   ),
-
-
-
-
-
 
                                   PersonModelList.personModelList[i]
                                               .occupationModel!.isEmployee ==
@@ -628,7 +628,7 @@ class _PersonScreenState extends State<PersonScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           DefaultButton(
-                            function: () {
+                            function: () async {
                               setState(() {
                                 int x = int.parse(
                                         HhsStatic.peopleAdults18.toString()) +
@@ -745,15 +745,23 @@ class _PersonScreenState extends State<PersonScreen> {
                                 }
                               });
                               UserSurveysProvider userSurveysProvider =
-                              Provider.of<UserSurveysProvider>(context, listen: false);
+                                  Provider.of<UserSurveysProvider>(context,
+                                      listen: false);
                               SurveyPTProvider surveyPt =
-                              Provider.of<SurveyPTProvider>(context, listen: false);
+                                  Provider.of<SurveyPTProvider>(context,
+                                      listen: false);
                               SurveysProvider surveys =
-                              Provider.of<SurveysProvider>(context, listen: false);
+                                  Provider.of<SurveysProvider>(context,
+                                      listen: false);
 
-                              if (userSurveysProvider.userSurveyStatus == 'not filled') {
+                              final prefs =
+                                  await SharedPreferences.getInstance();
+                              bool? isFilled =
+                                  prefs.getBool(AppConstants.isFilled);
+
+                              if (isFilled != null && isFilled == true) {
                                 surveys.addNotFilledSurvey(surveyPt.data);
-                                debugPrint('addNotFilledSurvey');
+                                debugPrint('addNotFilledSurvey Person');
                               }
                             },
                             isWidget: true,
@@ -770,6 +778,21 @@ class _PersonScreenState extends State<PersonScreen> {
                         children: [
                           DefaultButton(
                             function: () {
+                              UserSurveysProvider userSurveysProvider =
+                                  Provider.of<UserSurveysProvider>(context,
+                                      listen: false);
+                              SurveyPTProvider surveyPt =
+                                  Provider.of<SurveyPTProvider>(context,
+                                      listen: false);
+                              SurveysProvider surveys =
+                                  Provider.of<SurveysProvider>(context,
+                                      listen: false);
+
+                              if (userSurveysProvider.userSurveyStatus ==
+                                  'not filled') {
+                                surveys.addNotFilledSurvey(surveyPt.data);
+                                debugPrint('addNotFilledSurvey person');
+                              }
                               if (_key.currentState!.validate()) {
                                 _key.currentState!.save();
                                 SavePersonData.saveData(context);

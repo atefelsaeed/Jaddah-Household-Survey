@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
@@ -18,7 +20,6 @@ class EditingController {
   List<TextEditingController> q6peopleAdults18 = <TextEditingController>[
     TextEditingController()
   ];
-
 
   List<TextEditingController> q6peopleUnder18 = <TextEditingController>[
     TextEditingController()
@@ -47,9 +48,18 @@ class EditingController {
 c(EditingController editingController, BuildContext context, int id) async {
   UserSurveysProvider surveyPt =
       Provider.of<UserSurveysProvider>(context, listen: false);
+
   final validationService =
       Provider.of<ActionSurveyProvider>(context, listen: false);
-  await surveyPt.getSurveyByID(id);
+  final prefs = await SharedPreferences.getInstance();
+  bool? isFilled = prefs.getBool(AppConstants.isFilled);
+  if (isFilled != null && isFilled == true) {
+    await surveyPt.getNotFilledSurvey();
+  } else if(surveyPt.userSurveyStatus== 'edit' &&
+  AppConstants.isResetHHS == true){
+    await surveyPt.getSurveyByID(id);
+  }
+
   QuestionsData.qh4 = {
     "? How many separate families live at this address": [
       {"value": '1', "isChick": false},
@@ -90,7 +100,7 @@ c(EditingController editingController, BuildContext context, int id) async {
 
   ///HHSQ2
   HhsStatic.householdQuestions.hhsIsDwellingOther!.text =
-      surveyPt.surveyPT.householdQuestions.hhsIsDwelling!;
+      surveyPt.surveyPT.householdQuestions.hhsIsDwelling ?? '';
   HhsStatic.householdQuestions.hhsIsDwelling =
       surveyPt.surveyPT.householdQuestions.hhsIsDwelling; //solve
 //HhsStatic.householdQuestions.hhsNumberApartments=surveyPt.surveyPT!.householdQuestions.hhsNumberApartments.text;
@@ -102,7 +112,7 @@ c(EditingController editingController, BuildContext context, int id) async {
   HhsStatic.householdAddress.hhsPhone =
       surveyPt.surveyPT.header.householdAddress.hhsPhone;
   VehModel.nearestPublicTransporter =
-      surveyPt.surveyPT.vehiclesData.nearestBusStop!;
+      surveyPt.surveyPT.vehiclesData.nearestBusStop ?? '';
 
   print("hhsNumberSeparateFamilies");
   print(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies);
@@ -164,12 +174,12 @@ c(EditingController editingController, BuildContext context, int id) async {
   if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas
       .toString()
       .isNotEmpty) {
-    if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas
-            .toString() ==
+    if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas.toString() ==
         'لا') {
       QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][1]["isChick"] = true;
       HhsStatic.householdQuestions.hhsIsDemolishedAreas = false;
-    }else if (surveyPt.surveyPT.householdQuestions.hhsDemolishedAreas!.isNotEmpty) {
+    } else if (surveyPt
+        .surveyPT.householdQuestions.hhsDemolishedAreas!.isNotEmpty) {
       QuestionsData.qh7_2[QuestionsData.qh7_2.keys.first][0]["isChick"] = true;
       HhsStatic.householdQuestions.hhsIsDemolishedAreas = true;
     }

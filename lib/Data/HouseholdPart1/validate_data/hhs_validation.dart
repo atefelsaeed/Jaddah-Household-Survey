@@ -3,15 +3,17 @@ import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Helper/validator.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../../UI/Screens/vechicles/vechicles_screen.dart';
 import '../VechelisData/veh_model.dart';
+import '../save_data.dart';
 
 class CheckHHSValidation {
-  static validate(context) {
+  static validate(context) async {
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
     SurveyPTProvider surveyPt =
@@ -44,9 +46,15 @@ class CheckHHSValidation {
       return Validator.showSnack(context,
           ".يجب إخيار ! 9.كم تبعد اقرب محطة حافلات نقل عام عن منزلك سيرا على الاقدام ؟");
     } else {
-      if (userSurveysProvider.userSurveyStatus == 'not filled') {
+      final prefs = await SharedPreferences.getInstance();
+      bool? isFilled = prefs.getBool(AppConstants.isFilled);
+      print('isFiiled ::: $isFilled');
+      if (isFilled != null && isFilled == true) {
+        SavePersonData.saveData(context);
+        SaveVehiclesData.saveData(context);
+        SaveTripsData.saveData(context);
         surveys.addNotFilledSurvey(surveyPt.data);
-        debugPrint('addNotFilledSurvey');
+        debugPrint('addNotFilledSurvey HHS');
       }
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const VehiclesScreen()));
