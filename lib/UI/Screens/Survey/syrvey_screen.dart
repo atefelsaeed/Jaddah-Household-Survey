@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/components/house_hold_
 import 'package:jaddah_household_survey/UI/Screens/Survey/components/qh9.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../../../Models/user_serveys_model.dart';
@@ -33,12 +35,12 @@ import 'components/hhs_qh4.dart';
 import 'components/hhs_qh62.dart';
 
 class SurveyScreen extends StatefulWidget {
-  const SurveyScreen({
+   SurveyScreen({
     super.key,
     required this.itemSurveyModel,
   });
 
-  final UserSurveysModelData itemSurveyModel;
+   UserSurveysModelData itemSurveyModel;
 
   @override
   State<SurveyScreen> createState() => _SurveyScreenState();
@@ -57,8 +59,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
     EmptyHHS.resetHHS(context);
 
     ///reset-values-for-editing
+    //init();
+
     final validationService =
-        Provider.of<ActionSurveyProvider>(context, listen: false);
+    Provider.of<ActionSurveyProvider>(context, listen: false);
 
     int id = widget.itemSurveyModel.id!;
     validationService.resetHHSValues(editingController, context, id);
@@ -68,6 +72,31 @@ class _SurveyScreenState extends State<SurveyScreen> {
     //   print('first edit');
     //
     // }
+  }
+
+  init() async {
+await     saveUpdateUser();
+  }
+
+  saveUpdateUser() async {
+    final prefs = await SharedPreferences.getInstance();
+  prefs.getString(
+      "UserSurveysModelData",
+ );
+  print(prefs.get("UserSurveysModelData"));
+  String? data= prefs.getString("UserSurveysModelData");
+
+    Map<String, dynamic> valueMap = json.decode(data!);
+    print(valueMap);
+widget.itemSurveyModel=UserSurveysModelData.fromJson(valueMap);
+print(UserSurveysModelData.fromJson(valueMap));
+print( widget.itemSurveyModel.id);
+    final validationService =
+    Provider.of<ActionSurveyProvider>(context, listen: false);
+    int? id = widget.itemSurveyModel.id;
+    print(id);
+    //validationService.resetHHSValues(editingController, context, id!);
+
   }
 
   @override

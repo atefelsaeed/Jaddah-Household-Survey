@@ -61,6 +61,7 @@ class ItemUserSurvey extends StatelessWidget {
                   function: () {
                     userSurveysProvider.userSurveyStatus =
                         itemSurveyModel.status;
+                    userSurveysProvider.saveUpdateUser(itemSurveyModel);
                     debugPrint(userSurveysProvider.userSurveyStatus.toString());
                     userSurveysProvider.index = index;
                   },

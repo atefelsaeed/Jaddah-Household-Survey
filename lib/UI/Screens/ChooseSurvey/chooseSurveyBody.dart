@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -123,13 +125,22 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                         final prefs = await SharedPreferences.getInstance();
                         bool? isFilled = prefs.getBool(AppConstants.isFilled);
 
+                        prefs.getString(
+                          "UserSurveysModelData",
+                        );
+                        print(prefs.get("UserSurveysModelData"));
+                        String? data= prefs.getString("UserSurveysModelData");
+
+                        Map<String, dynamic> valueMap = json.decode(data!);
+
+                        UserSurveysModelData userSurveysModelData  =UserSurveysModelData.fromJson(valueMap);
                         if (isFilled != null && isFilled == true) {
                           if (mounted) {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => SurveyScreen(
-                                  itemSurveyModel: UserSurveysModelData(),
+                                  itemSurveyModel: userSurveysModelData,
                                 ),
                               ),
                             );

@@ -253,6 +253,15 @@ class UserSurveysProvider with ChangeNotifier {
     return false;
   }
 
+  saveUpdateUser(UserSurveysModelData userSurveysModelData) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(
+      "UserSurveysModelData",
+      json.encode(userSurveysModelData),
+    );
+
+  }
+
   //============Update-Survey===================================
   Future<bool> updateSurvey(SurveyPT surveyPT) async {
     loading = true;
