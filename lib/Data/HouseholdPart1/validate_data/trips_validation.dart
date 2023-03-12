@@ -287,12 +287,13 @@ class CheckTripsValidation {
         //     }
         //   }
         // }
-        else {
-
-          print('kkkkkkkkkk');
-
+        // else {
+        //   return true;
+        //   print('kkkkkkkkkk');
+        // }
+        if (e + 1 == length) {
           if (!TripConditions().personWithoutTrip(
-            i: e,
+            i: e - 1,
             context: context,
             function: () async {
               //=======Add-survey-to-surveys-list================
@@ -309,21 +310,22 @@ class CheckTripsValidation {
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                         builder: (context) => const ChooseSurveysScreen()),
-                        (Route<dynamic> route) => false);
-              }
-              else if ((userSurvey.userSurveyStatus == "edit")) {
+                    (Route<dynamic> route) => false);
+              } else if ((userSurvey.userSurveyStatus == "edit")) {
                 debugPrint(userSurvey.userSurveyStatus.toString());
                 userSurvey.updateSurvey(surveyPt.data);
                 debugPrint('updateSurvey');
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                         builder: (context) => const ChooseSurveysScreen()),
-                        (Route<dynamic> route) => false);
+                    (Route<dynamic> route) => false);
               }
             },
           )) {
             // return null;
-          } else {}
+          } else {
+            return;
+          }
         }
       }
     }

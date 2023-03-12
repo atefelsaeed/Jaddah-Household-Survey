@@ -262,7 +262,6 @@ class TripProvider extends ChangeNotifier {
     var personlist = PersonModelList.personModelList.length;
     var seen = Set<String>();
     for (int i = 0; i < personlist; i++) {
-
       // TripModeList.tripModeList[0].person
       //     .add(PersonModelList.personModelList[i].personName.text);
       debugPrint('add person');
@@ -303,7 +302,6 @@ class TripProvider extends ChangeNotifier {
     print('list');
     print(list.toString());
     // list = TripModeList.tripModeList[0].person.where((student) => seen.add(student)).toList();
-
 
     notifyListeners();
   }
@@ -386,14 +384,14 @@ class TripProvider extends ChangeNotifier {
         for (int x = 0;
             x < TripModeList.tripModeList[index].person.length;
             x++) {
-          debugPrint('mainPerson');
-          debugPrint(
-              TripModeList.tripModeList[index].mainPerson.length.toString());
-          debugPrint(TripModeList.tripModeList[index].mainPerson[x].toString());
-          debugPrint('person');
-          debugPrint(TripModeList.tripModeList[index].person.length.toString());
-
-          debugPrint(TripModeList.tripModeList[index].person[x].toString());
+          // debugPrint('mainPerson');
+          // debugPrint(
+          //     TripModeList.tripModeList[index].mainPerson.length.toString());
+          // debugPrint(TripModeList.tripModeList[index].mainPerson[x].toString());
+          // debugPrint('person');
+          // debugPrint(TripModeList.tripModeList[index].person.length.toString());
+          //
+          // debugPrint(TripModeList.tripModeList[index].person[x].toString());
 
           if (TripModeList.tripModeList[index].person[x].toString() !=
               TripModeList.tripModeList[index].chosenPerson) {
