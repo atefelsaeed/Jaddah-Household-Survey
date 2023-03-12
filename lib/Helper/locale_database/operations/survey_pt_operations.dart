@@ -84,8 +84,8 @@ class SurveyPtOperations {
   //Delete deleteSurveyPTTableOffline
   Future<int> deleteSurveyPTTableOffline() async {
     Database? myDB = await db.db;
-    var raw = await myDB!.delete(DatabaseHelper.surveyPTTableOfflineName);
-    debugPrint('Delete Survey PT Table Offline');
+    var raw = await myDB!.delete("surveyPtOffline");
+    debugPrint('Delete Survey PT Table Offline $raw');
     return raw;
   }
 

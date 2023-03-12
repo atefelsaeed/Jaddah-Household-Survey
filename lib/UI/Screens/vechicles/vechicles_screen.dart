@@ -29,13 +29,20 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    final validationService = Provider.of<VecProvider>(context, listen: false);
-
-    validationService.resetVechValues(context);
+    // final validationService = Provider.of<VecProvider>(context, listen: false);
+    //
+    // validationService.resetVechValues(context);
 
     // if ((userSurveysProvider.userSurveyStatus == 'edit' &&
     //     AppConstants.isResetVec == true)) {
     // }
+    final validationService = Provider.of<VecProvider>(context, listen: false);
+    UserSurveysProvider userSurveysProvider =
+        Provider.of<UserSurveysProvider>(context, listen: false);
+    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+        AppConstants.isResetVec == true)) {
+      validationService.resetVechValues(context);
+    }
   }
 
   @override

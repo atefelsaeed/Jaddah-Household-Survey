@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Data/HouseholdPart1/empty_data/empty_hhs.dart';
@@ -17,7 +16,6 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dar
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../Helper/locale_database/operations/survey_pt_operations.dart';
 import '../../../Models/user_serveys_model.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../Widgets/exit_screen.dart';
@@ -55,23 +53,35 @@ class _SurveyScreenState extends State<SurveyScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+   //  //Reset-to-empty-data
+   //  EmptyHHS.resetHHS(context);
+   //
+   //  ///reset-values-for-editing
+   //  //init();
+   //
+   //  final validationService =
+   //  Provider.of<ActionSurveyProvider>(context, listen: false);
+   //
+   //  int id = widget.itemSurveyModel.id!;
+   //  validationService.resetHHSValues(editingController, context, id);
+   // // check-if-edit-or-new-survey
+   //  if ((widget.itemSurveyModel.status == 'edit' &&
+   //      AppConstants.isResetHHS == true)) {
+   //    print('first edit');
+   //  }
     //Reset-to-empty-data
     EmptyHHS.resetHHS(context);
 
     ///reset-values-for-editing
-    //init();
-
     final validationService =
     Provider.of<ActionSurveyProvider>(context, listen: false);
-
-    int id = widget.itemSurveyModel.id!;
-    validationService.resetHHSValues(editingController, context, id);
     //check-if-edit-or-new-survey
-    // if ((widget.itemSurveyModel.status == 'edit' &&
-    //     AppConstants.isResetHHS == true)) {
-    //   print('first edit');
-    //
-    // }
+    if ((widget.itemSurveyModel.status == 'edit' &&
+        AppConstants.isResetHHS == true)) {
+      print('first edit');
+      int id = widget.itemSurveyModel.id!;
+      validationService.resetHHSValues(editingController, context, id);
+    }
   }
 
   init() async {

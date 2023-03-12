@@ -9,14 +9,11 @@ import 'package:jaddah_household_survey/UI/Screens/person/components/default_ent
 import 'package:jaddah_household_survey/UI/Screens/person/reset_person.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/PersonData/person_data.dart';
 import '../../../Data/HouseholdPart1/PersonData/person_model_list.dart';
 import '../../../Data/HouseholdPart1/save_data.dart';
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
-import '../../../Providers/survey_hhs.dart';
-import '../../../Providers/surveys.dart';
 import '../../../Providers/user_surveys.dart';
 import '../../../Resources/colors.dart';
 import '../../Widgets/custom_buttton.dart';
@@ -61,12 +58,12 @@ class _PersonScreenState extends State<PersonScreen> {
         Provider.of<PersonProvider>(context, listen: false);
     UserSurveysProvider userSurveysProvider =
         Provider.of<UserSurveysProvider>(context, listen: false);
-    validationService.getAllPeronUpdated(context);
-    // if ((userSurveysProvider.userSurveyStatus == 'edit' &&
-    //     AppConstants.isResetPerson == true)) {
-    //   validationService.getAllPeronUpdated(context);
-    //   AppConstants.isResetPerson = false;
-    // }
+    // validationService.getAllPeronUpdated(context);
+    if ((userSurveysProvider.userSurveyStatus == 'edit' &&
+        AppConstants.isResetPerson == true)) {
+      validationService.getAllPeronUpdated(context);
+      AppConstants.isResetPerson = false;
+    }
   }
 
   void showError() => showDialog<void>(
@@ -744,25 +741,25 @@ class _PersonScreenState extends State<PersonScreen> {
                                   showError();
                                 }
                               });
-                              UserSurveysProvider userSurveysProvider =
-                                  Provider.of<UserSurveysProvider>(context,
-                                      listen: false);
-                              SurveyPTProvider surveyPt =
-                                  Provider.of<SurveyPTProvider>(context,
-                                      listen: false);
-                              SurveysProvider surveys =
-                                  Provider.of<SurveysProvider>(context,
-                                      listen: false);
-
-                              final prefs =
-                                  await SharedPreferences.getInstance();
-                              bool? isFilled =
-                                  prefs.getBool(AppConstants.isFilled);
-
-                              if (isFilled != null && isFilled == true) {
-                                surveys.addNotFilledSurvey(surveyPt.data);
-                                debugPrint('addNotFilledSurvey Person');
-                              }
+                              // UserSurveysProvider userSurveysProvider =
+                              //     Provider.of<UserSurveysProvider>(context,
+                              //         listen: false);
+                              // SurveyPTProvider surveyPt =
+                              //     Provider.of<SurveyPTProvider>(context,
+                              //         listen: false);
+                              // SurveysProvider surveys =
+                              //     Provider.of<SurveysProvider>(context,
+                              //         listen: false);
+                              //
+                              // final prefs =
+                              //     await SharedPreferences.getInstance();
+                              // bool? isFilled =
+                              //     prefs.getBool(AppConstants.isFilled);
+                              //
+                              // if (isFilled != null && isFilled == true) {
+                              //   surveys.addNotFilledSurvey(surveyPt.data);
+                              //   debugPrint('addNotFilledSurvey Person');
+                              // }
                             },
                             isWidget: true,
                             btnWidth: width(context) * .35,
@@ -778,21 +775,21 @@ class _PersonScreenState extends State<PersonScreen> {
                         children: [
                           DefaultButton(
                             function: () {
-                              UserSurveysProvider userSurveysProvider =
-                                  Provider.of<UserSurveysProvider>(context,
-                                      listen: false);
-                              SurveyPTProvider surveyPt =
-                                  Provider.of<SurveyPTProvider>(context,
-                                      listen: false);
-                              SurveysProvider surveys =
-                                  Provider.of<SurveysProvider>(context,
-                                      listen: false);
-
-                              if (userSurveysProvider.userSurveyStatus ==
-                                  'not filled') {
-                                surveys.addNotFilledSurvey(surveyPt.data);
-                                debugPrint('addNotFilledSurvey person');
-                              }
+                              // UserSurveysProvider userSurveysProvider =
+                              //     Provider.of<UserSurveysProvider>(context,
+                              //         listen: false);
+                              // SurveyPTProvider surveyPt =
+                              //     Provider.of<SurveyPTProvider>(context,
+                              //         listen: false);
+                              // SurveysProvider surveys =
+                              //     Provider.of<SurveysProvider>(context,
+                              //         listen: false);
+                              //
+                              // if (userSurveysProvider.userSurveyStatus ==
+                              //     'not filled') {
+                              //   surveys.addNotFilledSurvey(surveyPt.data);
+                              //   debugPrint('addNotFilledSurvey person');
+                              // }
                               if (_key.currentState!.validate()) {
                                 _key.currentState!.save();
                                 SavePersonData.saveData(context);

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/widgets/editing_controler3.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/HHSData/questions_data.dart';
 import '../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
@@ -51,15 +49,15 @@ c(EditingController editingController, BuildContext context, int id) async {
 
   final validationService =
       Provider.of<ActionSurveyProvider>(context, listen: false);
-  final prefs = await SharedPreferences.getInstance();
-  bool? isFilled = prefs.getBool(AppConstants.isFilled);
-  if (isFilled != null && isFilled == true) {
-    await surveyPt.getNotFilledSurvey();
-  } else if(surveyPt.userSurveyStatus== 'edit' &&
-  AppConstants.isResetHHS == true){
-    await surveyPt.getSurveyByID(id);
-  }
-
+  // final prefs = await SharedPreferences.getInstance();
+  // bool? isFilled = prefs.getBool(AppConstants.isFilled);
+  // if (isFilled != null && isFilled == true) {
+  //   await surveyPt.getNotFilledSurvey();
+  // } else if (surveyPt.userSurveyStatus == 'edit' &&
+  //     AppConstants.isResetHHS == true) {
+  //   await surveyPt.getSurveyByID(id);
+  // }
+  await surveyPt.getSurveyByID(id);
   QuestionsData.qh4 = {
     "? How many separate families live at this address": [
       {"value": '1', "isChick": false},
@@ -113,8 +111,10 @@ c(EditingController editingController, BuildContext context, int id) async {
       surveyPt.surveyPT.header.householdAddress.hhsPhone;
   VehModel.nearestPublicTransporter =
       surveyPt.surveyPT.vehiclesData.nearestBusStop ?? '';
-
+  debugPrint('nearestPublicTransporter');
+  debugPrint(surveyPt.surveyPT.vehiclesData.nearestBusStop);
   print("hhsNumberSeparateFamilies");
+
   print(surveyPt.surveyPT.householdQuestions.hhsNumberSeparateFamilies);
   for (int i = 1;
       i < QuestionsData.qh4[QuestionsData.qh4.keys.first]!.toList().length;
@@ -231,8 +231,7 @@ c(EditingController editingController, BuildContext context, int id) async {
       i++) {
     if (surveyPt.surveyPT.vehiclesData.nearestBusStop ==
         VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]["value"]) {
-      VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]["isChick"] =
-          true;
+      VehiclesData.q3VecData[VehiclesData.q3VecData.keys.first][i]["isChick"] = true;
     }
   }
 

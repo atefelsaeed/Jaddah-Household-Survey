@@ -258,6 +258,8 @@ class TripProvider extends ChangeNotifier {
 
   initTrip() {
     TripModeList.tripModeList[0].person.clear();
+    TripModeList.tripModeList[0].mainPerson.clear();
+
     list.clear();
 
     var personlist = PersonModelList.personModelList.length;
@@ -265,12 +267,26 @@ class TripProvider extends ChangeNotifier {
     for (int i = 0; i < personlist; i++) {
       // TripModeList.tripModeList[0].person
       //     .add(PersonModelList.personModelList[i].personName.text);
-      if (PersonModelList.personModelList[i].personalHeadData!.hasPasTrip ==
+      debugPrint('add person');
+      debugPrint(PersonModelList
+          .personModelList[i].personalHeadData?.refuseToTellAge
+          .toString());
+      if (PersonModelList
+              .personModelList[i].personalHeadData?.refuseToTellAge ==
           false) {
+        int age = int.parse(
+            PersonModelList.personModelList[i].personalHeadData!.age.text);
+        if (age >= 5) {
+          debugPrint('add person @');
+          TripModeList.tripModeList[0].person
+              .add(PersonModelList.personModelList[i].personName.text);
+          // notifyListeners();
+        }
+      } else {
         TripModeList.tripModeList[0].person
             .add(PersonModelList.personModelList[i].personName.text);
-        // notifyListeners();
       }
+
       TripModeList.tripModeList[0].mainPerson
           .add(PersonModelList.personModelList[i].personName.text);
     }
@@ -358,6 +374,15 @@ class TripProvider extends ChangeNotifier {
         for (int x = 0;
             x < TripModeList.tripModeList[index].mainPerson.length;
             x++) {
+          debugPrint('mainPerson');
+          debugPrint(
+              TripModeList.tripModeList[index].mainPerson.length.toString());
+          debugPrint(TripModeList.tripModeList[index].mainPerson[x].toString());
+          debugPrint('person');
+          debugPrint(TripModeList.tripModeList[index].person.length.toString());
+
+          debugPrint(TripModeList.tripModeList[index].person[x].toString());
+
           if (TripModeList.tripModeList[index].person[x].toString() !=
               TripModeList.tripModeList[index].chosenPerson) {
             TripModeList.tripModeList[index].friendPerson["friendPerson"].add({

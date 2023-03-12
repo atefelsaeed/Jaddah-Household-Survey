@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../Data/HouseholdPart1/empty_data.dart';
 import '../../../../Data/app_constants.dart';
@@ -110,8 +109,8 @@ class _NotFilledButtonState extends State<NotFilledButton> {
         AppConstants.isResetTrip = false;
         AppConstants.isResetVec = false;
         //Set isFilled bool value. To check if the user finished survey or not.
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setBool(AppConstants.isFilled, true);
+        // final prefs = await SharedPreferences.getInstance();
+        // prefs.setBool(AppConstants.isFilled, true);
         //Empty Survey cached values.
         HHSEmptyData.emptyData();
         if (mounted) {

@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/UI/Screens/Survey/editing_controller.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../Data/HouseholdPart1/VechelisData/vechelis_data.dart';
 import '../../../../Data/HouseholdPart1/VechelisData/veh_model.dart';
 import '../../../../Helper/validator.dart';
 import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Models/HHS_SurvyModels/survey_hhs.dart';
-import '../../../../Providers/user_surveys.dart';
 import '../widgets/editing_controler3.dart';
 import '../widgets/list_view_check_box_orange.dart';
 
@@ -39,21 +36,22 @@ class ActionSurveyProvider extends ChangeNotifier {
   }
 
   resetHHSValues(editingController, context, int id) async {
-    UserSurveysProvider surveyPt =
-        Provider.of<UserSurveysProvider>(context, listen: false);
-
-    final prefs = await SharedPreferences.getInstance();
-    bool? isFilled = prefs.getBool(AppConstants.isFilled);
-    if (isFilled != null && isFilled == true) {
-      debugPrint('Not Filled Survey');
-      await c(editingController, context, id);
-    } else if (surveyPt.userSurveyStatus == 'edit' &&
-        AppConstants.isResetHHS == true) {
-      debugPrint('Update Survey');
-      await c(editingController, context, id);
-    } else {
-      debugPrint('New Survey');
-    }
+    // UserSurveysProvider surveyPt =
+    //     Provider.of<UserSurveysProvider>(context, listen: false);
+    //
+    // final prefs = await SharedPreferences.getInstance();
+    // bool? isFilled = prefs.getBool(AppConstants.isFilled);
+    // if (isFilled != null && isFilled == true) {
+    //   debugPrint('Not Filled Survey');
+    //   await c(editingController, context, id);
+    // } else if (surveyPt.userSurveyStatus == 'edit' &&
+    //     AppConstants.isResetHHS == true) {
+    //   debugPrint('Update Survey');
+    //   await c(editingController, context, id);
+    // } else {
+    //   debugPrint('New Survey');
+    // }
+    await c(editingController, context, id);
     AppConstants.isResetHHS = false;
     notifyListeners();
   }

@@ -142,6 +142,7 @@ class UserSurveysProvider with ChangeNotifier {
   }
 
   bool loading = false;
+
   int index = 0;
 
   //============Fetch-All-User-Surveys-on-Search-Screen===============
@@ -221,7 +222,7 @@ class UserSurveysProvider with ChangeNotifier {
   }
 
   Future<bool> getNotFilledSurvey() async {
-    _surveyPT  = await SurveyPtOperations().getSurveyPtAllItems();
+    _surveyPT = await SurveyPtOperations().getSurveyPtAllItems();
     log(_surveyPT.toJson().toString());
 
     debugPrint('set value');
@@ -259,7 +260,6 @@ class UserSurveysProvider with ChangeNotifier {
       "UserSurveysModelData",
       json.encode(userSurveysModelData),
     );
-
   }
 
   //============Update-Survey===================================
@@ -284,6 +284,24 @@ class UserSurveysProvider with ChangeNotifier {
       loading = false;
       notifyListeners();
       return Future.error("couldn't reach server");
+    }
+  }
+
+  saveUpdateOffline() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    prefs.getString("UserSurveysModelData");
+    String? data = prefs.getString("UserSurveysModelData");
+
+    Map<String, dynamic> valueMap = json.decode(data!);
+    UserSurveysModelData userSurveysModelData =
+        UserSurveysModelData.fromJson(valueMap);
+    for (var element in userSurveys) {
+      if (element.id == userSurveysModelData.id) {
+        // userSurvey.userSurveys[userSurvey.index].status = 'filled';
+        element.status = 'filled';
+      }
+      await HHSUserSurveysOperations().addItemToDatabase(element);
     }
   }
 }

@@ -1,20 +1,13 @@
-import 'dart:convert';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:jaddah_household_survey/Data/app_constants.dart';
 import 'package:jaddah_household_survey/Models/survey.dart';
-import 'package:jaddah_household_survey/Models/user_serveys_model.dart';
 import 'package:jaddah_household_survey/Providers/surveys.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
 import 'package:jaddah_household_survey/Resources/strings.dart';
-import 'package:jaddah_household_survey/UI/Screens/Survey/syrvey_screen.dart';
-import 'package:jaddah_household_survey/UI/Screens/UserSurveys/item_survey_model.dart';
 import 'package:jaddah_household_survey/UI/Screens/UserSurveys/user_surveys.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Providers/auth.dart';
 import '../../../Resources/assets_manager.dart';
@@ -122,19 +115,18 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                     ),
                     InkWell(
                       onTap: () async {
-                        final prefs = await SharedPreferences.getInstance();
+                        /* final prefs = await SharedPreferences.getInstance();
                         bool? isFilled = prefs.getBool(AppConstants.isFilled);
 
-                        prefs.getString(
-                          "UserSurveysModelData",
-                        );
-                        print(prefs.get("UserSurveysModelData"));
-                        String? data= prefs.getString("UserSurveysModelData");
-
-                        Map<String, dynamic> valueMap = json.decode(data!);
-
-                        UserSurveysModelData userSurveysModelData  =UserSurveysModelData.fromJson(valueMap);
                         if (isFilled != null && isFilled == true) {
+                          prefs.getString("UserSurveysModelData");
+                          String? data =
+                              prefs.getString("UserSurveysModelData");
+
+                          Map<String, dynamic> valueMap = json.decode(data!);
+                          UserSurveysModelData userSurveysModelData =
+                              UserSurveysModelData.fromJson(valueMap);
+
                           if (mounted) {
                             Navigator.push(
                               context,
@@ -145,17 +137,17 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                               ),
                             );
                           }
-                        } else {
-                          if (mounted) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    UserSurveysScreen(id: auth.user!.id),
-                              ),
-                            );
-                          }
+                        } else {*/
+                        if (mounted) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  UserSurveysScreen(id: auth.user!.id),
+                            ),
+                          );
                         }
+                        // }
                       },
                       child: ItemHomeSurvey(count: surveyList.length),
                     ),

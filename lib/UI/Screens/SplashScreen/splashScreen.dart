@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:jaddah_household_survey/UI/Screens/Home/homeScreen.dart';
+import 'package:jaddah_household_survey/UI/Screens/Home/home_screen.dart';
 
 import '../../../Resources/assets_manager.dart';
 import '../../../Resources/colors.dart';

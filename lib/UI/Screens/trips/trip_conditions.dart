@@ -178,11 +178,14 @@ class TripConditions {
         personsWithoutTrip.add(tripPersons[e]);
       }
     }
-    if (personsWithoutTrip.isNotEmpty) {
-      SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
-      return false;
-    } else {
-      return true;
-    }
+    SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
+
+    // if (personsWithoutTrip.isNotEmpty) {
+    //   SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
+    //   return false;
+    // } else {
+    //   // return true;
+    // }
+    return true;
   }
 }

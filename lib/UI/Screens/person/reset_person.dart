@@ -305,8 +305,7 @@ class PersonProvider extends ChangeNotifier {
   }
 
   isEmployeeEdit(String d, int i) {
-    print("Ddddd");
-    print(d);
+
     if (d.isNotEmpty) {
       if (int.parse(d.toString()) > 18) {
         PersonModelList.personModelList[i].occupationModel!.isEmployee = "1";
@@ -320,8 +319,6 @@ class PersonProvider extends ChangeNotifier {
   }
 
   isEmployee(String d, int i) {
-    print("Ddddd");
-    print(d);
     if (d.isNotEmpty) {
       if (int.parse(d.toString()) > 18) {
         PersonModelList.personModelList[i].occupationModel!.isEmployee = "1";

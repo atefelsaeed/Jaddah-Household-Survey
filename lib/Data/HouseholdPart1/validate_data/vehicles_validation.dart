@@ -4,12 +4,10 @@ import 'package:jaddah_household_survey/Providers/survey_hhs.dart';
 import 'package:jaddah_household_survey/UI/Screens/person/person_screen.dart';
 import 'package:jaddah_household_survey/UI/Widgets/show_dialog_error.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../Providers/surveys.dart';
 import '../../../Providers/user_surveys.dart';
-import '../../app_constants.dart';
 import '../VechelisData/veh_model.dart';
 
 class CheckVehiclesValidation {
@@ -218,13 +216,13 @@ class CheckVehiclesValidation {
               content:
                   'ليس لديك أى مركبات . لذلك يجب إختيار "لا يوجد سيارات !!!!"'));
     } else {
-      final prefs = await SharedPreferences.getInstance();
-      bool? isFilled = prefs.getBool(AppConstants.isFilled);
-
-      if (isFilled != null && isFilled == true) {
-        surveys.addNotFilledSurvey(surveyPt.data);
-        debugPrint('addNotFilledSurvey Vec');
-      }
+      // final prefs = await SharedPreferences.getInstance();
+      // bool? isFilled = prefs.getBool(AppConstants.isFilled);
+      //
+      // if (isFilled != null && isFilled == true) {
+      //   surveys.addNotFilledSurvey(surveyPt.data);
+      //   debugPrint('addNotFilledSurvey Vec');
+      // }
       Navigator.push(
         context,
         MaterialPageRoute(
