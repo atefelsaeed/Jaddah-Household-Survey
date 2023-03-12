@@ -287,7 +287,10 @@ class CheckTripsValidation {
         //     }
         //   }
         // }
-        else {print('kkkkkkkkkk');
+        else {
+
+          print('kkkkkkkkkk');
+
           if (!TripConditions().personWithoutTrip(
             i: e,
             context: context,

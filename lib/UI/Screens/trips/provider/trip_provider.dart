@@ -272,6 +272,8 @@ class TripProvider extends ChangeNotifier {
           .personModelList[i].personalHeadData?.refuseToTellAge
           .toString());
       if (PersonModelList
+          .personModelList[i].personalHeadData!.hasPasTrip ==
+          false&&PersonModelList
               .personModelList[i].personalHeadData?.refuseToTellAge ==
           false) {
         int age = int.parse(
@@ -282,13 +284,15 @@ class TripProvider extends ChangeNotifier {
               .add(PersonModelList.personModelList[i].personName.text);
           // notifyListeners();
         }
-      } else {
+      } else if (PersonModelList
+              .personModelList[i].personalHeadData!.hasPasTrip ==
+          false&&PersonModelList.personModelList[i].personalHeadData!.age.text!='< 6') {
         TripModeList.tripModeList[0].person
             .add(PersonModelList.personModelList[i].personName.text);
       }
 
-      TripModeList.tripModeList[0].mainPerson
-          .add(PersonModelList.personModelList[i].personName.text);
+      // TripModeList.tripModeList[0].mainPerson
+      //     .add(PersonModelList.personModelList[i].personName.text);
     }
 
     list = TripModeList.tripModeList[0].person;
