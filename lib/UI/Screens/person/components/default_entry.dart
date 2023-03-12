@@ -62,10 +62,13 @@ class _DefaultEntryState extends State<DefaultEntry> {
           children: [
             TextForm(
               controller: PersonModelList.personModelList[widget.i].personName,
-              onChanged: (value){
-                for(int i=0;i<PersonModelList.personModelList.length;i++){
-                if(value==PersonModelList.personModelList[i].personName.text&&i!=widget.i){
-
+              onChanged: (value) {
+                for (int i = 0;
+                    i < PersonModelList.personModelList.length;
+                    i++) {
+                  if (value ==
+                          PersonModelList.personModelList[i].personName.text &&
+                      i != widget.i) {
                     showError(
                       context,
                       ShowErrorDialog(
@@ -73,12 +76,11 @@ class _DefaultEntryState extends State<DefaultEntry> {
                         content: "يجب اختيار اسم اخر",
                       ),
                     );
-                    PersonModelList.personModelList[widget.i].personName.text="";
+                    PersonModelList.personModelList[widget.i].personName.text =
+                        "";
                     return;
                   }
                 }
-
-
               },
               text: "اسم الشخص",
               label: "اسم الشخص",
@@ -143,7 +145,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                       .personalHeadData!.relationshipHeadHHS ==
                                   'أخرى')
                               ? MyTextForm(
-                            onTap: () {  },
+                                  onTap: () {},
                                   controller: PersonModelList
                                       .personModelList[widget.i]
                                       .personalHeadData!
@@ -197,7 +199,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
                                   'أخرى')
                               ? MyTextForm(
                                   label: 'القرابة برب الأسرة ',
-                            onTap: () {  },
+                                  onTap: () {},
                                   onChanged: (val) {
                                     PersonModelList
                                         .personModelList[widget.i]
@@ -217,6 +219,7 @@ class _DefaultEntryState extends State<DefaultEntry> {
     );
   }
 }
+
 void showError(context, Widget widget) => showDialog<void>(
     barrierDismissible: false,
     context: context,

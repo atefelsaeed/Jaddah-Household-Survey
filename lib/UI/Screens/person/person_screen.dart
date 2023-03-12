@@ -285,9 +285,16 @@ class _PersonScreenState extends State<PersonScreen> {
                                           subTitle: "",
                                         )
                                       : Container(),
-                                  PersonModelList.personModelList[i]
-                                              .personalHeadData!.hasPasTrip ==
-                                          true
+                                  ((PersonModelList
+                                                  .personModelList[i]
+                                                  .personalHeadData!
+                                                  .hasPasTrip ==
+                                              true) &&
+                                          (PersonModelList
+                                                  .personModelList[i]
+                                                  .occupationModel!
+                                                  .isEmployee !=
+                                              "0"))
                                       ? TextForm(
                                           label: 'إذكر السبب',
                                           text: 'إذكر السبب',
@@ -803,6 +810,7 @@ class _PersonScreenState extends State<PersonScreen> {
                                   ),
                                 );
                               }
+
                             },
                             isWidget: true,
                             text: "التالي",

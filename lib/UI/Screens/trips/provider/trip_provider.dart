@@ -260,8 +260,10 @@ class TripProvider extends ChangeNotifier {
     list.clear();
 
     var personlist = PersonModelList.personModelList.length;
-    var seen = Set<String>();
+
+
     for (int i = 0; i < personlist; i++) {
+
       // TripModeList.tripModeList[0].person
       //     .add(PersonModelList.personModelList[i].personName.text);
       debugPrint('add person');
@@ -274,6 +276,8 @@ class TripProvider extends ChangeNotifier {
             PersonModelList.personModelList[i].personalHeadData!.age.text);
         if (age >= 5) {
           debugPrint('add person @');
+          print('kkkk');
+          print(TripModeList.tripModeList[0].person.toString());
           TripModeList.tripModeList[0].person
               .add(PersonModelList.personModelList[i].personName.text);
           TripModeList.tripModeList[0].mainPerson
@@ -285,23 +289,21 @@ class TripProvider extends ChangeNotifier {
               false &&
           PersonModelList.personModelList[i].personalHeadData!.age.text !=
               '< 6') {
+        debugPrint('add person @ @');
+
         TripModeList.tripModeList[0].person
             .add(PersonModelList.personModelList[i].personName.text);
+
         TripModeList.tripModeList[0].mainPerson
             .add(PersonModelList.personModelList[i].personName.text);
+
       }
     }
 
-    // for (final title in TripModeList.tripModeList[0].person) {
-    //   final item = TripModeList.tripModeList[0].person.firstWhere(
-    //       (element) => element == title); // include `orElse` if needed
-    //   list.add(item);
-    // }
-    TripModeList.tripModeList[0].person.toSet().toList();
     list = TripModeList.tripModeList[0].person;
+
     print('list');
     print(list.toString());
-    // list = TripModeList.tripModeList[0].person.where((student) => seen.add(student)).toList();
 
     notifyListeners();
   }

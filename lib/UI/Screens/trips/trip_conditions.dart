@@ -164,7 +164,7 @@ class TripConditions {
   ///
   bool personWithoutTrip({
     required int i,
-  required BuildContext context,
+    required BuildContext context,
     required Function function,
   }) {
     var bas = TripModeList.tripModeList[i];

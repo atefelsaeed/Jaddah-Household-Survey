@@ -54,7 +54,7 @@ class CheckPersonValidation {
         //   surveys.addNotFilledSurvey(surveyPt.data);
         //   debugPrint('addNotFilledSurvey Person');
         // }
-          print('navigate');
+        print('navigate');
         Navigator.push(
           context,
           MaterialPageRoute(
