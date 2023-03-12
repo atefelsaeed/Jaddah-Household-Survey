@@ -88,6 +88,7 @@ class _TripScreenState extends State<TripScreen> {
     // validationService.getTripsDataUpdated(context);
     if ((userSurveysProvider.userSurveyStatus == 'edit' &&
         AppConstants.isResetTrip == true)) {
+
       validationService.getAllTripUpdated(context);
       AppConstants.isResetTrip = false;
     }
