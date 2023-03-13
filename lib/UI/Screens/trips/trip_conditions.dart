@@ -174,17 +174,19 @@ class TripConditions {
     List<String> personsWithoutTrip = [];
     int tripLength = tripPersons.length;
     for (int e = 0; e < tripLength; e++) {
-      if (tripPersons[e] != tripOwner[i]) {
-        personsWithoutTrip.add(tripPersons[e]);
+      if (i > 0) {
+        if (tripPersons[e] != tripOwner[i - 1]) {
+          personsWithoutTrip.add(tripPersons[e]);
+        }
+      } else {
+        return true;
       }
     }
-
     if (personsWithoutTrip.isNotEmpty) {
       SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
       return false;
     } else {
       return true;
     }
-    return true;
   }
 }

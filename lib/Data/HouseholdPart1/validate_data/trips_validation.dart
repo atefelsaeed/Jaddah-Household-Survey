@@ -46,13 +46,17 @@ class CheckTripsValidation {
               context, " يجب إخيار ! صاحب الرحلة؟ $tripNumber رحلة");
         } else if (!TripConditions().checkIsCarDriver(e, context)) {
           return null;
-        } else if (!TripConditions()
+        }
+
+        /*else if (!TripConditions()
             .checkIsTravelAloneAdultsNumber1(e, context)) {
           return null;
         } else if (!TripConditions()
             .checkIsTravelAloneChildrenNumber1(e, context)) {
           return null;
-        } else if (!TripConditions()
+        }*/
+
+        else if (!TripConditions()
             .checkIsTravelAloneAdultsNumberQ4HHS(e, context)) {
           return null;
         } else if (!TripConditions()
@@ -291,9 +295,10 @@ class CheckTripsValidation {
         //   return true;
         //   print('kkkkkkkkkk');
         // }
+
         if (e + 1 == length) {
           if (!TripConditions().personWithoutTrip(
-            i: e - 1,
+            i: e,
             context: context,
             function: () async {
               //=======Add-survey-to-surveys-list================
@@ -324,7 +329,28 @@ class CheckTripsValidation {
           )) {
             // return null;
           } else {
-            return;
+            if (userSurvey.userSurveyStatus == "not filled") {
+              debugPrint(userSurvey.userSurveyStatus.toString());
+              await surveys.addSurvey(surveyPt.data);
+              //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
+              userSurvey.userSurveys[userSurvey.index].status = 'filled';
+              for (var element in userSurvey.userSurveys) {
+                await HHSUserSurveysOperations().addItemToDatabase(element);
+              }
+              debugPrint('Add User Surveys to local database');
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => const ChooseSurveysScreen()),
+                  (Route<dynamic> route) => false);
+            } else if ((userSurvey.userSurveyStatus == "edit")) {
+              debugPrint(userSurvey.userSurveyStatus.toString());
+              userSurvey.updateSurvey(surveyPt.data);
+              debugPrint('updateSurvey');
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => const ChooseSurveysScreen()),
+                  (Route<dynamic> route) => false);
+            }
           }
         }
       }
