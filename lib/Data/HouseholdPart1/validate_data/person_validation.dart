@@ -55,12 +55,8 @@ class CheckPersonValidation {
         //   debugPrint('addNotFilledSurvey Person');
         // }
         print('navigate');
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const TripScreen(),
-          ),
-        );
+
+     return true;
       }
     }
   }

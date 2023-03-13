@@ -24,6 +24,7 @@ import '../../Widgets/text_form_field.dart';
 import '../Survey/widgets/editing_controler3.dart';
 import '../Survey/widgets/list_view_check_box_orange.dart';
 import '../Survey/widgets/text_form_row.dart';
+import '../trips/trip_screen.dart';
 import 'components/employee.dart';
 import 'components/nationality.dart';
 import 'components/transporter_moblity.dart';
@@ -74,6 +75,17 @@ class _PersonScreenState extends State<PersonScreen> {
         return ShowErrorDialog(
           title: 'لا يمكنك إضافة المزيد',
           content: 'عدد أفراد عائلتك الذين يعيشون فى هذا المنزل هو ($x)'
+              '',
+        );
+      });
+  void showError1() => showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        int x = int.parse(HhsStatic.peopleAdults18.toString()) +
+            int.parse(HhsStatic.peopleUnder18.toString());
+        return ShowErrorDialog(
+          title: 'يجب تعبئة جميع الافراد !!',
+          content: 'عدد أفراد عائلتك الذين يعيشون فى هذا المنزل هو ( ,, يجب تعبئة جميع الافرادز$x)'
               '',
         );
       });
@@ -801,6 +813,21 @@ class _PersonScreenState extends State<PersonScreen> {
                                 _key.currentState!.save();
                                 SavePersonData.saveData(context);
                                 CheckPersonValidation.validatePerson(context);
+                                int x = int.parse(
+                                        HhsStatic.peopleAdults18.toString()) +
+                                    int.parse(
+                                        HhsStatic.peopleUnder18.toString());
+                                if (x ==
+                                    PersonModelList.personModelList.length) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const TripScreen(),
+                                    ),
+                                  );
+                                }else{
+                                   showError1();
+                                }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
@@ -810,7 +837,6 @@ class _PersonScreenState extends State<PersonScreen> {
                                   ),
                                 );
                               }
-
                             },
                             isWidget: true,
                             text: "التالي",

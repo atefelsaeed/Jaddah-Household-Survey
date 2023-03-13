@@ -89,19 +89,24 @@ class TripConditions {
         Provider.of<SurveyPTProvider>(context, listen: false);
 
     var bas = TripModeList.tripModeList[i];
-
-    int adultsNumber2 = bas.travelAloneHouseHold!.adultsNumber.text.isEmpty
+    print('ssss');
+    print(bas.travelWithOtherModel!.childrenNumber.text);
+    int adultsNumber2 = bas.travelWithOtherModel!.childrenNumber.text.isEmpty
         ? 0
-        : int.parse(bas.travelAloneHouseHold!.adultsNumber.text);
+        : int.parse(bas.travelWithOtherModel!.childrenNumber.text);
 
     int numAdults = 0;
     int length = surveyPt.hhsSeparateFamilies.length;
 
     for (int i = 0; i < length; i++) {
-      numAdults =
-          int.parse(surveyPt.hhsSeparateFamilies[i].numberAdults!) + numAdults;
+      numAdults = int.parse(surveyPt.hhsSeparateFamilies[i].numberChildren!) +
+          numAdults;
+      print(">>$numAdults");
     }
-    if (adultsNumber2 >= numAdults) {
+
+    print('checkIsTravelAloneAdultsNumberQ4HHS');
+    print("$adultsNumber2 >>$numAdults");
+    if (adultsNumber2 > numAdults && bas.isTravelAlone == true) {
       showError(
         context,
         ShowErrorDialog(
@@ -129,18 +134,20 @@ class TripConditions {
 
     var bas = TripModeList.tripModeList[i];
 
-    int adultsNumber2 = bas.travelAloneHouseHold!.childrenNumber.text.isEmpty
+    int adultsNumber2 = bas.travelWithOtherModel!.adultsNumber.text.isEmpty
         ? 0
-        : int.parse(bas.travelAloneHouseHold!.childrenNumber.text);
+        : int.parse(bas.travelWithOtherModel!.adultsNumber.text);
 
     int numAdults = 0;
     int length = surveyPt.hhsSeparateFamilies.length;
 
     for (int i = 0; i < length; i++) {
-      numAdults = int.parse(surveyPt.hhsSeparateFamilies[i].numberChildren!) +
-          numAdults;
+      numAdults =
+          int.parse(surveyPt.hhsSeparateFamilies[i].numberAdults!) + numAdults;
     }
-    if (adultsNumber2 >= numAdults) {
+    print('checkIsTravelAloneChildrenNumberQ4HHS');
+    print("$adultsNumber2 >>$numAdults");
+    if (adultsNumber2 > numAdults && bas.isTravelAlone == true) {
       showError(
         context,
         ShowErrorDialog(
