@@ -5,7 +5,7 @@ import '../../../../Resources/sizes.dart';
 import '../../../Widgets/custom_buttton.dart';
 
 class SaveAndFinish {
-  static saveAndFinish(context, List<String> list,Function function) {
+  static saveAndFinish(context, List<String> list, Function function) {
     return showDialog(
       context: context,
       barrierDismissible: false,
@@ -14,10 +14,7 @@ class SaveAndFinish {
             borderRadius: BorderRadius.all(Radius.circular(30.0))),
         title: const Center(child: Text('هل أنت متأكد !!!')),
         content: Text("''"
-            "هؤلاء الافراد ليس لديهم رحلات\n"
-            "${list.toString()}\n\n"
-            "هل توافق على حفظ الاستمارة من غير رحلات هؤلاء الافراد !!"
-            ""
+            "هل توافق على حفظ الاستمارة من غير رحلات باقى الافراد !!"
             "''"),
         actions: <Widget>[
           Row(

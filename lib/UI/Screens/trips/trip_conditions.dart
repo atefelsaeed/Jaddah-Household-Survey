@@ -168,28 +168,51 @@ class TripConditions {
     }
   }
 
+  List tripOwner = [];
+  List<String> personsWithoutTrip = [];
+  List tripPersons = [];
+
   ///
   bool personWithoutTrip({
-    required int i,
     required BuildContext context,
     required Function function,
   }) {
-    var bas = TripModeList.tripModeList[i];
-    List tripPersons = bas.person;
-    List tripOwner = [];
-    tripOwner.add(bas.chosenPerson);
-    List<String> personsWithoutTrip = [];
-    int tripLength = tripPersons.length;
-    for (int e = 0; e < tripLength; e++) {
-      if (i > 0) {
-        if (tripPersons[e] != tripOwner[i - 1]) {
-          personsWithoutTrip.add(tripPersons[e]);
-        }
-      } else {
-        return true;
-      }
+    var length = TripModeList.tripModeList.length;
+    tripOwner.clear();
+    personsWithoutTrip.clear();
+    for (int i = 0; i < length; i++) {
+      var bas = TripModeList.tripModeList[i];
+      tripPersons = bas.person;
+      // if (tripOwner.isEmpty) {
+      //   tripOwner.add(bas.chosenPerson);
+      // } else if (bas.chosenPerson != tripOwner[i]) {
+      //   tripOwner.add(bas.chosenPerson);
+      // }
+      tripOwner.add(bas.chosenPerson);
+      print(tripPersons.toString());
+      print(tripOwner.toSet().toString());
+
+      // int tripLength = tripPersons.length;
+      // for (int e = 0; e < tripLength; e++) {
+      //   print('trinp person :::');
+      //   if (i > 0) {
+      //     print('tripPersons_list');
+      //     if (tripPersons[e] != tripOwner[i]) {
+      //       print('personsWithoutTrip');
+      //       personsWithoutTrip.add(tripPersons[e]);
+      //     }}
+      // }
     }
-    if (personsWithoutTrip.isNotEmpty) {
+    // if (personsWithoutTrip.isNotEmpty) {
+    //   print('personsWithoutTrip.isNotEmpty$personsWithoutTrip');
+    //   SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
+    //   return false;
+    // } else {
+    //   return true;
+    // }
+    List newList = tripOwner.toSet().toList();
+    if (tripPersons.length != newList.length) {
+      print('personsWithoutTrip.isNotEmpty$personsWithoutTrip');
       SaveAndFinish.saveAndFinish(context, personsWithoutTrip, function);
       return false;
     } else {

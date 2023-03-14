@@ -189,6 +189,10 @@ class CheckTripsValidation {
             base.arrivalDepartTime.numberRepeatTrip == '') {
           return Validator.showSnack(context,
               " يجب إخيار ! كم مرة تقوم بهذە الرحلة؟ $tripNumber رحلة");
+          // } else {
+          //   print('sssss');
+          //   return true;
+          // }
         }
 
         ///Validation Done
@@ -296,63 +300,64 @@ class CheckTripsValidation {
         //   print('kkkkkkkkkk');
         // }
 
-        if (e + 1 == length) {
-          if (!TripConditions().personWithoutTrip(
-            i: e,
-            context: context,
-            function: () async {
-              //=======Add-survey-to-surveys-list================
+      }
+    }
 
-              if (userSurvey.userSurveyStatus == "not filled") {
-                debugPrint(userSurvey.userSurveyStatus.toString());
-                await surveys.addSurvey(surveyPt.data);
-                //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
-                userSurvey.userSurveys[userSurvey.index].status = 'filled';
-                for (var element in userSurvey.userSurveys) {
-                  await HHSUserSurveysOperations().addItemToDatabase(element);
-                }
-                debugPrint('Add User Surveys to local database');
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const ChooseSurveysScreen()),
-                    (Route<dynamic> route) => false);
-              } else if ((userSurvey.userSurveyStatus == "edit")) {
-                debugPrint(userSurvey.userSurveyStatus.toString());
-                userSurvey.updateSurvey(surveyPt.data);
-                debugPrint('updateSurvey');
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const ChooseSurveysScreen()),
-                    (Route<dynamic> route) => false);
-              }
-            },
-          )) {
-            // return null;
-          } else {
-            if (userSurvey.userSurveyStatus == "not filled") {
-              debugPrint(userSurvey.userSurveyStatus.toString());
-              await surveys.addSurvey(surveyPt.data);
-              //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
-              userSurvey.userSurveys[userSurvey.index].status = 'filled';
-              for (var element in userSurvey.userSurveys) {
-                await HHSUserSurveysOperations().addItemToDatabase(element);
-              }
-              debugPrint('Add User Surveys to local database');
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => const ChooseSurveysScreen()),
-                  (Route<dynamic> route) => false);
-            } else if ((userSurvey.userSurveyStatus == "edit")) {
-              debugPrint(userSurvey.userSurveyStatus.toString());
-              userSurvey.updateSurvey(surveyPt.data);
-              debugPrint('updateSurvey');
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => const ChooseSurveysScreen()),
-                  (Route<dynamic> route) => false);
-            }
+    if (!TripConditions().personWithoutTrip(
+      context: context,
+      function: () async {
+        //=======Add-survey-to-surveys-list================
+
+        if (userSurvey.userSurveyStatus == "not filled") {
+          debugPrint(userSurvey.userSurveyStatus.toString());
+          await surveys.addSurvey(surveyPt.data);
+          //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
+          userSurvey.userSurveys[userSurvey.index].status = 'filled';
+          for (var element in userSurvey.userSurveys) {
+            await HHSUserSurveysOperations().addItemToDatabase(element);
           }
+          debugPrint('Add User Surveys to local database');
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => const ChooseSurveysScreen()),
+              (Route<dynamic> route) => false);
+        } else if ((userSurvey.userSurveyStatus == "edit")) {
+          debugPrint(userSurvey.userSurveyStatus.toString());
+          userSurvey.updateSurvey(surveyPt.data);
+          debugPrint('updateSurvey');
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => const ChooseSurveysScreen()),
+              (Route<dynamic> route) => false);
         }
+      },
+    )) {
+      // return null;
+    } else {
+      print('Success');
+      if (userSurvey.userSurveyStatus == "not filled") {
+        debugPrint(userSurvey.userSurveyStatus.toString());
+        await surveys.addSurvey(surveyPt.data);
+        //=====Check-If-this-survey-is-exit-or not if not add it to userSurveys list and update this list
+        userSurvey.userSurveys[userSurvey.index].status = 'filled';
+        for (var element in userSurvey.userSurveys) {
+          await HHSUserSurveysOperations().addItemToDatabase(element);
+        }
+        debugPrint('Add User Surveys to local database');
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (context) => const ChooseSurveysScreen()),
+            (Route<dynamic> route) => false);
+      } else if ((userSurvey.userSurveyStatus == "edit")) {
+        debugPrint(userSurvey.userSurveyStatus.toString());
+        userSurvey.updateSurvey(surveyPt.data);
+        debugPrint('updateSurvey');
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (context) => const ChooseSurveysScreen()),
+            (Route<dynamic> route) => false);
+        // }
+        // }
       }
     }
   }
