@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaddah_household_survey/Resources/colors.dart';
 import 'package:jaddah_household_survey/Resources/sizes.dart';
+import 'package:jaddah_household_survey/UI/Widgets/item_point.dart';
 import 'package:jaddah_household_survey/UI/Widgets/text.dart';
 
 class DropDownFormInput2<T> extends StatelessWidget {
@@ -135,10 +136,16 @@ class DropDownFormInput<T> extends StatelessWidget {
         children: [
           SizedBox(
               width: width(context) * .45 - 10,
-              child: TextGlobal(
-                text: hint.toString(),
-                fontSize: height(context) * .015,
-                color: ColorManager.black,
+              child: Row(
+                children: [
+                  // const ItemPoint(),
+                  TextGlobal(
+                    text: hint.toString(),
+                    fontSize: width(context) * .04,
+                    color: ColorManager.black,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ],
               )),
           AppSize.spaceHeight1(context),
           SizedBox(

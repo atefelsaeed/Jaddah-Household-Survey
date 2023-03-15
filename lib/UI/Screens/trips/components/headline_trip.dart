@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../Resources/colors.dart';
 import '../../../../Resources/sizes.dart';
+import '../../../Widgets/item_point.dart';
 import '../../../Widgets/item_text_span.dart';
 import '../../../Widgets/text.dart';
 
@@ -15,6 +16,7 @@ class HeadlineText extends StatelessWidget {
     // TODO: implement build
     return Column(
       children: [
+        const MyDivider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,15 +24,16 @@ class HeadlineText extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CircleAvatar(
-                    backgroundColor: ColorManager.black,
-                    radius: width(context) * .010),
-                AppSize.spaceHeight05(context),
-                Container(
-                  color: ColorManager.black,
-                  width: width(context) * .03,
-                  height: height(context) * .003,
-                )
+                // CircleAvatar(
+                //     backgroundColor: ColorManager.black,
+                //     radius: width(context) * .010),
+                const ItemPoint(),
+                // AppSize.spaceHeight05(context),
+                // Container(
+                //   color: ColorManager.black,
+                //   width: width(context) * .03,
+                //   height: height(context) * .003,
+                // )
               ],
             ),
             AppSize.spaceWidth1(context),
@@ -38,13 +41,14 @@ class HeadlineText extends StatelessWidget {
               width: width(context)*.8,
               child: TextGlobal(
                 text: text,
-                fontSize:width(context) * .022,
+                fontSize:width(context) * .04,
                 color: ColorManager.black,
+                fontWeight: FontWeight.w800,
               ),
             ),
+
           ],
         ),
-        const MyDivider(),
         AppSize.spaceHeight2(context),
       ],
     );

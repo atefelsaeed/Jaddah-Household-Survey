@@ -51,15 +51,6 @@ class ActionButton extends StatelessWidget {
               ),
             );
           }
-          if(HhsStatic.householdQuestions.hhsNumberSeparateFamilies !=  editingController.q6peopleUnder18.length.toString()){
-            showError(
-              context,
-              ShowErrorDialog(
-                title: "يجب اختيار اسم اخر",
-                content: "يجب اختيار اسم اخر",
-              ),
-            );
-          }
 
           surveyPt.id = id;
 
@@ -154,6 +145,16 @@ class ActionButton extends StatelessWidget {
           } else if (!SurveyCondition()
               .conditionHHSQ5NumAdults(editingController, context)) {
           } else if (!SurveyCondition().validateHHSQ81(context)) {
+          } else if (HhsStatic.householdQuestions.hhsNumberSeparateFamilies !=
+              editingController.q6peopleUnder18.length.toString()) {
+            var num=HhsStatic.householdQuestions.hhsNumberSeparateFamilies;
+            showError(
+              context,
+               ShowErrorDialog(
+                title: "يجب إضافة باقى الاسر المنفصلة",
+                content: "سؤال 4 .يجب إضافة كافة الاسر المنفصلة المختارة فى سؤال رقم 3 .\n عدد الاسر المنفصلة هو ${num}",
+              ),
+            );
           } else if (!SurveyCondition().validateHHSQ82(context)) {
           } else if (!SurveyCondition().validateHHSQ83(context)) {
           } else if (!SurveyCondition().numberParcelsDeliveries(context)) {
@@ -192,6 +193,7 @@ class ActionButton extends StatelessWidget {
     );
   }
 }
+
 void showError(context, Widget widget) => showDialog<void>(
     barrierDismissible: false,
     context: context,

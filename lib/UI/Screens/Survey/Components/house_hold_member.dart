@@ -23,10 +23,6 @@ class HouseHoldMember extends StatelessWidget {
             ),
           ])
         ]),
-        AppSize.spaceHeight1(context),
-        const Divider(
-          thickness: 1,
-        ),
         AppSize.spaceHeight2(context),
       ],
     );
