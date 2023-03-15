@@ -308,7 +308,7 @@ class TripProvider extends ChangeNotifier {
             false) {
           int age = int.parse(
               PersonModelList.personModelList[i].personalHeadData!.age.text);
-          if (age >= 5) {
+          if (age >= 6) {
             TripModeList.tripModeList[0].person
                 .add(PersonModelList.personModelList[i].personName.text);
             mainPersonList
@@ -316,7 +316,7 @@ class TripProvider extends ChangeNotifier {
             // TripModeList.tripModeList[0].mainPerson
             //     .add(PersonModelList.personModelList[i].personName.text);
             // notifyListeners();
-          } else if ((age <= 5)) {
+          } else if ((age <= 6)) {
             // TripModeList.tripModeList[0].person
             //     .add(PersonModelList.personModelList[i].personName.text);
             // TripModeList.tripModeList[0].mainPerson
