@@ -61,6 +61,7 @@ class EmptyTrips {
         element.isHome = false;
         element.isHomeEnding = false;
         element.person = [];
+        element.mainPerson=[];
         element.chosenFriendPerson = [];
         element.friendPerson = {};
         element.chosenPerson = '';

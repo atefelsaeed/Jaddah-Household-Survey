@@ -11,6 +11,7 @@ import '../../../../Models/HHS_SurvyModels/hhs_models.dart';
 import '../../../../Providers/auth.dart';
 import '../../../../Providers/survey_hhs.dart';
 import '../../../Widgets/custom_buttton.dart';
+import '../../../Widgets/show_dialog_error.dart';
 import '../actions/action_survey_screen.dart';
 import '../survey_conditions.dart';
 
@@ -47,6 +48,15 @@ class ActionButton extends StatelessWidget {
                 editingController.q6peopleAdults18[i].text,
                 editingController.q6peopleUnder18[i].text,
                 editingController.q6totalNumberOfVec[i].text,
+              ),
+            );
+          }
+          if(HhsStatic.householdQuestions.hhsNumberSeparateFamilies !=  editingController.q6peopleUnder18.length.toString()){
+            showError(
+              context,
+              ShowErrorDialog(
+                title: "يجب اختيار اسم اخر",
+                content: "يجب اختيار اسم اخر",
               ),
             );
           }
@@ -182,3 +192,9 @@ class ActionButton extends StatelessWidget {
     );
   }
 }
+void showError(context, Widget widget) => showDialog<void>(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return widget;
+    });

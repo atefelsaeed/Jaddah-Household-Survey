@@ -58,6 +58,7 @@ class TripModeList {
         "chosenIndex": 0,
       },
       person: [],
+
       travelWithOther: {
         'Did you move here from any of the Demolished areas of Jeddah, if yes which one':
             [
