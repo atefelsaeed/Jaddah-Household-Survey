@@ -60,6 +60,15 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
               activeColor: ColorManager.orangeTxtColor,
               value: TripModeList.tripModeList[widget.index].isHome,
               onChanged: (bool? value) {
+                // if ((startBeginningModel!.tripAddressLat != null) &&
+                //     (startBeginningModel.tripAddressLong != null)) {
+                //   print('lat');
+                //   print(startBeginningModel.tripAddressLat!);
+                //   print(startBeginningModel.tripAddressLong!);
+                //   Constants.location = LatLng(
+                //       double.parse(startBeginningModel.tripAddressLat!),
+                //       double.parse(startBeginningModel.tripAddressLong!));
+                // }
                 setState(() {
                   TripModeList.tripModeList[widget.index].isHome = value!;
                   if (TripModeList.tripModeList[widget.index].isHome == true) {
@@ -97,9 +106,11 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                                   callBack: (LatLng latLong) {
                                     surveyPt.startingAddressLatLng = latLong;
                                     setState(() {
-                                      surveyPt.startingAddressLatLng?.latitude !=
+                                      surveyPt.startingAddressLatLng
+                                              ?.latitude !=
                                           latLong.latitude;
-                                      surveyPt.startingAddressLatLng?.longitude !=
+                                      surveyPt.startingAddressLatLng
+                                              ?.longitude !=
                                           latLong.longitude;
                                     });
                                     setState(() {
@@ -108,7 +119,8 @@ class _TripStartingAddressState extends State<TripStartingAddress> {
                                               .startingAddressLatLng?.longitude
                                               .toString();
                                       startBeginningModel?.tripAddressLat =
-                                          surveyPt.startingAddressLatLng?.latitude
+                                          surveyPt
+                                              .startingAddressLatLng?.latitude
                                               .toString();
                                     });
                                   },

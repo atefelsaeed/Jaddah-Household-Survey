@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jaddah_household_survey/Models/Trips_SurveyModel/start_beginning_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/travel_type_model.dart';
 import 'package:jaddah_household_survey/Models/Trips_SurveyModel/trips_model.dart';
 import 'package:jaddah_household_survey/Providers/user_surveys.dart';
@@ -149,15 +150,50 @@ class TripProvider extends ChangeNotifier {
           purposeTravel: surveyPt.surveyPT.tripsList![i].purposeTravel!
               .replaceAll('توص', 'توصيل'),
           tripReason: reason,
-          startBeginningModel:
-              surveyPt.surveyPT.tripsList![i].startBeginningModel,
+          startBeginningModel: StartBeginningModel(
+            tripAddressLong: surveyPt
+                .surveyPT.tripsList?[i].startBeginningModel?.tripAddressLong,
+            tripAddressLat: surveyPt
+                .surveyPT.tripsList?[i].startBeginningModel?.tripAddressLat,
+            nearestLandMark: surveyPt.surveyPT.tripsList?[i].startBeginningModel
+                    ?.nearestLandMark ??
+                TextEditingController(),
+            streetNumber: surveyPt
+                    .surveyPT.tripsList?[i].startBeginningModel?.streetNumber ??
+                TextEditingController(),
+            streetName: surveyPt
+                    .surveyPT.tripsList?[i].startBeginningModel?.streetName ??
+                TextEditingController(),
+            area: surveyPt.surveyPT.tripsList?[i].startBeginningModel?.area ??
+                TextEditingController(),
+            block: surveyPt.surveyPT.tripsList?[i].startBeginningModel?.block ??
+                TextEditingController(),
+          ),
           hhsMembersTraveled:
               surveyPt.surveyPT.tripsList![i].chosenFriendPerson,
           travelAloneHouseHold:
               surveyPt.surveyPT.tripsList![i].travelAloneHouseHold,
           travelWay: surveyPt.surveyPT.tripsList![i].travelWay,
           type: surveyPt.surveyPT.tripsList![i].type,
-          endingAddress: surveyPt.surveyPT.tripsList![i].endingAddress,
+          endingAddress: StartBeginningModel(
+            tripAddressLong:
+                surveyPt.surveyPT.tripsList?[i].endingAddress?.tripAddressLong,
+            tripAddressLat:
+                surveyPt.surveyPT.tripsList?[i].endingAddress?.tripAddressLat,
+            nearestLandMark: surveyPt
+                    .surveyPT.tripsList?[i].endingAddress?.nearestLandMark ??
+                TextEditingController(),
+            streetNumber:
+                surveyPt.surveyPT.tripsList?[i].endingAddress?.streetNumber ??
+                    TextEditingController(),
+            streetName:
+                surveyPt.surveyPT.tripsList?[i].endingAddress?.streetName ??
+                    TextEditingController(),
+            area: surveyPt.surveyPT.tripsList?[i].endingAddress?.area ??
+                TextEditingController(),
+            block: surveyPt.surveyPT.tripsList?[i].endingAddress?.block ??
+                TextEditingController(),
+          ),
           travelWithOtherModel:
               surveyPt.surveyPT.tripsList![i].travelWithOtherModel,
           typeTravel: surveyPt.surveyPT.tripsList![i].typeTravel,

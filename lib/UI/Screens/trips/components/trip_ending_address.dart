@@ -57,6 +57,12 @@ class _TripEndingAddressState extends State<TripEndingAddress> {
               activeColor: ColorManager.orangeTxtColor,
               value: TripModeList.tripModeList[widget.index].isHomeEnding,
               onChanged: (bool? value) {
+                // if ((endingAddress!.tripAddressLat != null) &&
+                //     (endingAddress.tripAddressLong != null)) {
+                //   Constants.location = LatLng(
+                //       double.parse(endingAddress.tripAddressLat!),
+                //       double.parse(endingAddress.tripAddressLong!));
+                // }
                 setState(() {
                   TripModeList.tripModeList[widget.index].isHomeEnding = value!;
                   if (TripModeList.tripModeList[widget.index].isHomeEnding ==
