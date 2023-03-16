@@ -93,7 +93,6 @@ class _WhyDidYouGoState extends State<WhyDidYouGo> {
                       val;
                 },
                 onTap: () {},
-                title: "أدخل الغرض",
                 label: "أدخل الغرض",
                 isNumber: false,
               )

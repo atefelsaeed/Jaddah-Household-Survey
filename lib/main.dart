@@ -13,6 +13,7 @@ import 'package:jaddah_household_survey/UI/Screens/Survey/actions/action_survey_
 import 'package:jaddah_household_survey/UI/Screens/person/reset_person.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Data/Enums/hhs_enums.dart';
@@ -77,21 +78,36 @@ Future<bool> syncall() async {
   return true;
 }
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   debugPrint("something");
 
   Firebase.initializeApp().then((value) async {
+
     FirebaseMessaging.instance.subscribeToTopic('sync');
     final prefs = await SharedPreferences.getInstance();
+
     await prefs.setString('SystemStatus', 'Online');
+
     prefs.setBool('dontsync', false);
     FirebaseMessaging.onBackgroundMessage(_messageHandler);
+
   });
+
   debugPrint("second thing");
 
   Intl.defaultLocale = 'ar_EG';
-  runApp(const MyApp());
+
+  await SentryFlutter.init(
+        (options) {
+      options.dsn = 'https://c333eada722f449eadcf891288f881c6@o4504843865030656.ingest.sentry.io/4504843868700672';
+      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+      // We recommend adjusting this value in production.
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(MyApp()),
+  );
+
 }
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey();

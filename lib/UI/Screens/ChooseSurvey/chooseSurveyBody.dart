@@ -47,6 +47,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
         // Got a new connectivity status!
       },
     );
+
     if (userSurveysProvider.userSurveyStatus == "not filled") {
       userSurveysProvider.multiSync();
     }
@@ -113,6 +114,7 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                         fontSize: width(context) * .065,
                       ),
                     ),
+                    Image.network(''),
                     InkWell(
                       onTap: () async {
                         /* final prefs = await SharedPreferences.getInstance();

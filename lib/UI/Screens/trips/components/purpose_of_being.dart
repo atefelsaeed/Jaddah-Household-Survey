@@ -93,7 +93,6 @@ class _PurposeOfTheBeing extends State<PurposeOfTheBeing> {
                   TripModeList
                       .tripModeList[widget.indexTripModel].purposeTravel = val;
                 },
-                title: "أدخل الغرض",
                 label: "أدخل الغرض",
                 isNumber: false,
           onTap: () {  },

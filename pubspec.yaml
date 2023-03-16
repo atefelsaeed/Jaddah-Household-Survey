@@ -38,6 +38,7 @@ dependencies:
   search_map_place_updated: 0.0.4
   permission_handler:
   location: ^4.4.0
+  sentry_flutter: ^7.0.0
 
 dev_dependencies:
   flutter_test:

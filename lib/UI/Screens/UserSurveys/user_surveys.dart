@@ -104,7 +104,6 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 widthForm: width(context) * .2,
                                 keyboardType: TextInputType.number,
                                 isNumber: true,
-                                isPassword: false,
                               ),
                             ],
                           ),
@@ -126,7 +125,6 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 widthForm: width(context) * .2,
                                 keyboardType: TextInputType.number,
                                 isNumber: true,
-                                isPassword: false,
                                 readOnly:
                                     hayController.text.isEmpty ? true : false,
                               ),
@@ -150,7 +148,6 @@ class _UserSurveysScreenState extends State<UserSurveysScreen> {
                                 widthForm: width(context) * .2,
                                 keyboardType: TextInputType.number,
                                 isNumber: true,
-                                isPassword: false,
                                 readOnly:
                                     qtaController.text.isEmpty ? true : false,
                               ),

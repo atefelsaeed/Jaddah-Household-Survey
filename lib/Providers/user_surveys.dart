@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:jaddah_household_survey/Models/HHS_SurvyModels/survey_hhs.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helper/api_helper.dart';
@@ -190,7 +191,7 @@ class UserSurveysProvider with ChangeNotifier {
         url: "${APIRouting.userSurveysStatus}$id",
       );
       if (response.statusCode == 200) {
-        var data = json.decode(response.body);
+        var data = response.body;
         // if (!data['status']) return false;
         _userSurveyStatusData = UserSurveyStatusData.fromJson(data['data']);
         debugPrint("fffff");
@@ -207,7 +208,12 @@ class UserSurveysProvider with ChangeNotifier {
       loading = false;
       notifyListeners();
       return false;
-    } catch (e) {
+    } catch (exception, stackTrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
+
       final prefs = await SharedPreferences.getInstance();
       if (!prefs.containsKey("userSurveysStatus")) return false;
 

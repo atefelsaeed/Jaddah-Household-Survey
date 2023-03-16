@@ -13,7 +13,8 @@ import '../../Widgets/custom_buttton.dart';
 import '../trips/provider/trip_provider.dart';
 
 class Constants {
-  static LatLng location = const LatLng(21.492500, 39.177570);
+  static LatLng location =
+  const LatLng(26.396790, 50.140400); //26.396790, 50.140400
   LatLng? location2;
 
   static double defaultZoom = 19.151926040649414;
@@ -28,7 +29,7 @@ class MapSearchScreen extends StatefulWidget {
 }
 
 class _MapSearchScreenState extends State<MapSearchScreen> {
-  final Completer<GoogleMapController> completer = Completer();
+  Completer<GoogleMapController> completer = Completer();
 
   late double initZoom = Constants.defaultZoom;
 
@@ -45,7 +46,7 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
 
     var position = await validationService.determinePosition();
     placeMarks =
-        await placemarkFromCoordinates(position.latitude, position.longitude);
+    await placemarkFromCoordinates(position.latitude, position.longitude);
     Constants.location != LatLng(position.latitude, position.longitude);
   }
 
@@ -54,6 +55,7 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
     // TODO: implement dispose
     super.dispose();
     if (controller != null) controller!.dispose();
+    completer = Completer();
   }
 
   @override
@@ -74,22 +76,27 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
                         zoom: initZoom,
                       ),
                       onMapCreated: (GoogleMapController controller) {
-                        completer.complete(controller);
+                        if (!completer.isCompleted) {
+                          completer.complete(controller);
+                        }
                       },
                       onCameraMove: (CameraPosition newPosition) {
                         value = newPosition.target;
                       },
                       mapType: MapType.normal,
-                      myLocationButtonEnabled: false,//
-                      myLocationEnabled: false,//
+                      myLocationButtonEnabled: false,
+                      //
+                      myLocationEnabled: false,
+                      //
                       zoomGesturesEnabled: true,
                       padding: const EdgeInsets.all(0),
                       buildingsEnabled: true,
                       cameraTargetBounds: CameraTargetBounds.unbounded,
-                      compassEnabled: false,//
+                      compassEnabled: false,
+                      //
                       indoorViewEnabled: false,
                       mapToolbarEnabled: false,
-                      minMaxZoomPreference: MinMaxZoomPreference.unbounded,
+                      minMaxZoomPreference: const MinMaxZoomPreference(0, 16),
                       rotateGesturesEnabled: true,
                       scrollGesturesEnabled: true,
                       tiltGesturesEnabled: true,
@@ -112,31 +119,24 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
                           placeholder: 'بحث',
                           apiKey: 'AIzaSyAMIcLjXga58HVN5RkLX5NGf1zh-Qkk4fg',
                           onSelected: (Place place) async {
-                            print('selected');
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            //     builder: (_) => SizedBox(
-                            //         width: 20,
-                            //         height: 20,
-                            //         child:
-                            //         const CircularProgressIndicator())));
-                            // await Future.delayed(
-                            //     const Duration(milliseconds: 500));
-                            // Navigator.of(context).pop();
                             if (mounted) {
-
                               Geolocation? geolocation =
-                                  await place.geolocation;
+                              await place.geolocation;
 
                               controller = await completer.future;
                               await Future.delayed(
                                   const Duration(milliseconds: 500));
+
                               controller!.animateCamera(CameraUpdate.newLatLng(
                                   geolocation!.coordinates));
+
                               await Future.delayed(
                                   const Duration(milliseconds: 500));
-                              controller!.animateCamera(
-                                  CameraUpdate.newLatLngBounds(
-                                      geolocation.bounds, 0));
+                              if (!completer.isCompleted) {
+                                controller!.animateCamera(
+                                    CameraUpdate.newLatLngBounds(
+                                        geolocation.bounds, 0));
+                              }
                             }
                           },
                         ),
@@ -157,7 +157,7 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
                                 listen: false);
 
                             Position position =
-                                await validationService.determinePosition();
+                            await validationService.determinePosition();
                             widget.callBack(value ??
                                 LatLng(position.latitude, position.longitude));
                             Navigator.pop(context);
@@ -172,17 +172,10 @@ class _MapSearchScreenState extends State<MapSearchScreen> {
                     right: width(context) / 2,
                     child: Container(
                       color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () async {
-                          //  await   placeMarker(value,placeMarks);
-                          /* activeLocation(
-                                    placeMarks, context, value, callBack);*/
-                        },
-                        child: const Icon(
-                          Icons.pin_drop_outlined,
-                          size: 40,
-                          color: Colors.red,
-                        ),
+                      child: const Icon(
+                        Icons.pin_drop_outlined,
+                        size: 40,
+                        color: Colors.red,
                       ),
                     ),
                   ),

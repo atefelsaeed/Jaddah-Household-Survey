@@ -8,9 +8,11 @@ import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_ending_
 import 'package:jaddah_household_survey/UI/Screens/trips/components/trip_hold_address.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/components/where_did_you_park.dart';
 import 'package:jaddah_household_survey/UI/Screens/trips/provider/trip_provider.dart';
+import 'package:jaddah_household_survey/UI/Screens/trips/trip_dispose_controllers.dart';
 import 'package:jaddah_household_survey/UI/Widgets/headline.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Data/HouseholdPart1/TripsData/trip_mode_list.dart';
@@ -92,7 +94,12 @@ class _TripScreenState extends State<TripScreen> {
       AppConstants.isResetTrip = false;
     }
   }
-
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    TripDisposeControllers.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -364,19 +371,27 @@ class _TripScreenState extends State<TripScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       DefaultButton(
-                        function: () {
-                          if (_key.currentState!.validate()) {
-                            SaveTripsData.saveData(context);
-                            // TripConditions().checkIsCarDriver();
+                        function: () async {
+                          try {
+                            if (_key.currentState!.validate()) {
+                              SaveTripsData.saveData(context);
+                              // TripConditions().checkIsCarDriver();
 
-                            CheckTripsValidation.validatePerson(context);
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("يوجد خطأ بالبيانات"),
-                                duration: Duration(seconds: 3),
-                                elevation: 1,
-                              ),
+                              CheckTripsValidation.validatePerson(context);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("يوجد خطأ بالبيانات"),
+                                  duration: Duration(seconds: 3),
+                                  elevation: 1,
+                                ),
+                              );
+                            }
+                          } catch (exception, stackTrace) {
+                            debugPrint('Sentry');
+                            await Sentry.captureException(
+                              exception,
+                              stackTrace: stackTrace,
                             );
                           }
                         },

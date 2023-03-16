@@ -89,6 +89,7 @@ class SavePersonData {
 
 class SaveTripsData {
   static saveData(context) {
+
     SurveyProvider survey =
         Provider.of<SurveyPTProvider>(context, listen: false);
     survey.tripsList = TripModeList.tripModeList;
