@@ -183,6 +183,8 @@ class UserSurveysProvider with ChangeNotifier {
     }
   }
 
+  UserSurveyStatus? userSurveyStatusXX;
+
   //==========Fetch-User-Survey-Status-on-Home-Screen=============
   Future<bool> fetchUserSurveysStatus(int id) async {
     try {
@@ -190,30 +192,38 @@ class UserSurveysProvider with ChangeNotifier {
       var response = await APIHelper.getData(
         url: "${APIRouting.userSurveysStatus}$id",
       );
+      debugPrint("fffff");
+
       if (response.statusCode == 200) {
-        var data = response.body;
+        print('data');
+        // Map<String, dynamic> data = json.decode(response.body);
+        userSurveyStatusXX = UserSurveyStatus.fromJson(jsonDecode(response.body));
         // if (!data['status']) return false;
-        _userSurveyStatusData = UserSurveyStatusData.fromJson(data['data']);
-        debugPrint("fffff");
+        _userSurveyStatusData = userSurveyStatusXX!.data;
+        debugPrint("DDDDZZZZfffff");
+        debugPrint("fffff ${_userSurveyStatusData!.allForms}");
         debugPrint(_userSurveyStatusData?.allForms.toString());
         final prefs = await SharedPreferences.getInstance();
         prefs.setString(
           "userSurveysStatus",
           json.encode(_userSurveyStatusData),
         );
+        debugPrint("ZZZZfffff");
         loading = false;
         notifyListeners();
         return true;
       }
+      debugPrint("XXXfffff");
       loading = false;
       notifyListeners();
       return false;
     } catch (exception, stackTrace) {
-      await Sentry.captureException(
-        exception,
-        stackTrace: stackTrace,
-      );
-
+      // await Sentry.captureException(
+      //   exception,
+      //   stackTrace: stackTrace,
+      // );
+      print(exception.toString());
+      print(stackTrace.toString());
       final prefs = await SharedPreferences.getInstance();
       if (!prefs.containsKey("userSurveysStatus")) return false;
 

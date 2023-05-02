@@ -114,7 +114,6 @@ class _ChooseSurveyBodyState extends State<ChooseSurveyBody> {
                         fontSize: width(context) * .065,
                       ),
                     ),
-                    Image.network(''),
                     InkWell(
                       onTap: () async {
                         /* final prefs = await SharedPreferences.getInstance();

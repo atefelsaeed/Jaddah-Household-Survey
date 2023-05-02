@@ -4,13 +4,16 @@ import 'package:http/http.dart' as http;
 import 'package:jaddah_household_survey/Helper/api_routing.dart';
 
 class APIHelper {
-
   static getData({
     required String url,
     dynamic body,
     bool isGuest = false,
   }) async {
-    var response = await http.get(Uri.parse("${APIRouting.baseURL}$url"), headers: body);
+    var response =
+        await http.get(Uri.parse("${APIRouting.baseURL}$url"), headers: body);
+    print("${APIRouting.baseURL}$url");
+    print("body:$body");
+    print(response.body.toString());
     return response;
   }
 

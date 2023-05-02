@@ -51,7 +51,6 @@ class _ItemHomeSurveyState extends State<ItemHomeSurvey> {
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
                     AppSize.spaceHeight5(context),
-
                     Row(
                       children: [
                         const Image(
@@ -124,7 +123,6 @@ class _ItemHomeSurveyState extends State<ItemHomeSurvey> {
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
